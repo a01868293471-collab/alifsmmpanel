@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALIF SMM PANEL</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --main: #6c5ce7; --bg: #f4f7fe; --card: #ffffff; --text: #2d3436; --bkash: #e2136e; --nagad: #f7941d; --rocket: #8c3494; }
+        body { background-color: var(--bg); font-family: 'Poppins', 'Hind Siliguri', sans-serif; color: var(--text); overflow-x: hidden; margin: 0; padding: 0; padding-bottom: 0px; }
+
+        /* Landing Page Styles */
+        .landing-hero { background: linear-gradient(135deg, #6c5ce7, #a29bfe); padding: 80px 20px; text-align: center; color: white; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; margin-bottom: 20px; }
+        .hero-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+        .hero-sub { font-size: 16px; opacity: 0.9; margin-bottom: 30px; }
+        .stats-grid-home { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px 15px; }
+        .stat-card-home { background: #fff; padding: 25px 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--main); }
+        .stat-card-home h3 { color: var(--main); font-weight: 700; margin-bottom: 5px; font-size: 24px; }
+        .feature-box { background: #fff; padding: 30px 20px; border-radius: 20px; margin: 10px 15px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .feature-icon { font-size: 40px; color: var(--main); margin-bottom: 15px; }
+        .btn-custom { padding: 12px 30px; border-radius: 10px; font-weight: 600; transition: 0.3s; text-decoration: none; display: inline-block; cursor: pointer; border: 2px solid transparent; }
+        .btn-light-custom { background: #fff; color: var(--main); }
+        .btn-outline-custom { background: transparent; color: #fff; border-color: #fff; }
+        .btn-outline-custom:hover { background: rgba(255,255,255,0.1); }
+
+        /* Auth Styles */
+        .auth-overlay { position: fixed; inset: 0; background: var(--bg); z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .auth-card { background: #fff; border-radius: 20px; padding: 40px 30px; width: 100%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
+        .close-auth { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: #aaa; transition: 0.3s; }
+        .close-auth:hover { color: var(--main); transform: rotate(90deg); }
+        .auth-input { border-radius: 12px; padding: 12px 18px; border: 1px solid #eee; margin-bottom: 15px; width: 100%; background: #fdfdfd; }
+        .auth-input:focus { outline: none; border-color: var(--main); }
+
+        /* Dashboard Styles */
+        #user-app, #admin-app { padding-bottom: 90px; }
+        #loader-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(8px); }
+        .spinner { width: 45px; height: 45px; border: 4px solid #eee; border-top: 4px solid var(--main); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .glass-card { background: var(--card); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); overflow: hidden; }
+        .btn-premium { background: var(--main); color: #fff; border-radius: 12px; padding: 12px; font-weight: 600; transition: 0.3s; border: none; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3); width: 100%; }
+        .btn-premium:hover { opacity: 0.9; transform: translateY(-2px); color: #fff; }
+
+        .brand-box { text-align: center; padding: 25px; background: #fff; border-radius: 0 0 35px 35px; margin-bottom: 20px; position: relative; }
+        .dynamic-logo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .bal-card { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: #fff; margin: 0 15px; padding: 25px; border-radius: 25px; position: relative; overflow: hidden; }
+
+        .srv-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 15px; }
+        .srv-btn { background: #fff; padding: 15px 5px; border-radius: 18px; text-align: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.03); position: relative; }
+        .srv-btn.active { border-color: var(--main); background: #f0edff; transform: scale(1.05); }
+        
+        .m-active-bkash { border-color: var(--bkash) !important; background: #fff0f6 !important; }
+        .m-active-nagad { border-color: var(--nagad) !important; background: #fff7ed !important; }
+        .m-active-rocket { border-color: var(--rocket) !important; background: #fdf4ff !important; }
+
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 12px; border-top: 1px solid #eee; z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); }
+        .nav-item { color: #6c5ce7; text-align: center; font-size: 11px; font-weight: 500; cursor: pointer; border: none; background: none; flex: 1; }
+        .nav-item.active { color: var(--main); }
+        .nav-item i { font-size: 20px; margin-bottom: 4px; display: block; }
+
+        .clean-page { position: fixed; inset: 0; background: #f8f9fd; z-index: 2000; display: none; padding: 20px; overflow-y: auto; padding-bottom: 100px; }
+        .chat-bubble { padding: 12px 16px; border-radius: 18px; margin-bottom: 12px; max-width: 80%; font-size: 14px; position: relative; }
+        .msg-user { background: var(--main); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
+        .msg-admin { background: #fff; color: #333; margin-right: auto; border-bottom-left-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .admin-user-card { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 12px; border-left: 5px solid var(--main); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .copy-btn { border: none; background: #f1f2f6; border-radius: 8px; padding: 5px 10px; font-size: 12px; color: var(--main); font-weight: bold; }
+        .x-small { font-size: 11px; }
+    </style>
+</head>
+<body>
+
+<div id="loader-overlay"><div class="spinner"></div></div>
+
+<div id="landing-page">
+    <div class="landing-hero">
+        <img src="" class="dynamic-logo site-logo-img mb-3">
+        <h1 class="hero-title">ALIF SMM PANEL</h1>
+        <p class="hero-sub">বাংলাদেশের বিশ্বস্ত সোশ্যাল মিডিয়া সার্ভিস প্ল্যাটফর্ম</p>
+        <div class="d-flex justify-content-center gap-3">
+            <div class="btn-custom btn-light-custom" onclick="showAuth('signup')">নিবন্ধন করুন</div>
+            <div class="btn-custom btn-outline-custom" onclick="showAuth('login')">লগইন করুন</div>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <h4 class="fw-bold text-center mb-4">আমাদের সাফল্যের পরিসংখ্যান</h4>
+        <div class="stats-grid-home">
+            <div class="stat-card-home">
+                <h3 id="stat-members">0</h3>
+                <p class="small fw-bold">মোট ব্যবহারকারী</p>
+            </div>
+            <div class="stat-card-home">
+                <h3 id="stat-orders">0</h3>
+                <p class="small fw-bold">মোট অর্ডার</p>
+            </div>
+            <div class="stat-card-home">
+                <h3 id="stat-tickets">0</h3>
+                <p class="small fw-bold">সহায়তা টিকিট</p>
+            </div>
+            <div class="stat-card-home">
+                <h3 id="stat-online">0</h3>
+                <p class="small fw-bold">সক্রিয় সদস্য</p>
+            </div>
+        </div>
+        <h4 class="fw-bold text-center mt-4">কেন ALIF SMM PANEL বেছে নিবেন?</h4>
+        <div class="feature-box">
+            <i class="fas fa-shield-alt feature-icon"></i>
+            <div class="feature-title">১০০% নিরাপদ</div>
+            <div class="feature-desc">আপনার তথ্য এবং ট্রানজেকশন আমাদের কাছে সম্পূর্ণ নিরাপদ।</div>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-headset feature-icon"></i>
+            <div class="fw-bold mb-2">২৪/৭ কাস্টমার সাপোর্ট</div>
+            <div class="small text-muted">আমাদের অভিজ্ঞ সাপোর্ট টিম সবসময় আপনার পাশে আছে।</div>
+        </div>
+    </div>
+</div>
+
+<div id="auth-section" class="auth-overlay d-none">
+    <div class="auth-card d-none" id="login-box">
+        <i class="fas fa-times close-auth" onclick="closeAuth()"></i>
+        <div class="text-center">
+            <img src="" class="dynamic-logo site-logo-img mb-3">
+            <h4 class="fw-bold">লগইন করুন</h4>
+            <p class="text-muted small mb-4">আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+        </div>
+        <div class="mb-3">
+            <label class="small fw-bold mb-1">আপনার ইমেইল</label>
+            <input type="email" id="l-email" class="auth-input" placeholder="*****@gmail.com">
+        </div>
+        <div class="mb-4">
+            <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
+            <input type="password" id="l-pass" class="auth-input" placeholder="******">
+        </div>
+        <button class="btn-premium" onclick="handleAuth('login')">লগইন করুন</button>
+    </div>
+    
+    <div class="auth-card d-none" id="signup-box">
+        <i class="fas fa-times close-auth" onclick="closeAuth()"></i>
+        <div class="text-center">
+            <img src="" class="dynamic-logo site-logo-img mb-3">
+            <h4 class="fw-bold">রেজিষ্ট্রেশন করুন</h4>
+            <p class="text-muted small mb-4">সেরা সার্ভিস পেতে আজই যোগ দিন</p>
+        </div>
+        <div class="mb-3">
+            <label class="small fw-bold mb-1">আপনার নাম</label>
+            <input type="text" id="s-name" class="auth-input" placeholder="নিজের নাম দিন">
+        </div>
+        <div class="mb-3">
+            <label class="small fw-bold mb-1">আপনার ইমেইল</label>
+            <input type="email" id="s-email" class="auth-input" placeholder="ইমেইল দিন">
+        </div>
+        <div class="mb-4">
+            <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
+            <input type="password" id="s-pass" class="auth-input" placeholder="৬ অক্ষরের পাসওয়ার্ড দিন">
+        </div>
+        <button class="btn-premium" onclick="handleAuth('signup')">রেজিষ্ট্রেশন করুন</button>
+    </div>
+</div>
+
+<div id="user-app" class="d-none">
+    <div id="p-home-main">
+        <div class="brand-box">
+            <img src="" class="dynamic-logo site-logo-img mb-2">
+            <h5 class="fw-bold mb-0">ALIF SMM PANEL</h5>
+            <i class="fas fa-sign-out-alt text-danger" style="position: absolute; right: 25px; top: 35px; font-size: 22px; cursor:pointer;" onclick="logout()"></i>
+        </div>
+
+        <div class="modern-notice mx-3 mb-3">
+            <div class="bg-white p-2 rounded-3 border-start border-4 border-primary">
+                <marquee id="site-note" class="small fw-bold"></marquee>
+            </div>
+        </div>
+
+        <div class="bal-card shadow">
+            <div class="small opacity-75">বর্তমান ব্যালেন্স</div>
+            <h2 class="fw-bold mb-0">৳ <span id="u-bal">0.00</span></h2>
+        </div>
+
+        <div class="srv-grid">
+            <div class="srv-btn active" onclick="setSrv('Facebook', this)"><i class="fab fa-facebook text-primary fs-3"></i></div>
+            <div class="srv-btn" onclick="setSrv('YouTube', this)"><i class="fab fa-youtube text-danger fs-3"></i></div>
+            <div class="srv-btn" onclick="setSrv('TikTok', this)"><i class="fab fa-tiktok text-dark fs-3"></i></div>
+            <div class="srv-btn" onclick="setSrv('Instagram', this)"><i class="fab fa-instagram text-danger fs-3"></i></div>
+            <div class="srv-btn" onclick="setSrv('Telegram', this)"><i class="fab fa-telegram text-info fs-3"></i></div>
+        </div>
+
+        <div class="order-box glass-card mx-3 p-4 mb-5">
+            <h6 class="fw-bold mb-3"><i class="fas fa-shopping-cart me-2"></i>অর্ডার: <span id="cur-srv-txt">Facebook</span></h6>
+            <select id="qty" class="form-select mb-3 rounded-3" onchange="updatePrice()">
+                <option value="0">পরিমাণ বেছে নিন</option>
+                <option value="1000">1k Order</option>
+                <option value="5000">5k Order</option>
+                <option value="10000">10k Order</option>
+            </select>
+            <input type="text" id="link" class="form-control mb-3 rounded-3" placeholder="একাউন্ট লিঙ্ক দিন">
+            <div class="p-3 bg-light rounded-3 mb-4 d-flex justify-content-between">
+                <span class="small">মোট খরচ:</span>
+                <span class="fw-bold text-primary">৳ <span id="total-price">0.00</span></span>
+            </div>
+            <button class="btn-premium w-100 py-3" onclick="confirmOrder()">সাবমিট অর্ডার</button>
+        </div>
+    </div>
+
+    <div id="p-fund" class="clean-page">
+        <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-fund')"></i>Add Money</h5>
+        <div class="row g-2 mb-4">
+            <div class="col-4"><div class="srv-btn py-3 shadow-sm border m-active-bkash" id="m-Bkash" onclick="selectMethod('Bkash')"><i class="fas fa-mobile-alt mb-1" style="color: var(--bkash)"></i><div style="font-size: 10px; font-weight: 600;">Bkash</div></div></div>
+            <div class="col-4"><div class="srv-btn py-3 shadow-sm border" id="m-Nagad" onclick="selectMethod('Nagad')"><i class="fas fa-mobile-alt mb-1" style="color: var(--nagad)"></i><div style="font-size: 10px; font-weight: 600;">Nagad</div></div></div>
+            <div class="col-4"><div class="srv-btn py-3 shadow-sm border" id="m-Rocket" onclick="selectMethod('Rocket')"><i class="fas fa-mobile-alt mb-1" style="color: var(--rocket)"></i><div style="font-size: 10px; font-weight: 600;">Rocket</div></div></div>
+        </div>
+        <div class="glass-card p-3 mb-4 border-0 shadow-sm" style="background: #fff; border-left: 4px solid var(--main) !important;">
+            <p class="small mb-2 fw-bold text-muted">ধাপ ১: নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
+            <div class="p-3 rounded-3 border bg-light d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0 text-dark" id="display-number">लोड হচ্ছে...</h5>
+                <button class="copy-btn" onclick="copyNumber()">COPY</button>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
+            <input type="number" id="f-amt" class="form-control auth-input mb-3" placeholder="টাকার পরিমান দিন">
+            <input type="text" id="f-trx" class="form-control auth-input mb-4" placeholder="Transaction ID ">
+            <button class="btn-premium w-100 shadow" onclick="fundReq()">টাকা নিশ্চিত করুন</button>
+        </div>
+        <h6 class="fw-bold mb-3">লেনদেন হিস্টোরি</h6>
+        <div id="fund-hist-list"></div>
+    </div>
+
+    <div id="p-orders" class="clean-page">
+        <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-orders')"></i>অর্ডার হিস্টোরি</h5>
+        <div id="order-hist-list"></div>
+    </div>
+
+    <div id="p-support" class="clean-page">
+        <h5 class="fw-bold mb-4"><i class="fas fa-headset me-3 text-primary" onclick="closePage('p-support')"></i>সাপোর্ট সেন্টার</h5>
+        <div class="bg-white rounded-4 shadow-sm p-3 mb-3 d-flex flex-column" id="chat-container" style="height: 60vh; overflow-y: auto;"></div>
+        <div class="input-group bg-white p-2 rounded-pill shadow-sm">
+            <input type="text" id="chat-input" class="form-control border-0 px-3" placeholder="লিখুন...">
+            <button class="btn btn-primary rounded-circle" style="width: 45px; height: 45px;" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <button class="nav-item active" id="nav-home" onclick="goHome()"><i class="fas fa-home"></i>Home</button>
+        <button class="nav-item" id="nav-orders" onclick="openPage('p-orders')"><i class="fas fa-list-ul"></i>Orders</button>
+        <button class="nav-item" id="nav-fund" onclick="openPage('p-fund')"><i class="fas fa-plus-circle"></i>Fund</button>
+        <button class="nav-item" id="nav-support" onclick="openPage('p-support')"><i class="fas fa-comments"></i>Support</button>
+    </div>
+</div>
+
+<div id="admin-app" class="d-none">
+    <div class="p-3 bg-white shadow-sm d-flex justify-content-between align-items-center sticky-top">
+        <h5 class="fw-bold m-0 text-primary"><i class="fas fa-user-shield me-2"></i>ADMIN PANEL</h5>
+        <button class="btn btn-sm btn-outline-danger px-4 rounded-pill fw-bold" onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="container p-3">
+        <div class="glass-card p-4 mb-4">
+            <h6 class="fw-bold border-bottom pb-2 mb-3"><i class="fas fa-cog me-2"></i>ওয়েবসাইট সেটিংস</h6>
+            <div class="mb-3">
+                <label class="x-small fw-bold mb-1">লোগো পরিবর্তন (Choose Image)</label>
+                <input type="file" id="adm-logo-file" class="form-control form-control-sm" accept="image/*">
+            </div>
+            <label class="x-small fw-bold mb-1">হোম নোটিশ</label>
+            <textarea id="adm-note-in" class="form-control mb-3" rows="2"></textarea>
+            
+            <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary">অটো-রিপ্লাই মেসেজ</h6>
+            <textarea id="adm-auto-msg" class="form-control mb-3" rows="3" placeholder="সাপোর্ট সেন্টারে ইউজার মেসেজ দিলে যা রিপ্লাই যাবে..."></textarea>
+
+            <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">পেমেন্ট নাম্বার সেটিংস</h6>
+            <div class="row g-2 mb-3">
+                <div class="col-6"><label class="x-small fw-bold">বিকাশ/নগদ নাম্বার</label><input type="text" id="adm-pay-num" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="x-small fw-bold">রকেট নাম্বার</label><input type="text" id="adm-rocket-num" class="form-control form-control-sm"></div>
+            </div>
+
+            <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">সার্ভিস মূল্য (প্রতি ১০০০)</h6>
+            <div class="row g-2 mb-3">
+                <div class="col-6"><label class="x-small fw-bold">Facebook Price</label><input type="number" id="p-fb" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="x-small fw-bold">YouTube Price</label><input type="number" id="p-yt" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="x-small fw-bold">TikTok Price</label><input type="number" id="p-tk" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="x-small fw-bold">Instagram Price</label><input type="number" id="p-ig" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="x-small fw-bold">Telegram Price</label><input type="number" id="p-tg" class="form-control form-control-sm"></div>
+            </div>
+            <button class="btn btn-dark w-100 rounded-3 fw-bold" onclick="updateSite()">সেটিংস সেভ করুন</button>
+        </div>
+
+        <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-u')"><i class="fas fa-users d-block mb-1"></i>ইউজার</button>
+            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f')"><i class="fas fa-money-bill d-block mb-1"></i>পেমেন্ট</button>
+            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1"></i>অর্ডার</button>
+            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-s')"><i class="fas fa-envelope d-block mb-1"></i>মেসেজ</button>
+        </div>
+
+        <div id="a-u" class="a-tab"></div>
+        <div id="a-f" class="a-tab d-none"></div>
+        <div id="a-o" class="a-tab d-none"></div>
+        <div id="a-s" class="a-tab d-none"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let db = {
+        users: JSON.parse(localStorage.getItem('v7_u')) || [{name:"Admin", email:"admin@gmail.com", pass:"123456", role:"admin", bal:0, status:"active"}],
+        orders: JSON.parse(localStorage.getItem('v7_o')) || [],
+        funds: JSON.parse(localStorage.getItem('v7_f')) || [],
+        chats: JSON.parse(localStorage.getItem('v7_chats')) || [],
+        prices: JSON.parse(localStorage.getItem('v7_prices')) || { "Facebook": 50, "YouTube": 100, "TikTok": 40, "Instagram": 30, "Telegram": 60 },
+        logo: localStorage.getItem('v7_logo') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+        note: localStorage.getItem('v7_note') || "Elite SMM এ আপনাকে স্বাগতম!",
+        payNum: localStorage.getItem('v7_payNum') || "018XXXXXXXX",
+        rocketNum: localStorage.getItem('v7_rocketNum') || "018XXXXXXXX",
+        autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
+    };
+    
+    let curUser = null;
+    let currentMethod = "Bkash";
+    let stats = { members: 26971, orders: 10895, tickets: 298, online: 45 }; // Fake stats for landing page
+
+    const showLoader = (show) => { document.getElementById('loader-overlay').style.display = show ? 'flex' : 'none'; };
+    const toast = (msg, icon='success') => { Swal.fire({ text: msg, icon: icon, toast: true, position: 'top', showConfirmButton: false, timer: 2000 }); };
+    const formatCurrency = (num) => parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+    function save() {
+        localStorage.setItem('v7_u', JSON.stringify(db.users));
+        localStorage.setItem('v7_o', JSON.stringify(db.orders));
+        localStorage.setItem('v7_f', JSON.stringify(db.funds));
+        localStorage.setItem('v7_chats', JSON.stringify(db.chats));
+        localStorage.setItem('v7_prices', JSON.stringify(db.prices));
+        localStorage.setItem('v7_logo', db.logo);
+        localStorage.setItem('v7_note', db.note);
+        localStorage.setItem('v7_payNum', db.payNum);
+        localStorage.setItem('v7_rocketNum', db.rocketNum);
+        localStorage.setItem('v7_autoMsg', db.autoMsg);
+    }
+
+    // Logo Update
+    document.getElementById('adm-logo-file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                db.logo = event.target.result;
+                save(); syncUI(); toast('লোগো আপডেট হয়েছে');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    window.onload = () => { 
+        syncUI(); 
+        selectMethod('Bkash'); 
+        checkPersistentLogin();
+        setInterval(updateLiveStats, 5000); // Live stats animation
+    };
+
+    // Landing Page & Auth Logic
+    function updateLiveStats() {
+        stats.members += Math.floor(Math.random() * 2);
+        stats.orders += Math.floor(Math.random() * 3);
+        stats.online = Math.floor(Math.random() * (70 - 40) + 40);
+        
+        if(document.getElementById('stat-members')){
+            document.getElementById('stat-members').innerText = stats.members.toLocaleString();
+            document.getElementById('stat-orders').innerText = stats.orders.toLocaleString();
+            document.getElementById('stat-tickets').innerText = stats.tickets.toLocaleString();
+            document.getElementById('stat-online').innerText = stats.online;
+        }
+    }
+
+    function showAuth(type) {
+        document.getElementById('auth-section').classList.remove('d-none');
+        document.getElementById('login-box').classList.toggle('d-none', type !== 'login');
+        document.getElementById('signup-box').classList.toggle('d-none', type !== 'signup');
+    }
+
+    function closeAuth() {
+        document.getElementById('auth-section').classList.add('d-none');
+    }
+
+    function checkPersistentLogin() {
+        let savedEmail = localStorage.getItem('v7_logged_email');
+        if (savedEmail) {
+            let u = db.users.find(x => x.email === savedEmail);
+            if (u && u.status !== 'blocked') {
+                curUser = u;
+                document.getElementById('landing-page').classList.add('d-none'); // Hide Landing
+                document.getElementById('auth-section').classList.add('d-none'); // Hide Auth
+                u.role === 'admin' ? (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : (document.getElementById('user-app').classList.remove('d-none'), renderUser());
+            } else {
+                 document.getElementById('landing-page').classList.remove('d-none'); // Show Landing if check fails
+            }
+        } else {
+            document.getElementById('landing-page').classList.remove('d-none'); // Show Landing if no saved user
+        }
+    }
+
+    function syncUI() {
+        document.querySelectorAll('.site-logo-img').forEach(i => i.src = db.logo);
+        document.getElementById('site-note').innerText = db.note;
+        document.getElementById('adm-note-in').value = db.note;
+        document.getElementById('adm-pay-num').value = db.payNum;
+        document.getElementById('adm-rocket-num').value = db.rocketNum;
+        document.getElementById('adm-auto-msg').value = db.autoMsg;
+        document.getElementById('p-fb').value = db.prices.Facebook;
+        document.getElementById('p-yt').value = db.prices.YouTube;
+        document.getElementById('p-tk').value = db.prices.TikTok;
+        document.getElementById('p-ig').value = db.prices.Instagram;
+        document.getElementById('p-tg').value = db.prices.Telegram;
+    }
+
+    function handleAuth(m) {
+        showLoader(true);
+        setTimeout(() => {
+            showLoader(false);
+            if(m === 'signup') {
+                let n = document.getElementById('s-name').value, e = document.getElementById('s-email').value, p = document.getElementById('s-pass').value;
+                if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
+                if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
+                db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
+                save(); 
+                closeAuth();
+                toast('রেজিস্ট্রেশন সফল! এখন লগইন করুন');
+                showAuth('login');
+            } else {
+                let e = document.getElementById('l-email').value, p = document.getElementById('l-pass').value;
+                let u = db.users.find(x => x.email === e && x.pass === p);
+                if(u) {
+                    if(u.status === 'blocked') return toast('আপনার অ্যাকাউন্ট ব্লক করা হয়েছে', 'error');
+                    curUser = u; 
+                    localStorage.setItem('v7_logged_email', u.email);
+                    
+                    document.getElementById('auth-section').classList.add('d-none');
+                    document.getElementById('landing-page').classList.add('d-none'); // Hide Landing
+                    
+                    u.role === 'admin' ? (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : (document.getElementById('user-app').classList.remove('d-none'), renderUser());
+                    toast('লগইন সফল');
+                } else toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+            }
+        }, 800);
+    }
+
+    function logout() {
+        Swal.fire({ title: 'লগআউট করতে চান?', icon: 'warning', showCancelButton: true, confirmButtonText: 'হ্যাঁ', cancelButtonText: 'না' }).then((res) => {
+            if(res.isConfirmed) { localStorage.removeItem('v7_logged_email'); location.reload(); }
+        });
+    }
+
+    function sendMessage() {
+        let inp = document.getElementById('chat-input');
+        let text = inp.value.trim();
+        if(!text) return;
+        db.chats.push({user: curUser.email, text: text, sender: 'user'});
+        inp.value = ""; save(); renderChat();
+        setTimeout(() => { db.chats.push({user: curUser.email, text: db.autoMsg, sender: 'admin'}); save(); renderChat(); }, 1500);
+    }
+
+    function renderChat() {
+        let cBox = document.getElementById('chat-container');
+        if(!cBox) return;
+        cBox.innerHTML = db.chats.filter(c => c.user === curUser.email).map(msg => `<div class="chat-bubble ${msg.sender==='admin'?'msg-admin':'msg-user'}">${msg.text}</div>`).join("") || "<p class='text-center small opacity-50'>কিভাবে সাহায্য করতে পারি?</p>";
+        cBox.scrollTop = cBox.scrollHeight;
+    }
+
+    function updateSite() {
+        db.note = document.getElementById('adm-note-in').value;
+        db.autoMsg = document.getElementById('adm-auto-msg').value;
+        db.payNum = document.getElementById('adm-pay-num').value;
+        db.rocketNum = document.getElementById('adm-rocket-num').value;
+        db.prices.Facebook = document.getElementById('p-fb').value;
+        db.prices.YouTube = document.getElementById('p-yt').value;
+        db.prices.TikTok = document.getElementById('p-tk').value;
+        db.prices.Instagram = document.getElementById('p-ig').value;
+        db.prices.Telegram = document.getElementById('p-tg').value;
+        save(); syncUI(); toast('সবকিছু আপডেট হয়েছে');
+    }
+
+    function renderUser() {
+        if(!curUser) return;
+        document.getElementById('u-bal').innerText = formatCurrency(curUser.bal);
+        document.getElementById('fund-hist-list').innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}"><b>৳${f.amt} (${f.method})</b> <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span><div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div></div>`).join("") || "<p class='text-center text-muted'>কোনো লেনদেন নেই</p>";
+        document.getElementById('order-hist-list').innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}"><b>${o.srv} - ${o.qty}</b> <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span><div class="x-small text-muted mt-1">${o.time}</div></div>`).join("") || "<p class='text-center text-muted'>কোনো অর্ডার নেই</p>";
+    }
+
+    function renderAdmin() {
+        // User Tab
+        document.getElementById('a-u').innerHTML = db.users.filter(u => u.role !== 'admin').map(u => `
+            <div class="admin-user-card shadow-sm">
+                <div class="fw-bold text-primary">${u.name} <span class="badge bg-light text-dark float-end border">${u.status}</span></div>
+                <div class="x-small mt-1">Email: ${u.email} | Pass: <span class="text-danger">${u.pass}</span> | Bal: ৳${formatCurrency(u.bal)}</div>
+                <div class="mt-2 d-flex gap-1">
+                    <button class="btn btn-xs btn-primary" onclick="editBal(${db.users.indexOf(u)})">+ টাকা</button>
+                    <button class="btn btn-xs ${u.status==='active'?'btn-danger':'btn-success'}" onclick="toggleBlock(${db.users.indexOf(u)})">${u.status==='active'?'ব্লক':'আনব্লক'}</button>
+                </div>
+            </div>`).join("") || "ইউজার নেই";
+        
+        // Fund Tab
+        document.getElementById('a-f').innerHTML = db.funds.filter(f => f.status==='Pending').map(f => `
+            <div class="admin-user-card border-warning">
+                <b>৳${f.amt} (${f.method})</b><br><small>Trx: ${f.trx} | User: ${f.user}</small><br>
+                <div class="mt-2 d-flex gap-2">
+                    <button class="btn btn-sm btn-success flex-fill" onclick="approveFund(${f.id})">Approve</button>
+                    <button class="btn btn-sm btn-danger flex-fill" onclick="rejectFund(${f.id})">Reject</button>
+                </div>
+            </div>`).join("") || "পেমেন্ট পেন্ডিং নেই";
+
+        // Order Tab
+        document.getElementById('a-o').innerHTML = db.orders.filter(o => o.status==='Pending').map(o => `
+            <div class="admin-user-card border-info">
+                <b>${o.srv} - ${o.qty}</b><br><small>User: ${o.user}<br>Link: ${o.link}</small><br>
+                <div class="mt-2 d-flex gap-2">
+                    <button class="btn btn-sm btn-info text-white flex-fill" onclick="approveOrder(${o.id})">Complete</button>
+                    <button class="btn btn-sm btn-danger flex-fill" onclick="rejectOrder(${o.id})">Reject</button>
+                </div>
+            </div>`).join("") || "অর্ডার পেন্ডিং নেই";
+
+        // Message Tab
+        let uniqueUsers = [...new Set(db.chats.map(c => c.user))];
+        document.getElementById('a-s').innerHTML = uniqueUsers.map(uMail => {
+            let allMsgs = db.chats.filter(c => c.user === uMail).map(m => `<div class="x-small"><b>${m.sender}:</b> ${m.text}</div>`).join("");
+            return `<div class="admin-user-card"><b>User: ${uMail}</b><div class="chat-preview-box">${allMsgs}</div><button class="btn btn-xs btn-dark w-100 mt-2" onclick="adminReplyPrompt('${uMail}')">Reply</button></div>`;
+        }).join("") || "মেসেজ নেই";
+    }
+
+    function editBal(i) { let amt = prompt("টাকার পরিমাণ:"); if(amt) { db.users[i].bal += parseFloat(amt); save(); renderAdmin(); toast('সফল'); } }
+    function toggleBlock(i) { db.users[i].status = (db.users[i].status === 'active' ? 'blocked' : 'active'); save(); renderAdmin(); }
+    
+    // Fund Functions
+    function fundReq() {
+        let amt = document.getElementById('f-amt').value;
+        let trx = document.getElementById('f-trx').value;
+        if(!amt || !trx) return toast('সব তথ্য সঠিকভাবে দিন', 'warning');
+        if(amt < 10) return toast('মিনিমাম ১০ টাকা', 'warning');
+        db.funds.push({ id: Date.now(), user: curUser.email, amt: amt, trx: trx, method: currentMethod, status: 'Pending', time: new Date().toLocaleString() });
+        save(); document.getElementById('f-amt').value = ''; document.getElementById('f-trx').value = ''; renderUser();
+        toast('পেমেন্ট রিকোয়েস্ট পাঠানো হয়েছে!');
+    }
+
+    function approveFund(id) { let f = db.funds.find(x => x.id === id), u = db.users.find(x => x.email === f.user); if(u) { f.status = 'Success'; u.bal += parseFloat(f.amt); save(); renderAdmin(); toast('অ্যাপ্রুভড'); } }
+    function rejectFund(id) { let f = db.funds.find(x => x.id === id); if(f) { f.status = 'Rejected'; save(); renderAdmin(); toast('পেমেন্ট রিজেক্ট হয়েছে', 'warning'); } }
+    
+    // Order Functions
+    function approveOrder(id) { let o = db.orders.find(x => x.id === id); o.status = 'Success'; save(); renderAdmin(); toast('অর্ডার কমপ্লিট'); }
+    function rejectOrder(id) { let o = db.orders.find(x => x.id === id), u = db.users.find(x => x.email === o.user); if(o && u) { o.status = 'Rejected'; let srvPrice = (o.qty / 1000) * db.prices[o.srv]; u.bal += srvPrice; save(); renderAdmin(); toast('অর্ডার রিজেক্ট ও টাকা ফেরত দেওয়া হয়েছে', 'warning'); } }
+
+    function adminReplyPrompt(uMail) { let msg = prompt("আপনার রিপ্লাই:"); if(msg) { db.chats.push({user: uMail, text: msg, sender: 'admin'}); save(); renderAdmin(); } }
+    function openPage(id) { document.querySelectorAll('.clean-page').forEach(p => p.style.display = 'none'); document.getElementById(id).style.display = 'block'; if(id === 'p-support') renderChat(); renderUser(); }
+    function closePage(id) { document.getElementById(id).style.display = 'none'; goHome(); }
+    function goHome() { document.querySelectorAll('.clean-page').forEach(p => p.style.display = 'none'); renderUser(); }
+    function selectMethod(method) { currentMethod = method; document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('m-active-bkash','m-active-nagad','m-active-rocket')); document.getElementById('m-' + method).classList.add('m-active-' + method.toLowerCase()); document.getElementById('method-label').innerText = method; document.getElementById('display-number').innerText = (method === 'Rocket') ? db.rocketNum : db.payNum; }
+    function copyNumber() { navigator.clipboard.writeText(document.getElementById('display-number').innerText); toast('কপি হয়েছে'); }
+    function aTab(id) { document.querySelectorAll('.a-tab').forEach(t => t.classList.add('d-none')); document.getElementById(id).classList.remove('d-none'); renderAdmin(); }
+    function setSrv(s, el) { document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active')); el.classList.add('active'); document.getElementById('cur-srv-txt').innerText = s; updatePrice(); }
+    function updatePrice() { let srv = document.getElementById('cur-srv-txt').innerText, q = document.getElementById('qty').value; document.getElementById('total-price').innerText = formatCurrency((q / 1000) * (db.prices[srv] || 50)); }
+    
+    function confirmOrder() { 
+        let q = document.getElementById('qty').value, l = document.getElementById('link').value, srv = document.getElementById('cur-srv-txt').innerText, cost = (q / 1000) * db.prices[srv]; 
+        if(q == 0 || !l) return toast('তথ্য দিন', 'warning'); 
+        if(curUser.bal < cost) return toast('ব্যালেন্স নেই', 'error'); 
+        curUser.bal -= cost; 
+        db.orders.push({ id: Date.now(), user: curUser.email, srv: srv, qty: q, link: l, status: 'Pending', time: new Date().toLocaleString() });
+        save(); renderUser(); toast('অর্ডার সফল হয়েছে!');
+    }
+</script>
+</body>
+</html>
