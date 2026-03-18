@@ -77,6 +77,56 @@ body.swal2-shown #landing-page {
 .swal2-container {
     z-index: 10000 !important; /* সবকিছুর উপরে পপআপ রাখার জন্য */
 }
+:root { --primary: #6c5ce7; --bg: #f4f7fe; }
+body { font-family: 'Poppins', sans-serif; background: var(--bg); }
+
+/* বাটন লোডিং স্পিনার */
+.btn-loading { position: relative !important; color: transparent !important; pointer-events: none !important; }
+.btn-loading::after {
+    content: ""; position: absolute; width: 20px; height: 20px;
+    top: 50%; left: 50%; margin: -10px;
+    border: 3px solid rgba(255,255,255,0.3); border-top-color: #fff;
+    border-radius: 50%; animation: btn-spin 0.8s linear infinite;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+/* সার্ভিস বাটন গ্রিড */
+.srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 15px; margin-bottom: 25px; }
+.srv-btn { 
+    cursor: pointer; padding: 15px; border-radius: 15px; background: #fff; 
+    transition: 0.3s; border: 2px solid transparent; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.srv-btn.active { border-color: var(--primary); background: #f8f7ff; }
+
+/* অর্ডার বক্স */
+.order-box { background: #fff; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.btn-premium { background: var(--primary); color: #fff; border: none; border-radius: 12px; font-weight: 600; transition: 0.3s; }
+.srv-grid {
+    display: flex; /* গ্রিডের বদলে ফ্লেক্স ব্যবহার করলে এক লাইনে রাখা সহজ */
+    justify-content: space-between; /* আইকনগুলোর মাঝে সমান গ্যাপ থাকবে */
+    gap: 8px; /* গ্যাপ একটু কমিয়ে দেওয়া হয়েছে */
+    margin-bottom: 25px;
+    overflow-x: auto; /* যদি খুব ছোট স্ক্রিন হয় তবে স্ক্রল করা যাবে */
+    padding: 5px 0;
+}
+
+.srv-btn {
+    flex: 1; /* সব বাটন সমান সাইজের হবে */
+    min-width: 50px; /* সর্বনিম্ন চওড়া */
+    cursor: pointer;
+    padding: 10px 5px; /* প্যাডিং কমানো হয়েছে যাতে এক লাইনে ধরে */
+    border-radius: 12px;
+    background: #fff;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* আইকনের সাইজ একটু ছোট করা যাতে ৫টি ধরে */
+.srv-btn i {
+    font-size: 1.5rem !important; 
+}
     </style>
 </head>
 <body>
@@ -198,30 +248,45 @@ body.swal2-shown #landing-page {
             <h2 class="fw-bold mb-0">৳ <span id="u-bal">0.00</span></h2>
         </div>
 
-        <div class="srv-grid">
-            <div class="srv-btn active" onclick="setSrv('Facebook', this)"><i class="fab fa-facebook text-primary fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('YouTube', this)"><i class="fab fa-youtube text-danger fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('TikTok', this)"><i class="fab fa-tiktok text-dark fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('Instagram', this)"><i class="fab fa-instagram text-danger fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('Telegram', this)"><i class="fab fa-telegram text-info fs-3"></i></div>
+<div class="container py-5" style="max-width: 500px;">
+    <h5 class="fw-bold mb-4 text-center">সোশ্যাল মিডিয়া সার্ভিস বেছে নিন</h5>
+    
+
+<div class="srv-grid">
+    <div class="srv-btn" onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Reactions'], this)">
+        <i class="fab fa-facebook text-primary fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)">
+        <i class="fab fa-youtube text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)">
+        <i class="fab fa-tiktok text-dark fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)">
+        <i class="fab fa-instagram text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)">
+        <i class="fab fa-telegram text-info fs-3"></i>
+    </div>
+</div>
+    <div id="order-section" class="order-box animate__animated animate__fadeIn">
+        <h5 id="cur-srv-txt" class="fw-bold text-primary mb-2">সার্ভিস সিলেক্ট করুন</h5>
+        <div id="srv-desc" class="mb-3 p-3 rounded" style="background: #f8f9ff; border-left: 4px solid var(--primary);">
+            উপরে আইকনে ক্লিক করে সার্ভিস সিলেক্ট করুন।
+        </div>
+        <input type="text" id="link" class="form-control mb-3 py-2" placeholder="অর্ডার লিংক দিন">
+        <input type="number" id="qty" class="form-control mb-3 py-2" oninput="updatePrice()" placeholder="পরিমাণ (যেমন: ১০০০)">
+
+        <div class="d-flex justify-content-between align-items-center mb-4 p-2 bg-light rounded">
+            <span class="small text-muted">মোট মূল্য:</span>
+            <span class="h5 mb-0 fw-bold text-success">৳ <span id="total-price">0.00</span></span>
         </div>
 
-        <div class="order-box glass-card mx-3 p-4 mb-5">
-            <h6 class="fw-bold mb-3"><i class="fas fa-shopping-cart me-2"></i>অর্ডার: <span id="cur-srv-txt">Facebook</span></h6>
-            <select id="qty" class="form-select mb-3 rounded-3" onchange="updatePrice()">
-                <option value="0">পরিমাণ বেছে নিন</option>
-                <option value="1000">1k Order</option>
-                <option value="5000">5k Order</option>
-                <option value="10000">10k Order</option>
-            </select>
-            <input type="text" id="link" class="form-control mb-3 rounded-3" placeholder="একাউন্ট লিঙ্ক দিন">
-            <div class="p-3 bg-light rounded-3 mb-4 d-flex justify-content-between">
-                <span class="small">মোট খরচ:</span>
-                <span class="fw-bold text-primary">৳ <span id="total-price">0.00</span></span>
-            </div>
-            <button class="btn-premium w-100 py-3" onclick="confirmOrder()">সাবমিট অর্ডার</button>
-        </div>
+        <button class="btn btn-premium w-100 py-3 shadow" onclick="confirmOrder()">
+            <i class="fas fa-shopping-cart me-2"></i> অর্ডার কনফার্ম করুন
+        </button>
     </div>
+</div>
 
     <div id="p-fund" class="clean-page">
         <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-fund')"></i>Add Money</h5>
@@ -711,6 +776,78 @@ function togglePass(inputId, iconId) {
         icon.classList.add("fa-eye-slash");
     }
 }
+function openSubMenu(platform, options, el) {
+    // আগের একটিভ বাটন রিমুভ করা
+    document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+
+    // পপআপের ভেতর বাটন তৈরি
+    let buttonsHtml = options.map(opt => `
+        <button onclick="selectService('${platform}', '${opt}')" 
+                class="btn w-100 mb-2 py-2 fw-bold text-start" 
+                style="background: #f1f3f9; border-radius: 10px; border: none;">
+            ${platform} ${opt}
+        </button>
+    `).join("");
+
+    Swal.fire({
+        title: `${platform} সার্ভিস বেছে নিন`,
+        html: `<div class="mt-2">${buttonsHtml}</div>`,
+        showConfirmButton: false,
+        showCloseButton: true
+    });
+}
+const serviceData = {
+    // Facebook
+    "Facebook Followers": { price: 0.15, desc: "✅ Real Profiles <br> ✅ Non-Drop <br> ✅ Start: Instant" },
+    "Facebook Likes": { price: 0.08, desc: "✅ Post Likes <br> ✅ Fast Start <br> ✅ No Drop" },
+    "Facebook Reactions": { price: 0.10, desc: "✅ Love/Care/Wow <br> ✅ Mixed Reactions <br> ✅ 100% Safe" },
+
+    // YouTube
+    "YouTube Subscribers": { price: 2.50, desc: "✅ Permanent Subs <br> ✅ Safe for Channel <br> ✅ Real Users" },
+    "YouTube Views": { price: 0.45, desc: "✅ High Retention <br> ✅ Safe for Adsense <br> ✅ Non-Drop" },
+    "YouTube Watch Time": { price: 5.00, desc: "✅ 4000 Hours Pack <br> ✅ 100% Guaranteed <br> ✅ Safe" },
+
+    // TikTok
+    "TikTok Followers": { price: 0.12, desc: "✅ Global Followers <br> ✅ Instant Start <br> ✅ Lifetime Refill" },
+    "TikTok Likes": { price: 0.07, desc: "✅ Video Likes <br> ✅ Fast Delivery <br> ✅ Real Quality" },
+    "TikTok Views": { price: 0.02, desc: "✅ 100% Instant <br> ✅ Cheap Price <br> ✅ Non-Drop" },
+
+    // Instagram
+    "Instagram Followers": { price: 0.20, desc: "✅ Real Instagram Profiles <br> ✅ Non-Drop <br> ✅ 30 Days Refill" },
+    "Instagram Likes": { price: 0.05, desc: "✅ High Quality Likes <br> ✅ Fast Start <br> ✅ No Login Required" },
+
+    // Telegram
+    "Telegram Members": { price: 0.30, desc: "✅ Channel/Group Members <br> ✅ Real Users <br> ✅ Instant Start" },
+    "Telegram Post Views": { price: 0.01, desc: "✅ 100% Safe <br> ✅ Cheap Views <br> ✅ Fast Delivery" }
+};
+function selectService(platform, type) {
+    Swal.close();
+    const srvName = `${platform} ${type}`; // যেমন: "Facebook Reactions"
+    
+    // ডাটাবেস থেকে তথ্য খুঁজা
+    const data = serviceData[srvName];
+
+    if (data) {
+        document.getElementById('cur-srv-txt').innerText = srvName;
+        document.getElementById('srv-desc').innerHTML = data.desc;
+        currentRate = data.price; // রেট আপডেট করা
+    } else {
+        document.getElementById('cur-srv-txt').innerText = "সার্ভিস পাওয়া যায়নি";
+        document.getElementById('srv-desc').innerHTML = "দুঃখিত, এই সার্ভিসের তথ্য এখনো যোগ করা হয়নি।";
+        currentRate = 0;
+    }
+    
+    updatePrice(); // প্রাইস রিসেট করা
+}
+
+function updatePrice() {
+    let qty = document.getElementById('qty').value || 0;
+    // এখানে রেট অনুযায়ী ক্যালকুলেশন হবে
+    let total = qty * currentRate;
+    document.getElementById('total-price').innerText = total.toFixed(2);
+}
+let currentRate = 0;
 </script>
 </body>
 </html>
