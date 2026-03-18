@@ -69,6 +69,14 @@
         .admin-user-card { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 12px; border-left: 5px solid var(--main); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .copy-btn { border: none; background: #f1f2f6; border-radius: 8px; padding: 5px 10px; font-size: 12px; color: var(--main); font-weight: bold; }
         .x-small { font-size: 11px; }
+        /* পপআপ আসার সময় ল্যান্ডিং পেজ যাতে সামনে না আসে */
+body.swal2-shown #landing-page {
+    display: none !important;
+}
+
+.swal2-container {
+    z-index: 10000 !important; /* সবকিছুর উপরে পপআপ রাখার জন্য */
+}
     </style>
 </head>
 <body>
@@ -132,10 +140,12 @@
             <label class="small fw-bold mb-1">আপনার ইমেইল দিন</label>
             <input type="email" id="l-email" class="auth-input" placeholder="*****@gmail.com">
         </div>
-        <div class="mb-4">
-            <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
-            <input type="password" id="l-pass" class="auth-input" placeholder="******">
-        </div>
+        <div class="mb-4 position-relative">
+    <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
+    <input type="password" id="l-pass" class="auth-input" placeholder="******">
+    <i class="fas fa-eye-slash position-absolute" id="toggle-l-pass" style="right: 15px; top: 42px; cursor: pointer; color: #6c5ce7;" onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
+</div>
+       
         <div class="text-end mb-3">
     <a href="https://t.me/Abu_Sufian_2026" target="_blank" class="text-danger small fw-bold" style="text-decoration: none;">
         <i class="fas fa-key me-1"></i> পাসওয়ার্ড ভুলে গেছেন?
@@ -159,10 +169,12 @@
             <label class="small fw-bold mb-1">আপনার ইমেইল</label>
             <input type="email" id="s-email" class="auth-input" placeholder="ইমেইল দিন">
         </div>
-        <div class="mb-4">
-            <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
-            <input type="password" id="s-pass" class="auth-input" placeholder="৬ অক্ষরের পাসওয়ার্ড দিন">
-        </div>
+        <div class="mb-4 position-relative">
+    <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
+    <input type="password" id="s-pass" class="auth-input" placeholder="৬ অক্ষরের পাসওয়ার্ড দিন">
+    <i class="fas fa-eye-slash position-absolute" id="toggle-s-pass" style="right: 15px; top: 42px; cursor: pointer; color: #6c5ce7;" onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
+</div>
+        
         <button class="btn-premium" onclick="handleAuth('signup')">রেজিষ্ট্রেশন করুন</button>
     </div>
 </div>
@@ -418,35 +430,68 @@
     }
 
     function handleAuth(m) {
-        showLoader(true);
-        setTimeout(() => {
-            showLoader(false);
-            if(m === 'signup') {
-                let n = document.getElementById('s-name').value, e = document.getElementById('s-email').value, p = document.getElementById('s-pass').value;
-                if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
-                if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
-                db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
-                save(); 
-                closeAuth();
-                toast('রেজিস্ট্রেশন সফল! এখন লগইন করুন');
+    showLoader(true);
+    setTimeout(() => {
+        showLoader(false);
+        if(m === 'signup') {
+            let n = document.getElementById('s-name').value, 
+                e = document.getElementById('s-email').value, 
+                p = document.getElementById('s-pass').value;
+            
+            if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
+            if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
+            
+            db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
+            save(); 
+
+            // সাকসেস পপআপ
+            Swal.fire({
+                title: 'রেজিস্ট্রেশন সফল!',
+                text: 'এখন লগইন করুন',
+                icon: 'success',
+                confirmButtonColor: '#6c5ce7',
+                allowOutsideClick: false
+            }).then(() => {
                 showAuth('login');
+            });
+
+        } else {
+            let e = document.getElementById('l-email').value, 
+                p = document.getElementById('l-pass').value;
+            let u = db.users.find(x => x.email === e && x.pass === p);
+            
+            if(u) {
+                if(u.status === 'blocked') return toast('আপনার অ্যাকাউন্ট ব্লক করা হয়েছে', 'error');
+                
+                curUser = u; 
+                localStorage.setItem('v7_logged_email', u.email);
+                
+                // লগইন সফল হলে আগে ল্যান্ডিং পেজ ও অথ বক্স হাইড করে ফেলবে
+                document.getElementById('auth-section').classList.add('d-none');
+                document.getElementById('landing-page').classList.add('d-none');
+
+                Swal.fire({
+                    title: 'লগইন সফল!',
+                    text: 'ড্যাশবোর্ডে স্বাগতম',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                }).then(() => {
+                    // পপআপ শেষ হলে ড্যাশবোর্ড দেখাবে
+                    if(u.role === 'admin') {
+                        document.getElementById('admin-app').classList.remove('d-none');
+                        renderAdmin();
+                    } else {
+                        document.getElementById('user-app').classList.remove('d-none');
+                        renderUser();
+                    }
+                });
             } else {
-                let e = document.getElementById('l-email').value, p = document.getElementById('l-pass').value;
-                let u = db.users.find(x => x.email === e && x.pass === p);
-                if(u) {
-                    if(u.status === 'blocked') return toast('আপনার অ্যাকাউন্ট ব্লক করা হয়েছে', 'error');
-                    curUser = u; 
-                    localStorage.setItem('v7_logged_email', u.email);
-                    
-                    document.getElementById('auth-section').classList.add('d-none');
-                    document.getElementById('landing-page').classList.add('d-none'); // Hide Landing
-                    
-                    u.role === 'admin' ? (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-                    toast('লগইন সফল');
-                } else toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
             }
-        }, 800);
-    }
+        }
+    }, 800);
+}
 
     function logout() {
         Swal.fire({ title: 'লগআউট করতে চান?', icon: 'warning', showCancelButton: true, confirmButtonText: 'হ্যাঁ', cancelButtonText: 'না' }).then((res) => {
@@ -483,13 +528,29 @@
         save(); syncUI(); toast('সবকিছু আপডেট হয়েছে');
     }
 
-    function renderUser() {
-        if(!curUser) return;
-        document.getElementById('u-bal').innerText = formatCurrency(curUser.bal);
-        document.getElementById('fund-hist-list').innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}"><b>৳${f.amt} (${f.method})</b> <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span><div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div></div>`).join("") || "<p class='text-center text-muted'>কোনো লেনদেন নেই</p>";
-        document.getElementById('order-hist-list').innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}"><b>${o.srv} - ${o.qty}</b> <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span><div class="x-small text-muted mt-1">${o.time}</div></div>`).join("") || "<p class='text-center text-muted'>কোনো অর্ডার নেই</p>";
-    }
-
+    
+function renderUser() {
+    if(!curUser) return;
+    document.getElementById('u-bal').innerText = formatCurrency(curUser.bal);
+    
+    // ফান্ড লিস্ট আপডেট
+    document.getElementById('fund-hist-list').innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
+        <div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}">
+            <b>৳${f.amt} (${f.method})</b> 
+            <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span>
+            <div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div>
+        </div>
+    `).join("") || "<p class='text-center text-muted'>কোনো লেনদেন নেই</p>";
+    
+    // অর্ডার লিস্ট আপডেট
+    document.getElementById('order-hist-list').innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `
+        <div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}">
+            <b>${o.srv} - ${o.qty}</b> 
+            <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span>
+            <div class="x-small text-muted mt-1">${o.time}</div>
+        </div>
+    `).join("") || "<p class='text-center text-muted'>কোনো অর্ডার নেই</p>";
+}
     function renderAdmin() {
         // User Tab
         document.getElementById('a-u').innerHTML = db.users.filter(u => u.role !== 'admin').map(u => `
@@ -533,16 +594,40 @@
     function editBal(i) { let amt = prompt("টাকার পরিমাণ:"); if(amt) { db.users[i].bal += parseFloat(amt); save(); renderAdmin(); toast('সফল'); } }
     function toggleBlock(i) { db.users[i].status = (db.users[i].status === 'active' ? 'blocked' : 'active'); save(); renderAdmin(); }
     
-    // Fund Functions
-    function fundReq() {
-        let amt = document.getElementById('f-amt').value;
-        let trx = document.getElementById('f-trx').value;
-        if(!amt || !trx) return toast('সব তথ্য সঠিকভাবে দিন', 'warning');
-        if(amt < 10) return toast('মিনিমাম ১০ টাকা', 'warning');
-        db.funds.push({ id: Date.now(), user: curUser.email, amt: amt, trx: trx, method: currentMethod, status: 'Pending', time: new Date().toLocaleString() });
-        save(); document.getElementById('f-amt').value = ''; document.getElementById('f-trx').value = ''; renderUser();
-        toast('পেমেন্ট রিকোয়েস্ট পাঠানো হয়েছে!');
-    }
+function fundReq() {
+    let amt = document.getElementById('f-amt').value;
+    let trx = document.getElementById('f-trx').value;
+    let depositTime = new Date().toLocaleString('bn-BD');
+
+    if (!amt || !trx) return toast('টাকার পরিমাণ এবং Trx ID দিন', 'error');
+
+    db.funds.push({ user: curUser.email, amt: amt, trx: trx, method: currentMethod, status: 'Pending', time: depositTime });
+    save();
+    
+    // ব্যালেন্স এবং হিস্টোরি আপডেট হবে কিন্তু পেজ সরবে না
+    renderUser();
+
+    Swal.fire({
+        title: '<span style="color:#28a745; font-weight:700;">ডিপোজিট রিকোয়েষ্ট সফল!</span>',
+        html: `
+            <div style="text-align: left; background: #fffaff; padding: 20px; border-radius: 15px; border: 1px solid #28a745;">
+                <div style="text-align:center; margin-bottom:15px;">
+                    <span style="background:#28a745; color:#fff; padding:4px 15px; border-radius:20px; font-size:12px;">পেমেন্ট মেথড: ${currentMethod}</span>
+                </div>
+                <p><b>এমাউন্ট:</b> ৳ ${amt}</p>
+                <p><b>Trx ID:</b> <span style="color: #d63031;">${trx}</span></p>
+                <p style="font-size: 11px; color: #b2bec3; text-align:center;">${depositTime}</p>
+            </div>
+        `,
+        icon: 'success',
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#28a745',
+        target: document.getElementById('p-fund') // এটি পপআপকে ফান্ড পেজের ওপরেই রাখবে
+    });
+
+    document.getElementById('f-amt').value = "";
+    document.getElementById('f-trx').value = "";
+}
 
     function approveFund(id) { let f = db.funds.find(x => x.id === id), u = db.users.find(x => x.email === f.user); if(u) { f.status = 'Success'; u.bal += parseFloat(f.amt); save(); renderAdmin(); toast('অ্যাপ্রুভড'); } }
     function rejectFund(id) { let f = db.funds.find(x => x.id === id); if(f) { f.status = 'Rejected'; save(); renderAdmin(); toast('পেমেন্ট রিজেক্ট হয়েছে', 'warning'); } }
@@ -561,14 +646,71 @@
     function setSrv(s, el) { document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active')); el.classList.add('active'); document.getElementById('cur-srv-txt').innerText = s; updatePrice(); }
     function updatePrice() { let srv = document.getElementById('cur-srv-txt').innerText, q = document.getElementById('qty').value; document.getElementById('total-price').innerText = formatCurrency((q / 1000) * (db.prices[srv] || 50)); }
     
-    function confirmOrder() { 
-        let q = document.getElementById('qty').value, l = document.getElementById('link').value, srv = document.getElementById('cur-srv-txt').innerText, cost = (q / 1000) * db.prices[srv]; 
-        if(q == 0 || !l) return toast('তথ্য দিন', 'warning'); 
-        if(curUser.bal < cost) return toast('ব্যালেন্স নেই', 'error'); 
-        curUser.bal -= cost; 
-        db.orders.push({ id: Date.now(), user: curUser.email, srv: srv, qty: q, link: l, status: 'Pending', time: new Date().toLocaleString() });
-        save(); renderUser(); toast('অর্ডার সফল হয়েছে!');
+    function confirmOrder() {
+    let srv = document.getElementById('cur-srv-txt').innerText;
+    let qty = document.getElementById('qty').value;
+    let link = document.getElementById('link').value;
+    let price = parseFloat(document.getElementById('total-price').innerText);
+
+    if (qty == 0 || !link) return toast('সবগুলো ঘর পূরণ করুন', 'error');
+    if (curUser.bal < price) return toast('আপনার ব্যালেন্স পর্যাপ্ত নয়', 'error');
+
+    let orderTime = new Date().toLocaleString('bn-BD');
+
+    curUser.bal -= price;
+    db.orders.push({ user: curUser.email, srv: srv, qty: qty, link: link, price: price, status: 'Pending', time: orderTime });
+    save();
+    renderUser();
+
+    Swal.fire({
+        title: '<span style="color:#6c5ce7; font-weight:700;">অর্ডার রিকোয়েষ্ট সফল!</span>',
+        html: `
+            <div style="text-align: left; background: #f8f9ff; padding: 20px; border-radius: 15px; border: 1px dashed #6c5ce7; font-family: 'Poppins', sans-serif;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span style="color:#666;">সার্ভিস নাম:</span> <span style="font-weight:600; color:#2d3436;">${srv}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span style="color:#666;">পরিমাণ:</span> <span style="font-weight:600; color:#2d3436;">${qty}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span style="color:#666;">অর্ডার মূল্য:</span> <span style="font-weight:700; color:#6c5ce7;">৳ ${price.toFixed(2)}</span>
+                </div>
+                <div style="margin-top:10px; padding-top:10px; border-top:1px solid #eee;">
+                    <span style="color:#666; display:block; margin-bottom:4px;">অর্ডার লিংক:</span>
+                    <div style="background:#fff; padding:8px; border-radius:8px; font-size:12px; word-break:break-all; border:1px solid #eee; color:#0984e3;">${link}</div>
+                </div>
+                <div style="margin-top:12px; text-align:center; font-size:11px; color:#b2bec3;">
+                    <i class="far fa-clock"></i> ${orderTime}
+                </div>
+            </div>
+        `,
+        icon: 'success',
+        iconColor: '#6c5ce7',
+        confirmButtonText: '<i class="fas fa-check-circle"></i> ঠিক আছে',
+        confirmButtonColor: '#6c5ce7',
+        backdrop: `rgba(108, 92, 231, 0.1)`,
+        showClass: { popup: 'animate__animated animate__zoomIn' },
+        hideClass: { popup: 'animate__animated animate__zoomOut' }
+    });
+
+    document.getElementById('link').value = "";
+    document.getElementById('qty').value = "0";
+    document.getElementById('total-price').innerText = "0.00";
+}
+function togglePass(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
     }
+}
 </script>
 </body>
 </html>
