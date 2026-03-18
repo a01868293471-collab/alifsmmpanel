@@ -129,13 +129,18 @@
             <p class="text-muted small mb-4">আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
         </div>
         <div class="mb-3">
-            <label class="small fw-bold mb-1">আপনার ইমেইল</label>
+            <label class="small fw-bold mb-1">আপনার ইমেইল দিন</label>
             <input type="email" id="l-email" class="auth-input" placeholder="*****@gmail.com">
         </div>
         <div class="mb-4">
             <label class="small fw-bold mb-1">পাসওয়ার্ড</label>
             <input type="password" id="l-pass" class="auth-input" placeholder="******">
         </div>
+        <div class="text-end mb-3">
+    <a href="https://t.me/Abu_Sufian_2026" target="_blank" class="text-danger small fw-bold" style="text-decoration: none;">
+        <i class="fas fa-key me-1"></i> পাসওয়ার্ড ভুলে গেছেন?
+    </a>
+</div>
         <button class="btn-premium" onclick="handleAuth('login')">লগইন করুন</button>
     </div>
     
@@ -303,19 +308,19 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    let db = {
+  let db = {
         users: JSON.parse(localStorage.getItem('v7_u')) || [{name:"Admin", email:"admin@gmail.com", pass:"123456", role:"admin", bal:0, status:"active"}],
         orders: JSON.parse(localStorage.getItem('v7_o')) || [],
         funds: JSON.parse(localStorage.getItem('v7_f')) || [],
         chats: JSON.parse(localStorage.getItem('v7_chats')) || [],
-        prices: JSON.parse(localStorage.getItem('v7_prices')) || { "Facebook": 50, "YouTube": 100, "TikTok": 40, "Instagram": 30, "Telegram": 60 },
+        prices: JSON.parse(localStorage.getItem('v7_prices')) || { "Facebook": 70, "YouTube": 1000, "TikTok": 150, "Instagram": 200, "Telegram": 100 },
         logo: localStorage.getItem('v7_logo') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-        note: localStorage.getItem('v7_note') || "Elite SMM এ আপনাকে স্বাগতম!",
-        payNum: localStorage.getItem('v7_payNum') || "018XXXXXXXX",
-        rocketNum: localStorage.getItem('v7_rocketNum') || "018XXXXXXXX",
-        autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
-    };
+        note: localStorage.getItem('v7_note') || "ALIF SMM PANEL এ আপনাকে স্বাগতম!",
+        payNum: localStorage.getItem('v7_payNum') || "01868293471",
+        rocketNum: localStorage.getItem('v7_rocketNum') || "018682934716",
+        autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই আপনার সমস্যার উওর দিবে। একটু ধৈর্য্য ধরে সময় দিন ধন্যবাদ।"
     
+    };
     let curUser = null;
     let currentMethod = "Bkash";
     let stats = { members: 26971, orders: 10895, tickets: 298, online: 45 }; // Fake stats for landing page
