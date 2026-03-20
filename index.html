@@ -310,7 +310,7 @@
     font-size: 25px;
     cursor: pointer;
 }
-<style>
+
 /* মডাল ব্যাকগ্রাউন্ড */
 .modal-overlay {
     position: fixed;
@@ -384,9 +384,27 @@
     cursor: pointer;
     color: #999;
 }
-</style>
-</style>
-</style>
+<style>
+.sub-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sub-btn.active {
+    background: #6c5ce7;
+    color: #fff;
+    border-color: #6c5ce7;
+}
+.srv-btn.active {
+    border: 2px solid #6c5ce7;
+    transform: scale(1.1);
+}
+
+
     </style>
 </head>
 <body>
@@ -510,29 +528,51 @@
             <h2 class="fw-bold mb-0">৳ <span id="u-bal">0.00</span></h2>
            
         </div>
-   <div class="srv-grid">
-            <div class="srv-btn active" onclick="setSrv('Facebook ', this)"><i class="fab fa-facebook text-primary fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('YouTube ', this)"><i class="fab fa-youtube text-danger fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('TikTok ', this)"><i class="fab fa-tiktok text-dark fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('Instagram ', this)"><i class="fab fa-instagram text-danger fs-3"></i></div>
-            <div class="srv-btn" onclick="setSrv('Telegram ', this)"><i class="fab fa-telegram text-info fs-3"></i></div>
+ <div class="srv-grid">
+    <div class="srv-btn" onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Reactions'], this)">
+        <i class="fab fa-facebook text-primary fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)">
+        <i class="fab fa-youtube text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)">
+        <i class="fab fa-tiktok text-dark fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)">
+        <i class="fab fa-instagram text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)">
+        <i class="fab fa-telegram text-info fs-3"></i>
+    </div>
+</div>
+
+<div id="order-section" class="order-box animate__animated animate__fadeIn px-3">
+    <h5 id="cur-srv-txt" class="fw-bold text-primary mb-2">সার্ভিস সিলেক্ট করুন</h5>
+    
+    <div id="sub-options" class="d-flex flex-wrap gap-2 mb-3"></div>
+
+    <div id="srv-desc" class="mb-3 p-3 rounded small" style="background: #f8f9ff; border-left: 4px solid #6c5ce7; display: none;">
         </div>
 
-        <div class="order-box glass-card mx-3 p-4 mb-5">
-            <h6 class="fw-bold mb-3"><i class="fas fa-shopping-cart me-2"></i>অর্ডার: <span id="cur-srv-txt">Facebook</span></h6>
-            <select id="qty" class="form-select mb-3 rounded-3" onchange="updatePrice()">
-                <option value="0">পরিমাণ বেছে নিন</option>
-                <option value="1000">1k Order</option>
-                <option value="5000">5k Order</option>
-                <option value="10000">10k Order</option>
-            </select>
-            <input type="text" id="link" class="form-control mb-3 rounded-3" placeholder="একাউন্ট লিঙ্ক দিন">
-            <div class="p-3 bg-light rounded-3 mb-4 d-flex justify-content-between">
-                <span class="small">মোট খরচ:</span>
-                <span class="fw-bold text-primary">৳ <span id="total-price">0.00</span></span>
-            </div>
-            <button class="btn-premium w-100 py-3" onclick="confirmOrder()">সাবমিট অর্ডার</button>
-        </div>
+    <input type="text" id="link" class="form-control mb-3 py-2" placeholder="অর্ডার লিংক দিন">
+    <label class="small fw-bold mb-1">পরিমাণ বেছে নিন:</label>
+<select id="qty" class="form-select mb-3 rounded-3" onchange="updatePrice()">
+    <option value="0">পরিমাণ বেছে নিন</option>
+    <option value="1000">1k Order</option>
+    <option value="5000">5k Order</option>
+    <option value="10000">10k Order</option>
+</select>
+    
+
+    <div class="d-flex justify-content-between align-items-center mb-4 p-2 bg-light rounded">
+        <span class="small text-muted">মোট মূল্য:</span>
+        <span class="h5 mb-0 fw-bold text-success">৳ <span id="total-price">0.00</span></span>
+    </div>
+
+    <button class="btn btn-premium w-100 py-3 shadow" onclick="confirmOrder()">
+        <i class="fas fa-shopping-cart me-2"></i> অর্ডার কনফার্ম করুন
+    </button>
+</div>
     </div>
 
     <div id="p-fund" class="clean-page">
@@ -994,24 +1034,41 @@ function fundReq() {
 function confirmOrder() {
     let q = document.getElementById('qty').value;
     let l = document.getElementById('link').value;
-    let srv = document.getElementById('cur-srv-txt').innerText.trim();
-    let cost = (q / 1000) * (db.prices[srv] || 50);
+    
+    // ১. আপনার সাব-মেনু থেকে আসা আসল সার্ভিসের নাম এবং মোট দাম সংগ্রহ
+    let srv = currentSelectedService; // এটি আপনার selectSubService ফাংশন থেকে আসবে
+    let cost = parseFloat(document.getElementById('total-price').innerText);
     let now = new Date().toLocaleString('bn-BD', { hour12: true });
 
+    // ২. ভ্যালিডেশন
+    if (!srv) return toast('আগে একটি সার্ভিস সিলেক্ট করুন', 'error');
     if (q == 0 || !l) return toast('তথ্য সঠিক দিন', 'error');
-    if (curUser.bal < cost) return toast('ব্যালেন্স পর্যাপ্ত নয়', 'error');
+    if (curUser.bal < cost) return toast('ব্যালেন্স পর্যাপ্ত নয়', 'error');
 
-    // ব্যালেন্স কাটা এবং ডাটা সেভ
+    // ৩. ব্যালেন্স কাটা এবং ডাটা সেভ
     curUser.bal -= cost;
-    db.orders.push({ id: Date.now(), user: curUser.email, srv: srv, qty: q, link: l, status: 'Pending', time: now });
-    save();
+    
+    // ডাটাবেসে অর্ডার পুশ (সব তথ্য সহ)
+    db.orders.push({ 
+        id: Date.now(), 
+        user: curUser.email, 
+        srv: srv, 
+        qty: q, 
+        link: l, 
+        price: cost, // আসল দামটি সেভ করা হলো
+        status: 'Pending', 
+        time: now 
+    });
+    
+    save(); // লোকাল ডাটাবেস আপডেট
 
+    // ৪. আপনার প্রিমিয়াম পপআপ (সঠিক হিসাব সহ)
     Swal.fire({
         width: '350px',
         background: '#ffffff',
         showConfirmButton: true,
         confirmButtonText: 'অর্ডার ট্র্যাক করুন',
-        confirmButtonColor: '#0984e3', // প্রফেশনাল ব্লু কালার
+        confirmButtonColor: '#0984e3',
         allowOutsideClick: false,
         padding: '0',
         customClass: {
@@ -1019,19 +1076,11 @@ function confirmOrder() {
         },
         html: `
             <style>
-                .long-premium-popup { 
-                    overflow: visible !important; 
-                    border-radius: 30px !important; 
-                    margin-top: 60px !important;
-                }
-                .pop-container {
-                    padding: 90px 20px 30px 20px;
-                    text-align: center;
-                }
+                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
+                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
             </style>
             
             <div class="pop-container" style="position: relative;">
-                
                 <div style="background: linear-gradient(135deg, #0984e3, #74b9ff); 
                             width: 85px; height: 85px; border-radius: 50%; 
                             display: flex; align-items: center; justify-content: center; 
@@ -1046,9 +1095,9 @@ function confirmOrder() {
                     </svg>
                 </div>
                 
-                <h3 style="color: #0984e3; font-weight: 900; margin-bottom: 25px; font-size: 22px; letter-spacing: 0.5px;">অর্ডার সফল!</h3>
+                <h3 style="color: #0984e3; font-weight: 900; margin-bottom: 25px; font-size: 22px;">অর্ডার সফল!</h3>
                 
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); margin-bottom: 25px;">
+                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
                         <span style="color: #888; font-size: 13px;">সার্ভিস নাম</span>
                         <b style="color: #333; font-size: 14px;">${srv}</b>
@@ -1059,24 +1108,22 @@ function confirmOrder() {
                     </div>
                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
                         <span style="color: #888; font-size: 13px;">মোট খরচ</span>
-                        <b style="color: #e17055; font-size: 18px;">৳${cost}</b>
+                        <b style="color: #e17055; font-size: 18px;">৳${cost.toFixed(2)}</b>
                     </div>
                     <div style="display:flex; justify-content: space-between; margin-top: 10px;">
-                        <span style="color: #bbb; font-size: 11px;">তারিখ ও সময়</span>
+                        <span style="color: #bbb; font-size: 11px;">তারিখ ও সময়</span>
                         <span style="color: #bbb; font-size: 11px;">${now}</span>
                     </div>
                 </div>
                 
-                <div style="background: #e1f5fe; border-radius: 12px; padding: 10px; margin-bottom: 10px; border-left: 4px solid #03a9f4;">
-                    <p style="font-size: 12px; color: #546e7a; margin: 0; line-height: 1.5;">
-                        আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। প্রসেসিং শুরু হতে কিছু সময় লাগতে পারে।
-                    </p>
+                <div style="background: #e1f5fe; border-radius: 12px; padding: 10px; border-left: 4px solid #03a9f4;">
+                    <p style="font-size: 12px; color: #546e7a; margin: 0;">অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</p>
                 </div>
             </div>
         `
     }).then((result) => {
         if (result.isConfirmed) {
-            openPage('p-orders'); // সরাসরি অর্ডার ট্র্যাকিং পেজে নিয়ে যাবে
+            if(typeof openPage === 'function') openPage('p-orders'); 
             renderUser();
         }
     });
@@ -1084,7 +1131,7 @@ function confirmOrder() {
     // ইনপুট রিসেট
     document.getElementById('link').value = '';
     document.getElementById('qty').value = 0;
-    updatePrice();
+    if(typeof updatePrice === 'function') updatePrice();
 }
 // স্প্ল্যাশ স্ক্রিন কন্ট্রোল ফাংশন
 function controlSplashScreen() {
@@ -1156,18 +1203,39 @@ function togglePassword() {
     }
 }
 
-// পাসওয়ার্ড আপডেট (রিয়েল আপডেট লজিক)
 function savePassword() {
     const newPass = document.getElementById('newPassword').value;
     
+    // ১. পাসওয়ার্ড লেংথ চেক
     if (newPass.length < 6) {
-        alert("পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে!");
-        return;
+        return toast("পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে!", "error");
     }
 
-    // এখানে আপনার ডাটাবেস আপডেট করার API কল হবে
-    alert("পাসওয়ার্ড সফলভাবে আপডেট হয়েছে!");
-    closeSettings();
+    // ২. বর্তমান ইউজারের পাসওয়ার্ড আপডেট করা (ডাটাবেসে)
+    // curUser হলো আপনার লগইন থাকা ইউজার অবজেক্ট
+    curUser.pass = newPass; 
+
+    // ৩. ডাটাবেসের মূল ইউজার লিস্টেও এটি আপডেট করা (নিরাপত্তার জন্য)
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex !== -1) {
+        db.users[userIndex].pass = newPass;
+    }
+
+    // ৪. লোকাল স্টোরেজে ডাটা সেভ করা (যাতে পেজ রিফ্রেশ দিলেও নতুন পাসওয়ার্ড থাকে)
+    save(); 
+
+    // ৫. সাকসেস মেসেজ ও সেটিংস ক্লোজ
+    Swal.fire({
+        icon: 'success',
+        title: 'সফল!',
+        text: 'পাসওয়ার্ড আপডেট হয়েছে। এখন থেকে নতুন পাসওয়ার্ড ব্যবহার করুন।',
+        confirmButtonColor: '#0984e3'
+    });
+
+    if (typeof closeSettings === 'function') closeSettings();
+    
+    // ঐচ্ছিক: পাসওয়ার্ড চেঞ্জ হলে অটো লগআউট করে দেওয়া ভালো যাতে নতুন করে লগইন করতে হয়
+    // logout(); 
 }
 function openSettings() {
     // সেটিংস মডাল শো করা
@@ -1181,6 +1249,95 @@ function openSettings() {
     document.getElementById('realUserName').innerText = realName ? realName : "নাম পাওয়া যায়নি";
     document.getElementById('realUserEmail').innerText = realEmail ? realEmail : "ইমেইল পাওয়া যায়নি";
 }
+// ১. প্রতিটি সার্ভিসের ১০০০ (1k) এর দাম এখানে সেট করুন
+const priceList = {
+    "Facebook Followers": 70,
+    "Facebook Likes": 50,
+    "Facebook Reactions": 50,
+    "YouTube Subscribers": 1200,
+    "YouTube Views": 300,
+    "YouTube Watch Time": 400,
+    "TikTok Followers": 200,
+    "TikTok Likes": 150,
+    "TikTok Views": 80,
+    "Instagram Followers": 250,
+    "Instagram Likes": 150,
+    "Telegram Members": 180,
+    "Telegram Post Views": 50
+};
+
+let currentSelectedService = ""; 
+
+function selectSubService(platform, service, btn) {
+    // বাটন হাইলাইট করা
+    document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // প্ল্যাটফর্ম এবং সার্ভিস মিলিয়ে নাম তৈরি (যেমন: Facebook Followers)
+    currentSelectedService = platform + " " + service;
+    
+    const srvDesc = document.getElementById('srv-desc');
+    if(srvDesc) {
+        srvDesc.style.display = 'block';
+        srvDesc.innerHTML = `সিলেক্টেড: <b>${currentSelectedService}</b>`;
+    }
+    
+    updatePrice(); // সার্ভিস সিলেক্ট করার সাথে সাথে দাম আপডেট হবে
+}
+
+function updatePrice() {
+    const qtySelect = document.getElementById('qty');
+    const priceDisplay = document.getElementById('total-price');
+    
+    // যদি কোনো আইডি খুঁজে না পায় (যেমন অ্যাডমিন প্যানেলে), তবে কোড এরর দিবে না
+    if (!qtySelect || !priceDisplay) return; 
+
+    const qty = parseInt(qtySelect.value) || 0; // পরিমাণ (১০০০, ৫০০০ ইত্যাদি)
+    
+    // যদি কোনো সার্ভিস সিলেক্ট করা না থাকে
+    if (!currentSelectedService) {
+        priceDisplay.innerText = "0.00";
+        return;
+    }
+
+    // প্রাইস লিস্ট থেকে সঠিক দাম খুঁজে বের করা
+    let ratePer1k = priceList[currentSelectedService] || 0;
+
+    // হিসাব: (পরিমাণ / ১০০০) * ১০০০ এর দাম
+    // যেমন: (৫০০০ / ১০০০) * ১৫০ = ৭৫০ টাকা
+    const total = (qty / 1000) * ratePer1k;
+    
+    priceDisplay.innerText = total.toFixed(2);
+}
+
+
+
+function openSubMenu(platform, options, btn) {
+    // সেফ চেক (অ্যাডমিন প্যানেল সাদা হওয়া রোধ করতে)
+    const subOptionsContainer = document.getElementById('sub-options');
+    if (!subOptionsContainer) return;
+
+    document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.getElementById('cur-srv-txt').innerText = platform + " Services";
+    subOptionsContainer.innerHTML = ""; 
+    
+    options.forEach(opt => {
+        let button = document.createElement('div');
+        button.className = "sub-btn";
+        button.innerText = opt;
+        button.onclick = function() {
+            selectSubService(platform, opt, button);
+        };
+        subOptionsContainer.appendChild(button);
+    });
+
+    if(document.getElementById('srv-desc')) document.getElementById('srv-desc').style.display = 'none';
+    if(document.getElementById('total-price')) document.getElementById('total-price').innerText = "0.00";
+}
+
+
 </script>
 </body>
 </html>
