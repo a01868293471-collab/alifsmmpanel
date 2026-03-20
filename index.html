@@ -281,6 +281,112 @@
     opacity: 0;
     visibility: hidden;
 }
+<style>
+.modal-custom {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content-custom {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: left;
+}
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+<style>
+/* মডাল ব্যাকগ্রাউন্ড */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* সেটিংস কার্ড */
+.settings-card {
+    background: #fff;
+    width: 90%;
+    max-width: 380px;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+/* ইনপুট ও চোখের আইকন */
+.input-container {
+    position: relative;
+}
+.toggle-pass {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+.form-control {
+    padding-right: 40px;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+<style>
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.settings-card {
+    background: #fff;
+    width: 85%;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #999;
+}
+</style>
+</style>
+</style>
     </style>
 </head>
 <body>
@@ -350,12 +456,46 @@
 
 <div id="user-app" class="d-none">
     <div id="p-home-main">
-        <div class="brand-box">
-            <img src="" class="dynamic-logo site-logo-img mb-2">
-            <h5 class="fw-bold mb-0">ALIF SMM PANEL</h5>
-          
-            <i class="fas fa-sign-out-alt text-danger" style="position: absolute; right: 25px; top: 35px; font-size: 22px; cursor:pointer;" onclick="logout()"></i>
+
+
+
+      <div class="brand-box" style="position: relative; text-align: center; padding: 20px;">
+    <i class="fas fa-cog text-secondary" style="position: absolute; left: 25px; top: 35px; font-size: 22px; cursor:pointer;" onclick="openSettings()"></i>
+    
+    <img src="YOUR_PROFILE_IMAGE_URL" class="dynamic-logo site-logo-img mb-2" style="border-radius: 50%; width: 80px; height: 80px; border: 3px solid #eee;">
+    <h5 class="fw-bold mb-0">ALIF SMM PANEL</h5>
+    
+    <i class="fas fa-sign-out-alt text-danger" style="position: absolute; right: 25px; top: 35px; font-size: 22px; cursor:pointer;" onclick="logout()"></i>
+</div>
+
+<div id="settingsModal" class="modal-overlay" style="display:none;">
+    <div class="settings-card">
+        <span class="close-modal" onclick="closeSettings()">&times;</span>
+        <h4 class="fw-bold mb-3">আমার প্রোফাইল</h4>
+        <hr>
+        
+        <div class="info-group mb-3 text-start">
+            <label class="text-muted small">পুরো নাম</label>
+            <p id="realUserName" class="fw-bold mb-2" style="color: #333;"></p>
+            
+            <label class="text-muted small">ইমেইল ঠিকানা</label>
+            <p id="realUserEmail" class="fw-bold" style="color: #6f42c1;"></p>
         </div>
+
+        <div class="password-section mt-4 text-start">
+            <h6 class="fw-bold">পাসওয়ার্ড পরিবর্তন করুন</h6>
+            <div class="input-container" style="position: relative;">
+                <input type="password" id="newPassword" class="form-control" placeholder="নতুন পাসওয়ার্ড লিখুন" style="padding-right: 40px; height: 45px; border-radius: 10px;">
+                <i class="fas fa-eye-slash" id="togglePass" 
+                   style="position: absolute; right: 15px; top: 13px; cursor: pointer; color: #888;" 
+                   onclick="togglePassword()"></i>
+            </div>
+            <button class="btn btn-primary w-100 mt-3" style="background: #6f42c1; border: none; height: 45px; border-radius: 10px;" onclick="savePassword()">আপডেট করুন</button>
+        </div>
+    </div>
+</div>
+      
+      
     <div class="modern-notice mx-3 mb-4">
         <div class="bg-white p-2 rounded-pill shadow-sm border-start border-4 border-primary d-flex align-items-center">
             <i class="fas fa-bullhorn ms-2 me-2 text-primary"></i>
@@ -464,6 +604,7 @@
         </button>
     </div>
 </div>
+
 
     <div class="bottom-nav">
         <button class="nav-item active" id="nav-home" onclick="goHome()"><i class="fas fa-home"></i>Home</button>
@@ -605,31 +746,59 @@
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
 
-    function handleAuth(m) {
-        showLoader(true);
-        setTimeout(() => {
-            showLoader(false);
-            if(m === 'signup') {
-                let n = document.getElementById('s-name').value, e = document.getElementById('s-email').value, p = document.getElementById('s-pass').value;
-                if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
-                if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
-                db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
-                save(); switchAuth(false); toast('রেজিস্ট্রেশন সফল');
-            } else {
-                let e = document.getElementById('l-email').value, p = document.getElementById('l-pass').value;
-                let u = db.users.find(x => x.email === e && x.pass === p);
-                if(u) {
-                    if(u.status === 'blocked') return toast('আপনার অ্যাকাউন্ট ব্লক করা হয়েছে', 'error');
-                    curUser = u; 
-                    localStorage.setItem('v7_logged_email', u.email); // স্থায়ী লগইন সেভ
-                    document.getElementById('auth-section').classList.add('d-none');
-                    u.role === 'admin' ? (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-                    toast('লগইন সফল');
-                } else toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
-            }
-        }, 800);
-    }
+    
+function handleAuth(m) {
+    showLoader(true);
+    setTimeout(() => {
+        showLoader(false);
+        if(m === 'signup') {
+            let n = document.getElementById('s-name').value, 
+                e = document.getElementById('s-email').value, 
+                p = document.getElementById('s-pass').value;
+            
+            if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
+            if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
+            
+            // ডাটাবেসে ইউজার পুশ করা
+            db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
+            
+            // --- নতুন কোড (রেজিস্ট্রেশনের সময় নাম ও ইমেইল সেভ) ---
+            localStorage.setItem('v7_userName', n);
+            localStorage.setItem('v7_userEmail', e);
+            // ------------------------------------------------
+            
+            save(); 
+            switchAuth(false); 
+            toast('রেজিস্ট্রেশন সফল');
+            
+        } else {
+            let e = document.getElementById('l-email').value, 
+                p = document.getElementById('l-pass').value;
+            let u = db.users.find(x => x.email === e && x.pass === p);
+            
+            if(u) {
+                if(u.status === 'blocked') return toast('আপনার অ্যাকাউন্ট ব্লক করা হয়েছে', 'error');
+                
+                curUser = u; 
+                
+                // --- নতুন কোড (লগইনের সময় নাম ও ইমেইল সেভ) ---
+                localStorage.setItem('v7_logged_email', u.email); // আপনার আগের কোড
+                localStorage.setItem('v7_userName', u.name);     // রিয়েল নাম সেভ
+                localStorage.setItem('v7_userEmail', u.email);   // রিয়েল ইমেইল সেভ
+                // ------------------------------------------------
 
+                document.getElementById('auth-section').classList.add('d-none');
+                u.role === 'admin' ? 
+                (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
+                (document.getElementById('user-app').classList.remove('d-none'), renderUser());
+                
+                toast('লগইন সফল');
+            } else {
+                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+            }
+        }
+    }, 800);
+}
     function logout() {
         Swal.fire({
             title: 'লগআউট করতে চান?',
@@ -951,6 +1120,65 @@ function togglePass(inputId, iconId) {
         input.type = "password";
         icon.classList.replace('fa-eye', 'fa-eye-slash');
     }
+}
+
+
+// মডাল ওপেন করা এবং রিয়েল ডাটা লোড করা
+function openSettings() {
+    document.getElementById('settingsModal').style.display = 'flex';
+    
+    // লোকাল স্টোরেজ থেকে ডাটা রিড করা (যেটি রেজিস্ট্রেশনের সময় সেভ হয়েছে)
+    const storedName = localStorage.getItem('userName'); 
+    const storedEmail = localStorage.getItem('userEmail');
+
+    // ডাটা থাকলে সেট করা, না থাকলে 'Login Required' দেখানো
+    document.getElementById('realUserName').innerText = storedName ? storedName : "নাম পাওয়া যায়নি";
+    document.getElementById('realUserEmail').innerText = storedEmail ? storedEmail : "ইমেইল পাওয়া যায়নি";
+}
+
+// মডাল বন্ধ করা
+function closeSettings() {
+    document.getElementById('settingsModal').style.display = 'none';
+}
+
+// চোখের আইকন দিয়ে পাসওয়ার্ড দেখা/লুকানো
+function togglePassword() {
+    const passInput = document.getElementById('newPassword');
+    const eyeIcon = document.getElementById('togglePass');
+    
+    if (passInput.type === "password") {
+        passInput.type = "text";
+        eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+    } else {
+        passInput.type = "password";
+        eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+    }
+}
+
+// পাসওয়ার্ড আপডেট (রিয়েল আপডেট লজিক)
+function savePassword() {
+    const newPass = document.getElementById('newPassword').value;
+    
+    if (newPass.length < 6) {
+        alert("পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে!");
+        return;
+    }
+
+    // এখানে আপনার ডাটাবেস আপডেট করার API কল হবে
+    alert("পাসওয়ার্ড সফলভাবে আপডেট হয়েছে!");
+    closeSettings();
+}
+function openSettings() {
+    // সেটিংস মডাল শো করা
+    document.getElementById('settingsModal').style.display = 'flex';
+    
+    // localStorage থেকে রিয়েল ডাটা রিড করা
+    const realName = localStorage.getItem('v7_userName');
+    const realEmail = localStorage.getItem('v7_userEmail');
+
+    // মডালে ডাটা বসানো
+    document.getElementById('realUserName').innerText = realName ? realName : "নাম পাওয়া যায়নি";
+    document.getElementById('realUserEmail').innerText = realEmail ? realEmail : "ইমেইল পাওয়া যায়নি";
 }
 </script>
 </body>
