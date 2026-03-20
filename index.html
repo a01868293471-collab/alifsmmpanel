@@ -670,8 +670,7 @@
             </div>
             <label class="x-small fw-bold mb-1">হোম নোটিশ</label>
             <textarea id="adm-note-in" class="form-control mb-3" rows="2"></textarea>
-            
-            <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary">অটো-রিপ্লাই মেসেজ</h6>
+                        <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary">অটো-রিপ্লাই মেসেজ</h6>
             <textarea id="adm-auto-msg" class="form-control mb-3" rows="3" placeholder="সাপোর্ট সেন্টারে ইউজার মেসেজ দিলে যা রিপ্লাই যাবে..."></textarea>
 
             <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">পেমেন্ট নাম্বার সেটিংস</h6>
@@ -679,7 +678,6 @@
                 <div class="col-6"><label class="x-small fw-bold">বিকাশ/নগদ নাম্বার</label><input type="text" id="adm-pay-num" class="form-control form-control-sm"></div>
                 <div class="col-6"><label class="x-small fw-bold">রকেট নাম্বার</label><input type="text" id="adm-rocket-num" class="form-control form-control-sm"></div>
             </div>
-
             <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">সার্ভিস মূল্য (প্রতি ১০০০)</h6>
             <div class="row g-2 mb-3">
                 <div class="col-6"><label class="x-small fw-bold">Facebook Price</label><input type="number" id="p-fb" class="form-control form-control-sm"></div>
@@ -690,20 +688,23 @@
             </div>
             <button class="btn btn-dark w-100 rounded-3 fw-bold" onclick="updateSite()">সেটিংস সেভ করুন</button>
         </div>
-
-        <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
-            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-u')"><i class="fas fa-users d-block mb-1"></i>ইউজার</button>
-            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f')"><i class="fas fa-money-bill d-block mb-1"></i>পেমেন্ট</button>
-            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1"></i>অর্ডার</button>
-            <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-s')"><i class="fas fa-envelope d-block mb-1"></i>মেসেজ</button>
-        </div>
-
-        <div id="a-u" class="a-tab"></div>
-        <div id="a-f" class="a-tab d-none"></div>
-        <div id="a-o" class="a-tab d-none"></div>
-        <div id="a-s" class="a-tab d-none"></div>
+<div class="p-3 bg-white shadow-sm mb-3 rounded-3">
+    <div class="input-group">
+        <span class="input-group-text bg-primary text-white border-0"><i class="fas fa-search"></i></span>
+        <input type="text" id="userSearch" class="form-control" placeholder="জিমেইল দিয়ে ইউজার খুঁজুন..." onkeyup="searchUser()">
     </div>
 </div>
+
+<div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-u')"><i class="fas fa-users d-block mb-1 text-primary"></i>ইউজার</button>
+    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f')"><i class="fas fa-money-bill d-block mb-1 text-success"></i>পেমেন্ট</button>
+    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1 text-warning"></i>অর্ডার</button>
+    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-s')"><i class="fas fa-envelope d-block mb-1 text-info"></i>মেসেজ</button>
+</div>
+
+<div id="a-u" class="a-tab"></div> <div id="a-f" class="a-tab d-none"></div>
+<div id="a-o" class="a-tab d-none"></div>
+<div id="a-s" class="a-tab d-none"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -1336,7 +1337,59 @@ function openSubMenu(platform, options, btn) {
     if(document.getElementById('srv-desc')) document.getElementById('srv-desc').style.display = 'none';
     if(document.getElementById('total-price')) document.getElementById('total-price').innerText = "0.00";
 }
+// ১. ইউজার সার্চ ফাংশন
+function searchUser() {
+    // সার্চ করার সময় অটোমেটিক ইউজার ট্যাব ওপেন করবে
+    aTab('a-u'); 
 
+    let query = document.getElementById('userSearch').value.toLowerCase();
+    let uH = ""; 
+    
+    // ডাটাবেস থেকে ফিল্টার (অ্যাডমিন বাদে বাকিদের জিমেইল সার্চ করবে)
+    let filteredUsers = db.users.filter(u => 
+        u.role !== 'admin' && u.email.toLowerCase().includes(query)
+    );
+
+    filteredUsers.forEach((u) => {
+        // ইন্ডেক্স বের করা যাতে এডিট বা ব্লক ঠিকঠাক কাজ করে
+        let realIndex = db.users.indexOf(u);
+        let userBal = u.bal ? parseFloat(u.bal).toFixed(2) : "0.00";
+
+        uH += `
+        <div class="admin-user-card shadow-sm mb-3 p-3 border-start border-4 border-primary rounded bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-dark">${u.name}</span>
+                <span class="badge ${u.status === 'active' ? 'bg-success' : 'bg-danger'}">${u.status}</span>
+            </div>
+            <div class="small text-muted mt-2">
+                <i class="fas fa-envelope me-1"></i> ${u.email}<br>
+                <i class="fas fa-key me-1"></i> <span class="text-danger">${u.pass}</span><br>
+                <i class="fas fa-wallet me-1"></i> <b>৳${userBal}</b>
+            </div>
+            <div class="mt-3 d-flex gap-2">
+                <button class="btn btn-primary btn-sm flex-fill" onclick="editBal(${realIndex})">+ টাকা</button>
+                <button class="btn ${u.status === 'active' ? 'btn-outline-danger' : 'btn-outline-success'} btn-sm flex-fill" onclick="toggleBlock(${realIndex})">
+                    ${u.status === 'active' ? 'ব্লক' : 'আনব্লক'}
+                </button>
+            </div>
+        </div>`;
+    });
+
+    document.getElementById('a-u').innerHTML = uH || `<div class="text-center p-5 text-muted">কোনো ইউজার পাওয়া যায়নি!</div>`;
+}
+
+// ২. ট্যাব সুইচিং ফাংশন (সেফ মোড)
+function aTab(tabId) {
+    // সব ট্যাব হাইড করা
+    document.querySelectorAll('.a-tab').forEach(tab => tab.classList.add('d-none'));
+    
+    // নির্দিষ্ট ট্যাব শো করা
+    const targetTab = document.getElementById(tabId);
+    if(targetTab) {
+        targetTab.classList.remove('d-none');
+        targetTab.classList.add('animate__animated', 'animate__fadeIn');
+    }
+}
 
 </script>
 </body>
