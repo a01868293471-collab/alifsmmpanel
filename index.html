@@ -403,184 +403,6 @@
     border: 2px solid #6c5ce7;
     transform: scale(1.1);
 }
-/* সাইডবার মেইন ডিজাইন */
-.side-drawer {
-    position: fixed;
-    top: 0;
-    right: -280px; /* শুরুতে স্ক্রিনের বাইরে থাকবে */
-    width: 280px;
-    height: 100%;
-    background: #ffffff;
-    z-index: 10000;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    overflow-y: auto;
-}
-
-.side-drawer.active {
-    right: 0; /* ক্লিক করলে ভেতরে আসবে */
-}
-
-/* ওভারলে (পেছনের অন্ধকার অংশ) */
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 9999;
-    display: none;
-    backdrop-filter: blur(2px);
-}
-
-.sidebar-overlay.active {
-    display: block;
-}
-
-/* হেডার ডিজাইন */
-.drawer-header {
-    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-    padding: 40px 20px;
-    text-align: center;
-    color: white;
-}
-
-.drawer-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
-    object-fit: cover;
-}
-
-.ref-badge {
-    background: rgba(255,255,255,0.2);
-    padding: 5px 12px;
-    border-radius: 20px;
-    display: inline-block;
-}
-
-/* মেনু বাটন ডিজাইন */
-.d-menu-btn {
-    width: 100%;
-    border: none;
-    background: transparent;
-    padding: 12px 20px;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #2d3436;
-    transition: 0.2s;
-}
-
-.d-menu-btn i {
-    font-size: 18px;
-    width: 25px;
-}
-
-.d-menu-btn:active {
-    background: #f1f2f6;
-    color: #6c5ce7;
-}
-<style>
-/* মোডাল ওপেন হওয়ার এনিমেশন */
-.modal-overlay {
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* ইনপুট ফোকাস স্টাইল */
-.form-control:focus {
-    border-color: #6f42c1 !important;
-    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.1) !important;
-}
-<style>
-.d-none {
-    display: none !important;
-}
-<style>
-.p-icon {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 5px;
-    color: white;
-    font-size: 22px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-.p-btn:active .p-icon {
-    transform: scale(0.9);
-}
-.p-btn small {
-    font-size: 11px;
-    font-weight: bold;
-    color: #444;
-    display: block;
-}
-.srv-btn {
-    min-width: 60px;
-    cursor: pointer;
-}
-<style>
-/* গ্রিড সেটিংস: এক লাইনে ৩টি করে */
-.project-grid-circular {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* ৩ কলাম */
-    gap: 20px 10px; /* উপরে-নিচে ২০px, ডানে-বামে ১০px গ্যাপ */
-    text-align: center;
-    padding: 10px;
-}
-
-/* আইকনকে একদম গোল (Circular) করার জন্য */
-.p-icon-round {
-    width: 65px; /* সাইজ আপনার ইচ্ছা মতো ছোট-বড় করতে পারেন */
-    height: 65px;
-    border-radius: 50%; /* একদম গোল করবে */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 8px; /* মাঝখানে রাখার জন্য */
-    color: white;
-    font-size: 24px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12); /* সুন্দর শ্যাডো */
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* বাটনে ক্লিক করলে এনিমেশন */
-.p-btn-circle:active .p-icon-round {
-    transform: scale(0.85);
-}
-
-/* নিচের টেক্সটের স্টাইল */
-.p-btn-circle small {
-    font-size: 12px;
-    font-weight: 600;
-    color: #333;
-    display: block;
-    white-space: nowrap; /* টেক্সট যেন এক লাইনে থাকে */
-}
-<style>
-.d-none {
-    display: none !important;
-}
-.p-page {
-    width: 100%;
-    min-height: 100vh;
-}
-
-</style>
 
 
     </style>
@@ -592,12 +414,12 @@
             <img src="" class="dynamic-logo site-logo-img" alt="Logo">
         </div>
         
-       <h2 class="splash-brand-name animate__animated animate__fadeInUp animate__delay-1s site-name-txt" 
+    <h2 class="splash-brand-name animate__animated animate__fadeInUp animate__delay-1s site-name-txt" 
     style="font-weight: 900; letter-spacing: 1.5px; font-size: 32px;">
     <span style="color: #6c5ce7;">ALIF</span> 
     <span style="color: #0984e3;">SMM PANEL</span>
 </h2>
-        <p class="splash-tagline animate__animated animate__fadeInUp animate__delay-1s">Digital Business Platform</p>
+        <p class="splash-tagline animate__animated animate__fadeInUp animate__delay-1s">Profashonal Services</p>
         
         <div class="splash-loader-wrapper animate__animated animate__fadeInUp animate__delay-2s">
             <div class="splash-loader-bar"></div>
@@ -639,10 +461,6 @@
         </div>
         <input type="text" id="s-name" class="form-control auth-input mb-3" placeholder="নিজের নাম দিন">
         <input type="email" id="s-email" class="form-control auth-input mb-3" placeholder="ইমেইল দিন">
-        <div class="mb-3">
-    <label class="small fw-bold"></label>
-    <input type="text" id="reg-refer-input" class="form-control" placeholder="রেফার কোডটি এখানে লিখুন" style="height: 48px; border-radius: 10px;">
-</div>
              
    <div class="mb-4">
     <label class="small fw-bold mb-1"></label>
@@ -662,6 +480,8 @@
 <div id="user-app" class="d-none">
     <div id="p-home-main">
 
+
+
 <div class="brand-box shadow-sm" style="position: relative; text-align: center; padding: 12px 20px; background: #fff; border-bottom: 1px solid #eee;">
     <div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
         <i class="fas fa-cog text-secondary" style="font-size: 18px; cursor:pointer;" onclick="openSettings()"></i>
@@ -674,11 +494,11 @@
     </h5>
 </div>
     
-    <div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
-        <i class="fas fa-bars text-dark" style="font-size: 18px; cursor:pointer;" onclick="toggleSidebar()"></i>
-    </div>
+<div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 100;">
+    <i class="fas fa-sign-out-alt text-danger" style="font-size: 22px; cursor:pointer;" onclick="logout()"></i>
 </div>
 
+</div>
 <div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 15px; height: 140px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
     <img src="https://img.freepik.com/free-vector/abstract-digital-technology-background-with-network-connection-lines_1017-25552.jpg" 
          style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8);">
@@ -688,58 +508,33 @@
     </div>
 </div>
 
-
-
-
-<div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
-    <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        <span class="close-modal" onclick="closeSettings()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #888;">&times;</span>
-        <h4 class="fw-bold mb-3" style="color: #6f42c1;">আমার প্রোফাইল</h4>
-        <hr class="mb-4">
-        
-        <div class="profile-pic-upload mb-4" style="position: relative; display: inline-block;">
-            <img src="YOUR_DEFAULT_PROFILE_IMAGE_URL" id="settings-user-dp" 
-                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #f1f2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            
-            <label for="profilePicInput" style="position: absolute; bottom: 0; right: 0; background: #6f42c1; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                <i class="fas fa-camera" style="font-size: 14px;"></i>
-            </label>
-            <input type="file" id="profilePicInput" accept="image/*" style="display: none;" onchange="previewProfilePic(this)">
-        </div>
-
-        <div class="info-group mb-3 text-start">
-            <label class="text-muted small fw-bold mb-1">পুরো নাম (পরিবর্তনযোগ্য)</label>
-            <input type="text" id="editUserName" class="form-control mb-3" 
-                   style="height: 45px; border-radius: 10px; border: 1px solid #ddd; padding: 0 15px; font-weight: bold;" placeholder="আপনার নাম লিখুন">
-            
-            <label class="text-muted small fw-bold mb-1">ইমেইল ঠিকানা (পরিবর্তনযোগ্য নয়)</label>
-            <p id="realUserEmail" class="fw-bold p-2 bg-light rounded" style="color: #6f42c1; font-size: 14px; border: 1px solid #eee;"></p>
-        </div>
-
-        <button class="btn btn-primary w-100 mb-4" 
-                style="background: #6f42c1; border: none; height: 48px; border-radius: 10px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3);" 
-                onclick="saveProfileInfo()">প্রোফাইল আপডেট করুন</button>
-
+<div id="settingsModal" class="modal-overlay" style="display:none;">
+    <div class="settings-card">
+        <span class="close-modal" onclick="closeSettings()">&times;</span>
+        <h4 class="fw-bold mb-3">আমার প্রোফাইল</h4>
         <hr>
+        
+        <div class="info-group mb-3 text-start">
+            <label class="text-muted small">পুরো নাম</label>
+            <p id="realUserName" class="fw-bold mb-2" style="color: #333;"></p>
+            
+            <label class="text-muted small">ইমেইল ঠিকানা</label>
+            <p id="realUserEmail" class="fw-bold" style="color: #6f42c1;"></p>
+        </div>
 
         <div class="password-section mt-4 text-start">
-            <h6 class="fw-bold text-muted mb-3">নিরাপত্তা (পাসওয়ার্ড পরিবর্তন)</h6>
+            <h6 class="fw-bold">পাসওয়ার্ড পরিবর্তন করুন</h6>
             <div class="input-container" style="position: relative;">
-                <input type="password" id="newPassword" class="form-control" placeholder="নতুন পাসওয়ার্ড লিখুন" 
-                       style="padding-right: 45px; height: 45px; border-radius: 10px; border: 1px solid #ddd;">
+                <input type="password" id="newPassword" class="form-control" placeholder="নতুন পাসওয়ার্ড লিখুন" style="padding-right: 40px; height: 45px; border-radius: 10px;">
                 <i class="fas fa-eye-slash" id="togglePass" 
-                   style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: #888; font-size: 16px;" 
+                   style="position: absolute; right: 15px; top: 13px; cursor: pointer; color: #888;" 
                    onclick="togglePassword()"></i>
             </div>
-            <button class="btn btn-outline-primary w-100 mt-3" 
-                    style="color: #6f42c1; border: 2px solid #6f42c1; background: transparent; height: 45px; border-radius: 10px; font-weight: bold;" 
-                    onclick="savePassword()">পাসওয়ার্ড আপডেট করুন</button>
+            <button class="btn btn-primary w-100 mt-3" style="background: #6f42c1; border: none; height: 45px; border-radius: 10px;" onclick="savePassword()">আপডেট করুন</button>
         </div>
     </div>
 </div>
-
-
- 
+      
       
     <div class="modern-notice mx-3 mb-4">
         <div class="bg-white p-2 rounded-pill shadow-sm border-start border-4 border-primary d-flex align-items-center">
@@ -747,228 +542,59 @@
             <marquee id="site-note" class="small fw-bold text-muted" style="margin-bottom: 0;"></marquee>
         </div>
     </div>
-           <div class="bal-card shadow">
+        
+
+        <div class="bal-card shadow">
             <div class="small opacity-75">বর্তমান ব্যালেন্স</div>
             <h2 class="fw-bold mb-0">৳ <span id="u-bal">0.00</span></h2>
            
         </div>
-<div class="container mt-4" style="margin-bottom: 80px;">
-    <div style="display: flex; align-items: center; margin-bottom: 20px; padding-left: 10px;">
-        <div style="width: 4px; height: 18px; background: #6c5ce7; border-radius: 10px; margin-right: 8px;"></div>
-        <h6 style="margin: 0; font-weight: bold; color: #444;">আমাদের প্রজেক্ট সমূহ</h6>
+ <div class="srv-grid">
+    <div class="srv-btn" onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Reactions'], this)">
+        <i class="fab fa-facebook text-primary fs-3"></i>
     </div>
+    <div class="srv-btn" onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)">
+        <i class="fab fa-youtube text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)">
+        <i class="fab fa-tiktok text-dark fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)">
+        <i class="fab fa-instagram text-danger fs-3"></i>
+    </div>
+    <div class="srv-btn" onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)">
+        <i class="fab fa-telegram text-info fs-3"></i>
+    </div>
+</div>
+
+<div id="order-section" class="order-box animate__animated animate__fadeIn px-3">
+    <h5 id="cur-srv-txt" class="fw-bold text-primary mb-2">সার্ভিস সিলেক্ট করুন</h5>
     
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 10px; text-align: center;">
-        
-        <div onclick="openPage('p-micro')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
-                <i class="fas fa-tasks"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Micro Job</small>
+    <div id="sub-options" class="d-flex flex-wrap gap-2 mb-3"></div>
+
+    <div id="srv-desc" class="mb-3 p-3 rounded small" style="background: #f8f9ff; border-left: 4px solid #6c5ce7; display: none;">
         </div>
 
-        <div onclick="openPage('p-ads')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #28a745; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(40,167,69,0.3);">
-                <i class="fas fa-ad"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Ads Income</small>
-        </div>
-
-        <div onclick="openPage('p-post')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #ffc107; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: #212529; font-size: 22px; box-shadow: 0 4px 10px rgba(255,193,7,0.3);">
-                <i class="fas fa-pen-nib"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Job Post</small>
-        </div>
-
-        <div onclick="openPage('p-drive')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #17a2b8; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(23,162,184,0.3);">
-                <i class="fas fa-car-side"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Drive Offer</small>
-        </div>
-
-        <div onclick="openPage('p-shop')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #dc3545; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(220,53,69,0.3);">
-                <i class="fas fa-store"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Reseller Shop</small>
-        </div>
-
-        <div onclick="openPage('p-vendor')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #6c757d; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(108,117,125,0.3);">
-                <i class="fas fa-user-tie"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Vendorship</small>
-        </div>
-<div onclick="openPage('p-refer')" style="cursor: pointer;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: #343a40; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(52,58,64,0.3);">
-        <i class="fas fa-users-cog"></i>
-    </div>
-    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">My Refer</small>
-</div>
-     
-
-        <div onclick="openPage('p-target')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #6610f2; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(102,16,242,0.3);">
-                <i class="fas fa-bullseye"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Target Bonus</small>
-        </div>
-
-        <div onclick="openPage('p-leader')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #fd7e14; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(253,126,20,0.3);">
-                <i class="fas fa-crown"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Leadership</small>
-        </div>
-
-        <div onclick="openPage('p-digital')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #20c997; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(32,201,151,0.3);">
-                <i class="fas fa-laptop-code"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Digital Srv</small>
-        </div>
-
-        <div onclick="openPage('p-social')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
-                <i class="fas fa-share-alt"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Social Srv</small>
-        </div>
-
-        <div onclick="openPage('p-more')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #e83e8c; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(232,62,140,0.3);">
-                <i class="fas fa-plus"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">More</small>
-        </div>
-
-    </div>
-</div>
-<div id="p-refer" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
+    <input type="text" id="link" class="form-control mb-3 py-2" placeholder="অর্ডার লিংক দিন">
+    <label class="small fw-bold mb-1">পরিমাণ বেছে নিন:</label>
+<select id="qty" class="form-select mb-3 rounded-3" onchange="updatePrice()">
+    <option value="0">পরিমাণ বেছে নিন</option>
+    <option value="1000">1k Order</option>
+    <option value="5000">5k Order</option>
+    <option value="10000">10k Order</option>
+</select>
     
-    <div style="display: flex; align-items: center; padding: 15px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-        <h6 style="margin: 0; margin-left: 15px; font-weight: 700; color: #2d3436; font-size: 17px;">My Refer</h6>
+
+    <div class="d-flex justify-content-between align-items-center mb-4 p-2 bg-light rounded">
+        <span class="small text-muted">মোট মূল্য:</span>
+        <span class="h5 mb-0 fw-bold text-success">৳ <span id="total-price">0.00</span></span>
     </div>
 
-    <div class="container mt-4" style="padding-bottom: 30px;">
-        <div style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); padding: 30px 20px; border-radius: 20px; text-align: center; color: white; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);">
-            <p class="small mb-2" style="opacity: 0.8;">আপনার রেফারাল কোড</p>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
-                <h2 id="my-display-code" style="font-weight: 800; letter-spacing: 2px; margin: 0;">ABC123</h2>
-                <button onclick="copyReferCode()" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px; border-radius: 10px; cursor: pointer;">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            <p style="font-size: 11px; margin-top: 12px; opacity: 0.9; background: rgba(0,0,0,0.1); display: inline-block; padding: 4px 12px; border-radius: 20px;">বন্ধুদের ইনভাইট করে বোনাস জিতুন!</p>
-        </div>
-
-        <div class="mt-4">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h6 style="font-weight: 700; color: #444; margin: 0;">রেফারাল হিস্টোরি</h6>
-                <span id="refer-count" style="font-size: 12px; color: #6c5ce7; font-weight: bold; background: #eeebff; padding: 2px 10px; border-radius: 10px;">০ জন</span>
-            </div>
-            
-            <div id="refer-history-list" style="display: flex; flex-direction: column; gap: 12px;">
-                <div style="text-align: center; padding: 40px 20px; color: #aaa;">
-                    <i class="fas fa-user-friends fa-3x mb-3" style="opacity: 0.3;"></i>
-                    <p style="font-size: 13px;">এখনও কেউ আপনার রেফারে জয়েন করেনি</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <button class="btn btn-premium w-100 py-3 shadow" onclick="confirmOrder()">
+        <i class="fas fa-shopping-cart me-2"></i> অর্ডার কনফার্ম করুন
+    </button>
 </div>
-<div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
-
-<div id="right-sidebar" class="side-drawer">
-    <div class="drawer-content">
-        <div class="drawer-header">
-            <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow">
-            <h5 id="user-name" class="fw-bold mt-2 mb-0">User Name</h5>
-            <div class="ref-badge mt-2">
-                <small>Refer Code: <b id="user-ref">ALIF123</b></small>
-            </div>
-        </div>
-
-        <div class="drawer-menu mt-4">
-            <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
-            <button class="d-menu-btn" onclick="openPage('wallet'); toggleSidebar()"><i class="fas fa-wallet"></i> Wallet</button>
-            <button class="d-menu-btn" onclick="openPage('withdraw'); toggleSidebar()"><i class="fas fa-money-check-alt"></i> Withdraw</button>
-            
-            <hr class="my-3 opacity-10">
-            <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
-            
-            <button class="d-menu-btn" onclick="window.open('YOUR_FB_GROUP_URL')"><i class="fab fa-facebook text-primary"></i> Facebook Group</button>
-            <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
-            <button class="d-menu-btn" onclick="window.open('YOUR_TG_URL')"><i class="fab fa-telegram text-info"></i> Telegram Channel</button>
-            <button class="d-menu-btn" onclick="window.open('YOUR_REVIEW_URL')"><i class="fas fa-star text-warning"></i> Income Review Group</button>
-            
-            <hr class="my-3 opacity-10">
-            
-            <button class="d-menu-btn" onclick="openPage('privacy')"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
-            <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
-        </div>
     </div>
-</div>
-
-<div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
-    
-    <div style="display: flex; align-items: center; padding: 15px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-        <h6 style="margin: 0; margin-left: 15px; font-weight: 700; color: #2d3436; font-size: 17px;">Social Service</h6>
-    </div>
-
-    <div class="container mt-3" style="padding-bottom: 30px;">
-        
-        <div style="display: flex; gap: 12px; overflow-x: auto; padding: 10px 5px; scrollbar-width: none;">
-            <div onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Reactions'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
-                <i class="fab fa-facebook" style="color: #1877F2; font-size: 24px;"></i>
-            </div>
-            <div onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
-                <i class="fab fa-youtube" style="color: #FF0000; font-size: 24px;"></i>
-            </div>
-            <div onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
-                <i class="fab fa-tiktok" style="color: #000000; font-size: 24px;"></i>
-            </div>
-            <div onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
-                <i class="fab fa-instagram" style="color: #E4405F; font-size: 24px;"></i>
-            </div>
-            <div onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
-                <i class="fab fa-telegram" style="color: #0088cc; font-size: 24px;"></i>
-            </div>
-        </div>
-
-        <div id="order-section" style="background: white; border-radius: 20px; padding: 20px; margin-top: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.04);">
-            <h6 id="cur-srv-txt" style="font-weight: 700; color: #6c5ce7; margin-bottom: 15px; font-size: 15px;">সার্ভিস সিলেক্ট করুন</h6>
-            
-            <div id="sub-options" class="d-flex flex-wrap gap-2 mb-4"></div>
-
-            <div id="srv-desc" style="display: none; background: #f0f3ff; padding: 12px; border-radius: 10px; font-size: 12px; color: #555; margin-bottom: 15px; border-left: 4px solid #6c5ce7;"></div>
-
-            <label style="font-size: 12px; font-weight: 700; color: #888; margin-bottom: 5px; display: block;">অর্ডার লিঙ্ক</label>
-            <input type="text" id="link" class="form-control" placeholder="লিঙ্কটি এখানে পেস্ট করুন" style="height: 45px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 15px; font-size: 14px;">
-            
-            <label style="font-size: 12px; font-weight: 700; color: #888; margin-bottom: 5px; display: block;">পরিমাণ</label>
-            <select id="qty" class="form-select" onchange="updatePrice()" style="height: 45px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 20px; font-size: 14px;">
-                <option value="0">পরিমাণ বেছে নিন</option>
-                <option value="1000">1,000 (1k)</option>
-                <option value="5000">5,000 (5k)</option>
-                <option value="10000">10,000 (10k)</option>
-            </select>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; margin-bottom: 25px;">
-                <span style="font-size: 13px; color: #666; font-weight: 600;">মোট মূল্য:</span>
-                <span style="font-size: 18px; color: #27ae60; font-weight: 800;">৳ <span id="total-price">0.00</span></span>
-            </div>
-
-            <button onclick="confirmOrder()" style="width: 100%; padding: 15px; background: #6c5ce7; color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 15px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);">
-                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> অর্ডার কনফার্ম করুন
-            </button>
-        </div>
-    </div>
-</div>
 
     <div id="p-fund" class="clean-page">
         <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-fund')"></i>Add Money</h5>
@@ -992,7 +618,6 @@
         <h6 class="fw-bold mb-3">লেনদেন হিস্টোরি</h6>
         <div id="fund-hist-list"></div>
     </div>
-
 
     <div id="p-orders" class="clean-page">
         <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-orders')"></i>অর্ডার হিস্টোরি</h5>
@@ -1102,7 +727,6 @@
 <div id="a-o" class="a-tab d-none"></div>
 <div id="a-s" class="a-tab d-none"></div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     let db = {
@@ -1170,7 +794,6 @@
             }
         }
     }
-  
 
     function syncUI() {
         document.querySelectorAll('.site-logo-img').forEach(i => i.src = db.logo);
@@ -1787,202 +1410,6 @@ function aTab(tabId) {
         targetTab.classList.remove('d-none');
         targetTab.classList.add('animate__animated', 'animate__fadeIn');
     }
-}
-function toggleSidebar() {
-    const sidebar = document.getElementById('right-sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-    
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-    
-    // ইউজারের ডাটা আপডেট করা (যদি ইউজার লগইন থাকে)
-    if (curUser) {
-        document.getElementById('user-name').innerText = curUser.name || "User";
-        document.getElementById('user-ref').innerText = curUser.refCode || "N/A";
-        // প্রোফাইল পিকচার থাকলে সেট করা
-        if(curUser.img) document.getElementById('user-dp').src = curUser.img;
-    }
-}
-let tempProfilePicBase64 = ""; // সাময়িকভাবে ছবি রাখার জন্য
-
-// ১. সেটিংস মোডাল খোলার সময় ডাটা লোড করা
-function openSettings() {
-    if (!curUser) return; // ইউজার লগইন না থাকলে ফাংশন বন্ধ
-
-    document.getElementById('editUserName').value = curUser.name || "";
-    document.getElementById('realUserEmail').innerText = curUser.email || "";
-    
-    // ইউজারের প্রোফাইল ছবি থাকলে লোড করা, না থাকলে ডিফল্ট
-    if (curUser.img) {
-        document.getElementById('settings-user-dp').src = curUser.img;
-    }
-    
-    document.getElementById('settingsModal').style.display = 'flex';
-}
-
-// ২. ছবির প্রিভিউ দেখানো এবং Base64 এ রূপান্তর করা
-function previewProfilePic(input) {
-    if (input.files && input.files[0]) {
-        let reader = new FileReader();
-        
-        reader.onload = function(e) {
-            // মোডালে ছবির প্রিভিউ দেখানো
-            document.getElementById('settings-user-dp').src = e.target.result;
-            // Base64 ডাটা সাময়িক ভেরিয়েবলে রাখা
-            tempProfilePicBase64 = e.target.result;
-        }
-        
-        reader.readAsDataURL(input.files[0]); // ফাইল রিড করা শুরু
-    }
-}
-
-// ৩. নাম এবং প্রোফাইল ছবি সেভ করা (মেইন ফাংশন)
-function saveProfileInfo() {
-    const newName = document.getElementById('editUserName').value.trim();
-    
-    if (newName.length < 3) {
-        return Swal.fire('ভুল হয়েছে!', 'নাম কমপক্ষে ৩ অক্ষরের হতে হবে।', 'error');
-    }
-
-    // ডাটাবেস আপডেট (db.users)
-    curUser.name = newName;
-    
-    // যদি নতুন ছবি আপলোড করা হয়ে থাকে
-    if (tempProfilePicBase64) {
-        curUser.img = tempProfilePicBase64; // Base64 ছবি সেভ
-    }
-
-    // মূল ইউজার লিস্টেও আপডেট করা (নিরাপত্তার জন্য)
-    let userIndex = db.users.findIndex(u => u.email === curUser.email);
-    if (userIndex !== -1) {
-        db.users[userIndex].name = newName;
-        if (tempProfilePicBase64) db.users[userIndex].img = tempProfilePicBase64;
-    }
-
-    // লোকাল স্টোরেজে স্থায়ীভাবে সেভ
-    save(); 
-
-    // হোমপেজ এবং সাইডবারের নাম/ছবি আপডেট করার জন্য
-    renderUser(); 
-
-    Swal.fire({
-        icon: 'success',
-        title: 'সফল!',
-        text: 'প্রোফাইল তথ্য আপডেট হয়েছে।',
-        confirmButtonColor: '#6f42c1'
-    });
-
-    closeSettings();
-    
-    // সাময়িক ভেরিয়েবল রিসেট
-    tempProfilePicBase64 = ""; 
-}
-
-// মোডাল বন্ধ করার ফাংশন
-function closeSettings() {
-    document.getElementById('settingsModal').style.display = 'none';
-    tempProfilePicBase64 = ""; // বন্ধ করার সময় ছবি রিসেট
-}
-function saveProfileInfo() {
-    const newName = document.getElementById('editUserName').value.trim();
-    
-    // ১. ভ্যালিডেশন
-    if (!curUser) return; // ইউজার লগইন না থাকলে ফাংশন বন্ধ
-    
-    if (newName.length < 3) {
-        return Swal.fire('ভুল হয়েছে!', 'নাম কমপক্ষে ৩ অক্ষরের হতে হবে।', 'error');
-    }
-
-    // ২. বর্তমান ইউজারের ডাটা আপডেট (curUser)
-    curUser.name = newName;
-    
-    // যদি নতুন ছবি আপলোড করা হয়ে থাকে (Base64 ডাটা)
-    if (tempProfilePicBase64) {
-        curUser.img = tempProfilePicBase64; // ছবি সেভ
-    }
-
-    // ৩. মূল ইউজার লিস্টেও আপডেট করা (db.users)
-    let userIndex = db.users.findIndex(u => u.email === curUser.email);
-    if (userIndex !== -1) {
-        db.users[userIndex].name = newName;
-        if (tempProfilePicBase64) db.users[userIndex].img = tempProfilePicBase64;
-    }
-
-    // ৪. লোকাল স্টোরেজে স্থায়ীভাবে সেভ
-    save(); 
-
-    // ৫. *** সাইডলার (Slider) রিয়েল-টাইম আপডেট করা ***
-    // (এই অংশটুকু না থাকায় ছবি দেখা যাচ্ছিল না)
-    
-    // সাইডলারের প্রোফাইল ছবি আপডেট
-    const sidebarDp = document.getElementById('user-dp'); // সাইডলারের ছবির ID
-    if (sidebarDp && curUser.img) {
-        sidebarDp.src = curUser.img; // নতুন ছবি সেট
-    }
-    
-    // সাইডলারের নাম আপডেট
-    const sidebarName = document.getElementById('user-name'); // সাইডলারের নামের ID
-    if (sidebarName) {
-        sidebarName.innerText = curUser.name; // নতুন নাম সেট
-    }
-
-    // ৬. হোমপেজ বা অন্য কোথাও নাম/ছবি আপডেট করার জন্য
-    renderUser(); 
-
-    // ৭. সফলতার মেসেজ ও মোডাল বন্ধ
-    Swal.fire({
-        icon: 'success',
-        title: 'সফল!',
-        text: 'প্রোফাইল তথ্য আপডেট হয়েছে।',
-        confirmButtonColor: '#6f42c1'
-    });
-
-    closeSettings();
-    
-    // সাময়িক ভেরিয়েবল রিসেট
-    tempProfilePicBase64 = ""; 
-}
-function openPage(pageId) {
-    // ১. সব পেজ আগে লুকিয়ে ফেলুন
-    const allPages = document.querySelectorAll('.p-page');
-    allPages.forEach(page => {
-        page.classList.add('d-none');
-        page.style.display = 'none'; // অতিরিক্ত নিশ্চিত হওয়ার জন্য
-    });
-
-    // ২. আপনি যে পেজটি দেখতে চান সেটি দেখান
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.remove('d-none');
-        targetPage.style.display = 'block';
-        window.scrollTo(0, 0); // পেজ পরিবর্তনের পর একদম উপরে নিয়ে যাবে
-        
-        // যদি সাইডবার খোলা থাকে তবে বন্ধ করে দিবে
-        if(typeof toggleSidebar === "function") {
-             // sidebar logic...
-        }
-    } else {
-        console.error("ID খুঁজে পাওয়া যায়নি: " + pageId);
-    }
-}
-// ৬ অক্ষরের র‍্যান্ডম রেফার কোড জেনারেটর
-function generateReferCode() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return code;
-}
-
-// উদাহরণ: নতুন ইউজার সেভ করার সময়
-// let newUserReferCode = generateReferCode();
-function copyReferCode() {
-    const code = document.getElementById('my-display-code').innerText;
-    navigator.clipboard.writeText(code).then(() => {
-        // সুন্দর একটি অ্যালার্ট (SweetAlert ব্যবহার করলে ভালো)
-        alert("কোডটি কপি হয়েছে: " + code);
-    });
 }
 
 </script>
