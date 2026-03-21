@@ -803,74 +803,227 @@
     align-items: center;
     gap: 5px;
 }
+.form-control:focus {
+    border-color: #6c5ce7 !important;
+    box-shadow: 0 0 8px rgba(108, 92, 231, 0.1) !important;
+    background: #fff !important;
+}
+<style>
+@keyframes loadProgress {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+}
+
+.splash-container {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+<style>
+/* লোডিং বার এনিমেশন */
+@keyframes loadProgress {
+    0% { width: 0%; }
+    20% { width: 30%; }
+    50% { width: 70%; }
+    80% { width: 90%; }
+    100% { width: 100%; }
+}
+
+/* লোগোর নিচের পালস এনিমেশন */
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+}
+
+/* স্প্ল্যাশ কন্টেইনারের হালকা ফ্লোটিং ইফেক্ট */
+.splash-container {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</style>
 </style>
 
 
     </style>
 </head>
 <body>
-<div id="splash-screen">
-    <div class="splash-container">
-        <div class="splash-logo-box animate__animated animate__zoomIn">
-            <img src="" class="dynamic-logo site-logo-img" alt="Logo">
+  <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    
+    <style>
+        @keyframes fillLoader {
+            0% { width: 0%; }
+            30% { width: 40%; }
+            70% { width: 85%; }
+            100% { width: 100%; }
+        }
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+        }
+    </style>
+
+    <div class="splash-container" style="text-align: center; position: relative;">
+        
+        <div style="width: 100px; height: 100px; background: white; margin: 0 auto 25px; border-radius: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 35px rgba(108, 92, 231, 0.2); position: relative; border: 2px solid rgba(108, 92, 231, 0.1);">
+            <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 60px; height: 60px; object-fit: contain;">
+            <div style="position: absolute; bottom: -5px; width: 10px; height: 10px; background: #6c5ce7; border-radius: 50%; box-shadow: 0 0 15px #6c5ce7; animation: pulseDot 1.5s infinite;"></div>
         </div>
         
-       <h2 class="splash-brand-name animate__animated animate__fadeInUp animate__delay-1s site-name-txt" 
-    style="font-weight: 900; letter-spacing: 1.5px; font-size: 32px;">
-    <span style="color: #6c5ce7;">ALIF</span> 
-    <span style="color: #0984e3;">SMM PANEL</span>
-</h2>
-        <p class="splash-tagline animate__animated animate__fadeInUp animate__delay-1s">Digital Business Platform</p>
+        <h2 style="font-weight: 900; letter-spacing: 1px; font-size: 30px; margin-bottom: 5px; font-family: sans-serif;">
+            <span style="color: #2d3436;">ALIF</span> 
+            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SMM PANEL</span>
+        </h2>
         
-        <div class="splash-loader-wrapper animate__animated animate__fadeInUp animate__delay-2s">
-            <div class="splash-loader-bar"></div>
+        <p style="font-size: 12px; font-weight: 600; color: #636e72; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-family: sans-serif;">Digital Business Platform</p>
+        
+        <div style="width: 180px; height: 6px; background: rgba(108, 92, 231, 0.1); margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(108, 92, 231, 0.05);">
+            <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #6c5ce7, #0984e3); border-radius: 10px; animation: fillLoader 3s ease-in-out forwards;"></div>
         </div>
+
+        <p style="margin-top: 20px; font-size: 10px; color: #b2bec3; font-weight: 600; font-family: sans-serif;">Version 2.0.1</p>
     </div>
 </div>
+  
+  
+  
+  
+  
+
 <div id="loader-overlay"><div class="spinner"></div></div>
 
-<div id="auth-section">
-    <div class="auth-card mx-auto mt-5 glass-card" id="login-box" style="max-width: 400px;">
+<div id="auth-section" style="padding: 20px;">
+    <div class="auth-card mx-auto mt-5" id="login-box" 
+         style="max-width: 400px; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
+        
         <div class="text-center">
-            <img src="" class="dynamic-logo site-logo-img mb-3">
-            <h4 class="fw-bold">লগইন করুন</h4>
-            <p class="text-muted small mb-4">আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+            <div style="width: 85px; height: 85px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); margin: 0 auto 20px; border-radius: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3); border: 3px solid #fff;">
+                <img src="YOUR_LOGO_URL_HERE" class="dynamic-logo site-logo-img" 
+                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'"
+                     style="width: 55px; height: 55px; object-fit: contain;">
+            </div>
+
+            <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">লগইন করুন</h3>
+            
+            <div style="display: inline-block; background: #f0eeff; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px;">
+                <p style="margin: 0; font-size: 11px; font-weight: 700; color: #6c5ce7; text-transform: uppercase;">
+                    <i class="fas fa-shield-alt me-1"></i> আপনার অ্যাকাউন্টে প্রবেশ করুন
+                </p>
+            </div>
         </div>
-          <div class="mb-3">
-            <label class="small fw-bold mb-1">আপনার ইমেইল দিন</label>
-            <input type="email" id="l-email" class="form-control auth-input" placeholder="*****@gmail.com">
-        </div>
-         <div class="mb-4">
-            <label class="small fw-bold mb-1">৬ অক্ষরের পাসওয়ার্ড দিন</label>
-           <input type="password" id="l-pass" class="form-control auth-input" placeholder="******">
-        </div>
-       
-        <div class="text-end mb-3">
-    <a href="https://t.me/Abu_Sufian_2026" target="_blank" class="text-danger small fw-bold" style="text-decoration: none;">
-        <i class="fas fa-key me-1"></i> পাসওয়ার্ড ভুলে গেছেন?
-    </a>
-</div>
-        <button class="btn-premium w-100 mb-3" onclick="handleAuth('login')">লগইন করুন</button>
-        <p class="text-center small">অ্যাকাউন্ট নেই? <a href="#" class="text-primary fw-bold" onclick="switchAuth(true)">একাউন্ট খুলুন</a></p>
-    </div>
+
+ 
+
+
+<div class="auth-container" style="padding: 10px;">
     
-    <div class="auth-card d-none mx-auto mt-5 glass-card" id="signup-box" style="max-width: 400px;">
-        <div class="text-center">
-            <img src="" class="dynamic-logo site-logo-img mb-3">
-            <h4 class="fw-bold">রেজিষ্ট্রেশন করুন</h4>
-            <p class="text-muted small mb-4">সেরা সার্ভিস পেতে আজই যোগ দিন</p>
+    <div class="mb-3">
+        <label class="small fw-bold mb-2" style="color: #555; display: block; padding-left: 5px;">আপনার ইমেইল দিন</label>
+        <div style="position: relative;">
+            <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="l-email" class="form-control" placeholder="example@gmail.com" 
+                   style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none; width: 100%;">
         </div>
-        <input type="text" id="s-name" class="form-control auth-input mb-3" placeholder="নিজের নাম দিন">
-        <input type="email" id="s-email" class="form-control auth-input mb-3" placeholder="ইমেইল দিন">
-             
-   <div class="mb-4">
-    <label class="small fw-bold mb-1"></label>
-    <div class="position-relative">
-        <input type="password" id="s-pass" class="auth-input" placeholder="৬ অক্ষরের পাসওয়ার্ড দিন" style="padding-right: 40px;">
+    </div>
+
+    <div class="mb-3">
+        <label class="small fw-bold mb-2" style="color: #555; display: block; padding-left: 5px;">৬ অক্ষরের পাসওয়ার্ড দিন</label>
+        <div style="position: relative;">
+            <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-lock"></i></span>
+            <input type="password" id="l-pass" class="form-control" placeholder="******" 
+                   style="padding-left: 45px; padding-right: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none; width: 100%;">
+            
+            <i class="fas fa-eye-slash" id="toggle-l-pass" 
+               style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #aaa; font-size: 16px;" 
+               onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
+        </div>
+    </div>
+
+    <div class="text-end mb-4">
+        <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="color: #dc3545; font-size: 12px; font-weight: 700; text-decoration: none; transition: 0.3s;">
+            <i class="fas fa-question-circle me-1"></i> পাসওয়ার্ড ভুলে গেছেন?
+        </div>
+    </a>
+    </div>
+
+    <button class="btn-premium w-100 mb-3" onclick="handleAuth('login')" 
+            style="height: 50px; border-radius: 12px; background: linear-gradient(90deg, #6c5ce7, #8e44ad); color: white; border: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3); transition: 0.3s;">
+        লগইন করুন
+    </button>
+
+    <p class="text-center" style="font-size: 13px; color: #666;">
+        অ্যাকাউন্ট নেই? <a href="#" style="color: #6c5ce7; font-weight: 800; text-decoration: none;" onclick="switchAuth(true)">একাউন্ট খুলুন</a>
+    </p>
+
+</div>
+
+<div class="auth-card d-none mx-auto mt-5" id="signup-box" 
+     style="max-width: 400px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.5);">
+    
+    <div class="text-center">
+        <div style="width: 85px; height: 85px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); margin: 0 auto 20px; border-radius: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3); border: 3px solid #fff;">
+            <img src="YOUR_LOGO_URL_HERE" class="dynamic-logo site-logo-img" 
+                 onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'"
+                 style="width: 55px; height: 55px; object-fit: contain;">
+        </div>
+
+        <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">রেজিস্ট্রেশন করুন</h3>
+        
+        <div style="display: inline-block; background: #e8f5e9; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px; border: 1px solid #c8e6c9;">
+            <p style="margin: 0; font-size: 11px; font-weight: 700; color: #2e7d32; text-transform: uppercase;">
+                <i class="fas fa-rocket me-1"></i> সেরা সার্ভিস পেতে আজই যোগ দিন
+            </p>
+        </div>
+    </div>
+
+<div class="auth-container" style="padding: 10px;">
+    
+    <div class="mb-3" style="position: relative;">
+        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-user"></i></span>
+        <input type="text" id="s-name" class="form-control" placeholder="নিজের পুরো নাম দিন" 
+               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
+    </div>
+
+    <div class="mb-3" style="position: relative;">
+        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-envelope"></i></span>
+        <input type="email" id="s-email" class="form-control" placeholder="আপনার ইমেইল দিন" 
+               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
+    </div>
+
+    <div class="mb-3" style="position: relative;">
+        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-user-plus"></i></span>
+        <input type="text" id="reg-refer" class="form-control" placeholder="রেফার কোড (যদি থাকে)" 
+               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
+    </div>
+
+    <div class="mb-4" style="position: relative;">
+        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-lock"></i></span>
+        <input type="password" id="s-pass" class="form-control" placeholder="৬ অক্ষরের পাসওয়ার্ড দিন" 
+               style="padding-left: 45px; padding-right: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
+        
         <i class="fas fa-eye-slash" id="toggle-s-pass" 
-           style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #6c5ce7;" 
+           style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #aaa; font-size: 16px;" 
            onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
     </div>
+
 </div>
         
         <button class="btn-premium w-100 mb-3" onclick="handleAuth('signup')">রেজিষ্ট্রেশন করুন</button>
@@ -1017,6 +1170,46 @@
             </div>
             <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Vendorship</small>
         </div>
+        <div id="p-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); padding: 20px 15px; color: white; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">My Team & Refer</h5>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <p style="margin: 0; font-size: 13px; color: #666; font-weight: 600;">Your Referral Code</p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
+                <h3 id="my-refer-code" style="margin: 0; font-weight: 800; color: #6c5ce7; letter-spacing: 2px;">LOADING...</h3>
+                <button onclick="copyReferCode()" style="border: none; background: #f0eeff; color: #6c5ce7; padding: 5px 10px; border-radius: 8px; font-size: 12px; font-weight: 700;">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+            <p style="margin-top: 10px; font-size: 11px; color: #888;">প্রতিটি রেফারে বোনাস জিতে নিন!</p>
+        </div>
+
+        <div class="row gx-2 mt-3">
+            <div class="col-12">
+                <div style="background: #6c5ce7; color: white; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="margin: 0; font-size: 12px; opacity: 0.9;">Total Members</p>
+                        <h4 style="margin: 0; font-weight: 800;" id="total-team-count">0</h4>
+                    </div>
+                    <i class="fas fa-users" style="font-size: 30px; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+
+        <h6 style="font-weight: 700; color: #333; margin-top: 25px; margin-bottom: 15px;">Referral History</h6>
+        <div id="refer-list-container">
+            <p style="text-align: center; color: #aaa; font-size: 13px; margin-top: 20px;">কোনো মেম্বার খুঁজে পাওয়া যায়নি</p>
+        </div>
+
+    </div>
+</div>
         <div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center;">
     <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #6610f2, #007bff); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 24px; box-shadow: 0 4px 15px rgba(102, 16, 242, 0.4); border: 2px solid rgba(255,255,255,0.2);">
         <i class="fas fa-gamepad"></i>
@@ -2643,6 +2836,20 @@ function submitTopup() {
     alert("আপনার টপআপ অর্ডারটি সফল হয়েছে! এডমিন খুব শীঘ্রই ডায়মন্ড পাঠিয়ে দিবে।");
     location.reload(); 
 }
+// রেফার কোড কপি করা
+function copyReferCode() {
+    const code = document.getElementById('my-refer-code').innerText;
+    navigator.clipboard.writeText(code);
+    alert("Refer Code Copied: " + code);
+}
+setTimeout(() => {
+    const splash = document.getElementById('splash-screen');
+    if(splash) {
+        splash.style.transition = "opacity 0.5s ease";
+        splash.style.opacity = "0";
+        setTimeout(() => splash.style.display = 'none', 500);
+    }
+}, 3000); // ৩ সেকেন্ড পর স্ক্রিনটি চলে যাবে
 
 </script>
 </body>
