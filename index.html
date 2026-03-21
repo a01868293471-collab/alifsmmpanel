@@ -857,8 +857,7 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
-</style>
-</style>
+
 </style>
 
 
@@ -1058,7 +1057,259 @@
 </div>
 
 
+<div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #20c997, #00b894); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Digital Services</h5>
+            </div>
+            <i class="fas fa-shopping-basket" style="font-size: 18px; opacity: 0.8;"></i>
+        </div>
+    </div>
 
+    <div class="container mt-3">
+        <p style="font-size: 12px; color: #666; font-weight: 600; margin-left: 5px;">সবচেয়ে কম মূল্যে প্রিমিয়াম সাবস্ক্রিপশন:</p>
+        
+        <div class="row gx-2">
+            
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 45px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">YouTube Premium</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 49.00</p>
+                    <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 45px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Telegram Prem.</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 350.00</p>
+                    <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://seeklogo.com/images/C/capcut-logo-4D6F6A6E0F-seeklogo.com.png" style="width: 45px; height:45px; border-radius: 10px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">CapCut Pro</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 99.00</p>
+                    <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 45px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Canva Pro</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 30.00</p>
+                    <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 45px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Netflix 1 Month</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 180.00</p>
+                    <button onclick="orderDigital('Netflix Screen', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 45px; margin-bottom: 10px;">
+                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Spotify Prem.</h6>
+                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 60.00</p>
+                    <button onclick="orderDigital('Spotify Premium', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                </div>
+            </div>
+            <div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">YouTube Premium</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 49.00</p>
+        <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Telegram Premium</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 350.00</p>
+        <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://w7.pngwing.com/pngs/531/992/png-transparent-capcut-logo.png" style="width: 40px; height: 40px; border-radius: 8px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">CapCut Pro</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 99.00</p>
+        <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Canva Pro</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 30.00</p>
+        <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Netflix Screen</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 180.00</p>
+        <button onclick="orderDigital('Netflix', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Spotify Premium</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 60.00</p>
+        <button onclick="orderDigital('Spotify', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968843.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">PicsArt Gold</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 80.00</p>
+        <button onclick="orderDigital('PicsArt', 80)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Prime Video</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 120.00</p>
+        <button onclick="orderDigital('Prime Video', 120)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e798.png" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">ChatGPT Plus</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 250.00</p>
+        <button onclick="orderDigital('ChatGPT Plus', 250)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">LinkedIn Prem.</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 450.00</p>
+        <button onclick="orderDigital('LinkedIn', 450)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968812.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Duolingo Plus</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 70.00</p>
+        <button onclick="orderDigital('Duolingo', 70)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2702/2702636.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Truecaller Gold</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 50.00</p>
+        <button onclick="orderDigital('Truecaller', 50)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Zee5 Premium</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 40.00</p>
+        <button onclick="orderDigital('Zee5', 40)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/3c/63/05/3c6305a2-c167-9d7a-1153-f72023594894/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Hoichoi</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 55.00</p>
+        <button onclick="orderDigital('Hoichoi', 55)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5977/5977581.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Disney+ Hotstar</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 130.00</p>
+        <button onclick="orderDigital('Hotstar', 130)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968903.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">InShot Pro</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 65.00</p>
+        <button onclick="orderDigital('InShot', 65)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Pinterest Pro</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 35.00</p>
+        <button onclick="orderDigital('Pinterest', 35)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Grammarly_logo.svg/2048px-Grammarly_logo.svg.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Grammarly Prem.</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 110.00</p>
+        <button onclick="orderDigital('Grammarly', 110)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969062.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">NordVPN Premium</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 150.00</p>
+        <button onclick="orderDigital('NordVPN', 150)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+<div class="col-6 mb-3">
+    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968931.png" style="width: 40px; margin-bottom: 10px;">
+        <h6 style="font-weight: 800; font-size: 13px;">Crunchyroll</h6>
+        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 95.00</p>
+        <button onclick="orderDigital('Crunchyroll', 95)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
 
 <div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
     <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
@@ -1183,7 +1434,7 @@
         <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
             <p style="margin: 0; font-size: 13px; color: #666; font-weight: 600;">Your Referral Code</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
-                <h3 id="my-refer-code" style="margin: 0; font-weight: 800; color: #6c5ce7; letter-spacing: 2px;">LOADING...</h3>
+                <h3 id="my-refer-code" style="margin: 0; font-weight: 800; color: #6c5ce7; letter-spacing: 2px;">123456</h3>
                 <button onclick="copyReferCode()" style="border: none; background: #f0eeff; color: #6c5ce7; padding: 5px 10px; border-radius: 8px; font-size: 12px; font-weight: 700;">
                     <i class="fas fa-copy"></i> Copy
                 </button>
@@ -1237,6 +1488,7 @@
             <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Digital Srv</small>
         </div>
 
+
         <div onclick="openPage('p-social')" style="cursor: pointer;">
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
                 <i class="fas fa-share-alt"></i>
@@ -1286,7 +1538,247 @@
         </div>
     </div>
 </div>
+<div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #dc3545, #ff4757); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Reseller Shop</h5>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <div onclick="openPage('p-vendor-list')" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                    <i class="fas fa-user-tie" style="font-size: 18px;"></i>
+                </div>
+                <div onclick="openShopHistory()" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                    <i class="fas fa-history" style="font-size: 18px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="container mt-3">
+        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
+            <button onclick="filterShop('all')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #dc3545; background: #dc3545; color: white; font-size: 12px; font-weight: 700; white-space: nowrap;">All</button>
+            <button onclick="filterShop('shirt')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Shirt</button>
+            <button onclick="filterShop('pant')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Pant</button>
+            <button onclick="filterShop('panjabi')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Panjabi</button>
+        </div>
+
+        <div class="row g-3" id="shop-container">
+            <div class="col-6 shop-item shirt">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <img src="https://via.placeholder.com/150" style="width: 100%; height: 150px; object-fit: cover;">
+                    <div style="padding: 10px;">
+                        <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 35px; overflow: hidden;">Premium Cotton Shirt</h6>
+                        <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px;">৳ ৮৫০</p>
+                        <button onclick="viewProduct('Premium Cotton Shirt', '৮৫০', 'High quality cotton fabric...', 'https://via.placeholder.com/300')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700;">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; overflow-y: auto;">
+    <div style="padding: 20px;">
+        <i class="fas fa-times" style="font-size: 24px; color: #333; cursor: pointer;" onclick="closeProduct()"></i>
+        <img id="view-img" src="" style="width: 100%; border-radius: 20px; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+        <h4 id="view-title" style="margin-top: 20px; font-weight: 800;"></h4>
+        <h5 id="view-price" style="color: #dc3545; font-weight: 800;"></h5>
+        <hr>
+        <h6>Details:</h6>
+        <p id="view-desc" style="color: #666; font-size: 14px; line-height: 1.6;"></p>
+        
+        <button onclick="showOrderForm()" style="width: 100%; padding: 15px; border-radius: 15px; border: none; background: #dc3545; color: white; font-weight: 800; font-size: 16px; margin-top: 20px;">অর্ডার করুন</button>
+    </div>
+</div>
+
+<div id="shop-order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; width: 100%; border-radius: 25px; padding: 20px; max-height: 90vh; overflow-y: auto;">
+        <h5 style="font-weight: 800; text-align: center; margin-bottom: 20px;">অর্ডার ইনফরমেশন</h5>
+        <input type="text" id="o-name" placeholder="আপনার নাম" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
+        <input type="number" id="o-phone" placeholder="মোবাইল নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
+        <input type="text" id="o-dist" placeholder="জেলা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
+        <input type="text" id="o-thana" placeholder="থানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
+        <textarea id="o-addr" placeholder="পূর্ণাঙ্গ ঠিকানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; height: 70px;"></textarea>
+        
+        <div style="display: flex; gap: 10px;">
+            <button onclick="closeOrderForm()" style="flex: 1; padding: 12px; border-radius: 10px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
+            <button onclick="submitShopOrder()" style="flex: 2; padding: 12px; border-radius: 10px; border: none; background: #dc3545; color: white; font-weight: 800;">কনফার্ম অর্ডার</button>
+        </div>
+    </div>
+</div>
+
+<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1005; overflow-y: auto;">
+    <div style="padding: 20px; background: #333; color: white;">
+        <i class="fas fa-arrow-left" onclick="openPage('p-shop')"></i>
+        <span style="margin-left: 15px; font-weight: 700;">Our Registered Vendors</span>
+    </div>
+    <div class="container mt-3">
+        <div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+            <div style="width: 45px; height: 45px; background: #eee; border-radius: 50%; margin-right: 15px;"></div>
+            <div>
+                <h6 style="margin: 0; font-weight: 700;">Alif Enterprise</h6>
+                <small style="color: #28a745;">Active Vendor</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="p-ads" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #28a745, #2ecc71); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Ads Income</h5>
+            </div>
+
+            <div onclick="openAdsHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: #e9f7ef; border-radius: 15px; padding: 12px; border-left: 5px solid #28a745; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 12px; color: #155724; font-weight: 600;">
+                <i class="fas fa-info-circle me-2"></i> নোটিশ: প্রতিটি বিজ্ঞাপন সম্পূর্ণ দেখলে আপনার ব্যালেন্সে টাকা যোগ হবে। স্কিপ করলে পেমেন্ট পাবেন না।
+            </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            
+            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #01</h6>
+                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
+                    </div>
+                </div>
+                <button onclick="watchAd(1, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
+            </div>
+
+            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #02</h6>
+                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
+                    </div>
+                </div>
+                <button onclick="watchAd(2, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
+            </div>
+
+            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #03</h6>
+                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
+                    </div>
+                </div>
+                <button onclick="watchAd(3, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
+            </div>
+
+            </div>
+    </div>
+</div>
+<div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #17a2b8, #00ced1); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Drive Offers</h5>
+            </div>
+            <div onclick="openDriveHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: #e0f7fa; border-radius: 15px; padding: 12px; border-left: 5px solid #17a2b8; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 12px; color: #006064; font-weight: 600;">
+                <i class="fas fa-bolt me-2"></i> নোটিশ: ড্রাইভ অফার সচল হওয়ার সময় ৫-৩০ মিনিট। সঠিক নম্বর প্রদান করুন।
+            </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
+            <div onclick="filterDrive('all')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid #17a2b8;">All</div>
+            </div>
+            <div onclick="filterDrive('gp')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">GP</small>
+            </div>
+            <div onclick="filterDrive('robi')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Robi</small>
+            </div>
+            <div onclick="filterDrive('airtel')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Airtel_logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Airtel</small>
+            </div>
+            <div onclick="filterDrive('bl')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Banglalink_Logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">BL</small>
+            </div>
+            <div onclick="filterDrive('teletalk')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Teletalk_Logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Teletalk</small>
+            </div>
+            <div onclick="filterDrive('skitto')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Skitto_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Skitto</small>
+            </div>
+        </div>
+
+        <div id="drive-list-container">
+            <div class="drive-card gp" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 10px;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৪০ জিবি + ৮০০ মিনিট (৩০ দিন)</h6>
+                    <small style="color: #666; display: block;">সারা বাংলাদেশ পাবে</small>
+                    <b style="color: #e67e22; font-size: 16px;">৳ ৫৯৯</b>
+                </div>
+                <button onclick="showOrderPopup('৪০ জিবি ৮০০ মিনিট', 599)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
+            </div>
+
+            <div class="drive-card robi" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 10px;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৫০ জিবি ইন্টারনেট (৩০ দিন)</h6>
+                    <small style="color: #666; display: block;">শুধুমাত্র ঢাকা ডিভিশন</small>
+                    <b style="color: #e67e22; font-size: 16px;">৳ ৪৫০</b>
+                </div>
+                <button onclick="showOrderPopup('৫০ জিবি রবি', 450)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; width: 100%; border-radius: 25px; padding: 25px; position: relative;">
+            <h5 style="font-weight: 800; color: #333;" id="modal-offer-name">অর্ডার কনফার্ম করুন</h5>
+            <p style="font-size: 13px; color: #777;">অফারটি পেতে আপনার মোবাইল নম্বর দিন</p>
+            
+            <input type="number" id="order-phone" placeholder="017XXXXXXXX" style="width: 100%; padding: 15px; border-radius: 15px; border: 1px solid #ddd; margin-bottom: 20px; outline: none; font-size: 18px; letter-spacing: 2px;">
+            
+            <div style="display: flex; gap: 10px;">
+                <button onclick="closeOrderPopup()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
+                <button onclick="confirmDriveOrder()" style="flex: 2; padding: 12px; border-radius: 12px; border: none; background: #17a2b8; color: white; font-weight: 800;">সাবমিট করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="p-topup" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #6610f2, #007bff); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
@@ -1343,23 +1835,367 @@
     </div>
 </div>
 
+<div id="p-vendor" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
 
+<div style="background: linear-gradient(90deg, #6c757d, #495057); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(108, 117, 125, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Vendorship Program</h5>
+        </div>
 
-
-
-
-
-<div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100;">
-    
-    <div style="display: flex; align-items: center;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-        <h6 style="margin: 0; margin-left: 15px; font-weight: 700; color: #2d3436; font-size: 17px;">Social Service</h6>
+        <div onclick="openVendorLogin()" style="cursor: pointer; padding: 5px;">
+            <i class="fas fa-lock" style="font-size: 18px; opacity: 0.9;"></i>
+        </div>
     </div>
+</div>
+
+
+    <div class="container mt-4">
+        <div style="background: white; border-radius: 15px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #6c757d; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <h6 style="font-weight: 800; color: #333; margin-bottom: 5px;">ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
+            <p style="font-size: 12px; color: #666; margin: 0;">নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন এবং ভেন্ডরশিপ এক্সেস নিন।</p>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+            
+            <label style="font-size: 13px; font-weight: 700; color: #444; margin-bottom: 10px; display: block;">ভেন্ডর টাইপ সিলেক্ট করুন:</label>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <label style="flex: 1; border: 2px solid #eee; padding: 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;" id="label-drive">
+                    <input type="radio" name="vendor_type" value="Drive Agent" style="display: none;" onclick="selectVendor('drive')">
+                    <i class="fas fa-car-side" style="display: block; font-size: 18px; margin-bottom: 5px;"></i>
+                    <span style="font-size: 11px; font-weight: 700;">ড্রাইভ এজেন্ট</span>
+                </label>
+                <label style="flex: 1; border: 2px solid #eee; padding: 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;" id="label-resell">
+                    <input type="radio" name="vendor_type" value="Reselling Agent" style="display: none;" onclick="selectVendor('resell')">
+                    <i class="fas fa-store" style="display: block; font-size: 18px; margin-bottom: 5px;"></i>
+                    <span style="font-size: 11px; font-weight: 700;">রিসেলিং এজেন্ট</span>
+                </label>
+            </div>
+
+            <div class="vendor-inputs">
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস নাম</label>
+                    <input type="text" id="v-bus-name" placeholder="আপনার দোকানের নাম" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস ডিটেইলস</label>
+                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের সার্ভিস দেন?" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none; height: 80px;"></textarea>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস এড্রেস</label>
+                    <input type="text" id="v-bus-addr" placeholder="আপনার বর্তমান ঠিকানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #666;">NID নম্বর</label>
+                    <input type="number" id="v-nid" placeholder="জাতীয় পরিচয়পত্র নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #666;">মোবাইল নম্বর</label>
+                    <input type="number" id="v-phone" placeholder="বিকাশ/নগদ নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+            </div>
+
+            <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #ff7675; margin-top: 10px; margin-bottom: 20px;">
+                <p style="margin: 0; font-size: 12px; color: #d63031; font-weight: 700; text-align: center;">
+                    <i class="fas fa-exclamation-circle me-1"></i> 
+                    নোটিশ: ভেন্ডরশিপ নেওয়ার জন্য ৫০০ টাকা অগ্রিম পেমেন্ট করতে হবে।
+                </p>
+            </div>
+
+            <button onclick="payVendorFee()" style="width: 100%; background: linear-gradient(90deg, #6c757d, #343a40); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                PAY NOW (৳ 500)
+            </button>
+        </div>
+
+        <p style="text-align: center; font-size: 11px; color: #aaa; margin-top: 20px;">পেমেন্ট করার পর ২৪ ঘণ্টার মধ্যে আপনার ভেন্ডর একাউন্ট একটিভ হবে।</p>
+    </div>
+</div>
+<div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #007bff, #00d2ff); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Micro Jobs</h5>
+            </div>
+            <div onclick="openMicroHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: #fff4e5; border-radius: 15px; padding: 12px; border-left: 5px solid #ffa000; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 12px; color: #856404; font-weight: 600;">
+                <i class="fas fa-bullhorn me-2"></i> নোটিশ: প্রতিটি কাজ সঠিকভাবে সম্পন্ন করুন এবং স্ক্রিনশট প্রুফ হিসেবে জমা দিন। ভুল প্রুফ দিলে একাউন্ট ব্লক হতে পারে।
+            </p>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <img src="https://via.placeholder.com/60" alt="Job" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; color: #333;">YouTube Subscribe</h6>
+                    <p style="margin: 0; font-size: 14px; color: #20c997; font-weight: 700;">৳ ২.৫০</p>
+                </div>
+                <button onclick="viewJob('https://youtube.com', 'YouTube Subscribe')" style="background: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 10px; font-size: 13px; font-weight: 700;">View</button>
+            </div>
+        </div>
+
+        <div id="job-submission-area" class="d-none" style="background: #fff; border-radius: 20px; padding: 20px; border: 1px dashed #007bff; margin-top: 20px;">
+            <h6 style="font-weight: 800; margin-bottom: 15px;" id="selected-job-name">কাজের প্রুফ জমা দিন</h6>
+            
+            <a id="work-link-btn" href="#" target="_blank" style="display: block; text-align: center; background: #f0f7ff; color: #007bff; text-decoration: none; padding: 10px; border-radius: 10px; font-weight: 700; margin-bottom: 15px; border: 1px solid #007bff;">
+                <i class="fas fa-external-link-alt me-2"></i> কাজের লিংকে যান
+            </a>
+
+            <label style="font-size: 13px; font-weight: 700; color: #555; display: block; margin-bottom: 8px;">কাজের স্ক্রিনশট দিন (Choose File):</label>
+            <input type="file" accept="image/*" style="width: 100%; padding: 10px; background: #f8f9fa; border-radius: 10px; border: 1px solid #ddd; font-size: 13px;">
+            
+            <button onclick="submitProof()" style="width: 100%; background: #20c997; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; margin-top: 15px; font-size: 15px;">SUBMIT PROOF</button>
+        </div>
+    </div>
+</div>
+<div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffbf0; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+<div style="background: linear-gradient(90deg, #ffc107, #ffb300); padding: 20px 15px; color: #212529; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Post a New Job</h5>
+        </div>
+
+        <div onclick="openJobHistory()" style="cursor: pointer; padding: 5px;">
+            <i class="fas fa-history" style="font-size: 18px; color: #212529;"></i>
+        </div>
+
+    </div>
+</div>
+
+    <div class="container mt-4">
+        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #ffeaa7;">
+            
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #555;">জব নাম (Job Title)</label>
+                <input type="text" id="job-title" placeholder="যেমন: YouTube Subscribe" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #555;">জব ডিটেইলস (Description)</label>
+                <textarea id="job-desc" placeholder="কাজের নিয়মাবলী লিখুন..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none; height: 80px;"></textarea>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #555;">জব লিংক (Proof Link)</label>
+                <input type="url" id="job-link" placeholder="https://..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+            </div>
+
+            <div class="row">
+                <div class="col-6" style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #555;">পার জব এমাউন্ট</label>
+                    <input type="number" id="per-job-cost" oninput="calculateTotalJobCost()" placeholder="৳ ২.০০" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+                <div class="col-6" style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #555;">টোটাল লিমিট</label>
+                    <input type="number" id="job-limit" oninput="calculateTotalJobCost()" placeholder="১০০ জন" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+            </div>
+
+            <div style="background: #fff9db; padding: 15px; border-radius: 12px; border: 1px dashed #ffc107; margin: 10px 0 20px; text-align: center;">
+                <span style="font-size: 13px; font-weight: 600; color: #856404;">মোট খরচ হবে: </span>
+                <span id="total-job-cost" style="font-size: 18px; font-weight: 800; color: #212529;">৳ ০.০০</span>
+            </div>
+
+            <button onclick="submitJobPost()" style="width: 100%; background: #ffc107; color: #212529; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 16px; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);">
+                SUBMIT JOB POST
+            </button>
+
+        </div>
+        <p style="text-align: center; font-size: 11px; color: #888; margin-top: 15px;">আপনার পোস্টটি সাবমিট করার পর এডমিন রিভিউ করে পাবলিশ করবে।</p>
+    </div>
+</div>
+<div id="p-leader" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #fd7e14, #f39c12); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(253, 126, 20, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Leadership Program</h5>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #ffeaa7; text-align: center;">
+            <h6 style="font-weight: 800; color: #333; margin-bottom: 10px;">আপনার বর্তমান রেফারাল স্ট্যাটাস</h6>
+            <div style="font-size: 28px; font-weight: 900; color: #fd7e14;" id="total-refers-count">০</div>
+            <p style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;">সফল রেফারাল সংখ্যা</p>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 1px solid #eee;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 45px; height: 45px; background: #fff4e5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fd7e14; font-size: 20px;">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="font-weight: 800; margin: 0;">Associate Leader</h6>
+                        <small style="color: #2ecc71; font-weight: 700;">Salary: ৳২,০০০</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="font-size: 11px; color: #555; display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>টার্গেট: ১০ জন</span>
+                <span id="p-assoc-text">0/10</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #f0f0f0; border-radius: 10px; margin-bottom: 15px;">
+                <div id="p-assoc-bar" style="width: 0%; height: 100%; background: #fd7e14; border-radius: 10px; transition: 0.5s;"></div>
+            </div>
+
+            <button onclick="applyLeadership('Associate Leader', 10)" id="btn-assoc" style="width: 100%; border: none; padding: 10px; border-radius: 12px; font-weight: 700; background: #eee; color: #aaa; cursor: not-allowed;">Apply Now</button>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 1.5px solid #fd7e14;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 45px; height: 45px; background: #fd7e14; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="font-weight: 800; margin: 0;">Ambassador Leader</h6>
+                        <small style="color: #2ecc71; font-weight: 700;">Salary: ৳৫,০০০</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; color: #555; display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>টার্গেট: ২০ জন</span>
+                <span id="p-amb-text">0/20</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #f0f0f0; border-radius: 10px; margin-bottom: 15px;">
+                <div id="p-amb-bar" style="width: 0%; height: 100%; background: #fd7e14; border-radius: 10px; transition: 0.5s;"></div>
+            </div>
+
+            <button onclick="applyLeadership('Ambassador Leader', 20)" id="btn-amb" style="width: 100%; border: none; padding: 10px; border-radius: 12px; font-weight: 700; background: #eee; color: #aaa; cursor: not-allowed;">Apply Now</button>
+        </div>
+
+        <div style="background: #1a1a2e; border-radius: 20px; padding: 20px; margin-bottom: 20px; color: white;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #f1c40f, #f39c12); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <h6 style="font-weight: 800; margin: 0;">Grand Ambassador</h6>
+                        <small style="color: #2ecc71; font-weight: 700;">Salary: ৳১০,০০০</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; color: #ccc; display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>টার্গেট: ৫০ জন</span>
+                <span id="p-grand-text">0/50</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 15px;">
+                <div id="p-grand-bar" style="width: 0%; height: 100%; background: #f1c40f; border-radius: 10px; transition: 0.5s;"></div>
+            </div>
+
+            <button onclick="applyLeadership('Grand Ambassador', 50)" id="btn-grand" style="width: 100%; border: none; padding: 10px; border-radius: 12px; font-weight: 700; background: rgba(255,255,255,0.1); color: #555; cursor: not-allowed;">Apply Now</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="p-target" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f9f9ff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #6610f2, #8e44ad); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(102, 16, 242, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Target Bonus</h5>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #6610f2; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <h6 style="font-weight: 800; color: #333; margin-bottom: 5px;">টার্গেট পূরণ করুন, বোনাস জিতুন! 🎁</h6>
+            <p style="font-size: 12px; color: #666; margin: 0;">নিচের টার্গেটগুলো সফলভাবে পূরণ করলেই বোনাস সরাসরি আপনার মেইন ব্যালেন্স যোগ হবে।</p>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; position: relative; overflow: hidden; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <div style="width: 45px; height: 45px; background: #f3eaff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #6610f2; font-size: 20px;">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div style="margin-left: 12px;">
+                    <h6 style="font-weight: 800; margin: 0; font-size: 15px;">Daily Referral Target</h6>
+                    <small style="color: #888;">আজকের বিশেষ অফার</small>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: #444; font-weight: 600;">আজকে ১০ জন মেম্বার রেফার করলে পাবেন <span style="color: #6610f2; font-weight: 800;">৫০০ টাকা</span> ইনস্ট্যান্ট বোনাস!</p>
+            <div style="width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-top: 10px;">
+                <div style="width: 0%; height: 100%; background: #6610f2; border-radius: 10px;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                <small style="font-weight: 700; color: #6610f2;">Target: 10 Refers</small>
+                <button onclick="claimBonus('ref10')" style="background: #6610f2; color: white; border: none; border-radius: 8px; padding: 5px 15px; font-size: 11px; font-weight: 700;">Claim Now</button>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <div style="width: 45px; height: 45px; background: #fff4e5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ff9800; font-size: 20px;">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div style="margin-left: 12px;">
+                    <h6 style="font-weight: 800; margin: 0; font-size: 15px;">Weekly Top Leader</h6>
+                    <small style="color: #888;">সাপ্তাহিক বোনাস</small>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: #444; font-weight: 600;">সপ্তাহে সর্বোচ্চ ৫০ জন রেফার করলে পাবেন <span style="color: #ff9800; font-weight: 800;">২০০০ টাকা</span> ক্যাশব্যাক!</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; background: #fcfcfc; padding: 10px; border-radius: 12px;">
+                <small style="color: #777;">অফার শেষ হবে: ৭ দিন পর</small>
+                <i class="fas fa-info-circle" style="color: #ccc;"></i>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <div style="width: 45px; height: 45px; background: #e3fcef; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #20c997; font-size: 20px;">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div style="margin-left: 12px;">
+                    <h6 style="font-weight: 800; margin: 0; font-size: 15px;">Micro-Job Target</h6>
+                    <small style="color: #888;">ডেইলি কাজের বোনাস</small>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: #444; font-weight: 600;">আজকে ১০০টি ভিডিও টাস্ক কমপ্লিট করলে পাবেন অতিরিক্ত <span style="color: #20c997; font-weight: 800;">১০০ টাকা</span> বোনাস!</p>
+            <button onclick="openPage('p-tasks')" style="width: 100%; margin-top: 10px; background: #20c997; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 700;">Start Tasks Now</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; padding: 20px;">
+            <p style="font-size: 11px; color: #aaa;">টার্গেট পূরণ হওয়ার পর অটোমেটিক বোনাস যোগ না হলে অ্যাডমিনের সাথে যোগাযোগ করুন।</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(58, 123, 213, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Social Service</h5>
+            </div>
 
     <div onclick="openPage('p-orders')" style="cursor: pointer; padding: 5px;">
         <i class="fas fa-history" style="font-size: 20px; color: #6c5ce7;"></i>
     </div>
+</div>
 </div>
    
     <div class="container mt-3" style="padding-bottom: 30px;">
@@ -1412,8 +2248,18 @@
     </div>
 </div>
 
-    <div id="p-fund" class="clean-page">
-        <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-fund')"></i>Add Money</h5>
+<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #00b894, #55efc4); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0, 184, 148, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center;">
+            
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Add Money</h5>
+            
+        </div>
+    </div>
+
+    
         <div class="row g-2 mb-4">
             <div class="col-4"><div class="srv-btn py-3 shadow-sm border m-active-bkash" id="m-Bkash" onclick="selectMethod('Bkash')"><i class="fas fa-mobile-alt mb-1" style="color: var(--bkash)"></i><div style="font-size: 10px; font-weight: 600;">Bkash</div></div></div>
             <div class="col-4"><div class="srv-btn py-3 shadow-sm border" id="m-Nagad" onclick="selectMethod('Nagad')"><i class="fas fa-mobile-alt mb-1" style="color: var(--nagad)"></i><div style="font-size: 10px; font-weight: 600;">Nagad</div></div></div>
@@ -1435,17 +2281,77 @@
         <div id="fund-hist-list"></div>
     </div>
 
+<div id="p-more" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #e83e8c, #fd79a8); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(232, 62, 140, 0.2);">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">More Options</h5>
+        </div>
+    </div>
 
+    <div class="container mt-4 text-center">
+        <div style="width: 100px; height: 100px; background: #fff0f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #e83e8c; font-size: 40px; border: 2px dashed #e83e8c;">
+            <i class="fas fa-rocket animate__animated animate__bounce infinite"></i>
+        </div>
+
+        <h4 style="font-weight: 800; color: #333;">আমাদের ভবিষ্যৎ পরিকল্পনা</h4>
+        <p style="font-size: 14px; color: #666; line-height: 1.6; padding: 0 10px;">
+            আমাদের প্ল্যাটফর্মে আরও অনেক নতুন এবং চমৎকার সব ফিচার আসতে চলছে। আমরা প্রতিনিয়ত নতুন নতুন প্রজেক্ট নিয়ে কাজ করছি যা আপনাদের ডিজিটাল অভিজ্ঞতাকে আরও সহজ করবে।
+        </p>
+
+        <div style="background: #f8f9fa; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px; color: #e83e8c;">
+                <i class="fas fa-lightbulb me-2"></i>
+                <h6 style="margin: 0; font-weight: 700;">আইডিয়া দিতে চান?</h6>
+            </div>
+            <p style="font-size: 13px; color: #777; margin-bottom: 15px;">
+                আপনার কাছে যদি ইউনিক কোনো প্রজেক্টের আইডিয়া থাকে বা আপনি নতুন কিছু দেখতে চান, তবে আমাদের সরাসরি জানান।
+            </p>
+            
+            <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="display: flex; align-items: center; justify-content: center; background: #0088cc; color: white; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);">
+                <i class="fab fa-telegram-plane me-2" style="font-size: 20px;"></i>
+                এডমিনের টেলিগ্রামে যোগাযোগ করুন
+            </a>
+        </div>
+
+        <div style="margin-top: 30px; text-align: left;">
+            <h6 style="font-weight: 800; color: #333; margin-left: 5px;">Upcoming Projects</h6>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                <div style="background: white; padding: 12px; border-radius: 12px; border-left: 4px solid #e83e8c; box-shadow: 0 2px 5px rgba(0,0,0,0.03); display: flex; align-items: center;">
+                    <i class="fas fa-gamepad me-3" style="color: #e83e8c;"></i>
+                    <span style="font-size: 13px; font-weight: 600;">E-Sports Gaming Tournament</span>
+                </div>
+                <div style="background: white; padding: 12px; border-radius: 12px; border-left: 4px solid #e83e8c; box-shadow: 0 2px 5px rgba(0,0,0,0.03); display: flex; align-items: center;">
+                    <i class="fas fa-shopping-cart me-3" style="color: #e83e8c;"></i>
+                    <span style="font-size: 13px; font-weight: 600;">Digital Product Marketplace</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
     <div id="p-orders" class="clean-page">
-        <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-orders')"></i>অর্ডার হিস্টোরি</h5>
+        <h5 class="fw-bold mb-4"><i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('p-orders')"></i>Order History</h5>
         <div id="order-hist-list"></div>
     </div>
 
-    <div id="p-support" class="clean-page">
-    <div class="d-flex align-items-center mb-3">
-        <i class="fas fa-arrow-left me-3 fs-4" onclick="closePage('p-support')" style="cursor: pointer;"></i>
-        <h5 class="fw-bold mb-0">সাপোর্ট সেন্টার</h5>
-    </div>
+  <div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(90deg, #4834d4, #686de0); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(72, 52, 212, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">সাপোর্ট সেন্টার</h5>
+            </div>
+            </div>
+
+
+
+        </div>
+   
+
 
     <div class="bg-light-warning p-3 rounded-4 mb-3 border-start border-4 border-warning" style="background-color: #fff9e6;">
         <p class="mb-0" style="font-size: 13px; color: #856404;">
@@ -1486,19 +2392,25 @@
 
 </div>
 
-<div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
+<div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="display: flex; flex-direction: column; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
-        <div style="display: flex; align-items: center; padding: 15px;">
-            <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h6 style="margin: 0; margin-left: 15px; font-weight: 700;">আমাদের কোর্সসমূহ</h6>
+    <div style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">আমাদের কোর্সসমূহ</h5>
+            </div>
+
+            <div onclick="openCourseHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-book-reader" style="font-size: 18px; color: white;"></i>
+            </div>
+
         </div>
+
         
-        <div style="background: #fff5e6; padding: 5px 15px; border-top: 1px solid #ffe0b3;">
-            <marquee style="font-size: 12px; color: #d35400; font-weight: 600;">
-                📢 বিশেষ অফার: যেকোনো কোর্স কিনলেই পাচ্ছেন আজীবনের জন্য সাপোর্ট।
-            </marquee>
-        </div>
+        
+        
     </div>
 
     <div class="container mt-3" id="course-list">
@@ -2851,6 +3763,254 @@ setTimeout(() => {
     }
 }, 3000); // ৩ সেকেন্ড পর স্ক্রিনটি চলে যাবে
 
+
+function orderDigital(serviceName, price) {
+    const balEle = document.getElementById('u-bal'); // ব্যালেন্স আইডির সাথে মিলান
+    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance < price) {
+        return alert("আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। অনুগ্রহ করে ডিপোজিট করুন।");
+    }
+
+    // কনফার্মেশন প্রম্পট
+    let confirmOrder = confirm(serviceName + " অর্ডার করতে চান? ৳" + price + " কাটা হবে।");
+    
+    if (confirmOrder) {
+        // ব্যালেন্স আপডেট
+        let newBalance = currentBalance - price;
+        balEle.innerText = newBalance.toFixed(2);
+        
+        // লোকাল স্টোরেজে ব্যালেন্স সেভ
+        const userId = localStorage.getItem('logged_in_user_id') || 'guest';
+        localStorage.setItem(`balance_${userId}`, newBalance.toFixed(2));
+
+        // অর্ডার ডাটা সেভ (হিস্টোরির জন্য)
+        const orderData = {
+            service: serviceName,
+            price: price,
+            time: new Date().toLocaleString(),
+            status: 'Pending',
+            trId: "DIGI" + Math.floor(Math.random() * 900000 + 100000)
+        };
+
+        // ডিজিটাল অর্ডার হিস্টোরি সেভ করা
+        let digiHistory = JSON.parse(localStorage.getItem(`digital_orders_${userId}`) || "[]");
+        digiHistory.unshift(orderData);
+        localStorage.setItem(`digital_orders_${userId}`, JSON.stringify(digiHistory));
+
+        alert("আপনার অর্ডারটি সফল হয়েছে! এডমিন খুব শীঘ্রই আপনার ইমেইলে সার্ভিসটি পাঠিয়ে দিবে।");
+    }
+}
+// ভেন্ডর টাইপ সিলেকশন হাইলাইট
+function selectVendor(type) {
+    const driveLabel = document.getElementById('label-drive');
+    const resellLabel = document.getElementById('label-resell');
+
+    if (type === 'drive') {
+        driveLabel.style.borderColor = '#6c757d';
+        driveLabel.style.background = '#f8f9fa';
+        resellLabel.style.borderColor = '#eee';
+        resellLabel.style.background = 'transparent';
+    } else {
+        resellLabel.style.borderColor = '#6c757d';
+        resellLabel.style.background = '#f8f9fa';
+        driveLabel.style.borderColor = '#eee';
+        driveLabel.style.background = 'transparent';
+    }
+}
+
+// পেমেন্ট ফাংশন
+function payVendorFee() {
+    const name = document.getElementById('v-bus-name').value;
+    const phone = document.getElementById('v-phone').value;
+    const nid = document.getElementById('v-nid').value;
+
+    if (!name || !phone || !nid) {
+        return alert("অনুগ্রহ করে সব তথ্য সঠিক ভাবে পূরণ করুন!");
+    }
+
+    const balEle = document.getElementById('u-bal'); // আপনার মেইন ব্যালেন্স এলিমেন্ট আইডি
+    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance < 500) {
+        return alert("আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। ভেন্ডরশিপের জন্য ৫০০ টাকা প্রয়োজন।");
+    }
+
+    let confirmPay = confirm("আপনি কি ৫০০ টাকা পেমেন্ট করে ভেন্ডরশিপের জন্য আবেদন করতে চান?");
+    if (confirmPay) {
+        // ব্যালেন্স কাটা
+        let newBalance = currentBalance - 500;
+        balEle.innerText = newBalance.toLocaleString();
+        
+        // এখানে আপনি আপনার এডমিন প্যানেলে বা ডাটাবেজে ডাটা পাঠাতে পারেন
+        alert("আপনার পেমেন্ট সফল হয়েছে! আবেদনটি অ্যাডমিনের কাছে পাঠানো হয়েছে।");
+        openPage('p-home');
+    }
+}
+// মোট খরচ হিসাব করার ফাংশন
+function calculateTotalJobCost() {
+    const perJob = parseFloat(document.getElementById('per-job-cost').value) || 0;
+    const limit = parseInt(document.getElementById('job-limit').value) || 0;
+    const total = perJob * limit;
+    
+    document.getElementById('total-job-cost').innerText = "৳ " + total.toFixed(2);
+    return total;
+}
+
+// জব সাবমিট করার ফাংশন
+function submitJobPost() {
+    const title = document.getElementById('job-title').value;
+    const desc = document.getElementById('job-desc').value;
+    const link = document.getElementById('job-link').value;
+    const totalCost = calculateTotalJobCost();
+
+    if (!title || !desc || !link || totalCost <= 0) {
+        return alert("অনুগ্রহ করে সব তথ্য সঠিক ভাবে পূরণ করুন!");
+    }
+
+    const balEle = document.getElementById('u-bal'); // মেইন ব্যালেন্সের আইডি
+    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance < totalCost) {
+        return alert("আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। আপনার খরচ হবে ৳" + totalCost);
+    }
+
+    let confirmPost = confirm(`আপনার একাউন্ট থেকে ৳${totalCost} কেটে নেওয়া হবে। আপনি কি নিশ্চিত?`);
+    
+    if (confirmPost) {
+        // ব্যালেন্স আপডেট
+        let newBalance = currentBalance - totalCost;
+        balEle.innerText = newBalance.toLocaleString();
+        
+        // এখানে ডাটাবেজে ডাটা পাঠানোর কোড হবে (অথবা লোকাল স্টোরেজ)
+        alert("জব পোস্টটি সফলভাবে সাবমিট হয়েছে! এডমিন অনুমোদনের পর এটি লাইভ হবে।");
+        
+        // ফর্ম রিসেট
+        document.getElementById('job-title').value = "";
+        document.getElementById('job-desc').value = "";
+        document.getElementById('job-link').value = "";
+        document.getElementById('per-job-cost').value = "";
+        document.getElementById('job-limit').value = "";
+        document.getElementById('total-job-cost').innerText = "৳ ০.০০";
+        
+        openPage('p-home');
+    }
+}
+// ১. জব ভিউ করার ফাংশন
+function viewJob(link, name) {
+    // সাবমিশন এরিয়া শো করবে
+    document.getElementById('job-submission-area').classList.remove('d-none');
+    
+    // ডাটা সেট করা
+    document.getElementById('selected-job-name').innerText = "প্রুফ জমা দিন: " + name;
+    document.getElementById('work-link-btn').href = link;
+    
+    // পেজ স্ক্রল করে নিচে নিয়ে যাবে
+    document.getElementById('job-submission-area').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ২. প্রুফ সাবমিট করার ফাংশন
+function submitProof() {
+    alert("আপনার প্রুফটি সফলভাবে জমা হয়েছে! এডমিন এটি যাচাই করে ব্যালেন্স যোগ করে দিবে।");
+    document.getElementById('job-submission-area').classList.add('d-none');
+    openPage('p-home');
+}
+
+// ৩. হিস্টোরি দেখার ফাংশন
+function openMicroHistory() {
+    alert("আপনার মাইক্রো জব হিস্টোরি শীঘ্রই আসছে!");
+}
+// ১. ড্রাইভ ফিল্টার ফাংশন
+function filterDrive(operator) {
+    const cards = document.querySelectorAll('.drive-card');
+    cards.forEach(card => {
+        if (operator === 'all' || card.classList.contains(operator)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// ২. পপআপ ওপেন ফাংশন
+let currentOffer = "";
+let currentPrice = 0;
+
+function showOrderPopup(name, price) {
+    currentOffer = name;
+    currentPrice = price;
+    document.getElementById('modal-offer-name').innerText = name + " - ৳" + price;
+    document.getElementById('order-modal').classList.remove('d-none');
+}
+
+// ৩. পপআপ ক্লোজ ফাংশন
+function closeOrderPopup() {
+    document.getElementById('order-modal').classList.add('d-none');
+}
+
+// ৪. অর্ডার কনফার্ম ফাংশন
+function confirmDriveOrder() {
+    const phone = document.getElementById('order-phone').value;
+    if (phone.length < 11) {
+        return alert("সঠিক মোবাইল নম্বর দিন!");
+    }
+
+    alert(`আপনার অর্ডারটি সফল হয়েছে!\nঅফার: ${currentOffer}\nনম্বর: ${phone}\n৳${currentPrice} আপনার ব্যালেন্স থেকে কেটে নেওয়া হবে।`);
+    closeOrderPopup();
+    openPage('p-home');
+}
+
+function openDriveHistory() {
+    alert("আপনার ড্রাইভ অর্ডার হিস্টোরি শীঘ্রই আসছে!");
+}
+// ১. প্রোডাক্ট ফিল্টারিং
+function filterShop(category) {
+    const items = document.querySelectorAll('.shop-item');
+    items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// ২. প্রোডাক্ট ভিউ ওপেন
+function viewProduct(title, price, desc, img) {
+    document.getElementById('view-title').innerText = title;
+    document.getElementById('view-price').innerText = "৳ " + price;
+    document.getElementById('view-desc').innerText = desc;
+    document.getElementById('view-img').src = img;
+    document.getElementById('view-modal').classList.remove('d-none');
+}
+
+function closeProduct() {
+    document.getElementById('view-modal').classList.add('d-none');
+}
+
+// ৩. অর্ডার ফর্ম হ্যান্ডলিং
+function showOrderForm() {
+    document.getElementById('shop-order-modal').classList.remove('d-none');
+}
+
+function closeOrderForm() {
+    document.getElementById('shop-order-modal').classList.add('d-none');
+}
+
+function submitShopOrder() {
+    const name = document.getElementById('o-name').value;
+    const phone = document.getElementById('o-phone').value;
+    
+    if(!name || !phone) return alert("দয়া করে নাম এবং নম্বর দিন!");
+    
+    alert("আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। শীঘ্রই আমাদের প্রতিনিধি যোগাযোগ করবেন।");
+    closeOrderForm();
+    closeProduct();
+}
+
+function openShopHistory() {
+    alert("আপনার শপিং হিস্টোরি শীঘ্রই আসছে!");
+}
 </script>
 </body>
 </html>
