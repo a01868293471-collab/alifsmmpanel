@@ -2484,7 +2484,49 @@ function checkPurchased() {
 function closeBuyModal() {
     document.getElementById('buy-modal').classList.add('d-none');
 }
+// ১. পেজ লোড হওয়ার সময় সেভ করা ব্যালেন্স চেক করা
+document.addEventListener('DOMContentLoaded', () => {
+    const balEle = document.getElementById('u-bal'); // আপনার ব্যালেন্স আইডি যদি অন্য হয় তবে সেটি দিন
+    const savedBalance = localStorage.getItem('user_balance');
 
+    if (savedBalance !== null) {
+        // যদি আগে টাকা কাটা হয়ে থাকে, তবে সেই সেভ করা ব্যালেন্স দেখাবে
+        balEle.innerText = parseFloat(savedBalance).toFixed(2);
+    }
+});
+
+// ২. কোর্স কেনার ফাংশন (যেখানে টাকা কাটে)
+function processOrder(id, price) {
+    const balEle = document.getElementById('u-bal');
+    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance >= price) {
+        // নতুন ব্যালেন্স হিসাব
+        let newBalance = currentBalance - price;
+        
+        // স্ক্রিনে আপডেট করা
+        balEle.innerText = newBalance.toFixed(2);
+        
+        // *** সবথেকে গুরুত্বপূর্ণ: ব্রাউজারের মেমরিতে সেভ করা ***
+        localStorage.setItem('user_balance', newBalance);
+
+        // কোর্স কেনার লিস্ট সেভ করা (যাতে বারবার কিনতে না হয়)
+        savePurchasedCourse(id);
+        
+        alert("কোর্সটি সফলভাবে কেনা হয়েছে!");
+        location.reload(); // পেজ রিফ্রেশ দিলেও এখন আর ব্যালেন্স বাড়বে না
+    } else {
+        alert("আপনার পর্যাপ্ত ব্যালেন্স নেই!");
+    }
+}
+
+function savePurchasedCourse(id) {
+    let myCourses = JSON.parse(localStorage.getItem('bought_courses') || "[]");
+    if(!myCourses.includes(id)) {
+        myCourses.push(id);
+        localStorage.setItem('bought_courses', JSON.stringify(myCourses));
+    }
+}
 </script>
 </body>
 </html>
