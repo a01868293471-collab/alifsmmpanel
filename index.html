@@ -697,6 +697,112 @@
     font-weight: 800;
     letter-spacing: 1px;
 }
+.course-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.course-img { width: 100%; height: 160px; object-fit: cover; }
+.course-details { padding: 15px; }
+.course-details h6 { font-weight: bold; margin-bottom: 5px; color: #333; }
+.course-details p { font-size: 11px; color: #777; }
+.course-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.course-price { color: #6c5ce7; font-weight: 800; font-size: 16px; }
+
+.buy-btn, .view-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+.buy-btn { background: #6c5ce7; color: white; }
+.view-btn { background: #00b894; color: white; }
+
+/* Modal Design */
+.custom-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2000;
+}
+.modal-content {
+    background: white; padding: 25px; border-radius: 20px;
+    width: 85%; max-width: 320px; text-align: center;
+}
+.modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+.modal-btns button { flex: 1; padding: 10px; border-radius: 10px; border: none; font-weight: bold; }
+.btn-no { background: #eee; color: #333; }
+.btn-yes { background: #6c5ce7; color: white; }
+/* কোর্স কার্ডের মূল ডিজাইন */
+.course-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 15px auto; /* কার্ডগুলো মাঝখানে রাখার জন্য */
+    border: 1px solid #eee;
+    width: 92%; /* মোবাইল স্ক্রিনে সুন্দর দেখাবে */
+    display: block;
+}
+
+.course-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.course-details {
+    padding: 15px;
+    text-align: left;
+}
+
+.course-details h6 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+}
+
+.course-details p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* ফুটার এবং প্রাইস সেকশন */
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f5f5f5;
+    padding-top: 10px;
+}
+
+.course-price {
+    color: #6c5ce7;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+/* বাটন ডিজাইন */
+.buy-btn, .view-btn {
+    background: #00b894; /* আপনার স্ক্রিনশটের সবুজ কালার */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 </style>
 
 
@@ -1126,32 +1232,157 @@
 </div>
 
 </div>
+
 <div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
     
-    <div style="display: flex; align-items: center; padding: 15px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer;" onclick="openPage('p-home')"></i>
-        <h6 style="margin: 0; margin-left: 15px; font-weight: 700;">আমাদের কোর্সসমূহ</h6>
+    <div style="display: flex; flex-direction: column; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <div style="display: flex; align-items: center; padding: 15px;">
+            <i class="fas fa-arrow-left" style="font-size: 18px; color: #333; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <h6 style="margin: 0; margin-left: 15px; font-weight: 700;">আমাদের কোর্সসমূহ</h6>
+        </div>
+        
+        <div style="background: #fff5e6; padding: 5px 15px; border-top: 1px solid #ffe0b3;">
+            <marquee style="font-size: 12px; color: #d35400; font-weight: 600;">
+                📢 বিশেষ অফার: যেকোনো কোর্স কিনলেই পাচ্ছেন আজীবনের জন্য সাপোর্ট।
+            </marquee>
+        </div>
     </div>
 
-    <div class="container mt-3">
-        <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px;">
-            <img src="https://img.freepik.com/free-vector/online-courses-concept_23-2148533386.jpg" style="width: 100%; height: 150px; object-fit: cover;">
-            <div style="padding: 15px;">
-                <h6 style="font-weight: bold; margin-bottom: 5px;">প্রফেশনাল ডিজিটাল মার্কেটিং</h6>
-                <p style="font-size: 11px; color: #777;">শিখুন কিভাবে ঘরে বসে ইনকাম করবেন।</p>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                    <span style="color: #6c5ce7; font-weight: 800;">৳ ৫০০.০০</span>
-                    <button class="btn btn-sm" style="background: #6c5ce7; color: white; border-radius: 8px; font-size: 12px;">Buy Now</button>
+    <div class="container mt-3" id="course-list">
+        
+        <div class="course-card" id="course-1" data-price="500" data-video="https://youtube.com/link1">
+            <img src="https://img.freepik.com/free-vector/online-courses-concept_23-2148533386.jpg" class="course-img">
+            <div class="course-details">
+                <h6>প্রফেশনাল ডিজিটাল মার্কেটিং</h6>
+                <p>শিখুন কিভাবে ঘরে বসে ইনকাম করবেন।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">500.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(1)">Buy Now</button></div>
                 </div>
             </div>
         </div>
-        
-        <p class="text-center mt-5" style="color: #aaa; font-size: 13px;">নতুন কোর্স খুব শীঘ্রই আসছে...</p>
+
+        <div class="course-card" id="course-2" data-price="1000" data-video="https://youtube.com/link2">
+            <img src="https://img.freepik.com/free-vector/web-development-concept-with-programmer-working_23-2148817036.jpg" class="course-img">
+            <div class="course-details">
+                <h6>ওয়েব ডেভেলপমেন্ট মাস্টারক্লাস</h6>
+                <p>জিরো থেকে হিরো হন ওয়েব ডিজাইনে।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">1000.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(2)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-3" data-price="700" data-video="https://youtube.com/link3">
+            <img src="https://img.freepik.com/free-vector/graphic-design-creative-concept_23-2148673646.jpg" class="course-img">
+            <div class="course-details">
+                <h6>বেসিক গ্রাফিক ডিজাইন</h6>
+                <p>ফটোশপ ও ইলাস্ট্রেটর এর শুরু থেকে শেষ।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">700.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(3)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-4" data-price="600" data-video="https://youtube.com/link4">
+            <img src="https://img.freepik.com/free-vector/video-editing-concept-illustration_114360-6311.jpg" class="course-img">
+            <div class="course-details">
+                <h6>প্রফেশনাল ভিডিও এডিটিং</h6>
+                <p>মোবাইল ও পিসি দিয়ে এডিটিং শিখুন।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">600.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(4)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-5" data-price="850" data-video="https://youtube.com/link5">
+            <img src="https://img.freepik.com/free-vector/seo-optimization-concept-illustration_114360-5766.jpg" class="course-img">
+            <div class="course-details">
+                <h6>এসইও এক্সপার্ট গাইড</h6>
+                <p>আপনার ওয়েবসাইটকে গুগলে র‍্যাঙ্ক করান।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">850.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(5)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-6" data-price="450" data-video="https://youtube.com/link6">
+            <img src="https://img.freepik.com/free-vector/youtube-vlogger-concept-illustration_114360-2394.jpg" class="course-img">
+            <div class="course-details">
+                <h6>ইউটিউব চ্যানেল মাস্টারক্লাস</h6>
+                <p>ইউটিউব থেকে আয়ের সব গোপন ট্রিকস।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">450.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(6)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-7" data-price="550" data-video="https://youtube.com/link7">
+            <img src="https://img.freepik.com/free-vector/facebook-ads-concept-illustration_114360-3162.jpg" class="course-img">
+            <div class="course-details">
+                <h6>ফেসবুক এডস মাস্টারক্লাস</h6>
+                <p>টার্গেটেড কাস্টমার পাওয়ার সেরা উপায়।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">550.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(7)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-8" data-price="1200" data-video="https://youtube.com/link8">
+            <img src="https://img.freepik.com/free-vector/affiliate-marketing-concept-illustration_114360-5621.jpg" class="course-img">
+            <div class="course-details">
+                <h6>এডভান্স সিপিএ মার্কেটিং</h6>
+                <p>সিপিএ মার্কেটিং করে আর্নিং শুরু করুন।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">1200.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(8)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-9" data-price="2000" data-video="https://youtube.com/link9">
+            <img src="https://img.freepik.com/free-vector/app-development-concept-illustration_114360-5110.jpg" class="course-img">
+            <div class="course-details">
+                <h6>অ্যান্ড্রয়েড অ্যাপ মেকিং</h6>
+                <p>নিজে মোবাইল অ্যাপ্লিকেশন তৈরি করুন।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">2000.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(9)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" id="course-10" data-price="300" data-video="https://youtube.com/link10">
+            <img src="https://img.freepik.com/free-vector/freelancer-working-laptop-her-house_23-2148466974.jpg" class="course-img">
+            <div class="course-details">
+                <h6>সফল ফ্রিল্যান্সিং ক্যারিয়ার</h6>
+                <p>মার্কেটপ্লেসে সফল হওয়ার গাইডলাইন।</p>
+                <div class="course-footer">
+                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">300.00</span></span>
+                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(10)">Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center mt-4 pb-5" style="color: #aaa; font-size: 13px;">নতুন কোর্স খুব শীঘ্রই আসছে...</p>
+
+    </div> </div> <div id="buy-modal" class="custom-modal d-none">
+    <div class="modal-content">
+        <h4>নিশ্চিত করুন</h4>
+        <p id="modal-text">আপনি কি এই কোর্সটি কিনতে চান?</p>
+        <div class="modal-btns">
+            <button class="btn-no" onclick="closeBuyModal()">না</button>
+            <button class="btn-yes" id="confirm-buy-btn">হ্যাঁ, কিনুন</button>
+        </div>
     </div>
 </div>
-
-
-<div class="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eee; z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+ <div ="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eee; z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
     
     <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
         <i class="fas fa-home" style="font-size: 20px; color: #6c5ce7;"></i>
@@ -2088,6 +2319,170 @@ function openPage(pageId) {
     } else {
         console.error("ID খুঁজে পাওয়া যায়নি: " + pageId);
     }
+}
+// ১. পপআপ ওপেন করা
+function confirmPurchase(courseId) {
+    const courseCard = document.getElementById(`course-${courseId}`);
+    const price = parseFloat(courseCard.getAttribute('data-price'));
+    const courseName = courseCard.querySelector('h6').innerText;
+
+    // পপআপের টেক্সট সেট করা
+    document.getElementById('modal-text').innerHTML = `
+        <b style="color:#6c5ce7;">${courseName}</b><br>
+        এই কোর্সটি কিনতে আপনার একাউন্ট থেকে <b>৳${price}</b> কেটে নেওয়া হবে।
+    `;
+
+    // পপআপ দেখানো
+    document.getElementById('buy-modal').classList.remove('d-none');
+
+    // "হ্যাঁ, কিনুন" বাটনে ফাংশন সেট করা
+    const confirmBtn = document.getElementById('confirm-buy-btn');
+    confirmBtn.onclick = function() {
+        executePurchase(courseId, price);
+    };
+}
+
+// ২. টাকা কাটা এবং কোর্স কনফার্ম করা
+function executePurchase(id, price) {
+    const balValueEle = document.getElementById('u-bal'); // ব্যালেন্সের সংখ্যা (0.00)
+    
+    // বর্তমান ব্যালেন্স নেওয়া
+    let currentBalance = parseFloat(balValueEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance >= price) {
+        // ১. নতুন ব্যালেন্স সেট করা
+        let newBalance = currentBalance - price;
+        balValueEle.innerText = newBalance.toFixed(2);
+
+        // ২. সফলতার মেসেজ
+        alert("অভিনন্দন! কোর্সটি সফলভাবে কেনা হয়েছে।");
+        
+        // ৩. লোকাল স্টোরেজে সেভ করা এবং বাটন চেঞ্জ করা
+        savePurchase(id);
+        renderPurchasedUI(id);
+        closeBuyModal();
+    } else {
+        alert("দুঃখিত! আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। টাকা লোড করুন।");
+        closeBuyModal();
+    }
+}
+
+// ৩. বাটন পরিবর্তন করে "কোর্স ভিডিও দেখুন" করা
+function renderPurchasedUI(id) {
+    const courseCard = document.getElementById(`course-${id}`);
+    if (!courseCard) return;
+
+    const actionArea = courseCard.querySelector('.action-area');
+    
+    // এখানে আপনার ভিডিও পেজের বা ইউটিউব প্লেলিস্টের লিংক দিতে পারেন
+    const videoPageLink = "video_page.html?id=" + id; 
+
+    actionArea.innerHTML = `
+        <button class="view-btn" onclick="window.location.href='${videoPageLink}'" style="background:#00b894; color:white; width:100%; border:none; padding:8px; border-radius:8px;">
+            <i class="fas fa-play-circle"></i> কোর্স ভিডিও দেখুন
+        </button>
+    `;
+}
+
+// ৪. কেনা কোর্স সেভ করে রাখা
+function savePurchase(id) {
+    let list = JSON.parse(localStorage.getItem('my_bought_courses') || "[]");
+    if(!list.includes(id)) {
+        list.push(id);
+        localStorage.setItem('my_bought_courses', JSON.stringify(list));
+    }
+}
+
+// ৫. পেজ লোড হলে চেক করা কোনগুলো কেনা আছে
+window.addEventListener('DOMContentLoaded', () => {
+    let list = JSON.parse(localStorage.getItem('my_bought_courses') || "[]");
+    list.forEach(id => {
+        renderPurchasedUI(id);
+    });
+});
+
+// পপআপ বন্ধ করা
+function closeBuyModal() {
+    document.getElementById('buy-modal').classList.add('d-none');
+}
+let selectedCourseId = null;
+// ১. পেজ লোড হওয়ার সময় সেভ করা ব্যালেন্স চেক করা
+window.addEventListener('DOMContentLoaded', () => {
+    const balEle = document.getElementById('u-bal');
+    
+    // ব্রাউজারে আগে থেকে কোনো সেভ করা ব্যালেন্স আছে কি না দেখা
+    const savedBalance = localStorage.getItem('user_current_balance');
+    
+    if (savedBalance !== null) {
+        // যদি সেভ করা থাকে, তবে রিফ্রেশ দিলেও সেই ব্যালেন্স দেখাবে
+        balEle.innerText = parseFloat(savedBalance).toFixed(2);
+    } else {
+        // যদি সেভ করা না থাকে (প্রথমবার), তবে আপনার HTML এ যা আছে তা সেভ করে নিবে
+        let initialBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+        localStorage.setItem('user_current_balance', initialBalance);
+    }
+    
+    // কেনা কোর্সগুলো চেক করা
+    checkPurchased();
+});
+
+// ২. টাকা কাটা এবং নতুন ব্যালেন্স সেভ করা
+function processOrder(id, price) {
+    const balEle = document.getElementById('u-bal');
+    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
+
+    if (currentBalance >= price) {
+        // নতুন ব্যালেন্স হিসাব করা
+        let newBalance = currentBalance - price;
+        
+        // স্ক্রিনে ব্যালেন্স আপডেট করা
+        balEle.innerText = newBalance.toFixed(2);
+        
+        // *** অতি জরুরি: ব্রাউজারের মেমরিতে (LocalStorage) নতুন ব্যালেন্স সেভ করা ***
+        localStorage.setItem('user_current_balance', newBalance);
+
+        alert("সফলভাবে কেনা হয়েছে!");
+        
+        // কেনা কোর্সের লিস্ট সেভ করা
+        savePurchaseStatus(id);
+        checkPurchased();
+        closeBuyModal();
+    } else {
+        alert("দুঃখিত! আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই।");
+        closeBuyModal();
+    }
+}
+
+// ৩. কোর্স কেনার স্ট্যাটাস সেভ করা
+function savePurchaseStatus(id) {
+    let purchased = JSON.parse(localStorage.getItem('my_courses') || "[]");
+    if(!purchased.includes(id.toString())) {
+        purchased.push(id.toString());
+        localStorage.setItem('my_courses', JSON.stringify(purchased));
+    }
+}
+
+// ৪. কেনা কোর্সগুলো চেক করে বাটন বদলানো
+function checkPurchased() {
+    let purchased = JSON.parse(localStorage.getItem('my_courses') || "[]");
+    purchased.forEach(id => {
+        const card = document.getElementById(`course-${id}`);
+        if(card) {
+            const link = card.getAttribute('data-video');
+            const actionArea = card.querySelector('.action-area');
+            if(actionArea) {
+                actionArea.innerHTML = `
+                    <button onclick="window.open('${link}', '_blank')" style="background:#ff0000; color:white; border:none; padding:6px 15px; border-radius:8px; font-size:12px; font-weight:bold; width:100%;">
+                        <i class="fab fa-youtube"></i> ইউটিউব থেকে দেখুন
+                    </button>
+                `;
+            }
+        }
+    });
+}
+
+function closeBuyModal() {
+    document.getElementById('buy-modal').classList.add('d-none');
 }
 
 </script>
