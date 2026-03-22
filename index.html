@@ -868,6 +868,123 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
+/* মেথড কার্ড ডিজাইন */
+.method-card {
+    background: #fff;
+    padding: 15px 10px;
+    border-radius: 18px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: 0.3s all ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.method-card span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 8px;
+    color: #636e72;
+}
+
+.active-method {
+    border-color: #6c5ce7;
+    background: #f0eeff;
+    transform: translateY(-5px);
+}
+
+/* নাম্বার বক্স */
+.info-card {
+    background: #fff;
+    border-radius: 20px;
+    border-left: 5px solid #6c5ce7;
+}
+
+.number-box {
+    background: #f1f2f6;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #2d3436;
+}
+
+.copy-badge {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ইনপুট ফিল্ড স্টাইল */
+.input-section {
+    background: #fff;
+    border-radius: 25px;
+}
+
+.input-group-custom label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #636e72;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 15px;
+    color: #6c5ce7;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1.5px solid #f1f2f6;
+    border-radius: 12px;
+    background: #fdfdff;
+    outline: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.input-wrapper input:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 10px rgba(108, 92, 231, 0.1);
+}
+
+/* সাবমিট বাটন */
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, #6c5ce7, #0984e3);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+    transition: 0.3s;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
 
     </style>
 </head>
@@ -2327,38 +2444,81 @@
     </div>
 </div>
 
-<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 100px;">
     
-    <div style="background: linear-gradient(90deg, #00b894, #55efc4); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0, 184, 148, 0.2); position: sticky; top: 0; z-index: 101;">
-        <div style="display: flex; align-items: center;">
-            
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Add Money</h5>
-            
+    <div style="background: linear-gradient(135deg, #6c5ce7, #0984e3); padding: 30px 20px; color: white; border-radius: 0 0 30px 30px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-chevron-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+                <div style="margin-left: 15px;">
+                    <h5 style="margin: 0; font-weight: 700; font-size: 1.2rem;">Add Money</h5>
+
+                </div>
+            </div>
+            <i class="fas fa-wallet" style="font-size: 24px; opacity: 0.5;"></i>
         </div>
     </div>
 
-    
+    <div class="container px-3 mt-4">
         <div class="row g-2 mb-4">
-            <div class="col-4"><div class="srv-btn py-3 shadow-sm border m-active-bkash" id="m-Bkash" onclick="selectMethod('Bkash')"><i class="fas fa-mobile-alt mb-1" style="color: var(--bkash)"></i><div style="font-size: 10px; font-weight: 600;">Bkash</div></div></div>
-            <div class="col-4"><div class="srv-btn py-3 shadow-sm border" id="m-Nagad" onclick="selectMethod('Nagad')"><i class="fas fa-mobile-alt mb-1" style="color: var(--nagad)"></i><div style="font-size: 10px; font-weight: 600;">Nagad</div></div></div>
-            <div class="col-4"><div class="srv-btn py-3 shadow-sm border" id="m-Rocket" onclick="selectMethod('Rocket')"><i class="fas fa-mobile-alt mb-1" style="color: var(--rocket)"></i><div style="font-size: 10px; font-weight: 600;">Rocket</div></div></div>
-        </div>
-        <div class="glass-card p-3 mb-4 border-0 shadow-sm" style="background: #fff; border-left: 4px solid var(--main) !important;">
-            <p class="small mb-2 fw-bold text-muted">ধাপ ১: নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
-            <div class="p-3 rounded-3 border bg-light d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold mb-0 text-dark" id="display-number">লোড হচ্ছে...</h5>
-                <button class="copy-btn" onclick="copyNumber()">COPY</button>
+            <div class="col-4">
+                <div class="srv-btn py-3 shadow-sm border text-center rounded-3 active-method" id="m-Bkash" onclick="selectMethod('Bkash')" style="background: #fff; cursor: pointer;">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
+                    <div style="font-size: 10px; font-weight: 700;">Bkash</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="srv-btn py-3 shadow-sm border text-center rounded-3" id="m-Nagad" onclick="selectMethod('Nagad')" style="background: #fff; cursor: pointer;">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
+                    <div style="font-size: 10px; font-weight: 700;">Nagad</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="srv-btn py-3 shadow-sm border text-center rounded-3" id="m-Rocket" onclick="selectMethod('Rocket')" style="background: #fff; cursor: pointer;">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
+                    <div style="font-size: 10px; font-weight: 700;">Rocket</div>
+                </div>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
-            <input type="number" id="f-amt" class="form-control auth-input mb-3" placeholder="টাকার পরিমান দিন)">
-            <input type="text" id="f-trx" class="form-control auth-input mb-4" placeholder="Transaction ID ">
-            <button class="btn-premium w-100 shadow" onclick="fundReq()">টাকা নিশ্চিত করুন</button>
+
+        <div class="glass-card p-3 mb-4 shadow-sm" style="background: #fff; border-radius: 15px; border-left: 5px solid #6c5ce7;">
+            <p class="small mb-2 fw-bold text-muted">ধাপ ১: নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
+            <div class="p-3 rounded-3 border bg-light d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0 text-dark" id="display-number" style="font-size: 1.1rem;">01XXXXXXXXX</h5>
+                <button class="btn btn-sm btn-primary px-3 fw-bold" onclick="copyNumber()" style="font-size: 12px; border-radius: 8px;">COPY</button>
+            </div>
         </div>
-        <h6 class="fw-bold mb-3">লেনদেন হিস্টোরি</h6>
-        <div id="fund-hist-list"></div>
+
+        <div class="input-section p-4 shadow-sm" style="background: #fff; border-radius: 20px;">
+            <div class="mb-3">
+                <label class="small fw-bold text-muted mb-2 d-block">টাকার পরিমাণ</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i class="fas fa-taka-sign" style="position: absolute; left: 15px; color: #6c5ce7;"></i>
+                    <input type="number" id="f-amt" class="form-control" placeholder="যেমন: ৫০০" style="padding-left: 40px; height: 50px; border-radius: 12px; border: 1.5px solid #eee;">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="small fw-bold text-muted mb-2 d-block">ট্রানজেকশন আইডি (TrxID)</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i class="fas fa-key" style="position: absolute; left: 15px; color: #6c5ce7;"></i>
+                    <input type="text" id="f-trx" class="form-control" placeholder="8N7X6W5Q" style="padding-left: 40px; height: 50px; border-radius: 12px; border: 1.5px solid #eee;">
+                </div>
+            </div>
+
+            <button class="btn w-100 py-3 text-white fw-bold shadow" onclick="fundReq()" style="background: linear-gradient(90deg, #6c5ce7, #0984e3); border: none; border-radius: 15px;">
+                টাকা নিশ্চিত করুন <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+            <h6 class="fw-bold m-0" style="color: #2d3436;">লেনদেন হিস্টোরি</h6>
+            <span class="badge rounded-pill bg-white text-dark shadow-sm border p-2 px-3" style="font-size: 10px; cursor: pointer;">View All</span>
+        </div>
+        <div id="fund-hist-list" class="mb-5">
+            </div>
     </div>
+</div>
 
 <div id="p-more" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
