@@ -1912,6 +1912,254 @@ div[onclick="toggleBloodModal()"]:active {
 }
 
 .d-none { display: none !important; }
+.leader-icon-box {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    /* গোল্ডেন রিচ গ্রেডিয়েন্ট */
+    background: linear-gradient(135deg, #f1c40f, #f39c12); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto; 
+    color: white; 
+    font-size: 22px; 
+    position: relative;
+    box-shadow: 0 6px 15px rgba(243, 156, 18, 0.3) !important;
+    transition: 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ক্লিক করলে ছোট হওয়ার ইফেক্ট */
+.leader-icon-box:active {
+    transform: scale(0.9);
+    box-shadow: 0 2px 5px rgba(243, 156, 18, 0.2) !important;
+}
+
+/* লিডারবোর্ড বাটনের জন্য বিশেষ পালস (Golden) */
+.leader-icon-box::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(241, 196, 15, 0.3);
+    z-index: -1;
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+/* টপ সেকশন গ্রাফিক্স */
+.leaderboard-top-section {
+    background: linear-gradient(180deg, #f1c40f 0%, #f39c12 100%);
+    padding: 40px 10px 30px;
+    border-radius: 0 0 40px 40px;
+}
+
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.podium-item {
+    text-align: center;
+    color: white;
+    width: 30%;
+}
+
+.podium-avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.podium-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    background: white;
+}
+
+/* Rank 1 বিশেষ বড় সাইজ */
+.rank-1 img {
+    width: 85px;
+    height: 85px;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.rank-tag {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #f39c12;
+    font-weight: 900;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 22px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.crown-svg {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 20px;
+    animation: bounce 2s infinite;
+}
+
+.podium-name { font-size: 12px; font-weight: 700; margin-top: 15px; }
+.podium-earn { font-size: 14px; font-weight: 900; }
+
+/* নিচের লিস্টের স্টাইল */
+.leader-list-card {
+    background: white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.leader-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f2f6;
+}
+
+.l-rank { width: 30px; font-weight: 800; color: #b2bec3; }
+.l-img { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; }
+.l-info { flex-grow: 1; }
+.l-name { font-size: 13px; font-weight: 700; color: #2d3436; }
+.l-task { font-size: 10px; color: #95a5a6; }
+.l-amt { font-weight: 800; color: #2ecc71; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+/* Invest & Grow Button Style (Greenish) */
+.invest-icon-box {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    background: linear-gradient(135deg, #2ecc71, #27ae60); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto; 
+    color: white; 
+    font-size: 22px; 
+    position: relative;
+    box-shadow: 0 6px 15px rgba(39, 174, 96, 0.3) !important;
+    transition: 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* VIP Member Button Style (Golden-Yellow) */
+.vip-icon-box {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    background: linear-gradient(135deg, #f1c40f, #e67e22); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto; 
+    color: white; 
+    font-size: 22px; 
+    position: relative;
+    box-shadow: 0 6px 15px rgba(230, 126, 34, 0.3) !important;
+    transition: 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ক্লিক করলে ছোট হওয়ার ইফেক্ট */
+.invest-icon-box:active, .vip-icon-box:active {
+    transform: scale(0.9);
+}
+
+/* Invest পালস অ্যানিমেশন */
+.invest-icon-box::after {
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: rgba(46, 204, 113, 0.3);
+    z-index: -1;
+    animation: pulse-green 2s infinite;
+}
+
+/* VIP পালস অ্যানিমেশন */
+.vip-icon-box::after {
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: rgba(241, 196, 15, 0.3);
+    z-index: -1;
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes pulse-gold {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+.vip-card {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid #f1f3f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-buy-vip {
+    border: none;
+    padding: 6px 15px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 5px;
+    transition: 0.2s;
+}
+
+.btn-buy-vip:active {
+    transform: scale(0.9);
+}
+
+.vip-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vip-features li {
+    font-size: 11px;
+    color: #636e72;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.vip-features li i {
+    color: #2ecc71;
+    margin-right: 8px;
+    font-size: 12px;
+}
     </style>
 </head>
 <body>
@@ -2591,6 +2839,26 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
     <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Fund Raising</small>
 </div>
+<div onclick="openPage('p-leaderboard')" style="cursor: pointer; text-align: center;">
+    <div class="leader-icon-box">
+        <i class="fas fa-trophy"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 800; color: #2d3436; display: block; margin-top: 8px;">Top Leader</small>
+</div>
+
+<div onclick="openPage('p-invest')" style="cursor: pointer; text-align: center;">
+    <div class="invest-icon-box">
+        <i class="fas fa-chart-line"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 800; color: #2d3436; display: block; margin-top: 8px;">Invest & Grow</small>
+</div>
+
+<div onclick="openPage('p-premium')" style="cursor: pointer; text-align: center;">
+    <div class="vip-icon-box">
+        <i class="fas fa-crown"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 800; color: #2d3436; display: block; margin-top: 8px;">VIP Member</small>
+</div>
         <div onclick="openPage('p-more')" style="cursor: pointer;">
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #e83e8c; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(232,62,140,0.3);">
                 <i class="fas fa-plus"></i>
@@ -2781,6 +3049,140 @@ div[onclick="toggleBloodModal()"]:active {
             </div>
         </div>
 
+    </div>
+</div>
+<div id="p-leaderboard" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
+    
+<div style="background: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+    
+    <div style="display: flex; align-items: center;">
+        <div onclick="closePage('leaderboard')" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #fff9e6; cursor: pointer;">
+            <i class="fas fa-arrow-left" style="font-size: 18px; color: #f1c40f;"></i>
+        </div>
+        <h5 style="margin: 0; margin-left: 12px; font-weight: 900; color: #2d3436; font-size: 17px; letter-spacing: -0.5px;">Top Leaders</h5>
+    </div>
+    
+    <div style="display: flex; align-items: center; gap: 10px; background: #f8f9fa; padding: 5px 12px; border-radius: 12px; border: 1px solid #eee;">
+        <div style="text-align: right; line-height: 1.1;">
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 5px;">
+                <span id="leader-time" style="font-size: 13px; font-weight: 900; color: #2d3436;">00:00:00</span>
+                <i class="far fa-clock" style="font-size: 11px; color: #f39c12;"></i>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 5px; margin-top: 2px;">
+                <span id="leader-date" style="font-size: 9px; font-weight: 800; color: #95a5a6; text-transform: uppercase;">1 Jan 2026</span>
+                <i class="far fa-calendar-alt" style="font-size: 9px; color: #95a5a6;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="leaderboard-top-section shadow-sm">
+        <div class="podium-container">
+            <div class="podium-item rank-2">
+                <div class="podium-avatar-wrapper">
+                    <img src="https://i.pravatar.cc/100?u=12" alt="2nd">
+                    <div class="rank-tag">2</div>
+                </div>
+                <div class="podium-name">Rakib</div>
+                <div class="podium-earn">৳৬২০</div>
+            </div>
+
+            <div class="podium-item rank-1">
+                <div class="podium-avatar-wrapper">
+                    <div class="crown-svg"><i class="fas fa-crown"></i></div>
+                    <img src="https://i.pravatar.cc/100?u=1" alt="1st">
+                    <div class="rank-tag">1</div>
+                </div>
+                <div class="podium-name">Abu Sufian</div>
+                <div class="podium-earn">৳৮৫০</div>
+            </div>
+
+            <div class="podium-item rank-3">
+                <div class="podium-avatar-wrapper">
+                    <img src="https://i.pravatar.cc/100?u=45" alt="3rd">
+                    <div class="rank-tag">3</div>
+                </div>
+                <div class="podium-name">Mehedi</div>
+                <div class="podium-earn">৳৫০০</div>
+            </div>
+        </div>
+    </div>
+
+<div class="container px-3 mt-4">
+    <h6 class="fw-bold mb-3" style="color: #636e72; font-size: 13px;">অন্যান্য লিডাররা</h6>
+    
+    <div class="leader-list-card shadow-sm" style="background: white; border-radius: 20px; overflow: hidden;">
+        
+        <div class="leader-row">
+            <div class="l-rank">4</div>
+            <img src="https://i.pravatar.cc/100?u=4" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Hasan Ali</div>
+                <div class="l-task">৯টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৪৫০</div>
+        </div>
+
+        <div class="leader-row">
+            <div class="l-rank">5</div>
+            <img src="https://i.pravatar.cc/100?u=5" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Sabbir Ahmed</div>
+                <div class="l-task">৮টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৪২০</div>
+        </div>
+
+        <div class="leader-row">
+            <div class="l-rank">6</div>
+            <img src="https://i.pravatar.cc/100?u=6" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Tanvir Hossain</div>
+                <div class="l-task">৮টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৪০৫</div>
+        </div>
+
+        <div class="leader-row">
+            <div class="l-rank">7</div>
+            <img src="https://i.pravatar.cc/100?u=7" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Mehedi Hasan</div>
+                <div class="l-task">৭টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৩৮০</div>
+        </div>
+
+        <div class="leader-row">
+            <div class="l-rank">8</div>
+            <img src="https://i.pravatar.cc/100?u=8" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Rifat Islam</div>
+                <div class="l-task">৭টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৩৬৫</div>
+        </div>
+
+        <div class="leader-row">
+            <div class="l-rank">9</div>
+            <img src="https://i.pravatar.cc/100?u=11" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Arifur Rahman</div>
+                <div class="l-task">৬টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৩২০</div>
+        </div>
+
+        <div class="leader-row" style="border-bottom: none;">
+            <div class="l-rank">10</div>
+            <img src="https://i.pravatar.cc/100?u=12" class="l-img">
+            <div class="l-info">
+                <div class="l-name">Nayem Uddin</div>
+                <div class="l-task">৫টি কাজ সম্পন্ন</div>
+            </div>
+            <div class="l-amt">৳৩০০</div>
+        </div>
+</div>
     </div>
 </div>
 <div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
@@ -3263,6 +3665,81 @@ div[onclick="toggleBloodModal()"]:active {
 
     </div>
 </div>
+<div id="p-premium" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfbff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: #fff; padding: 12px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #f1c40f;" onclick="closePage('premium')"></i>
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: #2d3436; font-size: 16px;">VIP Membership</h5>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: linear-gradient(135deg, #f1c40f, #e67e22); padding: 25px; border-radius: 25px; text-align: center; color: white; box-shadow: 0 10px 20px rgba(230, 126, 34, 0.2);">
+            <i class="fas fa-crown" style="font-size: 40px; margin-bottom: 10px;"></i>
+            <h4 style="font-weight: 900; margin: 0;">Upgrade to Pro</h4>
+            <p style="font-size: 11px; opacity: 0.9; margin-top: 5px;">মেম্বারশিপ নিলে প্রতি কাজে পাবেন ২০% পর্যন্ত বেশি ইনকাম!</p>
+        </div>
+    </div>
+
+    <div class="container mt-4 px-3">
+        
+        <div class="vip-card shadow-sm mb-3" style="border-left: 5px solid #bdc3c7;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="fw-bold m-0" style="color: #2d3436;">Silver VIP</h6>
+                    <small class="text-muted" style="font-size: 10px;">মেয়াদ: ৩০ দিন</small>
+                </div>
+                <div class="text-end">
+                    <h5 class="fw-bold m-0 text-dark">৳৫০</h5>
+                    <button class="btn-buy-vip bg-secondary" onclick="buyVip('Silver', 50, 1.1)">Buy Now</button>
+                </div>
+            </div>
+            <hr style="margin: 10px 0; opacity: 0.1;">
+            <ul class="vip-features">
+                <li><i class="fas fa-check-circle"></i> প্রতিটি কাজে ১০% এক্সট্রা ইনকাম</li>
+                <li><i class="fas fa-check-circle"></i> দ্রুত পেমেন্ট সুবিধা</li>
+            </ul>
+        </div>
+
+        <div class="vip-card shadow mb-3" style="border-left: 5px solid #f1c40f; background: #fffdf0; transform: scale(1.02);">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="fw-bold m-0" style="color: #b7950b;">Gold VIP <span class="badge bg-warning text-dark" style="font-size: 8px;">Popular</span></h6>
+                    <small class="text-muted" style="font-size: 10px;">মেয়াদ: ৩০ দিন</small>
+                </div>
+                <div class="text-end">
+                    <h5 class="fw-bold m-0" style="color: #e67e22;">৳১০০</h5>
+                    <button class="btn-buy-vip bg-warning text-dark" onclick="buyVip('Gold', 100, 1.15)">Buy Now</button>
+                </div>
+            </div>
+            <hr style="margin: 10px 0; opacity: 0.1;">
+            <ul class="vip-features">
+                <li><i class="fas fa-check-circle"></i> প্রতিটি কাজে ১৫% এক্সট্রা ইনকাম</li>
+                <li><i class="fas fa-check-circle"></i> ২৪/৭ স্পেশাল সাপোর্ট</li>
+                <li><i class="fas fa-check-circle"></i> ডেইলি বোনাস ২ গুণ</li>
+            </ul>
+        </div>
+
+        <div class="vip-card shadow-sm mb-3" style="border-left: 5px solid #9b59b6;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="fw-bold m-0" style="color: #8e44ad;">Platinum VIP</h6>
+                    <small class="text-muted" style="font-size: 10px;">মেয়াদ: ৬০ দিন</small>
+                </div>
+                <div class="text-end">
+                    <h5 class="fw-bold m-0 text-dark">৳২০০</h5>
+                    <button class="btn-buy-vip" style="background: #9b59b6; color: white;" onclick="buyVip('Platinum', 200, 1.25)">Buy Now</button>
+                </div>
+            </div>
+            <hr style="margin: 10px 0; opacity: 0.1;">
+            <ul class="vip-features">
+                <li><i class="fas fa-check-circle"></i> প্রতিটি কাজে ২৫% এক্সট্রা ইনকাম</li>
+                <li><i class="fas fa-check-circle"></i> ইনস্ট্যান্ট ক্যাশ-আউট সুবিধা</li>
+                <li><i class="fas fa-check-circle"></i> প্রিমিয়াম প্রোফাইল ব্যাজ</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
 <div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1600; overflow-y: auto;">
     
     <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
@@ -3607,6 +4084,71 @@ div[onclick="toggleBloodModal()"]:active {
         <p style="text-align: center; font-size: 11px; color: #aaa; margin-top: 20px;">পেমেন্ট করার পর ২৪ ঘণ্টার মধ্যে আপনার ভেন্ডর একাউন্ট একটিভ হবে।</p>
     </div>
 </div>
+<div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
+    
+    <div style="background: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2ecc71;" onclick="closePage('invest')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: #2d3436; font-size: 16px;">Invest & Grow</h5>
+        </div>
+        <div onclick="openInvestHistory()" style="width: 35px; height: 35px; background: #f0fdf4; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+    <i class="fas fa-history" style="color: #27ae60; font-size: 16px;"></i>
+</div>
+
+    </div>
+
+    <div class="container mt-4 px-3">
+        <div class="invest-calc-card shadow-sm" style="background: white; border-radius: 25px; overflow: hidden; border: 1px solid #eef2ff;">
+            <div class="calc-header" style="background: linear-gradient(90deg, #2ecc71, #27ae60); padding: 15px; color: white; font-weight: 800; text-align: center; font-size: 14px;">
+                <i class="fas fa-calculator me-2"></i>
+                <span>Profit Calculator</span>
+            </div>
+            
+            <div class="p-4">
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">বিনিয়োগের পরিমাণ (টাকা)</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">৳</span>
+                        <input type="number" id="investAmount" class="form-control border-start-0 ps-0 fw-bold" style="border-radius: 0 12px 12px 0; box-shadow: none; border-color: #dee2e6;" placeholder="যেমন: ৫০০" oninput="calculateProfit()">
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <div class="col-6">
+                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #f0fdf4; border: 1px solid #dcfce7;">
+                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">১০ দিনে লাভ</small>
+                            <h5 id="profit10" class="m-0 fw-bold text-success" style="font-size: 18px;">৳০</h5>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #eff6ff; border: 1px solid #dbeafe;">
+                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">৩০ দিনে লাভ</small>
+                            <h5 id="profit30" class="m-0 fw-bold text-primary" style="font-size: 18px;">৳০</h5>
+                        </div>
+                    </div>
+                </div>
+<button class="btn-invest-now mt-4" onclick="confirmInvest()" style="width: 100%; background: #2d3436; color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px; transition: 0.3s;">
+    বিনিয়োগ শুরু করুন <i class="fas fa-arrow-right ms-2"></i>
+</button>
+             
+                
+                <p class="text-center mt-3 text-muted" style="font-size: 10px;">
+                    * এটি একটি সম্ভাব্য হিসাব। বাজারের অবস্থার ওপর লাভ কম-বেশি হতে পারে।
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="p-invest-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1600; overflow-y: auto;">
+    
+    <div style="background: #fff; padding: 12px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2ecc71;" onclick="closePage('invest-history')"></i>
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: #2d3436; font-size: 16px;">Investment History</h5>
+    </div>
+
+    <div class="container px-3 mt-3" id="invest-list-container">
+        </div>
+</div>
 <div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #007bff, #00d2ff); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); position: sticky; top: 0; z-index: 101;">
@@ -3900,7 +4442,6 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
-
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(58, 123, 213, 0.2); position: sticky; top: 0; z-index: 101;">
@@ -4097,68 +4638,60 @@ div[onclick="toggleBloodModal()"]:active {
     </h5>
     <div id="order-hist-list"></div>
 </div>
-  <div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 1000; overflow-y: auto; padding-bottom: 20px;">
+  <div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #3b82f6;" onclick="openPage('p-home')"></i>
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 900; letter-spacing: -1px; line-height: 1;">
-                <span style="color: #3b82f6;">Live Chat</span>
-            </h4>
+    <div style="background: linear-gradient(90deg, #4834d4, #686de0); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(72, 52, 212, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Live Chat</h5>
+            </div>
+            </div>
+
+
+
         </div>
-        <div style="width: 35px; height: 35px; background: #eef2ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-headset" style="color: #3b82f6; font-size: 16px;"></i>
+   
+
+
+    <div class="bg-light-warning p-3 rounded-4 mb-3 border-start border-4 border-warning" style="background-color: #fff9e6;">
+        <p class="mb-0" style="font-size: 13px; color: #856404;">
+            <i class="fas fa-bell me-2"></i> <b>নোটিশ:</b> আমাদের সাপোর্ট টিম সকাল ১০টা থেকে রাত ১০টা পর্যন্ত একটিভ থাকে। যেকোনো সমস্যায় মেসেজ দিয়ে রাখুন।
+        </p>
+    </div>
+
+    <div class="row g-2 mb-4">
+        <div class="col-6">
+            <a href="https://t.me/Abu_Sufian_2026" target="_blank" class="text-decoration-none">
+                <div class="bg-white p-3 rounded-4 shadow-sm text-center border-bottom border-3 border-info">
+                    <i class="fab fa-telegram-plane fs-2 text-info mb-2"></i>
+                    <div style="font-size: 12px; font-weight: 700; color: #333;">Telegram</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6">
+            <a href="tel:+8809638307653" class="text-decoration-none">
+                <div class="bg-white p-3 rounded-4 shadow-sm text-center border-bottom border-3 border-success">
+                    <i class="fas fa-phone-alt fs-2 text-success mb-2"></i>
+                    <div style="font-size: 12px; font-weight: 700; color: #333;">Call Now</div>
+                </div>
+            </a>
         </div>
     </div>
 
-    <div class="container px-3 mt-3">
-        <div class="support-notice shadow-sm">
-            <div class="d-flex align-items-center">
-                <div class="notice-icon"><i class="fas fa-clock"></i></div>
-                <div>
-                    <h6 class="m-0 fw-bold" style="font-size: 13px; color: #856404;">সাপোর্ট সময়সূচী</h6>
-                    <p class="m-0" style="font-size: 11px; color: #96730a;">সকাল ১০টা - রাত ১০টা পর্যন্ত আমাদের টিম একটিভ থাকে।</p>
-                </div>
-            </div>
+    <p class="small text-muted mb-2 ps-2"><i class="fas fa-comments me-1"></i> সরাসরি চ্যাট করুন</p>
+    <div class="bg-white rounded-4 shadow-sm p-3 mb-3 d-flex flex-column" id="chat-container" style="height: 40vh; overflow-y: auto; border: 1px solid #f1f2f6;">
         </div>
 
-        <div class="row g-3 mb-4">
-            <div class="col-6">
-                <a href="https://t.me/Abu_Sufian_2026" target="_blank" class="support-card shadow-sm border-info">
-                    <i class="fab fa-telegram-plane"></i>
-                    <span>Telegram</span>
-                </a>
-            </div>
-            <div class="col-6">
-                <a href="tel:+8809638307653" class="support-card shadow-sm border-success">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>Call Now</span>
-                </a>
-            </div>
-        </div>
-
-        <p class="small text-muted mb-2 ps-1 fw-bold"><i class="fas fa-comments me-1"></i> লাইভ চ্যাট সাপোর্ট</p>
-        
-        <div class="chat-main-container shadow-sm">
-            <div id="chat-container" class="chat-display-area">
-                <div class="msg-bot">
-                    <div class="msg-content">
-                        আসসালামু আলাইকুম! **TASK LINK** সাপোর্ট সেন্টারে আপনাকে স্বাগতম। আমরা আপনাকে কীভাবে সাহায্য করতে পারি?
-                    </div>
-                    <small class="msg-time">জাস্ট নাউ</small>
-                </div>
-            </div>
-
-            <div class="chat-input-wrapper">
-                <div class="input-group p-1 bg-light rounded-pill border">
-                    <input type="text" id="chat-input" class="form-control border-0 bg-transparent px-3" placeholder="আপনার সমস্যাটি লিখুন..." style="box-shadow: none; font-size: 14px;">
-                    <button class="btn btn-primary rounded-circle send-btn" onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div class="input-group bg-white p-2 rounded-pill shadow-sm border">
+        <input type="text" id="chat-input" class="form-control border-0 px-3" placeholder="আপনার সমস্যাটি লিখুন..." style="box-shadow: none;">
+        <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+        </button>
     </div>
+</div>
+
 </div>
 <div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -6064,7 +6597,272 @@ function clearInputs() {
     document.getElementById('donor-loc').value = '';
     document.getElementById('donor-phone').value = '';
 }
+function updateLeaderboardTime() {
+    const now = new Date();
+    
+    // সময় ফরম্যাট (12 ঘণ্টা)
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; 
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    seconds = seconds < 10 ? '0'+seconds : seconds;
+    
+    // HTML-এ ডাটা পুশ করা
+    const timeElement = document.getElementById('leader-time');
+    const dateElement = document.getElementById('leader-date');
+    
+    if(timeElement) {
+        timeElement.innerHTML = `${hours}:${minutes}:${seconds} <span style="font-size: 9px; color: #f39c12;">${ampm}</span>`;
+    }
+    
+    if(dateElement) {
+        const options = { day: '2-digit', month: 'short', year: 'numeric' };
+        dateElement.innerText = now.toLocaleDateString('en-GB', options).toUpperCase();
+    }
+}
 
+// প্রতি সেকেন্ডে কল হবে
+setInterval(updateLeaderboardTime, 1000);
+updateLeaderboardTime();
+function calculateProfit() {
+    let amount = document.getElementById('investAmount').value;
+    
+    if (amount > 0) {
+        // ধরুন লাভের হার ১০ দিনে ৫% এবং ৩০ দিনে ২০%
+        let p10 = (amount * 0.05).toFixed(2);
+        let p30 = (amount * 0.20).toFixed(2);
+        
+        document.getElementById('profit10').innerText = '৳' + p10;
+        document.getElementById('profit30').innerText = '৳' + p30;
+    } else {
+        document.getElementById('profit10').innerText = '৳০';
+        document.getElementById('profit30').innerText = '৳০';
+    }
+}
+function confirmInvest() {
+    let amtInput = document.getElementById('investAmount');
+    let amt = parseInt(amtInput.value);
+    
+    // ১. তথ্য সঠিক আছে কিনা যাচাই
+    if (!amt || amt < 100) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'), // শুধুমাত্র এই পেজে দেখাবে
+            icon: 'error',
+            title: 'ভুল ইনপুট',
+            text: 'নূন্যতম ১০০ টাকা বিনিয়োগ করতে হবে।'
+        });
+    }
+
+    // ২. ব্যালেন্স চেক (curUser.balance আপনার মেইন ব্যালেন্স ভেরিয়েবল)
+    if (curUser.balance < amt) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'),
+            icon: 'error',
+            title: 'পর্যাপ্ত ব্যালেন্স নেই',
+            text: 'আপনার একাউন্টে পর্যাপ্ত টাকা নেই!'
+        });
+    }
+
+    // ৩. লাভের হিসাব (৩০ দিনে ৩০% লাভ)
+    let profit = Math.floor(amt * 0.30);
+    let totalReturn = amt + profit;
+    let now = new Date().toLocaleString('bn-BD', { hour12: true });
+
+    // ৪. নিশ্চিতকরণ পপআপ
+    Swal.fire({
+        target: document.getElementById('p-invest'),
+        title: 'আপনি কি নিশ্চিত?',
+        text: `৳${amt} আপনার একাউন্ট থেকে কেটে নেওয়া হবে।`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'হ্যাঁ, নিশ্চিত',
+        cancelButtonText: 'না',
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // ৫. টাকা কেটে নেওয়া এবং ডাটা সেভ করা
+            curUser.balance -= amt; // ব্যালেন্স থেকে টাকা কাটা হলো
+            
+            // ইনভেস্টমেন্ট হিস্টোরিতে জমা করা
+            if(!db.investments) db.investments = []; // যদি আগে না থাকে
+            db.investments.push({
+                id: Date.now(),
+                user: curUser.email,
+                investAmt: amt,
+                totalReturn: totalReturn,
+                status: 'Active',
+                time: now,
+                expiry: Date.now() + (30 * 24 * 60 * 60 * 1000) // ৩০ দিন পর
+            });
+            
+            save(); // ডাটাবেস সেভ করা
+            renderUser(); // হোমপেজের ব্যালেন্স আপডেট করা
+
+            // ৬. সফলতার প্রিমিয়াম পপআপ দেখানো
+            showSuccessInvestPopup(amt, totalReturn, now);
+            amtInput.value = ""; // ইনপুট বক্স খালি করা
+        }
+    });
+}
+
+function showSuccessInvestPopup(amt, total, time) {
+    Swal.fire({
+        target: document.getElementById('p-invest'), // পপআপ শুধু এই পেজেই থাকবে
+        width: '350px',
+        background: '#ffffff',
+        showConfirmButton: true,
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#28a745',
+        allowOutsideClick: false,
+        padding: '0',
+        customClass: { popup: 'long-premium-popup' },
+        html: `
+            <style>
+                .long-premium-popup { border-radius: 30px !important; margin-top: 20px !important; }
+                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
+            </style>
+            <div class="pop-container" style="position: relative;">
+                <div style="background: linear-gradient(135deg, #28a745, #5dd373); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: -115px auto 25px; box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4); border: 6px solid #ffffff;">
+                    <i class="fas fa-check" style="color: white; font-size: 35px;"></i>
+                </div>
+                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 20px; font-size: 20px;">বিনিয়োগ সফল!</h3>
+                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 20px;">
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">বিনিয়োগ</span>
+                        <b style="color: #333; font-size: 15px;">৳${amt}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">মোট রিটার্ন</span>
+                        <b style="color: #28a745; font-size: 15px;">৳${total}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-top: 10px;">
+                        <span style="color: #bbb; font-size: 11px;">সময়</span>
+                        <span style="color: #bbb; font-size: 11px;">${time}</span>
+                    </div>
+                </div>
+                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
+                    <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
+                        আগামী ৩০ দিন পর স্বয়ংক্রিয়ভাবে আপনার ব্যালেন্সে ৳${total} টাকা যোগ হয়ে যাবে।
+                    </p>
+                </div>
+            </div>
+        `
+    });
+}
+function renderInvestHistory() {
+    let container = document.getElementById('invest-list-container');
+    container.innerHTML = ""; // আগের ডাটা পরিষ্কার করা
+
+    if (!db.investments || db.investments.length === 0) {
+        container.innerHTML = `<div class="text-center mt-5 text-muted">আপনার কোনো সক্রিয় ইনভেস্টমেন্ট নেই।</div>`;
+        return;
+    }
+
+    // নতুন ইনভেস্ট আগে দেখানোর জন্য রিভার্স করা
+    let sortedInvest = [...db.investments].reverse();
+
+    sortedInvest.forEach(inv => {
+        let now = Date.now();
+        let remainingTime = inv.expiry - now;
+        
+        let daysLeft = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
+        let statusText = "";
+        let statusClass = "";
+
+        if (remainingTime <= 0) {
+            statusText = "Completed";
+            daysLeft = 0;
+            statusClass = "text-success";
+        } else {
+            statusText = "Running";
+            statusClass = "text-primary";
+        }
+
+        container.innerHTML += `
+            <div class="card shadow-sm border-0 mb-3" style="border-radius: 20px; overflow: hidden;">
+                <div style="padding: 15px; background: #fff;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span style="font-size: 10px; color: #aaa; font-weight: 600;">#${inv.id}</span>
+                        <span class="badge" style="background: ${remainingTime > 0 ? '#eef2ff' : '#f0fdf4'}; color: ${remainingTime > 0 ? '#3b82f6' : '#2ecc71'}; border-radius: 8px;">${statusText}</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <small class="text-muted d-block" style="font-size: 10px;">Investment</small>
+                            <b style="color: #2d3436;">৳${inv.investAmt}</b>
+                        </div>
+                        <div class="text-center">
+                            <small class="text-muted d-block" style="font-size: 10px;">Return (30 Days)</small>
+                            <b class="text-success">৳${inv.totalReturn}</b>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted d-block" style="font-size: 10px;">Time Left</small>
+                            <b class="${statusClass}">${daysLeft} Days</b>
+                        </div>
+                    </div>
+
+                    <div class="mt-3" style="height: 6px; background: #f1f2f6; border-radius: 10px; position: relative;">
+                        <div style="position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60); border-radius: 10px; width: ${remainingTime > 0 ? (100 - (daysLeft * 3.33)) : 100}%;"></div>
+                    </div>
+                    
+                    <small class="d-block mt-2 text-muted" style="font-size: 9px; text-align: right;">Started: ${inv.time}</small>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// আপনার মেইন openPage ফাংশনে এটি অ্যাড করুন যেন পেজ খুললেই রেন্ডার হয়
+function openInvestHistory() {
+    renderInvestHistory();
+    openPage('p-invest-history');
+}
+function buyVip(planName, price, multiplier) {
+    // ১. ব্যালেন্স চেক
+    if (curUser.balance < price) {
+        return Swal.fire({
+            target: document.getElementById('p-premium'),
+            icon: 'error',
+            title: 'ব্যালেন্স নেই!',
+            text: 'এই মেম্বারশিপটি কিনতে আপনার পর্যাপ্ত ব্যালেন্স নেই।'
+        });
+    }
+
+    // ২. নিশ্চিতকরণ পপআপ
+    Swal.fire({
+        target: document.getElementById('p-premium'),
+        title: 'মেম্বারশিপ কনফার্ম করুন',
+        text: `আপনি কি ৳${price} দিয়ে ${planName} মেম্বারশিপ নিতে চান?`,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'হ্যাঁ, কিনবো',
+        cancelButtonText: 'বাতিল',
+        confirmButtonColor: '#f1c40f',
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // ৩. টাকা কাটা এবং মেম্বারশিপ সেভ করা
+            curUser.balance -= price;
+            curUser.vipStatus = planName; // ইউজারের ভিআইপি স্ট্যাটাস আপডেট
+            curUser.earningMultiplier = multiplier; // ইনকাম বাড়ানোর জন্য মাল্টিপ্লায়ার (যেমন ১.২ মানে ২০% বেশি)
+            
+            save(); // ডাটাবেস সেভ
+            renderUser(); // হোমপেজ আপডেট
+
+            // ৪. সফলতার পপআপ
+            Swal.fire({
+                target: document.getElementById('p-premium'),
+                icon: 'success',
+                title: 'অভিনন্দন!',
+                text: `আপনি এখন আমাদের ${planName} মেম্বার। এখন থেকে আপনার ইনকাম ${Math.round((multiplier-1)*100)}% বাড়বে!`,
+                confirmButtonColor: '#2ecc71'
+            });
+        }
+    });
+}
 </script>
 </body>
 </html>
