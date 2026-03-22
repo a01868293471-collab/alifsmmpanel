@@ -1464,6 +1464,20 @@
     border-color: #ff4757 !important;
     box-shadow: none !important;
 }
+.donor-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* যখন কোনো কার্ড হাইড হবে তখন সেটি আস্তে করে ভ্যানিশ হবে */
+[style*="display: none"] {
+    opacity: 0;
+    transform: scale(0.9);
+}
+/* হেডারের আইকনটি চাপ দিলে ছোট হবে */
+div[onclick="toggleBloodModal()"]:active {
+    transform: scale(0.9);
+    background: #ffebeb;
+}
 
     </style>
 </head>
@@ -2370,57 +2384,46 @@
     </div>
 </div>
 <div id="p-blood" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #f1f2f6;">
     
-    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+    <div style="display: flex; align-items: center;">
         <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #ff4757;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">রক্তদাতার তালিকা</h5>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Blood Doner List</h5>
     </div>
 
-    <div class="container px-3 mt-3">
-        
-        <div class="d-flex gap-2 mb-4" style="overflow-x: auto; white-space: nowrap; padding-bottom: 5px;">
-            <span class="blood-group-chip active-bg">All</span>
-            <span class="blood-group-chip">A+</span>
-            <span class="blood-group-chip">B+</span>
-            <span class="blood-group-chip">O+</span>
-            <span class="blood-group-chip">AB+</span>
-            <span class="blood-group-chip">A-</span>
+    <div onclick="toggleBloodModal()" style="width: 35px; height: 35px; background: #fff5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #ffd7d7;">
+        <i class="fas fa-user-plus" style="color: #ff4757; font-size: 16px;"></i>
+    </div>
+</div>
+ 
+
+<div class="d-flex gap-2 mb-4" style="overflow-x: auto; white-space: nowrap; padding-bottom: 5px;">
+    <span class="blood-group-chip active-bg" onclick="filterBlood('All', this)">All</span>
+    <span class="blood-group-chip" onclick="filterBlood('A+', this)">A+</span>
+    <span class="blood-group-chip" onclick="filterBlood('B+', this)">B+</span>
+    <span class="blood-group-chip" onclick="filterBlood('O+', this)">O+</span>
+    <span class="blood-group-chip" onclick="filterBlood('AB+', this)">AB+</span>
+    <span class="blood-group-chip" onclick="filterBlood('A-', this)">A-</span>
+</div>
+
+
+<div id="blood-donor-list">
+    <div class="donor-card shadow-sm A+"> <div class="donor-blood-type">A+</div>
+        <div class="donor-details">
+            <h6>Abu Sufian</h6>
+            <p><i class="fas fa-map-marker-alt"></i> Khulna</p>
         </div>
+        <a href="tel:017" class="call-btn"><i class="fas fa-phone-alt"></i></a>
+    </div>
 
-        <div id="blood-donor-list">
-            
-            <div class="donor-card shadow-sm">
-                <div class="donor-blood-type">A+</div>
-                <div class="donor-details">
-                    <h6>Abu Sufian</h6>
-                    <p><i class="fas fa-map-marker-alt"></i> Khulna, Bangladesh</p>
-                    <small>সর্বশেষ রক্ত দিয়েছেন: ২ মাস আগে</small>
-                </div>
-                <a href="tel:01XXXXXXXXX" class="call-btn">
-                    <i class="fas fa-phone-alt"></i>
-                </a>
-            </div>
-
-            <div class="donor-card shadow-sm">
-                <div class="donor-blood-type">O+</div>
-                <div class="donor-details">
-                    <h6>Rakib Hasan</h6>
-                    <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
-                    <small>রক্ত দিতে ইচ্ছুক (Available)</small>
-                </div>
-                <a href="tel:01XXXXXXXXX" class="call-btn">
-                    <i class="fas fa-phone-alt"></i>
-                </a>
-            </div>
-
+    <div class="donor-card shadow-sm O+"> <div class="donor-blood-type">O+</div>
+        <div class="donor-details">
+            <h6>Rakib Hasan</h6>
+            <p><i class="fas fa-map-marker-alt"></i> Dhaka</p>
         </div>
+        <a href="tel:018" class="call-btn"><i class="fas fa-phone-alt"></i></a>
+    </div>
 
-        <div class="mt-5 text-center">
-            <p class="small text-muted">আপনি কি রক্তদান করতে চান?</p>
-<button class="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" style="background: #ff4757; border: none;" onclick="toggleBloodModal()">
-    রক্তদাতা হিসেবে নাম লিখুন
-</button>
-        </div>
 
     </div>
 </div>
@@ -5339,6 +5342,100 @@ function submitDonorInfo() {
     } else {
         alert("দয়া করে সব তথ্য পূরণ করুন!");
     }
+}
+function filterBlood(group, element) {
+    // ১. সব চিপস থেকে active-bg ক্লাস সরানো এবং ক্লিক করা চিপে যুক্ত করা
+    let chips = document.querySelectorAll('.blood-group-chip');
+    chips.forEach(chip => chip.classList.remove('active-bg'));
+    element.classList.add('active-bg');
+
+    // ২. দাতা কার্ডগুলো ফিল্টার করা
+    let cards = document.querySelectorAll('.donor-card');
+    
+    cards.forEach(card => {
+        if (group === 'All') {
+            card.style.display = 'flex'; // সব দেখাবে
+        } else {
+            // কার্ডের ভেতরে যে ব্লাড টাইপ লেখা আছে সেটির সাথে মিলছে কি না চেক করা
+            if (card.classList.contains(group)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
+// পেজ লোড হওয়ার সময় আগের ডাটাগুলো দেখানোর জন্য
+window.onload = function() {
+    displayDonors();
+};
+
+function submitDonorInfo() {
+    const name = document.getElementById('donor-name').value;
+    const group = document.getElementById('donor-group').value;
+    const loc = document.getElementById('donor-loc').value;
+    const phone = document.getElementById('donor-phone').value;
+
+    if(name && group && loc && phone) {
+        // নতুন দাতার অবজেক্ট তৈরি
+        const newDonor = {
+            name: name,
+            group: group,
+            location: loc,
+            phone: phone,
+            time: "সদ্য যুক্ত হয়েছেন"
+        };
+
+        // লোকাল স্টোরেজ থেকে আগের ডাটা নেওয়া
+        let donors = JSON.parse(localStorage.getItem('bloodDonors')) || [];
+        
+        // নতুন ডাটা লিস্টে যোগ করা
+        donors.push(newDonor);
+        
+        // পুনরায় লোকাল স্টোরেজে সেভ করা
+        localStorage.setItem('bloodDonors', JSON.stringify(donors));
+
+        alert("ধন্যবাদ! আপনি সফলভাবে রক্তদাতা হিসেবে নিবন্ধিত হয়েছেন।");
+        
+        toggleBloodModal(); // ফর্ম বন্ধ করা
+        clearInputs();      // ইনপুট খালি করা
+        displayDonors();    // লিস্ট আপডেট করা
+    } else {
+        alert("দয়া করে সব তথ্য পূরণ করুন!");
+    }
+}
+
+function displayDonors() {
+    const donorListContainer = document.getElementById('blood-donor-list');
+    let donors = JSON.parse(localStorage.getItem('bloodDonors')) || [];
+    
+    // আগের লিস্ট ক্লিয়ার করা (যাতে ডাবল না হয়)
+    donorListContainer.innerHTML = '';
+
+    // লুপ চালিয়ে কার্ড তৈরি করা
+    donors.forEach((donor) => {
+        const card = `
+            <div class="donor-card shadow-sm ${donor.group}">
+                <div class="donor-blood-type">${donor.group}</div>
+                <div class="donor-details">
+                    <h6>${donor.name}</h6>
+                    <p><i class="fas fa-map-marker-alt"></i> ${donor.location}</p>
+                    <small>${donor.time}</small>
+                </div>
+                <a href="tel:${donor.phone}" class="call-btn">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+        `;
+        donorListContainer.innerHTML += card;
+    });
+}
+
+function clearInputs() {
+    document.getElementById('donor-name').value = '';
+    document.getElementById('donor-group').value = '';
+    document.getElementById('donor-loc').value = '';
+    document.getElementById('donor-phone').value = '';
 }
 </script>
 </body>
