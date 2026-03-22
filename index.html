@@ -1528,10 +1528,12 @@
                 <small>Refer Code: <b id="user-ref">ALIF123</b></small>
             </div>
         </div>
-
+         
         <div class="drawer-menu mt-4">
             <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
-            <button class="d-menu-btn" onclick="openPage('wallet'); toggleSidebar()"><i class="fas fa-wallet"></i> Wallet</button>
+<button class="d-menu-btn" onclick="handleWalletClick()">
+    <i class="fas fa-wallet"></i> Wallet
+</button>
             <button class="d-menu-btn" onclick="openPage('withdraw'); toggleSidebar()"><i class="fas fa-money-check-alt"></i> Withdraw</button>
             
             <hr class="my-3 opacity-10">
@@ -1700,6 +1702,74 @@
                 <button onclick="watchAd(3, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
             </div>
 
+            </div>
+    </div>
+</div>
+
+<div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1500; overflow-y: auto;">
+    <div style="background: linear-gradient(135deg, #4834d4, #686de0); padding: 25px 15px; color: white; border-radius: 0 0 25px 25px;">
+        <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="closePage('wallet')"></i>
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Wallet</h5>
+        </div>
+        <div class="text-center mt-4">
+            <p style="margin: 0; font-size: 14px; opacity: 0.9;">বর্তমান ব্যালেন্স</p>
+            <h1 style="font-weight: 800; margin: 5px 0;">৳<span id="wallet-main-bal">0.00</span></h1>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h6 class="fw-bold mb-3" style="color: #333;">ইনকাম রিপোর্ট</h6>
+        <div class="list-group shadow-sm" style="border-radius: 15px; overflow: hidden;">
+            <button onclick="openIncomeDetail('today', 'আজকের দিনের উপার্জন')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0">
+                <span><i class="fas fa-calendar-day me-2 text-primary"></i> আজকের ইনকাম</span>
+                <i class="fas fa-chevron-right text-muted small"></i>
+            </button>
+            <button onclick="openIncomeDetail('yesterday', 'গতকালের উপার্জন')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-top">
+                <span><i class="fas fa-history me-2 text-info"></i> গতকালের ইনকাম</span>
+                <i class="fas fa-chevron-right text-muted small"></i>
+            </button>
+            <button onclick="openIncomeDetail('7days', 'গত ৭ দিনের উপার্জন')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-top">
+                <span><i class="fas fa-calendar-week me-2 text-success"></i> গত ৭ দিনের ইনকাম</span>
+                <i class="fas fa-chevron-right text-muted small"></i>
+            </button>
+            <button onclick="openIncomeDetail('30days', 'গত ৩০ দিনের উপার্জন')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-top">
+                <span><i class="fas fa-calendar-alt me-2 text-warning"></i> গত ৩০ দিনের ইনকাম</span>
+                <i class="fas fa-chevron-right text-muted small"></i>
+            </button>
+            <button onclick="openIncomeDetail('total', 'সর্বমোট উপার্জন')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-top">
+                <span class="fw-bold"><i class="fas fa-chart-line me-2 text-danger"></i> সর্বমোট ইনকাম</span>
+                <i class="fas fa-chevron-right text-muted small"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1600; overflow-y: auto;">
+    
+    <div class="container mt-3">
+        <div style="background: linear-gradient(135deg, #4834d4, #22a6b3); padding: 30px 20px; border-radius: 20px; position: relative; color: white; box-shadow: 0 10px 25px rgba(72, 52, 212, 0.2);">
+            
+            <div style="position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: #f4f7f6; border-radius: 50%;"></div>
+            
+            <h5 id="income-card-title" style="font-weight: 800; letter-spacing: 0.5px; margin-bottom: 40px; font-size: 18px;">오늘ের উপার্জন (আজকের ইনকাম)</h5>
+            
+            <div style="position: absolute; right: 15px; top: 35%; background: rgba(255,255,255,0.15); padding: 12px 22px; border-radius: 15px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);">
+                <h4 style="margin: 0; font-weight: 900; color: #fff;">৳ <span id="income-amt-val">0</span></h4>
+            </div>
+            
+            <div style="margin-top: 25px; font-size: 14px; font-weight: 500; display: flex; align-items: center; opacity: 0.9;">
+                <i class="far fa-calendar-alt me-2"></i> Date: <span id="income-date-val" class="ms-1">22-03-2026</span>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button onclick="closeIncomeSub()" style="background: #4834d4; color: white; border: none; padding: 12px 35px; border-radius: 12px; font-weight: 700; box-shadow: 0 5px 15px rgba(72, 52, 212, 0.3); display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+
+        <div id="income-history-list" class="mt-4 px-1">
             </div>
     </div>
 </div>
@@ -4023,7 +4093,55 @@ function submitShopOrder() {
 function openShopHistory() {
     alert("আপনার শপিং হিস্টোরি শীঘ্রই আসছে!");
 }
+// ১. সরাসরি ওয়ালেট পেজ ওপেন করার ফাংশন
+function handleWalletClick() {
+    // সাইডবার থাকলে বন্ধ করা
+    if (typeof toggleSidebar === "function") toggleSidebar();
+    
+    // সরাসরি ওয়ালেট পেজ শো করা
+    const walletPage = document.getElementById('p-wallet');
+    if (walletPage) {
+        walletPage.classList.remove('d-none');
+        // ব্যালেন্স আপডেট
+        const balEl = document.getElementById('wallet-main-bal');
+        if(balEl) balEl.innerText = (typeof user !== 'undefined' ? user.bal : 0).toFixed(2);
+    }
+}
 
+// ২. ইনকাম ডিটেইলস ওপেন করা
+function openIncomeDetail(range, title) {
+    const subPage = document.getElementById('p-income-sub');
+    if (subPage) {
+        // টাইটেল ও সাব-পেজ শো
+        document.getElementById('income-card-title').innerText = title;
+        subPage.classList.remove('d-none');
+        
+        let amtDisplay = document.getElementById('income-amt-val');
+        let dateDisplay = document.getElementById('income-date-val');
+        let now = new Date();
+        let dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
+
+        // ডাটা ফিল্টার
+        if(range === 'today') {
+            amtDisplay.innerText = user.todayIncome || "0";
+            dateDisplay.innerText = dateStr;
+        } else if(range === 'total') {
+            amtDisplay.innerText = user.totalIncome || "0";
+            dateDisplay.innerText = "All Time";
+        }
+    }
+}
+
+// ৩. পেজ বন্ধ করার সরাসরি ফাংশন
+function closePage(pageId) {
+    const el = document.getElementById('p-' + pageId);
+    if(el) el.classList.add('d-none');
+}
+
+function closeIncomeSub() {
+    const el = document.getElementById('p-income-sub');
+    if(el) el.classList.add('d-none');
+}
 
 </script>
 </body>
