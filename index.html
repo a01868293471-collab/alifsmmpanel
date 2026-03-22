@@ -1532,10 +1532,13 @@ div[onclick="toggleBloodModal()"]:active {
          style="max-width: 400px; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
         
         <div class="text-center">
-            <div style="width: 85px; height: 85px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); margin: 0 auto 20px; border-radius: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3); border: 3px solid #fff;">
-                <img src="YOUR_LOGO_URL_HERE" class="dynamic-logo site-logo-img" 
-                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'"
-                     style="width: 55px; height: 55px; object-fit: contain;">
+            <div class="mb-4">
+                <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
+                    <span style="color: #3b82f6;">TASK
+                    
+                    </span><span style="color: #2ecc71;">LINK</span>
+                </h1>
+
             </div>
 
             <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">লগইন করুন</h3>
@@ -1546,10 +1549,10 @@ div[onclick="toggleBloodModal()"]:active {
                 </p>
             </div>
         </div>
+        
 
- 
-
-
+        
+      
 <div class="auth-container" style="padding: 10px;">
     
     <div class="mb-3">
@@ -1592,14 +1595,17 @@ div[onclick="toggleBloodModal()"]:active {
 
 </div>
 
+
 <div class="auth-card d-none mx-auto mt-5" id="signup-box" 
      style="max-width: 400px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.5);">
     
     <div class="text-center">
-        <div style="width: 85px; height: 85px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); margin: 0 auto 20px; border-radius: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3); border: 3px solid #fff;">
-            <img src="YOUR_LOGO_URL_HERE" class="dynamic-logo site-logo-img" 
-                 onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'"
-                 style="width: 55px; height: 55px; object-fit: contain;">
+        <div class="mb-4">
+            <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
+                <span style="color: #3b82f6;">TASK </span
+                  ><span style="color: #2ecc71;">LINK</span>
+            </h1>
+
         </div>
 
         <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">রেজিস্ট্রেশন করুন</h3>
@@ -1610,7 +1616,8 @@ div[onclick="toggleBloodModal()"]:active {
             </p>
         </div>
     </div>
-
+    
+    
 <div class="auth-container" style="padding: 10px;">
     
     <div class="mb-3" style="position: relative;">
@@ -2147,7 +2154,7 @@ div[onclick="toggleBloodModal()"]:active {
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #e83e8c; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(232,62,140,0.3);">
                 <i class="fas fa-plus"></i>
             </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">More</small>
+            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">More Options</small>
         </div>
 
     </div>
@@ -2404,6 +2411,7 @@ div[onclick="toggleBloodModal()"]:active {
     <span class="blood-group-chip" onclick="filterBlood('O+', this)">O+</span>
     <span class="blood-group-chip" onclick="filterBlood('AB+', this)">AB+</span>
     <span class="blood-group-chip" onclick="filterBlood('A-', this)">A-</span>
+        <span class="blood-group-chip" onclick="filterBlood('O-', this)">O-</span>
 </div>
 
 
@@ -5437,6 +5445,7 @@ function clearInputs() {
     document.getElementById('donor-loc').value = '';
     document.getElementById('donor-phone').value = '';
 }
+
 </script>
 </body>
 </html>
