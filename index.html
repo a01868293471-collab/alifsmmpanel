@@ -868,107 +868,84 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
-/* মেথড কার্ড ডিজাইন */
-.method-card {
-    background: #fff;
-    padding: 15px 10px;
-    border-radius: 18px;
+/* উইথড্র ব্যালেন্স কার্ড */
+.withdraw-balance-card {
+    background: linear-gradient(45deg, #6c5ce7, #0984e3);
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
     text-align: center;
-    border: 2px solid transparent;
-    transition: 0.3s all ease;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.2);
 }
 
-.method-card span {
-    display: block;
+.withdraw-balance-card span {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.withdraw-balance-card h3 {
+    margin: 5px 0 0;
+    font-weight: 800;
+}
+
+/* মেথড কার্ড */
+.w-method-card {
+    background: #fff;
+    padding: 15px 5px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1.5px solid #eee;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.w-method-card i {
+    font-size: 1.5rem;
+}
+
+.w-method-card div {
     font-size: 11px;
     font-weight: 700;
-    margin-top: 8px;
-    color: #636e72;
-}
-
-.active-method {
-    border-color: #6c5ce7;
-    background: #f0eeff;
-    transform: translateY(-5px);
-}
-
-/* নাম্বার বক্স */
-.info-card {
-    background: #fff;
-    border-radius: 20px;
-    border-left: 5px solid #6c5ce7;
-}
-
-.number-box {
-    background: #f1f2f6;
-    padding: 15px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 800;
     color: #2d3436;
 }
 
-.copy-badge {
-    background: #6c5ce7;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 10px;
-    font-weight: 700;
+.active-w {
+    border-color: #6c5ce7;
+    background: #f0eeff;
+    transform: translateY(-3px);
 }
 
-/* ইনপুট ফিল্ড স্টাইল */
-.input-section {
+/* ইনপুট স্টাইল */
+.withdraw-form {
     background: #fff;
     border-radius: 25px;
 }
 
-.input-group-custom label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #636e72;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.input-wrapper {
+.input-container {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.input-wrapper i {
+.input-container i {
     position: absolute;
     left: 15px;
     color: #6c5ce7;
 }
 
-.input-wrapper input {
+.input-container input {
     width: 100%;
     padding: 12px 15px 12px 40px;
     border: 1.5px solid #f1f2f6;
     border-radius: 12px;
-    background: #fdfdff;
     outline: none;
     font-weight: 600;
-    transition: 0.3s;
-}
-
-.input-wrapper input:focus {
-    border-color: #6c5ce7;
-    box-shadow: 0 0 10px rgba(108, 92, 231, 0.1);
 }
 
 /* সাবমিট বাটন */
-.btn-submit {
+.btn-withdraw-submit {
     width: 100%;
-    background: linear-gradient(90deg, #6c5ce7, #0984e3);
+    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
     color: white;
     border: none;
     padding: 15px;
@@ -978,12 +955,167 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+/* সতর্কবার্তা কার্ড */
+.alert-card {
+    background: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 12px;
+    border-left: 4px solid #ffc107;
+}
+.active-w {
+    border-color: #6c5ce7 !important; /* আপনার থিম কালার */
+    background: #f0eeff !important;    /* হালকা ব্যাকগ্রাউন্ড */
+    transform: translateY(-5px);       /* বাটনটি একটু উপরে উঠবে */
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+}
+/* মেথড কার্ড স্টাইল */
+.srv-btn-card {
+    background: #fff;
+    padding: 15px 5px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1.5px solid #eee;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.btn-submit:active {
+.srv-btn-card div {
+    font-size: 11px;
+    font-weight: 700;
+    color: #636e72;
+    margin-top: 5px;
+}
+
+.active-method {
+    border-color: #6c5ce7;
+    background: #f0eeff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.15);
+}
+
+/* নাম্বার কপি সেকশন */
+.instruction-card {
+    background: #fff;
+    border-radius: 20px;
+    border-left: 4px solid #6c5ce7;
+}
+
+.copy-box {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px dashed #6c5ce7;
+}
+
+.badge-copy {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ফর্ম কার্ড */
+.form-card {
+    background: #fff;
+    border-radius: 25px;
+}
+
+.input-group-modern label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #b2bec3;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    position: absolute;
+    left: 15px;
+    color: #6c5ce7;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: 12px;
+    border: 1.5px solid #f1f2f6;
+    outline: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.input-field input:focus {
+    border-color: #6c5ce7;
+    background: #fcfbff;
+}
+
+/* নিশ্চিত করুন বাটন */
+.btn-confirm {
+    background: linear-gradient(90deg, #6c5ce7, #0984e3);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+    transition: 0.3s;
+}
+
+.btn-confirm:active {
     transform: scale(0.98);
+}
+/* পলিসি ইনফো কার্ড */
+.policy-info-card {
+    background: #f8f9ff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #6c5ce7;
+}
+
+.small-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #636e72;
+    line-height: 1.6;
+}
+
+/* পলিসি আইটেম স্টাইল */
+.policy-content p {
+    font-size: 14px;
+    color: #2d3436;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.policy-item {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f1f2f6;
+}
+
+.policy-item span {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    color: #2d3436;
+    margin-bottom: 8px;
 }
 
     </style>
@@ -1648,7 +1780,9 @@
 <button class="d-menu-btn" onclick="handleWalletClick()">
     <i class="fas fa-wallet"></i> Wallet
 </button>
-            <button class="d-menu-btn" onclick="openPage('withdraw'); toggleSidebar()"><i class="fas fa-money-check-alt"></i> Withdraw</button>
+           <button class="d-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
+    <i class="fas fa-money-check-alt"></i> Withdraw
+</button>
             
             <hr class="my-3 opacity-10">
             <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
@@ -1659,12 +1793,90 @@
             <button class="d-menu-btn" onclick="window.open('YOUR_REVIEW_URL')"><i class="fas fa-star text-warning"></i> Income Review Group</button>
             
             <hr class="my-3 opacity-10">
+            <button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
+    <i class="fas fa-shield-alt"></i> Privacy Policy
+</button>
             
-            <button class="d-menu-btn" onclick="openPage('privacy')"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
             <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
     </div>
 </div>
+<div id="p-withdraw" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 1500; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="closePage('withdraw')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Withdraw Money</h5>
+    </div>
+
+    <div class="container px-3 mt-3">
+        
+        <div class="withdraw-balance-card mb-4">
+            <span>আপনার বর্তমান ব্যালেন্স</span>
+            <h3>৳<span id="withdraw-current-bal">0.00</span></h3>
+        </div>
+
+        <p class="small fw-bold text-muted mb-3">টাকা নেওয়ার মাধ্যম সিলেক্ট করুন</p>
+        <div class="row g-2 mb-4">
+            <div class="col-4">
+                <div class="w-method-card active-w" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #e2136e;"></i>
+                    <div>Bkash</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="w-method-card" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #f7941d;"></i>
+                    <div>Nagad</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="w-method-card" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')">
+                    <i class="fas fa-mobile-alt mb-1" style="color: #8c3494;"></i>
+                    <div>Rocket</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="withdraw-form p-4 shadow-sm">
+            <div class="mb-3">
+                <label class="small fw-bold text-muted mb-2 d-block">পার্সোনাল নাম্বার দিন</label>
+                <div class="input-container">
+                    <i class="fas fa-phone-alt"></i>
+                    <input type="number" id="w-num" placeholder="01XXXXXXXXX">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="small fw-bold text-muted mb-2 d-block">টাকার পরিমাণ (মিনিমাম ১০০৳)</label>
+                <div class="input-container">
+                    <i class="fas fa-taka-sign"></i>
+                    <input type="number" id="w-amt" placeholder="যেমন: ৫০০">
+                </div>
+            </div>
+
+            <button class="btn-withdraw-submit" onclick="withdrawReq()">
+                <span>উইথড্র রিকোয়েস্ট পাঠান</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <div class="alert-card mt-4">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>নোট:</strong> উইথড্র রিকোয়েস্ট দেওয়ার ৩০ মিনিট থেকে ২৪ ঘণ্টার মধ্যে পেমেন্ট কমপ্লিট করা হয়।
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+            <h6 class="fw-bold m-0">উইথড্র হিস্টোরি</h6>
+            <span class="badge rounded-pill bg-white text-dark border p-2 px-3 shadow-sm" style="font-size: 10px;">History</span>
+        </div>
+        <div id="withdraw-hist-list" class="mb-5">
+            </div>
+
+    </div>
+</div>
+
 <div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #dc3545, #ff4757); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); position: sticky; top: 0; z-index: 101;">
@@ -1819,7 +2031,71 @@
             </div>
     </div>
 </div>
+<div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #f1f2f6;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Privacy Policy</h5>
+    </div>
 
+    <div class="container px-4 mt-4">
+        <div class="policy-info-card mb-4">
+            <h4 class="fw-bold mb-3" style="color: #6c5ce7;">Privacy Policy</h4>
+            <div class="small-info">
+                <p><strong>Developer:</strong> Abu Sufian</p>
+                <p><strong>Contact:</strong> +8809638307653</p>
+            </div>
+        </div>
+
+        <div class="policy-content">
+            <section class="mb-4">
+                <h6 class="fw-bold text-dark">Introduction</h6>
+                <p>Task Link prioritizes the privacy and security of our users. This Privacy Policy explains how we manage, protect, and use the information you provide or that is generated through your use of our application.</p>
+            </section>
+
+            <div class="policy-item">
+                <span>1. Information We Collect</span>
+                <p>We respect your privacy and do not collect, access, or share personal or sensitive data without explicit notice.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>2. How We Use Your Information</span>
+                <p>At present, our application does not collect any personal or sensitive information.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>3. Data Sharing</span>
+                <p>We do not disclose user information to third parties without your explicit consent.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>4. Data Security</span>
+                <p>We apply robust, industry-standard security practices to safeguard information.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>5. Data Retention and Deletion</span>
+                <p>No data retention policies apply as no personal data is collected.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>6. Third-Party Services</span>
+                <p>Our application may provide links to external websites or services. Mart-Lp is not responsible for their privacy practices.</p>
+            </div>
+
+            <div class="policy-item">
+                <span>7. Changes to This Policy</span>
+                <p>We may revise this Privacy Policy periodically. Significant updates will be communicated.</p>
+            </div>
+
+
+            <div class="policy-item border-0">
+                <span>9. Policy Availability</span>
+                <p>This Privacy Policy is available on our website and within the application.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1500; overflow-y: auto;">
     <div style="background: linear-gradient(135deg, #4834d4, #686de0); padding: 25px 15px; color: white; border-radius: 0 0 25px 25px;">
         <div class="d-flex align-items-center mb-3">
@@ -2444,22 +2720,19 @@
     </div>
 </div>
 
-<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 100px;">
+<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(135deg, #6c5ce7, #0984e3); padding: 30px 20px; color: white; border-radius: 0 0 30px 30px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-chevron-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-                <div style="margin-left: 15px;">
-                    <h5 style="margin: 0; font-weight: 700; font-size: 1.2rem;">Add Money</h5>
-
-                </div>
+    <div style="background: linear-gradient(135deg, #6c5ce7, #0984e3); padding: 25px 20px; color: white; border-radius: 0 0 30px 30px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
+            <div style="margin-left: 15px;">
+                <h5 style="margin: 0; font-weight: 700; letter-spacing: 0.5px;">Add Money</h5>
+               
             </div>
-            <i class="fas fa-wallet" style="font-size: 24px; opacity: 0.5;"></i>
         </div>
     </div>
 
-    <div class="container px-3 mt-4">
+       <div class="container px-3 mt-4">
         <div class="row g-2 mb-4">
             <div class="col-4">
                 <div class="srv-btn py-3 shadow-sm border text-center rounded-3 active-method" id="m-Bkash" onclick="selectMethod('Bkash')" style="background: #fff; cursor: pointer;">
@@ -2481,39 +2754,39 @@
             </div>
         </div>
 
-        <div class="glass-card p-3 mb-4 shadow-sm" style="background: #fff; border-radius: 15px; border-left: 5px solid #6c5ce7;">
-            <p class="small mb-2 fw-bold text-muted">ধাপ ১: নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
-            <div class="p-3 rounded-3 border bg-light d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold mb-0 text-dark" id="display-number" style="font-size: 1.1rem;">01XXXXXXXXX</h5>
-                <button class="btn btn-sm btn-primary px-3 fw-bold" onclick="copyNumber()" style="font-size: 12px; border-radius: 8px;">COPY</button>
+        <div class="instruction-card p-3 mb-4 shadow-sm">
+            <p class="small mb-2 fw-bold text-muted">নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
+            <div class="copy-box d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0" id="display-number">01XXXXXXXXX</h5>
+                <button class="badge-copy" onclick="copyNumber()">COPY</button>
             </div>
         </div>
 
-        <div class="input-section p-4 shadow-sm" style="background: #fff; border-radius: 20px;">
-            <div class="mb-3">
-                <label class="small fw-bold text-muted mb-2 d-block">টাকার পরিমাণ</label>
-                <div style="position: relative; display: flex; align-items: center;">
-                    <i class="fas fa-taka-sign" style="position: absolute; left: 15px; color: #6c5ce7;"></i>
-                    <input type="number" id="f-amt" class="form-control" placeholder="যেমন: ৫০০" style="padding-left: 40px; height: 50px; border-radius: 12px; border: 1.5px solid #eee;">
+        <div class="form-card p-4 shadow-sm mb-4">
+            <div class="input-group-modern mb-3">
+                <label>টাকার পরিমাণ দিন</label>
+                <div class="input-field">
+                    <i class="fas fa-taka-sign"></i>
+                    <input type="number" id="f-amt" placeholder="যেমন: ৫০০">
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label class="small fw-bold text-muted mb-2 d-block">ট্রানজেকশন আইডি (TrxID)</label>
-                <div style="position: relative; display: flex; align-items: center;">
-                    <i class="fas fa-key" style="position: absolute; left: 15px; color: #6c5ce7;"></i>
-                    <input type="text" id="f-trx" class="form-control" placeholder="8N7X6W5Q" style="padding-left: 40px; height: 50px; border-radius: 12px; border: 1.5px solid #eee;">
+            <div class="input-group-modern mb-4">
+                <label>Transaction ID দিন</label>
+                <div class="input-field">
+                    <i class="fas fa-receipt"></i>
+                    <input type="text" id="f-trx" placeholder="8N7X6W5Q">
                 </div>
             </div>
 
-            <button class="btn w-100 py-3 text-white fw-bold shadow" onclick="fundReq()" style="background: linear-gradient(90deg, #6c5ce7, #0984e3); border: none; border-radius: 15px;">
-                টাকা নিশ্চিত করুন <i class="fas fa-arrow-right ms-2"></i>
+            <button class="btn-confirm w-100" onclick="fundReq()">
+                টাকা নিশ্চিত করুন <i class="fas fa-paper-plane ms-1"></i>
             </button>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold m-0" style="color: #2d3436;">লেনদেন হিস্টোরি</h6>
-            <span class="badge rounded-pill bg-white text-dark shadow-sm border p-2 px-3" style="font-size: 10px; cursor: pointer;">View All</span>
+            <i class="fas fa-history text-muted"></i>
         </div>
         <div id="fund-hist-list" class="mb-5">
             </div>
@@ -4365,6 +4638,32 @@ function closeWallet() {
     }
     // হোমপেজ (p-home) যেহেতু কখনো হাইড হয় না, তাই এটি বন্ধ করলে হোম দেখা যাবে।
 }
+// ডিফল্টভাবে একটি মেথড সিলেক্ট করে রাখার জন্য (ঐচ্ছিক)
+let selectedWithdrawMethod = "Bkash";
+
+function selectWithdrawMethod(method) {
+    // ১. আগের সব মেথড কার্ড থেকে 'active-w' ক্লাসটি রিমুভ করা
+    const cards = document.querySelectorAll('.w-method-card');
+    cards.forEach(card => {
+        card.classList.remove('active-w');
+    });
+
+    // ২. যে মেথডটি ক্লিক করা হয়েছে সেটিতে 'active-w' ক্লাস অ্যাড করা
+    const selectedCard = document.getElementById('w-' + method);
+    if (selectedCard) {
+        selectedCard.classList.add('active-w');
+    }
+
+    // ৩. সিলেক্টেড মেথডটি একটি ভেরিয়েবলে সেভ করা (উইথড্র রিকোয়েস্টের সময় কাজে লাগবে)
+    selectedWithdrawMethod = method;
+
+    // ৪. কনসোলে চেক করার জন্য (ডেভেলপমেন্টের সুবিধার্থে)
+    console.log("Selected Method: " + selectedWithdrawMethod);
+    
+    // ৫. আপনি চাইলে নিচের লেবেলে বা মেসেজে মেথডটির নাম দেখাতে পারেন
+    // document.getElementById('method-status').innerText = method + " সিলেক্ট করা হয়েছে";
+}
+
 </script>
 </body>
 </html>
