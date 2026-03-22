@@ -1174,6 +1174,296 @@
     border-radius: 10px;
     margin-top: 8px;
 }
+/* নোটিশ কার্ড */
+.donation-notice {
+    background: #e1f5fe;
+    color: #01579b;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    border-left: 5px solid #03a9f4;
+}
+
+/* স্ট্যাট বক্স */
+.stats-container {
+    display: flex;
+    gap: 12px;
+}
+
+.stat-box {
+    flex: 1;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    padding: 20px 10px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
+}
+
+.stat-box small {
+    font-size: 11px;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-box h3 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+/* দাতা লিস্ট আইটেম */
+.donor-item {
+    background: #fff;
+    padding: 12px 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #f1f2f6;
+}
+
+.donor-avatar {
+    width: 40px;
+    height: 40px;
+    background: #f0f3ff;
+    color: #6c5ce7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.donor-info span {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.donor-info small {
+    font-size: 11px;
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+.donate-time {
+    margin-left: auto;
+    font-size: 10px;
+    background: #e8faf0;
+    color: #2ecc71;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+/* টপ কার্ড ডিজাইন */
+.top-action-card {
+    background: #fff;
+    padding: 15px 10px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #f1f2f6;
+}
+
+.top-action-card span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 8px;
+    color: #2d3436;
+}
+
+/* ডিভাইডার */
+.divider-text {
+    text-align: center;
+    position: relative;
+    margin: 25px 0;
+}
+
+.divider-text::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+}
+
+.divider-text span {
+    background: #fdfdff;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    font-size: 14px;
+    color: #000;
+}
+
+/* ভিডিও কার্ড ডিজাইন */
+.video-section-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.video-thumb {
+    height: 100px;
+    background: #2196f3; /* স্ক্রিনশটের সেই নীল রঙ */
+}
+
+.video-info {
+    padding: 12px;
+}
+
+.video-info small {
+    font-size: 10px;
+    color: #b2bec3;
+    display: block;
+}
+
+.video-info h3 {
+    margin: 5px 0;
+    color: #2196f3;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.video-info p {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2d3436;
+    line-height: 1.3;
+    margin: 0;
+    min-height: 30px;
+}
+.btn-play-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #ff0000; /* ইউটিউব রেড */
+    color: white !important;
+    text-decoration: none !important;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.btn-play-video:active {
+    transform: scale(0.95);
+}
+/* ব্লাড গ্রুপ চিপস */
+.blood-group-chip {
+    padding: 8px 18px;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #636e72;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.active-bg {
+    background: #ff4757;
+    color: #fff;
+    border-color: #ff4757;
+}
+
+/* দাতা কার্ড ডিজাইন */
+.donor-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    border: 1px solid #f1f2f6;
+}
+
+.donor-blood-type {
+    width: 50px;
+    height: 50px;
+    background: #fff5f5;
+    color: #ff4757;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-right: 15px;
+    border: 1px solid #ffd7d7;
+}
+
+.donor-details {
+    flex-grow: 1;
+}
+
+.donor-details h6 {
+    margin: 0;
+    font-weight: 700;
+    color: #2d3436;
+}
+
+.donor-details p {
+    margin: 2px 0;
+    font-size: 11px;
+    color: #636e72;
+}
+
+.donor-details small {
+    font-size: 10px;
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+/* কল বাটন */
+.call-btn {
+    width: 40px;
+    height: 40px;
+    background: #2ecc71;
+    color: white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+    transition: 0.3s;
+}
+
+.call-btn:active {
+    transform: scale(0.9);
+}
+/* স্লাইড আপ অ্যানিমেশন */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.auth-input {
+    background: #f8f9fa !important;
+    border: 1px solid #eee !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    font-size: 14px;
+}
+
+.auth-input:focus {
+    border-color: #ff4757 !important;
+    box-shadow: none !important;
+}
 
     </style>
 </head>
@@ -1809,7 +2099,7 @@
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #20c997; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(32,201,151,0.3);">
                 <i class="fas fa-laptop-code"></i>
             </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Digital Srv</small>
+            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Digital Service</small>
         </div>
 
 
@@ -1817,9 +2107,28 @@
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
                 <i class="fas fa-share-alt"></i>
             </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Social Srv</small>
+            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Social Service</small>
         </div>
+<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: #ff4757; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(255,71,87,0.3);">
+        <i class="fas fa-hand-holding-heart"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Blood Donation</small>
+</div>
 
+<div onclick="openPage('p-training')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: #6c5ce7; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(108,92,231,0.3);">
+        <i class="fas fa-graduation-cap"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Training Course</small>
+</div>
+
+<div onclick="openPage('p-fundraising')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: #2ecc71; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(46,204,113,0.3);">
+        <i class="fas fa-donate"></i>
+    </div>
+    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Fund Raising</small>
+</div>
         <div onclick="openPage('p-more')" style="cursor: pointer;">
             <div style="width: 60px; height: 60px; border-radius: 50%; background: #e83e8c; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(232,62,140,0.3);">
                 <i class="fas fa-plus"></i>
@@ -1943,7 +2252,51 @@
 
     </div>
 </div>
+<div id="p-fundraising" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Fund Raising</h5>
+    </div>
 
+    <div class="container px-3 mt-3">
+        
+        <div class="donation-notice mb-4">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>জরুরী তথ্য:</strong> Task Link অ্যাপের প্রতিটি নতুন অ্যাকাউন্ট থেকে <strong>৫ টাকা</strong> করে মানবিক ফান্ডে কেটে নেওয়া হবে। আপনার এই ক্ষুদ্র দান অসহায় মানুষের মুখে হাসি ফোটাবে।
+            </div>
+        </div>
+
+        <div class="stats-container mb-4">
+            <div class="stat-box">
+                <small>মোট জমা হয়েছে</small>
+                <h3>৳<span id="total-fund-amount">0.00</span></h3>
+            </div>
+            <div class="stat-box">
+                <small>মোট দাতা সংখ্যা</small>
+                <h3><span id="total-donors">0</span> জন</h3>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold m-0" style="color: #2d3436;">দানকারীদের তালিকা (Gmail)</h6>
+            <i class="fas fa-users text-muted"></i>
+        </div>
+
+        <div id="donor-list-container" class="mb-5">
+            <div class="donor-item">
+                <div class="donor-avatar"><i class="fas fa-user"></i></div>
+                <div class="donor-info">
+                    <span>user****@gmail.com</span>
+                    <small>দান করেছেন: ৫.০০ ৳</small>
+                </div>
+                <div class="donate-time">সফল</div>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #dc3545, #ff4757); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); position: sticky; top: 0; z-index: 101;">
@@ -2016,7 +2369,102 @@
         </div>
     </div>
 </div>
+<div id="p-blood" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #ff4757;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">রক্তদাতার তালিকা</h5>
+    </div>
 
+    <div class="container px-3 mt-3">
+        
+        <div class="d-flex gap-2 mb-4" style="overflow-x: auto; white-space: nowrap; padding-bottom: 5px;">
+            <span class="blood-group-chip active-bg">All</span>
+            <span class="blood-group-chip">A+</span>
+            <span class="blood-group-chip">B+</span>
+            <span class="blood-group-chip">O+</span>
+            <span class="blood-group-chip">AB+</span>
+            <span class="blood-group-chip">A-</span>
+        </div>
+
+        <div id="blood-donor-list">
+            
+            <div class="donor-card shadow-sm">
+                <div class="donor-blood-type">A+</div>
+                <div class="donor-details">
+                    <h6>Abu Sufian</h6>
+                    <p><i class="fas fa-map-marker-alt"></i> Khulna, Bangladesh</p>
+                    <small>সর্বশেষ রক্ত দিয়েছেন: ২ মাস আগে</small>
+                </div>
+                <a href="tel:01XXXXXXXXX" class="call-btn">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+
+            <div class="donor-card shadow-sm">
+                <div class="donor-blood-type">O+</div>
+                <div class="donor-details">
+                    <h6>Rakib Hasan</h6>
+                    <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                    <small>রক্ত দিতে ইচ্ছুক (Available)</small>
+                </div>
+                <a href="tel:01XXXXXXXXX" class="call-btn">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="mt-5 text-center">
+            <p class="small text-muted">আপনি কি রক্তদান করতে চান?</p>
+<button class="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" style="background: #ff4757; border: none;" onclick="toggleBloodModal()">
+    রক্তদাতা হিসেবে নাম লিখুন
+</button>
+        </div>
+
+    </div>
+</div>
+<div id="blood-reg-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div class="bg-white p-4 rounded-4 shadow-lg w-100" style="max-width: 400px; position: relative; animation: slideUp 0.3s ease;">
+        
+        <i class="fas fa-times" style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: #b2bec3;" onclick="toggleBloodModal()"></i>
+        
+        <h5 class="fw-bold mb-3 text-center" style="color: #ff4757;"><i class="fas fa-heartbeat"></i> রক্তদাতা হিসেবে নাম লিখুন</h5>
+        
+        <div class="mb-3">
+            <label class="small fw-bold text-muted">আপনার নাম</label>
+            <input type="text" id="donor-name" class="form-control auth-input" placeholder="যেমন: আবু সুফিয়ান">
+        </div>
+
+        <div class="mb-3">
+            <label class="small fw-bold text-muted">রক্তের গ্রুপ</label>
+            <select id="donor-group" class="form-select auth-input">
+                <option value="">সিলেক্ট করুন</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="O+">O+</option>
+                <option value="AB+">AB+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="small fw-bold text-muted">আপনার এলাকা</label>
+            <input type="text" id="donor-loc" class="form-control auth-input" placeholder="যেমন: খুলনা, বাংলাদেশ">
+        </div>
+
+        <div class="mb-4">
+            <label class="small fw-bold text-muted">মোবাইল নাম্বার</label>
+            <input type="number" id="donor-phone" class="form-control auth-input" placeholder="017XXXXXXXX">
+        </div>
+
+        <button class="btn btn-danger w-100 py-3 fw-bold rounded-3 shadow-sm" style="background: #ff4757; border: none;" onclick="submitDonorInfo()">
+            নিবন্ধন সম্পন্ন করুন
+        </button>
+    </div>
+</div>
 <div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1005; overflow-y: auto;">
     <div style="padding: 20px; background: #333; color: white;">
         <i class="fas fa-arrow-left" onclick="openPage('p-shop')"></i>
@@ -2316,6 +2764,92 @@
                 <button onclick="confirmDriveOrder()" style="flex: 2; padding: 12px; border-radius: 12px; border: none; background: #17a2b8; color: white; font-weight: 800;">সাবমিট করুন</button>
             </div>
         </div>
+    </div>
+</div>
+<div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Training Section</h5>
+    </div>
+
+    <div class="container px-3 mt-3">
+        
+
+        
+
+        <div class="divider-text">
+            <span>Training Section</span>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('01')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০১</h3>
+                        <p>কোম্পানির পরিচিতি ও লক্ষ্য</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('02')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০২</h3>
+                        <p>অ্যাকাউন্ট ও অর্থ ব্যবস্থাপনা</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('03')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০৩</h3>
+                        <p>ক্যারিয়ার ও স্কিল ডেভেলপমেন্ট</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('04')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০৪</h3>
+                        <p>রিচার্জ, ড্রাইভ ও বিল পেমেন্ট</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('05')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০৫</h3>
+                        <p>SMM Work সম্পর্কিত</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="video-section-card shadow-sm" onclick="playVideo('06')">
+                    <div class="video-thumb"></div>
+                    <div class="video-info">
+                        <small>Section</small>
+                        <h3>০৬</h3>
+                        <p>ডেইলি বোনাস ও অ্যাডস ইনকাম</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <div id="p-topup" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
@@ -2644,7 +3178,30 @@
         </div>
     </div>
 </div>
+<div id="p-video-view" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 3000; overflow-y: auto;">
+    
+    <div style="background: #fff; padding: 20px; display: flex; align-items: center; border-bottom: 1px solid #eee;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-training')"></i>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700;" id="v-header-title">Video Lesson</h5>
+    </div>
 
+    <div class="container px-3 mt-4">
+        <div style="width: 100%; height: 200px; background: #2196f3; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 50px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(33, 150, 243, 0.2);">
+            <i class="fas fa-play-circle"></i>
+        </div>
+
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+            <h4 id="v-title" style="font-weight: 800; color: #2d3436; margin-bottom: 10px;">ভিডিওর টাইটেল এখানে আসবে</h4>
+            <p id="v-desc" style="font-size: 14px; color: #636e72; line-height: 1.6;">এই ভিডিওতে আপনি শিখতে পারবেন কীভাবে আমাদের প্ল্যাটফর্মে কাজ শুরু করতে হয় এবং নিয়মাবলী।</p>
+            
+            <hr style="opacity: 0.1; margin: 20px 0;">
+
+            <a id="v-link" href="#" target="_blank" class="btn-play-video">
+                <i class="fab fa-youtube"></i> ভিডিওটি দেখুন
+            </a>
+        </div>
+    </div>
+</div>
 
 <div id="p-target" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f9f9ff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -4730,7 +5287,59 @@ function selectWithdrawMethod(method) {
     // ৫. আপনি চাইলে নিচের লেবেলে বা মেসেজে মেথডটির নাম দেখাতে পারেন
     // document.getElementById('method-status').innerText = method + " সিলেক্ট করা হয়েছে";
 }
+function playVideo(sectionId) {
+    // সেকশন অনুযায়ী ডেটা সেট করা
+    let title = "";
+    let desc = "";
+    let link = "";
 
+    if (sectionId === '01') {
+        title = "কোম্পানির পরিচিতি ও লক্ষ্য";
+        desc = "আমাদের প্ল্যাটফর্মের ভবিষ্যৎ পরিকল্পনা এবং আপনি কীভাবে এখান থেকে ইনকাম করতে পারবেন তার বিস্তারিত আলোচনা।";
+        link = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1";
+    } else if (sectionId === '02') {
+        title = "অ্যাকাউন্ট ও অর্থ ব্যবস্থাপনা";
+        desc = "কীভাবে সঠিকভাবে অ্যাকাউন্ট ভেরিফাই করবেন এবং টাকা উইথড্র করবেন তা এই ভিডিওতে দেখানো হয়েছে।";
+        link = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2";
+    }
+    // এভাবে ০৩, ০৪ এর জন্য আরও যোগ করতে পারেন...
+
+    // পেজে ডেটা বসানো
+    document.getElementById('v-header-title').innerText = "Section " + sectionId;
+    document.getElementById('v-title').innerText = title;
+    document.getElementById('v-desc').innerText = desc;
+    document.getElementById('v-link').href = link;
+
+    // ভিডিও ভিউ পেজ ওপেন করা
+    openPage('p-video-view');
+}
+// ফরমটি ওপেন বা ক্লোজ করার ফাংশন
+function toggleBloodModal() {
+    const modal = document.getElementById('blood-reg-modal');
+    modal.classList.toggle('d-none');
+}
+
+// আপনার আগের "রক্তদাতা হিসেবে নাম লিখুন" বাটনের onclick এ এটি যোগ করুন:
+// onclick="toggleBloodModal()"
+
+function submitDonorInfo() {
+    const name = document.getElementById('donor-name').value;
+    const group = document.getElementById('donor-group').value;
+    const loc = document.getElementById('donor-loc').value;
+    const phone = document.getElementById('donor-phone').value;
+
+    if(name && group && loc && phone) {
+        // এখানে আপনি আপনার ডাটাবেজ বা ফায়ারবেস ফাংশন কল করতে পারেন
+        alert("ধন্যবাদ " + name + "! আপনি সফলভাবে রক্তদাতা হিসেবে নিবন্ধিত হয়েছেন।");
+        toggleBloodModal();
+        
+        // ইনপুট ফিল্ড খালি করে দেওয়া
+        document.getElementById('donor-name').value = '';
+        document.getElementById('donor-phone').value = '';
+    } else {
+        alert("দয়া করে সব তথ্য পূরণ করুন!");
+    }
+}
 </script>
 </body>
 </html>
