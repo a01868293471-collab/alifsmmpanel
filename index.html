@@ -1117,6 +1117,63 @@
     color: #2d3436;
     margin-bottom: 8px;
 }
+/* কভার সেকশনের জন্য কাস্টম স্টাইল */
+.icon-box {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-icon {
+    font-size: 2.2rem;
+    color: #3b82f6; /* নীল রঙ */
+}
+
+.check-overlay {
+    position: absolute;
+    font-size: 1.2rem;
+    color: #2ecc71; /* সবুজ রঙ */
+    bottom: 8px;
+    right: 8px;
+    background: #0f172a; /* ব্যাকগ্রাউন্ডের সাথে মিলিয়ে */
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name-top {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+}
+
+.brand-name-bottom {
+    color: #2ecc71; /* সবুজ রঙ */
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+}
+
+.highlight-bar {
+    width: 50px;
+    height: 4px;
+    background: #3b82f6; /* নীল রঙ */
+    border-radius: 10px;
+    margin-top: 8px;
+}
 
     </style>
 </head>
@@ -1145,8 +1202,8 @@
         </div>
         
         <h2 style="font-weight: 900; letter-spacing: 1px; font-size: 30px; margin-bottom: 5px; font-family: sans-serif;">
-            <span style="color: #2d3436;">ALIF</span> 
-            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SMM PANEL</span>
+            <span style="color: #2d3436;">TASK</span> 
+            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LINK</span>
         </h2>
         
         <p style="font-size: 12px; font-weight: 600; color: #636e72; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-family: sans-serif;">Digital Business Platform</p>
@@ -1296,23 +1353,33 @@
     </div>
 
     <div class="brand-logo">
-        <span class="brand-alif">ALIF</span>
-        <span class="brand-panel">SMM PANEL</span>
+        <span class="brand-alif">TASK<span>
+        <span class="brand-panel">LINK<span>
     </div>
 
     <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()">
         <i class="fas fa-bars-staggered"></i> </div>
 </nav>
 
-<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 15px; height: 140px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-    <img src="https://img.freepik.com/free-vector/abstract-digital-technology-background-with-network-connection-lines_1017-25552.jpg" 
-         style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8);">
-    <div style="position: absolute; bottom: 15px; left: 15px; color: white;">
-        <h5 class="fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Welcome back!</h5>
-        <p class="small mb-0" style="opacity: 0.9;">Best SMM Services in Bangladesh</p>
+
+<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+    
+    <i class="fas fa-link-slash" style="position: absolute; font-size: 15rem; color: rgba(59, 130, 246, 0.05); top: -40px; right: -50px; transform: rotate(-15deg); z-index: 0;"></i>
+
+    <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); z-index: 1; display: flex; align-items: center; gap: 15px;">
+        
+        <div class="icon-box">
+            <i class="fas fa-link main-icon"></i>
+            <i class="fas fa-check check-overlay"></i>
+        </div>
+
+        <div class="text-group">
+            <h1 class="brand-name-top">TASK</h1>
+            <h1 class="brand-name-bottom">LINK</h1>
+            <div class="highlight-bar"></div>
+        </div>
     </div>
 </div>
-
 
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
