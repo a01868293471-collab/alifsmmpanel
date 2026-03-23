@@ -4977,7 +4977,10 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-u')"><i class="fas fa-users d-block mb-1 text-primary"></i>ইউজার</button>
-    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f')"><i class="fas fa-money-bill d-block mb-1 text-success"></i>পেমেন্ট</button>
+    <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f'); renderAdminPayments();">
+    <i class="fas fa-money-bill d-block mb-1 text-success"></i>পেমেন্ট
+</button>
+  
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1 text-warning"></i>অর্ডার</button>
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-s')"><i class="fas fa-envelope d-block mb-1 text-info"></i>মেসেজ</button>
 </div>
@@ -7148,6 +7151,59 @@ function renderWithdrawHistory() {
     });
 
     listContainer.innerHTML = html;
+}
+// পেমেন্ট ট্যাবে ক্লিক করলে এই ফাংশনটি কল হবে
+function renderAdminPayments() {
+    const listArea = document.getElementById('a-f');
+    if (!listArea) return;
+
+    // ১. পেন্ডিং ডিপোজিট (Funds) ম্যাপ করা
+    let depositHTML = (db.funds || []).filter(f => f.status === 'Pending').map(f => `
+        <div class="admin-user-card shadow-sm mb-3" style="border-left: 5px solid #28a745; background: #fff; padding: 15px; border-radius: 12px;">
+            <div class="d-flex justify-content-between">
+                <span class="badge bg-success-light text-success mb-2" style="background: #eafaf1;">Deposit Request</span>
+                <small class="text-muted">${f.time || ''}</small>
+            </div>
+            <div style="font-weight: 800; font-size: 17px; color: #2d3436;">৳${f.amt} <small style="font-size: 12px;">(${f.method})</small></div>
+            <div style="font-size: 12px; color: #636e72; margin-top: 8px; line-height: 1.6;">
+                <b>Trx ID:</b> <span class="text-primary">${f.trx}</span> <br>
+                <b>User:</b> ${f.user}
+            </div>
+            <button class="btn btn-sm btn-success mt-3 w-100 fw-bold py-2" onclick="approveFund(${f.id})" style="border-radius: 8px;">Approve Deposit</button>
+        </div>
+    `).join("");
+
+    // ২. পেন্ডিং উইথড্র (Withdraws) ম্যাপ করা
+    let withdrawHTML = (db.withdraws || []).filter(w => w.status === 'Pending').map(w => `
+        <div class="admin-user-card shadow-sm mb-3" style="border-left: 5px solid #ff4757; background: #fff; padding: 15px; border-radius: 12px;">
+            <div class="d-flex justify-content-between">
+                <span class="badge bg-danger-light text-danger mb-2" style="background: #fff0f0;">Withdraw Request</span>
+                <small class="text-muted">${w.time || ''}</small>
+            </div>
+            <div style="font-weight: 800; font-size: 17px; color: #2d3436;">৳${w.amt} <small style="font-size: 12px;">(${w.method})</small></div>
+            <div style="font-size: 12px; color: #636e72; margin-top: 8px; line-height: 1.6;">
+                <b>Number:</b> <span class="text-danger fw-bold">${w.num}</span> <br>
+                <b>User:</b> ${w.user}
+            </div>
+            <button class="btn btn-sm btn-danger mt-3 w-100 fw-bold py-2" onclick="approveWithdraw(${w.id})" style="border-radius: 8px;">Approve Withdraw</button>
+        </div>
+    `).join("");
+
+    // ৩. দুইটা ডাটা একসাথে পেমেন্ট ট্যাবে দেখানো
+    let finalHTML = depositHTML + withdrawHTML;
+    listArea.innerHTML = finalHTML || `<div class="text-center p-5 text-muted"><i class="fas fa-check-circle d-block mb-2 fa-2x"></i>কোনো পেন্ডিং রিকোয়েস্ট নেই</div>`;
+}
+function approveWithdraw(id) {
+    let confirmApprove = confirm("আপনি কি পেমেন্ট কমপ্লিট করেছেন? এপ্রুভ করলে ইউজারের কাছে পেমেন্ট সাকসেস দেখাবে।");
+    if (confirmApprove) {
+        let wIdx = db.withdraws.findIndex(w => w.id === id);
+        if (wIdx !== -1) {
+            db.withdraws[wIdx].status = 'Success';
+            save(); // ডাটা লোকাল স্টোরেজে সেভ হবে
+            renderAdminPayments(); // লিস্ট রিফ্রেশ হবে
+            alert("Withdraw Approved!");
+        }
+    }
 }
 </script>
 </body>
