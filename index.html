@@ -2160,16 +2160,33 @@ div[onclick="toggleBloodModal()"]:active {
     margin-right: 8px;
     font-size: 12px;
 }
+#user-name svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+<style>
+@keyframes premiumPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+}
+@keyframes smoothFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+</style>
+  
     </style>
 </head>
 <body>
+
   <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     
     <style>
         @keyframes fillLoader {
             0% { width: 0%; }
             30% { width: 40%; }
-            70% { width: 85%; }
+           70% { width: 85%; }
             100% { width: 100%; }
         }
         @keyframes pulseDot {
@@ -2182,13 +2199,13 @@ div[onclick="toggleBloodModal()"]:active {
     <div class="splash-container" style="text-align: center; position: relative;">
         
         <div style="width: 100px; height: 100px; background: white; margin: 0 auto 25px; border-radius: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 35px rgba(108, 92, 231, 0.2); position: relative; border: 2px solid rgba(108, 92, 231, 0.1);">
-            <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 60px; height: 60px; object-fit: contain;">
-            <div style="position: absolute; bottom: -5px; width: 10px; height: 10px; background: #6c5ce7; border-radius: 50%; box-shadow: 0 0 15px #6c5ce7; animation: pulseDot 1.5s infinite;"></div>
+            <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 150px; height: 100px; object-fit: contain;">
+
         </div>
         
         <h2 style="font-weight: 900; letter-spacing: 1px; font-size: 30px; margin-bottom: 5px; font-family: sans-serif;">
-            <span style="color: #2d3436;">TASK</span> 
-            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LINK</span>
+            <span style="color: #3b82f6;">TASK</span> 
+            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color:#2ecc71;">LINK</span>
         </h2>
         
         <p style="font-size: 12px; font-weight: 600; color: #636e72; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-family: sans-serif;">Digital Business Platform</p>
@@ -2197,11 +2214,9 @@ div[onclick="toggleBloodModal()"]:active {
             <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #6c5ce7, #0984e3); border-radius: 10px; animation: fillLoader 3s ease-in-out forwards;"></div>
         </div>
 
-        <p style="margin-top: 20px; font-size: 10px; color: #b2bec3; font-weight: 600; font-family: sans-serif;">Version 2.0.1</p>
+        <p style="margin-top: 20px; font-size: 10px; color: #b2bec3; font-weight: 600; font-family: sans-serif;">Version 2.0</p>
     </div>
 </div>
-  
-  
   
   
   
@@ -2875,10 +2890,22 @@ div[onclick="toggleBloodModal()"]:active {
     <div class="drawer-content">
         <div class="drawer-header">
             <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow">
-            <h5 id="user-name" class="fw-bold mt-2 mb-0">User Name</h5>
-            <div class="ref-badge mt-2">
-                <small>Refer Code: <b id="user-ref">ALIF123</b></small>
-            </div>
+
+            <h5 id="user-name" class="fw-bold mt-2 mb-0" style="display: flex; align-items: center; justify-content: center;">
+    User Name
+</h5>
+    <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
+    <div style="background: #ffffff; padding: 5px 15px; border-radius: 100px; border: 1px solid #f1f2f6; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <i class="fas fa-user-check" style="font-size: 10px; color: #2ecc71;"></i>
+        <span style="font-size: 10px; font-weight: 700; color: #475569; letter-spacing: 0.3px;">General Member</span>
+    </div>
+</div>
+            <div class="ref-card" style="margin-top: 15px; background: #ffffff; padding: 6px 15px; border-radius: 100px; border: 1px solid #f1f2f6; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <span style="color: #95a5a6; font-size: 10px; font-weight: 600;">Referral:</span>
+        <b id="user-ref" style="color: #2d3436; font-size: 12px; letter-spacing: 0.5px; font-family: monospace;">ALIF123</b>
+        <i class="far fa-copy" style="color: #2ecc71; cursor: pointer; font-size: 13px;" onclick="copyRef()"></i>
+    </div>
+
         </div>
          
         <div class="drawer-menu mt-4">
@@ -5146,12 +5173,14 @@ function handleAuth(m) {
     }
 
     function renderUser() {
-        if(!curUser) return;
-        document.getElementById('u-bal').innerText = formatCurrency(curUser.bal);
-        document.getElementById('fund-hist-list').innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}"><b>৳${f.amt} (${f.method})</b> <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span><div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div></div>`).join("") || "No history";
-        document.getElementById('order-hist-list').innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}"><b>${o.srv} - ${o.qty}</b> <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span><div class="x-small text-muted mt-1">${o.time}</div></div>`).join("") || "No orders";
-    }
-    
+        if(!curUser) return;
+        document.getElementById('u-bal').innerText = formatCurrency(curUser.bal);
+        document.getElementById('fund-hist-list').innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}"><b>৳${f.amt} (${f.method})</b> <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span><div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div></div>`).join("") || "No history";
+        document.getElementById('order-hist-list').innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `<div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}"><b>${o.srv} - ${o.qty}</b> <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span><div class="x-small text-muted mt-1">${o.time}</div></div>`).join("") || "No orders";
+ }
+
+
+
     function renderAdmin() {
         let uH = ""; 
         db.users.filter(u => u.role !== 'admin').forEach((u, i) => {
