@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALIF SMM PANEL</title>
+    <title>TASK LINK</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
@@ -2174,8 +2174,23 @@ div[onclick="toggleBloodModal()"]:active {
     0% { width: 0%; }
     100% { width: 100%; }
 }
-</style>
-  
+
+    #p-income-sub {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f4f7f6;
+        z-index: 9999 !important; /* অনেক বেশি জেন-ইন্ডেক্স দিন যেন সবার উপরে থাকে */
+        overflow-y: auto;
+    }
+    
+    /* d-none ক্লাস থাকলে লুকানো থাকবে */
+    #p-income-sub.d-none {
+        display: none !important;
+    }
+
     </style>
 </head>
 <body>
@@ -3783,10 +3798,9 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div class="container mt-3">
         <div style="background: linear-gradient(135deg, #4834d4, #22a6b3); padding: 25px; border-radius: 20px; position: relative; color: white; box-shadow: 0 10px 25px rgba(72, 52, 212, 0.2); overflow: hidden;">
-            
             <div style="position: absolute; right: -20px; top: -20px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
             
-            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 10px; font-size: 14px; text-transform: uppercase;">আজকের ইনকাম</h6>
+            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 10px; font-size: 14px; text-transform: uppercase;">উপার্জন রিপোর্ট</h6>
             
             <div class="d-flex align-items-center justify-content-between">
                 <div>
@@ -3798,11 +3812,13 @@ div[onclick="toggleBloodModal()"]:active {
             </div>
             
             <div style="margin-top: 20px; font-size: 12px; font-weight: 500; display: flex; align-items: center; opacity: 0.8; background: rgba(0,0,0,0.1); padding: 5px 12px; border-radius: 50px; width: fit-content;">
-                <i class="far fa-calendar-alt me-2"></i> তারিখ: <span id="income-date-val" class="ms-1">22-03-2026</span>
+                <i class="far fa-calendar-alt me-2"></i> <span id="income-date-val">--</span>
             </div>
         </div>
 
-
+        <h6 class="mt-4 mb-3" style="font-weight: 700; color: #2d3436; padding-left: 5px;">বিস্তারিত হিস্টোরি</h6>
+        <div id="income-history-list" style="padding-bottom: 30px;">
+            </div>
     </div>
 </div>
 <div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
@@ -5044,6 +5060,79 @@ function save() {
             reader.readAsDataURL(file);
         }
     });
+    window.openIncomeDetail = function(type, title) {
+    if (!curUser) return;
+    
+    const subPage = document.getElementById('p-income-sub');
+    const titleEl = document.getElementById('income-card-title');
+    const amtEl = document.getElementById('income-amt-val');
+    const dateEl = document.getElementById('income-date-val');
+    const listEl = document.getElementById('income-history-list');
+
+    if (!subPage) return;
+
+    titleEl.innerText = title;
+    
+    let history = curUser.incomeHistory || [];
+    let now = new Date();
+    let totalFiltered = 0;
+    let listHTML = "";
+
+    // তারিখ ফরম্যাট (YYYY-MM-DD)
+    const toDateStr = (d) => d.toLocaleDateString('en-CA');
+    let todayStr = toDateStr(now);
+    
+    let yestDate = new Date();
+    yestDate.setDate(now.getDate() - 1);
+    let yesterdayStr = toDateStr(yestDate);
+
+    history.forEach(item => {
+        let amt = parseFloat(item.amount || 0);
+        let itemDateStr = item.date.split(' | ')[0]; // তারিখ অংশ
+        let itemDateObj = new Date(itemDateStr);
+        
+        // দিন গণণা (Difference in days)
+        let diffTime = Math.abs(now - itemDateObj);
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        let isMatch = false;
+        
+        // ৫টি আলাদা ফিল্টার লজিক
+        if (type === 'today' && itemDateStr === todayStr) isMatch = true;
+        else if (type === 'yesterday' && itemDateStr === yesterdayStr) isMatch = true;
+        else if (type === '7days' && diffDays <= 7) isMatch = true;
+        else if (type === '30days' && diffDays <= 30) isMatch = true;
+        else if (type === 'total') isMatch = true;
+
+        if (isMatch) {
+            totalFiltered += amt;
+            listHTML += `
+                <div style="background: white; padding: 12px; border-radius: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f0f0f0;">
+                    <div>
+                        <div style="font-weight: 700; color: #333; font-size: 13px;">${item.note || 'উপার্জন'}</div>
+                        <small style="color: #999; font-size: 10px;">${item.date}</small>
+                    </div>
+                    <div style="font-weight: 800; color: #2ecc71;">+ ৳${amt.toFixed(2)}</div>
+                </div>`;
+        }
+    });
+
+    // UI আপডেট
+    amtEl.innerText = totalFiltered.toFixed(2);
+    
+    // তারিখের লেবেল সেট করা
+    if(type === 'today') dateEl.innerText = "তারিখ: " + todayStr;
+    else if(type === 'yesterday') dateEl.innerText = "তারিখ: " + yesterdayStr;
+    else if(type === '7days') dateEl.innerText = "গত ৭ দিনের রিপোর্ট";
+    else if(type === '30days') dateEl.innerText = "গত ৩০ দিনের রিপোর্ট";
+    else dateEl.innerText = "লাইফটাইম রিপোর্ট";
+
+    listEl.innerHTML = listHTML || '<div class="text-center text-muted mt-5 small">কোনো ডাটা পাওয়া যায়নি</div>';
+
+    // পেজ দেখানো
+    subPage.classList.remove('d-none');
+    subPage.style.display = 'block';
+};
 
     window.onload = () => { 
         syncUI(); 
@@ -5274,7 +5363,33 @@ function handleAuth(m) {
     
 
     function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
-    function editBal(i) { let amt = prompt("টাকার পরিমাণ:"); if(amt) { db.users[i].bal += parseFloat(amt); save(); renderAdmin(); toast('সফল'); } }
+    function editBal(index) {
+    let amt = prompt("টাকার পরিমাণ লিখুন:");
+    let note = prompt("ইনকামের কারণ লিখুন (যেমন: বোনাস):");
+    
+    if (amt && !isNaN(amt)) {
+        let user = db.users[index];
+        let amount = parseFloat(amt);
+        let now = new Date();
+        // তারিখ ফরম্যাট: YYYY-MM-DD | HH:MM
+        let dateStr = now.toISOString().split('T')[0] + " | " + now.getHours() + ":" + now.getMinutes();
+
+        user.bal += amount;
+        if (!user.incomeHistory) user.incomeHistory = [];
+        
+        user.incomeHistory.unshift({
+            amount: amount,
+            date: dateStr,
+            note: note || "অ্যাডমিন কর্তৃক যুক্ত"
+        });
+
+        save();
+        renderAdmin();
+        alert("টাকা যোগ হয়েছে!");
+    }
+}
+    
+    
     function toggleBlock(i) {
     let user = db.users[i];
     
@@ -7258,6 +7373,69 @@ function approveWithdraw(id) {
             alert("Withdraw Approved!");
         }
     }
+}
+// ১. ইনকাম ডিটেইল ওপেন করার ফাংশন
+function openIncomeDetail(type, title) {
+    if (!curUser) return;
+    
+    const subPage = document.getElementById('p-income-sub');
+    const titleEl = document.getElementById('income-card-title');
+    const amtEl = document.getElementById('income-amt-val');
+    const dateEl = document.getElementById('income-date-val');
+    const listEl = document.getElementById('income-history-list');
+
+    titleEl.innerText = title;
+    
+    let history = curUser.incomeHistory || [];
+    let now = new Date();
+    let totalFiltered = 0;
+    let listHTML = "";
+
+    // তারিখ ফরম্যাট (YYYY-MM-DD)
+    const toDateStr = (d) => d.toISOString().split('T')[0];
+    let todayStr = toDateStr(now);
+    let yesterday = new Date();
+    yesterday.setDate(now.getDate() - 1);
+    let yesterdayStr = toDateStr(yesterday);
+
+    history.forEach(item => {
+        let amt = parseFloat(item.amount || 0);
+        let itemDateStr = item.date.split(' | ')[0]; // তারিখ অংশ
+        let itemDateObj = new Date(itemDateStr);
+        let diffDays = Math.floor((now - itemDateObj) / (1000 * 60 * 60 * 24));
+
+        let isMatch = false;
+        if (type === 'today' && itemDateStr === todayStr) isMatch = true;
+        else if (type === 'yesterday' && itemDateStr === yesterdayStr) isMatch = true;
+        else if (type === '7days' && diffDays < 7) isMatch = true;
+        else if (type === '30days' && diffDays < 30) isMatch = true;
+        else if (type === 'total') isMatch = true;
+
+        if (isMatch) {
+            totalFiltered += amt;
+            listHTML += `
+                <div style="background: white; padding: 15px; border-radius: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f0f0f0;">
+                    <div>
+                        <div style="font-weight: 700; color: #333; font-size: 14px;">${item.note || 'উপার্জন'}</div>
+                        <small style="color: #999; font-size: 11px;">${item.date}</small>
+                    </div>
+                    <div style="font-weight: 800; color: #2ecc71;">+ ৳${amt.toFixed(2)}</div>
+                </div>`;
+        }
+    });
+
+    // ডাটা বসানো
+    amtEl.innerText = totalFiltered.toFixed(2);
+    dateEl.innerText = (type === 'today') ? "আজকের তারিখ" : (type === 'total' ? "লাইফটাইম" : title);
+    listEl.innerHTML = listHTML || '<div class="text-center text-muted mt-5 small">কোনো ডাটা পাওয়া যায়নি</div>';
+
+    // পেজ দেখানো
+    subPage.classList.remove('d-none');
+}
+
+// ২. পেজ বন্ধ করার ফাংশন
+function closeIncomeSub() {
+    document.getElementById('p-income-sub').classList.add('d-none');
 }
 </script>
 </body>
