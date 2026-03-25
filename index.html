@@ -4693,33 +4693,21 @@ Social Order History
         <button class="btn btn-sm btn-outline-danger px-4 rounded-pill fw-bold" onclick="logout()">Logout</button>
     </div>
     
-    <div class="container p-3">
-        <div class="glass-card p-4 mb-4">
-            <h6 class="fw-bold border-bottom pb-2 mb-3"><i class="fas fa-cog me-2"></i>ওয়েবসাইট সেটিংস</h6>
-            <div class="mb-3">
-                <label class="x-small fw-bold mb-1">লোগো পরিবর্তন (Choose Image)</label>
-                <input type="file" id="adm-logo-file" class="form-control form-control-sm" accept="image/*">
-            </div>
-            <label class="x-small fw-bold mb-1">হোম নোটিশ</label>
-            <textarea id="adm-note-in" class="form-control mb-3" rows="2"></textarea>
-                        <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary">অটো-রিপ্লাই মেসেজ</h6>
-            <textarea id="adm-auto-msg" class="form-control mb-3" rows="3" placeholder="সাপোর্ট সেন্টারে ইউজার মেসেজ দিলে যা রিপ্লাই যাবে..."></textarea>
+<div class="container p-3">
+  <div class="glass-card p-4 mb-4 text-center">
+    <h6 class="fw-bold border-bottom pb-2 mb-3">লোগো পরিবর্তন</h6>
+    
+    <img id="current-logo-view" src="img/logo.png" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; border: 2px dashed #6c5ce7; padding: 5px; border-radius: 15px;">
+    
+    <div class="mb-3">
+        <input type="file" id="adm-logo-file" class="form-control form-control-sm" accept="image/*">
+    </div>
 
-            <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">পেমেন্ট নাম্বার সেটিংস</h6>
-            <div class="row g-2 mb-3">
-                <div class="col-6"><label class="x-small fw-bold">বিকাশ/নগদ নাম্বার</label><input type="text" id="adm-pay-num" class="form-control form-control-sm"></div>
-                <div class="col-6"><label class="x-small fw-bold">রকেট নাম্বার</label><input type="text" id="adm-rocket-num" class="form-control form-control-sm"></div>
-            </div>
-            <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4 text-primary">সার্ভিস মূল্য (প্রতি ১০০০)</h6>
-            <div class="row g-2 mb-3">
-                <div class="col-6"><label class="x-small fw-bold">Facebook Price</label><input type="number" id="p-fb" class="form-control form-control-sm"></div>
-                <div class="col-6"><label class="x-small fw-bold">YouTube Price</label><input type="number" id="p-yt" class="form-control form-control-sm"></div>
-                <div class="col-6"><label class="x-small fw-bold">TikTok Price</label><input type="number" id="p-tk" class="form-control form-control-sm"></div>
-                <div class="col-6"><label class="x-small fw-bold">Instagram Price</label><input type="number" id="p-ig" class="form-control form-control-sm"></div>
-                <div class="col-6"><label class="x-small fw-bold">Telegram Price</label><input type="number" id="p-tg" class="form-control form-control-sm"></div>
-            </div>
-            <button class="btn btn-dark w-100 rounded-3 fw-bold" onclick="updateSite()">সেটিংস সেভ করুন</button>
-        </div>
+    <button class="btn btn-primary w-100 rounded-3 fw-bold" onclick="updateLogo()">
+        <i class="fas fa-upload me-2"></i>আপডেট লোগো
+    </button>
+</div>
+
 <div class="p-3 bg-white shadow-sm mb-3 rounded-3">
     <div class="input-group">
         <span class="input-group-text bg-primary text-white border-0"><i class="fas fa-search"></i></span>
@@ -4732,7 +4720,61 @@ Social Order History
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f'); renderAdminPayments();">
     <i class="fas fa-money-bill d-block mb-1 text-success"></i>পেমেন্ট
 </button>
-  
+  <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-job-req'); renderJobRequests();">
+    <i class="fas fa-clipboard-check d-block mb-1 text-warning"></i>জব রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-ads'); renderAdminAds();">
+    <i class="fas fa-ad d-block mb-1 text-info"></i>এডস এড
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-post-req'); renderPostRequests();">
+    <i class="fas fa-paper-plane d-block mb-1 text-primary"></i>পোস্ট রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-drive-add'); renderDriveOffers();">
+    <i class="fas fa-car d-block mb-1 text-success"></i>ড্রাইভ অ্যাড
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-drive-req'); renderDriveRequests();">
+    <i class="fas fa-gas-pump d-block mb-1 text-danger"></i>ড্রাইভ রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-reseller-req'); renderResellerRequests();">
+    <i class="fas fa-store d-block mb-1 text-dark"></i>রিসেলর রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-vendor-req'); renderVendorRequests();">
+    <i class="fas fa-truck-loading d-block mb-1 text-secondary"></i>ভেন্ডরশীপ রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-toptap-add'); renderTopTapAds();">
+    <i class="fas fa-bolt d-block mb-1 text-warning"></i>টপটপ অ্যাড
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-toptap-req'); renderTopTapRequests();">
+    <i class="fas fa-hand-pointer d-block mb-1 text-danger"></i>টপটপ রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-target-req'); renderTargetRequests();">
+    <i class="fas fa-bullseye d-block mb-1 text-success"></i>টার্গেট রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-leader-req'); renderLeaderRequests();">
+    <i class="fas fa-crown d-block mb-1 text-warning"></i>লিডারশীপ রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-digital-req'); renderDigitalRequests();">
+    <i class="fas fa-microchip d-block mb-1 text-info"></i>ডিজিটাল রিকুয়েষ্ট
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-blood'); renderBloodGroup();">
+    <i class="fas fa-tint d-block mb-1 text-danger"></i>রক্তের গ্রুপ
+</button>
+
+<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-invest-req'); renderInvestRequests();">
+    <i class="fas fa-chart-line d-block mb-1 text-primary"></i>ইনভেস্টমেন্ট রিকুয়েষ্ট
+</button>
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1 text-warning"></i>অর্ডার</button>
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-s')"><i class="fas fa-envelope d-block mb-1 text-info"></i>মেসেজ</button>
 </div>
@@ -5097,30 +5139,46 @@ function handleAuth(m) {
 
     function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
     
-    function editBal(index) {
-    let amt = prompt("টাকার পরিমাণ লিখুন:");
-    let note = prompt("ইনকামের কারণ লিখুন (যেমন: বোনাস):");
-    
-    if (amt && !isNaN(amt)) {
-        let user = db.users[index];
-        let amount = parseFloat(amt);
-        let now = new Date();
-        // তারিখ ফরম্যাট: YYYY-MM-DD | HH:MM
-        let dateStr = now.toISOString().split('T')[0] + " | " + now.getHours() + ":" + now.getMinutes();
+function editBal(index) {
+    // ১. কত টাকা এবং কেন (নোট) তা ইনপুট নেওয়া
+    let amt = prompt("টাকার পরিমাণ লিখুন:\n(টাকা যোগ করতে: 50 লিখুন)\n(টাকা কাটতে: -50 লিখুন)");
+    let note = prompt("কারন লিখুন (যেমন: ভুল পেমেন্ট সংশোধন):");
+    
+    if (amt && !isNaN(amt)) {
+        let user = db.users[index];
+        let amount = parseFloat(amt);
+        
+        // ২. চেক করা: যদি টাকা কাটতে চান এবং ইউজারের অত টাকা না থাকে
+        if (amount < 0 && user.bal < Math.abs(amount)) {
+            return alert("ইউজারের ব্যালেন্স পর্যাপ্ত নেই! বর্তমানে আছে: ৳" + user.bal);
+        }
 
-        user.bal += amount;
-        if (!user.incomeHistory) user.incomeHistory = [];
-        
-        user.incomeHistory.unshift({
-            amount: amount,
-            date: dateStr,
-            note: note || "অ্যাডমিন কর্তৃক যুক্ত"
-        });
+        let now = new Date();
+        // তারিখ ফরম্যাট: YYYY-MM-DD | HH:MM
+        let dateStr = now.toISOString().split('T')[0] + " | " + 
+                      String(now.getHours()).padStart(2, '0') + ":" + 
+                      String(now.getMinutes()).padStart(2, '0');
 
-        save();
-        renderAdmin();
-        alert("টাকা যোগ হয়েছে!");
-    }
+        // ৩. ব্যালেন্স আপডেট (প্লাস হলে বাড়বে, মাইনাস হলে কমবে)
+        user.bal += amount;
+        
+        // ৪. হিস্টোরি তৈরি করা
+        if (!user.incomeHistory) user.incomeHistory = [];
+        
+        user.incomeHistory.unshift({
+            amount: amount, // এখানে মাইনাস ভ্যালু থাকলে মাইনাসই সেভ হবে
+            date: dateStr,
+            note: note || (amount > 0 ? "অ্যাডমিন কর্তৃক যুক্ত" : "অ্যাডমিন কর্তৃক কর্তন")
+        });
+
+        save(); // ডাটাবেস সেভ
+        renderAdmin(); // অ্যাডমিন প্যানেল রিফ্রেশ
+        
+        let msg = amount > 0 ? "৳" + amount + " যোগ হয়েছে!" : "৳" + Math.abs(amount) + " কাটা হয়েছে!";
+        alert(msg);
+    } else {
+        alert("দয়া করে সঠিক সংখ্যা লিখুন!");
+    }
 }
 
     function toggleBlock(i) {
@@ -7169,6 +7227,78 @@ function openIncomeDetail(type, title) {
 // ২. পেজ বন্ধ করার ফাংশন
 function closeIncomeSub() {
     document.getElementById('p-income-sub').classList.add('d-none');
+}
+// লোগো সিলেক্ট করলে প্রিভিউ দেখানোর ফাংশন
+function previewLogo(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('logo-preview').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// ডাটাবেসে লোগো সেভ করার ফাংশন
+function updateLogo() {
+    const fileInput = document.getElementById('adm-logo-file');
+    
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const base64Image = e.target.result;
+            
+            // আপনার গ্লোবাল ডাটাবেসে লোগো সেভ করা
+            if(!db.site) db.site = {};
+            db.site.logo = base64Image;
+            
+            save(); // ডাটাবেস সেভ ফাংশন
+            
+            // সাইটের সব লোগো এলিমেন্ট আপডেট করা
+            document.querySelectorAll('.app-logo').forEach(img => {
+                img.src = base64Image;
+            });
+
+            Swal.fire('সফল!', 'লোগো সফলভাবে পরিবর্তন হয়েছে', 'success');
+        };
+        
+        reader.readAsDataURL(fileInput.files[0]);
+    } else {
+        toast('দয়া করে একটি ইমেজ সিলেক্ট করুন', 'error');
+    }
+}
+function updateLogo() {
+    const fileInput = document.getElementById('adm-logo-file');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        return Swal.fire('Error', 'দয়া করে একটি ইমেজ ফাইল সিলেক্ট করুন', 'error');
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const base64Image = e.target.result;
+
+        // ১. ডাটাবেসে সেভ করা (আপনার db অবজেক্ট অনুযায়ী)
+        if (!db.site) db.site = {};
+        db.site.logo = base64Image;
+
+        // ২. লোকাল স্টোরেজে সেভ করা (যাতে রিফ্রেশ দিলেও থাকে)
+        save(); 
+
+        // ৩. সাথে সাথে স্ক্রিনে লোগো পরিবর্তন করা
+        document.getElementById('current-logo-view').src = base64Image;
+        
+        // আপনার অ্যাপের মেইন লোগো যেখানে আছে (ধরি আইডি 'main-app-logo')
+        const mainLogo = document.getElementById('main-app-logo');
+        if(mainLogo) mainLogo.src = base64Image;
+
+        Swal.fire('সফল!', 'লোগো আপডেট হয়ে গেছে', 'success');
+    };
+
+    reader.readAsDataURL(file);
 }
 </script>
 </body>
