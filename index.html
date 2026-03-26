@@ -2487,10 +2487,12 @@ div[onclick="toggleBloodModal()"]:active {
             <span style="font-weight: 800; color: rgba(255,255,255,0.8); font-size: 1.3rem; letter-spacing: -0.5px;">LINK</span>
         </div>
     </div>
+<div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+    
+    <i class="fas fa-bars-staggered" style="color: white; font-size: 18px;"></i>
+    
+</div>
 
-    <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()">
-        <i class="fas fa-bars-staggered"></i>
-    </div>
 </nav>
 
 <div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: linear-gradient(135deg, #1e3a8a 0%, #2ecc71 100%);">
@@ -3111,19 +3113,27 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 
     <div class="container px-3 mt-3">
-        <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <span style="font-size: 15px; opacity: 0.9; font-weight: 500; display: block; margin-bottom: 5px;">বর্তমান ব্যালেন্স</span>
-                    <h2 style="margin: 0 !important; font-weight: 800 !important; font-size: 3.2rem !important; letter-spacing: -2px !important; line-height: 1 !important;">
-                        ৳ <span id="withdraw-bal">0.00</span>
-                    </h2>
-                </div>
-                <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; backdrop-filter: blur(10px);">
-                    <i class="fas fa-wallet"></i>
-                </div>
-            </div>
+<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
+    
+    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+
+    <div class="d-flex justify-content-between align-items-center" style="position: relative; z-index: 2;">
+        <div>
+            <span style="font-size: 14px; opacity: 0.9; font-weight: 600; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fas fa-coins" style="margin-right: 5px;"></i> বর্তমান ব্যালেন্স
+            </span>
+            
+            <h2 style="margin: 0 !important; font-weight: 800 !important; font-size: 3.2rem !important; letter-spacing: -2px !important; line-height: 1 !important; display: flex; align-items: baseline; gap: 5px;">
+                <span style="font-size: 35px; font-weight: 600;">৳</span>
+                <span id="withdraw-bal">0.00</span>
+            </h2>
         </div>
+        
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <i class="fas fa-wallet" style="color: white;"></i>
+        </div>
+    </div>
+</div>
 
         <p class="small fw-bold text-muted mb-3"><i class="fas fa-check-circle me-1 text-primary"></i> টাকা নেওয়ার মাধ্যম সিলেক্ট করুন</p>
         
@@ -4847,7 +4857,7 @@ Social Order History
 
     <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
         <i class="fas fa-comments" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Support</small>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Live Chat</small>
     </div>
 </div>
 
