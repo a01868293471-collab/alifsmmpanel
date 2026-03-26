@@ -2190,7 +2190,102 @@ div[onclick="toggleBloodModal()"]:active {
     #p-income-sub.d-none {
         display: none !important;
     }
+.premium-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); /* ২ রকম কালারের মিক্স */
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.header-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15); /* হালকা সাদা গ্লাস ইফেক্ট */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    backdrop-filter: blur(5px);
+}
+/* সাইডবার ড্রয়ারের মেইন স্টাইল */
+.side-drawer {
+    background: #ffffff; /* নিচের অংশ সাদা থাকবে */
+}
+
+/* সাইডবারের উপরের অংশ (যেখানে নাম ও ছবি থাকে) */
+.drawer-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%);
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 0 0 30px 30px; /* নিচের দিকে রাউন্ড শেপ */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* প্রোফাইল ইমেজের চারপাশে বর্ডার */
+.drawer-img {
+    width: 85px;
+    height: 85px;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    object-fit: cover;
+}
+.modern-notice-container {
+    margin-top: 15px;
+}
+
+.notice-wrapper {
+    background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); /* ২ রকম কালারের মিক্স */
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notice-label {
+    background: rgba(255, 255, 255, 0.2); /* গ্লাস ইফেক্ট */
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+    text-transform: uppercase;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.notice-content {
+    flex: 1;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.scrolling-text {
+    white-space: nowrap;
+    display: inline-block;
+    color: white; /* লেখা সাদা */
+    font-size: 12px;
+    font-weight: 500;
+    animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
     </style>
 </head>
 <body>
@@ -2245,7 +2340,13 @@ div[onclick="toggleBloodModal()"]:active {
         
         <div class="text-center">
             <div class="mb-4">
-                <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
+                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; position: relative; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);">
+                    
+                    <i class="fas fa-link" style="font-size: 32px; color: white;"></i>
+                
+                </div>
+
+                              <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
                     <span style="color: #3b82f6;">TASK
                     
                     </span><span style="color: #2ecc71;">LINK</span>
@@ -2307,18 +2408,22 @@ div[onclick="toggleBloodModal()"]:active {
 
 </div>
 
-
 <div class="auth-card d-none mx-auto mt-5" id="signup-box" 
      style="max-width: 400px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.5);">
     
     <div class="text-center">
         <div class="mb-4">
-            <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
-                <span style="color: #3b82f6;">TASK </span
-                  ><span style="color: #2ecc71;">LINK</span>
-            </h1>
+            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; position: relative; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);">
+                <i class="fas fa-link" style="font-size: 32px; color: white;"></i>
+            </div>
 
-        </div>
+                              <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
+                    <span style="color: #3b82f6;">TASK
+                    
+                    </span><span style="color: #2ecc71;">LINK</span>
+                </h1>
+
+            </div>
 
         <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">রেজিস্ট্রেশন করুন</h3>
         
@@ -2328,7 +2433,6 @@ div[onclick="toggleBloodModal()"]:active {
             </p>
         </div>
     </div>
-    
     
 <div class="auth-container" style="padding: 10px;">
     
@@ -2366,44 +2470,56 @@ div[onclick="toggleBloodModal()"]:active {
         <p class="text-center small">ইতিমধ্যেই অ্যাকাউন্ট আছে? <a href="#" class="text-primary fw-bold" onclick="switchAuth(false)">লগইন করুন</a></p>
     </div>
 </div>
-
 <div id="user-app" class="d-none">
     <div id="p-home-main">
-
 <nav class="premium-header">
     <div class="header-icon-wrapper left-icon" onclick="openSettings()">
         <i class="fas fa-cog"></i>
     </div>
 
-    <div class="brand-logo">
-        <span class="brand-alif">TASK<span>
-        <span class="brand-panel">LINK<span>
+    <div class="brand-logo d-flex align-items-center gap-2">
+        <div style="width: 32px; height: 32px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <i class="fas fa-link" style="font-size: 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+        </div>
+        
+        <div class="d-flex align-items-center gap-1" style="white-space: nowrap;">
+            <span style="font-weight: 900; color: white; font-size: 1.3rem; letter-spacing: -0.5px;">TASK</span>
+            <span style="font-weight: 800; color: rgba(255,255,255,0.8); font-size: 1.3rem; letter-spacing: -0.5px;">LINK</span>
+        </div>
     </div>
 
     <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()">
-        <i class="fas fa-bars-staggered"></i> </div>
+        <i class="fas fa-bars-staggered"></i>
+    </div>
 </nav>
 
-
-<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: linear-gradient(135deg, #1e3a8a 0%, #2ecc71 100%);">
     
-    <i class="fas fa-link-slash" style="position: absolute; font-size: 15rem; color: rgba(59, 130, 246, 0.05); top: -40px; right: -50px; transform: rotate(-15deg); z-index: 0;"></i>
+    <i class="fas fa-link" style="position: absolute; font-size: 15rem; color: rgba(255, 255, 255, 0.05); top: -40px; right: -50px; transform: rotate(-15deg); z-index: 0;"></i>
 
     <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); z-index: 1; display: flex; align-items: center; gap: 15px;">
         
-        <div class="icon-box">
-            <i class="fas fa-link main-icon"></i>
-            <i class="fas fa-check check-overlay"></i>
+        <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <i class="fas fa-link" style="font-size: 28px; color: white;"></i>
         </div>
 
-        <div class="text-group">
-            <h1 class="brand-name-top">TASK</h1>
-            <h1 class="brand-name-bottom">LINK</h1>
-            <div class="highlight-bar"></div>
+        <div class="text-group" style="display: flex; flex-direction: column; line-height: 1;">
+            <h1 style="font-weight: 900; color: white; font-size: 1.8rem; letter-spacing: -1px; margin: 0;">TASK</h1>
+            <h1 style="font-weight: 800; color: rgba(255,255,255,0.8); font-size: 1.6rem; letter-spacing: -1px; margin-top: -3px;">LINK</h1>
+            <div style="width: 40px; height: 4px; background: white; margin-top: 5px; border-radius: 2px; opacity: 0.6;"></div>
         </div>
     </div>
-</div>
 
+    <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1; text-align: right; max-width: 200px;">
+        <p style="margin: 0; font-size: 13px; color: white; opacity: 0.9; line-height: 1.4; font-weight: 500;">
+            বাংলাদেশের <span style="font-weight: 800; color: #fff;">ডিজিটাল বিজনেস</span> প্লাটফর্মে আপনাকে
+        </p>
+        <h2 style="margin: 5px 0 0; font-size: 1.8rem; font-weight: 900; color: white; letter-spacing: -1px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            স্বাগতম
+        </h2>
+        <div style="width: 60px; height: 4px; background: rgba(255,255,255,0.3); margin-top: 8px; border-radius: 2px; margin-left: auto;"></div>
+    </div>
+</div>
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #20c997, #00b894); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2);">
@@ -2706,7 +2822,8 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
- <div class="modern-notice-container mx-3 mb-4">
+
+<div class="modern-notice-container mx-3 mb-4">
     <div class="notice-wrapper shadow-sm">
         <div class="notice-label">
             <i class="fas fa-bullhorn"></i>
@@ -2720,7 +2837,6 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-
 
          
 <div class="container mt-4" style="margin-bottom: 80px;">
@@ -2736,47 +2852,63 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 10px; text-align: center;">
         
-        <div onclick="openPage('p-micro')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
-                <i class="fas fa-tasks"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Micro Job</small>
-        </div>
+<div onclick="openPage('p-micro')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-tasks" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Micro Job</small>
+</div>
 
-        <div onclick="openPage('p-ads')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #28a745; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(40,167,69,0.3);">
-                <i class="fas fa-ad"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Ads Income</small>
-        </div>
+<div onclick="openPage('p-ads')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-play-circle" style="color: white; font-size: 24px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Ads Income</small>
+</div>
+<div onclick="openPage('p-post')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-file-signature" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Job Post</small>
+</div>
+<div onclick="openPage('p-drive')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-bolt" style="color: white; font-size: 24px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Drive Offer</small>
+</div>
 
-        <div onclick="openPage('p-post')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #ffc107; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: #212529; font-size: 22px; box-shadow: 0 4px 10px rgba(255,193,7,0.3);">
-                <i class="fas fa-pen-nib"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Job Post</small>
-        </div>
+<div onclick="openPage('p-shop')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-shopping-bag" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Reseller Shop</small>
+</div>
+<div onclick="openPage('p-vendor')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-user-tie" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Vendorship</small>
+</div>
 
-        <div onclick="openPage('p-drive')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #17a2b8; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(23,162,184,0.3);">
-                <i class="fas fa-car-side"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Drive Offer</small>
-        </div>
-
-        <div onclick="openPage('p-shop')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #dc3545; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(220,53,69,0.3);">
-                <i class="fas fa-store"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Reseller Shop</small>
-        </div>
-
-        <div onclick="openPage('p-vendor')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #6c757d; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(108,117,125,0.3);">
-                <i class="fas fa-user-tie"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Vendorship</small>
-        </div>
         <div id="p-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); padding: 20px 15px; color: white; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);">
@@ -2817,74 +2949,98 @@ div[onclick="toggleBloodModal()"]:active {
 
     </div>
 </div>
-        <div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #6610f2, #007bff); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 24px; box-shadow: 0 4px 15px rgba(102, 16, 242, 0.4); border: 2px solid rgba(255,255,255,0.2);">
-        <i class="fas fa-gamepad"></i>
+       <div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-gamepad" style="color: white; font-size: 24px;"></i>
+        
     </div>
-    <small style="font-size: 11px; font-weight: 700; color: #333; display: block; letter-spacing: 0.5px;">Topup</small>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Topup</small>
 </div>
-        <div onclick="openPage('p-target')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #6610f2; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(102,16,242,0.3);">
-                <i class="fas fa-bullseye"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Target Bonus</small>
-        </div>
-
-        <div onclick="openPage('p-leader')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #fd7e14; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(253,126,20,0.3);">
-                <i class="fas fa-crown"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Leadership</small>
-        </div>
-
-        <div onclick="openPage('p-digital')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #20c997; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(32,201,151,0.3);">
-                <i class="fas fa-laptop-code"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Digital Service</small>
-        </div>
-
-
-        <div onclick="openPage('p-social')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,123,255,0.3);">
-                <i class="fas fa-share-alt"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Social Service</small>
-        </div>
-<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: #ff4757; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(255,71,87,0.3);">
-        <i class="fas fa-hand-holding-heart"></i>
+     
+<div onclick="openPage('p-target')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-bullseye" style="color: white; font-size: 24px;"></i>
+        
     </div>
-    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Blood Donation</small>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Target Bonus</small>
+</div>
+
+<div onclick="openPage('p-leader')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-crown" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Leadership</small>
+</div>
+
+<div onclick="openPage('p-digital')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-laptop-code" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Digital Service</small>
+</div>
+
+<div onclick="openPage('p-social')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-users" style="color: white; font-size: 22px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Social Service</small>
+</div>
+<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 24px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Blood Donation</small>
 </div>
 
 <div onclick="openPage('p-training')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: #6c5ce7; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(108,92,231,0.3);">
-        <i class="fas fa-graduation-cap"></i>
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-graduation-cap" style="color: white; font-size: 24px;"></i>
+        
     </div>
-    <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">Training Section</small>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Training Section</small>
 </div>
-
-
 
 <div onclick="openPage('p-invest')" style="cursor: pointer; text-align: center;">
-    <div class="invest-icon-box">
-        <i class="fas fa-chart-line"></i>
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-chart-line" style="color: white; font-size: 24px;"></i>
+        
     </div>
-    <small style="font-size: 11px; font-weight: 800; color: #2d3436; display: block; margin-top: 8px;">Investment</small>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Investment</small>
 </div>
 
 
-        <div onclick="openPage('p-more')" style="cursor: pointer;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #e83e8c; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(232,62,140,0.3);">
-                <i class="fas fa-plus"></i>
-            </div>
-            <small style="font-size: 11px; font-weight: 600; color: #333; display: block;">More Options</small>
-        </div>
 
+<div onclick="openPage('p-more')" style="cursor: pointer; text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <i class="fas fa-plus" style="color: white; font-size: 24px;"></i>
+        
+    </div>
+    
+    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">More Options</small>
+</div>
     </div>
 </div>
-
 <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <div id="right-sidebar" class="side-drawer">
@@ -2892,23 +3048,27 @@ div[onclick="toggleBloodModal()"]:active {
         <div class="drawer-header">
             <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow">
 
-            <h5 id="user-name" class="fw-bold mt-2 mb-0" style="display: flex; align-items: center; justify-content: center;">
-    User Name
-</h5>
-    <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
-    <div style="background: #ffffff; padding: 5px 15px; border-radius: 100px; border: 1px solid #f1f2f6; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <i class="fas fa-user-check" style="font-size: 10px; color: #2ecc71;"></i>
-        <span style="font-size: 10px; font-weight: 700; color: #475569; letter-spacing: 0.3px;">General Member</span>
-    </div>
-</div>
-            <div class="ref-card" style="margin-top: 15px; background: #ffffff; padding: 6px 15px; border-radius: 100px; border: 1px solid #f1f2f6; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <span style="color: #95a5a6; font-size: 10px; font-weight: 600;">Referral:</span>
-        <b id="user-ref" style="color: #2d3436; font-size: 12px; letter-spacing: 0.5px; font-family: monospace;">ALIF123</b>
-        <i class="far fa-copy" style="color: #2ecc71; cursor: pointer; font-size: 13px;" onclick="copyRef()"></i>
-    </div>
+            <h5 id="user-name" class="fw-bold mt-2 mb-0" style="display: flex; align-items: center; justify-content: center; color: white; letter-spacing: 0.5px;">
+                User Name
+            </h5>
 
+            <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
+                <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-user-check" style="font-size: 10px; color: white;"></i>
+                    <span style="font-size: 10px; font-weight: 700; color: white; letter-spacing: 0.3px;">General Member</span>
+                </div>
+            </div>
+
+            <div class="ref-card" style="margin-top: 15px; background: rgba(255, 255, 255, 0.15); padding: 8px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: space-between;">
+                <span style="color: rgba(255, 255, 255, 0.8); font-size: 10px; font-weight: 600;">Referral:</span>
+                <b id="user-ref" style="color: white; font-size: 13px; letter-spacing: 0.5px; font-family: monospace;">ALIF123</b>
+                <i class="far fa-copy" style="color: white; cursor: pointer; font-size: 13px;" onclick="copyRef()"></i>
+            </div>
         </div>
-         
+        
+        
+
+
         <div class="drawer-menu mt-4">
             <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
 <button class="d-menu-btn" onclick="handleWalletClick()">
@@ -4658,34 +4818,34 @@ Social Order History
         </div>
     </div>
 </div>
-
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eee; z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 12px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.15); border-radius: 20px 20px 0 0;">
     
     <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-home" style="font-size: 20px; color: #6c5ce7;"></i>
-        <small style="display: block; font-size: 10px; font-weight: bold; color: #444; margin-top: 2px;">Home</small>
+        <i class="fas fa-home" style="font-size: 22px; color: white;"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.9); margin-top: 4px;">Home</small>
     </div>
 
     <div onclick="openPage('p-courses')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-graduation-cap" style="font-size: 20px; color: #888;"></i>
-        <small style="display: block; font-size: 10px; font-weight: bold; color: #444; margin-top: 2px;">Courses</small>
+        <i class="fas fa-graduation-cap" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Courses</small>
     </div>
 
     <div onclick="openPage('p-team')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-users" style="font-size: 20px; color: #888;"></i>
-        <small style="display: block; font-size: 10px; font-weight: bold; color: #444; margin-top: 2px;">My Team</small>
+        <i class="fas fa-users" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">My Team</small>
     </div>
 
     <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-plus-circle" style="font-size: 20px; color: #888;"></i>
-        <small style="display: block; font-size: 10px; font-weight: bold; color: #444; margin-top: 2px;">Deposit</small>
+        <i class="fas fa-plus-circle" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Deposit</small>
     </div>
 
     <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-comments" style="font-size: 20px; color: #888;"></i>
-        <small style="display: block; font-size: 10px; font-weight: bold; color: #444; margin-top: 2px;">Live Chat</small>
+        <i class="fas fa-comments" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Support</small>
     </div>
 </div>
+
 </div>
 <div id="admin-app" class="d-none">
     <div class="p-3 bg-white shadow-sm d-flex justify-content-between align-items-center sticky-top">
