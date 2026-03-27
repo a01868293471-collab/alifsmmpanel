@@ -3103,7 +3103,7 @@ div[onclick="toggleBloodModal()"]:active {
 <hr class="my-3 opacity-10">
 
 <button class="d-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
-    <i class="fas fa-user-shield"></i> Admin Profile
+    <i class="fas fa-user-shield"></i>Owner Profile
 </button>
 
 <button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
@@ -3183,7 +3183,7 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div style="margin: 30px 20px 0; text-align: center;">
 
-        <a href="https://facebook.com/your_profile" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; color: #1877f2; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 14px; border: 2px solid #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1); transition: 0.2s;">
+        <a href="https://www.facebook.com/share/18M7QbamRa/" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; color: #1877f2; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 14px; border: 2px solid #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1); transition: 0.2s;">
             <i class="fab fa-facebook-f" style="font-size: 18px;"></i> Follow on Facebook
         </a>
     </div>
@@ -3238,25 +3238,26 @@ div[onclick="toggleBloodModal()"]:active {
         
         <div class="row g-2 mb-4">
             <div class="col-4">
-                <div class="w-method-card active-w" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')" style="cursor: pointer; text-align: center; background: white; padding: 12px 5px; border-radius: 18px; border: 2px solid #3b82f6;">
-                    <img src="https://i.ibb.co/5G788fP/bkash-logo.png" style="width: 30px; margin-bottom: 5px;" alt="bkash">
-                    <div style="font-size: 11px; font-weight: 800;">bKash</div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="w-method-card" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')" style="cursor: pointer; text-align: center; background: white; padding: 12px 5px; border-radius: 18px; border: 2px solid #eee;">
-                    <img src="https://i.ibb.co/cX8fH8z/nagad-logo.png" style="width: 30px; margin-bottom: 5px;" alt="nagad">
-                    <div style="font-size: 11px; font-weight: 800;">Nagad</div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="w-method-card" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')" style="cursor: pointer; text-align: center; background: white; padding: 12px 5px; border-radius: 18px; border: 2px solid #eee;">
-                    <img src="https://i.ibb.co/PZ9Y7mG/rocket-logo.png" style="width: 30px; margin-bottom: 5px;" alt="rocket">
-                    <div style="font-size: 11px; font-weight: 800;">Rocket</div>
-                </div>
-            </div>
+        <div class="w-method-card active-w py-3 shadow-sm border text-center rounded-3" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')" style="background: #fff; cursor: pointer; border: 2px solid #3b82f6 !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">bKash</div>
         </div>
+    </div>
 
+    <div class="col-4">
+        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Nagad</div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Rocket</div>
+        </div>
+    </div>
+</div>
         <div style="background: white; padding: 20px; border-radius: 20px; border: 1px solid #f1f3f5;">
             <div class="mb-3">
                 <label class="small fw-bold text-muted mb-2">Personal Number</label>
@@ -3751,7 +3752,7 @@ div[onclick="toggleBloodModal()"]:active {
         </p>
         
         <h1 style="font-weight: 900; margin: 20px 0; font-size: 2.8rem; display: flex; align-items: baseline; gap: 5px; color: white;">
-            <span style="font-size: 50px; font-weight: 600;">৳</span>
+            <span style="font-size: 48px; font-weight: 600;">৳</span>
             <span id="u-bal">0.00</span>
         </h1>
         
@@ -3847,7 +3848,7 @@ div[onclick="toggleBloodModal()"]:active {
     <div class="d-flex align-items-center justify-content-between">
         <div>
             <h2 style="margin: 0; font-weight: 900; font-size: 2.2rem; display: flex; align-items: baseline; gap: 5px;">
-                <span style="font-size: 28px; font-weight: 600;">৳</span>
+                <span style="font-size: 40px; font-weight: 600;">৳</span>
                 <span id="income-amt-val">0.00</span>
             </h2>
         </div>
@@ -7714,6 +7715,7 @@ function updateLogo() {
 
     reader.readAsDataURL(file);
 }
+
 </script>
 </body>
 </html>
