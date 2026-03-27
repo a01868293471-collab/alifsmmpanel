@@ -1882,7 +1882,17 @@ div[onclick="toggleBloodModal()"]:active {
 .language-selector {
     position: relative;
 }
+/* লেখাগুলো দেরি না করে সাথে সাথে আসার জন্য অ্যানিমেশন */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
 
+/* স্মুথ অ্যানিমেশনের জন্য ইনলাইন সিএসএস ব্যবহার করা হয়েছে */
+.scrolling-text {
+    animation: scroll-left 15s linear infinite !important;
+    animation-delay: 0s !important; /* কোনো দেরি হবে না */
+}
 .lang-dropdown {
     background: #ffffff;
     border-radius: 12px;
@@ -2315,8 +2325,8 @@ div[onclick="toggleBloodModal()"]:active {
 
 </div>
         <h2 style="font-weight: 900; letter-spacing: 1px; font-size: 30px; margin-bottom: 5px; font-family: sans-serif;">
-            <span style="color: #3b82f6;">TASK</span> 
-            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color:#2ecc71;">LINK</span>
+            <span style="color: #3b82f6;">FREE</span> 
+            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color:#2ecc71;">TIME EARN</span>
         </h2>
         
         <p style="font-size: 12px; font-weight: 600; color: #636e72; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-family: sans-serif;">Digital Business Platform</p>
@@ -2334,25 +2344,22 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="loader-overlay"><div class="spinner"></div></div>
 
-<div id="auth-section" style="padding: 20px;">
+      <div id="auth-section" style="padding: 20px;">
     <div class="auth-card mx-auto mt-5" id="login-box" 
-         style="max-width: 400px; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
+         style="max-width: 420px; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
         
         <div class="text-center">
             <div class="mb-4">
-                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; position: relative; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);">
-                    
-                    <i class="fas fa-link" style="font-size: 32px; color: white;"></i>
-                
-                </div>
-
-                              <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
-                    <span style="color: #3b82f6;">TASK
-                    
-                    </span><span style="color: #2ecc71;">LINK</span>
+                <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
+                    <span style="color: #3b82f6;">FREE TIME</span>
+                    <span style="color: #2ecc71;">EARN</span>
                 </h1>
+                
 
+
+               
             </div>
+
 
             <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">Login</h3>
             
@@ -2409,21 +2416,16 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 <div class="auth-card d-none mx-auto mt-5" id="signup-box" 
-     style="max-width: 400px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15); border: 1px solid rgba(255, 255, 255, 0.5);">
+     style="max-width: 420px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
     
     <div class="text-center">
         <div class="mb-4">
-            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; position: relative; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);">
-                <i class="fas fa-link" style="font-size: 32px; color: white;"></i>
-            </div>
-
-                              <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.5rem;">
-                    <span style="color: #3b82f6;">TASK
-                    
-                    </span><span style="color: #2ecc71;">LINK</span>
-                </h1>
-
-            </div>
+            <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
+                <span style="color: #3b82f6;">FREE TIME</span>
+                <span style="color: #2ecc71;">EARN</span>
+            </h1>
+            
+</div>
 
         <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">Registration</h3>
         
@@ -2478,15 +2480,13 @@ div[onclick="toggleBloodModal()"]:active {
         <i class="fas fa-cog"></i>
     </div>
 
-    <div class="brand-logo d-flex align-items-center gap-2">
-        <div style="width: 32px; height: 32px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <i class="fas fa-link" style="font-size: 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-        </div>
-        
-        <div class="d-flex align-items-center gap-1" style="white-space: nowrap;">
-            <span style="font-weight: 900; color: white; font-size: 1.3rem; letter-spacing: -0.5px;">TASK</span>
-            <span style="font-weight: 800; color: rgba(255,255,255,0.8); font-size: 1.3rem; letter-spacing: -0.5px;">LINK</span>
-        </div>
+<div class="brand-logo d-flex align-items-center gap-2">
+    <div class="d-flex align-items-center" style="white-space: nowrap; line-height: 1;">
+        <span style="font-weight: 900; color: white; font-size: 1.4rem; letter-spacing: -1px; text-transform: uppercase;">
+            FREE TIME EARN
+        </span>
+
+    </div>
     </div>
 <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
     
@@ -2496,31 +2496,28 @@ div[onclick="toggleBloodModal()"]:active {
 
 </nav>
 
-<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: linear-gradient(135deg, #1e3a8a 0%, #2ecc71 100%);">
+<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 180px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2); background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%);">
     
-    <i class="fas fa-link" style="position: absolute; font-size: 15rem; color: rgba(255, 255, 255, 0.05); top: -40px; right: -50px; transform: rotate(-15deg); z-index: 0;"></i>
+    <h1 style="position: absolute; font-size: 8rem; color: rgba(255, 255, 255, 0.08); bottom: -30px; right: -20px; transform: rotate(-10deg); z-index: 0; font-weight: 900; pointer-events: none; user-select: none;">EARN</h1>
 
-    <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); z-index: 1; display: flex; align-items: center; gap: 15px;">
+    <div style="position: relative; height: 100%; padding: 25px; z-index: 1; display: flex; flex-direction: column; justify-content: center;">
         
-        <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <i class="fas fa-link" style="font-size: 28px; color: white;"></i>
+        <h1 style="font-weight: 900; color: white; font-size: 2rem; letter-spacing: -1.5px; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            FREE TIME EARN
+        </h1>
+
+        <div style="margin-top: 12px;">
+            <p style="margin: 0; font-size: 15px; color: white; font-weight: 600; line-height: 1.4;">
+                বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 5px;">বিজনেস প্লাটফর্মে</span> আপনাকে স্বাগতম
+            </p>
+            
+            <p style="margin: 8px 0 0; font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                <span style="width: 20px; height: 1px; background: white; opacity: 0.6;"></span>
+                অবসর সময়কে কাজে লাগিয়ে উপার্জন করুন
+            </p>
         </div>
 
-        <div class="text-group" style="display: flex; flex-direction: column; line-height: 1;">
-            <h1 style="font-weight: 900; color: white; font-size: 1.8rem; letter-spacing: -1px; margin: 0;">TASK</h1>
-            <h1 style="font-weight: 800; color: rgba(255,255,255,0.8); font-size: 1.6rem; letter-spacing: -1px; margin-top: -3px;">LINK</h1>
-            <div style="width: 40px; height: 4px; background: white; margin-top: 5px; border-radius: 2px; opacity: 0.6;"></div>
-        </div>
-    </div>
 
-    <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1; text-align: right; max-width: 200px;">
-        <p style="margin: 0; font-size: 13px; color: white; opacity: 0.9; line-height: 1.4; font-weight: 500;">
-            বাংলাদেশের <span style="font-weight: 800; color: #fff;">ডিজিটাল বিজনেস</span> প্লাটফর্মে আপনাকে
-        </p>
-        <h2 style="margin: 5px 0 0; font-size: 1.8rem; font-weight: 900; color: white; letter-spacing: -1px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            স্বাগতম
-        </h2>
-        <div style="width: 60px; height: 4px; background: rgba(255,255,255,0.3); margin-top: 8px; border-radius: 2px; margin-left: auto;"></div>
     </div>
 </div>
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
@@ -2831,15 +2828,15 @@ div[onclick="toggleBloodModal()"]:active {
 
 
 <div class="modern-notice-container mx-3 mb-4">
-    <div class="notice-wrapper shadow-sm">
-        <div class="notice-label">
+    <div class="notice-wrapper shadow-sm" style="display: flex; align-items: center; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
+        <div class="notice-label" style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; padding: 10px 15px; display: flex; align-items: center; gap: 8px; font-weight: 800; z-index: 2;">
             <i class="fas fa-bullhorn"></i>
             <span>Notice</span>
         </div>
         
-        <div class="notice-content">
-            <div id="site-note" class="scrolling-text">
-             TASK LINK আপনাকে স্বাগতম! আমরা আপনাকে পেয়ে আনন্দিত। আমাদের সাম্প্রতিক প্রজেক্ট এবং আপনার জন্য তৈরি করা প্রজেক্টগুলো ঘুরে দেখুন।
+        <div class="notice-content" style="flex: 1; overflow: hidden; background: #fff; padding: 10px 0;">
+            <div id="site-note" style="white-space: nowrap; display: inline-block; padding-left: 100%; font-weight: 700; color: #2d3436; animation: scroll-left 15s linear infinite; animation-delay: 0s;">
+                <span style="color: #3b82f6;">FREE TIME EARN</span>-এ আপনাকে স্বাগতম! অবসর সময়কে কাজে লাগিয়ে স্মার্টলি উপার্জন করুন। আমাদের নতুন আপডেটগুলো নিয়মিত ফলো করুন।
             </div>
         </div>
     </div>
@@ -3096,24 +3093,106 @@ div[onclick="toggleBloodModal()"]:active {
             <hr class="my-3 opacity-10">
             <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
             
-            <button class="d-menu-btn" onclick="window.open('YOUR_FB_GROUP_URL')"><i class="fab fa-facebook text-primary"></i> Facebook Group</button>
-                        <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
-            <button class="d-menu-btn" onclick="window.open('YOUR_TG_URL')"><i class="fab fa-telegram text-info"></i> Telegram Channel</button>
-            <button class="d-menu-btn" onclick="window.open('YOUR_REVIEW_URL')"><i class="fas fa-star text-warning"></i> Income Review Group</button>
+            <button class="d-menu-btn" onclick="window.open('https://www.facebook.com/share/1B9ZsLLsLV/')"><i class="fab fa-facebook text-primary"></i> Facebook Page</button>
+              <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
 
-            <hr class="my-3 opacity-10">
-            <button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
+
+
+
+
+<hr class="my-3 opacity-10">
+
+<button class="d-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
+    <i class="fas fa-user-shield"></i> Admin Profile
+</button>
+
+<button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
     <i class="fas fa-shield-alt"></i> Privacy Policy
 </button>
-            <button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
-    <i class="fas fa-info-circle"></i>About TASK LINK
-</button>
 
+<button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
+    <i class="fas fa-info-circle"></i> About FREE TIME EARN
+</button>
 
             <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
     </div>
 </div>
+
+<div id="p-admin-profile" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 15px;">Owner Profile</h5>
+    </div>
+
+    <div style="margin: 20px; background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
+        
+        <div style="width: 100px; height: 100px; background: white; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; position: relative; padding: 3px; background: linear-gradient(135deg, #3b82f6, #2ecc71);">
+            <div style="width: 100%; height: 100%; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-user-tie" style="font-size: 50px; background: linear-gradient(135deg, #3b82f6, #2ecc71); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+            </div>
+        </div>
+
+        <h3 style="margin: 0; font-size: 1.6rem; font-weight: 800; color: #2c3e50; letter-spacing: -0.5px;">Abu Sufian</h3>
+        <div style="display: inline-flex; align-items: center; gap: 5px; background: rgba(46, 204, 113, 0.1); color: #27ae60; padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; margin-top: 5px; text-transform: uppercase;">
+            <i class="fas fa-check-circle"></i> FOUNDER & CEO
+        </div>
+    </div>
+
+    <div style="margin: 0 20px;">
+        <div style="background: white; border-radius: 20px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee;">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                    <i class="fas fa-crown" style="color: #f1c40f; font-size: 14px;"></i>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Role</p>
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Devoloper</p>
+                    </div>
+                </div>
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #eee;">
+                    <i class="fas fa-heart" style="color: #e74c3c; font-size: 14px;"></i>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Relationship</p>
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Single</p>
+                    </div>
+                </div>
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee;">
+                    <i class="fas fa-home" style="color: #2ecc71; font-size: 14px;"></i>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">City</p>
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Pabna</p>
+                    </div>
+                </div>
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-birthday-cake" style="color: #e67e22; font-size: 14px;"></i>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Date of Birth</p>
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">01 May 2008</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div style="margin: 30px 20px 0; text-align: center;">
+
+        <a href="https://facebook.com/your_profile" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; color: #1877f2; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 14px; border: 2px solid #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1); transition: 0.2s;">
+            <i class="fab fa-facebook-f" style="font-size: 18px;"></i> Follow on Facebook
+        </a>
+    </div>
+
+</div>
+
+
+
+
 
 <div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
     
@@ -3677,7 +3756,7 @@ div[onclick="toggleBloodModal()"]:active {
         </h1>
         
         <div style="font-size: 11px; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);">
-            TASK LINK EARNING 
+           FREE TIME EARN
         </div>
     </div>
 </div>
@@ -3745,7 +3824,7 @@ div[onclick="toggleBloodModal()"]:active {
             <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closeIncomeSub()"></i>
             
             <h4 style="margin: 0; margin-left: 15px; font-weight: 800; letter-spacing: 0.5px; color: white; line-height: 1;">
-                TASK LINK
+                FREE TIME EARN 
             </h4>
         </div>
 
@@ -3893,9 +3972,7 @@ div[onclick="toggleBloodModal()"]:active {
                 
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Training Section</h5>
             </div>
-            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <i class="fas fa-chalkboard-teacher" style="font-size: 16px; color: white;"></i>
-            </div>
+
     </div>
     </div>
 
