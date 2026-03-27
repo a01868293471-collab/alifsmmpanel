@@ -2525,12 +2525,16 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #20c997, #00b894); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2);">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Digital Services</h5>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Digital Services</h5>
             </div>
+
+ 
             <i class="fas fa-shopping-basket" style="font-size: 18px; opacity: 0.8;"></i>
         </div>
     </div>
@@ -2911,15 +2915,23 @@ div[onclick="toggleBloodModal()"]:active {
     
     <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Vendorship</small>
 </div>
-
-        <div id="p-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div id="p-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); padding: 20px 15px; color: white; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">My Team</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">My Team</h5>
+            </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-user-friends" style="font-size: 16px; color: white;"></i>
+            </div>
         </div>
     </div>
+
 
     <div class="container mt-3">
         <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
@@ -3094,25 +3106,31 @@ div[onclick="toggleBloodModal()"]:active {
     <i class="fas fa-shield-alt"></i> Privacy Policy
 </button>
             <button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
-    <i class="fas fa-info-circle"></i> TASK LINK পরিচিতি
+    <i class="fas fa-info-circle"></i>About TASK LINK
 </button>
+
 
             <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
     </div>
 </div>
+
 <div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #3b82f6;" onclick="closePage('withdraw')"></i>
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 900; letter-spacing: -1px; line-height: 1;">
-                <span style="color: #3b82f6;">Withdraw </span>
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('withdraw')"></i>
+            
+            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
+                Withdraw
             </h4>
         </div>
-        <div style="background: #fff0f0; padding: 5px 12px; border-radius: 10px; color: #ff4757; font-size: 11px; font-weight: 700;">Payout</div>
-    </div>
 
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px;">
+            PAYOUT
+        </div>
+</div>
     <div class="container px-3 mt-3">
 <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
     
@@ -3191,12 +3209,16 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #dc3545, #ff4757); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Reseller Shop</h5>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Reseller Shop</h5>
             </div>
+
+
             <div style="display: flex; gap: 10px;">
                 <div onclick="openPage('p-vendor-list')" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                     <i class="fas fa-user-tie" style="font-size: 18px;"></i>
@@ -3261,14 +3283,18 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-<div id="p-blood" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
-    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #f1f2f6;">
-    
-    <div style="display: flex; align-items: center;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #ff4757;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Blood Doner List</h5>
-    </div>
 
+<div id="p-blood" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+            
+            <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">Blood Donor List</h5>
+        </div>
+
+   
     <div onclick="toggleBloodModal()" style="width: 35px; height: 35px; background: #fff5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #ffd7d7;">
         <i class="fas fa-user-plus" style="color: #ff4757; font-size: 16px;"></i>
     </div>
@@ -3347,29 +3373,44 @@ div[onclick="toggleBloodModal()"]:active {
         </button>
     </div>
 </div>
-<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1005; overflow-y: auto;">
-    <div style="padding: 20px; background: #333; color: white;">
-        <i class="fas fa-arrow-left" onclick="openPage('p-shop')"></i>
-        <span style="margin-left: 15px; font-weight: 700;">Our Registered Vendors</span>
+<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center;">
+        <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-shop')"></i>
+        <span style="margin-left: 15px; font-weight: 700; font-size: 16px; letter-spacing: 0.3px;">Our Registered Vendors</span>
     </div>
-    <div class="container mt-3">
-        <div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center;">
-            <div style="width: 45px; height: 45px; background: #eee; border-radius: 50%; margin-right: 15px;"></div>
-            <div>
-                <h6 style="margin: 0; font-weight: 700;">Alif Enterprise</h6>
-                <small style="color: #28a745;">Active Vendor</small>
+
+    <div class="container mt-3 px-3">
+        <div style="padding: 15px; background: #fff; border-radius: 15px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f0f0f0;">
+            
+            <div style="width: 50px; height: 50px; background: #eef2ff; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; overflow: hidden;">
+                <i class="fas fa-store" style="color: #3b82f6; font-size: 20px;"></i>
             </div>
+            
+            <div style="flex: 1;">
+                <h6 style="margin: 0; font-weight: 700; color: #2d3436; font-size: 15px;">Alif Enterprise</h6>
+                <div style="display: flex; align-items: center; margin-top: 2px;">
+                    <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; margin-right: 6px;"></span>
+                    <small style="color: #2ecc71; font-weight: 600; font-size: 11px; text-transform: uppercase;">Active Vendor</small>
+                </div>
+            </div>
+
+            <i class="fas fa-chevron-right" style="color: #ccc; font-size: 14px;"></i>
         </div>
     </div>
 </div>
+  
 <div id="p-ads" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #28a745, #2ecc71); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Ads Income</h5>
             </div>
+
 
             <div onclick="openAdsHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                 <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
@@ -3430,10 +3471,14 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-about" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #3b82f6;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">TASK LINK পরিচিতি</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+        
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">About TASK LINK </h5>
+        
     </div>
+
 
     <div class="container px-3 mt-3">
         
@@ -3526,10 +3571,15 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #f1f2f6;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Privacy Policy</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+        
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">Privacy Policy</h5>
+        
     </div>
+
+    
 
     <div class="container px-4 mt-4">
         <div class="policy-info-card mb-4">
@@ -3592,17 +3642,21 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
     
-    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #3b82f6;" onclick="closePage('wallet')"></i>
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 900; letter-spacing: -1px; line-height: 1;">
-                <span style="color: #3b82f6;">Wallet</span>
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('wallet')"></i>
+            
+            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
+                Wallet
             </h4>
         </div>
-        <div style="background: #eef2ff; padding: 5px 12px; border-radius: 10px; color: #3b82f6; font-size: 12px; font-weight: 700;">
-            Secured
+
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
+            <i class="fas fa-shield-alt" style="font-size: 10px;"></i> SECURED
         </div>
     </div>
+
 
     <div class="container px-3 mt-3">
 
@@ -3685,17 +3739,22 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1600; overflow-y: auto;">
     
-    <div style="background: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #3b82f6;" onclick="closeIncomeSub()"></i>
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 900; letter-spacing: -1px; line-height: 1;">
-                <span style="color: #3b82f6;">TASK </span><span style="color: #2ecc71;">LINK</span>
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closeIncomeSub()"></i>
+            
+            <h4 style="margin: 0; margin-left: 15px; font-weight: 800; letter-spacing: 0.5px; color: white; line-height: 1;">
+                TASK LINK
             </h4>
         </div>
-        <div style="width: 35px; height: 35px; background: #f0f3ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-chart-line" style="color: #3b82f6; font-size: 16px;"></i>
+
+        <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <i class="fas fa-tasks" style="color: white; font-size: 16px;"></i>
         </div>
     </div>
+
+
 
     <div class="container mt-3">
 <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 25px; border-radius: 20px; position: relative; color: white; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
@@ -3732,12 +3791,18 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #17a2b8, #00ced1); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Drive Offers</h5>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Drive Offers</h5>
             </div>
+
+
+      
+
             <div onclick="openDriveHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                 <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
             </div>
@@ -3820,10 +3885,20 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: #fff; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2d3436;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: #2d3436;">Training Section</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Training Section</h5>
+            </div>
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-chalkboard-teacher" style="font-size: 16px; color: white;"></i>
+            </div>
     </div>
+    </div>
+
 
     <div class="container px-3 mt-3">
         
@@ -3906,12 +3981,17 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-topup" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #6610f2, #007bff); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Game Topup Center</h5>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Game Topup Center</h5>
             </div>
+
+
+
             <div onclick="openTopupHistory()" style="cursor: pointer; background: rgba(255,255,255,0.2); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                 <i class="fas fa-history" style="font-size: 18px;"></i>
             </div>
@@ -3962,12 +4042,16 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="p-vendor" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
 
-<div style="background: linear-gradient(90deg, #6c757d, #495057); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(108, 117, 125, 0.2); position: sticky; top: 0; z-index: 101;">
-    <div style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Vendorship Program</h5>
-        </div>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Vendorship Program</h5>
+            </div>
+
+
 
         <div onclick="openVendorLogin()" style="cursor: pointer; padding: 5px;">
             <i class="fas fa-lock" style="font-size: 18px; opacity: 0.9;"></i>
@@ -4037,13 +4121,17 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 
-<div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
+ <div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
     
-    <div style="background: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2ecc71;" onclick="closePage('invest')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: #2d3436; font-size: 16px;">Invest & Grow</h5>
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('invest')"></i>
+            
+            <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; font-size: 16px; letter-spacing: 0.3px;">Invest & Grow</h5>
         </div>
+
+
         <div onclick="openInvestHistory()" style="width: 35px; height: 35px; background: #f0fdf4; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
     <i class="fas fa-history" style="color: #27ae60; font-size: 16px;"></i>
 </div>
@@ -4127,22 +4215,31 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-invest-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1600; overflow-y: auto;">
     
-    <div style="background: #fff; padding: 12px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; border-bottom: 1px solid #eee;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: #2ecc71;" onclick="closePage('invest-history')"></i>
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: #2d3436; font-size: 16px;">Investment History</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('invest-history')"></i>
+        
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; font-size: 16px; letter-spacing: 0.3px;">Investment History</h5>
+        
     </div>
+
+
 
     <div class="container px-3 mt-3" id="invest-list-container">
         </div>
 </div>
 <div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #007bff, #00d2ff); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Micro Jobs</h5>
             </div>
+
+
             <div onclick="openMicroHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                 <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
             </div>
@@ -4183,13 +4280,15 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffbf0; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-<div style="background: linear-gradient(90deg, #ffc107, #ffb300); padding: 20px 15px; color: #212529; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2); position: sticky; top: 0; z-index: 101;">
-    <div style="display: flex; align-items: center; justify-content: space-between;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
         
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Post a New Job</h5>
-        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Post a New Job</h5>
+            </div>
+
 
         <div onclick="openJobHistory()" style="cursor: pointer; padding: 5px;">
             <i class="fas fa-history" style="font-size: 18px; color: #212529;"></i>
@@ -4242,12 +4341,20 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-leader" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #fd7e14, #f39c12); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(253, 126, 20, 0.2); position: sticky; top: 0; z-index: 101;">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Leadership Program</h5>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Leadership Program</h5>
+            </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-crown" style="font-size: 16px; color: white;"></i>
+            </div>
         </div>
-    </div>
+</div>
 
     <div class="container mt-4">
         <div style="background: white; border-radius: 20px; padding: 20px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #ffeaa7; text-align: center;">
@@ -4331,10 +4438,20 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-video-view" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 3000; overflow-y: auto;">
     
-    <div style="background: #fff; padding: 20px; display: flex; align-items: center; border-bottom: 1px solid #eee;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-training')"></i>
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700;" id="v-header-title">Video Lesson</h5>
-    </div>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 3001; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-training')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;" id="v-header-title">Video Lesson</h5>
+            </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-play-circle" style="font-size: 18px; color: white;"></i>
+            </div>
+        </div>
+        </div>
 
     <div class="container px-3 mt-4">
         <div style="width: 100%; height: 200px; background: #2196f3; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 50px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(33, 150, 243, 0.2);">
@@ -4354,13 +4471,19 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 
-<div id="p-target" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f9f9ff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+ <div id="p-target" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f9f9ff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #6610f2, #8e44ad); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(102, 16, 242, 0.2); position: sticky; top: 0; z-index: 101;">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">Target Bonus</h5>
-        </div>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Target Bonus</h5>
+            </div>
+
+</div>
+
     </div>
 
     <div class="container mt-3">
@@ -4427,16 +4550,18 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 
-
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(58, 123, 213, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
-            
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Social Service</h5>
             </div>
+
+         
 
     <div onclick="openPage('p-orders')" style="cursor: pointer; padding: 5px;">
         <i class="fas fa-history" style="font-size: 20px; color: #6c5ce7;"></i>
@@ -4493,16 +4618,24 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(135deg, #6c5ce7, #0984e3); padding: 25px 20px; color: white; border-radius: 0 0 30px 30px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <div style="margin-left: 15px;">
-                <h5 style="margin: 0; font-weight: 700; letter-spacing: 0.5px;">Deposit</h5>
-               
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 25px 20px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <div style="margin-left: 15px;">
+                    <h5 style="margin: 0; font-weight: 700; letter-spacing: 0.5px; color: white;">Deposit</h5>
+                </div>
             </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-wallet" style="font-size: 16px; color: white;"></i>
+            </div>
+      
+
         </div>
     </div>
 
@@ -4569,11 +4702,17 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="p-more" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #e83e8c, #fd79a8); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(232, 62, 140, 0.2);">
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('p-home')"></i>
-            <h5 style="margin: 0; margin-left: 15px; font-weight: 700;">More Options</h5>
-        </div>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">More Options</h5>
+            </div>
+
+
+    </div>
     </div>
 
     <div class="container mt-4 text-center">
@@ -4617,23 +4756,44 @@ div[onclick="toggleBloodModal()"]:active {
 
     </div>
 </div>
-<div id="p-orders" class="clean-page">
-    <h5 class="fw-bold mb-4">
-        <i class="fas fa-arrow-left me-3 text-primary" onclick="closePage('orders')"></i>
-Social Order History
-    </h5>
-    <div id="order-hist-list"></div>
-</div>
-  <div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div id="p-orders" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #4834d4, #686de0); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(72, 52, 212, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
-            
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="closePage('orders')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Social Order History</h5>
+            </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-shopping-bag" style="font-size: 16px; color: white;"></i>
+            </div>
+      </div>
+      </div>
+    
+
+    <div class="container mt-3">
+        <div id="order-hist-list"></div>
+    </div>
+</div>
+
+<div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Live Chat</h5>
             </div>
+
+            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-headset" style="font-size: 18px; color: white;"></i>
             </div>
+        </div>
 
 
 
@@ -4681,11 +4841,12 @@ Social Order History
 </div>
 <div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); padding: 20px 15px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2); position: sticky; top: 0; z-index: 101;">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
-            
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">আমাদের কোর্সসমূহ</h5>
             </div>
 
