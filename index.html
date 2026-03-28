@@ -2912,55 +2912,12 @@ div[onclick="toggleBloodModal()"]:active {
     
     <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Vendorship</small>
 </div>
-<div id="p-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">My Team</h5>
-            </div>
-
-            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <i class="fas fa-user-friends" style="font-size: 16px; color: white;"></i>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="container mt-3">
-        <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <p style="margin: 0; font-size: 13px; color: #666; font-weight: 600;">Your Referral Code</p>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
-                <h3 id="my-refer-code" style="margin: 0; font-weight: 800; color: #6c5ce7; letter-spacing: 2px;">123456</h3>
-                <button onclick="copyReferCode()" style="border: none; background: #f0eeff; color: #6c5ce7; padding: 5px 10px; border-radius: 8px; font-size: 12px; font-weight: 700;">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-            </div>
-            <p style="margin-top: 10px; font-size: 11px; color: #888;">প্রতিটি রেফারে বোনাস জিতে নিন!</p>
-        </div>
 
-        <div class="row gx-2 mt-3">
-            <div class="col-12">
-                <div style="background: #6c5ce7; color: white; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p style="margin: 0; font-size: 12px; opacity: 0.9;">Total Members</p>
-                        <h4 style="margin: 0; font-weight: 800;" id="total-team-count">0</h4>
-                    </div>
-                    <i class="fas fa-users" style="font-size: 30px; opacity: 0.3;"></i>
-                </div>
-            </div>
-        </div>
 
-        <h6 style="font-weight: 700; color: #333; margin-top: 25px; margin-bottom: 15px;">Referral History</h6>
-        <div id="refer-list-container">
-            <p style="text-align: center; color: #aaa; font-size: 13px; margin-top: 20px;">কোনো মেম্বার খুঁজে পাওয়া যায়নি</p>
-        </div>
 
-    </div>
-</div>
+
        <div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center;">
     <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
         
@@ -3072,7 +3029,7 @@ div[onclick="toggleBloodModal()"]:active {
             </div>
 
             <div class="ref-card" style="margin-top: 15px; background: rgba(255, 255, 255, 0.15); padding: 8px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: space-between;">
-                <span style="color: rgba(255, 255, 255, 0.8); font-size: 10px; font-weight: 600;">Referral:</span>
+                <span style="color: rgba(255, 255, 255, 0.8); font-size: 10px; font-weight: 600;">Referral Code:</span>
                 <b id="user-ref" style="color: white; font-size: 13px; letter-spacing: 0.5px; font-family: monospace;">ALIF123</b>
                 <i class="far fa-copy" style="color: white; cursor: pointer; font-size: 13px;" onclick="copyRef()"></i>
             </div>
@@ -3087,7 +3044,7 @@ div[onclick="toggleBloodModal()"]:active {
     <i class="fas fa-wallet"></i> Wallet
 </button>
            <button class="d-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
-    <i class="fas fa-money-check-alt"></i> Withdraw
+    <i class="fas fa-money-check-alt"></i> Withdraw 
 </button>
             
             <hr class="my-3 opacity-10">
@@ -4356,6 +4313,39 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
+<div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; text-transform: uppercase;">My Team</h5>
+    </div>
+
+    <div style="margin: 20px; background: white; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
+        <p style="margin: 0; color: #95a5a6; font-size: 12px; font-weight: 700; text-transform: uppercase;">Your Referral Code</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
+            <div id="referCode" style="background: #f1f3f6; padding: 10px 20px; border-radius: 12px; font-size: 1.4rem; font-weight: 900; color: #2d3436; border: 2px dashed #3b82f6; letter-spacing: 2px;">
+                ------
+            </div>
+            <button onclick="copyReferCode()" style="border: none; background: #3b82f6; color: white; width: 45px; height: 45px; border-radius: 12px; cursor: pointer;">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <p style="margin: 15px 0 0; font-size: 11px; color: #2ecc71; font-weight: 600;">Share this code to earn commission!</p>
+    </div>
+
+    <div style="margin: 0 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h6 style="font-weight: 800; color: #2c3e50; margin: 0; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-users" style="color: #3b82f6;"></i> Team Members
+            </h6>
+            <span id="teamCount" style="background: #3b82f6; color: white; padding: 2px 10px; border-radius: 50px; font-size: 12px; font-weight: 700;">0</span>
+        </div>
+
+        <div id="teamList" style="display: flex; flex-direction: column; gap: 10px;">
+            <p style="text-align: center; color: #95a5a6; font-size: 12px; margin-top: 20px;">Loading team...</p>
+        </div>
+    </div>
+</div>
 <div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffbf0; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -5085,10 +5075,10 @@ div[onclick="toggleBloodModal()"]:active {
         <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Courses</small>
     </div>
 
-    <div onclick="openPage('p-team')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-users" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">My Team</small>
-    </div>
+ <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
+    <i class="fas fa-users" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
+    <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">My Team</small>
+</div>
 
     <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1;">
         <i class="fas fa-plus-circle" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
@@ -5201,19 +5191,22 @@ div[onclick="toggleBloodModal()"]:active {
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    let db = {
-      withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
-        users: JSON.parse(localStorage.getItem('v7_u')) || [{name:"Admin", email:"admin@gmail.com", pass:"123456", role:"admin", bal:0, status:"active"}],
-        orders: JSON.parse(localStorage.getItem('v7_o')) || [],
-        funds: JSON.parse(localStorage.getItem('v7_f')) || [],
-        chats: JSON.parse(localStorage.getItem('v7_chats')) || [],
-        prices: JSON.parse(localStorage.getItem('v7_prices')) || { "Facebook": 70, "YouTube": 100, "TikTok": 40, "Instagram": 30, "Telegram": 60 },
-        logo: localStorage.getItem('v7_logo') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-        note: localStorage.getItem('v7_note') || "Elite SMM এ আপনাকে স্বাগতম!",
-        payNum: localStorage.getItem('v7_payNum') || "01868293471",
-        rocketNum: localStorage.getItem('v7_rocketNum') || "018682934716",
-        autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
-    };
+let db = {
+    withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
+    // অ্যাডমিনের জন্য একটি ডিফল্ট রেফার কোড (যেমন: ADMIN1) যোগ করা হয়েছে
+    users: JSON.parse(localStorage.getItem('v7_u')) || [
+        {name:"Admin", email:"admin@gmail.com", pass:"123456", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
+    ],
+    orders: JSON.parse(localStorage.getItem('v7_o')) || [],
+    funds: JSON.parse(localStorage.getItem('v7_f')) || [],
+    chats: JSON.parse(localStorage.getItem('v7_chats')) || [],
+    prices: JSON.parse(localStorage.getItem('v7_prices')) || { "Facebook": 70, "YouTube": 100, "TikTok": 40, "Instagram": 30, "Telegram": 60 },
+    logo: localStorage.getItem('v7_logo') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    note: localStorage.getItem('v7_note') || "Elite SMM এ আপনাকে স্বাগতম!",
+    payNum: localStorage.getItem('v7_payNum') || "01868293471",
+    rocketNum: localStorage.getItem('v7_rocketNum') || "018682934716",
+    autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
+};
     
     let curUser = null;
     let currentMethod = "Bkash";
@@ -5221,20 +5214,23 @@ div[onclick="toggleBloodModal()"]:active {
     const showLoader = (show) => { document.getElementById('loader-overlay').style.display = show ? 'flex' : 'none'; };
     const toast = (msg, icon='success') => { Swal.fire({ text: msg, icon: icon, toast: true, position: 'top', showConfirmButton: false, timer: 2000 }); };
     const formatCurrency = (num) => parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 2 });
-function save() {
-      localStorage.setItem('v7_w', JSON.stringify(db.withdraws || []));
-        localStorage.setItem('v7_u', JSON.stringify(db.users));
-        localStorage.setItem('v7_o', JSON.stringify(db.orders));
-        localStorage.setItem('v7_f', JSON.stringify(db.funds));
-        localStorage.setItem('v7_chats', JSON.stringify(db.chats));
-        localStorage.setItem('v7_prices', JSON.stringify(db.prices));
-        localStorage.setItem('v7_logo', db.logo);
-        localStorage.setItem('v7_note', db.note);
-        localStorage.setItem('v7_payNum', db.payNum);
-        localStorage.setItem('v7_rocketNum', db.rocketNum);
-        localStorage.setItem('v7_autoMsg', db.autoMsg);
-    }
+
+    function save() {
+    localStorage.setItem('v7_w', JSON.stringify(db.withdraws || []));
+    localStorage.setItem('v7_u', JSON.stringify(db.users || [])); // ইউজার লিস্ট সেভ
+    localStorage.setItem('v7_o', JSON.stringify(db.orders || []));
+    localStorage.setItem('v7_f', JSON.stringify(db.funds || []));
+    localStorage.setItem('v7_chats', JSON.stringify(db.chats || []));
+    localStorage.setItem('v7_prices', JSON.stringify(db.prices || []));
+    localStorage.setItem('v7_logo', db.logo || "");
+    localStorage.setItem('v7_note', db.note || "");
+    localStorage.setItem('v7_payNum', db.payNum || "");
+    localStorage.setItem('v7_rocketNum', db.rocketNum || "");
+    localStorage.setItem('v7_autoMsg', db.autoMsg || "");
     
+    // কনসোলে চেক করার জন্য (ঐচ্ছিক)
+    console.log("Data Saved Successfully!");
+}
 
     // লোগো আপলোড হ্যান্ডলার
     document.getElementById('adm-logo-file').addEventListener('change', function(e) {
@@ -5364,22 +5360,43 @@ function handleAuth(m) {
         if(m === 'signup') {
             let n = document.getElementById('s-name').value, 
                 e = document.getElementById('s-email').value, 
-                p = document.getElementById('s-pass').value;
+                p = document.getElementById('s-pass').value,
+                r = document.getElementById('reg-refer').value.trim().toUpperCase(); // রেফার ইনপুট
             
             if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
             if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
             
-            // ডাটাবেসে ইউজার পুশ করা
-            db.users.push({name:n, email:e, pass:p, role:"user", bal:0.00, status:"active"});
+            // --- ১. নতুন রেফার কোড জেনারেট করা ---
+            const myNewCode = Math.random().toString(36).substring(2, 8).toUpperCase();
             
-            // --- নতুন কোড (রেজিস্ট্রেশনের সময় নাম ও ইমেইল সেভ) ---
+            // ডাটাবেসে ইউজার পুশ করা (সাথে referCode এবং referredBy)
+            db.users.push({
+                name: n, 
+                email: e, 
+                pass: p, 
+                role: "user", 
+                bal: 0.00, 
+                status: "active",
+                referCode: myNewCode, // নিজের কোড
+                referredBy: r        // যার মাধ্যমে আসলো
+            });
+            
+            // --- ২. লিডারের টিমে এই ইউজারকে যোগ করা ---
+            if(r !== "") {
+                let leader = db.users.find(x => x.referCode === r);
+                if(leader) {
+                    // লিডারের টিমে ডাটা পুশ (যদি আপনার db-তে team অ্যারে থাকে)
+                    if(!leader.team) leader.team = [];
+                    leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
+                }
+            }
+            
             localStorage.setItem('v7_userName', n);
             localStorage.setItem('v7_userEmail', e);
-            // ------------------------------------------------
             
             save(); 
             switchAuth(false); 
-            toast('রেজিস্ট্রেশন সফল');
+            toast('রেজিস্ট্রেশন সফল! কোড: ' + myNewCode);
             
         } else {
             let e = document.getElementById('l-email').value, 
@@ -5387,32 +5404,27 @@ function handleAuth(m) {
             let u = db.users.find(x => x.email === e && x.pass === p);
             
             if(u) {
-              if (u.status === 'blocked') {
-    // ব্লক মেসেজ পপআপ
-    Swal.fire({
-        title: 'আপনার অ্যাকাউন্টটি ব্লক!',
-        html: `<b>কারণ:</b> ${u.blockReason || 'নিয়ম ভঙ্গ করা হয়েছে'}<br><br>
-               যোগাযোগ করুন: <br>
-               <a href="https://t.me/YourTelegramID" target="_blank" style="display: inline-block; margin-top: 10px; color: white; background: #0088cc; padding: 10px 20px; border-radius: 50px; text-decoration: none;">
-                <i class="fab fa-telegram-plane"></i> আমাদের টেলিগ্রাম
-               </a>`,
-        icon: 'error',
-        confirmButtonText: 'ঠিক আছে'
-    });
-    return;
-}
+                if (u.status === 'blocked') {
+                    Swal.fire({
+                        title: 'আপনার অ্যাকাউন্টটি ব্লক!',
+                        html: `<b>কারণ:</b> ${u.blockReason || 'নিয়ম ভঙ্গ করা হয়েছে'}<br><br>
+                               যোগাযোগ করুন: <br>
+                               <a href="https://t.me/YourTelegramID" target="_blank" style="display: inline-block; margin-top: 10px; color: white; background: #0088cc; padding: 10px 20px; border-radius: 50px; text-decoration: none;">
+                                <i class="fab fa-telegram-plane"></i> আমাদের টেলিগ্রাম
+                               </a>`,
+                        icon: 'error',
+                        confirmButtonText: 'ঠিক আছে'
+                    });
+                    return;
+                }
 
-              curUser = u; 
-              
-              
-              
+                curUser = u; 
                 
-                
-                // --- নতুন কোড (লগইনের সময় নাম ও ইমেইল সেভ) ---
-                localStorage.setItem('v7_logged_email', u.email); // আপনার আগের কোড
-                localStorage.setItem('v7_userName', u.name);     // রিয়েল নাম সেভ
-                localStorage.setItem('v7_userEmail', u.email);   // রিয়েল ইমেইল সেভ
-                // ------------------------------------------------
+                localStorage.setItem('v7_logged_email', u.email);
+                localStorage.setItem('v7_userName', u.name);
+                localStorage.setItem('v7_userEmail', u.email);
+                // মেমোরিতে রেফার কোড রাখা
+                localStorage.setItem('v7_userReferCode', u.referCode);
 
                 document.getElementById('auth-section').classList.add('d-none');
                 u.role === 'admin' ? 
@@ -5516,40 +5528,87 @@ function handleAuth(m) {
         renderWithdrawHistory();
     }
 }
+function renderAdmin() {
+    let uH = ""; 
 
+    // ১. ইউজার কার্ড রেন্ডারিং
+    db.users.filter(u => u.role !== 'admin').forEach((u, i) => {
+        // এই ইউজার কয়জনকে রেফার করেছে তার সংখ্যা বের করা
+        const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
+        const uIndex = db.users.indexOf(u);
 
-    function renderAdmin() {
-        let uH = ""; 
-        db.users.filter(u => u.role !== 'admin').forEach((u, i) => {
-            uH += `<div class="admin-user-card shadow-sm">
-                <div class="fw-bold text-primary">${u.name} 
-                    <span class="badge bg-light text-dark float-end border">${u.status}</span>
-                </div>
-                <div class="x-small mt-1">
-                    <b>Email:</b> ${u.email}<br>
-                    <b>Password:</b> <span class="text-danger fw-bold">${u.pass}</span><br>
-                    <b>Bal:</b> ৳${formatCurrency(u.bal)}
-                </div>
-                <div class="mt-2 d-flex gap-1">
-                    <button class="btn btn-xs btn-primary" onclick="editBal(${db.users.indexOf(u)})">+ টাকা</button>
-                    <button class="btn btn-xs ${u.status==='active'?'btn-danger':'btn-success'}" onclick="toggleBlock(${db.users.indexOf(u)})">
-                        ${u.status==='active'?'ব্লক':'আনব্লক'}
+        uH += `<div class="admin-user-card shadow-sm" style="border-left: 4px solid #3b82f6; margin-bottom: 12px; padding: 12px; background: #fff; border-radius: 10px;">
+            <div class="fw-bold text-primary">
+                ${u.name} 
+                <span class="badge bg-light text-dark float-end border">${u.status}</span>
+            </div>
+            
+            <div class="x-small mt-1">
+                <b>Email:</b> ${u.email}<br>
+                <b>Password:</b> <span class="text-danger fw-bold">${u.pass}</span><br>
+                <b>Bal:</b> ৳${formatCurrency(u.bal)}<br>
+                
+                <div class="mt-2 p-2 rounded" style="background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fas fa-users text-muted"></i> রেফার: <b>${refCount}</b></span>
+                    <button class="btn btn-sm btn-info text-white" style="font-size: 10px; padding: 2px 8px;" onclick="showReferHistory('${u.referCode || ""}', '${u.name}')">
+                        <i class="fas fa-history"></i> হিস্টোরি
                     </button>
                 </div>
-            </div>`;
-        });
-        document.getElementById('a-u').innerHTML = uH || "ইউজার নেই";
-        
-        // বাকি পেন্ডিং পেমেন্ট, অর্ডার এবং মেসেজ রেন্ডারিং আগের মতোই থাকবে...
-        document.getElementById('a-f').innerHTML = db.funds.filter(f => f.status==='Pending').map(f => `<div class="admin-user-card border-warning"><b>৳${f.amt} (${f.method})</b><br><small>Trx: ${f.trx} | User: ${f.user}</small><br><button class="btn btn-sm btn-success mt-2 w-100" onclick="approveFund(${f.id})">Approve</button></div>`).join("") || "পেন্ডিং নেই";
-        document.getElementById('a-o').innerHTML = db.orders.filter(o => o.status==='Pending').map(o => `<div class="admin-user-card border-info"><b>${o.srv} - ${o.qty}</b><br><small>User: ${o.user}<br>Link: ${o.link}</small><br><button class="btn btn-sm btn-info text-white mt-2 w-100" onclick="approveOrder(${o.id})">Complete</button></div>`).join("") || "পেন্ডিং নেই";
-        let uniqueUsers = [...new Set(db.chats.map(c => c.user))];
-        document.getElementById('a-s').innerHTML = uniqueUsers.map(uMail => {
-            let allMsgs = db.chats.filter(c => c.user === uMail).map(m => `<div class="x-small"><b>${m.sender}:</b> ${m.text}</div>`).join("");
-            return `<div class="admin-user-card"><b>User: ${uMail}</b><div class="chat-preview-box">${allMsgs}</div><button class="btn btn-xs btn-dark w-100 mt-2" onclick="adminReplyPrompt('${uMail}')">Reply</button></div>`;
-        }).join("") || "মেসেজ নেই";
-        
+            </div>
+
+            <div class="mt-3 d-flex gap-1">
+                <button class="btn btn-xs btn-primary w-100" onclick="editBal(${uIndex})">+ টাকা</button>
+                <button class="btn btn-xs ${u.status==='active'?'btn-danger':'btn-success'} w-100" onclick="toggleBlock(${uIndex})">
+                    ${u.status==='active'?'ব্লক':'আনব্লক'}
+                </button>
+            </div>
+        </div>`;
+    });
+
+    // ইউজার লিস্ট আপডেট
+    const userContainer = document.getElementById('a-u');
+    if(userContainer) userContainer.innerHTML = uH || "ইউজার নেই";
+
+    // ২. পেন্ডিং ফান্ড আপডেট
+    const fundContainer = document.getElementById('a-f');
+    if(fundContainer) {
+        fundContainer.innerHTML = db.funds.filter(f => f.status==='Pending').map(f => `
+            <div class="admin-user-card border-warning">
+                <b>৳${f.amt} (${f.method})</b><br>
+                <small>Trx: ${f.trx} | User: ${f.user}</small><br>
+                <button class="btn btn-sm btn-success mt-2 w-100" onclick="approveFund(${f.id})">Approve</button>
+            </div>`).join("") || "পেন্ডিং নেই";
     }
+
+    // ৩. পেন্ডিং অর্ডার আপডেট
+    const orderContainer = document.getElementById('a-o');
+    if(orderContainer) {
+        orderContainer.innerHTML = db.orders.filter(o => o.status==='Pending').map(o => `
+            <div class="admin-user-card border-info">
+                <b>${o.srv} - ${o.qty}</b><br>
+                <small>User: ${o.user}<br>Link: ${o.link}</small><br>
+                <button class="btn btn-sm btn-info text-white mt-2 w-100" onclick="approveOrder(${o.id})">Complete</button>
+            </div>`).join("") || "পেন্ডিং নেই";
+    }
+
+    // ৪. চ্যাট মেসেজ আপডেট
+    const supportContainer = document.getElementById('a-s');
+    if(supportContainer) {
+        let uniqueUsers = [...new Set(db.chats.map(c => c.user))];
+        supportContainer.innerHTML = uniqueUsers.map(uMail => {
+            let lastMsg = db.chats.filter(c => c.user === uMail).slice(-1)[0]; // শেষ মেসেজটি দেখা যাবে
+            return `<div class="admin-user-card">
+                <b>User: ${uMail}</b>
+                <div class="chat-preview-box text-muted small" style="max-height: 50px; overflow: hidden;">
+                    ${lastMsg ? lastMsg.text : 'No messages'}
+                </div>
+                <button class="btn btn-xs btn-dark w-100 mt-2" onclick="adminReplyPrompt('${uMail}')">Reply</button>
+            </div>`;
+        }).join("") || "মেসেজ নেই";
+    }
+}
+
+    
     
 
     function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
@@ -7716,6 +7775,179 @@ function updateLogo() {
     reader.readAsDataURL(file);
 }
 
+
+// ২. টিম ডাটা এবং নিজের কোড লোড করার ফাংশন
+function loadTeamData() {
+    // লোকাল স্টোরেজ থেকে বর্তমান ইউজারের ডাটা আনা
+    const userData = JSON.parse(localStorage.getItem('user_session'));
+    
+    if (userData) {
+        // ইউজারের নিজের রেফার কোড সেট করা
+        document.getElementById('referCode').innerText = userData.myReferCode;
+
+        // এই ইউজারের আন্ডারে যারা জয়েন করেছে তাদের ডাটা আনা
+        const teamMembers = JSON.parse(localStorage.getItem('team_' + userData.myReferCode)) || [];
+        
+        // মেম্বার সংখ্যা আপডেট করা
+        document.getElementById('teamCount').innerText = teamMembers.length;
+
+        const teamListContainer = document.getElementById('teamList');
+        
+        // যদি কেউ জয়েন না করে থাকে
+        if (teamMembers.length === 0) {
+            teamListContainer.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <i class="fas fa-user-friends" style="font-size: 40px; color: #ddd; margin-bottom: 10px;"></i>
+                    <p style="color: #95a5a6; font-size: 13px;">No members joined yet.</p>
+                </div>`;
+            return;
+        }
+
+        // লিস্ট ক্লিয়ার করে নতুন করে মেম্বারদের বসানো
+        teamListContainer.innerHTML = "";
+        teamMembers.forEach(member => {
+            const firstLetter = member.name.charAt(0).toUpperCase();
+            const memberHTML = `
+                <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #eee;">
+                    <div style="width: 45px; height: 45px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: 800;">
+                        ${firstLetter}
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 14px; font-weight: 700; color: #2d3436;">${member.name}</p>
+                        <p style="margin: 0; font-size: 11px; color: #95a5a6;">${member.email}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="display: block; font-size: 10px; color: #2ecc71; font-weight: 800;">Active</span>
+                    </div>
+                </div>`;
+            teamListContainer.innerHTML += memberHTML;
+        });
+    }
+}
+
+// পেজ ওপেন হওয়ার সময় ডাটা লোড হবে
+document.addEventListener('DOMContentLoaded', loadTeamData);
+function renderTeam() {
+    // ১. বর্তমানে লগইন করা ইউজারের ডাটা নিশ্চিত করা
+    if (!curUser || !curUser.referCode) {
+        // যদি ইউজার লগইন না থাকে বা কোড না থাকে
+        const savedEmail = localStorage.getItem('v7_logged_email');
+        curUser = db.users.find(u => u.email === savedEmail);
+    }
+
+    const container = document.getElementById('teamList');
+    const countSpan = document.getElementById('teamCount');
+    const myReferCode = curUser.referCode;
+
+    // ২. আপনার রেফার কোডটি বক্সে দেখানো
+    document.getElementById('referCode').innerText = myReferCode;
+
+    // ৩. যারা আপনার কোড ব্যবহার করেছে তাদের ফিল্টার করা
+    const myTeam = db.users.filter(u => u.referredBy === myReferCode);
+    
+    countSpan.innerText = myTeam.length;
+    container.innerHTML = "";
+
+    // ৪. যদি কেউ না থাকে
+    if (myTeam.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 30px; color: #95a5a6;">
+                <i class="fas fa-user-clock" style="font-size: 30px; margin-bottom: 10px;"></i>
+                <p style="font-size: 12px;">এখনো কেউ আপনার টিমে জয়েন করেনি।</p>
+            </div>`;
+        return;
+    }
+
+    // ৫. মেম্বারদের লিস্ট তৈরি করা
+    myTeam.forEach(member => {
+        container.innerHTML += `
+            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #eee;">
+                <div style="width: 45px; height: 45px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: 800;">
+                    ${member.name[0].toUpperCase()}
+                </div>
+                <div style="flex: 1;">
+                    <p style="margin: 0; font-size: 14px; font-weight: 700; color: #2d3436;">${member.name}</p>
+                    <p style="margin: 0; font-size: 11px; color: #95a5a6;">${member.email}</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="display: block; font-size: 10px; color: #2ecc71; font-weight: 800;">Active</span>
+                </div>
+            </div>`;
+    });
+}
+
+// রেফার কোড কপি করার ফাংশন
+function copyReferCode() {
+    const code = document.getElementById('referCode').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        toast('কোড কপি হয়েছে!');
+    });
+}
+function copyRef() {
+    const code = document.getElementById('user-ref').innerText;
+    
+    if (code === "ALIF123" || code === "N/A" || code === "") {
+        return; // ডিফল্ট বা খালি থাকলে কপি হবে না
+    }
+
+    navigator.clipboard.writeText(code).then(() => {
+        // আপনার সিস্টেমে টোস্ট মেসেজ থাকলে সেটি দেখাবে
+        if (typeof toast === 'function') {
+            toast('Referral code copied!', 'success');
+        } else {
+            alert('Copied: ' + code);
+        }
+    });
+}
+// এটি আপনার ফাইলের একদম নিচে পেস্ট করুন
+setInterval(() => {
+    const refElem = document.getElementById('user-ref');
+    if (refElem && typeof curUser !== 'undefined' && curUser.referCode) {
+        if (refElem.innerText !== curUser.referCode) {
+            refElem.innerText = curUser.referCode;
+        }
+    }
+}, 1000); // প্রতি ১ সেকেন্ড পর পর চেক করে সঠিক কোড বসাবে
+
+function showReferHistory(refCode, userName) {
+    // ঐ কোড ব্যবহার করে যারা জয়েন করেছে তাদের খুঁজে বের করা
+    const myTeam = db.users.filter(u => u.referredBy === refCode);
+
+    let listHtml = "";
+    if (myTeam.length === 0) {
+        listHtml = "<p class='text-muted'>কোনো রেফারেল পাওয়া যায়নি।</p>";
+    } else {
+        listHtml = `
+        <div style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-sm small">
+                <thead>
+                    <tr>
+                        <th>নাম</th>
+                        <th>ইমেইল</th>
+                        <th>ব্যালেন্স</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${myTeam.map(t => `
+                        <tr>
+                            <td>${t.name}</td>
+                            <td>${t.email}</td>
+                            <td>${t.bal} TK</td>
+                        </tr>
+                    `).join("")}
+                </tbody>
+            </table>
+        </div>`;
+    }
+
+    // পপ-আপে লিস্ট দেখানো
+    Swal.fire({
+        title: `Team of ${userName}`,
+        html: listHtml,
+        confirmButtonText: 'বন্ধ করুন',
+        confirmButtonColor: '#3b82f6'
+    });
+}
 </script>
 </body>
 </html>
