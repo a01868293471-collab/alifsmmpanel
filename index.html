@@ -3021,12 +3021,12 @@ div[onclick="toggleBloodModal()"]:active {
                 User Name
             </h5>
 
-            <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
-                <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px;">
-                    <i class="fas fa-user-check" style="font-size: 10px; color: white;"></i>
-                    <span style="font-size: 10px; font-weight: 700; color: white; letter-spacing: 0.3px;">General Member</span>
-                </div>
-            </div>
+          <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
+    <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px;">
+        <i class="fas fa-user-check" style="font-size: 10px; color: white;"></i>
+        <span id="user-rank" style="font-size: 10px; font-weight: 700; color: white; letter-spacing: 0.3px;">General Member</span>
+    </div>
+</div>
 
             <div class="ref-card" style="margin-top: 15px; background: rgba(255, 255, 255, 0.15); padding: 8px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: space-between;">
                 <span style="color: rgba(255, 255, 255, 0.8); font-size: 10px; font-weight: 600;">Referral Code:</span>
@@ -5377,6 +5377,7 @@ function handleAuth(m) {
                 role: "user", 
                 bal: 0.00, 
                 status: "active",
+                rank: "General Member", // <--- ডিফল্ট র্যাঙ্ক
                 referCode: myNewCode, // নিজের কোড
                 referredBy: r        // যার মাধ্যমে আসলো
             });
@@ -5498,7 +5499,11 @@ function handleAuth(m) {
             elem.innerText = formattedBal;
         }
     });
-
+// renderUser ফাংশনের ভেতর এটি বসান
+const rankElem = document.getElementById('user-rank');
+if (rankElem) {
+    rankElem.innerText = curUser.rank || "General Member";
+}
     // ২. ফান্ড হিস্টোরি (Add Money History)
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
@@ -5548,13 +5553,18 @@ function renderAdmin() {
                 <b>Password:</b> <span class="text-danger fw-bold">${u.pass}</span><br>
                 <b>Bal:</b> ৳${formatCurrency(u.bal)}<br>
                 
-                <div class="mt-2 p-2 rounded" style="background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
-                    <span><i class="fas fa-users text-muted"></i> রেফার: <b>${refCount}</b></span>
-                    <button class="btn btn-sm btn-info text-white" style="font-size: 10px; padding: 2px 8px;" onclick="showReferHistory('${u.referCode || ""}', '${u.name}')">
-                        <i class="fas fa-history"></i> হিস্টোরি
-                    </button>
-                </div>
-            </div>
+
+<div class="mt-2 p-2 rounded" style="background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
+    <span><i class="fas fa-users text-muted"></i> রেফার: <b>${refCount}</b></span>
+    <div>
+        <button class="btn btn-sm btn-info text-white" style="font-size: 10px; padding: 2px 8px;" onclick="showReferHistory('${u.referCode || ""}', '${u.name}')">
+            <i class="fas fa-history"></i>
+        </button>
+        <button class="btn btn-sm btn-dark text-white ms-1" style="font-size: 10px; padding: 2px 8px;" onclick="editUserRank(${db.users.indexOf(u)})">
+            <i class="fas fa-user-tag"></i> Rank
+        </button>
+    </div>
+</div>
 
             <div class="mt-3 d-flex gap-1">
                 <button class="btn btn-xs btn-primary w-100" onclick="editBal(${uIndex})">+ টাকা</button>
@@ -7946,6 +7956,25 @@ function showReferHistory(refCode, userName) {
         html: listHtml,
         confirmButtonText: 'বন্ধ করুন',
         confirmButtonColor: '#3b82f6'
+    });
+}
+function editUserRank(index) {
+    let u = db.users[index];
+    Swal.fire({
+        title: 'মেম্বার র্যাঙ্ক পরিবর্তন',
+        input: 'text',
+        inputLabel: `${u.name}-এর নতুন র্যাঙ্ক নাম লিখুন`,
+        inputValue: u.rank || "General Member",
+        showCancelButton: true,
+        confirmButtonText: 'সেভ করুন',
+        confirmButtonColor: '#3b82f6'
+    }).then((result) => {
+        if (result.isConfirmed && result.value) {
+            u.rank = result.value; // নতুন নাম সেভ হলো
+            save();
+            renderAdmin(); // অ্যাডমিন পেজ রিফ্রেশ
+            toast('Rank updated successfully!');
+        }
     });
 }
 </script>
