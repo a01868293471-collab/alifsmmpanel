@@ -4907,188 +4907,29 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 </div>
-<div id="p-courses" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">আমাদের কোর্সসমূহ</h5>
-            </div>
 
-            <div onclick="openCourseHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                <i class="fas fa-book-reader" style="font-size: 18px; color: white;"></i>
-            </div>
-
-        </div>
-
-        
-        
-        
-    </div>
-
-    <div class="container mt-3" id="course-list">
-        
-        <div class="course-card" id="course-1" data-price="500" data-video="https://youtube.com/link1">
-            <img src="https://img.freepik.com/free-vector/online-courses-concept_23-2148533386.jpg" class="course-img">
-            <div class="course-details">
-                <h6>প্রফেশনাল ডিজিটাল মার্কেটিং</h6>
-                <p>শিখুন কিভাবে ঘরে বসে ইনকাম করবেন।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">500.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(1)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-2" data-price="1000" data-video="https://youtube.com/link2">
-            <img src="https://img.freepik.com/free-vector/web-development-concept-with-programmer-working_23-2148817036.jpg" class="course-img">
-            <div class="course-details">
-                <h6>ওয়েব ডেভেলপমেন্ট মাস্টারক্লাস</h6>
-                <p>জিরো থেকে হিরো হন ওয়েব ডিজাইনে।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">1000.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(2)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-3" data-price="700" data-video="https://youtube.com/link3">
-            <img src="https://img.freepik.com/free-vector/graphic-design-creative-concept_23-2148673646.jpg" class="course-img">
-            <div class="course-details">
-                <h6>বেসিক গ্রাফিক ডিজাইন</h6>
-                <p>ফটোশপ ও ইলাস্ট্রেটর এর শুরু থেকে শেষ।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">700.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(3)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-4" data-price="600" data-video="https://youtube.com/link4">
-            <img src="https://img.freepik.com/free-vector/video-editing-concept-illustration_114360-6311.jpg" class="course-img">
-            <div class="course-details">
-                <h6>প্রফেশনাল ভিডিও এডিটিং</h6>
-                <p>মোবাইল ও পিসি দিয়ে এডিটিং শিখুন।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">600.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(4)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-5" data-price="850" data-video="https://youtube.com/link5">
-            <img src="https://img.freepik.com/free-vector/seo-optimization-concept-illustration_114360-5766.jpg" class="course-img">
-            <div class="course-details">
-                <h6>এসইও এক্সপার্ট গাইড</h6>
-                <p>আপনার ওয়েবসাইটকে গুগলে র‍্যাঙ্ক করান।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">850.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(5)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-6" data-price="450" data-video="https://youtube.com/link6">
-            <img src="https://img.freepik.com/free-vector/youtube-vlogger-concept-illustration_114360-2394.jpg" class="course-img">
-            <div class="course-details">
-                <h6>ইউটিউব চ্যানেল মাস্টারক্লাস</h6>
-                <p>ইউটিউব থেকে আয়ের সব গোপন ট্রিকস।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">450.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(6)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-7" data-price="550" data-video="https://youtube.com/link7">
-            <img src="https://img.freepik.com/free-vector/facebook-ads-concept-illustration_114360-3162.jpg" class="course-img">
-            <div class="course-details">
-                <h6>ফেসবুক এডস মাস্টারক্লাস</h6>
-                <p>টার্গেটেড কাস্টমার পাওয়ার সেরা উপায়।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">550.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(7)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-8" data-price="1200" data-video="https://youtube.com/link8">
-            <img src="https://img.freepik.com/free-vector/affiliate-marketing-concept-illustration_114360-5621.jpg" class="course-img">
-            <div class="course-details">
-                <h6>এডভান্স সিপিএ মার্কেটিং</h6>
-                <p>সিপিএ মার্কেটিং করে আর্নিং শুরু করুন।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">1200.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(8)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-9" data-price="2000" data-video="https://youtube.com/link9">
-            <img src="https://img.freepik.com/free-vector/app-development-concept-illustration_114360-5110.jpg" class="course-img">
-            <div class="course-details">
-                <h6>অ্যান্ড্রয়েড অ্যাপ মেকিং</h6>
-                <p>নিজে মোবাইল অ্যাপ্লিকেশন তৈরি করুন।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">2000.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(9)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="course-card" id="course-10" data-price="300" data-video="https://youtube.com/link10">
-            <img src="https://img.freepik.com/free-vector/freelancer-working-laptop-her-house_23-2148466974.jpg" class="course-img">
-            <div class="course-details">
-                <h6>সফল ফ্রিল্যান্সিং ক্যারিয়ার</h6>
-                <p>মার্কেটপ্লেসে সফল হওয়ার গাইডলাইন।</p>
-                <div class="course-footer">
-                    <span class="course-price"><span class="c-sym">৳</span> <span class="c-val">300.00</span></span>
-                    <div class="action-area"><button class="buy-btn" onclick="confirmPurchase(10)">Buy Now</button></div>
-                </div>
-            </div>
-        </div>
-
-        <p class="text-center mt-4 pb-5" style="color: #aaa; font-size: 13px;">নতুন কোর্স খুব শীঘ্রই আসছে...</p>
-
-    </div> </div> <div id="buy-modal" class="custom-modal d-none">
-    <div class="modal-content">
-        <h4>নিশ্চিত করুন</h4>
-        <p id="modal-text">আপনি কি এই কোর্সটি কিনতে চান?</p>
-        <div class="modal-btns">
-            <button class="btn-no" onclick="closeBuyModal()">না</button>
-            <button class="btn-yes" id="confirm-buy-btn">হ্যাঁ, কিনুন</button>
-        </div>
-    </div>
-</div>
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 12px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.15); border-radius: 20px 20px 0 0;">
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 12px 0 15px 0; z-index: 999; box-shadow: 0 -8px 25px rgba(0,0,0,0.2); border-radius: 25px 25px 0 0; border-top: 1px solid rgba(255,255,255,0.1);">
     
     <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
         <i class="fas fa-home" style="font-size: 22px; color: white;"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.9); margin-top: 4px;">Home</small>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Home</small>
     </div>
 
-    <div onclick="openPage('p-courses')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-graduation-cap" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Courses</small>
+    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
+        <i class="fas fa-users" style="font-size: 22px; color: white;"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">My Team</small>
     </div>
-
- <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
-    <i class="fas fa-users" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-    <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">My Team</small>
-</div>
 
     <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-plus-circle" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Deposit</small>
+        <i class="fas fa-wallet" style="font-size: 22px; color: white;"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Deposit</small>
     </div>
 
     <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-comments" style="font-size: 22px; color: rgba(255,255,255,0.7);"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px;">Live Chat</small>
+        <i class="fas fa-comment-dots" style="font-size: 22px; color: white;"></i>
+        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Support</small>
     </div>
+
 </div>
 
 </div>
