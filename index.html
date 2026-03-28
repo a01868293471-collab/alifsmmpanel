@@ -2296,230 +2296,796 @@ div[onclick="toggleBloodModal()"]:active {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
 }
+
+</style>
     </style>
 </head>
 <body>
 
-  <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px; overflow: hidden; font-family: 'Poppins', sans-serif;">
     
     <style>
-        @keyframes fillLoader {
-            0% { width: 0%; }
-            30% { width: 40%; }
-           70% { width: 85%; }
-            100% { width: 100%; }
+        /* লোগো ভাসার অ্যানিমেশন */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
-        @keyframes pulseDot {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+
+        /* প্রগ্রেস বার অ্যানিমেশন */
+        @keyframes fillLoader {
+            0% { width: 0%; opacity: 0.8; }
+            50% { width: 70%; opacity: 1; }
+            100% { width: 100%; opacity: 1; }
+        }
+
+        /* হালকা পালস এফেক্ট */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
     </style>
 
-    <div class="splash-container" style="text-align: center; position: relative;">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         
-<div style="width: 140px; height: 140px; background: rgba(255, 255, 255, 0.9); margin: 0 auto 30px; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 45px rgba(108, 92, 231, 0.25); position: relative; border: 1px solid rgba(255, 255, 255, 1); backdrop-filter: blur(10px);">
-    
-    <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 110px; height: 110px; object-fit: cover; border-radius: 15px; filter: drop-shadow(0 5px 10px rgba(108, 92, 231, 0.2));">
-    
-
-</div>
-        <h2 style="font-weight: 900; letter-spacing: 1px; font-size: 30px; margin-bottom: 5px; font-family: sans-serif;">
-            <span style="color: #3b82f6;">FREE</span> 
-            <span style="background: linear-gradient(90deg, #6c5ce7, #0984e3); -webkit-background-clip: text; -webkit-text-fill-color:#2ecc71;">TIME EARN</span>
-        </h2>
-        
-        <p style="font-size: 12px; font-weight: 600; color: #636e72; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-family: sans-serif;">Digital Business Platform</p>
-        
-        <div style="width: 180px; height: 6px; background: rgba(108, 92, 231, 0.1); margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(108, 92, 231, 0.05);">
-            <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #6c5ce7, #0984e3); border-radius: 10px; animation: fillLoader 3s ease-in-out forwards;"></div>
+        <div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.12); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(15px); border: 1.5px solid rgba(255,255,255,0.25); animation: floating 3s ease-in-out infinite, pulseGlow 2s infinite; margin-bottom: 30px;">
+            
+            <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 110px; height: 110px; object-fit: cover; border-radius: 25px;">
         </div>
 
-        <p style="margin-top: 20px; font-size: 10px; color: #b2bec3; font-weight: 600; font-family: sans-serif;">Version 2.0</p>
+        <div style="text-align: center;">
+            <h1 style="font-weight: 900; letter-spacing: 2px; font-size: 34px; margin: 0; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                FREE TIME <span style="color: #2ecc71;">EARN</span>
+            </h1>
+            <p style="font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.8); letter-spacing: 4px; text-transform: uppercase; margin-top: 10px;">
+                DIGITAL BUSINESS PLATFORM 
+            </p>
+        </div>
+
+        <div style="width: 200px; height: 6px; background: rgba(255,255,255,0.15); margin-top: 50px; border-radius: 100px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffffff, #2ecc71); border-radius: 100px; animation: fillLoader 3.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards; box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);"></div>
+        </div>
+    </div>
+
+    <div style="text-align: center; opacity: 0.8;">
+        <p style="margin: 0; font-size: 10px; color: #ffffff; font-weight: 400; letter-spacing: 1px;">Powered by</p>
+        <p style="margin: 0; font-size: 14px; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+            Abu Sufian <span style="color: #2ecc71;"></span>
+        </p>
+        <p style="margin-top: 8px; font-size: 10px; color: rgba(255,255,255,0.4);">Version 2.0.4</p>
     </div>
 </div>
-  
-  
-  
-
 <div id="loader-overlay"><div class="spinner"></div></div>
 
-      <div id="auth-section" style="padding: 20px;">
-    <div class="auth-card mx-auto mt-5" id="login-box" 
-         style="max-width: 420px; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
+
+<div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh;">
+    
+    <div style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 22px 15px; color: white; box-shadow: 0 8px 25px rgba(30, 58, 138, 0.2); border-radius: 0 0 30px 30px;">
         
-        <div class="text-center">
-            <div class="mb-4">
-                <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
-                    <span style="color: #3b82f6;">FREE TIME</span>
-                    <span style="color: #2ecc71;">EARN</span>
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 500px; margin: 0 auto;">
+            
+            <div style="width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.15);">
+                <i class="far fa-clock" style="font-size: 1.2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+            </div>
+            
+            <div style="text-align: center;">
+                <h1 style="font-weight: 900; margin: 0; line-height: 1.1; letter-spacing: 1.5px; font-size: 1.4rem; text-transform: uppercase;">
+                    FREE TIME <span style="color: #2ecc71; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">EARN</span>
                 </h1>
-                
-
-
-               
+                <small style="font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase;">Official Platform</small>
             </div>
 
-
-            <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">Login</h3>
+            <div style="width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fas fa-history" style="font-size: 1.1rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+            </div>
             
-            <div style="display: inline-block; background: #f0eeff; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px;">
-                <p style="margin: 0; font-size: 11px; font-weight: 700; color: #6c5ce7; text-transform: uppercase;">
-                    <i class="fas fa-shield-alt me-1"></i> Login to your account
+        </div>
+    </div>
+
+    
+    <div style="padding: 20px;">
+        
+        <div class="auth-card mx-auto mt-4" id="login-box" style="max-width: 420px; background: white; border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);">
+            <div class="text-center">
+                <h3 style="font-weight: 800; color: #333; margin-bottom: 8px;">Login</h3>
+                <div style="display: inline-block; background: #f0eeff; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px;">
+                    <p style="margin: 0; font-size: 11px; font-weight: 700; color: #6c5ce7; text-transform: uppercase;">
+                        <i class="fas fa-shield-alt me-1"></i> Secure Access
+                    </p>
+                </div>
+            </div>
+
+            <div class="auth-container">
+                <div style="position: relative; margin-bottom: 15px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #6c5ce7;"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="l-email" placeholder="Enter your Email" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none; transition: 0.3s; background: #fdfdfd;">
+                </div>
+
+                <div style="position: relative; margin-bottom: 10px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #6c5ce7;"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="l-pass" placeholder="Password" style="width: 100%; padding: 14px 45px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none; transition: 0.3s; background: #fdfdfd;">
+                    <i class="fas fa-eye-slash" id="toggle-l-pass" style="position: absolute; right: 15px; top: 16px; cursor: pointer; color: #aaa;" onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
+                </div>
+
+                <div style="text-align: right; margin-bottom: 25px;">
+                    <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="color: #dc3545; font-size: 12px; font-weight: 700; text-decoration: none;">Forgot Password?</a>
+                </div>
+
+                <button class="btn-premium w-100" onclick="handleAuth('login')" style="width: 100%; height: 52px; border-radius: 12px; background: linear-gradient(90deg, #6c5ce7, #8e44ad); color: white; border: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3); cursor: pointer;">Login</button>
+
+                <p class="text-center" style="font-size: 13px; color: #666; margin-top: 25px;">
+                    No account? <a href="#" style="color: #3b82f6; font-weight: 800; text-decoration: none;" onclick="switchAuth(true)">Create New Account</a>
                 </p>
             </div>
         </div>
-        
 
-        
-      
-<div class="auth-container" style="padding: 10px;">
-    
-    <div class="mb-3">
-        <label class="small fw-bold mb-2" style="color: #555; display: block; padding-left: 5px;"></label>
-        <div style="position: relative;">
-            <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="l-email" class="form-control" placeholder="Enter your Email" 
-                   style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none; width: 100%;">
+        <div class="auth-card d-none mx-auto mt-4" id="signup-box" style="max-width: 420px; background: white; border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);">
+            <div class="text-center">
+                <h3 style="font-weight: 800; color: #333; margin-bottom: 8px;">Registration</h3>
+                <div style="display: inline-block; background: #e8f5e9; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px; border: 1px solid #c8e6c9;">
+                    <p style="margin: 0; font-size: 11px; font-weight: 700; color: #2e7d32; text-transform: uppercase;">
+                        <i class="fas fa-rocket me-1"></i> Get Started
+                    </p>
+                </div>
+            </div>
+
+            <div class="auth-container">
+                <div style="position: relative; margin-bottom: 15px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #2e7d32;"><i class="fas fa-user"></i></span>
+                    <input type="text" id="s-name" placeholder="Enter Full Name" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none;">
+                </div>
+                <div style="position: relative; margin-bottom: 15px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #2e7d32;"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="s-email" placeholder="Enter Email" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none;">
+                </div>
+                <div style="position: relative; margin-bottom: 15px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #2e7d32;"><i class="fas fa-user-plus"></i></span>
+                    <input type="text" id="reg-refer" placeholder="Refer Code" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none;">
+                </div>
+                <div style="position: relative; margin-bottom: 25px;">
+                    <span style="position: absolute; left: 15px; top: 14px; color: #2e7d32;"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="s-pass" placeholder="Password (6+ Digits)" style="width: 100%; padding: 14px 45px 14px 45px; border-radius: 12px; border: 1.5px solid #eee; outline: none;">
+                    <i class="fas fa-eye-slash" id="toggle-s-pass" style="position: absolute; right: 15px; top: 16px; cursor: pointer; color: #aaa;" onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
+                </div>
+
+                <button class="btn-premium w-100" onclick="handleAuth('signup')" style="width: 100%; height: 52px; border-radius: 12px; background: linear-gradient(90deg, #2ecc71, #27ae60); color: white; border: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); cursor: pointer;">Register Now</button>
+                
+                <p class="text-center" style="font-size: 13px; color: #666; margin-top: 25px;">Already have an Account? <a href="#" style="color: #3b82f6; font-weight: 800; text-decoration: none;" onclick="switchAuth(false)">Login</a></p>
+            </div>
         </div>
     </div>
-
-    <div class="mb-3">
-        <label class="small fw-bold mb-2" style="color: #555; display: block; padding-left: 5px;"></label>
-        <div style="position: relative;">
-            <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-lock"></i></span>
-            <input type="password" id="l-pass" class="form-control" placeholder="Password" 
-                   style="padding-left: 45px; padding-right: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none; width: 100%;">
-            
-            <i class="fas fa-eye-slash" id="toggle-l-pass" 
-               style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #aaa; font-size: 16px;" 
-               onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
-        </div>
-    </div>
-
-    <div class="text-end mb-4">
-        <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="color: #dc3545; font-size: 12px; font-weight: 700; text-decoration: none; transition: 0.3s;">
-            <i class="fas fa-question-circle me-1"></i> Forgot Password 
-        </div>
-    </a>
-    </div>
-
-    <button class="btn-premium w-100 mb-3" onclick="handleAuth('login')" 
-            style="height: 50px; border-radius: 12px; background: linear-gradient(90deg, #6c5ce7, #8e44ad); color: white; border: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3); transition: 0.3s;">
-      Login
-    </button>
-
-    <p class="text-center" style="font-size: 13px; color: #666;">
-       No account? <a href="#" style="color: #6c5ce7; font-weight: 800; text-decoration: none;" onclick="switchAuth(true)">Create New Account</a>
-    </p>
-
 </div>
 
-<div class="auth-card d-none mx-auto mt-5" id="signup-box" 
-     style="max-width: 420px; background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 35px 25px; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);">
-    
-    <div class="text-center">
-        <div class="mb-4">
-            <h1 style="font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1.5px; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;">
-                <span style="color: #3b82f6;">FREE TIME</span>
-                <span style="color: #2ecc71;">EARN</span>
-            </h1>
-            
-</div>
-
-        <h3 style="font-weight: 800; color: #333; margin-bottom: 8px; letter-spacing: -0.5px;">Registration</h3>
-        
-        <div style="display: inline-block; background: #e8f5e9; padding: 4px 15px; border-radius: 50px; margin-bottom: 25px; border: 1px solid #c8e6c9;">
-            <p style="margin: 0; font-size: 11px; font-weight: 700; color: #2e7d32; text-transform: uppercase;">
-                <i class="fas fa-rocket me-1"></i> Register to your account
-            </p>
-        </div>
-    </div>
-    
-<div class="auth-container" style="padding: 10px;">
-    
-    <div class="mb-3" style="position: relative;">
-        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-user"></i></span>
-        <input type="text" id="s-name" class="form-control" placeholder="Enter Name" 
-               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
-    </div>
-
-    <div class="mb-3" style="position: relative;">
-        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-envelope"></i></span>
-        <input type="email" id="s-email" class="form-control" placeholder="Enter your Email" 
-               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
-    </div>
-
-    <div class="mb-3" style="position: relative;">
-        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-user-plus"></i></span>
-        <input type="text" id="reg-refer" class="form-control" placeholder="Refer Code" 
-               style="padding-left: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
-    </div>
-
-    <div class="mb-4" style="position: relative;">
-        <span style="position: absolute; left: 15px; top: 12px; color: #6c5ce7;"><i class="fas fa-lock"></i></span>
-        <input type="password" id="s-pass" class="form-control" placeholder="Password 6 digit" 
-               style="padding-left: 45px; padding-right: 45px; height: 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; font-size: 14px; transition: 0.3s; outline: none;">
-        
-        <i class="fas fa-eye-slash" id="toggle-s-pass" 
-           style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #aaa; font-size: 16px;" 
-           onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
-    </div>
-
-</div>
-        
-        <button class="btn-premium w-100 mb-3" onclick="handleAuth('signup')">Register</button>
-                <p class="text-center small">Already have an Account ? <a href="#" class="text-primary fw-bold" onclick="switchAuth(false)">Login</a></p>
-
-    </div>
-</div>
 <div id="user-app" class="d-none">
     <div id="p-home-main">
-<nav class="premium-header">
-    <div class="header-icon-wrapper left-icon" onclick="openSettings()">
-        <i class="fas fa-cog"></i>
+<nav class="premium-header" style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; border-radius: 0 0 20px 20px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); border-bottom: 1.5px solid rgba(255, 255, 255, 0.15); position: sticky; top: 0; z-index: 1000;">
+
+    <div class="header-icon-wrapper left-icon" onclick="openSettings()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 12px; cursor: pointer; backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s;">
+        <i class="fas fa-cog" style="color: white; font-size: 18px;"></i>
     </div>
 
-<div class="brand-logo d-flex align-items-center gap-2">
-    <div class="d-flex align-items-center" style="white-space: nowrap; line-height: 1;">
-        <span style="font-weight: 900; color: white; font-size: 1.4rem; letter-spacing: -1px; text-transform: uppercase;">
-            FREE TIME EARN
-        </span>
-
+    <div class="brand-logo" style="text-align: center;">
+        <div style="white-space: nowrap; line-height: 1; display: flex; flex-direction: column; align-items: center;">
+            <span style="font-weight: 900; color: white; font-size: 1.4rem; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                FREE TIME EARN<span style="color: #2ecc71;"></span>
+            </span> </div>
+    </div> <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 12px; cursor: pointer; backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: 0.3s;">
+        <i class="fas fa-bars-staggered" style="color: white; font-size: 18px;"></i>
     </div>
-    </div>
-<div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
-    
-    <i class="fas fa-bars-staggered" style="color: white; font-size: 18px;"></i>
-    
-</div>
 
 </nav>
 
-<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 180px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2); background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%);">
-    
-    <h1 style="position: absolute; font-size: 8rem; color: rgba(255, 255, 255, 0.08); bottom: -30px; right: -20px; transform: rotate(-10deg); z-index: 0; font-weight: 900; pointer-events: none; user-select: none;">EARN</h1>
+<style>
+    .header-icon-wrapper:active {
+        transform: scale(0.9);
+        background: rgba(255, 255, 255, 0.25) !important;
+    }
+</style>
 
-    <div style="position: relative; height: 100%; padding: 25px; z-index: 1; display: flex; flex-direction: column; justify-content: center;">
+<div class="cover-section mx-3 mt-4" style="position: relative; overflow: hidden; border-radius: 25px; height: 190px; box-shadow: 0 15px 35px rgba(30, 58, 138, 0.25); background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); border: 1px solid rgba(255, 255, 255, 0.1);">
+    
+    <h1 style="position: absolute; font-size: 7rem; color: rgba(255, 255, 255, 0.05); bottom: -25px; right: -15px; transform: rotate(-12deg); z-index: 0; font-weight: 950; pointer-events: none; user-select: none; letter-spacing: -5px;">
+        EARN
+    </h1>
+
+    <div style="position: relative; height: 100%; padding: 30px 25px; z-index: 1; display: flex; flex-direction: column; justify-content: center; backdrop-filter: blur(2px);">
         
-        <h1 style="font-weight: 900; color: white; font-size: 2rem; letter-spacing: -1.5px; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            FREE TIME EARN
+        <h1 style="font-weight: 900; color: white; font-size: 2rem; letter-spacing: -1px; margin: 0; text-transform: uppercase; text-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            FREE TIME <span style="color: #2ecc71;">EARN</span>
         </h1>
 
-        <div style="margin-top: 12px;">
-            <p style="margin: 0; font-size: 15px; color: white; font-weight: 600; line-height: 1.4;">
-                বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 5px;">বিজনেস প্লাটফর্মে</span> আপনাকে স্বাগতম
+        <div style="margin-top: 15px;">
+            <p style="margin: 0; font-size: 14px; color: #ffffff; font-weight: 600; line-height: 1.5; letter-spacing: 0.3px;">
+                বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.15); padding: 3px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px); color: #fff;">বিজনেস প্লাটফর্মে</span> আপনাকে স্বাগতম
             </p>
             
-            <p style="margin: 8px 0 0; font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; display: flex; align-items: center; gap: 8px;">
-                <span style="width: 20px; height: 1px; background: white; opacity: 0.6;"></span>
-                অবসর সময়কে কাজে লাগিয়ে উপার্জন করুন
-            </p>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 12px;">
+                <div style="width: 35px; height: 2px; background: linear-gradient(90deg, #2ecc71, transparent); border-radius: 10px;"></div>
+                <p style="margin: 0; font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; font-style: italic;">
+                    অবসর সময়কে কাজে লাগিয়ে উপার্জন করুন
+                </p>
+            </div>
         </div>
 
+    </div>
+
+    <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: rgba(59, 130, 246, 0.3); filter: blur(60px); border-radius: 50%;"></div>
+</div>
+
+
+<div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
+    <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <span class="close-modal" onclick="closeSettings()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #888;">&times;</span>
+        <h4 class="fw-bold mb-3" style="color: #6f42c1;">Profile Settings</h4>
+        <hr class="mb-4">
+        
+        <div class="profile-pic-upload mb-4" style="position: relative; display: inline-block;">
+            <img src="YOUR_DEFAULT_PROFILE_IMAGE_URL" id="settings-user-dp" 
+                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #f1f2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            
+            <label for="profilePicInput" style="position: absolute; bottom: 0; right: 0; background: #6f42c1; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <i class="fas fa-camera" style="font-size: 14px;"></i>
+            </label>
+            <input type="file" id="profilePicInput" accept="image/*" style="display: none;" onchange="previewProfilePic(this)">
+        </div>
+
+        <div class="info-group mb-3 text-start">
+            <label class="text-muted small fw-bold mb-1">Name:</label>
+            <input type="text" id="editUserName" class="form-control mb-3" 
+                   style="height: 45px; border-radius: 10px; border: 1px solid #ddd; padding: 0 15px; font-weight: bold;" placeholder="Enter Name"
+            
+            <label class="text-muted small fw-bold mb-1">Email Address</label>
+            <p id="realUserEmail" class="fw-bold p-2 bg-light rounded" style="color: #6f42c1; font-size: 14px; border: 1px solid #eee;"></p>
+        </div>
+
+        <button class="btn btn-primary w-100 mb-4" 
+                style="background: #6f42c1; border: none; height: 48px; border-radius: 10px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3);" 
+                onclick="saveProfileInfo()">Profile update</button>
+
+        <hr>
+
+        <div class="password-section mt-4 text-start">
+            <h6 class="fw-bold text-muted mb-3">Change password</h6>
+            <div class="input-container" style="position: relative;">
+                <input type="password" id="newPassword" class="form-control" placeholder="New Password" 
+                       style="padding-right: 45px; height: 45px; border-radius: 10px; border: 1px solid #ddd;">
+                <i class="fas fa-eye-slash" id="togglePass" 
+                   style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: #888; font-size: 16px;" 
+                   onclick="togglePassword()"></i>
+            </div>
+            <button class="btn btn-outline-primary w-100 mt-3" 
+                    style="color: #6f42c1; border: 2px solid #6f42c1; background: transparent; height: 45px; border-radius: 10px; font-weight: bold;" 
+                    onclick="savePassword()">Password Changed</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modern-notice-container mx-3 mb-4">
+    <div class="notice-wrapper shadow-sm" style="display: flex; align-items: center; background: white; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(30, 58, 138, 0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        
+        <div class="notice-label" style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); color: white; padding: 10px 18px; display: flex; align-items: center; gap: 8px; font-weight: 800; z-index: 2; position: relative;">
+            <i class="fas fa-bullhorn" style="animation: bounce 2s infinite;"></i>
+            <span style="letter-spacing: 0.5px; text-transform: uppercase; font-size: 13px;">Notice</span>
+        </div>
+        
+        <div class="notice-content" style="flex: 1; overflow: hidden; background: #fff; padding: 10px 0; display: flex; align-items: center;">
+            <div id="site-note" style="white-space: nowrap; display: inline-block; padding-left: 100%; font-weight: 700; color: #2d3436; font-size: 14px; animation: scroll-left 10s linear infinite; animation-delay: 0s;">
+                <span style="color: #1e3a8a;">FREE TIME <span style="color: #2ecc71;">EARN</span></span>-এ আপনাকে স্বাগতম! অবসর সময়কে কাজে লাগিয়ে স্মার্টলি উপার্জন করুন। আমাদের নতুন আপডেটগুলো নিয়মিত ফলো করুন।
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* নোটিশ স্ক্রল অ্যানিমেশন - স্পিড বাড়ানো হয়েছে */
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+    /* আইকন বাউন্স এফেক্ট */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-3px);}
+        60% {transform: translateY(-2px);}
+    }
+
+    /* মোবাইল ডিভাইসে আরও ভালো দেখানোর জন্য */
+    #site-note {
+        will-change: transform; /* পারফরম্যান্স বুস্ট করার জন্য */
+    }
+</style>
+
+<div class="container mt-4" style="padding: 0 15px;">
+    
+    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%); padding: 8px 15px; border-radius: 12px; border: 1px solid rgba(30, 58, 138, 0.1); display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 25px;">
+        
+        <div style="flex: 1; height: 1.5px; background: linear-gradient(to left, #1e3a8a, rgba(30, 58, 138, 0)); border-radius: 10px;"></div>
+        
+        <div style="text-align: center;">
+            <h6 style="margin: 0; font-weight: 800; color: #1e3a8a; letter-spacing: 1px; font-size: 14px; white-space: nowrap; font-family: 'Poppins', sans-serif; text-transform: uppercase;">
+                Work & <span style="color: #2ecc71;">Services</span>
+            </h6>
+        </div>
+        
+        <div style="flex: 1; height: 1.5px; background: linear-gradient(to right, #1e3a8a, rgba(30, 58, 138, 0)); border-radius: 10px;"></div>
+        
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px 10px; text-align: center;">
+        
+
+<style>
+    /* প্রিমিয়াম ভাইব দেওয়ার জন্য হালকা শ্যাডো */
+    h6 {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+</style>
+<div onclick="openPage('p-micro')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-tasks" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Micro Job</small>
+</div>
+
+<style>
+    /* বাটনে চাপ দিলে যাতে রিয়েল অ্যাপের মতো ফিল হয় */
+    div[onclick]:active {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+</style>
+
+<div onclick="openPage('p-ads')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-play-circle" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Ads Income</small>
+</div>
+<div onclick="openPage('p-post')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-file-signature" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Job Post</small>
+</div>
+
+
+<div onclick="openPage('p-drive')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-bolt" style="color: white; font-size: 26px; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Drive Offer</small>
+</div>
+<div onclick="openPage('p-shop')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-shopping-bag" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Reseller Shop</small>
+</div>
+
+
+
+<div onclick="openPage('p-vendor')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-user-tie" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Vendorship</small>
+</div>
+
+<div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-gamepad" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Topup</small>
+</div>
+
+     
+
+<div onclick="openPage('p-target')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-bullseye" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Target Bonus</small>
+</div>
+<div onclick="openPage('p-leader')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-crown" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Leadership</small>
+</div>
+
+
+<div onclick="openPage('p-digital')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-laptop-code" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Digital Service</small>
+</div>
+
+<div onclick="openPage('p-social')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-users" style="color: white; font-size: 24px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Social Service</small>
+</div>
+
+<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Blood Donation</small>
+</div>
+
+<div onclick="openPage('p-training')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-graduation-cap" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Training Section</small>
+</div>
+
+<div onclick="openPage('p-invest')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-chart-line" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">Investment</small>
+</div>
+
+<div onclick="openPage('p-more')" style="cursor: pointer; text-align: center; transition: 0.3s;">
+    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.15); transition: 0.3s;">
+        
+        <i class="fas fa-plus" style="color: white; font-size: 26px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        
+    </div>
+    
+    <small style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.3px; text-transform: uppercase;">More Options</small>
+</div>
 
     </div>
 </div>
+<div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<div id="right-sidebar" class="side-drawer">
+    <div class="drawer-content" style="background: #ffffff; height: 100vh;">
+        
+        <div class="drawer-header" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 35px 20px; border-bottom-right-radius: 40px; box-shadow: 0 5px 20px rgba(30, 58, 138, 0.2);">
+            
+            <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow" style="width: 85px; height: 85px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.4); object-fit: cover; margin: 0 auto; display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+
+            <h5 id="user-name" class="fw-bold mt-3 mb-0" style="text-align: center; color: white; letter-spacing: 0.8px; font-size: 19px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                Abu Sufian
+            </h5>
+
+            <div id="status-card-container" style="margin-top: 10px; display: flex; justify-content: center;">
+                <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <i class="fas fa-crown" style="font-size: 11px; color: #ffd700; filter: drop-shadow(0 0 3px rgba(255,215,0,0.5));"></i> 
+                    <span id="user-rank" style="font-size: 10px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.5px;">Premium Member</span>
+                </div>
+            </div>
+
+            <div class="ref-card" style="margin-top: 25px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(5px); padding: 12px 18px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between; transition: 0.3s;">
+                <span style="color: rgba(255, 255, 255, 0.8); font-size: 11px; font-weight: 600;">Refer Code:</span>
+                <b id="user-ref" style="color: white; font-size: 15px; letter-spacing: 1.5px; font-family: 'Poppins', sans-serif;">AS786</b>
+                <i class="far fa-copy" style="color: white; cursor: pointer; font-size: 15px; padding: 5px; opacity: 0.8;" onclick="copyRef()"></i>
+            </div>
+        </div>
+        
+        <div class="drawer-menu mt-4">
+            <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
+<button class="d-menu-btn" onclick="handleWalletClick()">
+    <i class="fas fa-wallet"></i> Wallet
+</button>
+           <button class="d-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
+    <i class="fas fa-money-check-alt"></i> Withdraw 
+</button>
+            
+            <hr class="my-3 opacity-10">
+            <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
+            
+            <button class="d-menu-btn" onclick="window.open('https://www.facebook.com/share/1B9ZsLLsLV/')"><i class="fab fa-facebook text-primary"></i> Facebook Page</button>
+              <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
+
+
+
+
+
+<hr class="my-3 opacity-10">
+
+<button class="d-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
+    <i class="fas fa-user-shield"></i>Owner Profile
+</button>
+
+<button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
+    <i class="fas fa-shield-alt"></i> Privacy Policy
+</button>
+
+<button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
+    <i class="fas fa-info-circle"></i>About us
+</button>
+
+            <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
+        </div>
+    </div>
+</div>
+
+<div id="p-admin-profile" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+
+    
+
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
+
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 15px;">Owner Profile</h5>
+
+    </div>
+
+
+
+    <div style="margin: 20px; background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
+
+        
+
+        <div style="width: 100px; height: 100px; background: white; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; position: relative; padding: 3px; background: linear-gradient(135deg, #3b82f6, #2ecc71);">
+
+            <div style="width: 100%; height: 100%; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+
+                <i class="fas fa-user-tie" style="font-size: 50px; background: linear-gradient(135deg, #3b82f6, #2ecc71); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <h3 style="margin: 0; font-size: 1.6rem; font-weight: 800; color: #2c3e50; letter-spacing: -0.5px;">Abu Sufian</h3>
+
+        <div style="display: inline-flex; align-items: center; gap: 5px; background: rgba(46, 204, 113, 0.1); color: #27ae60; padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; margin-top: 5px; text-transform: uppercase;">
+
+            <i class="fas fa-check-circle"></i> FOUNDER & CEO
+
+        </div>
+
+    </div>
+
+
+
+    <div style="margin: 0 20px;">
+
+        <div style="background: white; border-radius: 20px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee;">
+
+            
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+
+                
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                    <i class="fas fa-crown" style="color: #f1c40f; font-size: 14px;"></i>
+
+                    <div style="flex: 1;">
+
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Role</p>
+
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Devoloper</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #eee;">
+
+                    <i class="fas fa-heart" style="color: #e74c3c; font-size: 14px;"></i>
+
+                    <div style="flex: 1;">
+
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Relationship</p>
+
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Single</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee;">
+
+                    <i class="fas fa-home" style="color: #2ecc71; font-size: 14px;"></i>
+
+                    <div style="flex: 1;">
+
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">City</p>
+
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Pabna</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div style="padding: 15px; display: flex; align-items: center; gap: 12px;">
+
+                    <i class="fas fa-birthday-cake" style="color: #e67e22; font-size: 14px;"></i>
+
+                    <div style="flex: 1;">
+
+                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Date of Birth</p>
+
+                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">01 May 2008</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <div style="margin: 30px 20px 0; text-align: center;">
+
+
+
+        <a href="https://www.facebook.com/share/18M7QbamRa/" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; color: #1877f2; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 14px; border: 2px solid #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1); transition: 0.2s;">
+
+            <i class="fab fa-facebook-f" style="font-size: 18px;"></i> Follow on Facebook
+
+        </a>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('withdraw')"></i>
+            
+            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
+                Withdraw
+            </h4>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px;">
+            PAYOUT
+        </div>
+</div>
+    <div class="container px-3 mt-3">
+<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
+    
+    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+
+    <div class="d-flex justify-content-between align-items-center" style="position: relative; z-index: 2;">
+        <div>
+            <span style="font-size: 14px; opacity: 0.9; font-weight: 600; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fas fa-coins" style="margin-right: 5px;"></i> CURRENT BALANCE
+            </span>
+            
+            <h2 style="margin: 0 !important; font-weight: 800 !important; font-size: 3.2rem !important; letter-spacing: -2px !important; line-height: 1 !important; display: flex; align-items: baseline; gap: 5px;">
+                <span style="font-size: 3
+                55px; font-weight: 600;">৳</span>
+                <span id="withdraw-bal">0.00</span>
+            </h2>
+        </div>
+        
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <i class="fas fa-wallet" style="color: white;"></i>
+        </div>
+    </div>
+</div>
+
+        <p class="small fw-bold text-muted mb-3"><i class="fas fa-check-circle me-1 text-primary"></i>Payment Method</p>
+        
+        <div class="row g-2 mb-4">
+            <div class="col-4">
+        <div class="w-method-card active-w py-3 shadow-sm border text-center rounded-3" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')" style="background: #fff; cursor: pointer; border: 2px solid #3b82f6 !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">bKash</div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Nagad</div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
+            <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
+            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Rocket</div>
+        </div>
+    </div>
+</div>
+        <div style="background: white; padding: 20px; border-radius: 20px; border: 1px solid #f1f3f5;">
+            <div class="mb-3">
+                <label class="small fw-bold text-muted mb-2">Personal Number</label>
+                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
+            </div>
+
+            <div class="mb-4">
+                <label class="small fw-bold text-muted mb-2">Amount </label>
+                <input type="number" id="w-amt" placeholder="যেমন: ৫০০" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
+            </div>
+
+            <button onclick="withdrawReq()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 16px; border-radius: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
+                <span>Withdraw</span>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+            <h6 class="fw-bold m-0">Withdraw History</h6>
+            <span style="font-size: 11px; color: #3b82f6; font-weight: 700;">All</span>
+        </div>
+        
+        <div id="withdraw-hist-list" style="min-height: 100px;">
+            </div>
+    </div>
+</div>
+
+    
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -2778,472 +3344,6 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 
-<div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
-    <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        <span class="close-modal" onclick="closeSettings()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #888;">&times;</span>
-        <h4 class="fw-bold mb-3" style="color: #6f42c1;">Profile Settings</h4>
-        <hr class="mb-4">
-        
-        <div class="profile-pic-upload mb-4" style="position: relative; display: inline-block;">
-            <img src="YOUR_DEFAULT_PROFILE_IMAGE_URL" id="settings-user-dp" 
-                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #f1f2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            
-            <label for="profilePicInput" style="position: absolute; bottom: 0; right: 0; background: #6f42c1; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                <i class="fas fa-camera" style="font-size: 14px;"></i>
-            </label>
-            <input type="file" id="profilePicInput" accept="image/*" style="display: none;" onchange="previewProfilePic(this)">
-        </div>
-
-        <div class="info-group mb-3 text-start">
-            <label class="text-muted small fw-bold mb-1">Name:</label>
-            <input type="text" id="editUserName" class="form-control mb-3" 
-                   style="height: 45px; border-radius: 10px; border: 1px solid #ddd; padding: 0 15px; font-weight: bold;" placeholder="Enter Name"
-            
-            <label class="text-muted small fw-bold mb-1">Email Address</label>
-            <p id="realUserEmail" class="fw-bold p-2 bg-light rounded" style="color: #6f42c1; font-size: 14px; border: 1px solid #eee;"></p>
-        </div>
-
-        <button class="btn btn-primary w-100 mb-4" 
-                style="background: #6f42c1; border: none; height: 48px; border-radius: 10px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3);" 
-                onclick="saveProfileInfo()">Profile update</button>
-
-        <hr>
-
-        <div class="password-section mt-4 text-start">
-            <h6 class="fw-bold text-muted mb-3">Change password</h6>
-            <div class="input-container" style="position: relative;">
-                <input type="password" id="newPassword" class="form-control" placeholder="New Password" 
-                       style="padding-right: 45px; height: 45px; border-radius: 10px; border: 1px solid #ddd;">
-                <i class="fas fa-eye-slash" id="togglePass" 
-                   style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: #888; font-size: 16px;" 
-                   onclick="togglePassword()"></i>
-            </div>
-            <button class="btn btn-outline-primary w-100 mt-3" 
-                    style="color: #6f42c1; border: 2px solid #6f42c1; background: transparent; height: 45px; border-radius: 10px; font-weight: bold;" 
-                    onclick="savePassword()">Password Changed</button>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="modern-notice-container mx-3 mb-4">
-    <div class="notice-wrapper shadow-sm" style="display: flex; align-items: center; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #eee;">
-        <div class="notice-label" style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; padding: 10px 15px; display: flex; align-items: center; gap: 8px; font-weight: 800; z-index: 2;">
-            <i class="fas fa-bullhorn"></i>
-            <span>Notice</span>
-        </div>
-        
-        <div class="notice-content" style="flex: 1; overflow: hidden; background: #fff; padding: 10px 0;">
-            <div id="site-note" style="white-space: nowrap; display: inline-block; padding-left: 100%; font-weight: 700; color: #2d3436; animation: scroll-left 15s linear infinite; animation-delay: 0s;">
-                <span style="color: #3b82f6;">FREE TIME EARN</span>-এ আপনাকে স্বাগতম! অবসর সময়কে কাজে লাগিয়ে স্মার্টলি উপার্জন করুন। আমাদের নতুন আপডেটগুলো নিয়মিত ফলো করুন।
-            </div>
-        </div>
-    </div>
-</div>
-
-         <div class="container mt-4" style="margin-bottom: 80px;">
-
-   <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 25px; gap: 15px; width: 100%;">
-
-        <div style="flex: 1; height: 2px; background: linear-gradient(to left, #6c5ce7, rgba(108, 92, 231, 0)); border-radius: 10px;"></div>
-    <h6 style="margin: 0; font-weight: 800; color: #2d3436; letter-spacing: 1px; font-size: 16px; white-space: nowrap; font-family: 'Poppins', sans-serif;">
-        Work & Services
-    </h6>
-    
-    <div style="flex: 1; height: 2px; background: linear-gradient(to right, #6c5ce7, rgba(108, 92, 231, 0)); border-radius: 10px;"></div>
-</div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 10px; text-align: center;">
-
-
-<div onclick="openPage('p-micro')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-tasks" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Micro Job</small>
-</div>
-
-<div onclick="openPage('p-ads')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-play-circle" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Ads Income</small>
-</div>
-<div onclick="openPage('p-post')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-file-signature" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Job Post</small>
-</div>
-<div onclick="openPage('p-drive')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-bolt" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Drive Offer</small>
-</div>
-
-<div onclick="openPage('p-shop')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-shopping-bag" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Reseller Shop</small>
-</div>
-<div onclick="openPage('p-vendor')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-user-tie" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Vendorship</small>
-</div>
-
-
-
-
-
-
-       <div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-gamepad" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Topup</small>
-</div>
-     
-<div onclick="openPage('p-target')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-bullseye" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Target Bonus</small>
-</div>
-
-<div onclick="openPage('p-leader')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-crown" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Leadership</small>
-</div>
-
-<div onclick="openPage('p-digital')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-laptop-code" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Digital Service</small>
-</div>
-
-<div onclick="openPage('p-social')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-users" style="color: white; font-size: 22px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Social Service</small>
-</div>
-<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Blood Donation</small>
-</div>
-
-<div onclick="openPage('p-training')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-graduation-cap" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Training Section</small>
-</div>
-
-<div onclick="openPage('p-invest')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-chart-line" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">Investment</small>
-</div>
-
-
-
-<div onclick="openPage('p-more')" style="cursor: pointer; text-align: center;">
-    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25); border: 1px solid rgba(255, 255, 255, 0.2);">
-        
-        <i class="fas fa-plus" style="color: white; font-size: 24px;"></i>
-        
-    </div>
-    
-    <small style="font-size: 11px; font-weight: 700; color: #475569; display: block; letter-spacing: 0.2px;">More Options</small>
-</div>
-    </div>
-</div>
-<div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
-
-<div id="right-sidebar" class="side-drawer">
-    <div class="drawer-content">
-        <div class="drawer-header">
-            <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow">
-
-            <h5 id="user-name" class="fw-bold mt-2 mb-0" style="display: flex; align-items: center; justify-content: center; color: white; letter-spacing: 0.5px;">
-                User Name
-            </h5>
-
-          <div id="status-card-container" style="margin-top: 8px; display: flex; justify-content: center;">
-    <div style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px;">
-        <i class="fas fa-user-check" style="font-size: 10px; color: white;"></i>
-        <span id="user-rank" style="font-size: 10px; font-weight: 700; color: white; letter-spacing: 0.3px;">General Member</span>
-    </div>
-</div>
-
-            <div class="ref-card" style="margin-top: 15px; background: rgba(255, 255, 255, 0.15); padding: 8px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: space-between;">
-                <span style="color: rgba(255, 255, 255, 0.8); font-size: 10px; font-weight: 600;">Referral Code:</span>
-                <b id="user-ref" style="color: white; font-size: 13px; letter-spacing: 0.5px; font-family: monospace;">ALIF123</b>
-                <i class="far fa-copy" style="color: white; cursor: pointer; font-size: 13px;" onclick="copyRef()"></i>
-            </div>
-        </div>
-        
-        
-
-
-        <div class="drawer-menu mt-4">
-            <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
-<button class="d-menu-btn" onclick="handleWalletClick()">
-    <i class="fas fa-wallet"></i> Wallet
-</button>
-           <button class="d-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
-    <i class="fas fa-money-check-alt"></i> Withdraw 
-</button>
-            
-            <hr class="my-3 opacity-10">
-            <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
-            
-            <button class="d-menu-btn" onclick="window.open('https://www.facebook.com/share/1B9ZsLLsLV/')"><i class="fab fa-facebook text-primary"></i> Facebook Page</button>
-              <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
-
-
-
-
-
-<hr class="my-3 opacity-10">
-
-<button class="d-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
-    <i class="fas fa-user-shield"></i>Owner Profile
-</button>
-
-<button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
-    <i class="fas fa-shield-alt"></i> Privacy Policy
-</button>
-
-<button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
-    <i class="fas fa-info-circle"></i>About us
-</button>
-
-            <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
-        </div>
-    </div>
-</div>
-
-<div id="p-admin-profile" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 15px;">Owner Profile</h5>
-    </div>
-
-    <div style="margin: 20px; background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
-        
-        <div style="width: 100px; height: 100px; background: white; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; position: relative; padding: 3px; background: linear-gradient(135deg, #3b82f6, #2ecc71);">
-            <div style="width: 100%; height: 100%; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-user-tie" style="font-size: 50px; background: linear-gradient(135deg, #3b82f6, #2ecc71); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
-            </div>
-        </div>
-
-        <h3 style="margin: 0; font-size: 1.6rem; font-weight: 800; color: #2c3e50; letter-spacing: -0.5px;">Abu Sufian</h3>
-        <div style="display: inline-flex; align-items: center; gap: 5px; background: rgba(46, 204, 113, 0.1); color: #27ae60; padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; margin-top: 5px; text-transform: uppercase;">
-            <i class="fas fa-check-circle"></i> FOUNDER & CEO
-        </div>
-    </div>
-
-    <div style="margin: 0 20px;">
-        <div style="background: white; border-radius: 20px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee;">
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-                
-                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                    <i class="fas fa-crown" style="color: #f1c40f; font-size: 14px;"></i>
-                    <div style="flex: 1;">
-                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Role</p>
-                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Devoloper</p>
-                    </div>
-                </div>
-
-                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #eee;">
-                    <i class="fas fa-heart" style="color: #e74c3c; font-size: 14px;"></i>
-                    <div style="flex: 1;">
-                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Relationship</p>
-                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Single</p>
-                    </div>
-                </div>
-
-                <div style="padding: 15px; display: flex; align-items: center; gap: 12px; border-right: 1px solid #eee;">
-                    <i class="fas fa-home" style="color: #2ecc71; font-size: 14px;"></i>
-                    <div style="flex: 1;">
-                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">City</p>
-                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">Pabna</p>
-                    </div>
-                </div>
-
-                <div style="padding: 15px; display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-birthday-cake" style="color: #e67e22; font-size: 14px;"></i>
-                    <div style="flex: 1;">
-                        <p style="margin: 0; font-size: 9px; color: #95a5a6; font-weight: 700; text-transform: uppercase;">Date of Birth</p>
-                        <p style="margin: 0; font-size: 13px; color: #34495e; font-weight: 600;">01 May 2008</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div style="margin: 30px 20px 0; text-align: center;">
-
-        <a href="https://www.facebook.com/share/18M7QbamRa/" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; color: #1877f2; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 14px; border: 2px solid #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1); transition: 0.2s;">
-            <i class="fab fa-facebook-f" style="font-size: 18px;"></i> Follow on Facebook
-        </a>
-    </div>
-
-</div>
-
-
-
-
-
-<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('withdraw')"></i>
-            
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
-                Withdraw
-            </h4>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px;">
-            PAYOUT
-        </div>
-</div>
-    <div class="container px-3 mt-3">
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
-    
-    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-
-    <div class="d-flex justify-content-between align-items-center" style="position: relative; z-index: 2;">
-        <div>
-            <span style="font-size: 14px; opacity: 0.9; font-weight: 600; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
-                <i class="fas fa-coins" style="margin-right: 5px;"></i> CURRENT BALANCE
-            </span>
-            
-            <h2 style="margin: 0 !important; font-weight: 800 !important; font-size: 3.2rem !important; letter-spacing: -2px !important; line-height: 1 !important; display: flex; align-items: baseline; gap: 5px;">
-                <span style="font-size: 3
-                55px; font-weight: 600;">৳</span>
-                <span id="withdraw-bal">0.00</span>
-            </h2>
-        </div>
-        
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <i class="fas fa-wallet" style="color: white;"></i>
-        </div>
-    </div>
-</div>
-
-        <p class="small fw-bold text-muted mb-3"><i class="fas fa-check-circle me-1 text-primary"></i>Payment Method</p>
-        
-        <div class="row g-2 mb-4">
-            <div class="col-4">
-        <div class="w-method-card active-w py-3 shadow-sm border text-center rounded-3" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')" style="background: #fff; cursor: pointer; border: 2px solid #3b82f6 !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">bKash</div>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Nagad</div>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Rocket</div>
-        </div>
-    </div>
-</div>
-        <div style="background: white; padding: 20px; border-radius: 20px; border: 1px solid #f1f3f5;">
-            <div class="mb-3">
-                <label class="small fw-bold text-muted mb-2">Personal Number</label>
-                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
-            </div>
-
-            <div class="mb-4">
-                <label class="small fw-bold text-muted mb-2">Amount </label>
-                <input type="number" id="w-amt" placeholder="যেমন: ৫০০" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
-            </div>
-
-            <button onclick="withdrawReq()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 16px; border-radius: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
-                <span>Withdraw</span>
-            </button>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
-            <h6 class="fw-bold m-0">Withdraw History</h6>
-            <span style="font-size: 11px; color: #3b82f6; font-weight: 700;">All</span>
-        </div>
-        
-        <div id="withdraw-hist-list" style="min-height: 100px;">
-            </div>
-    </div>
-</div>
-
-    
-
-
 <div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -3436,7 +3536,7 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-  
+
 <div id="p-ads" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -4908,27 +5008,28 @@ div[onclick="toggleBloodModal()"]:active {
 
 </div>
 
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 12px 0 15px 0; z-index: 999; box-shadow: 0 -8px 25px rgba(0,0,0,0.2); border-radius: 25px 25px 0 0; border-top: 1px solid rgba(255,255,255,0.1);">
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 12px 0 15px 0; z-index: 999; box-shadow: 0 -10px 30px rgba(30, 58, 138, 0.3); border-radius: 28px 28px 0 0; border-top: 1.5px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);">
     
-    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-home" style="font-size: 22px; color: white;"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Home</small>
+    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
+        <i class="fas fa-home" style="font-size: 20px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Home</small>
     </div>
 
-    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-users" style="font-size: 22px; color: white;"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">My Team</small>
+    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
+        <i class="fas fa-users" style="font-size: 20px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">My Team</small>
     </div>
 
-    <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-wallet" style="font-size: 22px; color: white;"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Deposit</small>
+    <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
+        <i class="fas fa-wallet" style="font-size: 20px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Deposit</small>
     </div>
 
-    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-comment-dots" style="font-size: 22px; color: white;"></i>
-        <small style="display: block; font-size: 10px; font-weight: 700; color: white; margin-top: 5px;">Support</small>
+    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
+        <i class="fas fa-comment-dots" style="font-size: 20px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Support</small>
     </div>
+</div>
 
 </div>
 
