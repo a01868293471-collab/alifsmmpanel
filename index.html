@@ -2659,6 +2659,31 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
+<div id="activation-card" style="display: none; margin: 12px 16px;">
+    <div style="background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%); padding: 12px 16px; border-radius: 16px; color: white; box-shadow: 0 6px 18px rgba(255, 71, 87, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+        
+        <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="background: rgba(255,255,255,0.2); width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-bolt" style="font-size: 14px;"></i>
+                </div>
+                
+                <div>
+                    <h6 style="margin: 0; font-weight: 850; font-size: 13px; letter-spacing: -0.3px; line-height: 1.2;">Premium Account</h6>
+                    <p style="margin: 2px 0 0; font-size: 10px; opacity: 0.95; font-weight: 600;">
+                        Lifetime Access: <span style="background: #fff; color: #ff4757; padding: 1px 6px; border-radius: 4px; margin-left: 2px; font-weight: 800;">৳50</span>
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="activateAccountNow()" style="background: white; color: #ff4757; border: none; padding: 7px 14px; border-radius: 10px; font-weight: 850; font-size: 11px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-transform: uppercase; transition: 0.2s active;">
+                ACTIVE
+            </button>
+        </div>
+    </div>
+</div>
 <div class="container mt-2" style="padding: 0 16px; font-family: 'Poppins', sans-serif;">
     <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
         <div style="flex: 1; height: 1px; background: linear-gradient(to left, #1e3a8a, transparent); opacity: 0.3;"></div>
@@ -4023,15 +4048,15 @@ div[onclick="toggleBloodModal()"]:active {
             <i class="fas fa-filter text-muted" style="font-size: 14px;"></i>
         </div>
 
-        <div class="report-list-container">
-            <div onclick="openIncomeDetail('today', 'Today Income')" class="report-item">
-                <div class="report-icon bg-blue"><i class="fas fa-calendar-day"></i></div>
-                <div class="report-info">
-                    <span>Today Income</span>
-                    <small>Daily Earnings</small>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </div>
+<div class="report-list-container">
+<div onclick="openIncomeDetail('today', 'Today Income')" class="report-item">
+ <div class="report-icon bg-blue"><i class="fas fa-calendar-day"></i></div>
+ <div class="report-info">
+ <span>Today Income</span>
+ <small>Daily Earnings</small>
+ </div>
+ <i class="fas fa-chevron-right arrow"></i>
+ </div>
 
             <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="report-item">
                 <div class="report-icon bg-info"><i class="fas fa-history"></i></div>
@@ -5172,7 +5197,7 @@ div[onclick="toggleBloodModal()"]:active {
             </div>
             
             <div>
-                <h5 style="margin: 0; font-size: 17px; font-weight: 800; letter-spacing: 0.3px; line-height: 1;">Live Support</h5>
+                <h5 style="margin: 0; font-size: 17px; font-weight: 800; letter-spacing: 0.3px; line-height: 1;">Support</h5>
                 <div style="display: flex; align-items: center; gap: 5px; margin-top: 4px;">
                     <span style="width: 7px; height: 7px; background: #fff; border-radius: 50%; display: inline-block; opacity: 0.9; animation: pulse-white 2s infinite;"></span>
                     <small style="font-size: 10px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">Agent Online</small>
@@ -5255,7 +5280,7 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
         <i class="fas fa-comment-dots" style="font-size: 18px; color: white;"></i>
-        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Chat</small>
+        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Support</small>
     </div>
 
 
@@ -5523,8 +5548,6 @@ let db = {
         document.getElementById('p-ig').value = db.prices.Instagram;
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
-
-    
 function handleAuth(m) {
     showLoader(true);
     setTimeout(() => {
@@ -5548,7 +5571,7 @@ function handleAuth(m) {
                 pass: p, 
                 role: "user", 
                 bal: 0.00, 
-                status: "active",
+                status: "inactive",
                 rank: "General Member", // <--- ডিফল্ট র্যাঙ্ক
                 referCode: myNewCode, // নিজের কোড
                 referredBy: r        // যার মাধ্যমে আসলো
@@ -5611,6 +5634,8 @@ function handleAuth(m) {
         }
     }, 800);
 }
+    
+
     function logout() {
     // পপআপ ছাড়াই সরাসরি ডিলিট করবে
     localStorage.removeItem('v7_logged_email');
@@ -5633,12 +5658,25 @@ function handleAuth(m) {
         db.prices.Telegram = document.getElementById('p-tg').value;
         save(); syncUI(); toast('সবকিছু আপডেট হয়েছে');
     }
-
-     function renderUser() {
+function renderUser() {
     if (!curUser) return;
 
-    // ১. সব জায়গায় ব্যালেন্স আপডেট করা (Wallet, Withdraw, Home সবখানে)
+    // --- ১. একাউন্ট একটিভেশন কার্ড চেক (নতুন যোগ করা হয়েছে) ---
+    const activationCard = document.getElementById('activation-card');
+    if (activationCard) {
+        // যদি স্ট্যাটাস active না হয় (অর্থাৎ inactive), তবে কার্ডটি দেখাবে
+        if (curUser.status !== 'active') {
+            activationCard.style.display = 'block';
+        } else {
+            activationCard.style.display = 'none';
+        }
+    }
+
+// ২. সব জায়গায় ব্যালেন্স আপডেট করা (Main Balance & Today Income)
     const formattedBal = formatCurrency(curUser.bal);
+    const formattedToday = formatCurrency(curUser.todayEarn || 0); // আজকের ইনকাম ফরম্যাট করা
+    
+    // মেইন ব্যালেন্সের আইডিগুলো
     const balIds = ['u-bal', 'wallet-bal', 'withdraw-bal', 'u-bal-nav'];
     
     balIds.forEach(id => {
@@ -5647,12 +5685,22 @@ function handleAuth(m) {
             elem.innerText = formattedBal;
         }
     });
-// renderUser ফাংশনের ভেতর এটি বসান
-const rankElem = document.getElementById('user-rank');
-if (rankElem) {
-    rankElem.innerText = curUser.rank || "General Member";
-}
-    // ২. ফান্ড হিস্টোরি (Add Money History)
+
+    // --- আজকের ইনকাম আপডেট করার নতুন লজিক ---
+    // আপনার আজকের ইনকামের HTML আইডি যদি 'today-earn' হয়
+    const todayEarnElem = document.getElementById('today-earn'); 
+    if (todayEarnElem) {
+        todayEarnElem.innerText = formattedToday;
+    }
+
+
+    // ৩. ইউজারের র্যাঙ্ক দেখানো
+    const rankElem = document.getElementById('user-rank');
+    if (rankElem) {
+        rankElem.innerText = curUser.rank || "General Member";
+    }
+
+    // ৪. ফান্ড হিস্টোরি (Add Money History)
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
         fundList.innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
@@ -5664,7 +5712,7 @@ if (rankElem) {
         `).join("") || "No history";
     }
 
-    // ৩. অর্ডার হিস্টোরি
+    // ৫. অর্ডার হিস্টোরি
     const orderList = document.getElementById('order-hist-list');
     if (orderList) {
         orderList.innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `
@@ -5676,11 +5724,12 @@ if (rankElem) {
         `).join("") || "No orders";
     }
 
-    // ৪. উইথড্র হিস্টোরি (এটিও এড করে দিলাম যাতে সব একসাথেই থাকে)
+    // ৬. উইথড্র হিস্টোরি
     if (typeof renderWithdrawHistory === "function") {
         renderWithdrawHistory();
     }
 }
+     
 function renderAdmin() {
     // ডাটাবেজ চেক
     if (typeof db === 'undefined') return;
@@ -7951,9 +8000,7 @@ function loadTeamData() {
 // পেজ ওপেন হওয়ার সময় ডাটা লোড হবে
 document.addEventListener('DOMContentLoaded', loadTeamData);
 function renderTeam() {
-    // ১. বর্তমানে লগইন করা ইউজারের ডাটা নিশ্চিত করা
     if (!curUser || !curUser.referCode) {
-        // যদি ইউজার লগইন না থাকে বা কোড না থাকে
         const savedEmail = localStorage.getItem('v7_logged_email');
         curUser = db.users.find(u => u.email === savedEmail);
     }
@@ -7962,30 +8009,33 @@ function renderTeam() {
     const countSpan = document.getElementById('teamCount');
     const myReferCode = curUser.referCode;
 
-    // ২. আপনার রেফার কোডটি বক্সে দেখানো
-    document.getElementById('referCode').innerText = myReferCode;
+    if (document.getElementById('referCode')) {
+        document.getElementById('referCode').innerText = myReferCode;
+    }
 
-    // ৩. যারা আপনার কোড ব্যবহার করেছে তাদের ফিল্টার করা
     const myTeam = db.users.filter(u => u.referredBy === myReferCode);
-    
     countSpan.innerText = myTeam.length;
     container.innerHTML = "";
 
-    // ৪. যদি কেউ না থাকে
     if (myTeam.length === 0) {
         container.innerHTML = `
             <div style="text-align: center; padding: 30px; color: #95a5a6;">
                 <i class="fas fa-user-clock" style="font-size: 30px; margin-bottom: 10px;"></i>
-                <p style="font-size: 12px;">এখনো কেউ আপনার টিমে জয়েন করেনি।</p>
+                <p style="font-size: 12px;">এখনো কেউ আপনার টিমে জয়েন করেনি।</p>
             </div>`;
         return;
     }
 
-    // ৫. মেম্বারদের লিস্ট তৈরি করা
+    // ৫. মেম্বারদের লিস্ট তৈরি করা (স্ট্যাটাস চেক সহ)
     myTeam.forEach(member => {
+        // স্ট্যাটাস অনুযায়ী কালার এবং টেক্সট সেট করা
+        const isActive = member.status === 'active';
+        const statusText = isActive ? 'Active' : 'Inactive';
+        const statusColor = isActive ? '#2ecc71' : '#ff4757'; // সবুুুজ অথবা লাল
+
         container.innerHTML += `
-            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #eee;">
-                <div style="width: 45px; height: 45px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: 800;">
+            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #eee; margin-bottom: 10px;">
+                <div style="width: 45px; height: 45px; background: ${isActive ? '#eff6ff' : '#f8f9fa'}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: ${isActive ? '#3b82f6' : '#95a5a6'}; font-weight: 800;">
                     ${member.name[0].toUpperCase()}
                 </div>
                 <div style="flex: 1;">
@@ -7993,7 +8043,9 @@ function renderTeam() {
                     <p style="margin: 0; font-size: 11px; color: #95a5a6;">${member.email}</p>
                 </div>
                 <div style="text-align: right;">
-                    <span style="display: block; font-size: 10px; color: #2ecc71; font-weight: 800;">Active</span>
+                    <span style="display: block; font-size: 10px; color: ${statusColor}; font-weight: 800; text-transform: uppercase;">
+                        ${statusText}
+                    </span>
                 </div>
             </div>`;
     });
@@ -8094,17 +8146,20 @@ function openUserPopup(index) {
     const u = db.users[index];
     const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
     
-    // প্রোফাইল পিকচার লজিক: db-তে যে নামেই থাকুক (profilePic, image, বা img) সেটা খুঁজে বের করবে
     const userImg = u.profilePic || u.image || u.img || "";
     const nameInitial = (u.name || "U").charAt(0).toUpperCase();
-    
-    // যদি ছবি না থাকে তবে নামের প্রথম অক্ষর দিয়ে একটি রঙিন অবতার দেখাবে
     const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=random&color=fff&size=128`;
     const finalPhoto = userImg ? userImg : avatarPlaceholder;
 
+    // ১. স্ট্যাটাস অনুযায়ী ডাইনামিক ব্যাজ (Active / Inactive)
+    const isActive = u.status === 'active';
+    const statusBadge = isActive 
+        ? '<span style="background: #dcfce7; color: #15803d; padding: 2px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; border: 1px solid #15803d; display: inline-block; margin-top: 5px;">Active</span>' 
+        : '<span style="background: #fee2e2; color: #b91c1c; padding: 2px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; border: 1px solid #b91c1c; display: inline-block; margin-top: 5px;">Inactive</span>';
+
     const popupHTML = `
     <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(5px);">
-        <div style="background: white; width: 100%; max-width: 380px; border-radius: 25px; overflow: hidden; animation: zoomIn 0.3s ease;">
+        <div style="background: white; width: 100%; max-width: 380px; border-radius: 25px; overflow: hidden; animation: zoomIn 0.3s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
             
             <div class="text-center p-4" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); position: relative;">
                 <button onclick="closeUserPopup()" style="position: absolute; top: 15px; right: 15px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 28px; height: 28px;"><i class="fas fa-times"></i></button>
@@ -8116,18 +8171,23 @@ function openUserPopup(index) {
                 </div>
                 
                 <h6 class="text-white fw-bold m-0">${u.name || 'User'}</h6>
-                <small style="color: rgba(255,255,255,0.8);">${u.email}</small>
+                <div id="u-status-badge">${statusBadge}</div>
+                <small style="color: rgba(255,255,255,0.8); font-size: 11px; display: block; margin-top: 3px;">${u.email}</small>
             </div>
 
             <div class="p-3">
                 <div class="d-flex gap-2 mb-3">
                     <div class="flex-fill p-2 bg-light rounded-3 text-center border">
-                        <small class="text-muted d-block" style="font-size: 10px;">Password</small>
-                        <b class="text-danger">${u.pass}</b>
+                        <small class="text-muted d-block" style="font-size: 9px; text-transform: uppercase;">Password</small>
+                        <b class="text-danger" style="font-size: 12px;">${u.pass}</b>
                     </div>
                     <div class="flex-fill p-2 bg-light rounded-3 text-center border">
-                        <small class="text-muted d-block" style="font-size: 10px;">Rank</small>
-                        <b class="text-primary">${u.rank || 'General'}</b>
+                        <small class="text-muted d-block" style="font-size: 9px; text-transform: uppercase;">Rank</small>
+                        <b class="text-primary" style="font-size: 12px;">${u.rank || 'General'}</b>
+                    </div>
+                    <div class="flex-fill p-2 bg-light rounded-3 text-center border">
+                        <small class="text-muted d-block" style="font-size: 9px; text-transform: uppercase;">Ref Code</small>
+                        <b class="text-dark" style="font-size: 12px;">${u.referCode || 'N/A'}</b>
                     </div>
                 </div>
 
@@ -8136,7 +8196,7 @@ function openUserPopup(index) {
                         <small class="text-muted fw-bold d-block" style="font-size: 11px;">Current Balance</small>
                         <h4 class="m-0 fw-bold text-dark">৳ ${u.bal || 0}</h4>
                     </div>
-                    <button class="btn btn-primary rounded-3 px-3 fw-bold shadow-sm" onclick="editBal(${index}); closeUserPopup();">Add Money</button>
+                    <button class="btn btn-primary rounded-3 px-3 fw-bold shadow-sm" style="font-size: 12px;" onclick="editBal(${index}); closeUserPopup();">Add Money</button>
                 </div>
 
                 <div class="list-group list-group-flush mb-3 rounded-3 border">
@@ -8150,8 +8210,9 @@ function openUserPopup(index) {
                     </div>
                 </div>
 
-                <button class="btn w-100 py-2 fw-bold rounded-pill ${u.status==='active'?'btn-outline-danger':'btn-success'}" onclick="toggleBlock(${index}); closeUserPopup();">
-                    ${u.status==='active'?'Block This User':'Unblock User'}
+                <button class="btn w-100 py-2 fw-bold rounded-pill ${isActive ? 'btn-outline-danger' : 'btn-success'}" 
+                        onclick="toggleBlock(${index}); closeUserPopup();">
+                    ${isActive ? '<i class="fas fa-ban me-2"></i> Block This User' : '<i class="fas fa-check-circle me-2"></i> Unblock/Activate'}
                 </button>
             </div>
         </div>
@@ -8160,10 +8221,65 @@ function openUserPopup(index) {
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
 
+
 function closeUserPopup() {
     const modal = document.getElementById('userModal');
     if(modal) modal.remove();
 }
+async function activateAccountNow() {
+    if (!curUser) return;
+
+    Swal.fire({
+        title: 'একাউন্ট একটিভ করুন',
+        html: `
+            <div style="text-align: left; font-size: 14px; line-height: 1.8;">
+                ✅ লাইফটাইম প্রিমিয়াম মেম্বারশিপ।<br>
+                ✅ ডেইলি মাইক্রো জব করার সুবিধা।<br>
+                ✅ রেফার করে ৩০৳ বোনাস জেতার সুযোগ।<br>
+                <hr>
+                <p style="color: #ff4757; font-weight: bold; text-align: center; font-size: 16px;">চার্জ: ৫০ টাকা মাত্র</p>
+            </div>
+        `,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#2ecc71',
+        confirmButtonText: 'হ্যাঁ, একটিভ করুন',
+        cancelButtonText: 'বাতিল'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            
+            if (parseFloat(curUser.bal) >= 50) {
+                
+                // ১. নিজের একাউন্ট থেকে ৫০ টাকা কাটা
+                curUser.bal = (parseFloat(curUser.bal) - 50).toFixed(2);
+                curUser.status = "active";
+
+                // ২. রেফারেল বোনাস লজিক
+                if (curUser.referredBy && curUser.referredBy !== "") {
+                    let leader = db.users.find(x => x.referCode === curUser.referredBy);
+                    
+                    if (leader) {
+                        // লিডারের মেইন ব্যালেন্সে ৩০ টাকা যোগ করা
+                        leader.bal = (parseFloat(leader.bal || 0) + 30).toFixed(2);
+                        
+                        // লিডারের "আজকের ইনকাম" (todayEarn) এ ৩০ টাকা যোগ করা
+                        leader.todayEarn = (parseFloat(leader.todayEarn || 0) + 30).toFixed(2);
+                        
+                        console.log("Bonus & Today's Income updated for: " + leader.email);
+                    }
+                }
+
+                save(); 
+                renderUser(); 
+
+                Swal.fire('সফল!', 'আপনার একাউন্ট একটিভ হয়েছে!', 'success');
+            } else {
+                Swal.fire('ব্যালেন্স নেই!', 'আপনার ব্যালেন্সে পর্যাপ্ত টাকা নেই।', 'error');
+            }
+        }
+    });
+}
+
 </script>
 </body>
 </html>
