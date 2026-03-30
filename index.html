@@ -2701,7 +2701,7 @@ div[onclick="toggleBloodModal()"]:active {
     
 
 
-<div onclick="openPage('p-micro')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleMicroJobClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle').style.transform='scale(1)'">
     
@@ -2729,7 +2729,7 @@ div[onclick="toggleBloodModal()"]:active {
     }
 </style>
 
-<div onclick="openPage('p-ads')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleAdsIncomeClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-ads').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-ads').style.transform='scale(1)'">
     
@@ -2748,7 +2748,8 @@ div[onclick="toggleBloodModal()"]:active {
         Ads Income
     </small>
 </div>
-<div onclick="openPage('p-post')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+
+<div onclick="handleJobPostClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-post').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-post').style.transform='scale(1)'">
     
@@ -2767,8 +2768,7 @@ div[onclick="toggleBloodModal()"]:active {
         Job Post
     </small>
 </div>
-
-<div onclick="openPage('p-drive')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleDriveOfferClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-drive').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-drive').style.transform='scale(1)'">
     
@@ -2789,7 +2789,7 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
-<div onclick="openPage('p-shop')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleShopClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-shop').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-shop').style.transform='scale(1)'">
     
@@ -2809,7 +2809,8 @@ div[onclick="toggleBloodModal()"]:active {
     </small>
 </div>
 
-<div onclick="openPage('p-vendor')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+
+<div onclick="handleVendorClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-vendor').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-vendor').style.transform='scale(1)'">
     
@@ -2829,7 +2830,7 @@ div[onclick="toggleBloodModal()"]:active {
     </small>
 </div>
 
-<div onclick="openPage('p-topup')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleTopupClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-topup').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-topup').style.transform='scale(1)'">
     
@@ -2848,7 +2849,7 @@ div[onclick="toggleBloodModal()"]:active {
         Topup
     </small>
 </div>
-<div onclick="openPage('p-target')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleTargetBonusClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-target').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-target').style.transform='scale(1)'">
     
@@ -2867,8 +2868,7 @@ div[onclick="toggleBloodModal()"]:active {
         Target Bonus
     </small>
 </div>
-
-<div onclick="openPage('p-leader')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleLeaderClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-leader').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-leader').style.transform='scale(1)'">
     
@@ -2888,7 +2888,8 @@ div[onclick="toggleBloodModal()"]:active {
     </small>
 </div>
 
-<div onclick="openPage('p-digital')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+
+<div onclick="handleDigitalServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-digital').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-digital').style.transform='scale(1)'">
     
@@ -2908,8 +2909,7 @@ div[onclick="toggleBloodModal()"]:active {
     </small>
 </div>
 
-
-<div onclick="openPage('p-social')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleSocialServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-social').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-social').style.transform='scale(1)'">
     
@@ -2928,7 +2928,7 @@ div[onclick="toggleBloodModal()"]:active {
         Social Service
     </small>
 </div>
-<div onclick="openPage('p-blood')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleBloodDonationClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-blood').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-blood').style.transform='scale(1)'">
     
@@ -2949,7 +2949,7 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
-<div onclick="openPage('p-training')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleTrainingClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-training').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-training').style.transform='scale(1)'">
     
@@ -2969,7 +2969,8 @@ div[onclick="toggleBloodModal()"]:active {
     </small>
 </div>
 
-<div onclick="openPage('p-invest')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+
+<div onclick="handleInvestClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-invest').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-invest').style.transform='scale(1)'">
     
@@ -2988,8 +2989,7 @@ div[onclick="toggleBloodModal()"]:active {
         Investment
     </small>
 </div>
-
-<div onclick="openPage('p-more')" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+<div onclick="handleMoreOptionsClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
      onmouseover="this.querySelector('.btn-circle-more').style.transform='scale(1.05)'" 
      onmouseout="this.querySelector('.btn-circle-more').style.transform='scale(1)'">
     
@@ -8279,7 +8279,415 @@ async function activateAccountNow() {
         }
     });
 }
+function handleMicroJobClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        // একাউন্ট একটিভ না থাকলে এই প্রফেশনাল পপআপটি আসবে
+        Swal.fire({
+            title: 'অ্যাকাউন্ট অ্যাক্টিভ করুন!',
+            text: 'মাইক্রো জবগুলো সম্পন্ন করে আয় করতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে অ্যাক্টিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '20px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // একাউন্ট একটিভ থাকলে সরাসরি মাইক্রো জব পেজে নিয়ে যাবে
+        openPage('p-micro');
+    }
+}
+function handleAdsIncomeClick() {
+    // ইউজার যদি একটিভ না থাকে
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অ্যাকাউন্ট ভেরিফিকেশন!',
+            text: 'বিজ্ঞাপন দেখে আয় করতে হলে আপনার অ্যাকাউন্টটি একটিভ থাকা বাধ্যতামূলক।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'এখনই একটিভ করুন',
+            cancelButtonText: 'পরে করবো',
+            confirmButtonColor: '#2ecc71', // সবুজাভ কালার যা আয়ের সাথে মানানসই
+            cancelButtonColor: '#d33',
+            background: '#fff',
+            borderRadius: '20px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে অ্যাডস পেজে নিয়ে যাবে
+        openPage('p-ads');
+    }
+}
+function handleLeaderClick() {
+    // ইউজার যদি একটিভ না থাকে
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'লিডারবোর্ড লকড!',
+            text: 'লিডারশিপ এবং টপ মেম্বারদের লিস্ট দেখতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করতে হবে।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#f1c40f', // লিডারশিপ বা মুকুটের সাথে মানানসই গোল্ডেন টাইপ কালার
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '20px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে লিডারশিপ পেজে নিয়ে যাবে
+        openPage('p-leader');
+    }
+}
+function handleDigitalServiceClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'সার্ভিসটি লক করা!',
+            text: 'ডিজিটাল সার্ভিসগুলো অ্যাক্সেস করতে হলে প্রথমে আপনার অ্যাকাউন্টটি অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#3b82f6', // আপনার বাটনের কালারের সাথে মানানসই
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ডিজিটাল সার্ভিস পেজে নিয়ে যাবে
+        openPage('p-digital');
+    }
+}
+
+function handleSocialServiceClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অ্যাক্সেস ডিনাইড!',
+            text: 'সোশ্যাল সার্ভিস সেকশনটি ব্যবহার করতে আপনার অ্যাকাউন্টটি একটিভ থাকা প্রয়োজন।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে একটিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#d33',
+            background: '#fff',
+            borderRadius: '20px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে হেল্পের জন্য
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি সোশ্যাল সার্ভিস পেজে নিয়ে যাবে
+        openPage('p-social');
+    }
+}
+function handleTrainingClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'ট্রেনিং লকড!',
+            text: 'আমাদের প্রিমিয়াম ট্রেনিং ভিডিও এবং কোর্সগুলো দেখতে হলে আপনার অ্যাকাউন্টটি একটিভ থাকা প্রয়োজন।',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে একটিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#2ecc71', // সবুজাভ কালার (সাফল্যের প্রতীক)
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে হেল্পের জন্য
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ট্রেনিং পেজে নিয়ে যাবে
+        openPage('p-training');
+    }
+}
+function handleInvestClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অ্যাকাউন্ট ভেরিফিকেশন!',
+            text: 'ইনভেস্টমেন্ট সেকশনে প্রবেশ করতে হলে আপনার অ্যাকাউন্টটি আগে একটিভ করা বাধ্যতামূলক।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে একটিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#2ecc71', // ইনভেস্টমেন্ট বা লাভের সাথে মানানসই সবুজ কালার
+            cancelButtonColor: '#d33',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে যাতে ইউজার এডমিনের সাথে কথা বলতে পারে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ইনভেস্টমেন্ট পেজে নিয়ে যাবে
+        openPage('p-invest');
+    }
+}
+function handleBloodDonationClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অ্যাকাউন্ট ভেরিফাইড নয়!',
+            text: 'রক্তদান সেকশনে যোগ দিতে বা রক্তদাতার তালিকা দেখতে আপনার অ্যাকাউন্টটি আগে একটিভ করুন।',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে একটিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#e74c3c', // রক্তের কালারের সাথে মানানসই লাল রঙ
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে ব্লাড ডোনেশন পেজে নিয়ে যাবে
+        openPage('p-blood');
+    }
+}
+function handleTargetBonusClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'বোনাস সেকশন লকড!',
+            text: 'টার্গেট বোনাস এবং রিওয়ার্ডগুলো ক্লেইম করতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে একটিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a', // আপনার থিম কালারের সাথে মিল রেখে
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি টার্গেট বোনাস পেজে নিয়ে যাবে
+        openPage('p-target');
+    }
+}
+function handleTopupClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'টপআপ সার্ভিস লকড!',
+            text: 'গেম টপআপ এবং অন্যান্য সার্ভিসগুলো ব্যবহার করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি টপআপ পেজে নিয়ে যাবে
+        openPage('p-topup');
+    }
+}
+function handleVendorClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'ভেন্ডরশিপ লকড!',
+            text: 'ভেন্ডর হিসেবে কাজ করতে বা ভেন্ডর প্যানেল এক্সেস করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ভেন্ডর পেজে নিয়ে যাবে
+        openPage('p-vendor');
+    }
+}
+function handleShopClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'শপ অ্যাক্সেস লকড!',
+            text: 'রিসেলার শপে প্রবেশ করতে এবং পণ্য বিক্রয় শুরু করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি শপ পেজে নিয়ে যাবে
+        openPage('p-shop');
+    }
+}
+function handleDriveOfferClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অফারটি লক করা!',
+            text: 'স্পেশাল ড্রাইভ অফারগুলো দেখতে এবং ক্রয় করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'কিভাবে অ্যাক্টিভ করবো?',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ড্রাইভ অফার পেজে নিয়ে যাবে
+        openPage('p-drive');
+    }
+}
+function handleJobPostClick() {
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'জব পোস্ট লকড!',
+            text: 'আমাদের প্ল্যাটফর্মে নতুন জব পোস্ট করতে হলে আপনার অ্যাকাউন্টটি প্রথমে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি জব পোস্ট পেজে নিয়ে যাবে
+        openPage('p-post');
+    }
+}
+function handleMoreOptionsClick() {
+    // চেক করা হচ্ছে ইউজারের অ্যাকাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অতিরিক্ত অপশনগুলো লকড!',
+            text: 'বাকি সব স্পেশাল ফিচার এবং অপশনগুলো দেখতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'অ্যাক্টিভ করুন',
+            cancelButtonText: 'পরে দেখবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-support'); 
+            }
+        });
+        
+    } else {
+        // যদি অ্যাকাউন্ট একটিভ থাকে তবে সরাসরি More Options পেজে নিয়ে যাবে
+        openPage('p-more');
+    }
+}
 
 </script>
 </body>
 </html>
+
