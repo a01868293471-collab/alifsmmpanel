@@ -5309,27 +5309,36 @@ div[onclick="toggleBloodModal()"]:active {
         <i class="fas fa-upload me-2"></i>আপডেট লোগো
     </button>
 </div>
-<div class="container-fluid mt-4">
-    <div class="row g-3">
-        
-        <div class="col-6 col-md-3">
-            <div class="p-3 shadow-sm border-0 position-relative overflow-hidden" style="background: linear-gradient(45deg, #4e73df, #224abe); color: white; border-radius: 15px;">
-                <div class="small fw-bold opacity-75">টোটাল ইউজার</div>
-                <h3 class="fw-bold my-1" id="stat-total-users">0</h3>
-                <i class="fas fa-users position-absolute" style="right: 10px; bottom: 10px; font-size: 30px; opacity: 0.2;"></i>
+<div class="container-fluid mt-3">
+    <div class="row g-2 row-cols-2 row-cols-md-4">
+        <div class="col">
+            <div class="p-3 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(45deg, #4e73df, #224abe); color: white; border-radius: 15px; height: 100px;">
+                <div style="font-size: 11px; font-weight: bold; opacity: 0.8;">টোটাল ইউজার</div>
+                <h4 class="fw-bold m-0" id="stat-total-users">0</h4>
+                <i class="fas fa-users position-absolute" style="right: 10px; bottom: 10px; font-size: 25px; opacity: 0.2;"></i>
             </div>
         </div>
-
-        <div class="col-6 col-md-3">
-            <div class="p-3 shadow-sm border-0 position-relative overflow-hidden" style="background: linear-gradient(45deg, #1cc88a, #13855c); color: white; border-radius: 15px;">
-                <div class="small fw-bold opacity-75">একটিভ ইউজার</div>
-                <h3 class="fw-bold my-1" id="stat-active-users">0</h3>
-                <i class="fas fa-user-check position-absolute" style="right: 10px; bottom: 10px; font-size: 30px; opacity: 0.2;"></i>
+        <div class="col">
+            <div class="p-3 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(45deg, #1cc88a, #13855c); color: white; border-radius: 15px; height: 100px;">
+                <div style="font-size: 11px; font-weight: bold; opacity: 0.8;">একটিভ ইউজার</div>
+                <h4 class="fw-bold m-0" id="stat-active-users">0</h4>
+                <i class="fas fa-user-check position-absolute" style="right: 10px; bottom: 10px; font-size: 25px; opacity: 0.2;"></i>
             </div>
         </div>
-
-
-
+        <div class="col">
+            <div class="p-3 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(45deg, #f6c23e, #dda20a); color: white; border-radius: 15px; height: 100px;">
+                <div style="font-size: 11px; font-weight: bold; opacity: 0.8;">ইউজার ব্যালেন্স</div>
+                <h4 class="fw-bold m-0" id="stat-total-balance">৳0</h4>
+                <i class="fas fa-wallet position-absolute" style="right: 10px; bottom: 10px; font-size: 25px; opacity: 0.2;"></i>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(45deg, #e74a3b, #be2617); color: white; border-radius: 15px; height: 100px;">
+                <div style="font-size: 11px; font-weight: bold; opacity: 0.8;">উইথড্র এপ্রুভ</div>
+                <h4 class="fw-bold m-0" id="stat-total-withdraw">৳0</h4>
+                <i class="fas fa-hand-holding-usd position-absolute" style="right: 10px; bottom: 10px; font-size: 25px; opacity: 0.2;"></i>
+            </div>
+        </div>
     </div>
 </div>
 <div class="p-3 bg-white shadow-sm mb-3 rounded-3">
@@ -5751,129 +5760,144 @@ function renderUser() {
         renderWithdrawHistory();
     }
 }
-     // ১. অ্যাডমিন প্যানেল রেন্ডার করার প্রধান ফাংশন
 function renderAdmin() {
-    // ডাটাবেজ চেক
-    if (typeof db === 'undefined') return;
-
-    // --- পরিসংখ্যান বাটন আপডেট লজিক (ব্যালেন্স ও উইথড্র বাদ দেওয়া হয়েছে) ---
-    
-    // ক. টোটাল ইউজার (এডমিন বাদে)
-    const totalUsers = db.users ? db.users.filter(u => u.role !== 'admin').length : 0;
-    
-    // খ. একটিভ ইউজার (যাদের status 'active')
-    const activeUsers = db.users ? db.users.filter(u => u.role !== 'admin' && u.status === 'active').length : 0;
-
-    // HTML এলিমেন্টে ডাটাগুলো বসানো
-    const elTotal = document.getElementById('stat-total-users');
-    const elActive = document.getElementById('stat-active-users');
-
-    if (elTotal) elTotal.innerText = totalUsers;
-    if (elActive) elActive.innerText = activeUsers;
-
-    // লোকাল স্টোরেজে সেভ (পরিসংখ্যান অংশ)
-    localStorage.setItem('admin_stats', JSON.stringify({ totalUsers, activeUsers }));
-
-    // --- ২. ইউজার লিস্ট রেন্ডার করা ---
-    let uH = ""; 
-    const filteredUsers = db.users ? db.users.filter(u => u.role !== 'admin') : [];
-    filteredUsers.forEach((u) => {
-        const uIndex = db.users.indexOf(u);
-        uH += `
-        <div class="d-flex justify-content-between align-items-center bg-white p-3 mb-2 shadow-sm" style="border-radius: 12px; border: 1px solid #edf2f7;">
-            <div class="d-flex align-items-center">
-                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 35px; height: 35px; font-size: 14px; font-weight: bold;">
-                    ${(u.name || "U").charAt(0).toUpperCase()}
-                </div>
-                <div style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <span class="fw-bold text-dark" style="font-size: 13px;">${u.email}</span>
-                </div>
-            </div>
-            <button class="btn btn-sm px-3 rounded-pill fw-bold" 
-                    style="background: #eff6ff; color: #3b82f6; font-size: 11px; border: 1px solid #3b82f6;" 
-                    onclick="openUserPopup(${uIndex})">
-                View
-            </button>
-        </div>`;
-    });
-    const userContainer = document.getElementById('a-u');
-    if(userContainer) userContainer.innerHTML = uH || "ইউজার নেই";
-
-    // --- ৩. পেন্ডিং ফান্ড (পেমেন্ট রিকোয়েস্ট) ---
-    const fundContainer = document.getElementById('a-f');
-    if(fundContainer && db.funds) {
-        fundContainer.innerHTML = db.funds.filter(f => f.status==='Pending').map(f => `
-            <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-warning">
-                <div class="d-flex justify-content-between">
-                    <b>৳${f.amt} <small class="text-muted">(${f.method})</small></b>
-                    <span class="badge bg-warning-subtle text-warning" style="font-size: 10px;">Pending</span>
-                </div>
-                <div class="small text-muted mt-1">Trx: ${f.trx}</div>
-                <button class="btn btn-sm btn-success mt-2 w-100 rounded-pill fw-bold" onclick="approveFund(${f.id})">Approve</button>
-            </div>`).join("") || "পেন্ডিং পেমেন্ট নেই";
+    console.log("Admin Render Started...");
+    if (typeof db === 'undefined') {
+        console.error("Database (db) not found!");
+        return;
     }
 
-    // --- ৪. পেন্ডিং অর্ডার ---
+    // --- ১. তারিখ এবং ফিল্টার সেটআপ ---
+    const allUsers = db.users || [];
+    const todayStr = new Date().toISOString().split('T')[0]; // আজকের তারিখ (YYYY-MM-DD)
+    
+    // --- ২. পরিসংখ্যান ক্যালকুলেশন ---
+    const totalUsers = allUsers.filter(u => u.role !== 'admin').length;
+    const activeUsers = allUsers.filter(u => u.role !== 'admin' && u.status === 'active').length;
+    
+    // মোট ইউজার ব্যালেন্স
+    const totalUserBalance = allUsers
+        .filter(u => u.role !== 'admin')
+        .reduce((sum, u) => sum + (parseFloat(u.bal) || 0), 0);
+
+    // আজকের মোট ইনকাম (হিস্টোরি থেকে আজকের যোগ করা ব্যালেন্স)
+    let todayTotalIncome = 0;
+    allUsers.forEach(u => {
+        if (u.incomeHistory) {
+            u.incomeHistory.forEach(item => {
+                // তারিখ মিললে এবং অ্যামাউন্ট পজিটিভ (যোগ) হলে
+                if (item.date === todayStr && item.amount > 0) {
+                    todayTotalIncome += parseFloat(item.amount);
+                }
+            });
+        }
+    });
+
+    // মোট এপ্রুভ হওয়া উইথড্র
+    const totalApprovedWithdraw = (db.withdraws || [])
+        .filter(w => w.status === 'Success')
+        .reduce((sum, w) => sum + (parseFloat(w.amt) || 0), 0);
+
+    // --- ৩. HTML এলিমেন্টে ডাটা বসানো ---
+    const updateText = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = val;
+    };
+
+    updateText('stat-total-users', totalUsers);
+    updateText('stat-active-users', activeUsers);
+    updateText('stat-total-balance', "৳" + totalUserBalance.toFixed(2));
+    updateText('stat-today-income', "৳" + todayTotalIncome.toFixed(2)); // আজকের ইনকাম
+    updateText('stat-total-withdraw', "৳" + totalApprovedWithdraw.toFixed(2));
+
+    // --- ৪. ইউজার লিস্ট রেন্ডার করা ---
+    const userContainer = document.getElementById('a-u');
+    if (userContainer) {
+        const filteredUsers = allUsers.filter(u => u.role !== 'admin').reverse();
+        let uH = ""; 
+        filteredUsers.forEach((u) => {
+            const uIndex = db.users.findIndex(user => user.email === u.email);
+            uH += `
+            <div class="d-flex justify-content-between align-items-center bg-white p-3 mb-2 shadow-sm" style="border-radius: 12px; border: 1px solid #edf2f7;">
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px; font-size: 16px; font-weight: bold;">
+                        ${(u.name || u.email || "U").charAt(0).toUpperCase()}
+                    </div>
+                    <div style="max-width: 160px; overflow: hidden;">
+                        <div class="fw-bold text-dark text-truncate" style="font-size: 14px;">${u.email}</div>
+                    </div>
+                </div>
+                <button class="btn btn-sm px-3 rounded-pill fw-bold" 
+                        style="background: #eff6ff; color: #3b82f6; font-size: 11px; border: 1px solid #3b82f6;" 
+                        onclick="openUserPopup(${uIndex})">
+                    View
+                </button>
+            </div>`;
+        });
+        userContainer.innerHTML = uH || '<div class="text-center p-4 text-muted">কোনো ইউজার পাওয়া যায়নি</div>';
+    }
+
+    // --- ৫. পেন্ডিং ফান্ড ---
+    const fundContainer = document.getElementById('a-f');
+    if(fundContainer && db.funds) {
+        const pFunds = db.funds.filter(f => f.status === 'Pending');
+        fundContainer.innerHTML = pFunds.length ? pFunds.map(f => `
+            <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-warning d-flex justify-content-between align-items-center">
+                <div>
+                    <b>৳${f.amt} <small>(${f.method})</small></b>
+                    <div class="small text-muted">Trx: ${f.trx}</div>
+                </div>
+                <button class="btn btn-sm btn-success rounded-pill" onclick="approveFund('${f.id}')">Approve</button>
+            </div>`).join("") : '<div class="small text-muted p-2">পেন্ডিং পেমেন্ট নেই</div>';
+    }
+
+    // --- ৬. পেন্ডিং অর্ডার ---
     const orderContainer = document.getElementById('a-o');
     if(orderContainer && db.orders) {
-        orderContainer.innerHTML = db.orders.filter(o => o.status==='Pending').map(o => `
+        const pOrders = db.orders.filter(o => o.status === 'Pending');
+        orderContainer.innerHTML = pOrders.length ? pOrders.map(o => `
             <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-info">
                 <div class="fw-bold text-info">${o.srv}</div>
                 <div class="small">User: ${o.user} | Qty: ${o.qty}</div>
-                <button class="btn btn-sm btn-info text-white mt-2 w-100 rounded-pill fw-bold" onclick="approveOrder(${o.id})">Complete</button>
-            </div>`).join("") || "পেন্ডিং অর্ডার নেই";
+                <button class="btn btn-sm btn-info text-white mt-2 w-100 rounded-pill" onclick="approveOrder('${o.id}')">Complete</button>
+            </div>`).join("") : '<div class="small text-muted p-2">পেন্ডিং অর্ডার নেই</div>';
     }
 }
-     
-     
-     
-     
-
-
-    function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
-    
+function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
 function editBal(index) {
-    // ১. কত টাকা এবং কেন (নোট) তা ইনপুট নেওয়া
-    let amt = prompt("টাকার পরিমাণ লিখুন:\n(টাকা যোগ করতে: 50 লিখুন)\n(টাকা কাটতে: -50 লিখুন)");
-    let note = prompt("কারন লিখুন (যেমন: ভুল পেমেন্ট সংশোধন):");
+    let amt = prompt("টাকার পরিমাণ লিখুন:\n(যোগ করতে: 50 | বিয়োগ করতে: -50)");
     
-    if (amt && !isNaN(amt)) {
+    if (amt !== null && amt !== "" && !isNaN(amt)) {
         let user = db.users[index];
         let amount = parseFloat(amt);
-        
-        // ২. চেক করা: যদি টাকা কাটতে চান এবং ইউজারের অত টাকা না থাকে
-        if (amount < 0 && user.bal < Math.abs(amount)) {
-            return alert("ইউজারের ব্যালেন্স পর্যাপ্ত নেই! বর্তমানে আছে: ৳" + user.bal);
+        let currentBal = parseFloat(user.bal || 0);
+
+        if (amount < 0 && currentBal < Math.abs(amount)) {
+            return alert("পর্যাপ্ত ব্যালেন্স নেই!");
         }
 
-        let now = new Date();
-        // তারিখ ফরম্যাট: YYYY-MM-DD | HH:MM
-        let dateStr = now.toISOString().split('T')[0] + " | " + 
-                      String(now.getHours()).padStart(2, '0') + ":" + 
-                      String(now.getMinutes()).padStart(2, '0');
-
-        // ৩. ব্যালেন্স আপডেট (প্লাস হলে বাড়বে, মাইনাস হলে কমবে)
-        user.bal += amount;
+        user.bal = currentBal + amount;
         
-        // ৪. হিস্টোরি তৈরি করা
         if (!user.incomeHistory) user.incomeHistory = [];
-        
+        let note = prompt("কারন (ঐচ্ছিক):") || (amount > 0 ? "অ্যাডমিন কর্তৃক যুক্ত" : "অ্যাডমিন কর্তৃক কর্তন");
+
+        // আজকের তারিখ বের করা (YYYY-MM-DD ফরম্যাটে)
+        let today = new Date().toISOString().split('T')[0];
+
         user.incomeHistory.unshift({
-            amount: amount, // এখানে মাইনাস ভ্যালু থাকলে মাইনাসই সেভ হবে
-            date: dateStr,
-            note: note || (amount > 0 ? "অ্যাডমিন কর্তৃক যুক্ত" : "অ্যাডমিন কর্তৃক কর্তন")
+            amount: amount, 
+            date: today, // শুধু তারিখ রাখছি ফিল্টার করার সুবিধার জন্য
+            fullDate: new Date().toLocaleString(), // দেখানোর জন্য ফুল ডেট
+            note: note
         });
 
-        save(); // ডাটাবেস সেভ
-        renderAdmin(); // অ্যাডমিন প্যানেল রিফ্রেশ
-        
-        let msg = amount > 0 ? "৳" + amount + " যোগ হয়েছে!" : "৳" + Math.abs(amount) + " কাটা হয়েছে!";
-        alert(msg);
-    } else {
-        alert("দয়া করে সঠিক সংখ্যা লিখুন!");
+        if (typeof save === "function") save();
+        else localStorage.setItem('free_time_db', JSON.stringify(db));
+
+        renderAdmin(); 
+        alert("সফল হয়েছে!");
     }
 }
-
     function toggleBlock(i) {
     let user = db.users[i];
     
