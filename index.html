@@ -5309,7 +5309,29 @@ div[onclick="toggleBloodModal()"]:active {
         <i class="fas fa-upload me-2"></i>আপডেট লোগো
     </button>
 </div>
+<div class="container-fluid mt-4">
+    <div class="row g-3">
+        
+        <div class="col-6 col-md-3">
+            <div class="p-3 shadow-sm border-0 position-relative overflow-hidden" style="background: linear-gradient(45deg, #4e73df, #224abe); color: white; border-radius: 15px;">
+                <div class="small fw-bold opacity-75">টোটাল ইউজার</div>
+                <h3 class="fw-bold my-1" id="stat-total-users">0</h3>
+                <i class="fas fa-users position-absolute" style="right: 10px; bottom: 10px; font-size: 30px; opacity: 0.2;"></i>
+            </div>
+        </div>
 
+        <div class="col-6 col-md-3">
+            <div class="p-3 shadow-sm border-0 position-relative overflow-hidden" style="background: linear-gradient(45deg, #1cc88a, #13855c); color: white; border-radius: 15px;">
+                <div class="small fw-bold opacity-75">একটিভ ইউজার</div>
+                <h3 class="fw-bold my-1" id="stat-active-users">0</h3>
+                <i class="fas fa-user-check position-absolute" style="right: 10px; bottom: 10px; font-size: 30px; opacity: 0.2;"></i>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
 <div class="p-3 bg-white shadow-sm mb-3 rounded-3">
     <div class="input-group">
         <span class="input-group-text bg-primary text-white border-0"><i class="fas fa-search"></i></span>
@@ -5729,14 +5751,32 @@ function renderUser() {
         renderWithdrawHistory();
     }
 }
-     
+     // ১. অ্যাডমিন প্যানেল রেন্ডার করার প্রধান ফাংশন
 function renderAdmin() {
     // ডাটাবেজ চেক
     if (typeof db === 'undefined') return;
 
-    // ১. ইউজার লিস্ট (শুধু জিমেইল এবং View বাটন)
+    // --- পরিসংখ্যান বাটন আপডেট লজিক (ব্যালেন্স ও উইথড্র বাদ দেওয়া হয়েছে) ---
+    
+    // ক. টোটাল ইউজার (এডমিন বাদে)
+    const totalUsers = db.users ? db.users.filter(u => u.role !== 'admin').length : 0;
+    
+    // খ. একটিভ ইউজার (যাদের status 'active')
+    const activeUsers = db.users ? db.users.filter(u => u.role !== 'admin' && u.status === 'active').length : 0;
+
+    // HTML এলিমেন্টে ডাটাগুলো বসানো
+    const elTotal = document.getElementById('stat-total-users');
+    const elActive = document.getElementById('stat-active-users');
+
+    if (elTotal) elTotal.innerText = totalUsers;
+    if (elActive) elActive.innerText = activeUsers;
+
+    // লোকাল স্টোরেজে সেভ (পরিসংখ্যান অংশ)
+    localStorage.setItem('admin_stats', JSON.stringify({ totalUsers, activeUsers }));
+
+    // --- ২. ইউজার লিস্ট রেন্ডার করা ---
     let uH = ""; 
-    const filteredUsers = db.users.filter(u => u.role !== 'admin');
+    const filteredUsers = db.users ? db.users.filter(u => u.role !== 'admin') : [];
     filteredUsers.forEach((u) => {
         const uIndex = db.users.indexOf(u);
         uH += `
@@ -5759,9 +5799,9 @@ function renderAdmin() {
     const userContainer = document.getElementById('a-u');
     if(userContainer) userContainer.innerHTML = uH || "ইউজার নেই";
 
-    // ২. পেন্ডিং ফান্ড (পেমেন্ট)
+    // --- ৩. পেন্ডিং ফান্ড (পেমেন্ট রিকোয়েস্ট) ---
     const fundContainer = document.getElementById('a-f');
-    if(fundContainer) {
+    if(fundContainer && db.funds) {
         fundContainer.innerHTML = db.funds.filter(f => f.status==='Pending').map(f => `
             <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-warning">
                 <div class="d-flex justify-content-between">
@@ -5773,17 +5813,22 @@ function renderAdmin() {
             </div>`).join("") || "পেন্ডিং পেমেন্ট নেই";
     }
 
-    // ৩. পেন্ডিং অর্ডার
+    // --- ৪. পেন্ডিং অর্ডার ---
     const orderContainer = document.getElementById('a-o');
-    if(orderContainer) {
+    if(orderContainer && db.orders) {
         orderContainer.innerHTML = db.orders.filter(o => o.status==='Pending').map(o => `
             <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-info">
                 <div class="fw-bold text-info">${o.srv}</div>
                 <div class="small">User: ${o.user} | Qty: ${o.qty}</div>
-                <button class="btn btn-sm btn-info text-white mt-2 w-100 rounded-pill fw-bold" onclick="approveOrder(${o.id})">Complete Order</button>
+                <button class="btn btn-sm btn-info text-white mt-2 w-100 rounded-pill fw-bold" onclick="approveOrder(${o.id})">Complete</button>
             </div>`).join("") || "পেন্ডিং অর্ডার নেই";
     }
 }
+     
+     
+     
+     
+
 
     function switchAuth(s) { document.getElementById('login-box').classList.toggle('d-none', s); document.getElementById('signup-box').classList.toggle('d-none', !s); }
     
@@ -8230,20 +8275,21 @@ async function activateAccountNow() {
     if (!curUser) return;
 
     Swal.fire({
-        title: 'একাউন্ট একটিভ করুন',
+        title: 'Premium Account করুন',
         html: `
             <div style="text-align: left; font-size: 14px; line-height: 1.8;">
                 ✅ লাইফটাইম প্রিমিয়াম মেম্বারশিপ।<br>
                 ✅ ডেইলি মাইক্রো জব করার সুবিধা।<br>
                 ✅ রেফার করে ৩০৳ বোনাস জেতার সুযোগ।<br>
+               ✅ ২৪/৭ কাস্টমার সাপোর্ট।<br>
                 <hr>
-                <p style="color: #ff4757; font-weight: bold; text-align: center; font-size: 16px;">চার্জ: ৫০ টাকা মাত্র</p>
+                <p style="color: #ff4757; font-weight: bold; text-align: center; font-size: 16px;">Fee: ৳50.00</p>
             </div>
         `,
         icon: 'info',
         showCancelButton: true,
         confirmButtonColor: '#2ecc71',
-        confirmButtonText: 'হ্যাঁ, একটিভ করুন',
+        confirmButtonText: 'হ্যাঁ',
         cancelButtonText: 'বাতিল'
     }).then(async (result) => {
         if (result.isConfirmed) {
@@ -8289,8 +8335,8 @@ function handleMicroJobClick() {
             text: 'মাইক্রো জবগুলো সম্পন্ন করে আয় করতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'info',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে অ্যাক্টিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8298,7 +8344,7 @@ function handleMicroJobClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8316,7 +8362,7 @@ function handleAdsIncomeClick() {
             text: 'বিজ্ঞাপন দেখে আয় করতে হলে আপনার অ্যাকাউন্টটি একটিভ থাকা বাধ্যতামূলক।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'এখনই একটিভ করুন',
+            confirmButtonText: 'এখনই করুন',
             cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#2ecc71', // সবুজাভ কালার যা আয়ের সাথে মানানসই
             cancelButtonColor: '#d33',
@@ -8325,7 +8371,7 @@ function handleAdsIncomeClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8343,8 +8389,8 @@ function handleLeaderClick() {
             text: 'লিডারশিপ এবং টপ মেম্বারদের লিস্ট দেখতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করতে হবে।',
             icon: 'lock',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#f1c40f', // লিডারশিপ বা মুকুটের সাথে মানানসই গোল্ডেন টাইপ কালার
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8352,7 +8398,7 @@ function handleLeaderClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8370,8 +8416,8 @@ function handleDigitalServiceClick() {
             text: 'ডিজিটাল সার্ভিসগুলো অ্যাক্সেস করতে হলে প্রথমে আপনার অ্যাকাউন্টটি অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'lock',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#3b82f6', // আপনার বাটনের কালারের সাথে মানানসই
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8379,7 +8425,7 @@ function handleDigitalServiceClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8398,8 +8444,8 @@ function handleSocialServiceClick() {
             text: 'সোশ্যাল সার্ভিস সেকশনটি ব্যবহার করতে আপনার অ্যাকাউন্টটি একটিভ থাকা প্রয়োজন।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে একটিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#d33',
             background: '#fff',
@@ -8407,7 +8453,7 @@ function handleSocialServiceClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে হেল্পের জন্য
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8425,8 +8471,8 @@ function handleTrainingClick() {
             text: 'আমাদের প্রিমিয়াম ট্রেনিং ভিডিও এবং কোর্সগুলো দেখতে হলে আপনার অ্যাকাউন্টটি একটিভ থাকা প্রয়োজন।',
             icon: 'info',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে একটিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText:'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#2ecc71', // সবুজাভ কালার (সাফল্যের প্রতীক)
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8434,7 +8480,7 @@ function handleTrainingClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে হেল্পের জন্য
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8452,8 +8498,8 @@ function handleInvestClick() {
             text: 'ইনভেস্টমেন্ট সেকশনে প্রবেশ করতে হলে আপনার অ্যাকাউন্টটি আগে একটিভ করা বাধ্যতামূলক।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে একটিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#2ecc71', // ইনভেস্টমেন্ট বা লাভের সাথে মানানসই সবুজ কালার
             cancelButtonColor: '#d33',
             background: '#fff',
@@ -8461,7 +8507,7 @@ function handleInvestClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে যাতে ইউজার এডমিনের সাথে কথা বলতে পারে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8479,8 +8525,8 @@ function handleBloodDonationClick() {
             text: 'রক্তদান সেকশনে যোগ দিতে বা রক্তদাতার তালিকা দেখতে আপনার অ্যাকাউন্টটি আগে একটিভ করুন।',
             icon: 'info',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে একটিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#e74c3c', // রক্তের কালারের সাথে মানানসই লাল রঙ
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8488,7 +8534,7 @@ function handleBloodDonationClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8506,8 +8552,8 @@ function handleTargetBonusClick() {
             text: 'টার্গেট বোনাস এবং রিওয়ার্ডগুলো ক্লেইম করতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'lock',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে একটিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a', // আপনার থিম কালারের সাথে মিল রেখে
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8515,7 +8561,7 @@ function handleTargetBonusClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8533,8 +8579,8 @@ function handleTopupClick() {
             text: 'গেম টপআপ এবং অন্যান্য সার্ভিসগুলো ব্যবহার করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'info',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8542,7 +8588,7 @@ function handleTopupClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8560,8 +8606,8 @@ function handleVendorClick() {
             text: 'ভেন্ডর হিসেবে কাজ করতে বা ভেন্ডর প্যানেল এক্সেস করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8569,7 +8615,7 @@ function handleVendorClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8587,8 +8633,8 @@ function handleShopClick() {
             text: 'রিসেলার শপে প্রবেশ করতে এবং পণ্য বিক্রয় শুরু করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8596,7 +8642,7 @@ function handleShopClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8614,8 +8660,8 @@ function handleDriveOfferClick() {
             text: 'স্পেশাল ড্রাইভ অফারগুলো দেখতে এবং ক্রয় করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'lock',
             showCancelButton: true,
-            confirmButtonText: 'কিভাবে অ্যাক্টিভ করবো?',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন?',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8623,7 +8669,7 @@ function handleDriveOfferClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8641,8 +8687,8 @@ function handleJobPostClick() {
             text: 'আমাদের প্ল্যাটফর্মে নতুন জব পোস্ট করতে হলে আপনার অ্যাকাউন্টটি প্রথমে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8650,7 +8696,7 @@ function handleJobPostClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
@@ -8659,6 +8705,7 @@ function handleJobPostClick() {
         openPage('p-post');
     }
 }
+
 function handleMoreOptionsClick() {
     // চেক করা হচ্ছে ইউজারের অ্যাকাউন্ট একটিভ কি না
     if (curUser.status !== 'active') {
@@ -8668,8 +8715,8 @@ function handleMoreOptionsClick() {
             text: 'বাকি সব স্পেশাল ফিচার এবং অপশনগুলো দেখতে হলে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
             icon: 'info',
             showCancelButton: true,
-            confirmButtonText: 'অ্যাক্টিভ করুন',
-            cancelButtonText: 'পরে দেখবো',
+            confirmButtonText: 'এখনই করুন',
+            cancelButtonText: 'পরে করবো',
             confirmButtonColor: '#1e3a8a',
             cancelButtonColor: '#6c757d',
             background: '#fff',
@@ -8677,7 +8724,7 @@ function handleMoreOptionsClick() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
-                openPage('p-support'); 
+                openPage('p-fund'); 
             }
         });
         
