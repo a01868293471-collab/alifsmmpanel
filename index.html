@@ -6212,7 +6212,7 @@ function renderAdmin() {
             <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-info">
                 <div class="fw-bold text-info">${o.srv}</div>
                 <div class="small">User: ${o.user} | Qty: ${o.qty}</div>
-                <button class="btn btn-sm btn-info text-white mt-2 w-100 rounded-pill" onclick="approveOrder('${o.id}')">Complete</button>
+            <button onclick="approveOrder('${o.id}')">Complete</button>
             </div>`).join("") : '<div class="small text-muted p-2">পেন্ডিং অর্ডার নেই</div>';
     }
 }
@@ -6287,7 +6287,29 @@ function editBal(index) {
 }
     
     function approveFund(id) { let f = db.funds.find(x => x.id === id), u = db.users.find(x => x.email === f.user); if(u) { f.status = 'Success'; u.bal += parseFloat(f.amt); save(); renderAdmin(); toast('অ্যাপ্রুভড'); } }
-    function approveOrder(id) { let o = db.orders.find(x => x.id === id); o.status = 'Success'; save(); renderAdmin(); toast('কমপ্লিট'); }
+    function approveOrder(id) {
+    // ডাটাবেস চেক
+    if (!db || !db.orders) return;
+
+    // String এবং Number উভয় ক্ষেত্রেই আইডি চেক করার জন্য == ব্যবহার করুন
+    const index = db.orders.findIndex(x => x.id == id);
+
+    if (index !== -1) {
+        // স্ট্যাটাস পরিবর্তন
+        db.orders[index].status = 'Success'; 
+        
+        // ডাটা সেভ এবং রি-রেন্ডার (নিশ্চিত করুন save() এবং renderAdmin() ফাংশন আছে)
+        save(); 
+        renderAdmin(); 
+        
+        // সফলতার মেসেজ
+        toast('অর্ডার সফলভাবে কমপ্লিট হয়েছে');
+    } else {
+        // আইডি না পাওয়ার এরর
+        console.error("Order ID not found: ", id);
+        toast('অর্ডারটি খুঁজে পাওয়া যায়নি');
+    }
+}
     function adminReplyPrompt(uMail) { let msg = prompt("আপনার রিপ্লাই:"); if(msg) { db.chats.push({user: uMail, text: msg, sender: 'admin'}); save(); renderAdmin(); } }
     function openPage(id) { document.querySelectorAll('.clean-page').forEach(p => p.style.display = 'none'); document.getElementById(id).style.display = 'block'; if(id === 'p-support') renderChat(); renderUser(); }
     function closePage(id) { document.getElementById(id).style.display = 'none'; goHome(); }
