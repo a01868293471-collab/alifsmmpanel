@@ -2301,7 +2301,136 @@ div[onclick="toggleBloodModal()"]:active {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+/* গুগল ফন্ট ইমপোর্ট (যদি না থাকে) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
+/* মেনু লেবেল স্টাইল */
+.menu-label {
+    font-size: 11px; 
+    font-weight: 800; 
+    color: #94a3b8; 
+    letter-spacing: 1.5px; 
+    margin: 5px 0 12px 10px; 
+    text-transform: uppercase;
+}
+
+/* ডিভাইডার স্টাইল */
+.menu-divider {
+    border: 0; 
+    border-top: 1px dashed #e2e8f0; 
+    margin: 20px 0;
+}
+
+/* মেইন বাটন ডিজাইন */
+.custom-menu-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px; /* প্যাডিং একটু বাড়ানো হয়েছে আরামদায়ক ক্লিকের জন্য */
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    background: #ffffff;
+    border-radius: 16px; /* আরও রাউন্ডেড কর্নার */
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* হালকা শ্যাডো */
+}
+
+/* আইকন বক্স ডিজাইন */
+.icon-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* হোভার ইফেক্ট (মাউস নিলে যা হবে) */
+.custom-menu-btn:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    transform: translateX(6px); /* ডান দিকে একটু সরবে */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.custom-menu-btn:hover .icon-box {
+    transform: scale(1.1) rotate(-5deg); /* আইকন একটু বড় ও বাঁকা হবে */
+}
+
+/* একটিভ/ক্লিক ইফেক্ট */
+.custom-menu-btn:active {
+    transform: scale(0.95);
+    background: #f1f5f9;
+}
+
+/* লগ আউট বাটন স্পেশাল স্টাইল */
+.logout-btn {
+    border: 1px solid #fee2e2 !important;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #fff1f2 !important;
+    border-color: #fecaca !important;
+}
+
+/* রেফার কার্ডের কপি বাটনে অ্যানিমেশন */
+.ref-card-modern i:active {
+    transform: scale(0.8);
+    color: #2ecc71;
+}
+
+/* স্ক্রোলবার সুন্দর করার জন্য */
+.scrollable-menu::-webkit-scrollbar {
+    width: 5px;
+}
+.scrollable-menu::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+.notif-card {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.notif-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-color: #3b82f6;
+}
+
+.notif-icon {
+    width: 45px;
+    height: 45px;
+    background: #eff6ff;
+    color: #3b82f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
     </style>
 </head>
@@ -2544,20 +2673,20 @@ div[onclick="toggleBloodModal()"]:active {
     <div id="p-home-main">
 <nav class="premium-header" style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 8px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0 0 15px 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);">
 
-    <div class="header-icon-wrapper left-icon" onclick="openSettings()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s;">
-        <i class="fas fa-cog" style="color: white; font-size: 16px;"></i>
-    </div>
+<div class="header-icon-wrapper left-icon" onclick="openNotifications()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s; position: relative;">
+    <i class="fas fa-bell" style="color: white; font-size: 16px;"></i>
+    <span style="position: absolute; top: 8px; right: 8px; width: 6px; height: 6px; background: #ff4757; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4);"></span>
+</div>
 
-    <div class="brand-logo" style="text-align: center;">
-        <span style="font-weight: 900; color: white; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-            FREE TIME <span style="color: #2ecc71;">EARN</span>
-        </span>
-    </div>
+<div class="brand-logo" style="text-align: center;">
+    <span style="font-weight: 900; color: white; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        FREE TIME <span style="color: #2ecc71;">EARN</span>
+    </span>
+</div>
 
-    <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s;">
-        <i class="fas fa-bars-staggered" style="color: white; font-size: 16px;"></i>
-    </div>
-
+<div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s;">
+    <i class="fas fa-bars-staggered" style="color: white; font-size: 16px;"></i>
+</div>
 </nav>
 
 <style>
@@ -2567,35 +2696,129 @@ div[onclick="toggleBloodModal()"]:active {
     }
 </style>
 
-<div class="cover-section mx-3 mt-3" style="position: relative; overflow: hidden; border-radius: 20px; height: 140px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2); background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); border: 1px solid rgba(255, 255, 255, 0.1);">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    .swiper {
+        width: 100%;
+        height: 160px; /* আপনার প্রয়োজন অনুযায়ী কমাতে-বাড়াতে পারবেন */
+        padding-bottom: 20px !important;
+    }
     
-    <h1 style="position: absolute; font-size: 5rem; color: rgba(255, 255, 255, 0.05); bottom: -15px; right: -10px; transform: rotate(-12deg); z-index: 0; font-weight: 950; pointer-events: none; user-select: none; letter-spacing: -3px;">
-        EARN
-    </h1>
+    .cover-section {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        height: 140px;
+        box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0 15px; /* স্লাইডারের মার্জিন */
+    }
 
-    <div style="position: relative; height: 100%; padding: 15px 20px; z-index: 1; display: flex; flex-direction: column; justify-content: center; backdrop-filter: blur(1px);">
+    .bg-text {
+        position: absolute; 
+        font-size: 5rem; 
+        color: rgba(255, 255, 255, 0.05); 
+        bottom: -15px; 
+        right: -10px; 
+        transform: rotate(-12deg); 
+        z-index: 0; 
+        font-weight: 950; 
+        pointer-events: none; 
+        user-select: none; 
+        letter-spacing: -3px;
+    }
+
+    .cover-content {
+        position: relative; 
+        height: 100%; 
+        padding: 15px 20px; 
+        z-index: 1; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        backdrop-filter: blur(1px);
+    }
+
+    /* স্লাইডার ডট (Pagination) কালার */
+    .swiper-pagination-bullet-active {
+        background: #3b82f6 !important;
+    }
+</style>
+
+<div class="swiper mySwiper mt-3">
+    <div class="swiper-wrapper">
         
-        <h1 style="font-weight: 900; color: white; font-size: 1.5rem; letter-spacing: -0.5px; margin: 0; text-transform: uppercase; text-shadow: 0 3px 10px rgba(0,0,0,0.2);">
-            FREE TIME <span style="color: #2ecc71;">EARN</span>
-        </h1>
+        <div class="swiper-slide">
+            <div class="cover-section" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%);">
+                <h1 class="bg-text">EARN</h1>
+                <div class="cover-content">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.5rem; margin: 0; text-transform: uppercase;">
+                        FREE TIME <span style="color: #2ecc71;">EARN</span>
+                    </h1>
+                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
+                        বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">বিজনেস প্লাটফর্মে</span> স্বাগতম
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        <div style="margin-top: 8px;">
-            <p style="margin: 0; font-size: 12px; color: #ffffff; font-weight: 600; line-height: 1.4;">
-                বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); color: #fff;">বিজনেস প্লাটফর্মে</span> স্বাগতম
-            </p>
-            
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
-                <div style="width: 25px; height: 2px; background: linear-gradient(90deg, #2ecc71, transparent); border-radius: 10px;"></div>
-                <p style="margin: 0; font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 500; font-style: italic;">
-                    অবসর সময়কে কাজে লাগিয়ে উপার্জন করুন
-                </p>
+        <div class="swiper-slide">
+            <div class="cover-section" style="background: linear-gradient(160deg, #8e44ad 0%, #2c3e50 100%);">
+                <h1 class="bg-text">OFFER</h1>
+                <div class="cover-content">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
+                        প্রিমিয়াম <span style="color: #f1c40f;">মেম্বারশিপ</span>
+                    </h1>
+                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
+                        অল্প পুঁজিতে শুরু করুন নিজের <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">অনলাইন ক্যারিয়ার</span>
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
+                        <i class="fas fa-gift" style="color: #f1c40f;"></i>
+                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">আজই জয়েন করে লুফে নিন স্পেশাল বোনাস</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="cover-section" style="background: linear-gradient(160deg, #e67e22 0%, #d35400 100%);">
+                <h1 class="bg-text">TRUST</h1>
+                <div class="cover-content">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
+                        নির্ভরযোগ্য <span style="color: #fff; text-decoration: underline;">সাপোর্ট</span>
+                    </h1>
+                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
+                        যেকোনো সমস্যায় আমরা আছি আপনার <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">পাশে ২৪/৭</span>
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
+                        <i class="fas fa-headset" style="color: #fff;"></i>
+                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">লাইভ চ্যাট এবং টেলিগ্রাম সাপোর্ট সুবিধা</span>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
-
-    <div style="position: absolute; top: -30px; left: -30px; width: 100px; height: 100px; background: rgba(59, 130, 246, 0.3); filter: blur(40px); border-radius: 50%;"></div>
+    <div class="swiper-pagination"></div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,               // স্লাইড চলতেই থাকবে
+        autoplay: {
+            delay: 3000,          // ৩ সেকেন্ড পর পর স্লাইড হবে
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,      // ডটে ক্লিক করলে স্লাইড হবে
+        },
+        grabCursor: true,         // মাউস নিলে হাতের আইকন আসবে
+    });
+</script>
 
 
 <div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
@@ -2644,21 +2867,7 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-<div class="modern-notice-container mx-3 mb-3">
-    <div class="notice-wrapper shadow-sm" style="display: flex; align-items: center; background: white; border-radius: 10px; overflow: hidden; border: 1px solid rgba(30, 58, 138, 0.1); height: 35px;">
-        
-        <div class="notice-label" style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); color: white; padding: 0 12px; height: 100%; display: flex; align-items: center; gap: 6px; font-weight: 800; z-index: 2; position: relative;">
-            <i class="fas fa-bullhorn" style="font-size: 12px; animation: bounce 2s infinite;"></i>
-            <span style="letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px;">Notice</span>
-        </div>
-        
-        <div class="notice-content" style="flex: 1; overflow: hidden; background: #fff; display: flex; align-items: center;">
-            <div id="site-note" style="white-space: nowrap; display: inline-block; padding-left: 100%; font-weight: 600; color: #2d3436; font-size: 13px; animation: scroll-left 12s linear infinite;">
-                <span style="color: #1e3a8a;">FREE TIME <span style="color: #2ecc71;">EARN</span></span>-এ স্বাগতম! অবসর সময়কে কাজে লাগিয়ে স্মার্টলি উপার্জন করুন। আমাদের নতুন আপডেটগুলো নিয়মিত ফলো করুন।
-            </div>
-        </div>
-    </div>
-</div>
+
 <div id="activation-card" style="display: none; margin: 12px 16px;">
     <div style="background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%); padding: 12px 16px; border-radius: 16px; color: white; box-shadow: 0 6px 18px rgba(255, 71, 87, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
         
@@ -3014,68 +3223,84 @@ div[onclick="toggleBloodModal()"]:active {
 <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <div id="right-sidebar" class="side-drawer">
-    <div class="drawer-content" style="background: #ffffff; height: 100vh;">
+    <div class="drawer-content" style="background: #fdfeff; height: 100vh; width: 280px; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; overflow: hidden;">
         
-        <div class="drawer-header" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 35px 20px; border-bottom-right-radius: 40px; box-shadow: 0 5px 20px rgba(30, 58, 138, 0.2);">
-            
-            <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" class="drawer-img shadow" style="width: 85px; height: 85px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.4); object-fit: cover; margin: 0 auto; display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
-
-            <h5 id="user-name" class="fw-bold mt-3 mb-0" style="text-align: center; color: white; letter-spacing: 0.8px; font-size: 19px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                Abu Sufian
-            </h5>
-
-            <div id="status-card-container" style="margin-top: 10px; display: flex; justify-content: center;">
-                <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                    <i class="fas fa-crown" style="font-size: 11px; color: #ffd700; filter: drop-shadow(0 0 3px rgba(255,215,0,0.5));"></i> 
-                    <span id="user-rank" style="font-size: 10px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.5px;">Premium Member</span>
+        <div class="drawer-header" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 30px 20px 25px; border-bottom-right-radius: 35px; position: relative; z-index: 10; flex-shrink: 0;">
+            <div style="text-align: center; position: relative; z-index: 2;">
+                <div style="position: relative; display: inline-block;">
+                    <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" 
+                         style="width: 75px; height: 75px; border-radius: 20px; border: 3px solid rgba(255,255,255,0.4); object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <div style="position: absolute; bottom: -5px; right: -5px; background: #2ecc71; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #1e3a8a;"></div>
+                </div>
+                <h5 id="user-name" style="font-weight: 700; color: white; margin: 12px 0 5px; font-size: 18px; letter-spacing: 0.5px;">Abu Sufian</h5>
+                <div style="display: flex; justify-content: center;">
+                    <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 5px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.25); display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-user" style="font-size: 10px; color: #fff;"></i> 
+                        <span id="user-rank" style="font-size: 10px; font-weight: 600; color: white; text-transform: uppercase; letter-spacing: 0.5px;">General Member</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="ref-card" style="margin-top: 25px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(5px); padding: 12px 18px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between; transition: 0.3s;">
-                <span style="color: rgba(255, 255, 255, 0.8); font-size: 11px; font-weight: 600;">Refer Code:</span>
-                <b id="user-ref" style="color: white; font-size: 15px; letter-spacing: 1.5px; font-family: 'Poppins', sans-serif;">AS786</b>
-                <i class="far fa-copy" style="color: white; cursor: pointer; font-size: 15px; padding: 5px; opacity: 0.8;" onclick="copyRef()"></i>
+            <div class="ref-card-modern" style="margin-top: 20px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-gift" style="color: #ffd700; font-size: 14px;"></i>
+                    </div>
+                    <div>
+                        <p style="margin: 0; font-size: 9px; color: rgba(255,255,255,0.6); font-weight: 500;">REFER CODE</p>
+                        <b id="user-ref" style="color: white; font-size: 14px; letter-spacing: 1px;">AS786</b>
+                    </div>
+                </div>
+                <i class="far fa-copy" onclick="copyRef()" style="color: white; cursor: pointer; background: rgba(255,255,255,0.1); padding: 8px; border-radius: 8px;"></i>
             </div>
         </div>
-        
-        <div class="drawer-menu mt-4">
-            <button class="d-menu-btn" onclick="openPage('home'); toggleSidebar()"><i class="fas fa-home"></i> Home</button>
-<button class="d-menu-btn" onclick="handleWalletClick()">
-    <i class="fas fa-wallet"></i> Wallet
+
+        <div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px;">
+            <p class="menu-label">Main Menu</p>
+            <div class="menu-group">
+                <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()">
+                    <span class="icon-box" style="background: #eef2ff; color: #4f46e5;"><i class="fas fa-home"></i></span> Home
+                </button>
+                <button class="custom-menu-btn" onclick="handleWalletClick()">
+                    <span class="icon-box" style="background: #fffbeb; color: #d97706;"><i class="fas fa-wallet"></i></span> Wallet
+                </button>
+                <button class="custom-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
+                    <span class="icon-box" style="background: #f0fdf4; color: #16a34a;"><i class="fas fa-money-check-alt"></i></span> Withdraw
+                </button>
+                <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()">
+                    <span class="icon-box" style="background: #f8fafc; color: #64748b;"><i class="fas fa-cog"></i></span> Settings
+                </button>
+            </div>
+
+            <hr class="menu-divider">
+            <p class="menu-label">Support & Legal</p>
+            <div class="menu-group">
+                <button class="custom-menu-btn" onclick="window.open('https://facebook.com/...')">
+                    <span class="icon-box" style="background: #eff6ff; color: #1d4ed8;"><i class="fab fa-facebook"></i></span> Facebook Page
+                </button>
+                <button class="custom-menu-btn" onclick="window.open('https://youtube.com/your-channel-link')">
+    <span class="icon-box" style="background: #fef2f2; color: #dc2626;"><i class="fab fa-youtube"></i></span> YouTube Channel
 </button>
-           <button class="d-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
-    <i class="fas fa-money-check-alt"></i> Withdraw 
-</button>
-            
-            <hr class="my-3 opacity-10">
-            <p class="text-muted x-small fw-bold px-3 mb-2">SOCIAL MEDIA</p>
-            
-            <button class="d-menu-btn" onclick="window.open('https://www.facebook.com/share/1B9ZsLLsLV/')"><i class="fab fa-facebook text-primary"></i> Facebook Page</button>
-              <button class="d-menu-btn" onclick="window.open('YOUR_YT_URL')"><i class="fab fa-youtube text-danger"></i> YouTube Video</button>
+                <button class="custom-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
+                    <span class="icon-box" style="background: #f5f3ff; color: #7c3aed;"><i class="fas fa-user-shield"></i></span> Owner Profile
+                </button>
+                <button class="custom-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
+                    <span class="icon-box" style="background: #ecfdf5; color: #059669;"><i class="fas fa-shield-alt"></i></span> Privacy Policy
+                </button>
+                <button class="custom-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
+                    <span class="icon-box" style="background: #fff7ed; color: #ea580c;"><i class="fas fa-info-circle"></i></span> About Us
+                </button>
+            </div>
+        </div>
 
-
-
-
-
-<hr class="my-3 opacity-10">
-
-<button class="d-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
-    <i class="fas fa-user-shield"></i>Owner Profile
-</button>
-
-<button class="d-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
-    <i class="fas fa-shield-alt"></i> Privacy Policy
-</button>
-
-<button class="d-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
-    <i class="fas fa-info-circle"></i>About us
-</button>
-
-            <button class="d-menu-btn text-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
+        <div style="padding: 15px; background: #fdfeff; border-top: 1px solid #f1f5f9; flex-shrink: 0;">
+            <button class="custom-menu-btn logout-btn" onclick="logout()" style="background: #fff1f2; margin-bottom: 0;">
+                <span class="icon-box" style="background: #ffe4e6; color: #e11d48;"><i class="fas fa-sign-out-alt"></i></span> 
+                <span style="color: #e11d48;">Log Out</span>
+            </button>
         </div>
     </div>
 </div>
-
 <div id="p-admin-profile" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
     
@@ -3217,98 +3442,185 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
-
-
-<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 50px;">
+<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('withdraw')"></i>
-            
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
-                Withdraw
-            </h4>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div onclick="closePage('withdraw')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            </div>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">Withdraw Funds</h4>
         </div>
-
-        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px;">
-            PAYOUT
-        </div>
-</div>
-    <div class="container px-3 mt-3">
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
-    
-    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-
-    <div class="d-flex justify-content-between align-items-center" style="position: relative; z-index: 2;">
-        <div>
-            <span style="font-size: 14px; opacity: 0.9; font-weight: 600; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
-                <i class="fas fa-coins" style="margin-right: 5px;"></i> CURRENT BALANCE
-            </span>
-            
-            <h2 style="margin: 0 !important; font-weight: 800 !important; font-size: 3.2rem !important; letter-spacing: -2px !important; line-height: 1 !important; display: flex; align-items: baseline; gap: 5px;">
-                <span style="font-size: 3
-                55px; font-weight: 600;">৳</span>
-                <span id="withdraw-bal">0.00</span>
-            </h2>
-        </div>
-        
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <i class="fas fa-wallet" style="color: white;"></i>
+        <div style="background: rgba(46, 204, 113, 0.2); padding: 6px 12px; border-radius: 20px; color: #2ecc71; font-size: 10px; font-weight: 800; border: 1px solid rgba(46, 204, 113, 0.3);">
+            SECURE PAYOUT
         </div>
     </div>
-</div>
 
-        <p class="small fw-bold text-muted mb-3"><i class="fas fa-check-circle me-1 text-primary"></i>Payment Method</p>
-        
-        <div class="row g-2 mb-4">
+    <div class="container px-3 mt-4">
+        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+            
+            <span style="font-size: 12px; opacity: 0.8; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Available Balance</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
+                <h2 style="margin: 0; font-weight: 800; font-size: 38px; letter-spacing: -1px; color: white;">
+                    ৳ <span id="withdraw-bal">0.00</span>
+                </h2>
+            </div>
+            
+            <div style="margin-top: 15px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 12px; width: fit-content;">
+                <i class="fas fa-shield-alt" style="font-size: 12px; color: #2ecc71;"></i>
+                <span style="font-size: 11px; font-weight: 500;">Verified Account</span>
+            </div>
+        </div>
+
+        <p style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; padding-left: 5px;">Select Payout Method</p>
+        <div class="row g-3 mb-4">
             <div class="col-4">
-        <div class="w-method-card active-w py-3 shadow-sm border text-center rounded-3" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')" style="background: #fff; cursor: pointer; border: 2px solid #3b82f6 !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">bKash</div>
+                <div class="w-method-card" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')">
+                    <i class="fas fa-university" style="font-size: 24px; margin-bottom: 8px;"></i>
+                    <span>bKash</span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="w-method-card" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')">
+                    <i class="fas fa-wallet" style="font-size: 24px; margin-bottom: 8px;"></i>
+                    <span>Nagad</span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="w-method-card" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')">
+                    <i class="fas fa-credit-card" style="font-size: 24px; margin-bottom: 8px;"></i>
+                    <span>Rocket</span>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="col-4">
-        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Nagad</div>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <div class="w-method-card py-3 shadow-sm border text-center rounded-3" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')" style="background: #fff; cursor: pointer; border: 1px solid #eee !important;">
-            <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
-            <div style="font-size: 11px; font-weight: 800; color: #2d3436;">Rocket</div>
-        </div>
-    </div>
-</div>
-        <div style="background: white; padding: 20px; border-radius: 20px; border: 1px solid #f1f3f5;">
-            <div class="mb-3">
-                <label class="small fw-bold text-muted mb-2">Personal Number</label>
-                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
+        <div style="background: white; padding: 25px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eef2f6;">
+            <div class="mb-4">
+                <label style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Account Number</label>
+                <div style="position: relative;">
+                    <i class="fas fa-phone-alt" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 14px;"></i>
+                    <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.background='white'">
+                </div>
             </div>
 
             <div class="mb-4">
-                <label class="small fw-bold text-muted mb-2">Amount </label>
-                <input type="number" id="w-amt" placeholder="যেমন: ৫০০" style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid #eee; background: #f8f9fa; font-weight: 700; outline: none;">
+                <label style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Withdraw Amount</label>
+                <div style="position: relative;">
+                    <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-weight: 800; font-size: 16px;">৳</span>
+                    <input type="number" id="w-amt" placeholder="Enter amount" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.background='white'">
+                </div>
             </div>
 
-            <button onclick="withdrawReq()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 16px; border-radius: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
-                <span>Withdraw</span>
+            <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: white; border: none; padding: 18px; border-radius: 16px; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); transition: 0.3s;">
+                <i class="fas fa-paper-plane"></i>
+                <span>Submit Request</span>
             </button>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
-            <h6 class="fw-bold m-0">Withdraw History</h6>
-            <span style="font-size: 11px; color: #3b82f6; font-weight: 700;">All</span>
+        <div style="margin-top: 35px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px;">
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Recent Transactions</h6>
+            <span style="font-size: 12px; color: #3b82f6; font-weight: 700; cursor: pointer;">View All</span>
         </div>
         
-        <div id="withdraw-hist-list" style="min-height: 100px;">
+        <div id="withdraw-hist-list" style="padding-bottom: 30px;">
+            <div style="text-align: center; padding: 30px; opacity: 0.5;">
+                <i class="fas fa-history" style="font-size: 30px; margin-bottom: 10px;"></i>
+                <p style="font-size: 12px;">No withdrawal history found</p>
             </div>
+        </div>
     </div>
 </div>
 
+<script>
+    // মেথড সিলেক্ট করার ফাংশন (যাতে একটি সিলেক্ট করলে বাকিগুলো রিসেট হয়ে যায়)
+    function selectWithdrawMethod(method) {
+        // সব কার্ড থেকে active-method ক্লাস রিমুভ করা
+        document.querySelectorAll('.w-method-card').forEach(card => {
+            card.classList.remove('active-method');
+        });
+        
+        // বর্তমান ক্লিক করা কার্ডে ক্লাস অ্যাড করা
+        const selectedCard = document.getElementById('w-' + method);
+        if(selectedCard) {
+            selectedCard.classList.add('active-method');
+        }
+        
+        // আপনার মেথড হ্যান্ডলার এখানে দিতে পারেন
+        console.log("Selected Method: " + method);
+    }
+</script>
+
+<style>
+    .w-method-card {
+        background: white;
+        padding: 15px 10px;
+        text-align: center;
+        border-radius: 18px;
+        border: 1.5px solid #f1f5f9;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #64748b; /* ডিফল্ট আইকন কালার */
+    }
+
+    .w-method-card span {
+        font-size: 11px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    /* শুধুমাত্র সিলেক্ট করা মেথড কালার হবে */
+    .active-method {
+        border-color: #3b82f6 !important;
+        background: #eff6ff !important;
+        color: #3b82f6 !important; /* আইকন এবং টেক্সট কালার নীল হবে */
+        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.15);
+        transform: translateY(-3px);
+    }
+</style>
+
+
+<div id="notification-page" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 1000; font-family: 'Poppins', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6, #1e3a8a); padding: 20px 15px; display: flex; align-items: center; gap: 15px; color: white;">
+        <i class="fas fa-arrow-left" onclick="closeNotifications()" style="font-size: 18px; cursor: pointer;"></i>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Notifications</h3>
+    </div>
+
+    <div style="padding: 15px; overflow-y: auto; height: calc(100vh - 70px);">
+        
+        <div class="notif-card" onclick="showNotifDetail('নতুন আপডেট!', 'আমাদের অ্যাপে নতুন কিছু ফিচার যোগ করা হয়েছে। এখনই চেক করুন এবং বেশি আয় করুন।')">
+            <div class="notif-icon"><i class="fas fa-bullhorn"></i></div>
+            <div style="flex: 1;">
+                <h4 style="margin: 0 0 5px; font-size: 14px; color: #1e293b;">নতুন আপডেট এসেছে!</h4>
+                <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.4;">আমাদের অ্যাপে নতুন কিছু ফিচার যোগ করা হয়েছে...</p>
+                <small style="color: #94a3b8; font-size: 10px;">২ মিনিট আগে</small>
+            </div>
+        </div>
+
+        <div class="notif-card" onclick="showNotifDetail('পেমেন্ট সাকসেস', 'আপনার উইথড্র রিকোয়েস্টটি সফলভাবে সম্পন্ন হয়েছে। আপনার ওয়ালেট চেক করুন।')">
+            <div class="notif-icon" style="background: #dcfce7; color: #16a34a;"><i class="fas fa-check-circle"></i></div>
+            <div style="flex: 1;">
+                <h4 style="margin: 0 0 5px; font-size: 14px; color: #1e293b;">পেমেন্ট সাকসেস</h4>
+                <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.4;">আপনার উইথড্র রিকোয়েস্টটি সফলভাবে সম্পন্ন হয়েছে...</p>
+                <small style="color: #94a3b8; font-size: 10px;">১ ঘণ্টা আগে</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="notif-modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1100; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; width: 100%; max-width: 350px; border-radius: 20px; padding: 25px; position: relative; animation: slideUp 0.3s ease;">
+        <h3 id="modal-title" style="margin-top: 0; color: #1e3a8a; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Title</h3>
+        <p id="modal-body" style="color: #475569; font-size: 14px; line-height: 1.6; margin: 15px 0;"></p>
+        <button onclick="closeNotifModal()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer;">বুঝতে পেরেছি</button>
+    </div>
+</div>
     
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -4000,156 +4312,251 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-
-<div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
+<div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div onclick="closePage('wallet')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            </div>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">My Wallet</h4>
+        </div>
+        <div style="background: rgba(46, 204, 113, 0.2); padding: 6px 12px; border-radius: 20px; color: #2ecc71; font-size: 10px; font-weight: 800; border: 1px solid rgba(46, 204, 113, 0.3);">
+            <i class="fas fa-shield-alt" style="margin-right: 3px;"></i> SECURED
+        </div>
+    </div>
+
+    <div class="container px-3 mt-4">
         
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('wallet')"></i>
+        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 30px 25px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -20px; left: -20px; width: 90px; height: 90px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+
+            <div style="position: relative; z-index: 2;">
+                <p style="margin: 0; font-size: 12px; font-weight: 500; opacity: 0.8; text-transform: uppercase; letter-spacing: 1.5px;">
+                   Total Available Balance
+                </p>
+                
+                <h1 style="font-weight: 800; margin: 15px 0; font-size: 42px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1px;">
+                    <span style="font-weight: 600;">৳</span>
+                    <span id="u-bal">0.00</span>
+                </h1>
+                
+                <div style="font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 50px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">
+                    <i class="fas fa-star" style="color: #ffd700;"></i> FREE TIME EARN
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3 px-1">
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income Statement</h6>
+            <div style="width: 32px; height: 32px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; color: #64748b; cursor: pointer;">
+                <i class="fas fa-sliders-h" style="font-size: 14px;"></i>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 40px;">
             
-            <h4 style="margin: 0; margin-left: 20px; font-weight: 800; letter-spacing: -0.5px; color: white; line-height: 1;">
-                Wallet
-            </h4>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 8px; color: white; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;">
-            <i class="fas fa-shield-alt" style="font-size: 10px;"></i> SECURED
-        </div>
-    </div>
-
-
-    <div class="container px-3 mt-3">
-
-        
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 30px 25px; border-radius: 25px; color: white; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);">
-    
-    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-    <div style="position: absolute; bottom: -20px; left: -20px; width: 80px; height: 80px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
-
-    <div style="position: relative; z-index: 2; text-align: left;">
-        <p style="margin: 0; font-size: 13px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;">
-           <i class="fas fa-wallet" style="margin-right: 5px;"></i> Current Balance
-        </p>
-        
-        <h1 style="font-weight: 900; margin: 20px 0; font-size: 2.8rem; display: flex; align-items: baseline; gap: 5px; color: white;">
-            <span style="font-size: 48px; font-weight: 600;">৳</span>
-            <span id="u-bal">0.00</span>
-        </h1>
-        
-        <div style="font-size: 11px; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);">
-           FREE TIME EARN
-        </div>
-    </div>
-</div>
-
-        <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
-            <h6 class="fw-bold m-0" style="color: #2d3436; font-size: 16px;">Income Statement</h6>
-            <i class="fas fa-filter text-muted" style="font-size: 14px;"></i>
-        </div>
-
-<div class="report-list-container">
-<div onclick="openIncomeDetail('today', 'Today Income')" class="report-item">
- <div class="report-icon bg-blue"><i class="fas fa-calendar-day"></i></div>
- <div class="report-info">
- <span>Today Income</span>
- <small>Daily Earnings</small>
- </div>
- <i class="fas fa-chevron-right arrow"></i>
- </div>
-
-            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="report-item">
-                <div class="report-icon bg-info"><i class="fas fa-history"></i></div>
-                <div class="report-info">
-                    <span>Yesterday Income</span>
-                    <small>Yesterday's Stats</small>
+            <div onclick="openIncomeDetail('today', 'Today Income')" class="wallet-report-card">
+                <div class="report-icon-box" style="background: #eff6ff; color: #3b82f6;">
+                    <i class="fas fa-calendar-day"></i>
                 </div>
-                <i class="fas fa-chevron-right arrow"></i>
+                <div style="flex: 1;">
+                    <p class="report-title">Today Income</p>
+                    <p class="report-subtitle">Check your daily earnings</p>
+                </div>
+                <i class="fas fa-chevron-right report-arrow"></i>
             </div>
 
-            <div onclick="openIncomeDetail('7days', 'Last 7 days Income')" class="report-item">
-                <div class="report-icon bg-green"><i class="fas fa-calendar-week"></i></div>
-                <div class="report-info">
-                    <span>Last 7 days Income</span>
-                    <small>Weekly Reports</small>
+            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="wallet-report-card">
+                <div class="report-icon-box" style="background: #f0fdfa; color: #14b8a6;">
+                    <i class="fas fa-history"></i>
                 </div>
-                <i class="fas fa-chevron-right arrow"></i>
+                <div style="flex: 1;">
+                    <p class="report-title">Yesterday Income</p>
+                    <p class="report-subtitle">Earnings from the previous day</p>
+                </div>
+                <i class="fas fa-chevron-right report-arrow"></i>
             </div>
 
-            <div onclick="openIncomeDetail('30days', 'Last 30 days Income')" class="report-item">
-                <div class="report-icon bg-orange"><i class="fas fa-calendar-alt"></i></div>
-                <div class="report-info">
-                    <span>Last 30 days Income</span>
-                    <small>Monthly Reports</small>
+            <div onclick="openIncomeDetail('7days', 'Last 7 days Income')" class="wallet-report-card">
+                <div class="report-icon-box" style="background: #f0f9ff; color: #0ea5e9;">
+                    <i class="fas fa-calendar-week"></i>
                 </div>
-                <i class="fas fa-chevron-right arrow"></i>
+                <div style="flex: 1;">
+                    <p class="report-title">Weekly Income</p>
+                    <p class="report-subtitle">Last 7 days summary</p>
+                </div>
+                <i class="fas fa-chevron-right report-arrow"></i>
             </div>
 
-            <div onclick="openIncomeDetail('total', 'Total Income')" class="report-item total-row">
-                <div class="report-icon bg-red"><i class="fas fa-chart-line"></i></div>
-                <div class="report-info">
-                    <span class="fw-bold">Total Income</span>
-                    <small>Total Lifetime Earnings</small>
+            <div onclick="openIncomeDetail('30days', 'Last 30 days Income')" class="wallet-report-card">
+                <div class="report-icon-box" style="background: #fff7ed; color: #f59e0b;">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <i class="fas fa-chevron-right arrow"></i>
+                <div style="flex: 1;">
+                    <p class="report-title">Monthly Income</p>
+                    <p class="report-subtitle">Last 30 days total report</p>
+                </div>
+                <i class="fas fa-chevron-right report-arrow"></i>
             </div>
+
+            <div onclick="openIncomeDetail('total', 'Total Income')" class="wallet-report-card" style="background: #f8fafc; border: 1.5px solid #e2e8f0;">
+                <div class="report-icon-box" style="background: #fef2f2; color: #ef4444;">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div style="flex: 1;">
+                    <p class="report-title" style="font-weight: 800; color: #1e293b;">Lifetime Total Income</p>
+                    <p class="report-subtitle">Your overall earnings history</p>
+                </div>
+                <div style="text-align: right; margin-right: 10px;">
+                    <i class="fas fa-crown" style="color: #fbbf24; font-size: 14px;"></i>
+                </div>
+                <i class="fas fa-chevron-right report-arrow"></i>
+            </div>
+
         </div>
-
     </div>
 </div>
 
-<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1600; overflow-y: auto;">
+<style>
+    /* ওয়ালেট কার্ড স্টাইল */
+    .wallet-report-card {
+        background: white;
+        padding: 16px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #f1f5f9;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .wallet-report-card:hover {
+        transform: translateX(5px);
+        background: #f8fafc;
+        border-color: #3b82f6;
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.08);
+    }
+
+    .report-icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+
+    .report-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: #334155;
+    }
+
+    .report-subtitle {
+        margin: 0;
+        font-size: 11px;
+        color: #94a3b8;
+        font-weight: 500;
+    }
+
+    .report-arrow {
+        font-size: 14px;
+        color: #cbd5e1;
+        transition: 0.3s;
+    }
+
+    .wallet-report-card:hover .report-arrow {
+        color: #3b82f6;
+        transform: translateX(3px);
+    }
+</style>
+
+<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closeIncomeSub()"></i>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div onclick="closeIncomeSub()" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            </div>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">Income Details</h4>
+        </div>
+        <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-chart-bar" style="color: white; font-size: 16px;"></i>
+        </div>
+    </div>
+
+    <div class="container px-3 mt-4">
+        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 25px; border-radius: 28px; color: white; margin-bottom: 30px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
             
-            <h4 style="margin: 0; margin-left: 15px; font-weight: 800; letter-spacing: 0.5px; color: white; line-height: 1;">
-                FREE TIME EARN 
-            </h4>
-        </div>
-
-        <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
-            <i class="fas fa-tasks" style="color: white; font-size: 16px;"></i>
-        </div>
-    </div>
-
-
-
-    <div class="container mt-3">
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 25px; border-radius: 20px; position: relative; color: white; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
-    
-    <div style="position: absolute; right: -20px; top: -20px; width: 100px; height: 100px; background: rgba(255,255,255,0.15); border-radius: 50%;"></div>
-    
-    <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">
-        <i class="fas fa-chart-pie" style="margin-right: 5px;"></i> উপার্জন রিপোর্ট
-    </h6>
-    
-    <div class="d-flex align-items-center justify-content-between">
-        <div>
-            <h2 style="margin: 0; font-weight: 900; font-size: 2.2rem; display: flex; align-items: baseline; gap: 5px;">
-                <span style="font-size: 40px; font-weight: 600;">৳</span>
-                <span id="income-amt-val">0.00</span>
-            </h2>
-        </div>
-        
-        <div style="background: rgba(255,255,255,0.2); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 12px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);">
-            <i class="fas fa-wallet" style="font-size: 20px; color: white;"></i>
-        </div>
-    </div>
-    
-    <div style="margin-top: 20px; font-size: 11px; font-weight: 600; display: flex; align-items: center; opacity: 1; background: rgba(255,255,255,0.15); padding: 6px 15px; border-radius: 50px; width: fit-content; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);">
-        <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> 
-        <span id="income-date-val" style="letter-spacing: 0.3px;">--</span>
-    </div>
-</div>
-
-        <h6 class="mt-4 mb-3" style="font-weight: 700; color: #2d3436; padding-left: 5px;">Income History</h6>
-        <div id="income-history-list" style="padding-bottom: 30px;">
+            <div style="position: absolute; right: -25px; top: -25px; width: 110px; height: 110px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            
+            <h6 id="income-card-title" style="font-weight: 600; opacity: 0.8; margin-bottom: 15px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-receipt"></i> উপার্জন রিপোর্ট
+            </h6>
+            
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <h2 style="margin: 0; font-weight: 800; font-size: 38px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1px;">
+                        <span style="font-weight: 600;">৳</span>
+                        <span id="income-amt-val">0.00</span>
+                    </h2>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <i class="fas fa-coins" style="font-size: 22px; color: white;"></i>
+                </div>
             </div>
+            
+            <div style="margin-top: 22px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; background: rgba(255,255,255,0.15); padding: 7px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">
+                <i class="far fa-calendar-check" style="margin-right: 8px; color: #93c5fd;"></i> 
+                <span id="income-date-val" style="letter-spacing: 0.5px;">-- -- ----</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding: 0 5px;">
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income History</h6>
+            <div style="width: 32px; height: 32px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; color: #3b82f6;">
+                <i class="fas fa-list-ul" style="font-size: 12px;"></i>
+            </div>
+        </div>
+
+        <div id="income-history-list" style="padding-bottom: 40px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="text-align: center; padding: 50px 20px; background: white; border-radius: 24px; border: 1px solid #eef2f6;">
+                <div style="width: 60px; height: 60px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: #cbd5e1;">
+                    <i class="fas fa-folder-open" style="font-size: 24px;"></i>
+                </div>
+                <p style="font-size: 13px; color: #94a3b8; font-weight: 500; margin: 0;">কোন হিস্ট্রি পাওয়া যায়নি</p>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    /* ডাইনামিক হিস্ট্রি আইটেম যদি আপনি JS দিয়ে বানান, তবে নিচের এই ক্লাসটি ব্যবহার করবেন */
+    .income-history-card {
+        background: white;
+        padding: 16px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #eef2f6;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        transition: 0.3s;
+    }
+
+    .income-history-card:active {
+        transform: scale(0.98);
+        background: #f8fafc;
+    }
+</style>
 <div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -5011,25 +5418,23 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 25px 20px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+            <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+        </div>
         
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <div style="margin-left: 15px;">
-                    <h5 style="margin: 0; font-weight: 700; letter-spacing: 0.5px; color: white;">Deposit</h5>
-                </div>
-            </div>
-
-            <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <i class="fas fa-wallet" style="font-size: 16px; color: white;"></i>
-            </div>
-      
-
+        <div>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px; letter-spacing: 0.5px;">Deposit</h4>
+            <div style="width: 20px; height: 3px; background: #2ecc71; border-radius: 10px; margin-top: 2px;"></div>
         </div>
     </div>
+
+    <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <i class="fas fa-plus-circle" style="color: white; font-size: 18px;"></i>
+    </div>
+</div>
 
        <div class="container px-3 mt-4">
         <div class="row g-2 mb-4">
@@ -5056,7 +5461,7 @@ div[onclick="toggleBloodModal()"]:active {
         <div class="instruction-card p-3 mb-4 shadow-sm">
             <p class="small mb-2 fw-bold text-muted">নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
             <div class="copy-box d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold mb-0" id="display-number">01XXXXXXXXX</h5>
+                <h5 class="fw-bold mb-0" id="display-number"></h5>
                 <button class="badge-copy" onclick="copyNumber()">COPY</button>
             </div>
         </div>
@@ -5091,6 +5496,8 @@ div[onclick="toggleBloodModal()"]:active {
             </div>
     </div>
 </div>
+
+
 
 <div id="p-more" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -5353,61 +5760,7 @@ div[onclick="toggleBloodModal()"]:active {
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-f'); renderAdminPayments();">
     <i class="fas fa-money-bill d-block mb-1 text-success"></i>পেমেন্ট
 </button>
-  <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-job-req'); renderJobRequests();">
-    <i class="fas fa-clipboard-check d-block mb-1 text-warning"></i>জব রিকুয়েষ্ট
-</button>
 
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-ads'); renderAdminAds();">
-    <i class="fas fa-ad d-block mb-1 text-info"></i>এডস এড
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-post-req'); renderPostRequests();">
-    <i class="fas fa-paper-plane d-block mb-1 text-primary"></i>পোস্ট রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-drive-add'); renderDriveOffers();">
-    <i class="fas fa-car d-block mb-1 text-success"></i>ড্রাইভ অ্যাড
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-drive-req'); renderDriveRequests();">
-    <i class="fas fa-gas-pump d-block mb-1 text-danger"></i>ড্রাইভ রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-reseller-req'); renderResellerRequests();">
-    <i class="fas fa-store d-block mb-1 text-dark"></i>রিসেলর রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-vendor-req'); renderVendorRequests();">
-    <i class="fas fa-truck-loading d-block mb-1 text-secondary"></i>ভেন্ডরশীপ রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-toptap-add'); renderTopTapAds();">
-    <i class="fas fa-bolt d-block mb-1 text-warning"></i>টপটপ অ্যাড
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-toptap-req'); renderTopTapRequests();">
-    <i class="fas fa-hand-pointer d-block mb-1 text-danger"></i>টপটপ রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-target-req'); renderTargetRequests();">
-    <i class="fas fa-bullseye d-block mb-1 text-success"></i>টার্গেট রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-leader-req'); renderLeaderRequests();">
-    <i class="fas fa-crown d-block mb-1 text-warning"></i>লিডারশীপ রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-digital-req'); renderDigitalRequests();">
-    <i class="fas fa-microchip d-block mb-1 text-info"></i>ডিজিটাল রিকুয়েষ্ট
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-blood'); renderBloodGroup();">
-    <i class="fas fa-tint d-block mb-1 text-danger"></i>রক্তের গ্রুপ
-</button>
-
-<button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-invest-req'); renderInvestRequests();">
-    <i class="fas fa-chart-line d-block mb-1 text-primary"></i>ইনভেস্টমেন্ট রিকুয়েষ্ট
-</button>
     <button class="btn btn-sm btn-white flex-fill shadow-sm py-2 bg-white" onclick="aTab('a-o')"><i class="fas fa-shopping-cart d-block mb-1 text-warning"></i>অর্ডার</button>
 
 </div>
@@ -8757,7 +9110,27 @@ function handleMoreOptionsClick() {
         openPage('p-more');
     }
 }
+// নোটিফিকেশন পেজ খোলা
+function openNotifications() {
+    document.getElementById('notification-page').style.display = 'block';
+}
 
+// নোটিফিকেশন পেজ বন্ধ করা
+function closeNotifications() {
+    document.getElementById('notification-page').style.display = 'none';
+}
+
+// পপআপে বিস্তারিত দেখানো
+function showNotifDetail(title, body) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-body').innerText = body;
+    document.getElementById('notif-modal').style.display = 'flex';
+}
+
+// পপআপ বন্ধ করা
+function closeNotifModal() {
+    document.getElementById('notif-modal').style.display = 'none';
+}
 </script>
 </body>
 </html>
