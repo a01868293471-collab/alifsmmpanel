@@ -1,10 +1,10 @@
 {
-  "short_name": "Free Time",
+  "short_name": "Free Time Earn",
   "name": "Free Time Earn",
   "icons": [
     {
       "src": "https://r2.erweima.ai/i/pYFp6Yx8T9at0fHskm7HHA.jpg",
-      "type": "image/png",
+      "type": "image/jpeg",
       "sizes": "512x512"
     }
   ],
