@@ -1,0 +1,16 @@
+{
+  "short_name": "Free Time",
+  "name": "Free Time Earn",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1e3a8a",
+  "display": "standalone",
+  "scope": "./",
+  "theme_color": "#3b82f6"
+}
