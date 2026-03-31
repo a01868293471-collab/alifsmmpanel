@@ -1,16 +1,17 @@
 {
-  "short_name": "Free Time",
+  "short_name": "Free Time Earn",
   "name": "Free Time Earn",
   "icons": [
     {
-      "src": "https://img.icons8.com/fluency/512/wallet-open.png",
+      "src": "https://img.icons8.com/fluency/512/f-key.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
-  "start_url": "./index.html",
-  "background_color": "#1e3a8a",
+  "start_url": "/index.html",
+  "background_color": "#3b82f6",
   "display": "standalone",
-  "scope": "./",
-  "theme_color": "#3b82f6"
+  "scope": "/",
+  "theme_color": "#2ecc71"
 }
