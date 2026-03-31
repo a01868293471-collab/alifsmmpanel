@@ -1,9 +1,9 @@
 {
-  "short_name": "Free Time Earn",
+  "short_name": "Free Time",
   "name": "Free Time Earn",
   "icons": [
     {
-      "src": "https://img.icons8.com/fluency/512/wallet-with-timer.png",
+      "src": "https://img.icons8.com/fluency/512/wallet-open.png",
       "type": "image/png",
       "sizes": "512x512"
     }
