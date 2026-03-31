@@ -2485,8 +2485,7 @@ div[onclick="toggleBloodModal()"]:active {
     </style>
 </head>
 <body>
-
-<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px; overflow: hidden; font-family: 'Poppins', sans-serif;">
+<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ff0000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px; overflow: hidden; font-family: 'Poppins', sans-serif;">
     
     <style>
         /* লোগো ভাসার অ্যানিমেশন */
@@ -2503,9 +2502,9 @@ div[onclick="toggleBloodModal()"]:active {
             100% { width: 100%; opacity: 1; }
         }
 
-        /* হালকা পালস এফেক্ট */
+        /* সাদা পালস এফেক্ট */
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
             70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
@@ -2513,85 +2512,85 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         
-        <div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.12); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(15px); border: 1.5px solid rgba(255,255,255,0.25); animation: floating 3s ease-in-out infinite, pulseGlow 2s infinite; margin-bottom: 30px;">
-            
-            <img src="YOUR_LOGO_URL" class="dynamic-logo site-logo-img" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/808/808476.png'" style="width: 110px; height: 110px; object-fit: cover; border-radius: 25px;">
-        </div>
+<div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.2); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px); border: 1.5px solid rgba(255,255,255,0.4); animation: floating 3s ease-in-out infinite; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    
+    <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" 
+         alt="Wallet Logo" 
+         style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)) sepia(1) saturate(5) hue-rotate(-15deg) brightness(1.1);">
+</div>
 
         <div style="text-align: center;">
             <h1 style="font-weight: 900; letter-spacing: 2px; font-size: 34px; margin: 0; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-                FREE TIME <span style="color: #2ecc71;">EARN</span>
+                FREE TIME <span style="color: #ffffff; opacity: 0.9;">EARN</span>
             </h1>
-            <p style="font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.8); letter-spacing: 4px; text-transform: uppercase; margin-top: 10px;">
+            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 5px; text-transform: uppercase; margin-top: 12px;">
                 DIGITAL BUSINESS PLATFORM 
             </p>
         </div>
 
-        <div style="width: 200px; height: 6px; background: rgba(255,255,255,0.15); margin-top: 50px; border-radius: 100px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffffff, #2ecc71); border-radius: 100px; animation: fillLoader 3.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards; box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);"></div>
+        <div style="width: 200px; height: 6px; background: rgba(255,255,255,0.2); margin-top: 50px; border-radius: 100px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="width: 0%; height: 100%; background: #ffffff; border-radius: 100px; animation: fillLoader 3.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards; box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);"></div>
         </div>
     </div>
 
-    <div style="text-align: center; opacity: 0.8;">
+    <div style="text-align: center; opacity: 0.9;">
         <p style="margin: 0; font-size: 10px; color: #ffffff; font-weight: 400; letter-spacing: 1px;">Powered by</p>
-        <p style="margin: 0; font-size: 14px; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
-            Abu Sufian <span style="color: #2ecc71;"></span>
+        <p style="margin: 0; font-size: 15px; color: #ffffff; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">
+            Abu Sufian
         </p>
-        <p style="margin-top: 8px; font-size: 10px; color: rgba(255,255,255,0.4);">Version 2.0.4</p>
+        <p style="margin-top: 8px; font-size: 10px; color: rgba(255,255,255,0.5);">Version 2.0.4</p>
     </div>
 </div>
 <div id="loader-overlay"><div class="spinner"></div></div>
 
-
 <div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh;">
     
-    <div style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 12px 15px; color: white; box-shadow: 0 4px 15px rgba(30, 58, 138, 0.15); border-radius: 0 0 20px 20px; position: sticky; top: 0; z-index: 100;">
+    <div style="background: #ff0000; padding: 12px 15px; color: white; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-radius: 0 0 20px 20px; position: sticky; top: 0; z-index: 100;">
         
         <div style="display: flex; align-items: center; justify-content: space-between; max-width: 500px; margin: 0 auto;">
             
-            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);">
-                <i class="far fa-clock" style="font-size: 0.9rem; opacity: 0.9;"></i>
+            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3);">
+                <i class="fas fa-wallet" style="font-size: 0.9rem; color: white;"></i>
             </div>
             
             <div style="text-align: center;">
                 <h1 style="font-weight: 800; margin: 0; line-height: 1; letter-spacing: 0.8px; font-size: 1.1rem; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
-                    FREE TIME <span style="color: #2ecc71; text-shadow: 0 1px 2px rgba(0,0,0,0.1); font-weight: 900;">EARN</span>
+                    FREE TIME <span style="color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); font-weight: 900;">EARN</span>
                 </h1>
-                <small style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase;">Official Platform</small>
+                <small style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.8); letter-spacing: 1.5px; text-transform: uppercase;">Official Platform</small>
             </div>
 
-            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
-                <i class="fas fa-history" style="font-size: 0.8rem; opacity: 0.9;"></i>
+            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3);">
+                <i class="fas fa-wallet" style="font-size: 0.9rem; color: white;"></i>
             </div>
             
         </div>
     </div>
-
 
 
     
     <div style="padding: 20px;">
         
 <div class="auth-card mx-auto mt-4" id="login-box" 
-     style="max-width: 360px; /* এখানে সাইজ ৪২০ থেকে কমিয়ে ৩৬০ করা হয়েছে */
-            background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 55%, #2ecc71 100%); 
+     style="max-width: 360px; 
+            background: #ff0000; 
             border-radius: 25px; 
-            padding: 30px 25px; /* প্যাডিং কমানো হয়েছে */
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.4); 
-            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 30px 25px; 
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); 
+            border: 1px solid rgba(255,255,255,0.2); 
             position: relative; 
             overflow: hidden;">
 
-    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
 
     <div class="text-center">
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.15); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px);">
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
             <i class="fas fa-user-lock" style="font-size: 24px; color: #fff;"></i>
         </div>
         
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Login Access</h3>
+        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.1);">Login Access</h3>
         
-        <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px);">
+        <div style="display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); border: 0.5px solid rgba(255,255,255,0.2);">
             <p style="margin: 0; font-size: 9px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px;">
                 <i class="fas fa-shield-alt me-1"></i> Secure Encryption
             </p>
@@ -2600,15 +2599,15 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div class="auth-container">
         <div style="position: relative; margin-bottom: 15px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-envelope"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-envelope"></i></span>
             <input type="email" id="l-email" placeholder="Email Address" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
         </div>
 
         <div style="position: relative; margin-bottom: 10px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-lock"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-lock"></i></span>
             <input type="password" id="l-pass" placeholder="Password" 
-                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
             <i class="fas fa-eye-slash" id="toggle-l-pass" 
                style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 14px;" 
                onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
@@ -2620,7 +2619,7 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
 
         <button class="btn-premium w-100" onclick="handleAuth('login')" 
-                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #1e3a8a; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
+                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
             Login Now
         </button>
 
@@ -2629,7 +2628,6 @@ div[onclick="toggleBloodModal()"]:active {
         </p>
     </div>
 </div>
-
 <style>
     /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট হবে */
     #login-box input:focus {
@@ -2643,25 +2641,25 @@ div[onclick="toggleBloodModal()"]:active {
 </style>
 
 <div class="auth-card d-none mx-auto mt-4" id="signup-box" 
-     style="max-width: 360px; /* উইডথ কমিয়ে ৩৬০ করা হয়েছে */
-            background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 55%, #2ecc71 100%); 
+     style="max-width: 360px; 
+            background: #ff0000; 
             border-radius: 25px; 
-            padding: 30px 25px; /* প্যাডিং কমানো হয়েছে */
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.4); 
-            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 30px 25px; 
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); 
+            border: 1px solid rgba(255,255,255,0.2); 
             position: relative; 
             overflow: hidden;">
 
-    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
 
     <div class="text-center">
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.15); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px);">
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
             <i class="fas fa-user-plus" style="font-size: 24px; color: #fff;"></i>
         </div>
         
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Create Account</h3>
+        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.1);">Create Account</h3>
         
-        <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); border: 0.5px solid rgba(255,255,255,0.2);">
             <p style="margin: 0; font-size: 9px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px;">
                 <i class="fas fa-rocket me-1"></i> Quick Start
             </p>
@@ -2670,34 +2668,34 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div class="auth-container">
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-user"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-user"></i></span>
             <input type="text" id="s-name" placeholder="Full Name" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
         </div>
 
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-envelope"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-envelope"></i></span>
             <input type="email" id="s-email" placeholder="Email Address" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
         </div>
 
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-handshake"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-handshake"></i></span>
             <input type="text" id="reg-refer" placeholder="Refer Code (Optional)" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
         </div>
 
         <div style="position: relative; margin-bottom: 20px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fas fa-lock"></i></span>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-lock"></i></span>
             <input type="password" id="s-pass" placeholder="Password (6+ Digits)" 
-                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
             <i class="fas fa-eye-slash" id="toggle-s-pass" 
                style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 14px;" 
                onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
         </div>
 
         <button class="btn-premium w-100" onclick="handleAuth('signup')" 
-                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #1e3a8a; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
+                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
             Register Now
         </button>
 
@@ -2723,24 +2721,23 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="user-app" class="d-none">
     <div id="p-home-main">
-<nav class="premium-header" style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 8px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0 0 15px 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);">
+<nav class="premium-header" style="background: #ff0000; padding: 8px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0 0 20px 20px; box-shadow: 0 5px 25px rgba(255, 0, 0, 0.2); border-bottom: 1.5px solid rgba(255, 255, 255, 0.2); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px);">
 
-<div class="header-icon-wrapper left-icon" onclick="openNotifications()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s; position: relative;">
-    <i class="fas fa-bell" style="color: white; font-size: 16px;"></i>
-    <span style="position: absolute; top: 8px; right: 8px; width: 6px; height: 6px; background: #ff4757; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4);"></span>
-</div>
+    <div class="header-icon-wrapper left-icon" onclick="openNotifications()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; position: relative;">
+        <i class="fas fa-bell" style="color: white; font-size: 16px;"></i>
+        <span style="position: absolute; top: 8px; right: 8px; width: 7px; height: 7px; background: #ffffff; border-radius: 50%; border: 1.5px solid #ff0000;"></span>
+    </div>
 
-<div class="brand-logo" style="text-align: center;">
-    <span style="font-weight: 900; color: white; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-        FREE TIME <span style="color: #2ecc71;">EARN</span>
-    </span>
-</div>
+    <div class="brand-logo" style="text-align: center;">
+        <span style="font-weight: 900; color: white; font-size: 1.15rem; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            FREE TIME <span style="color: #ffffff; font-weight: 900;">EARN</span>
+        </span>
+    </div>
 
-<div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s;">
-    <i class="fas fa-bars-staggered" style="color: white; font-size: 16px;"></i>
-</div>
+    <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3);">
+        <i class="fas fa-bars-staggered" style="color: white; font-size: 16px;"></i>
+    </div>
 </nav>
-
 <style>
     .header-icon-wrapper:active {
         transform: scale(0.9);
@@ -2753,7 +2750,7 @@ div[onclick="toggleBloodModal()"]:active {
 <style>
     .swiper {
         width: 100%;
-        height: 160px; /* আপনার প্রয়োজন অনুযায়ী কমাতে-বাড়াতে পারবেন */
+        height: 160px;
         padding-bottom: 20px !important;
     }
     
@@ -2762,15 +2759,15 @@ div[onclick="toggleBloodModal()"]:active {
         overflow: hidden;
         border-radius: 20px;
         height: 140px;
-        box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        margin: 0 15px; /* স্লাইডারের মার্জিন */
+        box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        margin: 0 15px;
     }
 
     .bg-text {
         position: absolute; 
         font-size: 5rem; 
-        color: rgba(255, 255, 255, 0.05); 
+        color: rgba(255, 255, 255, 0.07); 
         bottom: -15px; 
         right: -10px; 
         transform: rotate(-12deg); 
@@ -2792,9 +2789,14 @@ div[onclick="toggleBloodModal()"]:active {
         backdrop-filter: blur(1px);
     }
 
-    /* স্লাইডার ডট (Pagination) কালার */
+    /* স্লাইডার ডট কালার এখন সাদা */
     .swiper-pagination-bullet-active {
-        background: #3b82f6 !important;
+        background: #ffffff !important;
+        width: 20px !important;
+        border-radius: 5px !important;
+    }
+    .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.5);
     }
 </style>
 
@@ -2802,49 +2804,49 @@ div[onclick="toggleBloodModal()"]:active {
     <div class="swiper-wrapper">
         
         <div class="swiper-slide">
-            <div class="cover-section" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%);">
+            <div class="cover-section" style="background: #ff0000;">
                 <h1 class="bg-text">EARN</h1>
                 <div class="cover-content">
                     <h1 style="font-weight: 900; color: white; font-size: 1.5rem; margin: 0; text-transform: uppercase;">
-                        FREE TIME <span style="color: #2ecc71;">EARN</span>
+                        FREE TIME <span style="color: #ffffff; opacity: 0.8;">EARN</span>
                     </h1>
                     <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">বিজনেস প্লাটফর্মে</span> স্বাগতম
+                        বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">বিজনেস প্লাটফর্মে</span> স্বাগতম
                     </p>
                 </div>
             </div>
         </div>
 
         <div class="swiper-slide">
-            <div class="cover-section" style="background: linear-gradient(160deg, #8e44ad 0%, #2c3e50 100%);">
+            <div class="cover-section" style="background: #8b0000;">
                 <h1 class="bg-text">OFFER</h1>
                 <div class="cover-content">
                     <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
-                        প্রিমিয়াম <span style="color: #f1c40f;">মেম্বারশিপ</span>
+                        প্রিমিয়াম <span style="color: #ffffff; text-decoration: underline;">মেম্বারশিপ</span>
                     </h1>
                     <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        অল্প পুঁজিতে শুরু করুন নিজের <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">অনলাইন ক্যারিয়ার</span>
+                        অল্প পুঁজিতে শুরু করুন নিজের <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">অনলাইন ক্যারিয়ার</span>
                     </p>
                     <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
-                        <i class="fas fa-gift" style="color: #f1c40f;"></i>
-                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">আজই জয়েন করে লুফে নিন স্পেশাল বোনাস</span>
+                        <i class="fas fa-gift" style="color: #ffffff;"></i>
+                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">আজই জয়েন করে লুফে নিন স্পেশাল বোনাস</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="swiper-slide">
-            <div class="cover-section" style="background: linear-gradient(160deg, #e67e22 0%, #d35400 100%);">
+            <div class="cover-section" style="background: #660000;">
                 <h1 class="bg-text">TRUST</h1>
                 <div class="cover-content">
                     <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
-                        নির্ভরযোগ্য <span style="color: #fff; text-decoration: underline;">সাপোর্ট</span>
+                        নির্ভরযোগ্য <span style="color: #ffffff; border-bottom: 2px solid white;">সাপোর্ট</span>
                     </h1>
                     <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        যেকোনো সমস্যায় আমরা আছি আপনার <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px;">পাশে ২৪/৭</span>
+                        যেকোনো সমস্যায় আমরা আছি আপনার <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">পাশে ২৪/৭</span>
                     </p>
                     <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
-                        <i class="fas fa-headset" style="color: #fff;"></i>
+                        <i class="fas fa-headset" style="color: #ffffff;"></i>
                         <span style="font-size: 11px; color: rgba(255,255,255,0.9);">লাইভ চ্যাট এবং টেলিগ্রাম সাপোর্ট সুবিধা</span>
                     </div>
                 </div>
@@ -2859,16 +2861,16 @@ div[onclick="toggleBloodModal()"]:active {
 
 <script>
     var swiper = new Swiper(".mySwiper", {
-        loop: true,               // স্লাইড চলতেই থাকবে
+        loop: true,
         autoplay: {
-            delay: 3000,          // ৩ সেকেন্ড পর পর স্লাইড হবে
+            delay: 3000,
             disableOnInteraction: false,
         },
         pagination: {
             el: ".swiper-pagination",
-            clickable: true,      // ডটে ক্লিক করলে স্লাইড হবে
+            clickable: true,
         },
-        grabCursor: true,         // মাউস নিলে হাতের আইকন আসবে
+        grabCursor: true,
     });
 </script>
 
@@ -2946,38 +2948,38 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 <div class="container mt-2" style="padding: 0 16px; font-family: 'Poppins', sans-serif;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
-        <div style="flex: 1; height: 1px; background: linear-gradient(to left, #1e3a8a, transparent); opacity: 0.3;"></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+        <div style="flex: 1; height: 1.5px; background: #ff0000; opacity: 0.2; border-radius: 50px;"></div>
         
-        <div style="text-align: center; background: rgba(59, 130, 246, 0.03); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(30, 58, 138, 0.08);">
-            <h6 style="margin: 0; font-weight: 800; color: #1e3a8a; letter-spacing: 1px; font-size: 11px; text-transform: uppercase;">
-                Work & <span style="color: #2ecc71;">Services</span>
+        <div style="text-align: center; background: rgba(255, 0, 0, 0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(255, 0, 0, 0.15);">
+            <h6 style="margin: 0; font-weight: 900; color: #ff0000; letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;">
+                Work & <span style="color: #000000; opacity: 0.7;">Services</span>
             </h6>
         </div>
         
-        <div style="flex: 1; height: 1px; background: linear-gradient(to right, #1e3a8a, transparent); opacity: 0.3;"></div>
-  </div>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 10px; justify-items: center;">
-        
+        <div style="flex: 1; height: 1.5px; background: #ff0000; opacity: 0.2; border-radius: 50px;"></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 10px; justify-items: center;">
     
 
 
 <div onclick="handleMicroJobClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle').style.transform='scale(1)'">
     
     <div class="btn-circle" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-tasks" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-tasks" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Micro Job
     </small>
 </div>
@@ -2991,281 +2993,279 @@ div[onclick="toggleBloodModal()"]:active {
 </style>
 
 <div onclick="handleAdsIncomeClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-ads').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-ads').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-ads').style.transform='scale(1)'">
     
     <div class="btn-circle-ads" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-play-circle" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-play-circle" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Ads Income
     </small>
 </div>
-
 <div onclick="handleJobPostClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-post').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-post').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-post').style.transform='scale(1)'">
     
     <div class="btn-circle-post" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-file-signature" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-file-signature" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Job Post
     </small>
 </div>
+
 <div onclick="handleDriveOfferClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-drive').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-drive').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-drive').style.transform='scale(1)'">
     
     <div class="btn-circle-drive" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-bolt" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-bolt" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Drive Offer
     </small>
 </div>
 
 
 <div onclick="handleShopClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-shop').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-shop').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-shop').style.transform='scale(1)'">
     
     <div class="btn-circle-shop" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-shopping-bag" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-shopping-bag" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Reseller Shop
     </small>
 </div>
 
-
 <div onclick="handleVendorClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-vendor').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-vendor').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-vendor').style.transform='scale(1)'">
     
     <div class="btn-circle-vendor" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-user-tie" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-user-tie" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Vendorship
     </small>
 </div>
 
+
 <div onclick="handleTopupClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-topup').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-topup').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-topup').style.transform='scale(1)'">
     
     <div class="btn-circle-topup" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-gamepad" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-gamepad" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Topup
     </small>
 </div>
 <div onclick="handleTargetBonusClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-target').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-target').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-target').style.transform='scale(1)'">
     
     <div class="btn-circle-target" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-bullseye" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-bullseye" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Target Bonus
     </small>
 </div>
 <div onclick="handleLeaderClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-leader').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-leader').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-leader').style.transform='scale(1)'">
     
     <div class="btn-circle-leader" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-crown" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-crown" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Leadership
     </small>
 </div>
 
-
 <div onclick="handleDigitalServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-digital').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-digital').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-digital').style.transform='scale(1)'">
     
     <div class="btn-circle-digital" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-laptop-code" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-laptop-code" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Digital Service
     </small>
 </div>
-
 <div onclick="handleSocialServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-social').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-social').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-social').style.transform='scale(1)'">
     
     <div class="btn-circle-social" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-users" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-users" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Social Service
     </small>
 </div>
 <div onclick="handleBloodDonationClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-blood').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-blood').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-blood').style.transform='scale(1)'">
     
     <div class="btn-circle-blood" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Blood Donation
     </small>
 </div>
 
 
 <div onclick="handleTrainingClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-training').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-training').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-training').style.transform='scale(1)'">
     
     <div class="btn-circle-training" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-graduation-cap" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-graduation-cap" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Training Section
     </small>
 </div>
 
 
 <div onclick="handleInvestClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-invest').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-invest').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-invest').style.transform='scale(1)'">
     
     <div class="btn-circle-invest" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-chart-line" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-chart-line" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         Investment
     </small>
 </div>
 <div onclick="handleMoreOptionsClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-more').style.transform='scale(1.05)'" 
+     onmouseover="this.querySelector('.btn-circle-more').style.transform='scale(1.08)'" 
      onmouseout="this.querySelector('.btn-circle-more').style.transform='scale(1)'">
     
     <div class="btn-circle-more" style="width: 55px; height: 55px; border-radius: 50%; 
-                background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
-                box-shadow: 0 6px 15px rgba(30, 58, 138, 0.2); 
-                border: 1.5px solid rgba(255, 255, 255, 0.15); 
-                transition: 0.3s ease;">
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-plus" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-plus" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 800; color: #1e3a8a; display: block; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.9;">
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
         More Options
     </small>
 </div>
@@ -3275,36 +3275,36 @@ div[onclick="toggleBloodModal()"]:active {
 <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 
-<div id="right-sidebar" class="side-drawer">
+ <div id="right-sidebar" class="side-drawer">
     <div class="drawer-content" style="background: #fdfeff; height: 100vh; width: 280px; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; overflow: hidden;">
         
-        <div class="drawer-header" style="background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); padding: 30px 20px 25px; border-bottom-right-radius: 35px; position: relative; z-index: 10; flex-shrink: 0;">
+        <div class="drawer-header" style="background: #ff0000; padding: 30px 20px 25px; border-bottom-right-radius: 35px; position: relative; z-index: 10; flex-shrink: 0; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);">
             <div style="text-align: center; position: relative; z-index: 2;">
                 <div style="position: relative; display: inline-block;">
                     <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" 
-                         style="width: 75px; height: 75px; border-radius: 20px; border: 3px solid rgba(255,255,255,0.4); object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
-                    <div style="position: absolute; bottom: -5px; right: -5px; background: #2ecc71; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #1e3a8a;"></div>
+                         style="width: 75px; height: 75px; border-radius: 20px; border: 3px solid rgba(255,255,255,0.6); object-fit: cover; box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                    <div style="position: absolute; bottom: -5px; right: -5px; background: #2ecc71; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #ff0000;"></div>
                 </div>
-                <h5 id="user-name" style="font-weight: 700; color: white; margin: 12px 0 5px; font-size: 18px; letter-spacing: 0.5px;">Abu Sufian</h5>
+                <h5 id="user-name" style="font-weight: 800; color: white; margin: 12px 0 5px; font-size: 19px; letter-spacing: 0.5px; text-transform: uppercase;">Abu Sufian</h5>
                 <div style="display: flex; justify-content: center;">
-                    <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 5px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.25); display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-user" style="font-size: 10px; color: #fff;"></i> 
-                        <span id="user-rank" style="font-size: 10px; font-weight: 600; color: white; text-transform: uppercase; letter-spacing: 0.5px;">General Member</span>
+                    <div style="background: #ffffff; padding: 5px 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <i class="fas fa-user" style="font-size: 10px; color: #ff0000;"></i> 
+                        <span id="user-rank" style="font-size: 10px; font-weight: 700; color: #ff0000; text-transform: uppercase; letter-spacing: 1px;">General Member</span>
                     </div>
                 </div>
             </div>
 
-            <div class="ref-card-modern" style="margin-top: 20px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between;">
+            <div class="ref-card-modern" style="margin-top: 25px; background: rgba(0, 0, 0, 0.15); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <div style="background: rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-gift" style="color: #ffd700; font-size: 14px;"></i>
                     </div>
                     <div>
-                        <p style="margin: 0; font-size: 9px; color: rgba(255,255,255,0.6); font-weight: 500;">REFER CODE</p>
-                        <b id="user-ref" style="color: white; font-size: 14px; letter-spacing: 1px;">AS786</b>
+                        <p style="margin: 0; font-size: 9px; color: rgba(255,255,255,0.7); font-weight: 500; letter-spacing: 0.5px;">REFER CODE</p>
+                        <b id="user-ref" style="color: white; font-size: 15px; letter-spacing: 1.5px; font-weight: 800;">AS786</b>
                     </div>
                 </div>
-                <i class="far fa-copy" onclick="copyRef()" style="color: white; cursor: pointer; background: rgba(255,255,255,0.1); padding: 8px; border-radius: 8px;"></i>
+                <i class="far fa-copy" onclick="copyRef()" style="color: white; cursor: pointer; background: rgba(255,255,255,0.1); padding: 8px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"></i>
             </div>
         </div>
 
@@ -3360,14 +3360,16 @@ div[onclick="toggleBloodModal()"]:active {
 
     
 
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 15px;">Owner Profile</h5>
-
+<div style="background: #ff0000; padding: 20px 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    
+    <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.2);"
+         onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'"
+         onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+        <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
     </div>
-
+    
+    <h5 style="margin: 0; margin-left: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; font-size: 17px;">Owner Profile</h5>
+</div>
 
 
     <div style="margin: 20px; background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
@@ -3497,34 +3499,35 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 
-<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div style="display: flex; align-items: center; gap: 15px;">
             <div onclick="closePage('withdraw')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">Withdraw Funds</h4>
+            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">Withdraw Funds</h4>
         </div>
-        <div style="background: rgba(46, 204, 113, 0.2); padding: 6px 12px; border-radius: 20px; color: #2ecc71; font-size: 10px; font-weight: 800; border: 1px solid rgba(46, 204, 113, 0.3);">
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 20px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 0.8px;">
             SECURE PAYOUT
         </div>
     </div>
 
     <div class="container px-3 mt-4">
-        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+        <div style="background: #e60000; padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.1);">
+            <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -30px; left: -10px; width: 80px; height: 80px; background: rgba(255,255,255,0.04); border-radius: 50%;"></div>
             
-            <span style="font-size: 12px; opacity: 0.8; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Available Balance</span>
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
-                <h2 style="margin: 0; font-weight: 800; font-size: 38px; letter-spacing: -1px; color: white;">
+            <span style="font-size: 12px; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;">Available Balance</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+                <h2 style="margin: 0; font-weight: 900; font-size: 40px; letter-spacing: -1.5px; color: white;">
                     ৳ <span id="withdraw-bal">0.00</span>
                 </h2>
             </div>
             
-            <div style="margin-top: 15px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 12px; width: fit-content;">
-                <i class="fas fa-shield-alt" style="font-size: 12px; color: #2ecc71;"></i>
-                <span style="font-size: 11px; font-weight: 500;">Verified Account</span>
+            <div style="margin-top: 18px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 12px; width: fit-content; border: 1px solid rgba(255, 255, 255, 0.2);">
+                <i class="fas fa-shield-alt" style="font-size: 12px; color: #ffffff;"></i>
+                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Verified Account</span>
             </div>
         </div>
 
@@ -3641,9 +3644,9 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="notification-page" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 1000; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6, #1e3a8a); padding: 20px 15px; display: flex; align-items: center; gap: 15px; color: white;">
-        <i class="fas fa-arrow-left" onclick="closeNotifications()" style="font-size: 18px; cursor: pointer;"></i>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Notifications</h3>
+    <div style="background: #ff0000; padding: 20px 15px; display: flex; align-items: center; gap: 15px; color: white; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <i class="fas fa-arrow-left" onclick="closeNotifications()" style="font-size: 18px; cursor: pointer; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 10px; transition: 0.3s;"></i>
+        <h3 style="margin: 0; font-size: 19px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">Notifications</h3>
     </div>
 
     <div style="padding: 15px; overflow-y: auto; height: calc(100vh - 70px);">
@@ -4368,40 +4371,39 @@ div[onclick="toggleBloodModal()"]:active {
     </div>
 </div>
 <div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closePage('wallet')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
-            </div>
-            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">My Wallet</h4>
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <div onclick="closePage('wallet')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
         </div>
-        <div style="background: rgba(46, 204, 113, 0.2); padding: 6px 12px; border-radius: 20px; color: #2ecc71; font-size: 10px; font-weight: 800; border: 1px solid rgba(46, 204, 113, 0.3);">
-            <i class="fas fa-shield-alt" style="margin-right: 3px;"></i> SECURED
+        <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">My Wallet</h4>
+    </div>
+    <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 20px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 0.8px;">
+        <i class="fas fa-shield-alt" style="margin-right: 3px;"></i> SECURED
+    </div>
+</div>
+
+<div class="container px-3 mt-4">
+    <div style="background: #e60000; padding: 30px 25px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.15);">
+        <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -20px; left: -20px; width: 90px; height: 90px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+
+        <div style="position: relative; z-index: 2;">
+            <p style="margin: 0; font-size: 12px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 1.5px;">
+               Total Available Balance
+            </p>
+            
+            <h1 style="font-weight: 900; margin: 15px 0; font-size: 45px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1.5px;">
+                <span style="font-weight: 600;">৳</span>
+                <span id="u-bal">0.00</span>
+            </h1>
+            
+            <div style="font-size: 10px; font-weight: 800; background: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); letter-spacing: 0.5px;">
+                <i class="fas fa-star" style="color: #ffd700;"></i> FREE TIME EARN
+            </div>
         </div>
     </div>
 
-    <div class="container px-3 mt-4">
-        
-        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 30px 25px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
-            <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-            <div style="position: absolute; bottom: -20px; left: -20px; width: 90px; height: 90px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
-
-            <div style="position: relative; z-index: 2;">
-                <p style="margin: 0; font-size: 12px; font-weight: 500; opacity: 0.8; text-transform: uppercase; letter-spacing: 1.5px;">
-                   Total Available Balance
-                </p>
-                
-                <h1 style="font-weight: 800; margin: 15px 0; font-size: 42px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1px;">
-                    <span style="font-weight: 600;">৳</span>
-                    <span id="u-bal">0.00</span>
-                </h1>
-                
-                <div style="font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 50px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">
-                    <i class="fas fa-star" style="color: #ffd700;"></i> FREE TIME EARN
-                </div>
-            </div>
-        </div>
 
         <div class="d-flex align-items-center justify-content-between mt-5 mb-3 px-1">
             <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income Statement</h6>
@@ -4532,48 +4534,48 @@ div[onclick="toggleBloodModal()"]:active {
         transform: translateX(3px);
     }
 </style>
-
-<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div style="display: flex; align-items: center; gap: 15px;">
             <div onclick="closeIncomeSub()" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px;">Income Details</h4>
+            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">Income Details</h4>
         </div>
-        <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
             <i class="fas fa-chart-bar" style="color: white; font-size: 16px;"></i>
         </div>
     </div>
 
     <div class="container px-3 mt-4">
-        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 25px; border-radius: 28px; color: white; margin-bottom: 30px; box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15);">
+        <div style="background: #e60000; padding: 25px; border-radius: 28px; color: white; margin-bottom: 30px; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.15);">
             
             <div style="position: absolute; right: -25px; top: -25px; width: 110px; height: 110px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
             
-            <h6 id="income-card-title" style="font-weight: 600; opacity: 0.8; margin-bottom: 15px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 15px; font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-receipt"></i> উপার্জন রিপোর্ট
             </h6>
             
             <div style="display: flex; align-items: center; justify-content: space-between;">
                 <div>
-                    <h2 style="margin: 0; font-weight: 800; font-size: 38px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1px;">
+                    <h2 style="margin: 0; font-weight: 900; font-size: 40px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1.5px;">
                         <span style="font-weight: 600;">৳</span>
                         <span id="income-amt-val">0.00</span>
                     </h2>
                 </div>
                 
-                <div style="background: rgba(255,255,255,0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                <div style="background: rgba(255,255,255,0.25); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
                     <i class="fas fa-coins" style="font-size: 22px; color: white;"></i>
                 </div>
             </div>
             
-            <div style="margin-top: 22px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; background: rgba(255,255,255,0.15); padding: 7px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">
-                <i class="far fa-calendar-check" style="margin-right: 8px; color: #93c5fd;"></i> 
-                <span id="income-date-val" style="letter-spacing: 0.5px;">-- -- ----</span>
+            <div style="margin-top: 22px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(5px);">
+                <i class="far fa-calendar-check" style="margin-right: 8px; color: #ffffff;"></i> 
+                <span id="income-date-val" style="letter-spacing: 0.8px;">-- -- ----</span>
             </div>
         </div>
+
 
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding: 0 5px;">
             <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income History</h6>
@@ -5099,13 +5101,18 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-<div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 10;">
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; padding: 5px;" onclick="openPage('p-home')"></i>
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; text-transform: uppercase;">My Team</h5>
+    <div style="background: #ff0000; padding: 20px 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        
+        <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.2);"
+             onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'"
+             onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+            <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
+        </div>
+        
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; font-size: 18px;">My Team</h5>
     </div>
-
     <div style="margin: 20px; background: white; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
         <p style="margin: 0; color: #95a5a6; font-size: 12px; font-weight: 700; text-transform: uppercase;">Your Referral Code</p>
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
@@ -5472,24 +5479,25 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-<div style="background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-            <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
-        </div>
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         
-        <div>
-            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px; letter-spacing: 0.5px;">Deposit</h4>
-            <div style="width: 20px; height: 3px; background: #2ecc71; border-radius: 10px; margin-top: 2px;"></div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            </div>
+            
+            <div>
+                <h4 style="margin: 0; font-weight: 800; color: white; font-size: 19px; letter-spacing: 0.8px; text-transform: uppercase;">Deposit</h4>
+                <div style="width: 25px; height: 3px; background: #ffffff; border-radius: 10px; margin-top: 2px; opacity: 0.8;"></div>
+            </div>
+        </div>
+
+        <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
+            <i class="fas fa-plus-circle" style="color: white; font-size: 18px;"></i>
         </div>
     </div>
-
-    <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
-        <i class="fas fa-plus-circle" style="color: white; font-size: 18px;"></i>
-    </div>
-</div>
 
        <div class="container px-3 mt-4">
         <div class="row g-2 mb-4">
@@ -5632,17 +5640,17 @@ div[onclick="toggleBloodModal()"]:active {
         <div id="order-hist-list"></div>
     </div>
 </div>
-
-<div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto;">
+<div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #FF512F 0%, #DD2476 100%); 
+    <div style="background: #ff0000; 
                 padding: 18px 15px; 
                 color: white; 
                 position: sticky; 
                 top: 0; 
                 z-index: 101; 
-                box-shadow: 0 4px 20px rgba(221, 36, 118, 0.3); 
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 4px 25px rgba(255, 0, 0, 0.2); 
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
                 display: flex; 
                 align-items: center; 
                 justify-content: space-between;">
@@ -5655,24 +5663,23 @@ div[onclick="toggleBloodModal()"]:active {
                         transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.2);"
                  onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'"
                  onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
-                <i class="fas fa-chevron-left" style="font-size: 18px;"></i>
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
             
             <div>
-                <h5 style="margin: 0; font-size: 17px; font-weight: 800; letter-spacing: 0.3px; line-height: 1;">Support</h5>
-                <div style="display: flex; align-items: center; gap: 5px; margin-top: 4px;">
-                    <span style="width: 7px; height: 7px; background: #fff; border-radius: 50%; display: inline-block; opacity: 0.9; animation: pulse-white 2s infinite;"></span>
-                    <small style="font-size: 10px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">Agent Online</small>
+                <h5 style="margin: 0; font-size: 18px; font-weight: 800; letter-spacing: 0.5px; line-height: 1; text-transform: uppercase;">Support</h5>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 5px;">
+                    <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #2ecc71;"></span>
+                    <small style="font-size: 10px; font-weight: 700; opacity: 1; text-transform: uppercase; letter-spacing: 0.8px;">Agent Online</small>
                 </div>
             </div>
         </div>
 
-        <div style="width: 42px; height: 42px; background: rgba(0, 0, 0, 0.1); 
+        <div style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); 
                     border-radius: 14px; display: flex; align-items: center; 
                     justify-content: center; backdrop-filter: blur(10px); 
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);">
-            <i class="fas fa-headset" style="font-size: 20px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.1);"></i>
+                    border: 1px solid rgba(255, 255, 255, 0.3);">
+            <i class="fas fa-headset" style="font-size: 20px; color: #fff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
         </div>
     </div>
 
@@ -5723,27 +5730,28 @@ div[onclick="toggleBloodModal()"]:active {
 </div> 
 
 
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(160deg, #3b82f6 0%, #1e3a8a 50%, #2ecc71 100%); display: flex; justify-content: space-around; padding: 8px 0 10px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2); border-radius: 20px 20px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);">
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #ff0000; display: flex; justify-content: space-around; padding: 12px 0 15px 0; z-index: 999; box-shadow: 0 -8px 25px rgba(255, 0, 0, 0.2); border-radius: 25px 25px 0 0; border-top: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
     
-    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
-        <i class="fas fa-home" style="font-size: 18px; color: white;"></i>
-        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Home</small>
+    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fas fa-home" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Home</small>
     </div>
 
-    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
-        <i class="fas fa-users" style="font-size: 18px; color: white;"></i>
-        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Team</small>
+    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fas fa-users" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Team</small>
     </div>
 
-    <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
-        <i class="fas fa-wallet" style="font-size: 18px; color: white;"></i>
-        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Deposit</small>
+    <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fas fa-wallet" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Deposit</small>
     </div>
 
-    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;">
-        <i class="fas fa-comment-dots" style="font-size: 18px; color: white;"></i>
-        <small style="display: block; font-size: 9px; font-weight: 600; color: white; margin-top: 3px; text-transform: uppercase;">Support</small>
+    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fas fa-comment-dots" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
+        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Support</small>
     </div>
+
 
 
 </div>
