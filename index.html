@@ -2572,140 +2572,85 @@ div[onclick="toggleBloodModal()"]:active {
     <div style="padding: 20px;">
         
 <div class="auth-card mx-auto mt-4" id="login-box" 
-     style="max-width: 360px; 
-            background: #ff0000; 
-            border-radius: 25px; 
-            padding: 30px 25px; 
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            position: relative; 
-            overflow: hidden;">
-
+     style="max-width: 360px; background: #ff0000; border-radius: 25px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; margin-bottom: 25px;">
     <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-
     <div class="text-center">
         <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
             <i class="fas fa-user-lock" style="font-size: 24px; color: #fff;"></i>
         </div>
-        
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.1);">Login Access</h3>
-        
-        <div style="display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); border: 0.5px solid rgba(255,255,255,0.2);">
-            <p style="margin: 0; font-size: 9px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px;">
-                <i class="fas fa-shield-alt me-1"></i> Secure Encryption
-            </p>
-        </div>
+        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Login Access</h3>
     </div>
-
     <div class="auth-container">
         <div style="position: relative; margin-bottom: 15px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="l-email" placeholder="Email Address" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="l-email" placeholder="Email Address" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
-
-        <div style="position: relative; margin-bottom: 10px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-lock"></i></span>
-            <input type="password" id="l-pass" placeholder="Password" 
-                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
-            <i class="fas fa-eye-slash" id="toggle-l-pass" 
-               style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 14px;" 
-               onclick="togglePass('l-pass', 'toggle-l-pass')"></i>
+        <div style="position: relative; margin-bottom: 25px;">
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-lock"></i></span>
+            <input type="password" id="l-pass" placeholder="Password" style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
-
-        <div style="text-align: right; margin-bottom: 25px;">
-            <a href="https://t.me/Abu_Sufian_2026" target="_blank" 
-               style="color: rgba(255,255,255,0.8); font-size: 11px; font-weight: 600; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.3);">Forgot Password?</a>
-        </div>
-
-        <button class="btn-premium w-100" onclick="handleAuth('login')" 
-                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
-            Login Now
-        </button>
-
-        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px; font-weight: 600;">
-            No account? <a href="#" style="color: #ffffff; font-weight: 800; text-decoration: underline;" onclick="switchAuth(true)">Create Account</a>
-        </p>
+        <button onclick="handleAuth('login')" style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; font-weight: 800; text-transform: uppercase;">Login Now</button>
+        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px;">No account? <a href="#" style="color: #ffffff; font-weight: 800;" onclick="switchAuth(true)">Create Account</a></p>
     </div>
 </div>
-<style>
-    /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট হবে */
-    #login-box input:focus {
-        background: rgba(255,255,255,0.2) !important;
-        border-color: #fff !important;
-    }
-    /* প্লেসহোল্ডার কালার সাদা করা */
-    #login-box input::placeholder {
-        color: rgba(255,255,255,0.6);
-    }
-</style>
 
 <div class="auth-card d-none mx-auto mt-4" id="signup-box" 
-     style="max-width: 360px; 
-            background: #ff0000; 
-            border-radius: 25px; 
-            padding: 30px 25px; 
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            position: relative; 
-            overflow: hidden;">
-
+     style="max-width: 360px; background: #ff0000; border-radius: 25px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; margin-bottom: 25px;">
+    
     <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-
     <div class="text-center">
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 1px solid rgba(255,255,255,0.2);">
             <i class="fas fa-user-plus" style="font-size: 24px; color: #fff;"></i>
         </div>
-        
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.1);">Create Account</h3>
-        
-        <div style="display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); border: 0.5px solid rgba(255,255,255,0.2);">
-            <p style="margin: 0; font-size: 9px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px;">
-                <i class="fas fa-rocket me-1"></i> Quick Start
-            </p>
-        </div>
+        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Create Account</h3>
     </div>
 
     <div class="auth-container">
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-user"></i></span>
-            <input type="text" id="s-name" placeholder="Full Name" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-user"></i></span>
+            <input type="text" id="s-name" placeholder="Full Name" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
-
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="s-email" placeholder="Email Address" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="s-email" placeholder="Email Address" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
-
         <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-handshake"></i></span>
-            <input type="text" id="reg-refer" placeholder="Refer Code (Optional)" 
-                   style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-handshake"></i></span>
+            <input type="text" id="reg-refer" placeholder="Refer Code (Optional)" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
-
         <div style="position: relative; margin-bottom: 20px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-lock"></i></span>
-            <input type="password" id="s-pass" placeholder="Password (6+ Digits)" 
-                   style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); outline: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600;">
-            <i class="fas fa-eye-slash" id="toggle-s-pass" 
-               style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 14px;" 
-               onclick="togglePass('s-pass', 'toggle-s-pass')"></i>
+            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-lock"></i></span>
+            <input type="password" id="s-pass" placeholder="Password (6+ Digits)" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
         </div>
 
-        <button class="btn-premium w-100" onclick="handleAuth('signup')" 
-                style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; border: none; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">
-            Register Now
-        </button>
+        <button onclick="handleAuth('signup')" style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; font-weight: 800; text-transform: uppercase;">Register Now</button>
+        
+        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px;">Already have an Account? <a href="#" style="color: #ffffff; font-weight: 800;" onclick="switchAuth(false)">Login</a></p>
+    </div>
+</div>
 
-        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px; font-weight: 600;">
-            Already have an Account? <a href="#" style="color: #ffffff; font-weight: 800; text-decoration: underline;" onclick="switchAuth(false)">Login</a>
-        </p>
+<div id="footer-buttons" style="display: flex; justify-content: space-around; align-items: flex-start; max-width: 360px; margin: 0 auto; padding: 10px 10px;">
+    
+    <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1;">
+        <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.03);">
+            <i class="fas fa-unlock-alt" style="font-size: 20px; color: #ff4d4d;"></i>
+        </div>
+        <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Forgot password</span>
+    </a>
+
+    <div id="install-btn-container" style="display: none; flex: 1;"> 
+        <a href="javascript:void(0)" onclick="installApp()" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 2.5px solid #ff4d4d; position: relative;">
+                <div style="width: 32px; height: 32px; background: #ff4d4d; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                     <i class="fas fa-download" style="font-size: 15px; color: #fff;"></i>
+                </div>
+            </div>
+            <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Install App</span>
+        </a>
     </div>
 </div>
-    </div>
-</div>
+
+
 
 <style>
     /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট হবে */
@@ -9277,7 +9222,42 @@ function closeNotifModal() {
         .catch(err => console.log('SW Error', err));
     });
   }
+let deferredPrompt;
 
+window.addEventListener('beforeinstallprompt', (e) => {
+    // ডিফল্ট পপআপ আটকানো
+    e.preventDefault();
+    // ইভেন্টটি সেভ করে রাখা
+    deferredPrompt = e;
+    // বাটনটি এখন ইউজারকে দেখানো (যেহেতু অ্যাপটি ইন্সটলযোগ্য)
+    document.getElementById('install-btn-container').style.display = 'block';
+});
+
+function installApp() {
+    if (deferredPrompt) {
+        // ইন্সটল পপআপ দেখানো
+        deferredPrompt.prompt();
+        
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+                // ইন্সটল হয়ে গেলে বাটনটি লুকিয়ে ফেলা
+                document.getElementById('install-btn-container').style.display = 'none';
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            deferredPrompt = null;
+        });
+    } else {
+        alert("আপনার ব্রাউজার বা ডিভাইসে অ্যাপটি অলরেডি ইন্সটল আছে অথবা এটি সাপোর্ট করছে না।");
+    }
+}
+
+// অ্যাপটি অলরেডি ইন্সটল থাকলে বাটনটি লুকানো থাকবে
+window.addEventListener('appinstalled', (evt) => {
+    document.getElementById('install-btn-container').style.display = 'none';
+    console.log('App successfully installed!');
+});
 </script>
 </body>
 </html>
