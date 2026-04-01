@@ -6,7 +6,8 @@
       "src": "https://img.icons8.com/ios-filled/512/ffffff/wallet.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any maskable",
+      "background_color": "#ff0000"
     }
   ],
   "start_url": "./index.html",
