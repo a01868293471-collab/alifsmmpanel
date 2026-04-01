@@ -2512,12 +2512,12 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         
-<div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.2); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px); border: 1.5px solid rgba(255,255,255,0.4); animation: floating 3s ease-in-out infinite; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-    
-    <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" 
-         alt="Wallet Logo" 
-         style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)) sepia(1) saturate(5) hue-rotate(-15deg) brightness(1.1);">
-</div>
+        <div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.2); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px); border: 1.5px solid rgba(255,255,255,0.4); animation: floating 3s ease-in-out infinite, pulseGlow 2s infinite; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            
+            <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" 
+                 alt="Wallet Logo" 
+                 style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)) sepia(1) saturate(10) hue-rotate(-20deg) brightness(1.1);">
+        </div>
 
         <div style="text-align: center;">
             <h1 style="font-weight: 900; letter-spacing: 2px; font-size: 34px; margin: 0; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
@@ -2725,13 +2725,22 @@ div[onclick="toggleBloodModal()"]:active {
 
     <div class="header-icon-wrapper left-icon" onclick="openNotifications()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; position: relative;">
         <i class="fas fa-bell" style="color: white; font-size: 16px;"></i>
-        <span style="position: absolute; top: 8px; right: 8px; width: 7px; height: 7px; background: #ffffff; border-radius: 50%; border: 1.5px solid #ff0000;"></span>
+        
+        <span style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; border: 1.5px solid #ff0000; box-shadow: 0 0 5px rgba(46, 204, 113, 0.6);"></span>
     </div>
 
-    <div class="brand-logo" style="text-align: center;">
-        <span style="font-weight: 900; color: white; font-size: 1.15rem; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <div class="brand-logo" style="display: flex; align-items: center; gap: 6px;">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/wallet.png" 
+             alt="Logo Left" 
+             style="width: 20px; height: 20px; filter: sepia(1) saturate(10) hue-rotate(-20deg) brightness(1.1);">
+        
+        <span style="font-weight: 900; color: white; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
             FREE TIME <span style="color: #ffffff; font-weight: 900;">EARN</span>
         </span>
+
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/wallet.png" 
+             alt="Logo Right" 
+             style="width: 20px; height: 20px; filter: sepia(1) saturate(10) hue-rotate(-20deg) brightness(1.1);">
     </div>
 
     <div class="header-icon-wrapper menu-btn" onclick="toggleSidebar()" style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3);">
@@ -2750,53 +2759,65 @@ div[onclick="toggleBloodModal()"]:active {
 <style>
     .swiper {
         width: 100%;
-        height: 160px;
-        padding-bottom: 20px !important;
+        height: 180px; /* উচ্চতা কিছুটা বাড়ানো হয়েছে */
+        padding-bottom: 30px !important;
     }
     
     .cover-section {
         position: relative;
         overflow: hidden;
-        border-radius: 20px;
-        height: 140px;
-        box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 25px; /* আরও রাউন্ডেড কোণা */
+        height: 150px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         margin: 0 15px;
+        display: flex;
+        align-items: center;
     }
 
+    /* ব্যাকগ্রাউন্ডের বড় টেক্সট স্টাইল */
     .bg-text {
         position: absolute; 
-        font-size: 5rem; 
-        color: rgba(255, 255, 255, 0.07); 
-        bottom: -15px; 
+        font-size: 5.5rem; 
+        color: rgba(255, 255, 255, 0.08); 
+        bottom: -20px; 
         right: -10px; 
-        transform: rotate(-12deg); 
+        transform: rotate(-10deg); 
         z-index: 0; 
-        font-weight: 950; 
+        font-weight: 900; 
         pointer-events: none; 
         user-select: none; 
-        letter-spacing: -3px;
+    }
+
+    /* লোগো আইকন স্টাইল (Orange-Pinkish Filter) */
+    .slider-logo {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80px;
+        height: 80px;
+        opacity: 0.9;
+        filter: sepia(1) saturate(10) hue-rotate(-20deg) brightness(1.2) drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        z-index: 1;
     }
 
     .cover-content {
         position: relative; 
         height: 100%; 
-        padding: 15px 20px; 
-        z-index: 1; 
+        padding: 20px 25px; 
+        z-index: 2; 
         display: flex; 
         flex-direction: column; 
-        justify-content: center; 
-        backdrop-filter: blur(1px);
+        justify-content: center;
+        width: 70%;
     }
 
-    /* স্লাইডার ডট কালার এখন সাদা */
+    /* স্লাইডার ডট কালার */
     .swiper-pagination-bullet-active {
         background: #ffffff !important;
-        width: 20px !important;
+        width: 25px !important;
         border-radius: 5px !important;
-    }
-    .swiper-pagination-bullet {
-        background: rgba(255, 255, 255, 0.5);
     }
 </style>
 
@@ -2804,51 +2825,76 @@ div[onclick="toggleBloodModal()"]:active {
     <div class="swiper-wrapper">
         
         <div class="swiper-slide">
-            <div class="cover-section" style="background: #ff0000;">
+            <div class="cover-section" style="background: linear-gradient(45deg, #ff0000, #b30000);">
                 <h1 class="bg-text">EARN</h1>
+                <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
                 <div class="cover-content">
-                    <h1 style="font-weight: 900; color: white; font-size: 1.5rem; margin: 0; text-transform: uppercase;">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
                         FREE TIME <span style="color: #ffffff; opacity: 0.8;">EARN</span>
                     </h1>
-                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        বাংলাদেশের একমাত্র <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">বিজনেস প্লাটফর্মে</span> স্বাগতম
+                    <p style="margin-top: 8px; font-size: 11px; color: #ffffff; font-weight: 500; line-height: 1.4;">
+                        বাংলাদেশের সেরা <span style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">নির্ভরযোগ্য</span> বিজনেস প্লাটফর্মে আপনাকে স্বাগতম।
                     </p>
                 </div>
             </div>
         </div>
 
         <div class="swiper-slide">
-            <div class="cover-section" style="background: #8b0000;">
+            <div class="cover-section" style="background: linear-gradient(45deg, #8b0000, #4a0000);">
                 <h1 class="bg-text">OFFER</h1>
+                <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
                 <div class="cover-content">
-                    <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
-                        প্রিমিয়াম <span style="color: #ffffff; text-decoration: underline;">মেম্বারশিপ</span>
+                    <h1 style="font-weight: 900; color: white; font-size: 1.3rem; margin: 0; text-transform: uppercase;">
+                        প্রিমিয়াম <span style="border-bottom: 2px solid #fff;">মেম্বারশিপ</span>
                     </h1>
-                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        অল্প পুঁজিতে শুরু করুন নিজের <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">অনলাইন ক্যারিয়ার</span>
+                    <p style="margin-top: 8px; font-size: 11px; color: #ffffff; font-weight: 500;">
+                        অল্প পুঁজিতে শুরু করুন আপনার ডিজিটাল ক্যারিয়ার এবং লুফে নিন বোনাস।
                     </p>
-                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
-                        <i class="fas fa-gift" style="color: #ffffff;"></i>
-                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">আজই জয়েন করে লুফে নিন স্পেশাল বোনাস</span>
-                    </div>
                 </div>
             </div>
         </div>
 
         <div class="swiper-slide">
-            <div class="cover-section" style="background: #660000;">
-                <h1 class="bg-text">TRUST</h1>
+            <div class="cover-section" style="background: linear-gradient(45deg, #cc0000, #800000);">
+                <h1 class="bg-text">CASH</h1>
+                <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
                 <div class="cover-content">
-                    <h1 style="font-weight: 900; color: white; font-size: 1.4rem; margin: 0; text-transform: uppercase;">
-                        নির্ভরযোগ্য <span style="color: #ffffff; border-bottom: 2px solid white;">সাপোর্ট</span>
+                    <h1 style="font-weight: 900; color: white; font-size: 1.3rem; margin: 0; text-transform: uppercase;">
+                        দ্রুত <span style="color: #ffd700;">পেমেন্ট</span> সুবিধা
                     </h1>
-                    <p style="margin-top: 8px; font-size: 12px; color: #ffffff; font-weight: 600;">
-                        যেকোনো সমস্যায় আমরা আছি আপনার <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 6px;">পাশে ২৪/৭</span>
+                    <p style="margin-top: 8px; font-size: 11px; color: #ffffff; font-weight: 500;">
+                        আপনার উপার্জিত টাকা সরাসরি বিকাশ বা নগদে নিন চোখের পলকে।
                     </p>
-                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
-                        <i class="fas fa-headset" style="color: #ffffff;"></i>
-                        <span style="font-size: 11px; color: rgba(255,255,255,0.9);">লাইভ চ্যাট এবং টেলিগ্রাম সাপোর্ট সুবিধা</span>
-                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="cover-section" style="background: linear-gradient(45deg, #660000, #330000);">
+                <h1 class="bg-text">HELP</h1>
+                <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
+                <div class="cover-content">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.3rem; margin: 0; text-transform: uppercase;">
+                        ২৪/৭ লাইভ <span style="background: #ffffff; color: #660000; padding: 0 5px; border-radius: 4px;">সাপোর্ট</span>
+                    </h1>
+                    <p style="margin-top: 8px; font-size: 11px; color: #ffffff; font-weight: 500;">
+                        যেকোনো প্রয়োজনে আমাদের টেলিগ্রাম ও লাইভ চ্যাট সাপোর্ট সবসময় খোলা।
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="cover-section" style="background: linear-gradient(45deg, #ff1a1a, #990000);">
+                <h1 class="bg-text">SAFE</h1>
+                <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
+                <div class="cover-content">
+                    <h1 style="font-weight: 900; color: white; font-size: 1.3rem; margin: 0; text-transform: uppercase;">
+                        ১০০% নিরাপদ <span style="opacity: 0.8;">প্ল্যাটফর্ম</span>
+                    </h1>
+                    <p style="margin-top: 8px; font-size: 11px; color: #ffffff; font-weight: 500;">
+                        আপনার ডাটা এবং ইনভেস্টমেন্ট আমাদের কাছে সম্পূর্ণ সুরক্ষিত।
+                    </p>
                 </div>
             </div>
         </div>
@@ -2862,8 +2908,10 @@ div[onclick="toggleBloodModal()"]:active {
 <script>
     var swiper = new Swiper(".mySwiper", {
         loop: true,
+        effect: "fade", // আরও প্রফেশনাল ট্রানজিশনের জন্য
+        fadeEffect: { crossFade: true },
         autoplay: {
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
         },
         pagination: {
@@ -2873,7 +2921,6 @@ div[onclick="toggleBloodModal()"]:active {
         grabCursor: true,
     });
 </script>
-
 
 <div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
     <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
@@ -3682,17 +3729,18 @@ div[onclick="toggleBloodModal()"]:active {
     
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+    <div style="background: #ff0000; padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
         
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
                 
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Digital Services</h5>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">
+                    Digital Services
+                </h5>
             </div>
 
- 
-            <i class="fas fa-shopping-basket" style="font-size: 18px; opacity: 0.8;"></i>
+            <i class="fas fa-shopping-basket" style="font-size: 18px; color: white; opacity: 0.9;"></i>
         </div>
     </div>
 
@@ -4202,11 +4250,13 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="p-about" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);">
         
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; transition: 0.3s;" onclick="openPage('p-home')"></i>
         
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">About us </h5>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase;">
+            About us 
+        </h5>
         
     </div>
 
@@ -4302,13 +4352,16 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+    <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);">
         
-        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px; transition: 0.3s;" onclick="openPage('p-home')"></i>
         
-        <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">Privacy Policy</h5>
+        <h5 style="margin: 0; margin-left: 20px; font-weight: 800; color: white; letter-spacing: 0.8px; text-transform: uppercase;">
+            Privacy Policy
+        </h5>
         
     </div>
+
 
     
 
