@@ -1,23 +1,33 @@
 {
-  "short_name": "Free Time Earn",
-  "name": "Free Time Earn",
-  "icons": [
-    {
-      "src": "https://img.icons8.com/ios-filled/512/FFFFFF/money-bag-euro.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://img.icons8.com/ios-filled/192/FFFFFF/money-bag-euro.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
-    }
-  ],
-  "start_url": "./index.html",
-  "background_color": "#ff0000",
-  "display": "standalone",
-  "scope": "./",
-  "theme_color": "#ff0000"
+
+  "short_name": "Free Time Earn",
+
+  "name": "Free Time Earn",
+
+  "icons": [
+
+    {
+
+      "src": "https://img.icons8.com/fluency/512/wallet.png",
+
+      "type": "image/png",
+
+      "sizes": "512x512"
+
+    }
+
+  ],
+
+"start_url": "./index.html",
+
+  "background_color": "#ff0000",
+
+  "display": "standalone",
+
+  "scope": "./",
+
+  "theme_color": "#ff0000"
+
 }
+
+লোগো আইকোন টা সাদা কালার করে দেন সবকিছু এমনই থাকবে 
