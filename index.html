@@ -2916,27 +2916,27 @@ div[onclick="toggleBloodModal()"]:active {
 </div>
 
 <div id="activation-card" style="display: block; margin: 15px 16px;">
-    <div style="background: linear-gradient(135deg, #1e1e2e 0%, #0f0f1a 100%); padding: 16px 18px; border-radius: 22px; color: white; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255, 215, 0, 0.3);">
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #b30000 100%); padding: 16px 18px; border-radius: 22px; color: white; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.2);">
         
-        <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: rgba(255, 215, 0, 0.15); border-radius: 50%; filter: blur(20px);"></div>
-        <div style="position: absolute; bottom: -20px; left: -20px; width: 60px; height: 60px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; filter: blur(15px);"></div>
+        <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: rgba(255, 255, 255, 0.15); border-radius: 50%; filter: blur(20px);"></div>
+        <div style="position: absolute; bottom: -20px; left: -20px; width: 60px; height: 60px; background: rgba(0, 0, 0, 0.1); border-radius: 50%; filter: blur(15px);"></div>
 
         <div style="display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2;">
             <div style="display: flex; align-items: center; gap: 14px;">
-                <div style="background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); width: 42px; height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);">
-                    <i class="fas fa-crown" style="font-size: 18px; color: #1a1a2e;"></i>
+                <div style="background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); width: 42px; height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+                    <i class="fas fa-wallet" style="font-size: 18px; color: #000;"></i>
                 </div>
                 
                 <div>
-                    <h6 style="margin: 0; font-weight: 800; font-size: 15px; letter-spacing: 0.3px; color: #ffd700; text-transform: uppercase; font-family: 'Poppins', sans-serif;">Premium Access</h6>
+                    <h6 style="margin: 0; font-weight: 800; font-size: 15px; letter-spacing: 0.3px; color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif;">Premium Access</h6>
                     <div style="display: flex; align-items: center; margin-top: 4px;">
-                        <span style="font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;">Lifetime Unlock:</span>
-                        <span style="margin-left: 6px; background: rgba(255, 215, 0, 0.15); color: #ffd700; padding: 2px 8px; border-radius: 6px; font-weight: 900; font-size: 12px; border: 0.5px solid rgba(255, 215, 0, 0.3);">৳৫০</span>
+                        <span style="font-size: 11px; color: rgba(255,255,255,0.9); font-weight: 500;">Lifetime Unlock:</span>
+                        <span style="margin-left: 6px; background: #ffffff; color: #ff0000; padding: 2px 8px; border-radius: 6px; font-weight: 900; font-size: 12px; border: none;">৳৫০</span>
                     </div>
                 </div>
             </div>
 
-            <button onclick="activateAccountNow()" style="background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); color: #1a1a2e; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 900; font-size: 12px; cursor: pointer; box-shadow: 0 6px 15px rgba(218, 165, 32, 0.2); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <button onclick="activateAccountNow()" style="background: #ffffff; color: #ff0000; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 900; font-size: 12px; cursor: pointer; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
                 ACTIVATE
             </button>
         </div>
@@ -2947,9 +2947,12 @@ div[onclick="toggleBloodModal()"]:active {
     /* বাটনটি ক্লিক করলে ছোট হবে এমন একটা এফেক্ট */
     #activation-card button:active {
         transform: scale(0.95);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        background: #f0f0f0 !important;
     }
 </style>
+
+
+
 <div class="container mt-2" style="padding: 0 16px; font-family: 'Poppins', sans-serif;">
     <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
         <div style="flex: 1; height: 1.5px; background: #ff0000; opacity: 0.2; border-radius: 50px;"></div>
