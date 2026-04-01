@@ -2638,7 +2638,7 @@ div[onclick="toggleBloodModal()"]:active {
         <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Forgot password</span>
     </a>
 
-    <div id="install-btn-container" style="display: none; flex: 1;"> 
+    <div id="install-btn-container" style="display: block; flex: 1;"> 
         <a href="javascript:void(0)" onclick="installApp()" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px;">
             <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 2.5px solid #ff4d4d; position: relative;">
                 <div style="width: 32px; height: 32px; background: #ff4d4d; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -9222,42 +9222,29 @@ function closeNotifModal() {
         .catch(err => console.log('SW Error', err));
     });
   }
-let deferredPrompt;
+  let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // ডিফল্ট পপআপ আটকানো
     e.preventDefault();
-    // ইভেন্টটি সেভ করে রাখা
     deferredPrompt = e;
-    // বাটনটি এখন ইউজারকে দেখানো (যেহেতু অ্যাপটি ইন্সটলযোগ্য)
+    // বাটনটি নিশ্চিতভাবে দেখানোর জন্য
     document.getElementById('install-btn-container').style.display = 'block';
 });
 
 function installApp() {
     if (deferredPrompt) {
-        // ইন্সটল পপআপ দেখানো
         deferredPrompt.prompt();
-        
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-                // ইন্সটল হয়ে গেলে বাটনটি লুকিয়ে ফেলা
                 document.getElementById('install-btn-container').style.display = 'none';
-            } else {
-                console.log('User dismissed the install prompt');
             }
             deferredPrompt = null;
         });
     } else {
-        alert("আপনার ব্রাউজার বা ডিভাইসে অ্যাপটি অলরেডি ইন্সটল আছে অথবা এটি সাপোর্ট করছে না।");
+        alert("App is already installed or not supported on this browser.");
     }
 }
 
-// অ্যাপটি অলরেডি ইন্সটল থাকলে বাটনটি লুকানো থাকবে
-window.addEventListener('appinstalled', (evt) => {
-    document.getElementById('install-btn-container').style.display = 'none';
-    console.log('App successfully installed!');
-});
 </script>
 </body>
 </html>
