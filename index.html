@@ -2631,24 +2631,26 @@ div[onclick="toggleBloodModal()"]:active {
 
 <div id="footer-buttons" style="display: flex; justify-content: space-around; align-items: flex-start; max-width: 360px; margin: 0 auto; padding: 10px 10px;">
     
-    <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1;">
+    <div onclick="showForgotPopup()" style="cursor: pointer; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1;">
         <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.03);">
             <i class="fas fa-unlock-alt" style="font-size: 20px; color: #ff4d4d;"></i>
         </div>
         <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Forgot password</span>
-    </a>
-
-    <div id="install-btn-container" style="display: block; flex: 1;"> 
-        <a href="javascript:void(0)" onclick="installApp()" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 2.5px solid #ff4d4d; position: relative;">
-                <div style="width: 32px; height: 32px; background: #ff4d4d; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                     <i class="fas fa-download" style="font-size: 15px; color: #fff;"></i>
-                </div>
-            </div>
-            <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Install App</span>
-        </a>
     </div>
+
+<div id="install-btn-container" style="display: block; flex: 1;"> 
+    <a href="javascript:void(0)" onclick="showInstallPopup()" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 50px; height: 50px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 2.5px solid #ff4d4d; position: relative;">
+            <div style="width: 32px; height: 32px; background: #ff4d4d; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                 <i class="fas fa-download" style="font-size: 15px; color: #fff;"></i>
+            </div>
+        </div>
+        <span style="font-size: 11px; color: #444; font-weight: 700; text-align: center;">Install App</span>
+    </a>
 </div>
+</div>
+
+
 
 </div>
 </div>
@@ -3320,12 +3322,7 @@ div[onclick="toggleBloodModal()"]:active {
                 <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()">
                     <span class="icon-box" style="background: #eef2ff; color: #4f46e5;"><i class="fas fa-home"></i></span> Home
                 </button>
-                <button class="custom-menu-btn" onclick="handleWalletClick()">
-                    <span class="icon-box" style="background: #fffbeb; color: #d97706;"><i class="fas fa-wallet"></i></span> Wallet
-                </button>
-                <button class="custom-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()">
-                    <span class="icon-box" style="background: #f0fdf4; color: #16a34a;"><i class="fas fa-money-check-alt"></i></span> Withdraw
-                </button>
+
                 <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()">
                     <span class="icon-box" style="background: #f8fafc; color: #64748b;"><i class="fas fa-cog"></i></span> Settings
                 </button>
@@ -4382,112 +4379,87 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
     </div>
 </div>
-<div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+<div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column;">
+    
     <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <div onclick="closePage('wallet')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-            <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
-        </div>
-        <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">My Wallet</h4>
-    </div>
-    <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 20px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 0.8px;">
-        <i class="fas fa-shield-alt" style="margin-right: 3px;"></i> SECURED
-    </div>
-</div>
-
-<div class="container px-3 mt-4">
-    <div style="background: #e60000; padding: 30px 25px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.15);">
-        <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-        <div style="position: absolute; bottom: -20px; left: -20px; width: 90px; height: 90px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
-
-        <div style="position: relative; z-index: 2;">
-            <p style="margin: 0; font-size: 12px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 1.5px;">
-               Total Available Balance
-            </p>
-            
-            <h1 style="font-weight: 900; margin: 15px 0; font-size: 45px; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: -1.5px;">
-                <span style="font-weight: 600;">৳</span>
-                <span id="u-bal">0.00</span>
-            </h1>
-            
-            <div style="font-size: 10px; font-weight: 800; background: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); letter-spacing: 0.5px;">
-                <i class="fas fa-star" style="color: #ffd700;"></i> FREE TIME EARN
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div onclick="closePage('p-wallet')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
+            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">My Wallet</h4>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 20px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 0.8px;">
+            <i class="fas fa-shield-alt" style="margin-right: 3px;"></i> SECURED
         </div>
     </div>
 
-
-        <div class="d-flex align-items-center justify-content-between mt-5 mb-3 px-1">
-            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income Statement</h6>
-            <div style="width: 32px; height: 32px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; color: #64748b; cursor: pointer;">
-                <i class="fas fa-sliders-h" style="font-size: 14px;"></i>
+    <div class="container px-3 mt-4" style="flex: 1;">
+        <div style="background: #e60000; padding: 30px 25px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.15); margin-bottom: 25px;">
+            <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+            <div style="position: relative; z-index: 2;">
+                <p style="margin: 0; font-size: 11px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px;">Available Balance</p>
+                <h1 style="font-weight: 900; margin: 10px 0; font-size: 40px; color: white;">
+                    <span style="font-weight: 500;">৳</span><span id="u-bal">0.00</span>
+                </h1>
+                <div style="font-size: 9px; font-weight: 800; background: rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 6px; padding: 5px 15px; border-radius: 50px; border: 0.5px solid rgba(255,255,255,0.2);">
+                    FREE TIME EARN
+                </div>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 40px;">
+        <div style="display: flex; gap: 12px; margin-bottom: 30px;">
+            <div onclick="openPage('p-fund')" style="flex: 1; background: #ff0000; color: white; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(255,0,0,0.2); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-plus-circle"></i> Deposit
+            </div>
+            <div onclick="openPage('p-withdraw')" style="flex: 1; background: #16a34a; color: white; padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(22,163,74,0.2); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fas fa-arrow-alt-circle-down"></i> Withdraw
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 80px;">
             
-            <div onclick="openIncomeDetail('today', 'Today Income')" class="wallet-report-card">
-                <div class="report-icon-box" style="background: #eff6ff; color: #3b82f6;">
-                    <i class="fas fa-calendar-day"></i>
+            <div onclick="openIncomeDetail('today', 'Today Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-calendar-day" style="color: #3b82f6; font-size: 16px;"></i>
+                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Today Income</span>
                 </div>
-                <div style="flex: 1;">
-                    <p class="report-title">Today Income</p>
-                    <p class="report-subtitle">Check your daily earnings</p>
-                </div>
-                <i class="fas fa-chevron-right report-arrow"></i>
+                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
             </div>
 
-            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="wallet-report-card">
-                <div class="report-icon-box" style="background: #f0fdfa; color: #14b8a6;">
-                    <i class="fas fa-history"></i>
+            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-history" style="color: #14b8a6; font-size: 16px;"></i>
+                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Yesterday Income</span>
                 </div>
-                <div style="flex: 1;">
-                    <p class="report-title">Yesterday Income</p>
-                    <p class="report-subtitle">Earnings from the previous day</p>
-                </div>
-                <i class="fas fa-chevron-right report-arrow"></i>
+                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
             </div>
 
-            <div onclick="openIncomeDetail('7days', 'Last 7 days Income')" class="wallet-report-card">
-                <div class="report-icon-box" style="background: #f0f9ff; color: #0ea5e9;">
-                    <i class="fas fa-calendar-week"></i>
+            <div onclick="openIncomeDetail('7days', 'Last 7 days Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-calendar-week" style="color: #8b5cf6; font-size: 16px;"></i>
+                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Weekly Income</span>
                 </div>
-                <div style="flex: 1;">
-                    <p class="report-title">Weekly Income</p>
-                    <p class="report-subtitle">Last 7 days summary</p>
-                </div>
-                <i class="fas fa-chevron-right report-arrow"></i>
+                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
             </div>
 
-            <div onclick="openIncomeDetail('30days', 'Last 30 days Income')" class="wallet-report-card">
-                <div class="report-icon-box" style="background: #fff7ed; color: #f59e0b;">
-                    <i class="fas fa-calendar-alt"></i>
+            <div onclick="openIncomeDetail('30days', 'Last 30 days Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-calendar-alt" style="color: #f59e0b; font-size: 16px;"></i>
+                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Monthly Income</span>
                 </div>
-                <div style="flex: 1;">
-                    <p class="report-title">Monthly Income</p>
-                    <p class="report-subtitle">Last 30 days total report</p>
-                </div>
-                <i class="fas fa-chevron-right report-arrow"></i>
+                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
             </div>
 
-            <div onclick="openIncomeDetail('total', 'Total Income')" class="wallet-report-card" style="background: #f8fafc; border: 1.5px solid #e2e8f0;">
-                <div class="report-icon-box" style="background: #fef2f2; color: #ef4444;">
-                    <i class="fas fa-chart-line"></i>
+            <div onclick="openIncomeDetail('total', 'Total Income')" style="background: #ffffff; padding: 16px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-crown" style="color: #fbbf24; font-size: 16px;"></i>
+                    <span style="font-size: 14px; font-weight: 800; color: #1e293b;">Lifetime Total Income</span>
                 </div>
-                <div style="flex: 1;">
-                    <p class="report-title" style="font-weight: 800; color: #1e293b;">Lifetime Total Income</p>
-                    <p class="report-subtitle">Your overall earnings history</p>
-                </div>
-                <div style="text-align: right; margin-right: 10px;">
-                    <i class="fas fa-crown" style="color: #fbbf24; font-size: 14px;"></i>
-                </div>
-                <i class="fas fa-chevron-right report-arrow"></i>
+                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
             </div>
-
         </div>
     </div>
 </div>
-
 <style>
     /* ওয়ালেট কার্ড স্টাইল */
     .wallet-report-card {
@@ -4553,7 +4525,7 @@ div[onclick="toggleBloodModal()"]:active {
             <div onclick="closeIncomeSub()" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">Income Details</h4>
+            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">FREE TIME EARN</h4>
         </div>
         <div style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
             <i class="fas fa-chart-bar" style="color: white; font-size: 16px;"></i>
@@ -5742,29 +5714,28 @@ div[onclick="toggleBloodModal()"]:active {
 </div> 
 
 
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #ff0000; display: flex; justify-content: space-around; padding: 12px 0 15px 0; z-index: 999; box-shadow: 0 -8px 25px rgba(255, 0, 0, 0.2); border-radius: 25px 25px 0 0; border-top: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
+
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #ff0000; display: flex; justify-content: space-around; align-items: center; padding: 5px 0 8px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15); border-radius: 20px 20px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); height: 60px;">
     
-    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-        <i class="fas fa-home" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
-        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Home</small>
+    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
+        <i class="fas fa-home" style="font-size: 18px; color: white;"></i>
+        <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Home</span>
     </div>
 
-    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-        <i class="fas fa-users" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
-        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Team</small>
+    <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
+        <i class="fas fa-users" style="font-size: 18px; color: white;"></i>
+        <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Team</span>
     </div>
 
-    <div onclick="openPage('p-fund')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-        <i class="fas fa-wallet" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
-        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Deposit</small>
+    <div onclick="openPage('p-wallet')" style="text-align: center; cursor: pointer; flex: 1;">
+        <i class="fas fa-wallet" style="font-size: 18px; color: white;"></i>
+        <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Wallet</span>
     </div>
 
-    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-        <i class="fas fa-comment-dots" style="font-size: 19px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
-        <small style="display: block; font-size: 10px; font-weight: 800; color: white; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Support</small>
+    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
+        <i class="fas fa-headset" style="font-size: 18px; color: white;"></i>
+        <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Support</span>
     </div>
-
-
 
 </div>
 
@@ -9258,6 +9229,90 @@ function installApp() {
         alert("App is already installed or not supported on this browser.");
     }
 }
+
+function showForgotPopup() {
+    Swal.fire({
+        title: '<span style="font-size:18px;">পাসওয়ার্ড ভুলে গেছেন?</span>',
+        html: `
+            <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #555;">
+                আপনি কি পাসওয়ার্ড ভুলে গেছেন? তাহলে এডমিনের টেলিগ্রামে মেসেজ করুন। <br><br>
+                <b style="color: #ff0000;">নির্দেশনা:</b> অযথা অন্য কিছু না লিখে আপনার <b>জিমেইল</b> দিয়ে বলুন যে আপনি পাসওয়ার্ড ভুলে গেছেন। এডমিন আপনার একাউন্ট চেক করে পাসওয়ার্ড দিয়ে দিবে।
+            </div>
+        `,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#0088cc',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<i class="fab fa-telegram-plane"></i> টেলিগ্রামে মেসেজ করুন',
+        cancelButtonText: 'বন্ধ করুন',
+        border: 'none',
+        borderRadius: '20px'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // আপনার টেলিগ্রাম লিঙ্কটি এখানে দিন
+            window.open('https://t.me/Abu_Sufian_2026', '_blank');
+        }
+    });
+}
+
+function showInstallPopup() {
+    let timer = 20;
+    
+    Swal.fire({
+        title: '<span style="font-size:18px;">Install Our App</span>',
+        html: `
+            <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #444;">
+                <p>অ্যাপ ইন্সটল করতে এখানে <b id="countdown" style="color: #ff0000; font-size: 16px;">${timer}</b> সেকেন্ড অপেক্ষা করতে হবে।</p>
+                
+                <div id="install-action-btn" style="display:none; margin-top: 15px;">
+                    <button onclick="triggerActualInstall()" style="width:100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">
+                        <i class="fas fa-mobile-alt"></i> এখনই ইন্সটল করুন
+                    </button>
+                </div>
+
+                <hr style="margin: 15px 0; border-top: 1px solid #eee;">
+                
+                <p style="font-size: 12px; color: #666;">
+                    <i class="fas fa-info-circle"></i> <b>যদি উপরের বাটন কাজ না করে:</b><br>
+                    উপরে থাকা ব্রাউজারের ৩টি ফোটা (⋮) আইকনে চাপ দিন। নিচে স্ক্রল করে <b>"Add to home screen"</b> অপশনে চাপ দিয়ে ইন্সটল করে নিন।
+                </p>
+            </div>
+        `,
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: 'বন্ধ করুন',
+        cancelButtonColor: '#d33',
+        allowOutsideClick: false,
+        didOpen: () => {
+            const content = Swal.getHtmlContainer();
+            const countdownEl = content.querySelector('#countdown');
+            const installBtnDiv = content.querySelector('#install-action-btn');
+            
+            const interval = setInterval(() => {
+                timer--;
+                countdownEl.textContent = timer;
+                
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    countdownEl.parentElement.style.display = 'none'; // টাইমার লেখাটি হাইড হবে
+                    installBtnDiv.style.display = 'block'; // ইন্সটল বাটন শো হবে
+                }
+            }, 1000);
+        }
+    });
+}
+
+// আসল ইন্সটল ফাংশন কল করা
+function triggerActualInstall() {
+    Swal.close();
+    // আপনার PWA বা App Install এর মেইন ফাংশনটি এখানে কল হবে
+    if (typeof installApp === "function") {
+        installApp();
+    } else {
+        alert("ইন্সটল পপআপ ওপেন হচ্ছে... (যদি ব্রাউজার সাপোর্ট করে)");
+    }
+}
+
 
 </script>
 </body>
