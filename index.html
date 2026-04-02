@@ -5986,15 +5986,15 @@ function handleAuth(m) {
             let n = document.getElementById('s-name').value, 
                 e = document.getElementById('s-email').value, 
                 p = document.getElementById('s-pass').value,
-                r = document.getElementById('reg-refer').value.trim().toUpperCase(); // রেফার ইনপুট
+                r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
             
             if(!e.includes('@gmail.com') || p.length < 6) return toast('সঠিক তথ্য দিন', 'error');
             if(db.users.find(x => x.email === e)) return toast('এই ইমেইল দিয়ে অলরেডি অ্যাকাউন্ট আছে', 'error');
             
-            // --- ১. নতুন রেফার কোড জেনারেট করা ---
-            const myNewCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+            // --- ১. নতুন ৬ ডিজিটের নম্বর রেফার কোড জেনারেট করা ---
+            // এটি ১০০০০০ থেকে ৯৯৯৯৯৯ এর মধ্যে একটি সংখ্যা তৈরি করবে
+            const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
             
-            // ডাটাবেসে ইউজার পুশ করা (সাথে referCode এবং referredBy)
             db.users.push({
                 name: n, 
                 email: e, 
@@ -6002,16 +6002,14 @@ function handleAuth(m) {
                 role: "user", 
                 bal: 0.00, 
                 status: "inactive",
-                rank: "General Member", // <--- ডিফল্ট র্যাঙ্ক
-                referCode: myNewCode, // নিজের কোড
-                referredBy: r        // যার মাধ্যমে আসলো
+                rank: "General Member", 
+                referCode: myNewCode, 
+                referredBy: r        
             });
             
-            // --- ২. লিডারের টিমে এই ইউজারকে যোগ করা ---
             if(r !== "") {
                 let leader = db.users.find(x => x.referCode === r);
                 if(leader) {
-                    // লিডারের টিমে ডাটা পুশ (যদি আপনার db-তে team অ্যারে থাকে)
                     if(!leader.team) leader.team = [];
                     leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
                 }
@@ -6025,6 +6023,7 @@ function handleAuth(m) {
             toast('রেজিস্ট্রেশন সফল! কোড: ' + myNewCode);
             
         } else {
+            // লগইন অংশ আগের মতোই থাকবে...
             let e = document.getElementById('l-email').value, 
                 p = document.getElementById('l-pass').value;
             let u = db.users.find(x => x.email === e && x.pass === p);
@@ -6034,7 +6033,7 @@ function handleAuth(m) {
                     Swal.fire({
                         title: 'আপনার অ্যাকাউন্টটি ব্লক!',
                         html: `<b>কারণ:</b> ${u.blockReason || 'নিয়ম ভঙ্গ করা হয়েছে'}<br><br>
-                               যোগাযোগ করুন: <br>
+                                যোগাযোগ করুন: <br>
                                <a href="https://t.me/YourTelegramID" target="_blank" style="display: inline-block; margin-top: 10px; color: white; background: #0088cc; padding: 10px 20px; border-radius: 50px; text-decoration: none;">
                                 <i class="fab fa-telegram-plane"></i> আমাদের টেলিগ্রাম
                                </a>`,
@@ -6045,11 +6044,9 @@ function handleAuth(m) {
                 }
 
                 curUser = u; 
-                
                 localStorage.setItem('v7_logged_email', u.email);
                 localStorage.setItem('v7_userName', u.name);
                 localStorage.setItem('v7_userEmail', u.email);
-                // মেমোরিতে রেফার কোড রাখা
                 localStorage.setItem('v7_userReferCode', u.referCode);
 
                 document.getElementById('auth-section').classList.add('d-none');
@@ -6064,8 +6061,6 @@ function handleAuth(m) {
         }
     }, 800);
 }
-    
-
     function logout() {
     // পপআপ ছাড়াই সরাসরি ডিলিট করবে
     localStorage.removeItem('v7_logged_email');
@@ -8551,7 +8546,7 @@ function copyReferCode() {
 function copyRef() {
     const code = document.getElementById('user-ref').innerText;
     
-    if (code === "ALIF123" || code === "N/A" || code === "") {
+    if (code === "ALIF123" || code === "" || code === "") {
         return; // ডিফল্ট বা খালি থাকলে কপি হবে না
     }
 
