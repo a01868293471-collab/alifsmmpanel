@@ -2485,62 +2485,7 @@ div[onclick="toggleBloodModal()"]:active {
     </style>
 </head>
 <body>
-<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ff0000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px; overflow: hidden; font-family: 'Poppins', sans-serif;">
-    
-    <style>
-        /* লোগো ভাসার অ্যানিমেশন */
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
 
-        /* প্রগ্রেস বার অ্যানিমেশন */
-        @keyframes fillLoader {
-            0% { width: 0%; opacity: 0.8; }
-            50% { width: 70%; opacity: 1; }
-            100% { width: 100%; opacity: 1; }
-        }
-
-        /* সাদা পালস এফেক্ট */
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-        }
-    </style>
-
-    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        
-        <div style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.2); border-radius: 35px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px); border: 1.5px solid rgba(255,255,255,0.4); animation: floating 3s ease-in-out infinite, pulseGlow 2s infinite; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            
-            <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" 
-                 alt="Wallet Logo" 
-                 style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)) sepia(1) saturate(10) hue-rotate(-20deg) brightness(1.1);">
-        </div>
-
-        <div style="text-align: center;">
-            <h1 style="font-weight: 900; letter-spacing: 2px; font-size: 34px; margin: 0; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-                FREE TIME <span style="color: #ffffff; opacity: 0.9;">EARN</span>
-            </h1>
-            <p style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 5px; text-transform: uppercase; margin-top: 12px;">
-                DIGITAL BUSINESS PLATFORM 
-            </p>
-        </div>
-
-        <div style="width: 200px; height: 6px; background: rgba(255,255,255,0.2); margin-top: 50px; border-radius: 100px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="width: 0%; height: 100%; background: #ffffff; border-radius: 100px; animation: fillLoader 3.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards; box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);"></div>
-        </div>
-    </div>
-
-    <div style="text-align: center; opacity: 0.9;">
-        <p style="margin: 0; font-size: 10px; color: #ffffff; font-weight: 400; letter-spacing: 1px;">Powered by</p>
-        <p style="margin: 0; font-size: 15px; color: #ffffff; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">
-            Abu Sufian
-        </p>
-        <p style="margin-top: 8px; font-size: 10px; color: rgba(255,255,255,0.5);">Version 2.0.4</p>
-    </div>
-</div>
 <div id="loader-overlay"><div class="spinner"></div></div>
 
 <div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh;">
