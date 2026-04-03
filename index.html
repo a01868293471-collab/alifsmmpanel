@@ -5798,9 +5798,8 @@ let db = {
     const formatCurrency = (num) => parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 2 });
 
     function save() {
-    // --- আপনার আগের কোডগুলো ---
     localStorage.setItem('v7_w', JSON.stringify(db.withdraws || []));
-    localStorage.setItem('v7_u', JSON.stringify(db.users || [])); 
+    localStorage.setItem('v7_u', JSON.stringify(db.users || [])); // ইউজার লিস্ট সেভ
     localStorage.setItem('v7_o', JSON.stringify(db.orders || []));
     localStorage.setItem('v7_f', JSON.stringify(db.funds || []));
     localStorage.setItem('v7_chats', JSON.stringify(db.chats || []));
@@ -5810,64 +5809,27 @@ let db = {
     localStorage.setItem('v7_payNum', db.payNum || "");
     localStorage.setItem('v7_rocketNum', db.rocketNum || "");
     localStorage.setItem('v7_autoMsg', db.autoMsg || "");
-
-    // --- নতুন যা এড করতে হবে (Login Persistence এর জন্য) ---
-    // ধরি 'currentUser' ভেরিয়েবলে বর্তমানে লগইন থাকা ইউজারের ডাটা আছে
-    if (window.currentUser) {
-        localStorage.setItem('v7_session', JSON.stringify(window.currentUser));
-    }
-
+    
+    // কনসোলে চেক করার জন্য (ঐচ্ছিক)
     console.log("Data Saved Successfully!");
 }
 
-// --- ১. লোগো আপলোড হ্যান্ডলার ---
-document.getElementById('adm-logo-file').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            db.logo = event.target.result;
-            save();
-            syncUI();
-            toast('লোগো আপডেট হয়েছে');
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-// --- ২. পেজ লোড হওয়ার সাথে সাথে সেশন চেক (অটো লগইন) ---
-window.addEventListener('load', () => {
-    const sessionData = localStorage.getItem('v7_session');
-    
-    if (sessionData) {
-        window.curUser = JSON.parse(sessionData); 
-        console.log("User session restored!");
-        
-        if (window.curUser && window.curUser.role === 'admin') {
-            renderAdmin(); 
-            const adminApp = document.getElementById('admin-app');
-            if(adminApp) adminApp.classList.remove('d-none');
-        } else {
-            // সাধারণ ইউজার হলে ড্যাশবোর্ড দেখানোর ফাংশন এখানে দিন
-            if(typeof showUserDashboard === "function") showUserDashboard();
-            console.log("User logged in");
+    // লোগো আপলোড হ্যান্ডলার
+    document.getElementById('adm-logo-file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                db.logo = event.target.result;
+                save();
+                syncUI();
+                toast('লোগো আপডেট হয়েছে');
+            };
+            reader.readAsDataURL(file);
         }
-        
-        const splash = document.getElementById('splash-screen');
-        if (splash) splash.style.display = 'none';
-
-    } else {
-        console.log("No session found, stay on login page.");
-        // সেশন না থাকলে লগইন পেজ দেখানোর ফাংশন
-        if(typeof showLoginPage === "function") showLoginPage();
-    }
-});
-
-// --- ৩. ইনকাম ডিটেইলস ফাংশন ---
-window.openIncomeDetail = function(type, title) {
-    // এখানে window.curUser ব্যবহার করা হয়েছে সামঞ্জস্য রাখার জন্য
-    const user = window.curUser || window.currentUser;
-    if (!user) return;
+    });
+    window.openIncomeDetail = function(type, title) {
+    if (!curUser) return;
     
     const subPage = document.getElementById('p-income-sub');
     const titleEl = document.getElementById('income-card-title');
@@ -5879,7 +5841,7 @@ window.openIncomeDetail = function(type, title) {
 
     titleEl.innerText = title;
     
-    let history = user.incomeHistory || [];
+    let history = curUser.incomeHistory || [];
     let now = new Date();
     let totalFiltered = 0;
 
@@ -5890,10 +5852,9 @@ window.openIncomeDetail = function(type, title) {
     yestDate.setDate(now.getDate() - 1);
     let yesterdayStr = toDateStr(yestDate);
 
+    // ক্যালকুলেশন লজিক
     history.forEach(item => {
         let amt = parseFloat(item.amount || 0);
-        if(!item.date) return;
-        
         let itemDateStr = item.date.split(' | ')[0];
         let itemDateObj = new Date(itemDateStr);
         
@@ -5913,18 +5874,22 @@ window.openIncomeDetail = function(type, title) {
         }
     });
 
+    // UI আপডেট (অ্যামাউন্ট)
     amtEl.innerText = totalFiltered.toFixed(2);
     
+    // তারিখের লেবেল সেট করা
     if(type === 'today') dateEl.innerText = "তারিখ: " + todayStr;
     else if(type === 'yesterday') dateEl.innerText = "তারিখ: " + yesterdayStr;
     else if(type === '7days') dateEl.innerText = "গত ৭ দিনের রিপোর্ট";
     else if(type === '30days') dateEl.innerText = "গত ৩০ দিনের রিপোর্ট";
     else dateEl.innerText = "লাইফটাইম রিপোর্ট";
 
+    // গুরুত্বপূর্ণ: এখানে ইনকাম হিস্টোরি লিস্ট পুরোপুরি বন্ধ (খালি) রাখা হয়েছে
     if (listEl) {
         listEl.innerHTML = ""; 
     }
 
+    // পেজ দেখানো
     subPage.classList.remove('d-none');
     subPage.style.display = 'block';
 };
@@ -6025,12 +5990,12 @@ function handleAuth(m) {
     }, 800);
 }
     function logout() {
-    // LocalStorage থেকে সব ডাটা মুছে ফেলুন
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userEmail');
+    // পপআপ ছাড়াই সরাসরি ডিলিট করবে
+    localStorage.removeItem('v7_logged_email');
+    localStorage.removeItem('v7_logged_user'); // আপনার আগের কোড অনুযায়ী এটিও থাকা উচিত
     
-    // এবার লগইন পেজে পাঠিয়ে দিন
-    location.reload(); // পেজ রিফ্রেশ দিলে অটো লগইন পেজ চলে আসবে
+    // পেজ রিফ্রেশ করে লগইন পেজে নিয়ে যাবে
+    location.reload();
 }
 
     
