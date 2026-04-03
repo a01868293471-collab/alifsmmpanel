@@ -3325,6 +3325,12 @@ div[onclick="toggleBloodModal()"]:active {
 
                 <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()">
                     <span class="icon-box" style="background: #f8fafc; color: #64748b;"><i class="fas fa-cog"></i></span> Settings
+                    <button class="custom-menu-btn" onclick="openTransactionPage(); toggleSidebar()">
+    <span class="icon-box" style="background: #eff6ff; color: #2563eb;">
+        <i class="fas fa-exchange-alt"></i>
+    </span> 
+    Transaction
+</button>
                 </button>
             </div>
 
@@ -4561,20 +4567,7 @@ div[onclick="toggleBloodModal()"]:active {
         </div>
 
 
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding: 0 5px;">
-            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Income History</h6>
-            <div style="width: 32px; height: 32px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; color: #3b82f6;">
-                <i class="fas fa-list-ul" style="font-size: 12px;"></i>
-            </div>
-        </div>
 
-        <div id="income-history-list" style="padding-bottom: 40px; display: flex; flex-direction: column; gap: 12px;">
-            <div style="text-align: center; padding: 50px 20px; background: white; border-radius: 24px; border: 1px solid #eef2f6;">
-                <div style="width: 60px; height: 60px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: #cbd5e1;">
-                    <i class="fas fa-folder-open" style="font-size: 24px;"></i>
-                </div>
-                <p style="font-size: 13px; color: #94a3b8; font-weight: 500; margin: 0;">কোন হিস্ট্রি পাওয়া যায়নি</p>
-            </div>
         </div>
     </div>
 </div>
@@ -5394,6 +5387,23 @@ div[onclick="toggleBloodModal()"]:active {
 
     </div>
 </div>
+<div id="p-transactions" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Transaction</h5>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="transaction-list-container" style="padding: 15px;">
+        <div class="text-center text-muted mt-5 small">লোড হচ্ছে...</div>
+    </div>
+</div>
 
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -5889,9 +5899,7 @@ let db = {
     let history = curUser.incomeHistory || [];
     let now = new Date();
     let totalFiltered = 0;
-    let listHTML = "";
 
-    // তারিখ ফরম্যাট (YYYY-MM-DD)
     const toDateStr = (d) => d.toLocaleDateString('en-CA');
     let todayStr = toDateStr(now);
     
@@ -5899,18 +5907,17 @@ let db = {
     yestDate.setDate(now.getDate() - 1);
     let yesterdayStr = toDateStr(yestDate);
 
+    // ক্যালকুলেশন লজিক
     history.forEach(item => {
         let amt = parseFloat(item.amount || 0);
-        let itemDateStr = item.date.split(' | ')[0]; // তারিখ অংশ
+        let itemDateStr = item.date.split(' | ')[0];
         let itemDateObj = new Date(itemDateStr);
         
-        // দিন গণণা (Difference in days)
         let diffTime = Math.abs(now - itemDateObj);
         let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         let isMatch = false;
         
-        // ৫টি আলাদা ফিল্টার লজিক
         if (type === 'today' && itemDateStr === todayStr) isMatch = true;
         else if (type === 'yesterday' && itemDateStr === yesterdayStr) isMatch = true;
         else if (type === '7days' && diffDays <= 7) isMatch = true;
@@ -5919,18 +5926,10 @@ let db = {
 
         if (isMatch) {
             totalFiltered += amt;
-            listHTML += `
-                <div style="background: white; padding: 12px; border-radius: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f0f0f0;">
-                    <div>
-                        <div style="font-weight: 700; color: #333; font-size: 13px;">${item.note || 'উপার্জন'}</div>
-                        <small style="color: #999; font-size: 10px;">${item.date}</small>
-                    </div>
-                    <div style="font-weight: 800; color: #2ecc71;">+ ৳${amt.toFixed(2)}</div>
-                </div>`;
         }
     });
 
-    // UI আপডেট
+    // UI আপডেট (অ্যামাউন্ট)
     amtEl.innerText = totalFiltered.toFixed(2);
     
     // তারিখের লেবেল সেট করা
@@ -5940,31 +5939,15 @@ let db = {
     else if(type === '30days') dateEl.innerText = "গত ৩০ দিনের রিপোর্ট";
     else dateEl.innerText = "লাইফটাইম রিপোর্ট";
 
-    listEl.innerHTML = listHTML || '<div class="text-center text-muted mt-5 small">কোনো ডাটা পাওয়া যায়নি</div>';
+    // গুরুত্বপূর্ণ: এখানে ইনকাম হিস্টোরি লিস্ট পুরোপুরি বন্ধ (খালি) রাখা হয়েছে
+    if (listEl) {
+        listEl.innerHTML = ""; 
+    }
 
     // পেজ দেখানো
     subPage.classList.remove('d-none');
     subPage.style.display = 'block';
 };
-
-    window.onload = () => { 
-        syncUI(); 
-        selectMethod('Bkash'); 
-        checkPersistentLogin();
-    };
-
-    function checkPersistentLogin() {
-        let savedEmail = localStorage.getItem('v7_logged_email');
-        if (savedEmail) {
-            let u = db.users.find(x => x.email === savedEmail);
-            if (u && u.status !== 'blocked') {
-                curUser = u;
-                document.getElementById('auth-section').classList.add('d-none');
-                u.role === 'admin' ? (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-            }
-        }
-    }
-
     function syncUI() {
         document.querySelectorAll('.site-logo-img').forEach(i => i.src = db.logo);
         document.getElementById('site-note').innerText = db.note;
@@ -6273,7 +6256,7 @@ function editBal(index) {
         user.bal = currentBal + amount;
         
         if (!user.incomeHistory) user.incomeHistory = [];
-        let note = prompt("কারন (ঐচ্ছিক):") || (amount > 0 ? "অ্যাডমিন কর্তৃক যুক্ত" : "অ্যাডমিন কর্তৃক কর্তন");
+        let note = prompt("কারন (ঐচ্ছিক):") || (amount > 0 ? "Added Balance" : "Subtract Balance");
 
         // আজকের তারিখ বের করা (YYYY-MM-DD ফরম্যাটে)
         let today = new Date().toISOString().split('T')[0];
@@ -9307,7 +9290,51 @@ function triggerActualInstall() {
         alert("ইন্সটল পপআপ ওপেন হচ্ছে... (যদি ব্রাউজার সাপোর্ট করে)");
     }
 }
+window.openTransactionPage = function() {
+    if (!curUser) return;
+    
+    // ১. ট্রানজেকশন পেজটি ওপেন করা
+    openPage('p-transactions');
 
+    const listEl = document.getElementById('transaction-list-container');
+    
+    // এলিমেন্টটি পেজে আছে কি না চেক করে নেওয়া ভালো (সেফটি চেক)
+    if (!listEl) return;
+
+    let history = curUser.incomeHistory || [];
+    let listHTML = "";
+
+    if (history.length > 0) {
+        // নতুন লেনদেন উপরে দেখানোর জন্য reverse করা হয়েছে
+        [...history].reverse().forEach(item => {
+            let amt = parseFloat(item.amount || 0);
+            listHTML += `
+                <div style="background: white; padding: 15px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #edf2f7; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 45px; height: 45px; background: #f0fdf4; color: #16a34a; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: #2d3748; font-size: 14px;">${item.note || 'উপার্জন'}</div>
+                            <small style="color: #a0aec0; font-size: 11px;"><i class="far fa-clock me-1"></i>${item.date}</small>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: 800; color: #16a34a; font-size: 15px;">+ ৳${amt.toFixed(2)}</div>
+                        <small style="font-size: 9px; color: #718096; text-transform: uppercase;">Success</small>
+                    </div>
+                </div>`;
+        });
+    } else {
+        listHTML = `
+            <div style="text-align: center; margin-top: 100px;">
+                <i class="fas fa-folder-open" style="font-size: 50px; color: #cbd5e0; margin-bottom: 15px;"></i>
+                <div style="color: #718096; font-size: 14px;">কোনো লেনদেনের তথ্য পাওয়া যায়নি</div>
+            </div>`;
+    }
+
+    listEl.innerHTML = listHTML;
+}; // ফাংশনটি এখানে শেষ হবে
 
 </script>
 </body>
