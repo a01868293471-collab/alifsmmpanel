@@ -2900,7 +2900,6 @@ function toggleSignupPassword() {
         grabCursor: true,
     });
 </script>
-
 <div id="settingsModal" class="modal-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999; justify-content: center; align-items: center;">
     <div class="settings-card" style="background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
         <span class="close-modal" onclick="closeSettings()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #888;">&times;</span>
@@ -2920,7 +2919,7 @@ function toggleSignupPassword() {
         <div class="info-group mb-3 text-start">
             <label class="text-muted small fw-bold mb-1">Name:</label>
             <input type="text" id="editUserName" class="form-control mb-3" 
-                   style="height: 45px; border-radius: 10px; border: 1px solid #ddd; padding: 0 15px; font-weight: bold;" placeholder="Enter Name"
+                   style="height: 45px; border-radius: 10px; border: 1px solid #ddd; padding: 0 15px; font-weight: bold;" placeholder="Enter Name">
             
             <label class="text-muted small fw-bold mb-1">Email Address</label>
             <p id="realUserEmail" class="fw-bold p-2 bg-light rounded" style="color: #6f42c1; font-size: 14px; border: 1px solid #eee;"></p>
@@ -2930,6 +2929,14 @@ function toggleSignupPassword() {
                 style="background: #6f42c1; border: none; height: 48px; border-radius: 10px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3);" 
                 onclick="saveProfileInfo()">Profile update</button>
 
+        <div class="upline-section text-start mb-4">
+            <h6 class="fw-bold text-muted mb-2" style="font-size: 14px;">Upline Details</h6>
+            <div style="background: #f8f9fa; padding: 12px; border-radius: 12px; border: 1px dashed #6f42c1;">
+                <p class="mb-1" style="font-size: 13px;"><strong>Name:</strong> <span id="upline-name">Loading...</span></p>
+                <p class="mb-1" style="font-size: 13px;"><strong>Email:</strong> <span id="upline-email">Loading...</span></p>
+                <p class="mb-0" style="font-size: 13px;"><strong>Refer Code:</strong> <span id="upline-code" class="text-primary">Loading...</span></p>
+            </div>
+        </div>
         <hr>
 
         <div class="password-section mt-4 text-start">
@@ -2947,6 +2954,7 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
+
 
 <div id="activation-card" style="display: block; margin: 15px 16px;">
     <div style="background: linear-gradient(135deg, #ff0000 0%, #b30000 100%); padding: 16px 18px; border-radius: 22px; color: white; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.2);">
@@ -9396,6 +9404,73 @@ window.onload = function() {
         if (footerButtons) footerButtons.style.display = 'none';
     }
 };
+
+
+
+function loadUplineDetails() {
+    try {
+        const nameElem = document.getElementById('upline-name');
+        const emailElem = document.getElementById('upline-email');
+        const codeElem = document.getElementById('upline-code');
+        const userEmailElem = document.getElementById('realUserEmail');
+        const userNameInput = document.getElementById('editUserName');
+
+        // ১. ডাটাবেস চেক (যদি db না থাকে তবে রিটার্ন করবে)
+        if (typeof db === 'undefined' || !db.users) {
+            console.error("Database (db.users) not found!");
+            return;
+        }
+
+        // ২. বর্তমানে লগইন করা ইউজারকে নিশ্চিত করা
+        let loggedEmail = localStorage.getItem('v7_logged_email');
+        let activeUser = db.users.find(x => x.email === loggedEmail);
+
+        if (activeUser) {
+            // নিজের প্রোফাইল ডাটা আপডেট (যদি আইডি থাকে)
+            if (userEmailElem) userEmailElem.innerText = activeUser.email || "";
+            if (userNameInput) userNameInput.value = activeUser.name || "";
+
+            // ৩. আপলাইন ডাটা লজিক
+            const rCode = activeUser.referredBy;
+
+            if (nameElem && emailElem && codeElem) {
+                if (!rCode || rCode === "" || rCode.toUpperCase() === "NONE") {
+                    nameElem.innerText = "Admin";
+                    emailElem.innerText = "freetimeearn.com";
+                    codeElem.innerText = "123456";
+                } else {
+                    // ডাটাবেসে লিডার খোঁজা
+                    let leader = db.users.find(x => x.referCode === rCode);
+
+                    if (leader) {
+                        nameElem.innerText = leader.name;
+                        emailElem.innerText = leader.email;
+                        codeElem.innerText = leader.referCode;
+                    } else {
+                        // লিডার না পাওয়া গেলে
+                        nameElem.innerText = "System Admin";
+                        emailElem.innerText = "Support Team";
+                        codeElem.innerText = rCode;
+                    }
+                }
+            }
+        }
+    } catch (err) {
+        console.error("Upline load error:", err);
+        // এরর হলেও লোডিং লেখা সরিয়ে ফেলুন
+        if(document.getElementById('upline-name')) {
+            document.getElementById('upline-name').innerText = "Admin (System)";
+        }
+    }
+}
+function openSettings() {
+    // পপআপ বা পেজ দেখানো (আপনার আইডি অনুযায়ী)
+    const modal = document.getElementById('settingsModal');
+    if(modal) modal.style.display = 'flex';
+
+    // *** এই লাইনটি অবশ্যই থাকতে হবে ***
+    loadUplineDetails(); 
+}
 
 </script>
 </body>
