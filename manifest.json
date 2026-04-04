@@ -1,25 +1,18 @@
 {
   "short_name": "Free Time Earn",
   "name": "Free Time Earn",
+  "description": "Digital Business Platform by Abu Sufian",
   "icons": [
     {
-      // আপনার নতুন লোগোর ফাইল পাথটি এখানে দিতে হবে
-      "src": "./images/logo.png", 
+      "src": "logo.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any"
-    },
-    {
-      // আরও ভালো রেজোলিউশনের জন্য
-      "src": "./images/logo.png", 
-      "type": "image/png",
-      "sizes": "192x192",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "index.html",
   "background_color": "#ff0000",
   "display": "standalone",
-  "scope": "./",
+  "scope": "/",
   "theme_color": "#ff0000"
 }
