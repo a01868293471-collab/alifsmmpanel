@@ -8658,7 +8658,6 @@ function openUserPopup(index) {
     const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=random&color=fff&size=128`;
     const finalPhoto = userImg ? userImg : avatarPlaceholder;
 
-    // ১. স্ট্যাটাস অনুযায়ী ডাইনামিক ব্যাজ (Active / Inactive)
     const isActive = u.status === 'active';
     const statusBadge = isActive 
         ? '<span style="background: #dcfce7; color: #15803d; padding: 2px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; border: 1px solid #15803d; display: inline-block; margin-top: 5px;">Active</span>' 
@@ -8692,9 +8691,15 @@ function openUserPopup(index) {
                         <small class="text-muted d-block" style="font-size: 9px; text-transform: uppercase;">Rank</small>
                         <b class="text-primary" style="font-size: 12px;">${u.rank || 'General'}</b>
                     </div>
-                    <div class="flex-fill p-2 bg-light rounded-3 text-center border">
-                        <small class="text-muted d-block" style="font-size: 9px; text-transform: uppercase;">Ref Code</small>
-                        <b class="text-dark" style="font-size: 12px;">${u.referCode || 'N/A'}</b>
+                </div>
+
+                <div class="p-3 rounded-4 mb-3 border" style="background: #fffbf0; border: 1px solid #ffeeba !important;">
+                    <small class="text-muted fw-bold d-block mb-2" style="font-size: 11px; color: #856404 !important;">Edit Refer Code</small>
+                    <div class="d-flex gap-2">
+                        <input type="text" id="editReferInput" class="form-control form-control-sm" value="${u.referCode || ''}" 
+                               style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 8px;">
+                        <button class="btn btn-warning btn-sm fw-bold px-3" style="border-radius: 8px; font-size: 11px;" 
+                                onclick="updateReferCodeAdmin(${index})">Update</button>
                     </div>
                 </div>
 
@@ -8728,6 +8733,38 @@ function openUserPopup(index) {
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
 
+// রেফার কোড আপডেট করার ফাংশন
+function updateReferCodeAdmin(index) {
+    const newCode = document.getElementById('editReferInput').value.trim().toUpperCase();
+    const user = db.users[index];
+
+    if (newCode === "") {
+        return toast('একটি কোড লিখুন', 'error');
+    }
+
+    // ইউনিক কোড চেক (অন্য কেউ ব্যবহার করছে কি না)
+    const isTaken = db.users.some((x, i) => x.referCode === newCode && i !== index);
+    if (isTaken) {
+        return toast('এই কোডটি অন্য একজন ব্যবহার করছে!', 'error');
+    }
+
+    const oldCode = user.referCode;
+    user.referCode = newCode;
+
+    // টিম ডাটা আপডেট (ঐ রেফার কোডের আন্ডারে যারা আছে তাদের referredBy পরিবর্তন)
+    db.users.forEach(u => {
+        if (u.referredBy === oldCode) {
+            u.referredBy = newCode;
+        }
+    });
+
+    save(); // LocalStorage-এ সেভ করা
+    toast('রেফার কোড আপডেট হয়েছে: ' + newCode, 'success');
+    
+    // পপআপ বন্ধ করে অ্যাডমিন প্যানেল রেন্ডার করা
+    closeUserPopup();
+    renderAdmin(); 
+}
 
 function closeUserPopup() {
     const modal = document.getElementById('userModal');
@@ -9475,4 +9512,3 @@ function openSettings() {
 </script>
 </body>
 </html>
-
