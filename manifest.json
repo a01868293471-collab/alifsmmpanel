@@ -1,18 +1,61 @@
 {
+
+
+
   "short_name": "Free Time Earn",
+
+
+
   "name": "Free Time Earn",
-  "description": "Digital Business Platform by Abu Sufian",
+
+
+
   "icons": [
+
+
+
     {
-      "src": "logo.png",
+
+
+
+      "src": "https://img.icons8.com/fluency/512/wallet.png",
+
+
+
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+
+
+
+      "sizes": "512x512"
+
+
+
     }
+
+
+
   ],
-  "start_url": "index.html",
+
+
+
+"start_url": "./index.html",
+
+
+
   "background_color": "#ff0000",
+
+
+
   "display": "standalone",
-  "scope": "/",
+
+
+
+  "scope": "./",
+
+
+
   "theme_color": "#ff0000"
+
+
+
 }
