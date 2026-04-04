@@ -2516,63 +2516,149 @@ div[onclick="toggleBloodModal()"]:active {
     
     <div style="padding: 20px;">
         
+<style>
+    /* ইনপুটের ভেতরের সাদা লেখা (Placeholder) স্পষ্ট করার জন্য */
+    #login-box input::placeholder {
+        color: #888 !important;
+        opacity: 1;
+    }
+    #login-box input:-ms-input-placeholder { color: #888 !important; }
+    #login-box input::-ms-input-placeholder { color: #888 !important; }
+</style>
+
 <div class="auth-card mx-auto mt-4" id="login-box" 
-     style="max-width: 360px; background: #ff0000; border-radius: 25px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; margin-bottom: 25px;">
-    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
+     style="max-width: 330px; background: #ffffff; border-radius: 24px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); border: 1px solid #f2f2f2; font-family: 'Poppins', sans-serif;">
+    
     <div class="text-center">
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-            <i class="fas fa-user-lock" style="font-size: 24px; color: #fff;"></i>
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 1px solid #ffe5e5;">
+            <i class="fas fa-user-shield" style="font-size: 26px; color: #ff0000;"></i>
         </div>
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Login Access</h3>
+        
+        <h3 style="font-weight: 800; color: #222; margin-bottom: 5px; font-size: 20px; letter-spacing: -0.5px;">Login Account</h3>
+        <p style="font-size: 12px; color: #888; margin-bottom: 25px;">আপনার একাউন্টে লগইন করুন</p>
     </div>
+
     <div class="auth-container">
         <div style="position: relative; margin-bottom: 15px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="l-email" placeholder="Email Address" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="l-email" placeholder="Email Address" 
+                   style="width: 100%; padding: 12px 15px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
         </div>
+
         <div style="position: relative; margin-bottom: 25px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-lock"></i></span>
-            <input type="password" id="l-pass" placeholder="Password" style="width: 100%; padding: 12px 45px 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-lock"></i></span>
+            <input type="password" id="l-pass" placeholder="Password" 
+                   style="width: 100%; padding: 12px 42px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
+            <span onclick="toggleLoginPassword()" style="position: absolute; right: 15px; top: 13px; color: #bbb; cursor: pointer; font-size: 14px; z-index: 10;">
+                <i class="fas fa-eye" id="loginEyeIcon"></i>
+            </span>
         </div>
-        <button onclick="handleAuth('login')" style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; font-weight: 800; text-transform: uppercase;">Login Now</button>
-        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px;">No account? <a href="#" style="color: #ffffff; font-weight: 800;" onclick="switchAuth(true)">Create Account</a></p>
+
+        <button onclick="handleAuth('login')" 
+                style="width: 100%; height: 48px; border-radius: 12px; border: none; background: #ff0000; color: #ffffff; font-weight: 700; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 15px rgba(255, 0, 0, 0.15); transition: 0.3s; font-size: 14px; letter-spacing: 0.5px;">
+            Login Now
+        </button>
+
+        <p class="text-center" style="font-size: 12px; color: #999; margin-top: 25px;">
+            New member? <a href="#" style="color: #ff0000; font-weight: 700; text-decoration: none;" onclick="switchAuth(true)">Register Now</a>
+        </p>
     </div>
 </div>
 
+<script>
+    /* লগইন পাসওয়ার্ড হাইড/শো করার ফাংশন */
+    function toggleLoginPassword() {
+        const passInput = document.getElementById('l-pass');
+        const eyeIcon = document.getElementById('loginEyeIcon');
+        
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+</script>
+
+
+<style>
+    /* প্লেসহোল্ডার টেক্সট কালার ঠিক করার জন্য CSS */
+    #signup-box input::placeholder {
+        color: #888 !important; /* হালকা ধূসর রঙ যা সাদা ব্যাকগ্রাউন্ডে স্পষ্ট দেখা যাবে */
+        opacity: 1;
+    }
+    #signup-box input:-ms-input-placeholder { color: #888 !important; }
+    #signup-box input::-ms-input-placeholder { color: #888 !important; }
+</style>
+
 <div class="auth-card d-none mx-auto mt-4" id="signup-box" 
-     style="max-width: 360px; background: #ff0000; border-radius: 25px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden; margin-bottom: 25px;">
+     style="max-width: 330px; background: #ffffff; border-radius: 24px; padding: 30px 25px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); border: 1px solid #f2f2f2; font-family: 'Poppins', sans-serif;">
     
-    <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
     <div class="text-center">
-        <div style="width: 55px; height: 55px; background: rgba(255,255,255,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 1px solid rgba(255,255,255,0.2);">
-            <i class="fas fa-user-plus" style="font-size: 24px; color: #fff;"></i>
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 1px solid #ffe5e5;">
+            <i class="fas fa-user-plus" style="font-size: 26px; color: #ff0000;"></i>
         </div>
-        <h3 style="font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 20px;">Create Account</h3>
+        <h3 style="font-weight: 800; color: #222; margin-bottom: 5px; font-size: 20px; letter-spacing: -0.5px;">Create Account</h3>
+        <p style="font-size: 12px; color: #888; margin-bottom: 25px;">নতুন একাউন্ট তৈরি করুন</p>
     </div>
 
     <div class="auth-container">
-        <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-user"></i></span>
-            <input type="text" id="s-name" placeholder="Full Name" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
-        </div>
-        <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="s-email" placeholder="Email Address" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
-        </div>
-        <div style="position: relative; margin-bottom: 12px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-handshake"></i></span>
-            <input type="text" id="reg-refer" placeholder="Refer Code (Optional)" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
-        </div>
-        <div style="position: relative; margin-bottom: 20px;">
-            <span style="position: absolute; left: 15px; top: 12px; color: rgba(255,255,255,0.8);"><i class="fas fa-lock"></i></span>
-            <input type="password" id="s-pass" placeholder="Password (6+ Digits)" style="width: 100%; padding: 12px 45px; border-radius: 12px; border: 1.2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;">
+        <div style="position: relative; margin-bottom: 15px;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-user"></i></span>
+            <input type="text" id="s-name" placeholder="Name" 
+                   style="width: 100%; padding: 12px 15px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
         </div>
 
-        <button onclick="handleAuth('signup')" style="width: 100%; height: 48px; border-radius: 12px; background: #ffffff; color: #ff0000; font-weight: 800; text-transform: uppercase;">Register Now</button>
-        
-        <p class="text-center" style="font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 25px;">Already have an Account? <a href="#" style="color: #ffffff; font-weight: 800;" onclick="switchAuth(false)">Login</a></p>
+        <div style="position: relative; margin-bottom: 15px;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="s-email" placeholder=" Email Address" 
+                   style="width: 100%; padding: 12px 15px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
+        </div>
+
+        <div style="position: relative; margin-bottom: 15px;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-handshake"></i></span>
+            <input type="text" id="reg-refer" placeholder="Refer code" 
+                   style="width: 100%; padding: 12px 15px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
+        </div>
+
+        <div style="position: relative; margin-bottom: 25px;">
+            <span style="position: absolute; left: 15px; top: 13px; color: #ff0000; font-size: 13px;"><i class="fas fa-lock"></i></span>
+            <input type="password" id="s-pass" placeholder="Password " 
+                   style="width: 100%; padding: 12px 42px 12px 42px; border-radius: 12px; border: 1.5px solid #eee; background: #fafafa; color: #333; outline: none; font-size: 13px; transition: 0.3s; font-weight: 500;">
+            <span onclick="toggleSignupPassword()" style="position: absolute; right: 15px; top: 13px; color: #bbb; cursor: pointer; font-size: 13px;">
+                <i class="fas fa-eye" id="toggleSignupIcon"></i>
+            </span>
+        </div>
+
+        <button onclick="handleAuth('signup')" 
+                style="width: 100%; height: 48px; border-radius: 12px; border: none; background: #ff0000; color: #ffffff; font-weight: 700; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 15px rgba(255, 0, 0, 0.15); transition: 0.3s; font-size: 14px; letter-spacing: 0.5px;">
+            Register Now
+        </button>
+
+        <p class="text-center" style="font-size: 12px; color: #999; margin-top: 25px;">
+            Already have an Account? <a href="#" style="color: #ff0000; font-weight: 700; text-decoration: none;" onclick="switchAuth(false)">Login</a>
+        </p>
     </div>
 </div>
+
+<script>
+function toggleSignupPassword() {
+    const passInput = document.getElementById('s-pass');
+    const toggleIcon = document.getElementById('toggleSignupIcon');
+    if (passInput.type === 'password') {
+        passInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    } else {
+        passInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    }
+}
+</script>
 
 <div id="footer-buttons" style="display: flex; justify-content: space-around; align-items: flex-start; max-width: 360px; margin: 0 auto; padding: 10px 10px;">
     
@@ -9280,6 +9366,36 @@ window.openTransactionPage = function() {
 
     listEl.innerHTML = listHTML;
 }; // ফাংশনটি এখানে শেষ হবে
+
+function switchAuth(isSignUp) {
+    // এলিমেন্টগুলো ভেরিয়েবলে নেওয়া হচ্ছে
+    const loginBox = document.getElementById('login-box');
+    const signupBox = document.getElementById('signup-box');
+    const footerButtons = document.getElementById('footer-buttons');
+
+    if (isSignUp) {
+        // সাইনআপ পেজ দেখাবে (লগইন এবং ফুটার হাইড হবে)
+        if (loginBox) loginBox.classList.add('d-none');
+        if (signupBox) signupBox.classList.remove('d-none');
+        if (footerButtons) footerButtons.style.display = 'none';
+    } else {
+        // লগইন পেজ দেখাবে (সাইনআপ হাইড এবং ফুটার শো হবে)
+        if (signupBox) signupBox.classList.add('d-none');
+        if (loginBox) loginBox.classList.remove('d-none');
+        if (footerButtons) footerButtons.style.display = 'flex';
+    }
+}
+
+// পেজ লোড হওয়ার সময় চেক করবে কোন বক্সটি ওপেন আছে
+window.onload = function() {
+    const signupBox = document.getElementById('signup-box');
+    const footerButtons = document.getElementById('footer-buttons');
+    
+    // যদি সাইনআপ বক্স থেকে d-none না থাকে (অর্থাৎ ওপেন থাকে) তবে ফুটার হাইড হবে
+    if (signupBox && !signupBox.classList.contains('d-none')) {
+        if (footerButtons) footerButtons.style.display = 'none';
+    }
+};
 
 </script>
 </body>
