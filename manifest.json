@@ -3,8 +3,8 @@
   "name": "Free Time Earn",
   "icons": [
     {
-      // এটি একটি সাদা ফ্ল্যাট ওয়ালেট আইকন (Icons8 থেকে নেওয়া)
-      "src": "https://img.icons8.com/fluency-systems-filled/512/ffffff/wallet.png",
+      // এটি একটি লাল ব্যাকগ্রাউন্ডের ভেতর সাদা ওয়ালেট আইকন (Icons8 থেকে নেওয়া)
+      "src": "https://img.icons8.com/fluency-systems-filled/512/ff0000/ffffff/wallet.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
