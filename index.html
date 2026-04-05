@@ -3688,7 +3688,6 @@ function toggleSignupPassword() {
     }
 </style>
 
-
 <div id="notification-page" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 1000; font-family: 'Poppins', sans-serif;">
     
     <div style="background: #ff0000; padding: 20px 15px; display: flex; align-items: center; gap: 15px; color: white; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
@@ -3696,36 +3695,18 @@ function toggleSignupPassword() {
         <h3 style="margin: 0; font-size: 19px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">Notifications</h3>
     </div>
 
-    <div style="padding: 15px; overflow-y: auto; height: calc(100vh - 70px);">
-        
-        <div class="notif-card" onclick="showNotifDetail('নতুন আপডেট!', 'আমাদের অ্যাপে নতুন কিছু ফিচার যোগ করা হয়েছে। এখনই চেক করুন এবং বেশি আয় করুন।')">
-            <div class="notif-icon"><i class="fas fa-bullhorn"></i></div>
-            <div style="flex: 1;">
-                <h4 style="margin: 0 0 5px; font-size: 14px; color: #1e293b;">নতুন আপডেট এসেছে!</h4>
-                <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.4;">আমাদের অ্যাপে নতুন কিছু ফিচার যোগ করা হয়েছে...</p>
-                <small style="color: #94a3b8; font-size: 10px;">২ মিনিট আগে</small>
-            </div>
+    <div id="notif-list-container" style="padding: 15px; overflow-y: auto; height: calc(100vh - 85px);">
         </div>
-
-        <div class="notif-card" onclick="showNotifDetail('পেমেন্ট সাকসেস', 'আপনার উইথড্র রিকোয়েস্টটি সফলভাবে সম্পন্ন হয়েছে। আপনার ওয়ালেট চেক করুন।')">
-            <div class="notif-icon" style="background: #dcfce7; color: #16a34a;"><i class="fas fa-check-circle"></i></div>
-            <div style="flex: 1;">
-                <h4 style="margin: 0 0 5px; font-size: 14px; color: #1e293b;">পেমেন্ট সাকসেস</h4>
-                <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.4;">আপনার উইথড্র রিকোয়েস্টটি সফলভাবে সম্পন্ন হয়েছে...</p>
-                <small style="color: #94a3b8; font-size: 10px;">১ ঘণ্টা আগে</small>
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <div id="notif-modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1100; align-items: center; justify-content: center; padding: 20px;">
     <div style="background: white; width: 100%; max-width: 350px; border-radius: 20px; padding: 25px; position: relative; animation: slideUp 0.3s ease;">
         <h3 id="modal-title" style="margin-top: 0; color: #1e3a8a; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Title</h3>
         <p id="modal-body" style="color: #475569; font-size: 14px; line-height: 1.6; margin: 15px 0;"></p>
-        <button onclick="closeNotifModal()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer;">বুঝতে পেরেছি</button>
+        <button onclick="closeNotifModal()" style="width: 100%; background: #ff0000; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer;">বুঝতে পেরেছি</button>
     </div>
 </div>
+
     
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -5868,10 +5849,12 @@ function toggleSignupPassword() {
 <script>
 let db = {
     withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
-    // অ্যাডমিনের জন্য একটি ডিফল্ট রেফার কোড (যেমন: ADMIN1) যোগ করা হয়েছে
     users: JSON.parse(localStorage.getItem('v7_u')) || [
         {name:"Admin", email:"aa@gmail.com", pass:"325800", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
     ],
+    // নিচের এই লাইনটি নতুন যোগ করা হলো
+    notifications: JSON.parse(localStorage.getItem('v7_notif') || '[]'), 
+    
     orders: JSON.parse(localStorage.getItem('v7_o')) || [],
     funds: JSON.parse(localStorage.getItem('v7_f')) || [],
     chats: JSON.parse(localStorage.getItem('v7_chats')) || [],
@@ -5890,9 +5873,14 @@ let db = {
     const toast = (msg, icon='success') => { Swal.fire({ text: msg, icon: icon, toast: true, position: 'top', showConfirmButton: false, timer: 2000 }); };
     const formatCurrency = (num) => parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 2 });
 
-    function save() {
+    
+function save() {
     localStorage.setItem('v7_w', JSON.stringify(db.withdraws || []));
-    localStorage.setItem('v7_u', JSON.stringify(db.users || [])); // ইউজার লিস্ট সেভ
+    localStorage.setItem('v7_u', JSON.stringify(db.users || [])); 
+    
+    // নিচের এই লাইনটি অবশ্যই যোগ করুন
+    localStorage.setItem('v7_notif', JSON.stringify(db.notifications || [])); 
+
     localStorage.setItem('v7_o', JSON.stringify(db.orders || []));
     localStorage.setItem('v7_f', JSON.stringify(db.funds || []));
     localStorage.setItem('v7_chats', JSON.stringify(db.chats || []));
@@ -5903,9 +5891,11 @@ let db = {
     localStorage.setItem('v7_rocketNum', db.rocketNum || "");
     localStorage.setItem('v7_autoMsg', db.autoMsg || "");
     
-    // কনসোলে চেক করার জন্য (ঐচ্ছিক)
     console.log("Data Saved Successfully!");
 }
+
+
+
 
     // লোগো আপলোড হ্যান্ডলার
     document.getElementById('adm-logo-file').addEventListener('change', function(e) {
@@ -6107,46 +6097,29 @@ function handleAuth(m) {
 function renderUser() {
     if (!curUser) return;
 
-    // --- ১. একাউন্ট একটিভেশন কার্ড চেক (নতুন যোগ করা হয়েছে) ---
+    // --- ১. একাউন্ট একটিভেশন কার্ড চেক ---
     const activationCard = document.getElementById('activation-card');
     if (activationCard) {
-        // যদি স্ট্যাটাস active না হয় (অর্থাৎ inactive), তবে কার্ডটি দেখাবে
-        if (curUser.status !== 'active') {
-            activationCard.style.display = 'block';
-        } else {
-            activationCard.style.display = 'none';
-        }
+        activationCard.style.display = (curUser.status !== 'active') ? 'block' : 'none';
     }
 
-// ২. সব জায়গায় ব্যালেন্স আপডেট করা (Main Balance & Today Income)
+    // ২. ব্যালেন্স আপডেট
     const formattedBal = formatCurrency(curUser.bal);
-    const formattedToday = formatCurrency(curUser.todayEarn || 0); // আজকের ইনকাম ফরম্যাট করা
+    const formattedToday = formatCurrency(curUser.todayEarn || 0); 
     
-    // মেইন ব্যালেন্সের আইডিগুলো
-    const balIds = ['u-bal', 'wallet-bal', 'withdraw-bal', 'u-bal-nav'];
-    
-    balIds.forEach(id => {
+    ['u-bal', 'wallet-bal', 'withdraw-bal', 'u-bal-nav'].forEach(id => {
         const elem = document.getElementById(id);
-        if (elem) {
-            elem.innerText = formattedBal;
-        }
+        if (elem) elem.innerText = formattedBal;
     });
 
-    // --- আজকের ইনকাম আপডেট করার নতুন লজিক ---
-    // আপনার আজকের ইনকামের HTML আইডি যদি 'today-earn' হয়
     const todayEarnElem = document.getElementById('today-earn'); 
-    if (todayEarnElem) {
-        todayEarnElem.innerText = formattedToday;
-    }
+    if (todayEarnElem) todayEarnElem.innerText = formattedToday;
 
-
-    // ৩. ইউজারের র্যাঙ্ক দেখানো
+    // ৩. র্যাঙ্ক
     const rankElem = document.getElementById('user-rank');
-    if (rankElem) {
-        rankElem.innerText = curUser.rank || "General Member";
-    }
+    if (rankElem) rankElem.innerText = curUser.rank || "General Member";
 
-    // ৪. ফান্ড হিস্টোরি (Add Money History)
+    // ৪. ফান্ড হিস্টোরি
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
         fundList.innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
@@ -6170,7 +6143,40 @@ function renderUser() {
         `).join("") || "No orders";
     }
 
-    // ৬. উইথড্র হিস্টোরি
+    // --- ৬. নোটিফিকেশন হিস্টোরি (Fix করা হয়েছে) ---
+    const notifList = document.getElementById('notif-list-container');
+    if (notifList) {
+        if (!db.notifications) db.notifications = [];
+        
+        // এখানে ইমেইল ম্যাচিং-কে একদম সহজ করা হয়েছে
+        const myEmail = String(curUser.email || "").toLowerCase().trim();
+        
+        const myNotifs = db.notifications.filter(n => {
+            const target = String(n.target || "").toLowerCase().trim();
+            // চেক করুন 'all' অথবা ইউজারের নিজের ইমেইল
+            return target === 'all' || target === myEmail;
+        }).reverse();
+
+        if (myNotifs.length === 0) {
+            notifList.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;"><i class="fas fa-bell-slash d-block mb-2" style="font-size:30px; opacity:0.5;"></i>কোনো নোটিফিকেশন নেই</div>`;
+        } else {
+            notifList.innerHTML = myNotifs.map(n => `
+                <div class="notif-card" onclick="showNotifDetail('${n.title}', '${n.message}')" style="background: white; padding: 15px; border-radius: 15px; margin-bottom: 12px; display: flex; gap: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; cursor: pointer;">
+                    <div style="background: #fee2e2; color: #ff0000; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; font-size: 14px; color: #1e293b; font-weight: 700;">${n.title || 'Notification'}</h4>
+                        <p style="margin: 3px 0; font-size: 12px; color: #64748b; line-height: 1.4;">
+                            ${(n.message || "").length > 50 ? (n.message || "").substring(0, 50) + '...' : (n.message || "")}
+                        </p>
+                        <small style="color: #94a3b8; font-size: 10px;">${n.time || ''}</small>
+                    </div>
+                </div>
+            `).join("");
+        }
+    }
+
     if (typeof renderWithdrawHistory === "function") {
         renderWithdrawHistory();
     }
@@ -8664,7 +8670,7 @@ function openUserPopup(index) {
 
     const popupHTML = `
     <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(5px);">
-        <div style="background: white; width: 100%; max-width: 380px; border-radius: 25px; overflow: hidden; animation: zoomIn 0.3s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+        <div style="background: white; width: 100%; max-width: 380px; border-radius: 25px; overflow-y: auto; max-height: 90vh; animation: zoomIn 0.3s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
             
             <div class="text-center p-4" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); position: relative;">
                 <button onclick="closeUserPopup()" style="position: absolute; top: 15px; right: 15px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 28px; height: 28px;"><i class="fas fa-times"></i></button>
@@ -8692,13 +8698,27 @@ function openUserPopup(index) {
                     </div>
                 </div>
 
+                <div class="p-3 rounded-4 mb-3 border" style="background: #f0fdf4; border: 1px solid #bbf7d0 !important;">
+                    <small class="text-muted fw-bold d-block mb-2" style="color: #166534 !important; font-size: 11px;">Send Notification</small>
+                    <input type="text" id="adminMsgTitle" placeholder="Title (যেমন: পেমেন্ট সাকসেস)" class="form-control form-control-sm mb-2" style="border-radius: 8px;">
+                    <textarea id="adminMsgBody" placeholder="আপনার মেসেজ লিখুন..." class="form-control form-control-sm mb-2" style="border-radius: 8px; font-size: 12px; height: 60px;"></textarea>
+                    
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #166534; font-weight: 600;">
+                            <input type="checkbox" id="sendToAll"> Send to All?
+                        </label>
+                        <button class="btn btn-success btn-sm fw-bold px-3" style="border-radius: 8px; font-size: 11px;" 
+                                onclick="sendInstantNotif(${index})">Send <i class="fas fa-paper-plane ms-1"></i></button>
+                    </div>
+                </div>
+
                 <div class="p-3 rounded-4 mb-3 border" style="background: #fffbf0; border: 1px solid #ffeeba !important;">
                     <small class="text-muted fw-bold d-block mb-2" style="font-size: 11px; color: #856404 !important;">Edit Refer Code</small>
                     <div class="d-flex gap-2">
                         <input type="text" id="editReferInput" class="form-control form-control-sm" value="${u.referCode || ''}" 
                                style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 8px;">
                         <button class="btn btn-warning btn-sm fw-bold px-3" style="border-radius: 8px; font-size: 11px;" 
-                                onclick="updateReferCodeAdmin(${index})">Update</button>
+                                 onclick="updateReferCodeAdmin(${index})">Update</button>
                     </div>
                 </div>
 
@@ -9506,6 +9526,40 @@ function openSettings() {
 
     // *** এই লাইনটি অবশ্যই থাকতে হবে ***
     loadUplineDetails(); 
+}
+function sendInstantNotif(index) {
+    const u = db.users[index];
+    const title = document.getElementById('adminMsgTitle').value.trim();
+    const message = document.getElementById('adminMsgBody').value.trim();
+    const isAll = document.getElementById('sendToAll').checked;
+
+    if (!title || !message) return toast('টাইটেল এবং মেসেজ লিখুন', 'error');
+
+    const newNotif = {
+        id: Date.now(),
+        target: isAll ? 'all' : u.email,
+        title: title,
+        message: message,
+        time: new Date().toLocaleString(),
+        status: 'unread'
+    };
+
+    if (!db.notifications) db.notifications = [];
+    db.notifications.push(newNotif);
+    
+    save(); // ডেটাবেস সেভ করুন
+    toast(isAll ? "সবার কাছে নোটিফিকেশন পাঠানো হয়েছে" : `${u.name}-কে মেসেজ পাঠানো হয়েছে`, 'success');
+    
+    // বক্স ক্লিয়ার করা
+    document.getElementById('adminMsgTitle').value = "";
+    document.getElementById('adminMsgBody').value = "";
+    document.getElementById('sendToAll').checked = false;
+}
+function openNotifications() {
+    document.getElementById('notification-page').style.display = 'block';
+    
+    // --- এই লাইনটি অবশ্যই থাকতে হবে ---
+    renderNotifications(); 
 }
 
 </script>
