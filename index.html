@@ -1268,6 +1268,34 @@
     text-align: center;
     border: 1px solid #f1f2f6;
 }
+    .w-method-card {
+        background: #ffffff;
+        padding: 15px 10px;
+        text-align: center;
+        border-radius: 18px;
+        border: 1.5px solid #f1f5f9;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+    }
+
+    /* সিলেক্ট করা কার্ডের স্টাইল */
+    .active-method {
+        border-color: #3b82f6 !important;
+        background-color: #eff6ff !important;
+        color: #3b82f6 !important;
+        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2) !important;
+        transform: translateY(-3px) !important;
+    }
+
+    /* আইকনের জন্য আলাদা ট্রানজিশন */
+    .w-method-card i {
+        transition: color 0.3s ease;
+    }
 
 .top-action-card span {
     display: block;
@@ -3586,94 +3614,61 @@ function toggleSignupPassword() {
 
 </div>
 
-
 <div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
     <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closePage('withdraw')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <div onclick="closePage('p-withdraw')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">Withdraw Funds</h4>
+            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px;">Withdraw Funds</h4>
         </div>
-        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 20px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 0.8px;">
-            SECURE PAYOUT
+        <div onclick="openPage('p-withdraw-history')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3);">
+            <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
         </div>
     </div>
 
     <div class="container px-3 mt-4">
-        <div style="background: #e60000; padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.1);">
-            <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-            <div style="position: absolute; bottom: -30px; left: -10px; width: 80px; height: 80px; background: rgba(255,255,255,0.04); border-radius: 50%;"></div>
-            
-            <span style="font-size: 12px; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;">Available Balance</span>
+        <div style="background: #e60000; padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden;">
+            <span style="font-size: 12px; opacity: 0.9; font-weight: 600; text-transform: uppercase;">Available Balance</span>
             <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
-                <h2 style="margin: 0; font-weight: 900; font-size: 40px; letter-spacing: -1.5px; color: white;">
-                    ৳ <span id="withdraw-bal">0.00</span>
-                </h2>
-            </div>
-            
-            <div style="margin-top: 18px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 12px; width: fit-content; border: 1px solid rgba(255, 255, 255, 0.2);">
-                <i class="fas fa-shield-alt" style="font-size: 12px; color: #ffffff;"></i>
-                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Verified Account</span>
+                <h2 style="margin: 0; font-weight: 900; font-size: 40px;">৳ <span id="withdraw-bal">0.00</span></h2>
             </div>
         </div>
 
-        <p style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; padding-left: 5px;">Select Payout Method</p>
+        <p style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px;">Select Payout Method</p>
         <div class="row g-3 mb-4">
-            <div class="col-4">
-                <div class="w-method-card" id="w-Bkash" onclick="selectWithdrawMethod('Bkash')">
-                    <i class="fas fa-university" style="font-size: 24px; margin-bottom: 8px;"></i>
-                    <span>bKash</span>
+            <div class="col-4" onclick="selectWithdrawMethod('Bkash')">
+                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Bkash">
+                    <i class="fas fa-university mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">bKash</span>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="w-method-card" id="w-Nagad" onclick="selectWithdrawMethod('Nagad')">
-                    <i class="fas fa-wallet" style="font-size: 24px; margin-bottom: 8px;"></i>
-                    <span>Nagad</span>
+            <div class="col-4" onclick="selectWithdrawMethod('Nagad')">
+                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Nagad">
+                    <i class="fas fa-wallet mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">Nagad</span>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="w-method-card" id="w-Rocket" onclick="selectWithdrawMethod('Rocket')">
-                    <i class="fas fa-credit-card" style="font-size: 24px; margin-bottom: 8px;"></i>
-                    <span>Rocket</span>
+            <div class="col-4" onclick="selectWithdrawMethod('Rocket')">
+                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Rocket">
+                    <i class="fas fa-credit-card mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">Rocket</span>
                 </div>
             </div>
         </div>
 
-        <div style="background: white; padding: 25px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eef2f6;">
+        <div style="background: white; padding: 25px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
             <div class="mb-4">
                 <label style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Account Number</label>
-                <div style="position: relative;">
-                    <i class="fas fa-phone-alt" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 14px;"></i>
-                    <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.background='white'">
-                </div>
+                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 14px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700;">
             </div>
 
             <div class="mb-4">
                 <label style="display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px;">Withdraw Amount</label>
-                <div style="position: relative;">
-                    <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-weight: 800; font-size: 16px;">৳</span>
-                    <input type="number" id="w-amt" placeholder="Enter amount" style="width: 100%; padding: 14px 15px 14px 45px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.background='white'">
-                </div>
+                <input type="number" id="w-amt" placeholder="Enter amount" style="width: 100%; padding: 14px; border-radius: 14px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700;">
             </div>
 
-            <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: white; border: none; padding: 18px; border-radius: 16px; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); transition: 0.3s;">
-                <i class="fas fa-paper-plane"></i>
-                <span>Submit Request</span>
+            <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: white; border: none; padding: 18px; border-radius: 16px; font-weight: 700; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);">
+                Submit Request
             </button>
-        </div>
-
-        <div style="margin-top: 35px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px;">
-            <h6 style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">Recent Transactions</h6>
-            <span style="font-size: 12px; color: #3b82f6; font-weight: 700; cursor: pointer;">View All</span>
-        </div>
-        
-        <div id="withdraw-hist-list" style="padding-bottom: 30px;">
-            <div style="text-align: center; padding: 30px; opacity: 0.5;">
-                <i class="fas fa-history" style="font-size: 30px; margin-bottom: 10px;"></i>
-                <p style="font-size: 12px;">No withdrawal history found</p>
-            </div>
         </div>
     </div>
 </div>
@@ -3728,7 +3723,20 @@ function toggleSignupPassword() {
         transform: translateY(-3px);
     }
 </style>
+<div id="p-withdraw-history" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    
+    <div style="background: white; padding: 20px; display: flex; align-items: center; gap: 15px; position: sticky; top: 0; z-index: 102; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div onclick="closePage('p-withdraw-history')" style="width: 35px; height: 35px; background: #f1f5f9; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <i class="fas fa-chevron-left" style="font-size: 18px; color: #1e293b;"></i>
+        </div>
+        <h4 style="margin: 0; font-weight: 800; color: #1e293b; font-size: 18px;">Withdraw History</h4>
+    </div>
 
+    <div class="container px-3 mt-4">
+        <div id="full-withdraw-list" style="padding-bottom: 30px;">
+            </div>
+    </div>
+</div>
 <div id="notification-page" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 1000; font-family: 'Poppins', sans-serif;">
     
     <div style="background: #ff0000; padding: 20px 15px; display: flex; align-items: center; gap: 15px; color: white; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
@@ -4482,50 +4490,95 @@ function toggleSignupPassword() {
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 80px;">
-            
-            <div onclick="openIncomeDetail('today', 'Today Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-calendar-day" style="color: #3b82f6; font-size: 16px;"></i>
-                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Today Income</span>
-                </div>
-                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 100px;">
+            <div onclick="openIncomeDetail('today', 'Today Income')" class="income-row" style="--c: #3b82f6;">
+                <div class="income-icon"><i class="fas fa-calendar-day"></i></div>
+                <div style="flex: 1;"><span class="income-label">Today Income</span></div>
+                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
 
-            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-history" style="color: #14b8a6; font-size: 16px;"></i>
-                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Yesterday Income</span>
-                </div>
-                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
+            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="income-row" style="--c: #14b8a6;">
+                <div class="income-icon"><i class="fas fa-history"></i></div>
+                <div style="flex: 1;"><span class="income-label">Yesterday Income</span></div>
+                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
 
-            <div onclick="openIncomeDetail('7days', 'Last 7 days Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-calendar-week" style="color: #8b5cf6; font-size: 16px;"></i>
-                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Weekly Income</span>
-                </div>
-                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
+            <div onclick="openIncomeDetail('7days', 'Weekly Income')" class="income-row" style="--c: #8b5cf6;">
+                <div class="income-icon"><i class="fas fa-chart-line"></i></div>
+                <div style="flex: 1;"><span class="income-label">Weekly Income</span></div>
+                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
 
-            <div onclick="openIncomeDetail('30days', 'Last 30 days Income')" style="background: white; padding: 14px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-calendar-alt" style="color: #f59e0b; font-size: 16px;"></i>
-                    <span style="font-size: 14px; font-weight: 700; color: #334155;">Monthly Income</span>
-                </div>
-                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
+            <div onclick="openIncomeDetail('30days', 'Monthly Income')" class="income-row" style="--c: #f59e0b;">
+                <div class="income-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div style="flex: 1;"><span class="income-label">Monthly Income</span></div>
+                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
 
-            <div onclick="openIncomeDetail('total', 'Total Income')" style="background: #ffffff; padding: 16px 18px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <i class="fas fa-crown" style="color: #fbbf24; font-size: 16px;"></i>
-                    <span style="font-size: 14px; font-weight: 800; color: #1e293b;">Lifetime Total Income</span>
-                </div>
-                <i class="fas fa-chevron-right" style="font-size: 12px; color: #cbd5e1;"></i>
+            <div onclick="openIncomeDetail('total', 'Lifetime Income')" class="income-row total-row" style="--c: #fbbf24; margin-top: 10px;">
+                <div class="income-icon" style="background: #fffbeb;"><i class="fas fa-crown"></i></div>
+                <div style="flex: 1;"><span class="income-label" style="font-weight: 800;">Lifetime Total Income</span></div>
+                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
         </div>
     </div>
 </div>
+<style>
+    .action-card {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    .action-card:active {
+        transform: scale(0.95);
+        background: #f8fafc !important;
+    }
+    
+    .income-row {
+        background: white;
+        padding: 16px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        border: 1px solid #f1f5f9;
+        border-left: 5px solid var(--c);
+        transition: all 0.2s ease;
+    }
+    .income-row:active {
+        transform: translateX(5px);
+        background: #f8fafc;
+    }
+    
+    .income-icon {
+        width: 42px;
+        height: 42px;
+        background: #f1f5f9;
+        color: var(--c);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
+    
+    .income-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: #334155;
+    }
+    
+    .income-arrow {
+        font-size: 12px;
+        color: #cbd5e1;
+    }
+    
+    .total-row {
+        background: linear-gradient(to right, #ffffff, #fffbeb);
+        border-left-width: 6px;
+    }
+</style>
 <style>
     /* ওয়ালেট কার্ড স্টাইল */
     .wallet-report-card {
@@ -5533,88 +5586,126 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
+
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
     <div style="background: #ff0000; padding: 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-        
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+            <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            
             <div>
                 <h4 style="margin: 0; font-weight: 800; color: white; font-size: 19px; letter-spacing: 0.8px; text-transform: uppercase;">Deposit</h4>
                 <div style="width: 25px; height: 3px; background: #ffffff; border-radius: 10px; margin-top: 2px; opacity: 0.8;"></div>
             </div>
         </div>
-
-        <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
-            <i class="fas fa-plus-circle" style="color: white; font-size: 18px;"></i>
+        <div onclick="openPage('p-fund-history')" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <i class="fas fa-history" style="color: white; font-size: 18px;"></i>
         </div>
     </div>
 
-       <div class="container px-3 mt-4">
-        <div class="row g-2 mb-4">
-            <div class="col-4">
-                <div class="srv-btn py-3 shadow-sm border text-center rounded-3 active-method" id="m-Bkash" onclick="selectMethod('Bkash')" style="background: #fff; cursor: pointer;">
-                    <i class="fas fa-mobile-alt mb-1" style="color: #e2136e; font-size: 1.5rem;"></i>
-                    <div style="font-size: 10px; font-weight: 700;">Bkash</div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="srv-btn py-3 shadow-sm border text-center rounded-3" id="m-Nagad" onclick="selectMethod('Nagad')" style="background: #fff; cursor: pointer;">
-                    <i class="fas fa-mobile-alt mb-1" style="color: #f7941d; font-size: 1.5rem;"></i>
-                    <div style="font-size: 10px; font-weight: 700;">Nagad</div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="srv-btn py-3 shadow-sm border text-center rounded-3" id="m-Rocket" onclick="selectMethod('Rocket')" style="background: #fff; cursor: pointer;">
-                    <i class="fas fa-mobile-alt mb-1" style="color: #8c3494; font-size: 1.5rem;"></i>
-                    <div style="font-size: 10px; font-weight: 700;">Rocket</div>
-                </div>
+    <div class="container px-3 mt-3">
+        
+        <div style="background: #fff5f5; border: 1px dashed #ff0000; padding: 12px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-bullhorn" style="color: #ff0000; font-size: 18px;"></i>
+            <marquee style="font-size: 12px; color: #333; font-weight: 600;">প্রথমে টাকার পরিমাণ লিখুন, তারপর নিচের যেকোনো নম্বর কপি করে টাকা পাঠিয়ে ট্রানজেকশন আইডি সাবমিট করুন।</marquee>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #f1f2f6; margin-bottom: 20px;">
+            <label style="display: block; font-size: 13px; color: #666; margin-bottom: 10px; font-weight: 700;">প্রথমে ডিপোজিট পরিমাণ লিখুন:</label>
+            <div style="display: flex; align-items: center; background: #f8f9fa; padding: 15px; border-radius: 12px; border: 2px solid #eee;" id="amt-box">
+                <i class="fas fa-taka-sign" style="color: #ff0000; margin-right: 12px;"></i>
+                <input type="number" id="f-amt" placeholder="পরিমাণ লিখুন" oninput="checkAmount()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 800; font-size: 16px;">
             </div>
         </div>
 
-        <div class="instruction-card p-3 mb-4 shadow-sm">
-            <p class="small mb-2 fw-bold text-muted">নিচের নাম্বারে <span id="method-label" class="text-primary">Bkash</span> সেন্ড মানি করুন</p>
-            <div class="copy-box d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold mb-0" id="display-number"></h5>
-                <button class="badge-copy" onclick="copyNumber()">COPY</button>
+        <div id="payment-methods" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; opacity: 0.4; pointer-events: none; transition: 0.4s;">
+            <p style="font-size: 11px; color: #ff0000; font-weight: bold; margin: 0 5px;">* নিচের নম্বর কপি করে Send Money করুন</p>
+            
+            <div class="m-card">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="m-icon" style="background: #fce7f3;"><i class="fas fa-mobile-alt" style="color: #e2136e;"></i></div>
+                    <div>
+                        <div class="m-title">Bkash (Personal)</div>
+                        <div class="m-num">01868293471</div>
+                    </div>
+                </div>
+                <button onclick="copyAndToast('01868293471', 'Bkash')" style="background: #e2136e;">COPY</button>
+            </div>
+
+            <div class="m-card">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="m-icon" style="background: #fff2e6;"><i class="fas fa-mobile-alt" style="color: #f7941d;"></i></div>
+                    <div>
+                        <div class="m-title">Nagad (Personal)</div>
+                        <div class="m-num">01868293471</div>
+                    </div>
+                </div>
+                <button onclick="copyAndToast('01868293471', 'Nagad')" style="background: #f7941d;">COPY</button>
+            </div>
+
+            <div class="m-card">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="m-icon" style="background: #f3e8f4;"><i class="fas fa-mobile-alt" style="color: #8c3494;"></i></div>
+                    <div>
+                        <div class="m-title">Rocket (Personal)</div>
+                        <div class="m-num">01868293471</div>
+                    </div>
+                </div>
+                <button onclick="copyAndToast('01868293471', 'Rocket')" style="background: #8c3494;">COPY</button>
+            </div>
+
+            <div class="m-card">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="m-icon" style="background: #e6f0ff;"><i class="fas fa-mobile-alt" style="color: #005ad2;"></i></div>
+                    <div>
+                        <div class="m-title">Upay (Personal)</div>
+                        <div class="m-num">01868293471</div>
+                    </div>
+                </div>
+                <button onclick="copyAndToast('01868293471', 'Upay')" style="background: #005ad2;">COPY</button>
             </div>
         </div>
 
-        <div class="form-card p-4 shadow-sm mb-4">
-            <div class="input-group-modern mb-3">
-                <label>টাকার পরিমাণ দিন</label>
-                <div class="input-field">
-                    <i class="fas fa-taka-sign"></i>
-                    <input type="number" id="f-amt" placeholder="যেমন: ৫০০">
-                </div>
+        <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f2f6;">
+            <label style="display: block; font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">Transaction ID (ট্রানজেকশন আইডি)</label>
+            <div style="display: flex; align-items: center; background: #f8f9fa; padding: 12px 15px; border-radius: 12px; margin-bottom: 20px;">
+                <i class="fas fa-receipt" style="color: #ff0000; margin-right: 10px;"></i>
+                <input type="text" id="f-trx" placeholder="ট্রানজেকশন আইডি দিন" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase;">
             </div>
 
-            <div class="input-group-modern mb-4">
-                <label>Transaction ID দিন</label>
-                <div class="input-field">
-                    <i class="fas fa-receipt"></i>
-                    <input type="text" id="f-trx" placeholder="8N7X6W5Q">
-                </div>
-            </div>
-
-            <button class="btn-confirm w-100" onclick="fundReq()">
-                টাকা নিশ্চিত করুন <i class="fas fa-paper-plane ms-1"></i>
+            <button onclick="fundReq()" style="width: 100%; background: #ff0000; color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(255,0,0,0.2);">
+                ডিপোজিট নিশ্চিত করুন <i class="fas fa-paper-plane ms-1"></i>
             </button>
         </div>
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="fw-bold m-0" style="color: #2d3436;">লেনদেন হিস্টোরি</h6>
-            <i class="fas fa-history text-muted"></i>
-        </div>
-        <div id="fund-hist-list" class="mb-5">
-            </div>
     </div>
 </div>
 
+<style>
+.m-card { background: white; padding: 12px 18px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
+.m-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.m-title { font-size: 11px; color: #888; font-weight: 600; }
+.m-num { font-size: 15px; font-weight: 800; color: #333; }
+.m-card button { color: white; border: none; padding: 6px 12px; border-radius: 8px; font-size: 10px; font-weight: 700; transition: 0.3s; }
+.m-card button:active { transform: scale(0.9); }
+</style>
+<div id="p-fund-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 30px;">
+    <div style="background: #ffffff; padding: 20px; display: flex; align-items: center; gap: 15px; position: sticky; top: 0; z-index: 102; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div onclick="openPage('p-fund')" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #333;">
+            <i class="fas fa-arrow-left" style="font-size: 18px;"></i>
+        </div>
+        <h5 style="margin: 0; font-weight: 800; color: #333; letter-spacing: 0.5px;">Deposit History</h5>
+    </div>
 
+    <div class="container mt-3 px-3">
+        <div id="fund-hist-list">
+            <div style="text-align: center; color: #bbb; margin-top: 50px;">
+                <i class="fas fa-folder-open" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <p>কোনো হিস্টোরি পাওয়া যায়নি</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="p-more" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -6162,12 +6253,12 @@ function renderUser() {
     const rankElem = document.getElementById('user-rank');
     if (rankElem) rankElem.innerText = curUser.rank || "General Member";
 
-    // ৪. ফান্ড হিস্টোরি
+    // ৪. ফান্ড হিস্টোরি (মেথড বাদ দেওয়া হয়েছে)
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
         fundList.innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
             <div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}">
-                <b>৳${f.amt} (${f.method})</b> 
+                <b>৳${f.amt}</b> 
                 <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span>
                 <div class="x-small text-muted mt-1">${f.time} | Trx: ${f.trx}</div>
             </div>
@@ -6186,17 +6277,13 @@ function renderUser() {
         `).join("") || "No orders";
     }
 
-    // --- ৬. নোটিফিকেশন হিস্টোরি (Fix করা হয়েছে) ---
+    // --- ৬. নোটিফিকেশন হিস্টোরি ---
     const notifList = document.getElementById('notif-list-container');
     if (notifList) {
         if (!db.notifications) db.notifications = [];
-        
-        // এখানে ইমেইল ম্যাচিং-কে একদম সহজ করা হয়েছে
         const myEmail = String(curUser.email || "").toLowerCase().trim();
-        
         const myNotifs = db.notifications.filter(n => {
             const target = String(n.target || "").toLowerCase().trim();
-            // চেক করুন 'all' অথবা ইউজারের নিজের ইমেইল
             return target === 'all' || target === myEmail;
         }).reverse();
 
@@ -6233,23 +6320,20 @@ function renderAdmin() {
 
     // --- ১. তারিখ এবং ফিল্টার সেটআপ ---
     const allUsers = db.users || [];
-    const todayStr = new Date().toISOString().split('T')[0]; // আজকের তারিখ (YYYY-MM-DD)
+    const todayStr = new Date().toISOString().split('T')[0]; 
     
     // --- ২. পরিসংখ্যান ক্যালকুলেশন ---
     const totalUsers = allUsers.filter(u => u.role !== 'admin').length;
     const activeUsers = allUsers.filter(u => u.role !== 'admin' && u.status === 'active').length;
     
-    // মোট ইউজার ব্যালেন্স
     const totalUserBalance = allUsers
         .filter(u => u.role !== 'admin')
         .reduce((sum, u) => sum + (parseFloat(u.bal) || 0), 0);
 
-    // আজকের মোট ইনকাম (হিস্টোরি থেকে আজকের যোগ করা ব্যালেন্স)
     let todayTotalIncome = 0;
     allUsers.forEach(u => {
         if (u.incomeHistory) {
             u.incomeHistory.forEach(item => {
-                // তারিখ মিললে এবং অ্যামাউন্ট পজিটিভ (যোগ) হলে
                 if (item.date === todayStr && item.amount > 0) {
                     todayTotalIncome += parseFloat(item.amount);
                 }
@@ -6257,7 +6341,6 @@ function renderAdmin() {
         }
     });
 
-    // মোট এপ্রুভ হওয়া উইথড্র
     const totalApprovedWithdraw = (db.withdraws || [])
         .filter(w => w.status === 'Success')
         .reduce((sum, w) => sum + (parseFloat(w.amt) || 0), 0);
@@ -6271,7 +6354,7 @@ function renderAdmin() {
     updateText('stat-total-users', totalUsers);
     updateText('stat-active-users', activeUsers);
     updateText('stat-total-balance', "৳" + totalUserBalance.toFixed(2));
-    updateText('stat-today-income', "৳" + todayTotalIncome.toFixed(2)); // আজকের ইনকাম
+    updateText('stat-today-income', "৳" + todayTotalIncome.toFixed(2)); 
     updateText('stat-total-withdraw', "৳" + totalApprovedWithdraw.toFixed(2));
 
     // --- ৪. ইউজার লিস্ট রেন্ডার করা ---
@@ -6301,20 +6384,37 @@ function renderAdmin() {
         userContainer.innerHTML = uH || '<div class="text-center p-4 text-muted">কোনো ইউজার পাওয়া যায়নি</div>';
     }
 
-    // --- ৫. পেন্ডিং ফান্ড ---
-    const fundContainer = document.getElementById('a-f');
-    if(fundContainer && db.funds) {
-        const pFunds = db.funds.filter(f => f.status === 'Pending');
-        fundContainer.innerHTML = pFunds.length ? pFunds.map(f => `
-            <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-warning d-flex justify-content-between align-items-center">
-                <div>
-                    <b>৳${f.amt} <small>(${f.method})</small></b>
-                    <div class="small text-muted">Trx: ${f.trx}</div>
-                </div>
-                <button class="btn btn-sm btn-success rounded-pill" onclick="approveFund('${f.id}')">Approve</button>
-            </div>`).join("") : '<div class="small text-muted p-2">পেন্ডিং পেমেন্ট নেই</div>';
-    }
 
+// --- ৫. পেন্ডিং ফান্ড (Safe Guard যুক্ত করা হয়েছে) ---
+const fundContainer = document.getElementById('a-f');
+if(fundContainer && db.funds) {
+    const pFunds = db.funds.filter(f => f.status === 'Pending').reverse();
+    fundContainer.innerHTML = pFunds.length ? pFunds.map(f => {
+        // যদি মেথড থাকে তবে দেখাবে, না থাকলে খালি স্ট্রিং রাখবে
+        const methodDisplay = f.method ? `(${f.method})` : ""; 
+        
+        return `
+            <div class="bg-white p-3 mb-3 rounded-4 shadow-sm border-start border-5 border-success">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3" style="font-size: 10px;">Deposit Request</span>
+                    <span class="text-muted" style="font-size: 10px;">${f.time}</span>
+                </div>
+                
+                <div class="mb-3">
+                    <h4 class="fw-bold mb-1" style="color: #2d3436; font-size: 20px;">
+                        ৳${f.amt} <small style="font-size: 12px; color: #888;">${methodDisplay}</small>
+                    </h4>
+                    <div class="small text-muted"><b>Trx ID:</b> <span class="text-primary fw-bold">${f.trx}</span></div>
+                    <div class="small text-muted"><b>User:</b> ${f.user}</div>
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success w-75 fw-bold rounded-3 py-2" style="font-size: 14px;" onclick="approveFund('${f.id}')">Approve Deposit</button>
+                    <button class="btn btn-outline-danger w-25 fw-bold rounded-3 py-2" style="font-size: 14px;" onclick="rejectFund('${f.id}')">Reject</button>
+                </div>
+            </div>`;
+    }).join("") : '<div class="text-center p-4 text-muted small">পেন্ডিং ডিপোজিট নেই</div>';
+}
     // --- ৬. পেন্ডিং অর্ডার ---
     const orderContainer = document.getElementById('a-o');
     if(orderContainer && db.orders) {
@@ -6323,7 +6423,9 @@ function renderAdmin() {
             <div class="bg-white p-3 mb-2 rounded-3 shadow-sm border-start border-4 border-info">
                 <div class="fw-bold text-info">${o.srv}</div>
                 <div class="small">User: ${o.user} | Qty: ${o.qty}</div>
-            <button onclick="approveOrder('${o.id}')">Complete</button>
+                <div class="mt-2">
+                    <button class="btn btn-sm btn-info text-white rounded-pill px-3" onclick="approveOrder('${o.id}')">Complete</button>
+                </div>
             </div>`).join("") : '<div class="small text-muted p-2">পেন্ডিং অর্ডার নেই</div>';
     }
 }
@@ -6396,8 +6498,20 @@ function editBal(index) {
         toast('ইউজার আনব্লক করা হয়েছে');
     }
 }
+    function approveFund(id) {
+    let f = db.funds.find(x => x.id == id);
+    if (!f) return;
+    let u = db.users.find(x => x.email === f.user);
+    if (u) {
+        f.status = 'Success';
+        u.bal = (parseFloat(u.bal) || 0) + (parseFloat(f.amt) || 0);
+        save();
+        renderAdmin(); // অ্যাডমিন পেজ আপডেট
+        if(window.renderUser) renderUser(); // ইউজার পেজ আপডেট
+        toast('সফলভাবে অ্যাপ্রুভ হয়েছে');
+    }
+}
     
-    function approveFund(id) { let f = db.funds.find(x => x.id === id), u = db.users.find(x => x.email === f.user); if(u) { f.status = 'Success'; u.bal += parseFloat(f.amt); save(); renderAdmin(); toast('অ্যাপ্রুভড'); } }
     function approveOrder(id) {
     // ডাটাবেস চেক
     if (!db || !db.orders) return;
@@ -6432,79 +6546,83 @@ function editBal(index) {
     function updatePrice() { let srv = document.getElementById('cur-srv-txt').innerText, q = document.getElementById('qty').value; document.getElementById('total-price').innerText = formatCurrency((q / 1000) * (db.prices[srv] || 50)); }
 
 function fundReq() {
-    let amt = document.getElementById('f-amt').value;
+    let amtInput = document.getElementById('f-amt').value;
+    let amt = parseFloat(amtInput); 
     let trx = document.getElementById('f-trx').value;
-    let method = currentMethod;
     let now = new Date().toLocaleString('bn-BD', { hour12: true });
+    let fundPage = document.getElementById('p-fund');
 
-    if (!amt || !trx) return toast('সব তথ্য সঠিকভাবে দিন', 'error');
+    // ১. ভ্যালিডেশন চেক
+    if (!amtInput || !trx) {
+        return Swal.fire({ 
+            target: fundPage, 
+            icon: 'error', 
+            text: 'সব তথ্য সঠিকভাবে দিন', 
+            toast: true, 
+            position: 'top', 
+            showConfirmButton: false, 
+            timer: 2000 
+        });
+    }
 
-    db.funds.push({ id: Date.now(), user: curUser.email, amt: amt, trx: trx, method: method, status: 'Pending', time: now });
+    if (amt < 50) {
+        return Swal.fire({ target: fundPage, icon: 'warning', text: 'মিনিমাম ৫০ টাকা ডিপোজিট করতে হবে', toast: true, position: 'top', showConfirmButton: false, timer: 2000 });
+    }
+
+    // ২. ডাটাবেসে সেভ (মেথড ছাড়া)
+    db.funds.push({ 
+        id: Date.now(), 
+        user: curUser.email, 
+        amt: amt, 
+        trx: trx, 
+        status: 'Pending', 
+        time: now 
+    });
     save();
 
+    // ৩. সাকসেস পপআপ (মেথড এর কোনো চিহ্ন নেই এখানে)
     Swal.fire({
-        target: document.getElementById('p-fund'),
+        target: fundPage,
         width: '350px',
         background: '#ffffff',
         showConfirmButton: true,
         confirmButtonText: 'ঠিক আছে',
         confirmButtonColor: '#28a745',
         allowOutsideClick: false,
-        padding: '0', // কাস্টম প্যাডিং ভেতরে দেব লম্বা করার জন্য
-        customClass: {
-            popup: 'long-premium-popup'
-        },
+        padding: '0',
+        customClass: { popup: 'long-premium-popup' },
         html: `
             <style>
-                .long-premium-popup { 
-                    overflow: visible !important; 
-                    border-radius: 30px !important; 
-                    margin-top: 60px !important;
-                }
-                .pop-container {
-                    padding: 90px 20px 30px 20px; /* পপআপকে লম্বা করার জন্য ওপর-নিচে বেশি প্যাডিং */
-                    text-align: center;
-                }
+                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
+                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
             </style>
-            
             <div class="pop-container" style="position: relative;">
-                
                 <div style="background: linear-gradient(135deg, #28a745, #5dd373); 
                             width: 80px; height: 80px; border-radius: 50%; 
                             display: flex; align-items: center; justify-content: center; 
                             margin: -105px auto 25px; 
                             box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4);
-                            border: 6px solid #ffffff;
-                            position: relative; z-index: 999999 !important;">
+                            border: 6px solid #ffffff; position: relative; z-index: 9999;">
                     <svg width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 6L9 17L4 12" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                
-                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 25px; font-size: 22px; letter-spacing: 0.5px;">ডিপোজিট রিকুয়েষ্ট সফল!</h3>
-                
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); margin-bottom: 25px;">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 14px;">পেমেন্ট মেথড</span>
-                        <b style="color: #333; font-size: 15px;">${method}</b>
-                    </div>
+                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 25px; font-size: 22px;">রিকুয়েষ্ট সফল হয়েছে!</h3>
+                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
+                    
                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
                         <span style="color: #888; font-size: 14px;">টাকার পরিমাণ</span>
                         <b style="color: #28a745; font-size: 18px;">৳${amt}</b>
                     </div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                    
+                    <div style="display:flex; justify-content: space-between;">
                         <span style="color: #888; font-size: 14px;">Transaction ID</span>
-                        <b style="color: #333; font-size: 14px; font-family: 'Courier New', Courier, monospace;">${trx}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-top: 10px;">
-                        <span style="color: #bbb; font-size: 11px;">তারিখ ও সময়</span>
-                        <span style="color: #bbb; font-size: 11px;">${now}</span>
+                        <b style="color: #333; font-size: 14px; font-family: monospace;">${trx}</b>
                     </div>
                 </div>
-                
-                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; margin-bottom: 10px; border-left: 4px solid #f1c40f;">
+                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
                     <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
-                        অ্যাডমিন আপনার ট্রানজেকশনটি যাচাই করে ৫-১০ মিনিটের মধ্যে ব্যালেন্স যোগ করে দেবে।
+                        অ্যাডমিন আপনার ট্রানজেকশনটি যাচাই করে ব্যালেন্স যোগ করে দেবে।
                     </p>
                 </div>
             </div>
@@ -6516,6 +6634,7 @@ function fundReq() {
         }
     });
 
+    // ইনপুট রিসেট
     document.getElementById('f-amt').value = '';
     document.getElementById('f-trx').value = '';
 }
@@ -8128,74 +8247,156 @@ function buyVip(planName, price, multiplier) {
 function withdrawReq() {
     let amt = parseFloat(document.getElementById('w-amt').value);
     let num = document.getElementById('w-num').value;
-    let method = currentWithdrawMethod || "Bkash"; 
-    let now = new Date().toLocaleString('bn-BD', { hour12: true });
-    let withdrawPage = document.getElementById('p-withdraw'); // টার্গেট পেজ
+    let method = currentWithdrawMethod || "Bkash";
+    let withdrawPage = document.getElementById('p-withdraw');
 
-    // ১. ইনপুট ভ্যালিডেশন (উইথড্র পেজে পপআপ শো করবে)
+    // ৫% চার্জ ক্যালকুলেশন
+    let charge = amt * 0.05;
+    let finalAmount = amt - charge;
+
+    // ১. প্রাথমিক ভ্যালিডেশন
     if (!amt || !num) {
-        return Swal.fire({
-            target: withdrawPage,
-            icon: 'error',
-            text: 'সব তথ্য সঠিকভাবে দিন',
-            toast: true,
-            position: 'top',
-            showConfirmButton: false,
-            timer: 2000
-        });
+        return Swal.fire({ target: withdrawPage, icon: 'error', text: 'সব তথ্য সঠিকভাবে দিন', toast: true, position: 'top', showConfirmButton: false, timer: 2000 });
     }
-
     if (amt < 100) {
-        return Swal.fire({
-            target: withdrawPage,
-            icon: 'warning',
-            text: 'মিনিমাম ১০০ টাকা উইথড্র করতে হবে',
-            toast: true,
-            position: 'top',
-            showConfirmButton: false,
-            timer: 2000
-        });
+        return Swal.fire({ target: withdrawPage, icon: 'warning', text: 'মিনিমাম ১০০ টাকা উইথড্র করতে হবে', toast: true, position: 'top', showConfirmButton: false, timer: 2000 });
     }
-
-    // ২. ব্যালেন্স চেক (উইথড্র পেজে পপআপ শো করবে)
     if (curUser.bal < amt) {
-        return Swal.fire({
-            target: withdrawPage,
-            icon: 'error',
-            title: 'পর্যাপ্ত ব্যালেন্স নেই!',
-            text: `আপনার বর্তমান ব্যালেন্স ৳${curUser.bal.toFixed(2)}`,
-            confirmButtonColor: '#ff4757',
-            confirmButtonText: 'ঠিক আছে'
-        });
+        return Swal.fire({ target: withdrawPage, icon: 'error', title: 'পর্যাপ্ত ব্যালেন্স নেই!', text: `আপনার বর্তমান ব্যালেন্স ৳${curUser.bal.toFixed(2)}`, confirmButtonColor: '#ff4757' });
     }
 
-    // ৩. ব্যালেন্স কাটা এবং ডাটা সেভ
-    curUser.bal -= amt;
+    // ২. কনফার্মেশন পপআপ (Password + Hold to Withdraw)
+    Swal.fire({
+        target: withdrawPage,
+        title: 'নিরাপত্তা যাচাই',
+        width: '350px',
+        background: '#ffffff',
+        showConfirmButton: false,
+        allowOutsideClick: true,
+        html: `
+            <div style="text-align: left; background: #f8f9fa; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee;">
+                <div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #888; font-size: 12px;">পরিমাণ: <b>৳${amt}</b></span>
+                    <span style="color: #888; font-size: 12px;">চার্জ: <b>৳${charge.toFixed(2)}</b></span>
+                </div>
+                <div style="text-align:center; color: #2ecc71; font-weight: bold; font-size: 14px;">আপনি পাবেন: ৳${finalAmount.toFixed(2)}</div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="display:block; font-size: 12px; color: #666; margin-bottom: 5px; text-align: left;">আপনার একাউন্ট পাসওয়ার্ড দিন:</label>
+                <input type="password" id="w-pass-check" placeholder="পাসওয়ার্ড লিখুন" 
+                    style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; outline: none; transition: 0.3s; text-align: center; font-weight: bold;">
+                <div id="pass-msg" style="font-size: 10px; margin-top: 5px; font-weight: bold;"></div>
+            </div>
+
+            <p id="hold-instruction" style="font-size: 11px; color: #999; margin-bottom: 15px; display:none;">পাসওয়ার্ড সঠিক! এবার বাটনটি চেপে ধরে রাখুন</p>
+            
+            <div id="hold-container" style="position: relative; width: 100px; height: 100px; margin: 0 auto; cursor: not-allowed; opacity: 0.3; pointer-events: none; transition: 0.5s;">
+                <svg width="100" height="100" style="transform: rotate(-90deg);">
+                    <circle cx="50" cy="50" r="45" stroke="#e2e8f0" stroke-width="8" fill="none" />
+                    <circle id="hold-progress" cx="50" cy="50" r="45" stroke="#ff0000" stroke-width="8" fill="none" 
+                        stroke-dasharray="283" stroke-dashoffset="283" style="transition: stroke-dashoffset 0.1s linear;" />
+                </svg>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: #ff0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255,0,0,0.3);">
+                    <i class="fas fa-fingerprint" style="color: white; font-size: 30px;"></i>
+                </div>
+            </div>
+        `,
+        didOpen: () => {
+            const passInput = document.getElementById('w-pass-check');
+            const passMsg = document.getElementById('pass-msg');
+            const holdContainer = document.getElementById('hold-container');
+            const holdInstruction = document.getElementById('hold-instruction');
+            const progressCircle = document.getElementById('hold-progress');
+
+            // পাসওয়ার্ড চেক লজিক
+            passInput.addEventListener('input', () => {
+                if (passInput.value === curUser.pass) { // ইউজারের পাসওয়ার্ডের সাথে মিললে
+                    passInput.style.borderColor = "#2ecc71";
+                    passInput.style.backgroundColor = "#eafaf1";
+                    passMsg.innerText = "পাসওয়ার্ড সঠিক!";
+                    passMsg.style.color = "#2ecc71";
+                    holdContainer.style.opacity = "1";
+                    holdContainer.style.cursor = "pointer";
+                    holdContainer.style.pointerEvents = "auto";
+                    holdInstruction.style.display = "block";
+                } else {
+                    passInput.style.borderColor = "#ff4757";
+                    passInput.style.backgroundColor = "#fff0f0";
+                    passMsg.innerText = "ভুল পাসওয়ার্ড!";
+                    passMsg.style.color = "#ff4757";
+                    holdContainer.style.opacity = "0.3";
+                    holdContainer.style.pointerEvents = "none";
+                    holdInstruction.style.display = "none";
+                }
+            });
+
+            // হোল্ড বাটন লজিক
+            let holdTimer;
+            let isHolding = false;
+
+            const startHold = (e) => {
+                e.preventDefault();
+                isHolding = true;
+                let startTime = Date.now();
+                holdTimer = setInterval(() => {
+                    let elapsed = Date.now() - startTime;
+                    let percentage = Math.min(elapsed / 1500, 1);
+                    let progress = 283 - (percentage * 283);
+                    progressCircle.style.strokeDashoffset = progress;
+
+                    if (percentage >= 1) {
+                        clearInterval(holdTimer);
+                        if (isHolding) {
+                            Swal.close();
+                            executeWithdraw(amt, finalAmount, num, method, withdrawPage); 
+                        }
+                    }
+                }, 50);
+            };
+
+            const endHold = () => {
+                isHolding = false;
+                clearInterval(holdTimer);
+                progressCircle.style.strokeDashoffset = 283;
+            };
+
+            holdContainer.addEventListener('mousedown', startHold);
+            holdContainer.addEventListener('touchstart', startHold);
+            window.addEventListener('mouseup', endHold);
+            window.addEventListener('touchend', endHold);
+        }
+    });
+}
+// ৩. উইথড্র এক্সিকিউশন ফাংশন
+function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
+    let now = new Date().toLocaleString('bn-BD', { hour12: true });
     
+    curUser.bal -= amt; // ইউজারের মেইন ব্যালেন্স থেকে পুরো টাকা কাটবে
     let withdrawData = {
         id: Date.now(),
         user: curUser.email,
-        amt: amt,
+        requestedAmt: amt,
+        amt: finalAmount, // চার্জ কাটার পর যে টাকা পাবে (এটি ডাটাবেসে যাবে)
         num: num,
         method: method,
         status: 'Pending',
         time: now
     };
 
-    if (!db.withdraws) db.withdraws = []; 
+    if (!db.withdraws) db.withdraws = [];
     db.withdraws.push(withdrawData);
-    
-    save(); 
-    renderUser(); 
+    save();
+    renderUser();
 
-    // ৪. সফল পপআপ (এটিও উইথড্র পেজে থাকবে)
+    // ৪. সফল পপআপ
     Swal.fire({
         target: withdrawPage,
         width: '350px',
         background: '#ffffff',
         showConfirmButton: true,
         confirmButtonText: 'ঠিক আছে',
-        confirmButtonColor: '#3b82f6',
+        confirmButtonColor: '#ff0000',
         allowOutsideClick: false,
         padding: '0',
         customClass: { popup: 'long-premium-popup' },
@@ -8205,36 +8406,32 @@ function withdrawReq() {
                 .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
             </style>
             <div class="pop-container" style="position: relative;">
-                <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); 
+                <div style="background: linear-gradient(135deg, #ff0000, #cc0000); 
                             width: 80px; height: 80px; border-radius: 50%; 
                             display: flex; align-items: center; justify-content: center; 
                             margin: -105px auto 25px; 
-                            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+                            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
                             border: 6px solid #ffffff; position: relative; z-index: 9999;">
-                    <i class="fas fa-paper-plane" style="color: white; font-size: 30px;"></i>
+                    <i class="fas fa-check" style="color: white; font-size: 30px;"></i>
                 </div>
-                <h3 style="color: #2d3436; font-weight: 900; margin-bottom: 25px; font-size: 20px;">উইথড্র রিকুয়েষ্ট সফল! </h3>
+                <h3 style="color: #2d3436; font-weight: 900; margin-bottom: 25px; font-size: 20px;">উইথড্র সফল হয়েছে!</h3>
                 <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
                         <span style="color: #888; font-size: 13px;">পেমেন্ট মেথড</span>
-                        <b style="color: #333; font-size: 14px;">${method}</b>
+                        <b style="color: #333;">${method}</b>
                     </div>
                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">উইথড্র পরিমাণ</span>
-                        <b style="color: #ff4757; font-size: 16px;">৳${amt}</b>
+                        <span style="color: #888; font-size: 13px;">পরিমাণ</span>
+                        <b style="color: #ff0000; font-size: 16px;">৳${finalAmount.toFixed(2)}</b>
                     </div>
                     <div style="display:flex; justify-content: space-between;">
-                        <span style="color: #888; font-size: 13px;">নম্বর</span>
-                        <b style="color: #333; font-size: 14px;">${num}</b>
+                        <span style="color: #888; font-size: 13px;">পেমেন্ট নম্বর</span>
+                        <b style="color: #333;">${num}</b>
                     </div>
                 </div>
-                <div style="background: #eef2ff; border-radius: 12px; padding: 10px; border-left: 4px solid #3b82f6;">
-                    <p style="font-size: 10px; color: #3b82f6; margin: 0; line-height: 1.5; font-weight: 600;">
-                        আপনার রিকোয়েস্টটি সফলভাবে পেন্ডিং লিস্টে জমা হয়েছে। যাচাই শেষে পেমেন্ট করা হবে।
-                    </p>
-                </div>
+                <p style="font-size: 10px; color: #ff0000; font-weight: bold;"></p>
             </div>
-        `
+          `
     }).then(() => {
         document.getElementById('w-amt').value = '';
         document.getElementById('w-num').value = '';
@@ -8242,7 +8439,6 @@ function withdrawReq() {
     });
 }
 let currentWithdrawMethod = 'Bkash'; // ডিফল্ট
-
 function selectWithdrawMethod(method) {
     currentWithdrawMethod = method;
     
@@ -8266,45 +8462,61 @@ function renderWithdrawHistory() {
     const listContainer = document.getElementById('withdraw-hist-list');
     if (!listContainer || !curUser) return;
 
-    // ডাটাবেস থেকে ইউজারের ডাটা ফিল্টার
     if (!db.withdraws) db.withdraws = [];
     const userWithdraws = db.withdraws.filter(w => w.user === curUser.email).reverse();
 
     if (userWithdraws.length === 0) {
         listContainer.innerHTML = `
-            <div style="text-align: center; padding: 40px 20px; color: #adb5bd;">
-                <i class="fas fa-history" style="font-size: 35px; margin-bottom: 12px; opacity: 0.5;"></i>
-                <p style="font-size: 13px; font-weight: 600;">এখনো কোনো উইথড্র হিস্টোরি নেই</p>
+            <div style="text-align: center; padding: 60px 20px;">
+                <div style="background: #f8f9fa; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class="fas fa-wallet" style="font-size: 25px; color: #ced4da;"></i>
+                </div>
+                <p style="font-size: 14px; color: #adb5bd; font-weight: 500;">এখনো কোনো উইথড্র রেকর্ড নেই</p>
             </div>`;
         return;
     }
 
     let html = '';
     userWithdraws.forEach(w => {
-        // স্ট্যাটাস অনুযায়ী কালার সেট
-        let statusColor = '#f1c40f'; // Pending (Yellow)
-        let statusBg = '#fff9e6';
+        // স্ট্যাটাস কনফিগারেশন
+        let statusConfig = {
+            color: '#f59e0b', // Pending (Orange)
+            bg: '#fef3c7',
+            icon: 'fa-spinner fa-spin'
+        };
 
         if (w.status === 'Success') {
-            statusColor = '#2ecc71'; // Green
-            statusBg = '#eafaf1';
+            statusConfig = { color: '#10b981', bg: '#d1fae5', icon: 'fa-check-circle' };
         } else if (w.status === 'Rejected') {
-            statusColor = '#ff4757'; // Red
-            statusBg = '#fff0f0';
+            statusConfig = { color: '#ef4444', bg: '#fee2e2', icon: 'fa-times-circle' };
         }
 
+        // মেথড আইকন লজিক
+        let methodIcon = w.method === 'Bkash' ? 'https://img.icons8.com/color/48/bikas.png' : 'https://img.icons8.com/color/48/nagad.png';
+
         html += `
-            <div style="background: white; padding: 16px; border-radius: 20px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #f1f3f5; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <div style="font-weight: 800; color: #2d3436; font-size: 14px;">${w.method} Payout</div>
-                    <div style="font-size: 11px; color: #b2bec3; margin-top: 4px; font-weight: 500;">
-                        <i class="far fa-clock me-1"></i>${w.time}
+            <div style="background: white; padding: 15px; border-radius: 22px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f1f5f9; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="background: #f8fafc; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9;">
+                         <i class="fas fa-money-bill-wave" style="color: #ff0000; font-size: 18px;"></i>
+                    </div>
+                    
+                    <div>
+                        <div style="font-weight: 800; color: #1e293b; font-size: 14px; display: flex; align-items: center; gap: 5px;">
+                            ${w.method} Payout
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; font-weight: 600; margin-top: 2px;">
+                            <i class="far fa-calendar-alt"></i> ${w.time}
+                        </div>
                     </div>
                 </div>
+
                 <div style="text-align: right;">
-                    <div style="font-weight: 900; color: #2d3436; font-size: 16px; letter-spacing: -0.5px;">- ৳${w.amt}</div>
-                    <div style="background: ${statusBg}; color: ${statusColor}; font-size: 10px; padding: 4px 12px; border-radius: 50px; display: inline-block; font-weight: 800; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
-                        ${w.status}
+                    <div style="font-weight: 900; color: #1e293b; font-size: 15px; margin-bottom: 5px;">
+                        - ৳${w.amt}
+                    </div>
+                    <div style="background: ${statusConfig.bg}; color: ${statusConfig.color}; font-size: 9px; padding: 4px 10px; border-radius: 50px; display: inline-flex; align-items: center; gap: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;">
+                        <i class="fas ${statusConfig.icon}" style="font-size: 8px;"></i> ${w.status}
                     </div>
                 </div>
             </div>
@@ -8330,7 +8542,10 @@ function renderAdminPayments() {
                 <b>Trx ID:</b> <span class="text-primary">${f.trx}</span> <br>
                 <b>User:</b> ${f.user}
             </div>
-            <button class="btn btn-sm btn-success mt-3 w-100 fw-bold py-2" onclick="approveFund(${f.id})" style="border-radius: 8px;">Approve Deposit</button>
+            <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-sm btn-success w-75 fw-bold py-2" onclick="approveFund(${f.id})" style="border-radius: 8px;">Approve Deposit</button>
+                <button class="btn btn-sm btn-outline-danger w-25 fw-bold py-2" onclick="rejectFund(${f.id})" style="border-radius: 8px;">Reject</button>
+            </div>
         </div>
     `).join("");
 
@@ -8346,27 +8561,80 @@ function renderAdminPayments() {
                 <b>Number:</b> <span class="text-danger fw-bold">${w.num}</span> <br>
                 <b>User:</b> ${w.user}
             </div>
-            <button class="btn btn-sm btn-danger mt-3 w-100 fw-bold py-2" onclick="approveWithdraw(${w.id})" style="border-radius: 8px;">Approve Withdraw</button>
+            <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-sm btn-danger w-75 fw-bold py-2" onclick="approveWithdraw(${w.id})" style="border-radius: 8px;">Approve Withdraw</button>
+                <button class="btn btn-sm btn-outline-secondary w-25 fw-bold py-2" onclick="rejectWithdraw(${w.id})" style="border-radius: 8px;">Reject</button>
+            </div>
         </div>
     `).join("");
 
-    // ৩. দুইটা ডাটা একসাথে পেমেন্ট ট্যাবে দেখানো
     let finalHTML = depositHTML + withdrawHTML;
-    listArea.innerHTML = finalHTML || `<div class="text-center p-5 text-muted"><i class="fas fa-check-circle d-block mb-2 fa-2x"></i>কোনো পেন্ডিং রিকোয়েস্ট নেই</div>`;
+    listArea.innerHTML = finalHTML || `<div class="text-center p-5 text-muted"><i class="fas fa-check-circle d-block mb-2 fa-2x"></i>কোনো পেন্ডিং রিকোয়েস্ট নেই</div>`;
 }
+
+// --- ফাংশনগুলো নিচে দেওয়া হলো ---
+
+// ১. উইথড্র এপ্রুভ
 function approveWithdraw(id) {
-    let confirmApprove = confirm("আপনি কি পেমেন্ট কমপ্লিট করেছেন? এপ্রুভ করলে ইউজারের কাছে পেমেন্ট সাকসেস দেখাবে।");
-    if (confirmApprove) {
+    if (confirm("আপনি কি পেমেন্ট কমপ্লিট করেছেন?")) {
         let wIdx = db.withdraws.findIndex(w => w.id === id);
         if (wIdx !== -1) {
             db.withdraws[wIdx].status = 'Success';
-            save(); // ডাটা লোকাল স্টোরেজে সেভ হবে
-            renderAdminPayments(); // লিস্ট রিফ্রেশ হবে
+            save();
+            renderAdminPayments();
             alert("Withdraw Approved!");
         }
     }
 }
-// ১. ইনকাম ডিটেইল ওপেন করার ফাংশন
+
+// ২. উইথড্র রিজেক্ট (টাকা ফেরত যাবে)
+function rejectWithdraw(id) {
+    if (confirm("উইথড্র বাতিল করতে চান? টাকা ইউজারের ব্যালেন্সে ফেরত যাবে।")) {
+        let wIdx = db.withdraws.findIndex(w => w.id === id);
+        if (wIdx !== -1) {
+            let request = db.withdraws[wIdx];
+            let userIdx = db.users.findIndex(u => u.email === request.user);
+            if (userIdx !== -1) {
+                db.users[userIdx].bal += parseFloat(request.amt); // রিফান্ড
+            }
+            db.withdraws[wIdx].status = 'Rejected';
+            save();
+            renderAdminPayments();
+            alert("Withdraw Rejected & Refunded!");
+        }
+    }
+}
+
+// ৩. ডিপোজিট এপ্রুভ (ব্যালেন্স যোগ হবে)
+function approveFund(id) {
+    if (confirm("এই ডিপোজিটটি নিশ্চিত করতে চান?")) {
+        let fIdx = db.funds.findIndex(f => f.id === id);
+        if (fIdx !== -1) {
+            let request = db.funds[fIdx];
+            let userIdx = db.users.findIndex(u => u.email === request.user);
+            if (userIdx !== -1) {
+                db.users[userIdx].bal += parseFloat(request.amt); // ব্যালেন্স যোগ
+                db.funds[fIdx].status = 'Success';
+                save();
+                renderAdminPayments();
+                alert("Deposit Approved! Balance Added.");
+            }
+        }
+    }
+}
+
+// ৪. ডিপোজিট রিজেক্ট
+function rejectFund(id) {
+    if (confirm("ডিপোজিট রিকোয়েস্টটি বাতিল করতে চান?")) {
+        let fIdx = db.funds.findIndex(f => f.id === id);
+        if (fIdx !== -1) {
+            db.funds[fIdx].status = 'Rejected';
+            save();
+            renderAdminPayments();
+            alert("Deposit Request Rejected!");
+        }
+    }
+}
 function openIncomeDetail(type, title) {
     if (!curUser) return;
     
@@ -9604,7 +9872,108 @@ function openNotifications() {
     // --- এই লাইনটি অবশ্যই থাকতে হবে ---
     renderNotifications(); 
 }
+// রেফার কমিশন যোগ করার লজিক (উদাহরণস্বরূপ)
+function addReferCommission(userEmail, amount) {
+    let uIdx = db.users.findIndex(u => u.email === userEmail);
+    if (uIdx !== -1) {
+        // ১. মেইন ব্যালেন্স যোগ করা
+        db.users[uIdx].bal = (parseFloat(db.users[uIdx].bal) || 0) + parseFloat(amount);
 
+        // ২. ইনকাম হিস্টোরিতে ডেটা পুশ করা (এটিই আপনার মিসিং ছিল)
+        if (!db.users[uIdx].incomeHistory) db.users[uIdx].incomeHistory = [];
+        
+        let now = new Date();
+        let dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+        let fullDate = now.toLocaleString('bn-BD', { hour12: true });
+
+        db.users[uIdx].incomeHistory.push({
+            id: Date.now(),
+            amount: amount,
+            note: "রেফার কমিশন (সফল অ্যাক্টিভেশন)",
+            date: `${dateStr} | ${fullDate}`, // আপনার openIncomeDetail ফাংশন এই ফরম্যাটটিই চেক করে
+            type: 'refer'
+        });
+
+        save(); // ডাটাবেস সেভ করুন
+        console.log("Refer commission added to history");
+    }
+}
+// টাকা লিখলে পেমেন্ট মেথড আনলক করার জন্য
+function checkAmount() {
+    let amt = document.getElementById('f-amt').value;
+    let methodBox = document.getElementById('payment-methods');
+    let amtBorder = document.getElementById('amt-box');
+
+    if (amt >= 10) { // এখানে আপনার মিনিমাম এমাউন্ট দিতে পারেন
+        methodBox.style.opacity = "1";
+        methodBox.style.pointerEvents = "auto";
+        amtBorder.style.borderColor = "#2ecc71"; // টাকা লিখলে বর্ডার সবুজ হবে
+    } else {
+        methodBox.style.opacity = "0.4";
+        methodBox.style.pointerEvents = "none";
+        amtBorder.style.borderColor = "#eee";
+    }
+}
+
+// নম্বর কপি করার জন্য স্মার্ট ফাংশন
+function copyAndToast(num, method) {
+    navigator.clipboard.writeText(num);
+    // আপনি যদি SweetAlert ব্যবহার করেন তবে এটি দেখাবে
+    Swal.fire({
+        icon: 'success',
+        title: method + ' নম্বর কপি হয়েছে!',
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+function renderWithdrawHistory() {
+    const list = document.getElementById('full-withdraw-list');
+    if (!list || !db.withdraws) return;
+
+    const myWithdraws = db.withdraws.filter(w => w.user === curUser.email).reverse();
+
+    if (myWithdraws.length === 0) {
+        list.innerHTML = `
+            <div style="text-align: center; padding: 50px 20px; opacity: 0.5;">
+                <i class="fas fa-receipt" style="font-size: 40px; margin-bottom: 15px; color: #cbd5e1;"></i>
+                <p style="font-size: 14px; color: #64748b;">এখনো কোনো উইথড্র হিস্টোরি নেই</p>
+            </div>`;
+        return;
+    }
+
+    list.innerHTML = myWithdraws.map(w => `
+        <div style="background: white; padding: 15px; border-radius: 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #edf2f7; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div>
+                <div style="font-weight: 800; color: #1e293b; font-size: 15px;">৳${w.amt}</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">${w.method} • ${w.num}</div>
+                <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">${w.time}</div>
+            </div>
+            <div style="background: ${w.status === 'Success' ? '#dcfce7' : (w.status === 'Rejected' ? '#fee2e2' : '#fef9c3')}; 
+                        color: ${w.status === 'Success' ? '#15803d' : (w.status === 'Rejected' ? '#b91c1c' : '#a16207')}; 
+                        padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 800; text-transform: uppercase;">
+                ${w.status}
+            </div>
+        </div>
+    `).join("");
+}
+
+function selectWithdrawMethod(method) {
+    currentWithdrawMethod = method; // মেথডটি সেভ করে রাখা হলো
+    
+    // ১. সব কার্ড থেকে আগের হাইলাইট রিমুভ করা
+    document.querySelectorAll('.w-method-card').forEach(card => {
+        card.classList.remove('active-method');
+    });
+    
+    // ২. বর্তমান ক্লিক করা কার্ডে হাইলাইট যোগ করা
+    const selectedCard = document.getElementById('w-' + method);
+    if(selectedCard) {
+        selectedCard.classList.add('active-method');
+        console.log("Selected Method: " + currentWithdrawMethod);
+    }
+}
 </script>
 </body>
 </html>
