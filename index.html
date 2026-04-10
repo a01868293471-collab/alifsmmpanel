@@ -9063,13 +9063,16 @@ function editUserRank(index) {
         }
     });
 }
+
+
+
 function openUserPopup(index) {
     const u = db.users[index];
     if (!u) return;
 
     const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
     
-    // ফটো আপডেট ফিক্স (Timestamp)
+    // ফটো আপডেট ফিক্স
     const userImg = u.img || u.profilePic || "";
     const nameInitial = (u.name || "U").charAt(0).toUpperCase();
     const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ff0000&color=fff&size=128`;
@@ -9092,6 +9095,16 @@ function openUserPopup(index) {
 
             <div class="p-4" style="max-height: 60vh; overflow-y: auto;">
                 
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <small style="color: #888; font-size: 10px; text-transform: uppercase; font-weight: 700; display: block;">Referral Code</small>
+                        <span id="displayReferCode" style="font-weight: 800; color: #111; font-size: 16px;">${u.referCode || 'N/A'}</span>
+                    </div>
+                    <button onclick="editReferCode(${index})" style="background: #ff0000; color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; transition: 0.3s;">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+
                 <div style="background: #fff5f5; padding: 15px; border-radius: 20px; border: 1px dashed #ff0000; margin-bottom: 20px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <small style="color: #ff0000; font-weight: 800; font-size: 11px;">SEND NOTIFICATION</small>
@@ -9099,9 +9112,9 @@ function openUserPopup(index) {
                             <input type="checkbox" id="sendToAll"> Send to All?
                         </label>
                     </div>
-                    <input type="text" id="adminMsgTitle" placeholder="টাইটেল (যেমন: পেমেন্ট সফল)" style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 13px;">
-                    <textarea id="adminMsgBody" placeholder="আপনার মেসেজ লিখুন..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; height: 60px; font-size: 13px; margin-bottom: 10px;"></textarea>
-                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: #ff0000; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 13px; cursor: pointer;">Send Message <i class="fas fa-paper-plane ms-1"></i></button>
+                    <input type="text" id="adminMsgTitle" placeholder="টাইটেল..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 13px;">
+                    <textarea id="adminMsgBody" placeholder="মেসেজ..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; height: 60px; font-size: 13px; margin-bottom: 10px;"></textarea>
+                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: #ff0000; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 13px;">Send Message <i class="fas fa-paper-plane ms-1"></i></button>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
@@ -9144,6 +9157,29 @@ function openUserPopup(index) {
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
 
+// রেফার কোড এডিট করার ফাংশন
+function editReferCode(index) {
+    const u = db.users[index];
+    Swal.fire({
+        title: 'Edit Referral Code',
+        input: 'text',
+        inputValue: u.referCode || '',
+        showCancelButton: true,
+        confirmButtonText: 'Update',
+        confirmButtonColor: '#ff0000',
+    }).then((result) => {
+        if (result.isConfirmed && result.value) {
+            u.referCode = result.value;
+            save(); // ডাটাবেস সেভ
+            openUserPopup(index); // পপআপ রিফ্রেশ
+            Swal.fire('Updated!', 'Referral code has been updated.', 'success');
+        }
+    });
+}
+
+
+
+
 // নোটিফিকেশন পাঠানোর লজিক
 function sendInstantNotif(index) {
     const title = document.getElementById('adminMsgTitle').value.trim();
@@ -9174,12 +9210,6 @@ function sendInstantNotif(index) {
     save(); // ডাটাবেস সেভ ফাংশন
     closeUserPopup();
 }
-
-
-
-
-
-
 
 
 // রেফার কোড আপডেট করার ফাংশন
