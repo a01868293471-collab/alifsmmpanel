@@ -3701,23 +3701,36 @@ function toggleSignupPassword() {
         </div>
 
         <p style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px;">Select Payout Method</p>
-        <div class="row g-3 mb-4">
-            <div class="col-4" onclick="selectWithdrawMethod('Bkash')">
-                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Bkash">
-                    <i class="fas fa-university mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">bKash</span>
-                </div>
+
+
+        <div class="row g-2 mb-4" style="display: flex; gap: 10px; padding: 0 5px;">
+    <div style="flex: 1;" onclick="selectWithdrawMethod('Bkash')">
+        <div class="w-method-card" id="w-Bkash" style="background: #ffffff; padding: 12px; border-radius: 15px; text-align: center; border: 1.5px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; transition: 0.3s;">
+            <div style="background: #fff1f2; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: #e11d48;">
+                <i class="fas fa-university" style="font-size: 16px;"></i>
             </div>
-            <div class="col-4" onclick="selectWithdrawMethod('Nagad')">
-                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Nagad">
-                    <i class="fas fa-wallet mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">Nagad</span>
-                </div>
-            </div>
-            <div class="col-4" onclick="selectWithdrawMethod('Rocket')">
-                <div class="w-method-card text-center p-3 rounded-4 bg-white shadow-sm border" id="w-Rocket">
-                    <i class="fas fa-credit-card mb-2" style="font-size: 20px;"></i><br><span style="font-size: 12px; font-weight:700;">Rocket</span>
-                </div>
-            </div>
+            <span style="font-size: 13px; font-weight: 800; color: #1e293b; display: block; letter-spacing: 0.3px;">bKash</span>
         </div>
+    </div>
+
+    <div style="flex: 1;" onclick="selectWithdrawMethod('Nagad')">
+        <div class="w-method-card" id="w-Nagad" style="background: #ffffff; padding: 12px; border-radius: 15px; text-align: center; border: 1.5px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); cursor: pointer; transition: 0.3s;">
+            <div style="background: #fff7ed; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: #f97316;">
+                <i class="fas fa-wallet" style="font-size: 16px;"></i>
+            </div>
+            <span style="font-size: 13px; font-weight: 800; color: #1e293b; display: block; letter-spacing: 0.3px;">Nagad</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* সিলেকশন হলে বর্ডারের রঙ পরিবর্তনের জন্য */
+    .w-method-card.active {
+        border-color: #ff0000 !important;
+        background: #fff5f5 !important;
+        transform: translateY(-2px);
+    }
+</style>
 
         <div style="background: white; padding: 25px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
             <div class="mb-4">
@@ -5670,11 +5683,30 @@ function toggleSignupPassword() {
 
     <div class="container px-3 mt-3">
         
-        <div style="background: #fff5f5; border: 1px dashed #ff0000; padding: 12px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-bullhorn" style="color: #ff0000; font-size: 18px;"></i>
-            <marquee style="font-size: 12px; color: #333; font-weight: 600;">প্রথমে টাকার পরিমাণ লিখুন, তারপর নিচের যেকোনো নম্বর কপি করে টাকা পাঠিয়ে ট্রানজেকশন আইডি সাবমিট করুন।</marquee>
+<div style="background: linear-gradient(135deg, #fffafa 0%, #fff1f1 100%); 
+            border: 1px solid #ff000033; 
+            padding: 15px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.05);">
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: #ff0000; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+            <i class="fas fa-bullhorn" style="color: #fff; font-size: 14px;"></i>
         </div>
+        <span style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">জরুরী নির্দেশনা</span>
+    </div>
 
+    <div style="padding-left: 42px;">
+        <p style="font-size: 12.5px; color: #444; margin: 0; line-height: 1.6; font-weight: 500;">
+            সঠিকভাবে ডিপোজিট করতে প্রথমে পরিমাণ লিখুন। সর্বনিম্ন <b style="color: #ff0000;">৳৫০</b> এবং সর্বোচ্চ <b style="color: #ff0000;">৳২৫,০০০</b> টাকা পর্যন্ত ডিপোজিট করা যাবে।
+        </p>
+    </div>
+
+</div>
         <div style="background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #f1f2f6; margin-bottom: 20px;">
             <label style="display: block; font-size: 13px; color: #666; margin-bottom: 10px; font-weight: 700;">প্রথমে ডিপোজিট পরিমাণ লিখুন:</label>
             <div style="display: flex; align-items: center; background: #f8f9fa; padding: 15px; border-radius: 12px; border: 2px solid #eee;" id="amt-box">
@@ -5708,27 +5740,6 @@ function toggleSignupPassword() {
                 <button onclick="copyAndToast('01868293471', 'Nagad')" style="background: #f7941d;">COPY</button>
             </div>
 
-            <div class="m-card">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div class="m-icon" style="background: #f3e8f4;"><i class="fas fa-mobile-alt" style="color: #8c3494;"></i></div>
-                    <div>
-                        <div class="m-title">Rocket (Personal)</div>
-                        <div class="m-num">01868293471</div>
-                    </div>
-                </div>
-                <button onclick="copyAndToast('01868293471', 'Rocket')" style="background: #8c3494;">COPY</button>
-            </div>
-
-            <div class="m-card">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div class="m-icon" style="background: #e6f0ff;"><i class="fas fa-mobile-alt" style="color: #005ad2;"></i></div>
-                    <div>
-                        <div class="m-title">Upay (Personal)</div>
-                        <div class="m-num">01868293471</div>
-                    </div>
-                </div>
-                <button onclick="copyAndToast('01868293471', 'Upay')" style="background: #005ad2;">COPY</button>
-            </div>
         </div>
 
         <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f2f6;">
