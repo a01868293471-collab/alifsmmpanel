@@ -3069,7 +3069,7 @@ function toggleSignupPassword() {
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); width: 55px; height: 55px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1.5px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
                     <span style="font-size: 10px; font-weight: 700; color: #ffd700; text-transform: uppercase;">Only</span>
-                    <span style="font-weight: 900; color: #ffffff; font-size: 16px; line-height: 1;">৳50</span>
+                    <span style="font-weight: 900; color: #ffffff; font-size: 16px; line-height: 1;">৳100</span>
                 </div>
                 
                 <div style="flex: 1;">
@@ -8319,6 +8319,11 @@ function withdrawReq() {
     let method = currentWithdrawMethod || "Bkash";
     let withdrawPage = document.getElementById('p-withdraw');
 
+    // মেথড অনুযায়ী লোগো সিলেক্ট (বিকাশ বা নগদ)
+    let methodLogo = method.toLowerCase() === 'bkash' 
+        ? 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/bkash_logo.png' 
+        : 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/nagad_logo.png';
+
     // ৫% চার্জ ক্যালকুলেশন
     let charge = amt * 0.05;
     let finalAmount = amt - charge;
@@ -8334,73 +8339,84 @@ function withdrawReq() {
         return Swal.fire({ target: withdrawPage, icon: 'error', title: 'পর্যাপ্ত ব্যালেন্স নেই!', text: `আপনার বর্তমান ব্যালেন্স ৳${curUser.bal.toFixed(2)}`, confirmButtonColor: '#ff4757' });
     }
 
-    // ২. কনফার্মেশন পপআপ (Password + Hold to Withdraw)
+    // ২. কনফার্মেশন পপআপ
     Swal.fire({
         target: withdrawPage,
         title: 'নিরাপত্তা যাচাই',
-        width: '350px',
+        width: '360px',
         background: '#ffffff',
         showConfirmButton: false,
         allowOutsideClick: true,
         html: `
-            <div style="text-align: left; background: #f8f9fa; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee;">
-                <div style="display:flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span style="color: #888; font-size: 12px;">পরিমাণ: <b>৳${amt}</b></span>
-                    <span style="color: #888; font-size: 12px;">চার্জ: <b>৳${charge.toFixed(2)}</b></span>
+            <div style="background: #fdf2f2; border-radius: 20px; padding: 15px; margin-bottom: 20px; border: 1px solid #ffebeb;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                         <img src="${methodLogo}" style="width: 35px; border-radius: 8px;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3406/3406828.png'">
+                         <div style="text-align: left;">
+                            <small style="color: #888; font-size: 10px; font-weight: 700; text-transform: uppercase;">Method</small>
+                            <div style="color: #333; font-weight: 800; font-size: 14px;">${method}</div>
+                         </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <small style="color: #888; font-size: 10px; font-weight: 700; text-transform: uppercase;">Number</small>
+                        <div style="color: #333; font-weight: 800; font-size: 13px;">${num}</div>
+                    </div>
                 </div>
-                <div style="text-align:center; color: #2ecc71; font-weight: bold; font-size: 14px;">আপনি পাবেন: ৳${finalAmount.toFixed(2)}</div>
+                <hr style="border: 0; border-top: 1px dashed #ffcccc; margin: 10px 0;">
+                <div style="display: flex; justify-content: space-between; font-weight: 700;">
+                    <span style="color: #666; font-size: 12px;">পরিমাণ: ৳${amt}</span>
+                    <span style="color: #ff4757; font-size: 12px;">চার্জ (৫%): ৳${charge.toFixed(2)}</span>
+                </div>
+                <div style="text-align:center; color: #2ecc71; font-weight: 900; font-size: 16px; margin-top: 10px; background: white; border-radius: 10px; padding: 5px;">
+                    পাবেন: ৳${finalAmount.toFixed(2)}
+                </div>
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <label style="display:block; font-size: 12px; color: #666; margin-bottom: 5px; text-align: left;">আপনার একাউন্ট পাসওয়ার্ড দিন:</label>
-                <input type="password" id="w-pass-check" placeholder="পাসওয়ার্ড লিখুন" 
-                    style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; outline: none; transition: 0.3s; text-align: center; font-weight: bold;">
-                <div id="pass-msg" style="font-size: 10px; margin-top: 5px; font-weight: bold;"></div>
+            <div style="margin-bottom: 25px;">
+                <label style="display:block; font-size: 12px; color: #666; margin-bottom: 8px; text-align: left; font-weight: 600;">একাউন্ট পাসওয়ার্ড প্রদান করুন:</label>
+                <input type="password" id="w-pass-check" placeholder="••••••••" 
+                    style="width: 100%; padding: 14px; border-radius: 15px; border: 2px solid #eee; outline: none; transition: 0.3s; text-align: center; font-weight: bold; font-size: 18px; letter-spacing: 5px;">
+                <div id="pass-msg" style="font-size: 11px; margin-top: 8px; font-weight: 800; height: 15px;"></div>
             </div>
 
-            <p id="hold-instruction" style="font-size: 11px; color: #999; margin-bottom: 15px; display:none;">পাসওয়ার্ড সঠিক! এবার বাটনটি চেপে ধরে রাখুন</p>
-            
-            <div id="hold-container" style="position: relative; width: 100px; height: 100px; margin: 0 auto; cursor: not-allowed; opacity: 0.3; pointer-events: none; transition: 0.5s;">
-                <svg width="100" height="100" style="transform: rotate(-90deg);">
-                    <circle cx="50" cy="50" r="45" stroke="#e2e8f0" stroke-width="8" fill="none" />
-                    <circle id="hold-progress" cx="50" cy="50" r="45" stroke="#ff0000" stroke-width="8" fill="none" 
-                        stroke-dasharray="283" stroke-dashoffset="283" style="transition: stroke-dashoffset 0.1s linear;" />
-                </svg>
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: #ff0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255,0,0,0.3);">
-                    <i class="fas fa-fingerprint" style="color: white; font-size: 30px;"></i>
+            <div id="hold-ui-box" style="display: none; animation: fadeInUp 0.5s ease;">
+                <p style="font-size: 11px; color: #ff0000; font-weight: 700; margin-bottom: 15px;">পাসওয়ার্ড সঠিক! এবার উইথড্র করতে গোল বাটনে চেপে ধরুন</p>
+                <div id="hold-container" style="position: relative; width: 110px; height: 110px; margin: 0 auto; cursor: pointer; transition: 0.5s;">
+                    <svg width="110" height="110" style="transform: rotate(-90deg);">
+                        <circle cx="55" cy="55" r="50" stroke="#f1f5f9" stroke-width="8" fill="none" />
+                        <circle id="hold-progress" cx="55" cy="55" r="50" stroke="#ff0000" stroke-width="8" fill="none" 
+                            stroke-dasharray="314" stroke-dashoffset="314" style="transition: stroke-dashoffset 0.1s linear;" />
+                    </svg>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: #ff0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(255,0,0,0.3);">
+                        <i class="fas fa-hand-pointer" style="color: white; font-size: 32px; animation: pulse 1.5s infinite;"></i>
+                    </div>
                 </div>
             </div>
         `,
         didOpen: () => {
             const passInput = document.getElementById('w-pass-check');
             const passMsg = document.getElementById('pass-msg');
-            const holdContainer = document.getElementById('hold-container');
-            const holdInstruction = document.getElementById('hold-instruction');
+            const holdUIBox = document.getElementById('hold-ui-box');
             const progressCircle = document.getElementById('hold-progress');
+            const holdContainer = document.getElementById('hold-container');
 
-            // পাসওয়ার্ড চেক লজিক
             passInput.addEventListener('input', () => {
-                if (passInput.value === curUser.pass) { // ইউজারের পাসওয়ার্ডের সাথে মিললে
+                if (passInput.value === curUser.pass) {
                     passInput.style.borderColor = "#2ecc71";
-                    passInput.style.backgroundColor = "#eafaf1";
-                    passMsg.innerText = "পাসওয়ার্ড সঠিক!";
+                    passInput.style.backgroundColor = "#f0fff4";
+                    passInput.readOnly = true; // পাসওয়ার্ড সঠিক হলে ইনপুট লক করে দিবে
+                    passMsg.innerText = "পাসওয়ার্ড সঠিক! (✓)";
                     passMsg.style.color = "#2ecc71";
-                    holdContainer.style.opacity = "1";
-                    holdContainer.style.cursor = "pointer";
-                    holdContainer.style.pointerEvents = "auto";
-                    holdInstruction.style.display = "block";
-                } else {
+                    holdUIBox.style.display = "block";
+                } else if (passInput.value.length >= 4) {
                     passInput.style.borderColor = "#ff4757";
-                    passInput.style.backgroundColor = "#fff0f0";
-                    passMsg.innerText = "ভুল পাসওয়ার্ড!";
+                    passMsg.innerText = "ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।";
                     passMsg.style.color = "#ff4757";
-                    holdContainer.style.opacity = "0.3";
-                    holdContainer.style.pointerEvents = "none";
-                    holdInstruction.style.display = "none";
+                    holdUIBox.style.display = "none";
                 }
             });
 
-            // হোল্ড বাটন লজিক
+            // হোল্ড লজিক
             let holdTimer;
             let isHolding = false;
 
@@ -8411,7 +8427,7 @@ function withdrawReq() {
                 holdTimer = setInterval(() => {
                     let elapsed = Date.now() - startTime;
                     let percentage = Math.min(elapsed / 1500, 1);
-                    let progress = 283 - (percentage * 283);
+                    let progress = 314 - (percentage * 314);
                     progressCircle.style.strokeDashoffset = progress;
 
                     if (percentage >= 1) {
@@ -8427,7 +8443,7 @@ function withdrawReq() {
             const endHold = () => {
                 isHolding = false;
                 clearInterval(holdTimer);
-                progressCircle.style.strokeDashoffset = 283;
+                progressCircle.style.strokeDashoffset = 314;
             };
 
             holdContainer.addEventListener('mousedown', startHold);
@@ -8439,14 +8455,21 @@ function withdrawReq() {
 }
 // ৩. উইথড্র এক্সিকিউশন ফাংশন
 function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
-    let now = new Date().toLocaleString('bn-BD', { hour12: true });
+    let now = new Date().toLocaleString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        day: '2-digit', 
+        month: 'short', 
+        year: 'numeric', 
+        hour12: true 
+    });
     
-    curUser.bal -= amt; // ইউজারের মেইন ব্যালেন্স থেকে পুরো টাকা কাটবে
+    curUser.bal -= amt; 
     let withdrawData = {
         id: Date.now(),
         user: curUser.email,
         requestedAmt: amt,
-        amt: finalAmount, // চার্জ কাটার পর যে টাকা পাবে (এটি ডাটাবেসে যাবে)
+        amt: finalAmount, 
         num: num,
         method: method,
         status: 'Pending',
@@ -8458,49 +8481,62 @@ function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
     save();
     renderUser();
 
-    // ৪. সফল পপআপ
+    // সফল পপআপ
     Swal.fire({
         target: withdrawPage,
         width: '350px',
         background: '#ffffff',
         showConfirmButton: true,
         confirmButtonText: 'ঠিক আছে',
-        confirmButtonColor: '#ff0000',
+        confirmButtonColor: '#28a745',
         allowOutsideClick: false,
         padding: '0',
-        customClass: { popup: 'long-premium-popup' },
+        customClass: { popup: 'success-premium-popup' },
         html: `
             <style>
-                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
-                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
+                .success-premium-popup { border-radius: 35px !important; overflow: hidden; }
+                .success-header { background: #f8fff9; padding: 40px 20px 20px; text-align: center; }
+                .check-container { 
+                    width: 70px; height: 70px; background: #28a745; border-radius: 50%; 
+                    display: flex; align-items: center; justify-content: center; 
+                    margin: 0 auto 15px; box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+                    animation: scaleIn 0.5s cubic-bezier(0.12, 0, 0.39, 0);
+                }
+                @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
             </style>
-            <div class="pop-container" style="position: relative;">
-                <div style="background: linear-gradient(135deg, #ff0000, #cc0000); 
-                            width: 80px; height: 80px; border-radius: 50%; 
-                            display: flex; align-items: center; justify-content: center; 
-                            margin: -105px auto 25px; 
-                            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
-                            border: 6px solid #ffffff; position: relative; z-index: 9999;">
-                    <i class="fas fa-check" style="color: white; font-size: 30px;"></i>
+            
+            <div class="success-header">
+                <div class="check-container">
+                    <i class="fas fa-check" style="color: white; font-size: 32px;"></i>
                 </div>
-                <h3 style="color: #2d3436; font-weight: 900; margin-bottom: 25px; font-size: 20px;">উইথড্র সফল হয়েছে!</h3>
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
-                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">পেমেন্ট মেথড</span>
+                <h3 style="color: #1a1a1a; font-weight: 800; margin: 0; font-size: 20px;">Withdraw Successful!</h3>
+                <p style="color: #888; font-size: 12px; margin-top: 5px;">আপনার রিকোয়েস্টটি পেন্ডিং এ আছে</p>
+            </div>
+
+            <div style="padding: 0 25px 25px;">
+                <div style="background: #f8f9fa; border-radius: 20px; padding: 18px; border: 1px solid #f1f2f6;">
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #eef0f2; padding-bottom: 8px;">
+                        <span style="color: #777; font-size: 13px;">পদ্ধতি</span>
                         <b style="color: #333;">${method}</b>
                     </div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">পরিমাণ</span>
-                        <b style="color: #ff0000; font-size: 16px;">৳${finalAmount.toFixed(2)}</b>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #eef0f2; padding-bottom: 8px;">
+                        <span style="color: #777; font-size: 13px;">পরিমাণ (চার্জ বাদে)</span>
+                        <b style="color: #28a745; font-size: 16px;">৳${finalAmount.toFixed(2)}</b>
                     </div>
-                    <div style="display:flex; justify-content: space-between;">
-                        <span style="color: #888; font-size: 13px;">পেমেন্ট নম্বর</span>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #eef0f2; padding-bottom: 8px;">
+                        <span style="color: #777; font-size: 13px;">নম্বর</span>
                         <b style="color: #333;">${num}</b>
                     </div>
+                    <div style="display:flex; justify-content: space-between;">
+                        <span style="color: #777; font-size: 12px;">সময় ও তারিখ</span>
+                        <b style="color: #555; font-size: 11px;">${now}</b>
+                    </div>
                 </div>
-                <p style="font-size: 10px; color: #ff0000; font-weight: bold;"></p>
+                <p style="text-align: center; font-size: 11px; color: #999; margin-top: 15px;">
+                    <i class="fas fa-info-circle me-1"></i> পেমেন্ট ১-২৪ ঘন্টার মধ্যে সম্পন্ন হবে
+                </p>
             </div>
-          `
+        `
     }).then(() => {
         document.getElementById('w-amt').value = '';
         document.getElementById('w-num').value = '';
@@ -8905,12 +8941,10 @@ function renderTeam() {
         document.getElementById('referCode').innerText = myReferCode;
     }
 
-    // আপনার নিজের টিমের ডাটা ফিল্টার
     const myTeam = db.users.filter(u => u.referredBy === myReferCode);
     const activeCount = myTeam.filter(u => u.status === 'active').length;
     const inactiveCount = myTeam.length - activeCount;
 
-    // টিম কাউন্ট সেকশনে একটিভ ও ইনেকটিভ দেখানো
     if (countSpan) {
         countSpan.innerHTML = `
             <span style="color: #00b894;">${activeCount} Active</span> / 
@@ -8935,12 +8969,11 @@ function renderTeam() {
         const isActive = member.status === 'active';
         const statusText = isActive ? 'Active' : 'Inactive';
         const statusColor = isActive ? '#00b894' : '#ff7675';
-
-        // শুধুমাত্র একটিভ টিম মেম্বারদের কাউন্ট বের করা
         const activeMemberReferCount = db.users.filter(u => u.referredBy === member.referCode && u.status === 'active').length;
 
+        // এখানে কার্ডে onclick এবং cursor: pointer যোগ করা হয়েছে
         container.innerHTML += `
-            <div style="background: white; border-radius: 20px; padding: 18px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.03); border: 1px solid #f8f9fa; margin-bottom: 12px; position: relative; overflow: hidden;">
+            <div onclick="showMemberDetails('${member.referCode}')" style="cursor: pointer; background: white; border-radius: 20px; padding: 18px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.03); border: 1px solid #f8f9fa; margin-bottom: 12px; position: relative; overflow: hidden;">
                 
                 <div style="position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: ${isActive ? '#ff0000' : '#dfe6e9'};"></div>
 
@@ -8970,6 +9003,57 @@ function renderTeam() {
                     </p>
                 </div>
             </div>`;
+    });
+}
+
+// ৫-জেনারেশন মেম্বার ডিটেইলস পপআপ ফাংশন
+function showMemberDetails(referCode) {
+    const member = db.users.find(u => u.referCode === referCode);
+    if (!member) return;
+
+    // ৫ জেনারেশন পর্যন্ত মেম্বার খুঁজে বের করার লজিক
+    let generations = [[], [], [], [], []]; // Level 1 to Level 5
+
+    function getDownline(code, level) {
+        if (level >= 5) return;
+        let children = db.users.filter(u => u.referredBy === code);
+        generations[level].push(...children);
+        children.forEach(child => getDownline(child.referCode, level + 1));
+    }
+
+    getDownline(referCode, 0);
+
+    let htmlContent = `<div style="text-align: left; max-height: 400px; overflow-y: auto; font-family: 'Poppins', sans-serif;">`;
+    
+    generations.forEach((gen, index) => {
+        if (gen.length > 0) {
+            htmlContent += `<div style="margin-bottom: 15px;">
+                <h4 style="color: #ff0000; font-size: 13px; border-bottom: 1px solid #eee; padding-bottom: 5px;">জেনারেশন ${index + 1} (${gen.length} জন)</h4>`;
+            
+            gen.forEach(m => {
+                const color = m.status === 'active' ? '#00b894' : '#ff7675';
+                htmlContent += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dashed #f1f1f1;">
+                        <span style="font-size: 12px; font-weight: 600; color: #2d3436;">${m.name}</span>
+                        <span style="font-size: 10px; background: ${color}15; color: ${color}; padding: 2px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase;">${m.status}</span>
+                    </div>`;
+            });
+            htmlContent += `</div>`;
+        }
+    });
+
+    if (generations[0].length === 0) {
+        htmlContent += `<p style="text-align: center; color: #999; font-size: 12px;">এই মেম্বারের অধীনে কোনো টিম নেই।</p>`;
+    }
+    
+    htmlContent += `</div>`;
+
+    Swal.fire({
+        title: `<span style="font-size: 16px;">${member.name}-এর নেটওয়ার্ক</span>`,
+        html: htmlContent,
+        confirmButtonColor: '#ff0000',
+        confirmButtonText: 'বন্ধ করুন',
+        width: '350px'
     });
 }
 // রেফার কোড কপি করার ফাংশন
@@ -9259,13 +9343,13 @@ async function activateAccountNow() {
                 <p style="text-align: center; font-weight: 700; color: #ff0000; margin-bottom: 15px; font-size: 14px;">প্রিমিয়াম মেম্বারশিপের এক্সক্লুসিভ সুবিধাসমূহ:</p>
                 <div style="display: grid; gap: 10px;">
                     <div style="display: flex; align-items: flex-start; gap: 10px; background: #fff5f5; padding: 8px; border-radius: 8px; border-left: 3px solid #ff0000;">
-                        <span>🚀</span> <span><b>আনলিমিটেড মাইক্রো জব:</b> প্রতিদিন আনলিমিটেড কাজ করে ইনকাম করার সুযোগ।</span>
+                        <span>🚀</span> <span><b>আনলিমিটেড জব:</b> প্রতিদিন আনলিমিটেড কাজ করে ইনকাম করার সুযোগ।</span>
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 10px; background: #fff5f5; padding: 8px; border-radius: 8px; border-left: 3px solid #ff0000;">
-                        <span>💰</span> <span><b>হাই-কমিশন রেফার:</b> প্রতি সফল রেফারে সরাসরি ৩০৳ ইনস্ট্যান্ট বোনাস।</span>
+                        <span>💰</span> <span><b>হাই-কমিশন রেফার:</b> প্রতি সফল রেফারে সরাসরি ৳50 ইনস্ট্যান্ট বোনাস আরো থাকছে ৫ জেনারেশন রেফার কমিশন।</span>
                     </div>
                                         <div style="display: flex; align-items: flex-start; gap: 10px; background: #fff5f5; padding: 8px; border-radius: 8px; border-left: 3px solid #ff0000;">
-                        <span>⚡</span> <span><b>ফাস্ট পেমেন্ট:</b> উইথড্র দেওয়ার মাত্র ১-৬ ঘণ্টার মধ্যে পেমেন্ট নিশ্চিত।</span>
+                        <span>⚡</span> <span><b>ফাস্ট পেমেন্ট:</b> উইথড্র দেওয়ার মাত্র ১ ঘণ্টার মধ্যে পেমেন্ট নিশ্চিত।</span>
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 10px; background: #fff5f5; padding: 8px; border-radius: 8px; border-left: 3px solid #ff0000;">
                         <span>💎</span> <span><b>লাইফটাইম এক্সেস:</b> একবার একটিভ করলে আর কখনোই রিনিউ করতে হবে না।</span>
@@ -9274,9 +9358,9 @@ async function activateAccountNow() {
                         <span>🎧</span> <span><b>প্রায়োরিটি সাপোর্ট:</b> টেলিগ্রাম এবং কল সেন্টারে ২৪/৭ ভিআইপি সাপোর্ট।</span>
                     </div>
                 </div>
-                <div style="margin-top: 20px; background: #222; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
-                    <span style="display: block; font-size: 11px; color: #aaa; text-transform: uppercase; font-weight: 600;">Activation Fee (One Time)</span>
-                    <span style="color: #fff; font-weight: 900; font-size: 26px;">৳50.00</span>
+                <div style="margin-top: 20px; background: #222; border-radius: 15px; padding: 15px; text-align: center;">
+                    <span style="display: block; font-size: 11px; color: #aaa; text-transform: uppercase;">Activation Fee</span>
+                    <span style="color: #fff; font-weight: 900; font-size: 26px;">৳100.00</span>
                 </div>
             </div>
         `,
@@ -9287,49 +9371,82 @@ async function activateAccountNow() {
         cancelButtonText: 'এখন না'
     }).then(async (result) => {
         if (result.isConfirmed) {
-            if (parseFloat(curUser.bal) >= 50) {
-                // ১. নিজের একাউন্ট থেকে ৫০ টাকা কাটা
-                curUser.bal = (parseFloat(curUser.bal) - 50).toFixed(2);
+            const activationFee = 100;
+
+            if (parseFloat(curUser.bal) >= activationFee) {
+                // ১. ইউজারের ব্যালেন্স কাটা ও স্ট্যাটাস আপডেট
+                curUser.bal = (parseFloat(curUser.bal) - activationFee).toFixed(2);
                 curUser.status = "active";
 
-                // ২. রেফারেল বোনাস লজিক
-                if (curUser.referredBy && curUser.referredBy !== "") {
-                    let leader = db.users.find(x => x.referCode === curUser.referredBy);
+                let now = new Date();
+                let dateStr = now.toISOString().split('T')[0] + ' | ' + now.toLocaleTimeString();
+
+                // ২. ৫ জেনারেশন কমিশন ডিস্ট্রিবিউশন
+                const commissions = [50, 15, 5, 5, 5]; 
+                let currentLeaderCode = curUser.referredBy;
+
+                for (let i = 0; i < commissions.length; i++) {
+                    if (!currentLeaderCode || currentLeaderCode === "") break;
+
+                    let leader = db.users.find(x => x.referCode === currentLeaderCode);
                     
                     if (leader) {
-                        let bonusAmount = 30.00;
-                        let now = new Date();
-                        let dateStr = now.toISOString().split('T')[0] + ' | ' + now.toLocaleTimeString();
-
-                        // মেইন ব্যালেন্স ও আজকের ইনকামে যোগ করা
-                        leader.bal = (parseFloat(leader.bal || 0) + bonusAmount).toFixed(2);
-                        leader.todayEarn = (parseFloat(leader.todayEarn || 0) + bonusAmount).toFixed(2);
+                        let bonus = commissions[i];
+                        leader.bal = (parseFloat(leader.bal || 0) + bonus).toFixed(2);
+                        leader.todayEarn = (parseFloat(leader.todayEarn || 0) + bonus).toFixed(2);
                         
-                        // লিডারের ইনকাম হিস্ট্রিতে ডাটা পুশ করা (যাতে ডিটেইল পেজে দেখায়)
                         if (!leader.incomeHistory) leader.incomeHistory = [];
                         leader.incomeHistory.unshift({
-                            amount: bonusAmount,
-                            note: `রেফার কমিশন (${curUser.name || 'User'})`,
+                            amount: bonus,
+                            note: `L${i + 1} রেফার কমিশন (${curUser.name || 'User'})`,
                             date: dateStr
                         });
 
-                        console.log("Bonus added to history for: " + leader.email);
+                        // পরের জেনারেশনে যাওয়ার জন্য লিডারের লিডারকে সেট করা
+                        currentLeaderCode = leader.referredBy;
+                    } else {
+                        break; 
                     }
                 }
 
                 save(); 
                 renderUser(); 
 
+                // ৩. প্রফেশনাল সাকসেস পপআপ
                 Swal.fire({
-                    title: 'অভিনন্দন!',
-                    text: 'আপনি এখন আমাদের একজন প্রিমিয়াম মেম্বার!',
-                    icon: 'success',
-                    confirmButtonColor: '#ff0000'
+                    target: document.getElementById('p-home') || document.body,
+                    width: '360px',
+                    background: '#ffffff',
+                    showConfirmButton: true,
+                    confirmButtonText: 'ড্যাশবোর্ডে যান',
+                    confirmButtonColor: '#ff0000',
+                    allowOutsideClick: false,
+                    customClass: { popup: 'premium-success-popup' },
+                    html: `
+                        <style>
+                            .premium-success-popup { border-radius: 30px !important; overflow: hidden; }
+                            .vip-badge { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 5px 15px; border-radius: 50px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4); }
+                            .benefit-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; color: #444; }
+                        </style>
+                        <div style="padding: 30px 20px 10px;">
+                            <div style="width: 80px; height: 80px; background: #fff5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px solid #ff0000;">
+                                <i class="fas fa-gem" style="color: #ff0000; font-size: 35px; animation: pulse 1.5s infinite;"></i>
+                            </div>
+                            <div class="vip-badge">PREMIUM MEMBER</div>
+                            <h3 style="color: #1a1a1a; font-weight: 900; font-size: 22px; margin-bottom: 10px;">অভিনন্দন, ${curUser.name.split(' ')[0]}!</h3>
+                            <p style="color: #666; font-size: 13px; line-height: 1.5;">আপনার একাউন্টটি সফলভাবে <b>১০০৳</b> এর বিনিময়ে প্রিমিয়াম করা হয়েছে। আপনি এখন ভিআইপি মেম্বার!</p>
+                            <div style="background: #f8f9fa; border-radius: 20px; padding: 15px; margin-top: 20px; text-align: left;">
+                                <div class="benefit-item"><i class="fas fa-check-circle" style="color: #2ecc71;"></i> <span>৫-লেভেল রেফার কমিশন একটিভ</span></div>
+                                <div class="benefit-item"><i class="fas fa-check-circle" style="color: #2ecc71;"></i> <span>আনলিমিটেড মাইক্রো জবস</span></div>
+                                <div class="benefit-item"><i class="fas fa-check-circle" style="color: #2ecc71;"></i> <span>VIP সাপোর্ট এক্সেস</span></div>
+                            </div>
+                        </div>
+                    `
                 });
             } else {
                 Swal.fire({
                     title: 'ব্যালেন্স নেই!',
-                    text: 'আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। দয়া করে ডিপোজিট করুন।',
+                    text: 'একাউন্ট একটিভ করতে আপনার ব্যালেন্সে ১০০ টাকা থাকতে হবে।',
                     icon: 'error',
                     confirmButtonColor: '#ff0000'
                 });
