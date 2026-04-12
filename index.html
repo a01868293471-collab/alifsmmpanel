@@ -5860,94 +5860,6 @@ function toggleSignupPassword() {
         <div id="order-hist-list"></div>
     </div>
 </div>
-<div id="p-support" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
-    
-    <div style="background: #ff0000; 
-                padding: 18px 15px; 
-                color: white; 
-                position: sticky; 
-                top: 0; 
-                z-index: 101; 
-                box-shadow: 0 4px 25px rgba(255, 0, 0, 0.2); 
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-                display: flex; 
-                align-items: center; 
-                justify-content: space-between;">
-        
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <div onclick="openPage('p-home')" 
-                 style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); 
-                        border-radius: 12px; display: flex; align-items: center; 
-                        justify-content: center; cursor: pointer; backdrop-filter: blur(10px); 
-                        transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.2);"
-                 onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'"
-                 onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
-                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
-            </div>
-            
-            <div>
-                <h5 style="margin: 0; font-size: 18px; font-weight: 800; letter-spacing: 0.5px; line-height: 1; text-transform: uppercase;">Support</h5>
-                <div style="display: flex; align-items: center; gap: 6px; margin-top: 5px;">
-                    <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #2ecc71;"></span>
-                    <small style="font-size: 10px; font-weight: 700; opacity: 1; text-transform: uppercase; letter-spacing: 0.8px;">Agent Online</small>
-                </div>
-            </div>
-        </div>
-
-        <div style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); 
-                    border-radius: 14px; display: flex; align-items: center; 
-                    justify-content: center; backdrop-filter: blur(10px); 
-                    border: 1px solid rgba(255, 255, 255, 0.3);">
-            <i class="fas fa-headset" style="font-size: 20px; color: #fff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"></i>
-        </div>
-    </div>
-
-    <div style="padding-top: 20px;">
-        <div style="background: #fff9e6; padding: 12px 15px; border-radius: 12px; border-left: 4px solid #f1c40f; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin: 0 10px 20px 10px;">
-            <p style="margin: 0; font-size: 12.5px; color: #856404; font-weight: 600; line-height: 1.5;">
-                <i class="fas fa-bell me-2" style="animation: ring 2s infinite;"></i> <b>নোটিশ:</b> আমাদের সাপোর্ট টিম সকাল ১০টা থেকে রাত ১০টা পর্যন্ত একটিভ থাকে। সরাসরি কথা বলতে নিচের বাটনগুলো ব্যবহার করুন।
-            </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 10px; margin-bottom: 25px;">
-            <a href="https://t.me/Abu_Sufian_2026" target="_blank" style="text-decoration: none;">
-                <div style="background: white; padding: 18px 10px; border-radius: 18px; text-align: center; border-bottom: 4px solid #0088cc; box-shadow: 0 6px 15px rgba(0,0,0,0.04); transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="width: 50px; height: 50px; background: rgba(0, 136, 204, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
-                        <i class="fab fa-telegram-plane" style="font-size: 24px; color: #0088cc;"></i>
-                    </div>
-                    <div style="font-size: 13px; font-weight: 800; color: #333; letter-spacing: 0.5px;">Telegram</div>
-                    <small style="font-size: 9px; color: #888;">Instant Reply</small>
-                </div>
-            </a>
-
-            <a href="tel:+8809638307653" style="text-decoration: none;">
-                <div style="background: white; padding: 18px 10px; border-radius: 18px; text-align: center; border-bottom: 4px solid #2ecc71; box-shadow: 0 6px 15px rgba(0,0,0,0.04); transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="width: 50px; height: 50px; background: rgba(46, 204, 113, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
-                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #2ecc71;"></i>
-                    </div>
-                    <div style="font-size: 13px; font-weight: 800; color: #333; letter-spacing: 0.5px;">Call Now</div>
-                    <small style="font-size: 9px; color: #888;">Voice Support</small>
-                </div>
-            </a>
-        </div>
-    </div> <style>
-        @keyframes pulse-white {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
-        }
-        @keyframes ring {
-            0% { transform: rotate(0); }
-            10% { transform: rotate(15deg); }
-            20% { transform: rotate(-15deg); }
-            30% { transform: rotate(10deg); }
-            40% { transform: rotate(-10deg); }
-            50% { transform: rotate(0); }
-            100% { transform: rotate(0); }
-        }
-    </style>
-</div> 
 
 
 
@@ -5969,11 +5881,11 @@ function toggleSignupPassword() {
         <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Wallet</span>
     </div>
 
-    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1;">
-        <i class="fas fa-headset" style="font-size: 18px; color: white;"></i>
-        <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Support</span>
-    </div>
 
+<div onclick="openDirectSupport()" style="text-align: center; cursor: pointer; flex: 1;">
+    <i class="fas fa-headset" style="font-size: 18px; color: white;"></i>
+    <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Support</span>
+</div>
 
 </div>
 
@@ -10264,7 +10176,43 @@ function selectWithdrawMethod(method) {
         console.log("Selected Method: " + currentWithdrawMethod);
     }
 }
+// ১. টেলিগ্রাম পপআপ
 
+function openDirectSupport() {
+    // যদি Tawk.to লোড হয়ে থাকে, তবে সরাসরি ওপেন হবে
+    if (typeof Tawk_API !== "undefined") {
+        Tawk_API.maximize();
+        Tawk_API.showWidget();
+    } else {
+        // যদি কোনো কারণে লোড হতে দেরি হয়, তবে ইউজারকে একটি মেসেজ দিবে
+        Swal.fire({
+            title: 'Live Chat',
+            text: 'সাপোর্ট সিস্টেম লোড হচ্ছে, এক সেকেন্ড অপেক্ষা করুন...',
+            icon: 'info',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    }
+}
+
+
+// --- Tawk.to কনফিগারেশন (এটি একদম নিচে বসাবেন) ---
+var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+(function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69dad0a637c8091c32de09b8/1jlvbu37l';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+})();
+
+Tawk_API.onLoad = function(){
+    Tawk_API.hideWidget(); // শুরুতে বাবলটি হাইড থাকবে
+};
+Tawk_API.onChatMinimized = function(){
+    Tawk_API.hideWidget(); // চ্যাট বক্স বন্ধ করলে বাটনটিও হাইড হবে
+};
 </script>
 </body>
 </html>
