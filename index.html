@@ -9818,25 +9818,24 @@ function installApp() {
 
 function showForgotPopup() {
     Swal.fire({
-        title: '<span style="font-size:18px;">পাসওয়ার্ড ভুলে গেছেন?</span>',
+        title: '<span style="font-size:18px;">পাসওয়ার্ড ভুলে গেছেন?</span>',
         html: `
             <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #555;">
-                আপনি কি পাসওয়ার্ড ভুলে গেছেন? তাহলে এডমিনের টেলিগ্রামে মেসেজ করুন। <br><br>
-                <b style="color: #ff0000;">নির্দেশনা:</b> অযথা অন্য কিছু না লিখে আপনার <b>জিমেইল</b> দিয়ে বলুন যে আপনি পাসওয়ার্ড ভুলে গেছেন। এডমিন আপনার একাউন্ট চেক করে পাসওয়ার্ড দিয়ে দিবে।
+                আপনি কি পাসওয়ার্ড ভুলে গেছেন? তাহলে আমাদের <b>সাপোর্ট সেন্টারে</b> যোগাযোগ করুন। <br><br>
+                <b style="color: #ff0000;">নির্দেশনা:</b> সাপোর্ট সেন্টারে গিয়ে আপনার <b>জিমেইল</b> এবং সমস্যার কথা বলুন। এডমিন আপনার একাউন্ট চেক করে দ্রুত পাসওয়ার্ড রিসেট করে দিবে।
             </div>
         `,
         icon: 'info',
         showCancelButton: true,
-        confirmButtonColor: '#0088cc',
+        confirmButtonColor: '#ff0000', // চ্যাট বাটনের কালার লাল করে দিলাম
         cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fab fa-telegram-plane"></i> টেলিগ্রামে মেসেজ করুন',
+        confirmButtonText: '<i class="fas fa-headset"></i> সাপোর্ট সেন্টারে কথা বলুন',
         cancelButtonText: 'বন্ধ করুন',
-        border: 'none',
         borderRadius: '20px'
     }).then((result) => {
         if (result.isConfirmed) {
-            // আপনার টেলিগ্রাম লিঙ্কটি এখানে দিন
-            window.open('https://t.me/Abu_Sufian_2026', '_blank');
+            // আপনার আগে তৈরি করা সাপোর্ট ওপেন করার ফাংশনটি এখানে কল হবে
+            openDirectSupport(); 
         }
     });
 }
@@ -10195,7 +10194,6 @@ function openDirectSupport() {
     }
 }
 
-
 // --- Tawk.to কনফিগারেশন (এটি একদম নিচে বসাবেন) ---
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 (function(){
@@ -10213,6 +10211,7 @@ Tawk_API.onLoad = function(){
 Tawk_API.onChatMinimized = function(){
     Tawk_API.hideWidget(); // চ্যাট বক্স বন্ধ করলে বাটনটিও হাইড হবে
 };
+
 </script>
 </body>
 </html>
