@@ -1,401 +1,894 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Time Earn - SMM Panel</title>
-    
+    <title>HGNICE Professional UI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
     <style>
+        :root {
+            --primary-pink: #e91e63;
+            --light-pink: #fce4ec;
+            --bg-color: #f4f7f6;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', -apple-system, sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 412px;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            position: relative;
             overflow-x: hidden;
         }
 
-        /* --- Splash Screen Style --- */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: #d32f2f;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s;
+        /* Page Display Logic */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ======================== 
+           HOME PAGE STYLES 
+        ======================== */
+        .home-header {
+            background-color: var(--white);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
         }
 
-        .splash-logo { font-size: 50px; color: white; animation: pulse 1.5s infinite; }
-        .splash-text { color: white; margin-top: 20px; font-size: 24px; font-weight: bold; letter-spacing: 2px; }
-        .loader {
-            margin-top: 30px; width: 40px; height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white; border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-pink);
+            font-style: italic;
         }
 
-        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        header {
-            background-color: #d32f2f;
+        .banner-slider {
+            margin: 15px;
+            height: 180px;
+            background: linear-gradient(45deg, #ff4081, #e91e63);
+            border-radius: 15px;
+            padding: 25px;
             color: white;
-            padding: 18px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .back-btn {
-            position: absolute;
-            left: 20px;
-            font-size: 22px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        #home-page { display: block; animation: fadeIn 0.5s; }
-
-        .swiper {
-            width: 100%;
-            padding-top: 15px;
-            padding-bottom: 45px !important;
-        }
-        
-        .cover-section {
             position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            height: 160px;
-            margin: 0 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.2);
         }
 
-        .bg-text {
-            position: absolute; 
-            font-size: 5rem; 
-            color: rgba(255, 255, 255, 0.07); 
-            bottom: -15px; 
-            right: 10px; 
-            z-index: 0; 
-            font-weight: 800; 
-            letter-spacing: -2px;
-            user-select: none; 
-        }
-
-        .slider-logo {
-            position: absolute;
-            right: 25px;
-            width: 75px;
-            height: 75px;
-            opacity: 0.2;
-            filter: brightness(0) invert(1);
-            z-index: 1;
-        }
-
-        .cover-content {
-            position: relative; 
-            padding: 0 25px; 
-            z-index: 2; 
-            width: 100%;
-        }
-
-        .cover-content h1 {
-            font-weight: 800; 
-            color: white; 
-            font-size: 1.3rem; 
-            margin: 0; 
-            letter-spacing: 0.5px;
-        }
-
-        .cover-content p {
-            margin-top: 6px; 
-            font-size: 11.5px; 
-            color: rgba(255, 255, 255, 0.9); 
-            font-weight: 400; 
-            line-height: 1.5;
-            max-width: 80%;
-        }
-
-        .swiper-pagination-bullet-active {
-            background: #d32f2f !important;
-            width: 20px !important;
-            border-radius: 4px !important;
-        }
+        .banner-slider h2 { font-size: 22px; }
+        .banner-slider p { font-size: 13px; opacity: 0.9; margin-top: 5px; }
 
         .notice-container {
-            margin: 0px 15px 10px 15px; background-color: #ffffff;
-            border-left: 5px solid #d32f2f; border-radius: 8px; overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: white;
+            margin: 0 15px 15px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .notice-bar { padding: 10px 0; color: #d32f2f; font-weight: 600; font-size: 14px; }
 
-        .social-grid {
-            display: grid; 
+        .notice-container marquee { font-size: 12px; color: var(--text-dark); }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+
+        .cat-item {
+            background: white;
+            padding: 15px 5px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .cat-item img { width: 45px; height: 45px; margin-bottom: 8px; }
+        .cat-item span { font-size: 13px; font-weight: 600; display: block; }
+
+        /* ======================== 
+           ACTIVITY PAGE STYLES 
+        ======================== */
+        .activity-header {
+            background-color: var(--primary-pink);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        .activity-page {
+            background-color: #fff0f5;
+            padding: 15px;
+            font-family: sans-serif;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+        }
+
+        .pink-bg { background: #ff4d94; }
+
+        .icon-item span {
+            font-size: 11px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .card-grid {
+            display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            padding: 20px; 
-            max-width: 500px; 
-            margin: auto;
+            margin-bottom: 20px;
         }
 
-        .social-card {
-            background: #d32f2f; 
-            aspect-ratio: 1 / 1; 
-            border-radius: 12px; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3); 
-            transition: all 0.3s ease;
+        .promo-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .pink-gradient {
+            background: linear-gradient(135deg, #ff7eb3 0%, #ff4d94 100%);
+        }
+
+        .image-placeholder {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        .card-text { padding: 10px; }
+        .card-text h3 { margin: 0; font-size: 14px; color: #333; }
+        .card-text p { margin: 5px 0 0; font-size: 10px; color: #888; }
+
+        .banner-button {
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content h3 { margin: 0; font-size: 20px; }
+        .banner-content p { margin: 5px 0 15px; font-size: 12px; }
+
+        .claim-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #d6336c;
             cursor: pointer;
+        }
+
+        .banner-icon i { font-size: 60px; opacity: 0.3; }
+
+        /* ======================== 
+           PROMOTION PAGE STYLES 
+        ======================== */
+        .promo-header {
+            background: var(--primary-pink);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+        }
+        .promo-balance { font-size: 32px; font-weight: bold; }
+
+        /* ======================== 
+           ACCOUNT PAGE STYLES 
+        ======================== */
+        .acc-header {
+            background-color: var(--primary-pink);
+            padding: 40px 20px 70px 20px;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
             color: white;
         }
-
-        .social-card:active { transform: scale(0.95); background: #b71c1c; }
-        .social-card i { font-size: 40px; margin-bottom: 10px; }
-        .social-card span { font-size: 14px; font-weight: 600; }
-
-        .service-page { display: none; animation: slideIn 0.4s ease-out; }
-        .service-list { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .profile-box { display: flex; align-items: center; gap: 15px; }
+        .profile-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #fff6; object-fit: cover; }
+        .vip-badge { background: var(--white); color: var(--primary-pink); font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 900; }
         
-        .service-item {
-            background: white; padding: 15px; border-radius: 12px;
+        .balance-card {
+            background: var(--white);
+            margin: -50px 15px 15px 15px;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .balance-amount { font-size: 28px; font-weight: 800; margin: 10px 0; color: var(--text-dark); }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 15px;
+            border-top: 1px solid #f1f1f1;
+            padding-top: 15px;
+        }
+        .action-item { text-align: center; font-size: 11px; font-weight: 600; color: var(--text-dark); }
+        .action-item i { font-size: 20px; margin-bottom: 5px; display: block; }
+
+        .cs-button {
+            background: linear-gradient(90deg, #ff4081, #e91e63);
+            margin: 0 15px 15px; padding: 15px 20px; border-radius: 15px;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-left: 5px solid #d32f2f;
+            color: white; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
         }
 
-        .fb-border { border-left-color: #1877F2; }
-        .yt-border { border-left-color: #FF0000; }
-        .tt-border { border-left-color: #000000; }
-        .tg-border { border-left-color: #0088cc; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 15px; }
+        .menu-card { background: white; padding: 18px; border-radius: 15px; display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; }
+        .list-box { background: white; margin: 15px; border-radius: 18px; overflow: hidden; }
+        .list-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8f9fa; }
+        .list-item i.icon { color: var(--primary-pink); font-size: 18px; }
 
-        .order-btn-small {
-            color: white; padding: 8px 18px;
-            border-radius: 8px; font-size: 12px; font-weight: bold;
-            border: none; cursor: pointer; background-color: #d32f2f;
+        .service-center {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px;
+            text-align: center;
+            gap: 20px;
+        }
+        .service-item i { font-size: 24px; color: #fbc02d; margin-bottom: 8px; display: block; }
+        .service-item span { font-size: 11px; }
+
+        .logout-btn {
+            width: calc(100% - 30px); margin: 10px 15px 30px; padding: 14px;
+            border-radius: 30px; border: 1.5px solid var(--primary-pink);
+            background: transparent; color: var(--primary-pink); font-weight: 700;
         }
 
-        .fb-btn { background-color: #1877F2; }
-        .yt-btn { background-color: #FF0000; }
-        .tt-btn { background-color: #000000; }
-        .tg-btn { background-color: #0088cc; }
-
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); display: none;
-            justify-content: center; align-items: center; z-index: 2000;
+        /* ======================== 
+           NAVIGATION BAR 
+        ======================== */
+        .nav-bar {
+            position: fixed; bottom: 0; width: 100%; max-width: 412px;
+            background: var(--white); display: flex; justify-content: space-around;
+            padding: 10px 0 15px 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+            border-top-left-radius: 25px; border-top-right-radius: 25px; z-index: 1000;
         }
-
-        .modal-box {
-            background: white; width: 85%; max-width: 350px;
-            padding: 25px; border-radius: 20px; text-align: center;
-            animation: popUp 0.3s ease-out;
+        .nav-link {
+            text-align: center; color: #b2bec3; text-decoration: none; flex: 1;
+            display: flex; flex-direction: column; align-items: center; cursor: pointer;
         }
-
-        .price-tag { font-size: 24px; font-weight: bold; color: #d32f2f; margin: 15px 0; display: block; }
-        .confirm-btn {
-            background-color: #2ecc71; color: white; width: 100%;
-            padding: 12px; border-radius: 10px; border: none;
-            font-weight: bold; font-size: 16px; cursor: pointer;
+        .nav-link i { font-size: 22px; margin-bottom: 4px; }
+        .nav-link span { font-size: 11px; font-weight: 600; }
+        .nav-link.active { color: var(--primary-pink); }
+                .promo-header {
+            background: var(--primary-pink);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
         }
-        .close-modal { margin-top: 15px; color: #888; font-size: 14px; cursor: pointer; display: block; }
+/* Promotion Page Specific Styles */
+.promo-header-custom {
+    background-color: var(--primary-pink);
+    padding: 20px 15px 40px;
+    text-align: center;
+    color: white;
+}
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-        @keyframes popUp { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.promo-header-custom h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.commission-box h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.commission-box span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.commission-box p {
+    font-size: 11px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.subordinate-stats {
+    display: flex;
+    margin: -20px 15px 15px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stat-col { flex: 1; text-align: center; border-right: 1px solid #f0f0f0; }
+.stat-col:last-child { border-right: none; }
+
+.stat-header {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.stat-header.direct { background-color: #ffeb3b; color: #333; }
+.stat-header.team { background-color: #fce4ec; color: var(--primary-pink); }
+
+.stat-body { padding: 10px 5px; }
+.stat-row { margin-bottom: 10px; }
+.stat-row b { display: block; font-size: 14px; }
+.stat-row span { font-size: 10px; color: #888; line-height: 1.2; display: block; }
+
+.green-text { color: #4caf50; }
+.orange-text { color: #ff9800; }
+
+.qr-download-btn {
+    width: calc(100% - 30px);
+    margin: 10px 15px;
+    padding: 12px;
+    background: var(--primary-pink);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+.list-item-promo {
+    background: white;
+    margin: 8px 15px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.list-item-promo .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #444;
+}
+
+.list-item-promo .left i {
+    color: var(--primary-pink);
+    font-size: 16px;
+}
+
+.list-item-promo .right {
+    font-size: 13px;
+    color: #888;
+}
+/* প্রফেশনাল আইকন গ্রিড স্টাইল */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px 15px;
+}
+
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* গোল ব্যাকগ্রাউন্ড এবং সাদা আইকন */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff7eb3 0%, #e91e63 100%); /* গোলাপি গ্রেডিয়েন্ট */
+    border-radius: 50%; /* পুরোপুরি গোল */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3); /* হালকা শ্যাডো */
+    transition: transform 0.3s ease;
+}
+
+.icon-circle i {
+    color: #ffffff; /* আইকন কালার সাদা */
+    font-size: 24px;
+}
+
+.cat-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* হোভার ইফেক্ট (মাউস নিলে নড়বে) */
+.cat-item:hover .icon-circle {
+    transform: translateY(-5px);
+}
+/* ৮টি বাটনের প্রফেশনাল গ্রিড */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* এক লাইনে ৪টি */
+    gap: 12px;
+    padding: 20px 12px;
+    background-color: transparent;
+}
+
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+/* লম্বাটে প্রফেশনাল কার্ড */
+.icon-card {
+    width: 100%;
+    aspect-ratio: 4/5; /* বাটনকে একটু লম্বাটে করার জন্য */
+    background: linear-gradient(145deg, #ff4d94, #c2185b); /* প্রফেশনাল গোলাপি গ্রেডিয়েন্ট */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* গ্লসি ইফেক্ট (কার্ডের ওপর হালকা আলো) */
+.icon-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+}
+
+.icon-card i {
+    color: #ffffff; /* আইকন কালার সাদা */
+    font-size: 28px; /* আইকন সাইজ একটু বড় */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.cat-item span {
+    font-size: 11px; /* টেক্সট সাইজ মোবাইল ফ্রেন্ডলি */
+    font-weight: 700;
+    color: #444;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ক্লিক করার সময় হালকা দেবে যাবে */
+.cat-item:active {
+    transform: scale(0.92);
+}
+
+.cat-item:hover .icon-card {
+    box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+}
+/* বটম নেভিগেশন - গোলাপি ব্যাকগ্রাউন্ড ও সাদা আইকন */
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 412px;
+    background: var(--primary-pink); /* সম্পূর্ণ গোলাপি ব্যাকগ্রাউন্ড */
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 18px 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    z-index: 1000;
+}
+
+.nav-link {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6); /* আন-অ্যাক্টিভ আইকন হালকা সাদা */
+    text-decoration: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-link i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.nav-link span {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* অ্যাক্টিভ আইকন সম্পূর্ণ উজ্জ্বল সাদা এবং হালকা এনিমেশন */
+.nav-link.active {
+    color: #ffffff !important;
+    transform: translateY(-3px);
+}
+
+.nav-link.active i {
+    font-size: 22px; /* অ্যাক্টিভ আইকন একটু বড় দেখাবে */
+}
+/* হোম হেডার - প্রফেশনাল গোলাপি থিম */
+.home-header {
+    background-color: var(--primary-pink); /* মেইন গোলাপি কালার */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff !important; /* লোগো টেক্সট সাদা */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-icons {
+    display: flex; 
+    gap: 18px; 
+    color: #ffffff; /* আইকন সাদা */
+    font-size: 18px;
+}
+
+.header-icons i {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.header-icons i:active {
+    transform: scale(0.9); /* ক্লিক করলে হালকা ছোট হবে */
+}
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <div class="splash-logo"><i class="fas fa-rocket"></i></div>
-        <div class="splash-text">FREE TIME EARN</div>
-        <div class="loader"></div>
+<div class="app-container">
+    
+<div id="homePage" class="page active">
+    <div class="home-header">
+        <div class="brand-logo">Abu Sufian</div>
+        <div class="header-icons">
+            <i class="far fa-envelope"></i>
+            <i class="fas fa-download"></i>
+        </div>
     </div>
 
-    <div id="home-page">
-        <header>Free Time Earn</header>
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="cover-section" style="background: linear-gradient(135deg, #ff0000, #cc0000);">
-                        <h1 class="bg-text">EARN</h1>
-                        <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
-                        <div class="cover-content">
-                            <h1>FREE TIME <span style="font-weight: 400; opacity: 0.9;">EARN</span></h1>
-                            <p>বাংলাদেশের সবচেয়ে বিশ্বস্ত প্লাটফর্ম থেকে নিশ্চিন্তে সার্ভিস কিনুন</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="cover-section" style="background: linear-gradient(135deg, #1e272e, #000000);">
-                        <h1 class="bg-text">VIP</h1>
-                        <img src="https://img.icons8.com/ios-filled/512/ffffff/star.png" class="slider-logo">
-                        <div class="cover-content">
-                            <h1> Social <span style="color: #ffd700;">Media</span></h1>
-                            <p>যেকোন সোশাল মিডিয়া সার্ভিস অর্ডার করুন。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="cover-section" style="background: linear-gradient(135deg, #222f3e, #10ac84);">
-                        <h1 class="bg-text">HELP</h1>
-                        <img src="https://img.icons8.com/ios-filled/512/ffffff/customer-support.png" class="slider-logo">
-                        <div class="cover-content">
-                            <h1>২৪/৭ লাইভ <span style="background: #fff; color: #10ac84; padding: 0 6px; border-radius: 4px;">সাপোর্ট</span></h1>
-                            <p>যেকোনো সমস্যায় আমাদের এক্সপার্ট টিম সবসময় পাশে আছে。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
+
+        <div class="banner-slider">
+            <h2>Largest Online</h2>
+            <h1 style="color: #ffeb3b; font-size: 24px;">Entertainment Platform</h1>
+            <p>Model Brand, Reputation guarantee</p>
+            <img src="https://api.dicebear.com/7.x/shapes/svg?seed=pink" style="position:absolute; right:10px; bottom:10px; width:80px; opacity:0.5;">
         </div>
 
         <div class="notice-container">
-            <marquee class="notice-bar" scrollamount="5">সতর্কবার্তা: আমাদের সার্ভিসে বিশেষ অফার চলছে!</marquee>
+            <i class="fas fa-bullhorn" style="color: var(--primary-pink);"></i>
+            <marquee>Welcome to HGNICE! Best wishes for your gaming journey. Contact support for any help.</marquee>
         </div>
 
-        <div class="social-grid">
-            <div class="social-card" onclick="showPage('facebook-page')">
-                <i class="fab fa-facebook"></i><span>Facebook</span>
+
+
+
+<div class="cat-grid">
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <span>Win go</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-plane-departure"></i>
+        </div>
+        <span>Aviator</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <span>Trading</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-dice"></i>
+        </div>
+        <span>Casino</span>
+    </div>
+
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-road"></i>
+        </div>
+        <span>Chicken Road</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-sort-amount-up"></i>
+        </div>
+        <span>7 Up Down</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span>Spin</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-coins"></i>
+        </div>
+        <span>Fortune</span>
+    </div>
+</div>
+    </div>
+    <div id="activityPage" class="page">
+        <div class="activity-header">Activity</div>
+        <div class="activity-page">
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-medal"></i></div>
+                    <span>Activity Award</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-hand-holding-usd"></i></div>
+                    <span>Betting rebate</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-trophy"></i></div>
+                    <span>Super Jackpot</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-dharmachakra"></i></div>
+                    <span>Invite Wheel</span>
+                </div>
             </div>
-            <div class="social-card" onclick="showPage('youtube-page')">
-                <i class="fab fa-youtube"></i><span>YouTube</span>
+
+            <div class="card-grid">
+                <div class="promo-card">
+                    <div class="image-placeholder pink-gradient"><i class="fas fa-gift"></i></div>
+                    <div class="card-text"><h3>Gifts</h3><p>Enter the redemption code</p></div>
+                </div>
+                <div class="promo-card">
+                    <div class="image-placeholder pink-gradient"><i class="fas fa-calendar-check"></i></div>
+                    <div class="card-text"><h3>Attendance</h3><p>Sign in for rewards</p></div>
+                </div>
             </div>
-            <div class="social-card" onclick="showPage('tiktok-page')">
-                <i class="fab fa-tiktok"></i><span>TikTok</span>
+
+            <div class="banner-button pink-gradient">
+                <div class="banner-content">
+                    <h3>DAILY CHECK-IN</h3>
+                    <p>Recharge & Claim Reward</p>
+                    <button class="claim-btn">CLAIM NOW</button>
+                </div>
+                <div class="banner-icon"><i class="fas fa-calendar-alt"></i></div>
             </div>
-            <div class="social-card" onclick="showPage('telegram-page')">
-                <i class="fab fa-telegram-plane"></i><span>Telegram</span>
+        </div>
+    </div>
+
+
+<div id="promotionPage" class="page">
+    <div class="promo-header-custom">
+        <h2>Agency</h2>
+        <div class="commission-box">
+            <h1 id="totalCommission">0.00</h1>
+            <span>Yesterday's total commission</span>
+            <p>Upgrade the level to increase commission income</p>
+        </div>
+    </div>
+
+    <div class="subordinate-stats">
+        <div class="stat-col">
+            <div class="stat-header direct">Direct subordinates</div>
+            <div class="stat-body">
+                <div class="stat-row"><b>0</b><span>number of register</span></div>
+                <div class="stat-row"><b class="green-text">0</b><span>Deposit number</span></div>
+                <div class="stat-row"><b class="orange-text">0</b><span>Deposit amount</span></div>
+                <div class="stat-row"><b>0</b><span>Number of people making first deposit</span></div>
+            </div>
+        </div>
+        <div class="stat-col">
+            <div class="stat-header team">Team subordinates</div>
+            <div class="stat-body">
+                <div class="stat-row"><b>0</b><span>number of register</span></div>
+                <div class="stat-row"><b class="green-text">0</b><span>Deposit number</span></div>
+                <div class="stat-row"><b class="orange-text">0</b><span>Deposit amount</span></div>
+                <div class="stat-row"><b>0</b><span>Number of people making first deposit</span></div>
             </div>
         </div>
     </div>
 
-    <div id="facebook-page" class="service-page">
-        <header><i class="fas fa-chevron-left back-btn" onclick="showPage('home-page')"></i>Facebook Service</header>
-        <div class="service-list">
-            <div class="service-item fb-border"><span>Facebook Followers</span><button class="order-btn-small fb-btn" onclick="openModal('Facebook Followers', '৳ ৭০')">View</button></div>
-            <div class="service-item fb-border"><span>Facebook Post Likes</span><button class="order-btn-small fb-btn" onclick="openModal('Facebook Post Likes', '৳ ৫০')">View</button></div>
+    <div class="promo-actions">
+        <button class="qr-download-btn">Download QR Code</button>
+        
+        <div class="list-item-promo" onclick="copyCode()">
+            <div class="left"><i class="fas fa-id-badge"></i> Copy invitation code</div>
+            <div class="right">12345678 <i class="far fa-copy"></i></div>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-users"></i> Subordinate data</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-file-invoice-dollar"></i> Commission detail</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-book"></i> Invitation rules</div>
+            <i class="fas fa-chevron-right arrow"></i>
         </div>
     </div>
-
-    <div id="youtube-page" class="service-page">
-        <header><i class="fas fa-chevron-left back-btn" onclick="showPage('home-page')"></i>YouTube Panel</header>
-        <div class="service-list">
-            <div class="service-item yt-border"><span>YouTube Subscribers</span><button class="order-btn-small yt-btn" onclick="openModal('YouTube Subscribers', '৳ ৫০০')">View</button></div>
+</div>
+    <div id="accountPage" class="page">
+        <div class="acc-header">
+            <div class="profile-box">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucky" class="profile-img">
+                <div class="user-details">
+                    <div style="font-weight:700; font-size:16px;">MEMBERNNGQEB <span class="vip-badge">VIP0</span></div>
+                    <div style="font-size:12px; opacity:0.9; margin-top:4px;">UID | 12345678 <i class="far fa-copy"></i></div>
+                    <div style="font-size:10px; opacity:0.7; margin-top:3px;">Last login: 2026-04-21 21:18:59</div>
+                </div>
+            </div>
         </div>
+
+        <div class="balance-card">
+            <div style="font-size:13px; color:var(--text-gray);">Total balance</div>
+            <div class="balance-amount">৳0.00</div>
+            <div class="quick-actions">
+                <div class="action-item"><i class="fas fa-wallet" style="color: #ff7675;"></i><span>Wallet</span></div>
+                <div class="action-item"><i class="fas fa-plus-circle" style="color: #fab1a0;"></i><span>Deposit</span></div>
+                <div class="action-item"><i class="fas fa-arrow-circle-down" style="color: #74b9ff;"></i><span>Withdraw</span></div>
+                <div class="action-item"><i class="fas fa-gem" style="color: #55efc4;"></i><span>VIP</span></div>
+            </div>
+        </div>
+
+        <div class="cs-button">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-headset" style="font-size:24px;"></i>
+                <b>Customer Service</b>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card"><i class="fas fa-gamepad" style="color: #00cec9;"></i> Game History</div>
+            <div class="menu-card"><i class="fas fa-exchange-alt" style="color: #6c5ce7;"></i> Transaction</div>
+            <div class="menu-card"><i class="fas fa-history" style="color: #e17055;"></i> Deposit Hist</div>
+            <div class="menu-card"><i class="fas fa-receipt" style="color: #0984e3;"></i> Withdraw Hist</div>
+        </div>
+
+        <div class="list-box" style="margin-bottom: 30px;">
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-bell icon"></i> Notification</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-gift icon"></i> Gifts & Rewards</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-chart-pie icon"></i> Game Statistics</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+        </div>
+
+    <div class="service-center">
+        <div class="service-item"><i class="fas fa-cog"></i><span>Settings</span></div>
+
+
+
+        <div class="service-item"><i class="fas fa-book"></i><span>Beginner's Guide</span></div>
+        <div class="service-item"><i class="fas fa-info-circle"></i><span>About us</span></div>
+    </div>
+        <button class="logout-btn">Log out</button>
     </div>
 
-    <div id="tiktok-page" class="service-page">
-        <header><i class="fas fa-chevron-left back-btn" onclick="showPage('home-page')"></i>TikTok Panel</header>
-        <div class="service-list">
-            <div class="service-item tt-border"><span>TikTok Followers</span><button class="order-btn-small tt-btn" onclick="openModal('TikTok Followers', '৳ ১১০')">View</button></div>
-        </div>
+
+<nav class="nav-bar">
+    <div class="nav-link active" onclick="showPage('homePage', this)">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
     </div>
-
-    <div id="telegram-page" class="service-page">
-        <header><i class="fas fa-chevron-left back-btn" onclick="showPage('home-page')"></i>Telegram Panel</header>
-        <div class="service-list">
-            <div class="service-item tg-border"><span>Telegram Channel Member</span><button class="order-btn-small tg-btn" onclick="openModal('Telegram Channel Member', '৳ ৯০')">View</button></div>
-        </div>
+    <div class="nav-link" onclick="showPage('activityPage', this)">
+        <i class="fas fa-th-large"></i>
+        <span>Activity</span>
     </div>
-
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <h3 id="modalTitle" style="color: #d32f2f;">Service Name</h3>
-            <p>সার্ভিসটির বর্তমান মূল্য নিচে দেওয়া হলো:</p>
-            <span class="price-tag" id="modalPrice">৳ 00</span>
-            <button class="confirm-btn" onclick="confirmOrder()">কনফার্ম অর্ডার</button>
-            <span class="close-modal" onclick="closeModal()">এখন না</span>
-        </div>
+    <div class="nav-link" onclick="showPage('promotionPage', this)">
+        <i class="fas fa-bullhorn"></i>
+        <span>Promotion</span>
     </div>
+    <div class="nav-link" onclick="showPage('accountPage', this)">
+        <i class="fas fa-user"></i>
+        <span>Account</span>
+    </div>
+</nav>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    function showPage(pageId, element) {
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if(target) target.classList.add('active');
 
-    <script>
-        // ১. পেজ লোড হলে স্প্ল্যাশ স্ক্রিন এবং স্লাইডার সেটআপ
-        window.addEventListener('load', function() {
-            var swiper = new Swiper(".mySwiper", {
-                loop: true,
-                autoplay: { delay: 4000, disableOnInteraction: false },
-                pagination: { el: ".swiper-pagination", clickable: true },
-                speed: 800,
-            });
-
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                setTimeout(() => { splash.style.visibility = 'hidden'; }, 500);
-            }, 3000); 
-        });
-
-        // ২. পেজ নেভিগেশন ফাংশন
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.service-page');
-            pages.forEach(p => p.style.display = 'none');
-            document.getElementById('home-page').style.display = 'none';
-
-            const activePage = document.getElementById(pageId);
-            if (activePage) activePage.style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        // ৩. মডাল ফাংশন
-        function openModal(service, price) {
-            document.getElementById('modalTitle').innerText = service;
-            document.getElementById('modalPrice').innerText = price;
-            document.getElementById('modalOverlay').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').style.display = 'none';
-        }
-
-function confirmOrder() {
-    // সরাসরি আপনার চ্যাট পেজে নিয়ে যাবে (বিকল্প পথ)
-    window.location.href = "https://tawk.to/chat/আপনার_প্রোপার্টি_আইডি/default";
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+    }
+    function copyCode() {
+    const code = "76156462311";
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Invitation code copied: " + code);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
 }
 
-        window.onclick = function(event) {
-            let modal = document.getElementById('modalOverlay');
-            if (event.target == modal) { closeModal(); }
-        }
+// আপনি চাইলে ডাইনামিকভাবে ডেটা আপডেট করার জন্য এটি ব্যবহার করতে পারেন
+function updatePromoStats(commission, teamDeposit) {
+    document.getElementById('totalCommission').innerText = commission;
+    // আরও ডেটা আপডেট করার লজিক এখানে দিতে পারেন
+}
+</script>
 
-        // ৪. Tawk.to লাইভ চ্যাট
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/69e64a52464c9e20e5f543b6/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
 </body>
 </html>
