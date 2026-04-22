@@ -513,25 +513,31 @@
 .cat-item:hover .icon-card {
     box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
 }
-/* বটম নেভিগেশন - গোলাপি ব্যাকগ্রাউন্ড ও সাদা আইকন */
+:root {
+    --primary-pink: #e91e63; /* আপনার পছন্দের গোলাপি কালার কোড এখানে দিতে পারেন */
+}
+
 .nav-bar {
     position: fixed;
     bottom: 0;
+    left: 0; /* বাম পাশ থেকে শুরু করার জন্য */
+    right: 0; /* ডান পাশ পর্যন্ত যাওয়ার জন্য */
+    margin: 0 auto; /* মাঝখানে রাখার জন্য */
     width: 100%;
     max-width: 412px;
-    background: var(--primary-pink); /* সম্পূর্ণ গোলাপি ব্যাকগ্রাউন্ড */
+    background: var(--primary-pink);
     display: flex;
     justify-content: space-around;
     padding: 12px 0 18px 0;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    z-index: 1000;
+    z-index: 9999; /* যেন সব পেজের উপরে থাকে */
 }
 
 .nav-link {
     text-align: center;
-    color: rgba(255, 255, 255, 0.6); /* আন-অ্যাক্টিভ আইকন হালকা সাদা */
+    color: rgba(255, 255, 255, 0.5); /* আন-অ্যাক্টিভ অবস্থায় কিছুটা ঝাপসা সাদা */
     text-decoration: none;
     flex: 1;
     display: flex;
@@ -541,24 +547,15 @@
     transition: all 0.3s ease;
 }
 
-.nav-link i {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.nav-link span {
-    font-size: 10px;
-    font-weight: 600;
-}
-
-/* অ্যাক্টিভ আইকন সম্পূর্ণ উজ্জ্বল সাদা এবং হালকা এনিমেশন */
+/* অ্যাক্টিভ স্টাইল */
 .nav-link.active {
     color: #ffffff !important;
-    transform: translateY(-3px);
+    transform: translateY(-5px); /* একটু বেশি উপরে উঠবে */
 }
 
 .nav-link.active i {
-    font-size: 22px; /* অ্যাক্টিভ আইকন একটু বড় দেখাবে */
+    font-size: 24px; /* আইকন বড় হবে */
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
 }
 /* হোম হেডার - প্রফেশনাল গোলাপি থিম */
 .home-header {
@@ -1122,6 +1119,7 @@
     border-radius: 8px;
     font-size: 20px;
 }
+
 /* মেইন কন্টেইনার এবং স্ক্রল */
 .vip-scroll-container {
     height: calc(100vh - 60px);
@@ -1137,7 +1135,6 @@
     padding-bottom: 50px;
     position: relative;
 }
-
 /* ইউজার ইনফো */
 .vip-user-info {
     display: flex;
@@ -1432,6 +1429,16 @@
 .rec-date-time {
     font-size: 10px;
     color: #aaa;
+}
+/* এটি নিশ্চিত করবে অ্যাক্টিভ আইকন সাদা হবে */
+.nav-link.active {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.nav-link.active i {
+    transform: translateY(-3px);
+    transition: 0.3s;
 }
     </style>
 </head>
@@ -1970,31 +1977,6 @@
                     <button style="background: #eee; border: none; padding: 5px 12px; border-radius: 20px; font-size: 11px; color: #888;">Received</button>
                 </div>
 
-                <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #fce7f3; border-radius: 15px; margin-bottom: 15px;">
-                    <div style="width: 50px; height: 50px; background: #fdf2f8; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
-                        <i class="fas fa-vault" style="font-size: 20px; color: #e91e63;"></i>
-                    </div>
-                    <div style="flex: 1;">
-                        <h4 style="margin: 0; font-size: 14px;">Safe extra income</h4>
-                        <p style="margin: 2px 0 0; font-size: 11px; color: #999;">Increase daily income</p>
-                    </div>
-                    <span style="color: #e91e63; font-weight: bold; font-size: 14px;">0.1%</span>
-                </div>
-            </div>
-
-            <div class="vip-history-section" style="margin-top: 30px;">
-                <div class="history-tabs" style="display: flex; border-bottom: 2px solid #fce7f3; margin-bottom: 15px;">
-                    <span style="color: #e91e63; border-bottom: 2px solid #e91e63; padding: 10px 15px; font-weight: bold; font-size: 14px;">History</span>
-                    <span style="color: #999; padding: 10px 15px; font-size: 14px;">Rules</span>
-                </div>
-                <div class="history-record-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dotted #fce7f3;">
-                    <div>
-                        <strong style="color: #e91e63; font-size: 14px;">Level maintenance</strong>
-                        <p style="font-size: 11px; color: #777; margin: 5px 0;">Completion [100% Completed]</p>
-                        <span style="font-size: 10px; color: #bbb;">2026-04-01 00:14:17</span>
-                    </div>
-                    <div style="color: #888;">0 EXP</div>
-                </div>
             </div>
         </div>
     </div>
@@ -2199,6 +2181,9 @@
     </div>
 </nav>
 </div>
+ <div id="homePage" class="page">...</div>
+<div id="activityPage" class="page" style="display:none;">...</div>
+
 
 <script>
     function showPage(pageId, element) {
@@ -2470,6 +2455,32 @@ function goBackToHome() {
 
     // অথবা সরাসরি হোমপেজে রিডাইরেক্ট করতে চাইলে:
     window.location.href = "index.html"; // এখানে আপনার হোমপেজের ফাইলের নাম দিন
+}
+
+function showPage(pageId, element) {
+    // ১. সব পেজ হাইড করা
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
+
+    // ২. নির্দিষ্ট পেজটি শো করা
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.style.display = 'block';
+    } else {
+        console.error("Page with ID " + pageId + " not found!");
+    }
+
+    // ৩. নেভিগেশন বারের আইকন 'Active' ক্লাস হ্যান্ডেল করা
+    if (element) {
+        // প্রথমে সব লিংক থেকে active ক্লাস সরানো
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        // ক্লিক করা লিংকে active ক্লাস যোগ করা
+        element.classList.add('active');
+    }
 }
 </script>
 
