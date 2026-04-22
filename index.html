@@ -9817,29 +9817,55 @@ function installApp() {
     }
 }
 
+
 function showForgotPopup() {
+
     Swal.fire({
+
         title: '<span style="font-size:18px;">পাসওয়ার্ড ভুলে গেছেন?</span>',
+
         html: `
+
             <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #555;">
+
                 আপনি কি পাসওয়ার্ড ভুলে গেছেন? তাহলে আমাদের <b>সাপোর্ট সেন্টারে</b> যোগাযোগ করুন। <br><br>
-                <b style="color: #ff0000;">নির্দেশনা:</b> সাপোর্ট সেন্টারে গিয়ে আপনার <b>জিমেইল</b> এবং সমস্যার কথা বলুন। এডমিন আপনার একাউন্ট চেক করে দ্রুত পাসওয়ার্ড রিসেট করে দিবে।
+
+                <b style="color: #ff0000;">নির্দেশনা:</b> সাপোর্ট সেন্টারে গিয়ে আপনার <b>জিমেইল</b> এবং সমস্যার কথা বলুন। এডমিন আপনার একাউন্ট চেক করে দ্রুত পাসওয়ার্ড রিসেট করে দিবে।
+
             </div>
+
         `,
+
         icon: 'info',
-        showCancelButton: true,
+
+        showCancelButton: false,
+
         confirmButtonColor: '#ff0000', // চ্যাট বাটনের কালার লাল করে দিলাম
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fas fa-headset"></i> সাপোর্ট সেন্টারে কথা বলুন',
-        cancelButtonText: 'বন্ধ করুন',
+
+
+
+
+
+
+
         borderRadius: '20px'
+
     }).then((result) => {
+
         if (result.isConfirmed) {
+
             // আপনার আগে তৈরি করা সাপোর্ট ওপেন করার ফাংশনটি এখানে কল হবে
+
             openDirectSupport(); 
+
         }
+
     });
+
 }
+
+
+
 
 function showInstallPopup() {
     let timer = 20;
@@ -9866,7 +9892,7 @@ function showInstallPopup() {
         `,
         showConfirmButton: false,
         showCancelButton: true,
-        cancelButtonText: 'বন্ধ করুন',
+        cancelButtonText: 'Back',
         cancelButtonColor: '#d33',
         allowOutsideClick: false,
         didOpen: () => {
