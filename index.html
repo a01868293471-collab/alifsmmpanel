@@ -5884,7 +5884,7 @@ function toggleSignupPassword() {
 
 <div onclick="openDirectSupport()" style="text-align: center; cursor: pointer; flex: 1;">
     <i class="fas fa-headset" style="font-size: 18px; color: white;"></i>
-    <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Support</span>
+
 </div>
 
 </div>
@@ -10176,43 +10176,35 @@ function selectWithdrawMethod(method) {
         console.log("Selected Method: " + currentWithdrawMethod);
     }
 }
-// ১. টেলিগ্রাম পপআপ
 
+
+
+
+ // ১. উইজেটটি লোড হওয়ার সাথে সাথে হাইড করার জন্য
+var jivo_onLoadCallback = function() {
+    jivo_api.hideWidget();
+};
+
+// ২. আপনার সাপোর্ট বাটন ফাংশন (আপডেট করা)
 function openDirectSupport() {
-    // যদি Tawk.to লোড হয়ে থাকে, তবে সরাসরি ওপেন হবে
-    if (typeof Tawk_API !== "undefined") {
-        Tawk_API.maximize();
-        Tawk_API.showWidget();
+    if (typeof jivo_api !== "undefined") {
+        jivo_api.showWidget(); // আগে শো করতে হবে
+        jivo_api.open();       // তারপর ওপেন হবে
     } else {
-        // যদি কোনো কারণে লোড হতে দেরি হয়, তবে ইউজারকে একটি মেসেজ দিবে
         Swal.fire({
-            title: 'Live Chat',
-            text: 'সাপোর্ট সিস্টেম লোড হচ্ছে, এক সেকেন্ড অপেক্ষা করুন...',
+            title: 'Support',
+            text: 'লোডিং...',
             icon: 'info',
-            timer: 2000,
+            timer: 1500,
             showConfirmButton: false
         });
     }
 }
 
-// --- Tawk.to কনফিগারেশন (এটি একদম নিচে বসাবেন) ---
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-(function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69dad0a637c8091c32de09b8/1jlvbu37l';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-})();
-
-Tawk_API.onLoad = function(){
-    Tawk_API.hideWidget(); // শুরুতে বাবলটি হাইড থাকবে
+// ৩. চ্যাট বন্ধ বা মিনিমাইজ করলে আবার হাইড করার জন্য
+var jivo_onChatMinimized = function() {
+    jivo_api.hideWidget();
 };
-Tawk_API.onChatMinimized = function(){
-    Tawk_API.hideWidget(); // চ্যাট বক্স বন্ধ করলে বাটনটিও হাইড হবে
-};
-// ১. সাইট ওপেন হলে সার্ভার থেকে ডাটা লোড করার ফাংশন
 async function loadFromServer() {
     try {
         let response = await fetch('api.php?action=load');
@@ -10245,6 +10237,8 @@ async function saveToServer() {
 
 // ৩. সাইট রিলোড হলে অটোমেটিক লোড ফাংশন কল করা
 window.addEventListener('load', loadFromServer);
+ 
 </script>
+<script src="//code.jivosite.com/widget/Fmb29gqNCO" async></script>
 </body>
 </html>
