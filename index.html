@@ -3208,12 +3208,11 @@ function toggleSignupPassword() {
         Job Post
     </small>
 </div>
-
 <div onclick="handleDriveOfferClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
-     onmouseover="this.querySelector('.btn-circle-drive').style.transform='scale(1.08)'" 
-     onmouseout="this.querySelector('.btn-circle-drive').style.transform='scale(1)'">
+     onmouseover="this.querySelector('.btn-circle-wingo').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-wingo').style.transform='scale(1)'">
     
-    <div class="btn-circle-drive" style="width: 55px; height: 55px; border-radius: 50%; 
+    <div class="btn-circle-wingo" style="width: 55px; height: 55px; border-radius: 50%; 
                 background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
                 margin: 0 auto 8px; 
@@ -3221,11 +3220,11 @@ function toggleSignupPassword() {
                 border: 2px solid rgba(255, 255, 255, 0.3); 
                 transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <i class="fas fa-bolt" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+        <i class="fas fa-dice" style="color: #ffffff; font-size: 24px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
-        Drive Offer
+    <small style="font-size: 11px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase;">
+        Win Go
     </small>
 </div>
 
@@ -4796,13 +4795,28 @@ function toggleSignupPassword() {
         </div>
     </div>
 
-    <div style="padding: 0 15px;">
-        <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
-            <div style="font-size: 32px; font-weight: 900; color: #1a1a1a;">৳ <span id="wingo-balance">0.00</span></div>
-            <div style="color: #666; font-size: 14px; margin-top: 5px;"><i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance</div>
+<div style="padding: 0 15px;">
+    <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
+        
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="font-size: 32px; font-weight: 900; color: #1a1a1a; margin-left: 30px;">
+                ৳ <span id="wingo-balance">0.00</span>
+            </div>
+            
+            <div id="refresh-btn" onclick="manualRefreshBalance()" style="cursor: pointer; color: #666; background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;">
+                <i class="fas fa-sync-alt" id="refresh-icon" style="font-size: 14px;"></i>
+            </div>
         </div>
 
-        <div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+        <div style="color: #666; font-size: 14px; margin-top: 5px;">
+            <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
+        </div>
+    </div>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
             <div>
                 <span id="period-id" style="font-size: 12px; font-weight: 600; color: #999;">Period: Loading...</span>
                 <div style="color: #333; font-weight: 700;">WinGo 30Sec</div>
@@ -9135,7 +9149,45 @@ function approveFund(id) {
         }
     }
 }
+function manualRefreshBalance() {
+    const icon = document.getElementById('refresh-icon');
+    const balanceSpan = document.getElementById('wingo-balance');
 
+    // ১. আইকন ঘুরানোর অ্যানিমেশন (Spin) শুরু
+    icon.style.transition = "transform 1s ease";
+    icon.style.transform = "rotate(360deg)";
+
+    // ২. ডাটাবেস থেকে লেটেস্ট ব্যালেন্স নেওয়া
+    // curUser যদি আপনার বর্তমান লগইন করা ইউজার হয়
+    if (typeof db !== 'undefined' && curUser) {
+        // লোকাল স্টোরেজ থেকে ফ্রেশ ডাটা নেওয়া
+        const latestUsers = JSON.parse(localStorage.getItem('v7_u')) || [];
+        const updatedUser = latestUsers.find(u => u.email === curUser.email);
+        
+        if (updatedUser) {
+            // ব্যালেন্স আপডেট
+            balanceSpan.innerText = parseFloat(updatedUser.bal).toFixed(2);
+            // গ্লোবাল অবজেক্ট আপডেট (নিশ্চিত হওয়ার জন্য)
+            curUser.bal = updatedUser.bal; 
+        }
+    }
+
+    // ৩. ১ সেকেন্ড পর অ্যানিমেশন রিসেট করা
+    setTimeout(() => {
+        icon.style.transition = "none";
+        icon.style.transform = "rotate(0deg)";
+        
+        // টোস্ট মেসেজ (আপনার সিস্টেমে Swal থাকলে)
+        if (typeof toast === 'function') {
+            toast("Balance Updated!", "success");
+        }
+    }, 1000);
+}
+
+// পেজ লোড হওয়ার সাথে সাথেই একবার ব্যালেন্স আপডেট করবে যাতে ০ না থাকে
+window.addEventListener('DOMContentLoaded', () => {
+    manualRefreshBalance();
+});
 // ৪. ডিপোজিট রিজেক্ট
 function rejectFund(id) {
     if (confirm("ডিপোজিট রিকোয়েস্টটি বাতিল করতে চান?")) {
