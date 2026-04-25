@@ -4925,16 +4925,35 @@ function toggleSignupPassword() {
     </div>
     <div id="full-history-list" style="padding:10px;"></div>
 </div>
+<style>
+    /* ডাইনামিক থিম কালারগুলো */
+    .theme-big { --main-color: #f1c40f; --bg-light: #fef9e7; }
+    .theme-small { --main-color: #9b59b6; --bg-light: #f5eef8; }
+    .theme-red { --main-color: #ff4d4d; --bg-light: #ffeded; }
+    .theme-green { --main-color: #2ecc71; --bg-light: #eafaf1; }
+    .theme-violet { --main-color: #9b59b6; --bg-light: #f5eef8; } /* ভায়োলেট যোগ করা হলো */
+    
+    /* নম্বরের জন্য বিশেষ কালার (০ এবং ৫ রেড-ভায়োলেট মিক্স থাকে সাধারণত) */
+    .theme-num-red { --main-color: #ff4d4d; --bg-light: #ffeded; }
+    .theme-num-green { --main-color: #2ecc71; --bg-light: #eafaf1; }
+    .theme-num-mixed { --main-color: #7d5fff; --bg-light: #f0edff; } /* ০ এবং ৫ এর জন্য */
 
-<div id="bet-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2000; align-items:flex-end; backdrop-filter: blur(2px);">
-    <div class="popup-content" style="width:100%; background:#fff; border-radius:24px 24px 0 0; padding:24px; box-sizing: border-box; animation: slideUp 0.3s ease-out; box-shadow: 0 -5px 20px rgba(0,0,0,0.1);">
+    .b-btn.active { background: var(--main-color) !important; color: white !important; border-color: var(--main-color) !important; }
+    .confirm-btn { background: var(--main-color) !important; }
+    #popup-title { color: var(--main-color) !important; }
+</style>
+
+<div id="bet-popup" class="theme-big" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2000; align-items:flex-end; backdrop-filter: blur(4px);">
+    <div class="popup-content" style="width:100%; background:#fff; border-radius:30px 30px 0 0; padding:24px; box-sizing: border-box; animation: slideUp 0.3s cubic-bezier(0.25, 1, 0.5, 1);">
         
-        <div style="width: 40px; height: 4px; background: #e0e0e0; border-radius: 10px; margin: 0 auto 20px;"></div>
+        <div style="width: 50px; height: 5px; background: #e0e0e0; border-radius: 10px; margin: 0 auto 20px;"></div>
         
-        <h3 id="popup-title" style="text-align:center; margin-bottom:20px; font-family: sans-serif; color: #333;">Order Details</h3>
+        <div id="popup-header" style="background: var(--bg-light); padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
+            <h3 id="popup-title" style="margin:0; font-family: sans-serif; color: var(--main-color); text-transform: uppercase; letter-spacing: 1px;">Big</h3>
+        </div>
         
         <div style="margin-bottom:20px;">
-            <p style="font-size:13px; color:#888; margin-bottom:10px; font-weight: 600;">Select Amount</p>
+            <p style="font-size:13px; color:#888; margin-bottom:12px; font-weight: 700; text-transform: uppercase;">Select Amount</p>
             <div style="display:flex; gap:10px; margin-bottom:15px;">
                 <button class="b-btn active" onclick="setBase(10, this)">৳10</button>
                 <button class="b-btn" onclick="setBase(100, this)">৳100</button>
@@ -4942,30 +4961,29 @@ function toggleSignupPassword() {
             </div>
             
             <div style="position: relative; display: flex; align-items: center;">
-                <span style="position: absolute; left: 15px; color: #555; font-weight: bold;">৳</span>
+                <span style="position: absolute; left: 15px; color: var(--main-color); font-weight: bold; font-size: 18px;">৳</span>
                 <input type="number" id="custom-amount" value="10" oninput="manualAmount()" 
-                    style="width: 100%; padding: 12px 12px 12px 35px; border-radius: 12px; border: 1.5px solid #eee; font-size: 16px; outline: none; transition: 0.3s; font-weight: 600;"
-                    placeholder="Enter amount">
+                    style="width: 100%; padding: 15px 15px 15px 40px; border-radius: 15px; border: 2px solid #eee; font-size: 18px; outline: none; transition: 0.3s; font-weight: 700; color: #333;"
+                    placeholder="0.00">
             </div>
         </div>
 
-        <div style="margin-bottom:25px; display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 15px; border-radius: 15px;">
-            <div>
-                <p style="font-size:13px; color:#888; margin:0; font-weight: 600;">Quantity</p>
-            </div>
-            <div style="display:flex; align-items:center; gap:20px;">
-                <button onclick="updateQty(-1)" style="width:32px; height:32px; border-radius: 50%; border:1px solid #ddd; background:#fff; cursor:pointer; font-size: 18px;">-</button>
-                <span id="qty-val" style="font-weight:800; font-size:20px; color: #222; min-width: 20px; text-align: center;">1</span>
-                <button onclick="updateQty(1)" style="width:32px; height:32px; border-radius: 50%; border:none; background:#f1c40f; color:#000; cursor:pointer; font-size: 18px; font-weight: bold;">+</button>
+        <div style="margin-bottom:25px; display: flex; justify-content: space-between; align-items: center; background: #fcfcfc; padding: 18px; border-radius: 15px; border: 1px solid #f0f0f0;">
+            <p style="font-size:14px; color:#555; margin:0; font-weight: 700;">Quantity</p>
+            <div style="display:flex; align-items:center; gap:15px;">
+                <button onclick="updateQty(-1)" style="width:36px; height:36px; border-radius: 10px; border:1px solid #ddd; background:#fff; cursor:pointer; font-size: 20px; font-weight: bold;">-</button>
+                <span id="qty-val" style="font-weight:900; font-size:22px; color: #222; min-width: 30px; text-align: center;">1</span>
+                <button onclick="updateQty(1)" style="width:36px; height:36px; border-radius: 10px; border:none; background: var(--main-color); color:#fff; cursor:pointer; font-size: 20px; font-weight: bold;">+</button>
             </div>
         </div>
 
         <div style="display:flex; gap:12px;">
-            <button onclick="closePopup()" style="flex:1; padding:15px; border-radius:15px; background:#f5f5f5; border:none; cursor:pointer; font-weight: 600; color: #666;">Cancel</button>
-            <button onclick="confirmBet()" style="flex:2; padding:15px; border-radius:15px; background:#f1c40f; font-weight: 800; border:none; cursor:pointer; font-size: 16px; box-shadow: 0 4px 10px rgba(241, 196, 15, 0.3);">Confirm ৳<span id="total-bet">10</span></button>
+            <button onclick="closePopup()" style="flex:1; padding:18px; border-radius:18px; background:#f5f5f5; border:none; cursor:pointer; font-weight: 700; color: #999; font-size: 15px;">Cancel</button>
+            <button class="confirm-btn" onclick="confirmBet()" style="flex:2; padding:18px; border-radius:18px; color:#fff; font-weight: 900; border:none; cursor:pointer; font-size: 17px;">Confirm ৳<span id="total-bet">10</span></button>
         </div>
     </div>
 </div>
+
 
 <style>
     @keyframes slideUp {
@@ -5042,17 +5060,38 @@ function toggleSignupPassword() {
         localStorage.setItem(`balance_${userId}`, formatted);
     }
 
-    // --- বেটিং পপআপ লজিক (নতুন এবং প্রফেশনাল) ---
-    function openBetPopup(type) { 
-        selectedType = type; 
-        document.getElementById('popup-title').innerText = "Select " + type; 
-        document.getElementById('bet-popup').style.display = 'flex'; 
-        resetPopup(); 
+function openBetPopup(type) {
+    const popup = document.getElementById('bet-popup');
+    const title = document.getElementById('popup-title');
+    
+    // সব পুরনো ক্লাস মুছে ফেলা
+    popup.classList.remove('theme-big', 'theme-small', 'theme-red', 'theme-green', 'theme-violet', 'theme-num-red', 'theme-num-green', 'theme-num-mixed');
+
+    // ১. টেক্সট টাইপ চেক (Big, Small, Red, etc.)
+    if (['Big', 'Small', 'Red', 'Green', 'Violet'].includes(type)) {
+        popup.classList.add('theme-' + type.toLowerCase());
+        title.innerText = "Select " + type;
+    } 
+    // ২. নম্বর টাইপ চেক (০-৯)
+    else {
+        const num = parseInt(type);
+        title.innerText = "Select Number " + num;
+        
+        if (num === 0 || num === 5) {
+            popup.classList.add('theme-num-mixed'); // ০ এবং ৫ মিক্সড কালার
+        } else if (num % 2 === 0) {
+            popup.classList.add('theme-num-red'); // জোড় সংখ্যা লাল
+        } else {
+            popup.classList.add('theme-num-green'); // বিজোড় সংখ্যা সবুজ
+        }
     }
 
-    function closePopup() { 
-        document.getElementById('bet-popup').style.display = 'none'; 
-    }
+    popup.style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('bet-popup').style.display = 'none';
+}
 
     function resetPopup() {
         quantity = 1;
@@ -5290,7 +5329,7 @@ function closeResultPopup() {
         return `<div style="display:flex; align-items:center; padding:10px; border-bottom:1px solid #f1f1f1; font-size:13px;">
             <span style="flex:2; color:#999;">${item.period}</span>
             <span style="flex:1; font-weight:900; color:${c}; text-align:center;">${item.num}</span>
-            <span style="flex:1; text-align:center;">${item.num>=5?'B':'S'}</span>
+            <span style="flex:1; text-align:center;">${item.num>=5?'Big':'Small'}</span>
             <div style="flex:1; display:flex; justify-content:center;"><div style="width:10px;height:10px;background:${c};border-radius:50%"></div></div>
         </div>`;
     }
