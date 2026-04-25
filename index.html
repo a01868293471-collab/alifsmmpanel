@@ -4856,51 +4856,94 @@ function toggleSignupPassword() {
             </div>
         </div>
 
-        <div style="margin-top: 20px;">
-            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                <button onclick="switchTab('game')" id="btn-game" class="tab-btn active-tab" style="flex:1;">Game History</button>
-                <button onclick="switchTab('my')" id="btn-my" class="tab-btn" style="flex:1;">My History</button>
-            </div>
-            <div id="game-history-content">
-                <div id="game-list" style="background:white; border-radius:15px; padding:5px;"></div>
-            </div>
-            <div id="my-history-content" style="display:none;">
-                <div id="my-list" style="background:white; border-radius:15px; padding:5px;"></div>
-            </div>
+<div style="margin-top: 20px;">
+    <div style="display: flex; gap: 5px; margin-bottom: 10px; background: #eee; padding: 5px; border-radius: 10px;">
+        <button onclick="switchTab('game')" id="btn-game" class="tab-btn active-tab" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">Game History</button>
+        <button onclick="switchTab('chart')" id="btn-chart" class="tab-btn" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">Chart</button>
+        <button onclick="switchTab('my')" id="btn-my" class="tab-btn" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">My History</button>
+    </div>
+
+    <div id="game-history-content">
+        <div id="game-list" style="background:white; border-radius:15px; padding:5px;"></div>
+    </div>
+
+    <div id="chart-content" style="display:none; background:white; border-radius:15px; padding:10px; overflow-x: auto;">
+        <div style="position: relative; min-width: 320px;">
+            <canvas id="trendCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none; z-index: 1;"></canvas>
+            <table id="chartTable" style="width: 100%; border-collapse: collapse; text-align: center; position: relative; z-index: 2; font-size: 11px;">
+                <thead>
+                    <tr style="color: #999; border-bottom: 1px solid #f5f5f5;">
+                        <th style="padding: 10px 2px;">Period</th>
+                        <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th>
+                        <th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                    </tr>
+                </thead>
+                <tbody id="chartBody"></tbody>
+            </table>
         </div>
     </div>
-</div>
-<div id="result-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
-    
-    <div id="popup-card" style="width:85%; max-width:340px; background: linear-gradient(180deg, #ff6b6b, #ff4757); border-radius:30px; padding:25px; text-align:center; position:relative; box-shadow: 0 15px 35px rgba(0,0,0,0.5); animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-        
-        <div id="pop-icon" style="font-size: 60px; margin-top: -10px;">🚀</div>
-        
-        <h2 id="pop-title" style="color:white; margin:10px 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Congratulations</h2>
-        
-        <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin:20px 0;">
-            <span id="res-color" style="padding:6px 18px; border-radius:20px; color:white; font-size:13px; font-weight:bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Green</span>
-            <span id="res-num" style="background:white; color:#333; width:30px; height:30px; border-radius:50%; display:inline-block; line-height:30px; font-weight:900; font-size:16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">3</span>
-            <span id="res-size" style="padding:6px 18px; border-radius:20px; color:white; font-size:13px; font-weight:bold; background:rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.3);">Small</span>
-        </div>
 
-        <div style="background:white; border-radius:20px; padding:20px; margin-top:15px; position:relative; overflow:hidden;">
-            <p style="color:#999; margin:0; font-size:13px; font-weight:700; text-transform: uppercase;">Bonus</p>
-            <h1 id="pop-amount" style="margin:8px 0; color:#ff4757; font-size:36px; font-weight:900;">৳392.00</h1>
-            <p id="pop-period" style="color:#bbb; font-size:11px; margin:0; font-family: monospace;">Period: WinGo 30s<br>20260416100050880</p>
+    <div id="my-history-content" style="display:none;">
+        <div id="my-list" style="background:white; border-radius:15px; padding:5px;"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div id="result-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center; font-family: sans-serif;">
+    <div style="width:340px; position:relative;">
+        
+        <div style="position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:280px; height:120px; z-index:5; pointer-events:none;">
+            <div style="position:absolute; bottom:20px; left:0; width:100px; height:60px; background:rgba(255,255,255,0.4); clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 80%); border-radius:10px;"></div>
+            <div style="position:absolute; bottom:20px; right:0; width:100px; height:60px; background:rgba(255,255,255,0.4); clip-path: polygon(0 0, 100% 40%, 100% 80%, 0 100%); border-radius:10px;"></div>
             
-            <div style="position:absolute; bottom:0; left:0; width:100%; height:5px; background: repeating-linear-gradient(45deg, #eee, #eee 5px, #fff 5px, #fff 10px);"></div>
+            <div id="pop-header-circle" style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%); width:95px; height:95px; background:linear-gradient(to bottom, #ffeaa7, #fab1a0); border-radius:50%; border:5px solid #fff; display:flex; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+                <div style="width: 70%; height: 70%; display:flex; justify-content:center; align-items:center;">
+                    <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+                        <defs>
+                            <linearGradient id="boltGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff9d2f;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f12711;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="white" fill-opacity="0.2"/>
+                        <path d="M13 3 L4 14 H11 L10 21 L19 10 H12 Z" fill="url(#boltGrad)" stroke="white" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </div>
         </div>
 
-        <div style="margin-top:25px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <div style="width:12px; height:12px; border:2px solid white; border-radius:50%; border-top-color:transparent; animation: spin 1s linear infinite;"></div>
-            <span style="color:rgba(255,255,255,0.9); font-size:12px; font-weight: 500;">5 seconds auto close</span>
+        <div id="popup-card" style="background: linear-gradient(180deg, #ff7675, #d63031); border-radius:35px; padding:60px 20px 30px 20px; position:relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow:hidden;">
+            
+            <h1 id="pop-title" style="color:#fff; margin:10px 0; font-size:28px; font-weight:900; text-transform:capitalize;">Congratulations</h1>
+            
+            <div style="display:flex; justify-content:center; gap:8px; margin:20px 0; align-items:center;">
+                <span style="color:rgba(255,255,255,0.9); font-size:12px;">Lottery results</span>
+                <span id="res-color" style="padding:4px 12px; border-radius:6px; color:#fff; font-size:13px; font-weight:bold; background:#2ecc71;">Green</span>
+                <span id="res-num" style="background:#2ecc71; width:25px; height:25px; border-radius:50%; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px; border:2px solid #fff;">3</span>
+                <span id="res-size" style="background:#3498db; padding:4px 12px; border-radius:6px; color:#fff; font-size:13px; font-weight:bold;">Small</span>
+            </div>
+
+            <div style="background:#fff; border-radius:20px; padding:25px 15px; position:relative; margin-top:20px; box-shadow: 0 -10px 0 rgba(0,0,0,0.05);">
+                <div style="color:#ff4757; font-size:14px; font-weight:800; margin-bottom:5px;">Bonus</div>
+                <div id="pop-amount" style="font-size:36px; font-weight:900; color:#ff4757; margin-bottom:10px;">৳392.00</div>
+                <div id="pop-period" style="font-size:11px; color:#999; line-height:1.5;">Period: WinGo 30sec <br> <span id="actual-period-text" style="color:#666; font-weight:bold;">20260416100050880</span></div>
+                
+                <div style="position:absolute; bottom:-10px; left:0; width:100%; height:20px; background:#fff; clip-path: polygon(0 0, 10% 100%, 20% 0, 30% 100%, 40% 0, 50% 100%, 60% 0, 70% 100%, 80% 0, 90% 100%, 100% 0); border-radius: 0 0 20px 20px;"></div>
+            </div>
+
+            <div style="margin-top:35px; color:#fff; font-size:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                <div style="width:16px; height:16px; border:2px solid #fff; border-radius:50%; position:relative;">
+                    <div style="position:absolute; top:3px; left:3px; width:6px; height:6px; background:#fff; border-radius:50%;"></div>
+                </div>
+                3 seconds auto close
+            </div>
         </div>
 
-        <div onclick="closeResultPopup()" style="position:absolute; bottom:-70px; left:50%; transform:translateX(-50%); width:45px; height:45px; background:rgba(255,255,255,0.15); border:2px solid rgba(255,255,255,0.5); border-radius:50%; color:white; line-height:40px; cursor:pointer; font-size:24px; backdrop-filter: blur(5px);">×</div>
+        <div onclick="closeResultPopup()" style="margin-top:30px; text-align:center;">
+            <div style="width:45px; height:45px; border:2px solid #fff; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:24px; cursor:pointer; background:rgba(255,255,255,0.1);">×</div>
+        </div>
     </div>
 </div>
-
 <style>
 /* পপআপ আসার এনিমেশন */
 @keyframes zoomIn {
@@ -4917,6 +4960,17 @@ function toggleSignupPassword() {
 #popup-card {
     user-select: none;
 }
+</style>
+<style>
+    .active-tab {
+        background: #fff !important;
+        color: #ff4d4d !important;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .tab-btn {
+        transition: all 0.3s ease;
+    }
 </style>
 <div id="full-history-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:3000; overflow-y:auto;">
     <div style="padding:15px; display:flex; align-items:center; border-bottom:1px solid #eee; position:sticky; top:0; background:white;">
@@ -5062,31 +5116,36 @@ function toggleSignupPassword() {
     }
 
 function openBetPopup(type) {
+    // ১. এই লাইনটিই আপনার প্রধান সমস্যার সমাধান (selectedType আপডেট করা)
+    selectedType = type; 
+
     const popup = document.getElementById('bet-popup');
     const title = document.getElementById('popup-title');
     
     // সব পুরনো ক্লাস মুছে ফেলা
     popup.classList.remove('theme-big', 'theme-small', 'theme-red', 'theme-green', 'theme-violet', 'theme-num-red', 'theme-num-green', 'theme-num-mixed');
 
-    // ১. টেক্সট টাইপ চেক (Big, Small, Red, etc.)
+    // ২. টেক্সট টাইপ চেক (Big, Small, Red, ইত্যাদি)
     if (['Big', 'Small', 'Red', 'Green', 'Violet'].includes(type)) {
         popup.classList.add('theme-' + type.toLowerCase());
         title.innerText = "Select " + type;
     } 
-    // ২. নম্বর টাইপ চেক (০-৯)
+    // ৩. নম্বর টাইপ চেক (০-৯)
     else {
         const num = parseInt(type);
         title.innerText = "Select Number " + num;
         
         if (num === 0 || num === 5) {
-            popup.classList.add('theme-num-mixed'); // ০ এবং ৫ মিক্সড কালার
+            popup.classList.add('theme-num-mixed'); 
         } else if (num % 2 === 0) {
-            popup.classList.add('theme-num-red'); // জোড় সংখ্যা লাল
+            popup.classList.add('theme-num-red'); 
         } else {
-            popup.classList.add('theme-num-green'); // বিজোড় সংখ্যা সবুজ
+            popup.classList.add('theme-num-green'); 
         }
     }
 
+    // ৪. পপআপ খোলার আগে রি-ক্যালকুলেশন এবং ডিসপ্লে
+    resetPopup(); 
     popup.style.display = 'flex';
 }
 
@@ -5141,8 +5200,7 @@ function closePopup() {
         let total = currentBase * quantity;
         document.getElementById('total-bet').innerText = total.toFixed(2);
     }
-
-    function confirmBet() {
+function confirmBet() {
         let total = currentBase * quantity;
         let cb = getBalance();
 
@@ -5270,48 +5328,54 @@ function processBets(p, winNum) {
     }
 }
 
-// পপআপ দেখানোর মেইন ফাংশন
 function showResultPopup(isWin, amount, num, color, size, period) {
     const popup = document.getElementById('result-popup');
     const card = document.getElementById('popup-card');
+    const headerCircle = document.getElementById('pop-header-circle');
     const title = document.getElementById('pop-title');
     const amountText = document.getElementById('pop-amount');
-    const icon = document.getElementById('pop-icon');
     
-    // ডাটা সেট করা
+    // ডাটা সেট
     document.getElementById('res-num').innerText = num;
     document.getElementById('res-color').innerText = color;
-    document.getElementById('res-color').style.background = (color === 'Green' ? '#2ecc71' : (color === 'Red' ? '#ff4757' : '#a55eea'));
     document.getElementById('res-size').innerText = size;
-    document.getElementById('pop-period').innerText = "Period: " + period;
+    document.getElementById('pop-period').innerHTML = "Period: WinGo 30sec <br> <b>" + period + "</b>";
+
+    // কালার সেট করা
+    let cCode = color === 'Green' ? '#2ecc71' : (color === 'Red' ? '#ff4757' : '#a55eea');
+    document.getElementById('res-color').style.background = cCode;
+    document.getElementById('res-num').style.background = cCode;
+    document.getElementById('res-size').style.background = (size === 'Big' ? '#ffa502' : '#3498db');
 
     if (isWin) {
-        // উইন ডিজাইন
-        card.style.background = "linear-gradient(180deg, #ff6b6b, #ff4757)";
+        // উইন থিম (কমলা-লাল)
+        card.style.background = "linear-gradient(180deg, #ff6a50, #fd434a)";
+        headerCircle.style.background = "linear-gradient(180deg, #ffefba, #ff9d2f)";
         title.innerText = "Congratulations";
-        icon.innerText = "🚀";
         amountText.innerText = "৳" + amount.toFixed(2);
         amountText.style.color = "#ff4757";
     } else {
-        // লস ডিজাইন (হালকা কালো/ডার্ক গ্রে)
-        card.style.background = "linear-gradient(180deg, #4b4b4b, #2d3436)";
+        // লস থিম (কালো-ধূসর)
+        card.style.background = "linear-gradient(180deg, #535c68, #2d3436)";
+        headerCircle.style.background = "linear-gradient(180deg, #bdc3c7, #2c3e50)";
         title.innerText = "Sorry, Lose";
-        icon.innerText = "😥";
         amountText.innerText = "-৳" + amount.toFixed(2);
-        amountText.style.color = "#4b4b4b";
+        amountText.style.color = "#333";
     }
 
     popup.style.display = 'flex';
 
-    // ৫ সেকেন্ড পর অটো ক্লোজ
+    // ৩ সেকেন্ড পর অটো ক্লোজ (আপনার ছবির ডিমান্ড অনুযায়ী)
     setTimeout(() => {
         closeResultPopup();
-    }, 5000);
+    }, 3000);
 }
 
 function closeResultPopup() {
     document.getElementById('result-popup').style.display = 'none';
 }
+
+
     // --- রেন্ডারিং এবং ট্যাব ---
     function renderGameHistory() {
         const list = document.getElementById('game-list');
@@ -5334,92 +5398,166 @@ function closeResultPopup() {
             <div style="flex:1; display:flex; justify-content:center;"><div style="width:10px;height:10px;background:${c};border-radius:50%"></div></div>
         </div>`;
     }
-
-    // ২. My History রেন্ডারিং (ফিক্সড এবং প্রফেশনাল)
 function renderMyHistory() {
-    // নিশ্চিত করুন যে userId সেট করা আছে
     let userId = localStorage.getItem('current_user_id') || 'user_1';
-    
-    // লোকাল স্টোরেজ থেকে লেটেস্ট ডেটা নিয়ে আসা
     let rawBets = localStorage.getItem(`my_bets_${userId}`);
-    let myBets = rawBets ? JSON.parse(rawBets) : [];
+    let myBetsData = rawBets ? JSON.parse(rawBets) : [];
 
-    const list = document.getElementById('my-list');
-    if(!list) return;
+    const listContainer = document.getElementById('my-list');
+    
+    if(!listContainer) return;
 
-    if(myBets.length === 0) { 
-        list.innerHTML = '<div style="padding:40px; text-align:center; color:#ccc; font-size:14px;">No records found</div>'; 
+    if(myBetsData.length === 0) { 
+        listContainer.innerHTML = '<div style="padding:20px; text-align:center; color:#999; font-size:12px;">No Records</div>'; 
         return; 
     }
 
-    list.innerHTML = myBets.map(b => {
-        // স্ট্যাটাস এবং কালার লজিক
+    listContainer.innerHTML = myBetsData.map(b => {
         const isWin = b.status === 'win';
         const isLoss = b.status === 'loss';
-        const statusColor = isWin ? '#2ecc71' : (isLoss ? '#ff4d4d' : '#f39c12');
+        const statusColor = isWin ? '#2ecc71' : (isLoss ? '#ff4757' : '#f39c12');
         
-        // অ্যামাউন্ট ক্যালকুলেশন (উইন হলে প্রফিট সহ, লস হলে ইনভেস্ট করা টাকা)
+        // টাইপ অনুযায়ী কালার লজিক
+        let typeColor = '#3b82f6'; 
+        if (b.type === 'Big') typeColor = '#ffa502'; 
+        else if (b.type === 'Red' || (typeof b.type === 'number' && b.type % 2 === 0)) typeColor = '#ff4757';
+        else if (b.type === 'Green' || (typeof b.type === 'number' && b.type % 2 !== 0)) typeColor = '#2ecc71';
+        else if (b.type === 'Violet') typeColor = '#a55eea';
+
         const amountSign = isWin ? '+' : (isLoss ? '-' : '');
         const displayAmount = (isWin && b.winAmount) ? b.winAmount.toFixed(2) : parseFloat(b.amount).toFixed(2);
 
         return `
-        <div style="background:#fff; margin:12px; padding:15px; border-radius:15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid ${statusColor}; position: relative; overflow: hidden;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <span style="font-weight:700; color:#444; font-size:14px;">Period: ${b.period}</span>
-                <span style="background:${statusColor}15; color:${statusColor}; padding:4px 12px; border-radius:10px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">
-                    ${b.status}
+        <div style="background:#fff; margin:5px 10px; padding:6px 12px; border-radius:8px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:space-between; border-left: 3px solid ${typeColor};">
+            
+            <div style="flex: 1; text-align: left;">
+                <span style="background:${typeColor}; color:#fff; padding:2px 10px; border-radius:4px; font-size:11px; font-weight:900; display:inline-block; min-width:45px; text-align:center;">
+                    ${b.type}
                 </span>
             </div>
-            
-            <div style="display:flex; justify-content:space-between; font-size:13px; color:#777; margin-bottom:8px;">
-                <span>Selection: <b style="color:#333; background:#f0f0f0; padding:2px 8px; border-radius:5px;">${b.type}</b></span>
-                <span>Invest: <b style="color:#333;">৳${parseFloat(b.amount).toFixed(2)}</b></span>
+
+            <div style="flex: 1.5; text-align: center;">
+                <div style="font-size: 13px; font-weight: 700; color: #444;">${b.period}</div>
+                <div style="font-size: 9px; color: #bbb;">${b.time ? b.time.split(' ')[0] : ''}</div>
             </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top: 1px dashed #eee; pt: 10px; margin-top: 5px; padding-top: 8px;">
-                <span style="font-size:10px; color:#bbb; font-family: monospace;">${b.time || 'Processing...'}</span>
-                <div style="text-align:right;">
-                    <p style="margin:0; font-size:10px; color:#aaa; font-weight:600;">Result Amount</p>
-                    <span style="font-size:18px; font-weight:900; color:${statusColor};">
-                        ${amountSign}৳${displayAmount}
-                    </span>
+            <div style="flex: 1.2; text-align: right;">
+                <div style="font-size: 13px; font-weight: 900; color: ${statusColor};">
+                    ${b.status === 'pending' ? '৳' + parseFloat(b.amount).toFixed(2) : amountSign + '৳' + displayAmount}
+                </div>
+                <div style="font-size: 8px; font-weight: 800; color: ${statusColor}; text-transform: uppercase;">
+                    ${b.status}
                 </div>
             </div>
-        </div>
-        `;
+
+        </div>`;
     }).join('');
 }
 
-    function switchTab(type) {
-        const gameContent = document.getElementById('game-history-content');
-        const myContent = document.getElementById('my-history-content');
-        if(type === 'game') {
-            gameContent.style.display = 'block';
-            myContent.style.display = 'none';
-            document.getElementById('btn-game').classList.add('active-tab');
-            document.getElementById('btn-my').classList.remove('active-tab');
-            renderGameHistory();
-        } else {
-            gameContent.style.display = 'none';
-            myContent.style.display = 'block';
-            document.getElementById('btn-my').classList.add('active-tab');
-            document.getElementById('btn-game').classList.remove('active-tab');
-            renderMyHistory();
-        }
+function switchTab(type) {
+    const gameContent = document.getElementById('game-history-content');
+    const chartContent = document.getElementById('chart-content');
+    const myContent = document.getElementById('my-history-content');
+
+    // সব কন্টেন্ট হাইড করা
+    gameContent.style.display = 'none';
+    chartContent.style.display = 'none';
+    myContent.style.display = 'none';
+
+    // সব বাটন থেকে একটিভ ক্লাস সরানো
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
+
+    if (type === 'game') {
+        gameContent.style.display = 'block';
+        document.getElementById('btn-game').classList.add('active-tab');
+        if(typeof renderGameHistory === "function") renderGameHistory();
+    } else if (type === 'chart') {
+        chartContent.style.display = 'block';
+        document.getElementById('btn-chart').classList.add('active-tab');
+        renderTrendChart(); // চার্ট দেখানোর ফাংশন কল
+    } else if (type === 'my') {
+        myContent.style.display = 'block';
+        document.getElementById('btn-my').classList.add('active-tab');
+        if(typeof renderMyHistory === "function") renderMyHistory();
+    }
+}
+
+function renderTrendChart() {
+    const tbody = document.getElementById('chartBody');
+    const canvas = document.getElementById('trendCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // gameHistory আপনার গেমের ডাটা অ্যারে হতে হবে
+    if (typeof gameHistory === "undefined" || gameHistory.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="12">No data available</td></tr>';
+        return;
     }
 
+    // ১. টেবিল ডাটা তৈরি
+    tbody.innerHTML = gameHistory.slice(0, 20).map((item, index) => {
+        let cols = '';
+        for (let i = 0; i <= 9; i++) {
+            if (i === item.num) {
+                let dotColor = (i % 2 === 0) ? '#ff4d4d' : '#2ecc71';
+                if(i === 0 || i === 5) dotColor = '#a55eea';
+                cols += `<td><span class="trend-dot" style="background:${dotColor}; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:white; font-size:10px; font-weight:bold; position:relative; z-index:5;">${i}</span></td>`;
+            } else {
+                cols += `<td style="color:#ddd; font-size:10px;">${i}</td>`;
+            }
+        }
+        return `
+            <tr style="border-bottom:1px solid #f5f5f5;">
+                <td style="padding:10px 2px; color:#999;">${item.period.toString().slice(-4)}</td>
+                ${cols}
+            </tr>`;
+    }).join('');
+
+    // ২. ট্রেন্ড লাইন ড্রয়িং (অল্প দেরি করে যাতে টেবিল রেন্ডার শেষ হয়)
+    setTimeout(() => {
+        const dots = document.querySelectorAll('.trend-dot');
+        const table = document.getElementById('chartTable');
+        if (!dots.length) return;
+
+        // ক্যানভাস সাইজ টেবিলের সমান করা
+        canvas.width = table.offsetWidth;
+        canvas.height = table.offsetHeight;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.strokeStyle = '#ff4d4d'; // লাল লাইন
+        ctx.lineWidth = 1.5;
+
+        dots.forEach((dot, index) => {
+            const rect = dot.getBoundingClientRect();
+            const tableRect = table.getBoundingClientRect();
+            
+            const x = rect.left - tableRect.left + rect.width / 2;
+            const y = rect.top - tableRect.top + rect.height / 2;
+
+            if (index === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+    }, 100);
+}
     function openFullHistory() {
         document.getElementById('full-history-modal').style.display = 'block';
         document.getElementById('full-history-list').innerHTML = gameHistory.map(item => createHistoryRow(item)).join('');
     }
 
     function closeFullHistory() { document.getElementById('full-history-modal').style.display = 'none'; }
-    
-    // উইন্ডো লোড
-    window.onload = () => { 
-        setBalance(getBalance()); 
-        syncMarket(); 
-    };
+    // প্রতি ১ সেকেন্ডে মার্কেট সিঙ্ক করবে
+setInterval(() => {
+    syncMarket();
+}, 1000);
+
+// উইন্ডো লোড হওয়ার সময় একবার রান হবে
+window.onload = () => { 
+    setBalance(getBalance()); 
+    renderGameHistory();
+    renderMyHistory();
+};
+
 
 </script>
 
