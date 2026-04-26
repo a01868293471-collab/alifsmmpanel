@@ -4247,7 +4247,9 @@ function toggleSignupPassword() {
             <div style="position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
             <div style="position: relative; z-index: 2;">
                 <p style="margin: 0; font-size: 11px; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px;">Available Balance</p>
-
+                <h1 style="font-weight: 900; margin: 10px 0; font-size: 40px; color: white;">
+                    <span style="font-weight: 500;">৳</span><span id="u-bal">0.00</span>
+                </h1>
                 <div style="font-size: 9px; font-weight: 800; background: rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 6px; padding: 5px 15px; border-radius: 50px; border: 0.5px solid rgba(255,255,255,0.2);">
                     FREE TIME EARN
                 </div>
@@ -4493,22 +4495,21 @@ function toggleSignupPassword() {
     </div>
 
 <div style="padding: 0 15px;">
-    <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px; position: relative;">
+    <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
         
-        <h1 style="font-weight: 900; margin: 10px 0; font-size: 38px; color: #2d3436;">
-            <span style="font-weight: 500; font-size: 28px;">৳</span><span id="u-bal">0.00</span>
-        </h1>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="font-size: 32px; font-weight: 900; color: #1a1a1a; margin-left: 30px;">
+                ৳ <span id="wingo-balance">0.00</span>
+            </div>
+            
+            <div id="refresh-btn" onclick="manualRefreshBalance()" style="cursor: pointer; color: #666; background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;">
+                <i class="fas fa-sync-alt" id="refresh-icon" style="font-size: 14px;"></i>
+            </div>
+        </div>
 
-        <div style="color: #666; font-size: 13px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <div style="color: #666; font-size: 14px; margin-top: 5px;">
             <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
-        </div>
-
-        <div id="refresh-btn" onclick="manualRefreshBalance()" style="cursor: pointer; color: #666; background: #f8f9fa; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: 0.3s; margin: 0 auto;">
-            <i class="fas fa-sync-alt" id="refresh-icon" style="font-size: 14px;"></i>
-        </div>
-
-    
-
+       </div>
                    <div style="display: flex; gap: 15px; margin-top: 20px;">
                 <button style="flex:1; background:#ff7675; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Withdraw</button>
                 <button style="flex:1; background:#2ecc71; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Deposit</button>
@@ -5004,31 +5005,23 @@ function syncMarket() {
     renderGameHistory();
 }
 function processBets(p, winNum) {
-    let userId = localStorage.getItem('current_user_id') || 'user_1';
-    let processedKey = `processed_period_${p}`;
-
-    // ১. পিরিয়ড লক চেক (যাতে একই পিরিয়ড বারবার প্রসেস না হয়)
-    if (localStorage.getItem(processedKey)) {
-        return; 
-    }
-
-    // ২. লেটেস্ট ডাটা লোড করা (সবচেয়ে গুরুত্বপূর্ণ)
-    let currentBets = JSON.parse(localStorage.getItem(`my_bets_${userId}`)) || [];
-    let currentBal = parseFloat(localStorage.getItem('user_balance')) || 0;
-
     let winColor = (winNum === 0 || winNum === 5) ? 'Violet' : (winNum % 2 === 0 ? 'Red' : 'Green');
     let winSize = winNum >= 5 ? 'Big' : 'Small';
+    
+    let currentBal = parseFloat(getBalance()) || 0;
+    let userId = localStorage.getItem('current_user_id') || 'user_1';
     
     let hasWin = false;
     let totalWinAmount = 0;
     let hasAnyBetInPeriod = false;
 
-    // ৩. মেইন প্রসেসিং
-    currentBets.forEach(b => {
-        if (Number(b.period) === Number(p) && b.status === 'pending') {
+    // find() এর বদলে forEach ব্যবহার করছি যাতে সব বেট চেক হয়
+    myBets.forEach(b => {
+        if (b.period === p && b.status === 'pending') {
             hasAnyBetInPeriod = true;
             
-            let isWin = (b.type == winNum) || (b.type === winColor) || (b.type === winSize);
+            // উইন চেক
+            let isWin = (b.type === winNum) || (b.type === winColor) || (b.type === winSize);
             
             if (isWin) {
                 let mult = (typeof b.type === 'number') ? 9 : 1.96;
@@ -5036,10 +5029,10 @@ function processBets(p, winNum) {
                 
                 b.status = 'win';
                 b.winAmount = winAmount;
-                currentBal += winAmount; 
+                currentBal += winAmount;
                 
                 hasWin = true;
-                totalWinAmount += winAmount;
+                totalWinAmount += winAmount; // সব উইনিং এমাউন্ট যোগ হচ্ছে
             } else {
                 b.status = 'loss';
                 b.winAmount = 0;
@@ -5048,27 +5041,22 @@ function processBets(p, winNum) {
     });
 
     if (hasAnyBetInPeriod) {
-        // ৪. স্টোরেজ আপডেট (আগে লক, তারপর সেভ)
-        localStorage.setItem(processedKey, 'true');
-        localStorage.setItem('user_balance', currentBal.toFixed(2)); 
-        localStorage.setItem(`my_bets_${userId}`, JSON.stringify(currentBets));
-
-        // গ্লোবাল ভেরিয়েবল আপডেট (যদি থাকে)
-        if (typeof setBalance === "function") setBalance(currentBal);
-        myBets = currentBets; // গ্লোবাল অ্যারে আপডেট
-
-        // ৫. পপআপ দেখানো
+        // নতুন ব্যালেন্স সেভ
+        setBalance(currentBal);
+        localStorage.setItem(`my_bets_${userId}`, JSON.stringify(myBets.slice(0, 50)));
+        
+        // পপআপ লজিক: যদি অন্তত ১টাও উইন হয়, তবে উইন পপআপ দেখাবে
         if (hasWin) {
             showResultPopup(true, totalWinAmount, winNum, winColor, winSize, p);
         } else {
-            let lastBet = currentBets.find(b => Number(b.period) === Number(p));
-            showResultPopup(false, lastBet ? lastBet.amount : 0, winNum, winColor, winSize, p);
+            // যদি সবগুলোই লস হয় তবেই লস পপআপ
+            let lastBetAmount = myBets.find(b => b.period === p)?.amount || 0;
+            showResultPopup(false, lastBetAmount, winNum, winColor, winSize, p);
         }
 
         renderMyHistory();
     }
 }
-
 function showResultPopup(isWin, amount, num, color, size, period) {
     const popup = document.getElementById('result-popup');
     const card = document.getElementById('popup-card');
