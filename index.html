@@ -4810,7 +4810,11 @@ function toggleSignupPassword() {
 
         <div style="color: #666; font-size: 14px; margin-top: 5px;">
             <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
-        </div>
+       </div>
+                   <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <button style="flex:1; background:#ff7675; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Withdraw</button>
+                <button style="flex:1; background:#2ecc71; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Deposit</button>
+            </div>
     </div>
 
 
@@ -4818,26 +4822,24 @@ function toggleSignupPassword() {
 
    <div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
             <div>
-                <span id="period-id" style="font-size: 12px; font-weight: 600; color: #999;">Period: Loading...</span>
-                <div style="color: #333; font-weight: 700;">WinGo 30Sec</div>
+                              <div style="font-size: 12px; color: #666; font-weight: 600;">WinGo 30sec</div>
+                <div id="period-id" style="font-size: 15px; font-weight: 800; color: #333; margin-top: 2px;">20260426100050168</div>
             </div>
-            <div id="timer" style="background: #f1c40f; color: #333; padding: 10px 15px; border-radius: 12px; font-size: 18px; font-weight: 900;">00:30</div>
+            <div style="text-align: right;">
+                <div style="font-size: 12px; color: #666; font-weight: 600;">Time remaining</div>
+                <div id="timer" style="font-size: 24px; font-weight: 900; color: #333; letter-spacing: 2px;">00:30</div>
+            </div>
         </div>
 
-        <div id="betting-area" style="background: white; border-radius: 15px; padding: 15px; position: relative; overflow: hidden;">
+        <div id="betting-area" style="background: white; border-radius: 0 0 20px 20px; padding: 20px 15px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
             
-            <div id="lock-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; flex-direction: column; align-items: center; justify-content: center;">
-                <div id="lock-sec" style="font-size: 80px; font-weight: 900; color: #ff4d4d; line-height: 1;">5</div>
-                <div style="font-weight: 800; color: #333; margin-top: 10px;"></div>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button onclick="openBetPopup('Green')" style="flex:1; background:#2ecc71; color:white; border:none; padding:12px; border-radius:8px; font-weight:700;">Green</button>
+                <button onclick="openBetPopup('Violet')" style="flex:1; background:#a55eea; color:white; border:none; padding:12px; border-radius:8px; font-weight:700;">Violet</button>
+                <button onclick="openBetPopup('Red')" style="flex:1; background:#ff4d4d; color:white; border:none; padding:12px; border-radius:8px; font-weight:700;">Red</button>
             </div>
 
-            <div style="display: flex; gap: 8px; margin-bottom: 15px;">
-                <button onclick="openBetPopup('Green')" style="flex:1; background:#2ecc71; color:white; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer;">Green</button>
-                <button onclick="openBetPopup('Violet')" style="flex:1; background:#a55eea; color:white; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer;">Violet</button>
-                <button onclick="openBetPopup('Red')" style="flex:1; background:#ff4d4d; color:white; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer;">Red</button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 15px;">
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 15px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px;">
 <div onclick="openBetPopup(0)" class="n-btn" style="background: #9b59b6;">0</div>
                 <div onclick="openBetPopup(1)" class="n-btn" style="background:#2ecc71;">1</div>
                 <div onclick="openBetPopup(2)" class="n-btn" style="background:#ff4d4d;">2</div>
@@ -4850,11 +4852,17 @@ function toggleSignupPassword() {
                 <div onclick="openBetPopup(9)" class="n-btn" style="background:#2ecc71;">9</div>
             </div>
 
-            <div style="display: flex; gap: 10px;">
-                <button onclick="openBetPopup('Big')" style="flex: 1; background: #e67e22; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 800; cursor:pointer;">Big</button>
-                <button onclick="openBetPopup('Small')" style="flex: 1; background: #3b82f6; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 800; cursor:pointer;">Small</button>
+            <div style="display: flex; gap: 12px;">
+                <button onclick="openBetPopup('Big')" style="flex: 1; background: #ffbe76; color: white; border: none; padding: 15px; border-radius: 30px 5px 5px 30px; font-weight: 800; font-size: 18px;">Big</button>
+                <button onclick="openBetPopup('Small')" style="flex: 1; background: #70a1ff; color: white; border: none; padding: 15px; border-radius: 5px 30px 30px 5px; font-weight: 800; font-size: 18px;">Small</button>
             </div>
-        </div>
+                        <div id="lock-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 10; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+                <div id="lock-sec" style="font-size: 70px; font-weight: 900; color: #ff4757;">5</div>
+            </div>
+                    </div>
+
+
+
 
 <div style="margin-top: 20px;">
     <div style="display: flex; gap: 5px; margin-bottom: 10px; background: #eee; padding: 5px; border-radius: 10px;">
@@ -4889,58 +4897,37 @@ function toggleSignupPassword() {
 </div>
     </div>
 </div>
-<div id="result-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center; font-family: sans-serif;">
-    <div style="width:340px; position:relative;">
+<div id="result-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center; font-family: sans-serif; overflow: hidden;">
+      <div id="popup-wrapper" style="width:285px; position:relative; text-align: center;">
+        <div id="confetti-container" style="position:absolute; top:-100px; left:0; width:100%; height:200%; pointer-events:none; z-index: 5;"></div>
         
-        <div style="position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:280px; height:120px; z-index:5; pointer-events:none;">
-            <div style="position:absolute; bottom:20px; left:0; width:100px; height:60px; background:rgba(255,255,255,0.4); clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 80%); border-radius:10px;"></div>
-            <div style="position:absolute; bottom:20px; right:0; width:100px; height:60px; background:rgba(255,255,255,0.4); clip-path: polygon(0 0, 100% 40%, 100% 80%, 0 100%); border-radius:10px;"></div>
-            
-            <div id="pop-header-circle" style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%); width:95px; height:95px; background:linear-gradient(to bottom, #ffeaa7, #fab1a0); border-radius:50%; border:5px solid #fff; display:flex; justify-content:center; align-items:center; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
-                <div style="width: 70%; height: 70%; display:flex; justify-content:center; align-items:center;">
-                    <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
-                        <defs>
-                            <linearGradient id="boltGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ff9d2f;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#f12711;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="white" fill-opacity="0.2"/>
-                        <path d="M13 3 L4 14 H11 L10 21 L19 10 H12 Z" fill="url(#boltGrad)" stroke="white" stroke-width="1.5" />
-                    </svg>
-                </div>
+        <div class="header-assets" style="position:absolute; top:-55px; left:50%; transform:translateX(-50%); width:100%; display:flex; justify-content:center; align-items:center; z-index:20;">
+            <div style="position:absolute; left:10px; bottom:30px; width:95px; height:35px; background:linear-gradient(180deg, #ffca64 0%, #ff9d2f 100%); clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 80%); border-radius: 5px 20px 5px 40px;"></div>
+            <div style="position:absolute; right:10px; bottom:30px; width:95px; height:35px; background:linear-gradient(180deg, #ffca64 0%, #ff9d2f 100%); clip-path: polygon(0% 0%, 100% 50%, 100% 80%, 0% 100%); border-radius: 20px 5px 40px 5px;"></div>
+            <div id="pop-header-circle" style="position:relative; width:90px; height:90px; background:linear-gradient(180deg, #ffeaa7 0%, #ff9d2f 100%); border-radius:50%; border:5px solid #fff; display:flex; justify-content:center; align-items:center; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index:25;">
+                <svg viewBox="0 0 24 24" style="width:55px; height:55px;"><path d="M12 2L14.5 9H21L15.5 13L17.5 21L12 17L6.5 21L8.5 13L3 9H9.5L12 2Z" fill="#ff7675" stroke="#fff" stroke-width="1"/></svg>
             </div>
         </div>
 
-        <div id="popup-card" style="background: linear-gradient(180deg, #ff7675, #d63031); border-radius:35px; padding:60px 20px 30px 20px; position:relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow:hidden;">
-            
-            <h1 id="pop-title" style="color:#fff; margin:10px 0; font-size:28px; font-weight:900; text-transform:capitalize;">Congratulations</h1>
-            
-            <div style="display:flex; justify-content:center; gap:8px; margin:20px 0; align-items:center;">
-                <span style="color:rgba(255,255,255,0.9); font-size:12px;">Lottery results</span>
-                <span id="res-color" style="padding:4px 12px; border-radius:6px; color:#fff; font-size:13px; font-weight:bold; background:#2ecc71;">Green</span>
-                <span id="res-num" style="background:#2ecc71; width:25px; height:25px; border-radius:50%; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px; border:2px solid #fff;">3</span>
-                <span id="res-size" style="background:#3498db; padding:4px 12px; border-radius:6px; color:#fff; font-size:13px; font-weight:bold;">Small</span>
+        <div id="popup-card" style="background: linear-gradient(180deg, #f76e6d 0%, #d63031 100%); border-radius:35px; padding:50px 15px 20px 15px; position:relative; box-shadow: 0 15px 40px rgba(0,0,0,0.5); z-index: 10;">
+            <h1 id="pop-title" style="color:#fff; margin:10px 0; font-size:24px; font-weight:800;">Congratulations</h1>
+            <div style="display:flex; justify-content:center; align-items:center; gap:6px; margin-bottom:15px; color:#fff; font-size:11px;">
+                Lottery results <span id="res-color" style="padding:4px 10px; border-radius:6px; font-weight:bold;">Green</span>
+                <div id="res-num" style="width:24px; height:24px; border-radius:50%; border:2px solid #fff; display:flex; align-items:center; justify-content:center; font-weight:bold;">3</div>
+                <span id="res-size" style="padding:4px 10px; border-radius:6px; font-weight:bold;">Small</span>
             </div>
-
-            <div style="background:#fff; border-radius:20px; padding:25px 15px; position:relative; margin-top:20px; box-shadow: 0 -10px 0 rgba(0,0,0,0.05);">
-                <div style="color:#ff4757; font-size:14px; font-weight:800; margin-bottom:5px;">Bonus</div>
-                <div id="pop-amount" style="font-size:36px; font-weight:900; color:#ff4757; margin-bottom:10px;">৳392.00</div>
-                <div id="pop-period" style="font-size:11px; color:#999; line-height:1.5;">Period: WinGo 30sec <br> <span id="actual-period-text" style="color:#666; font-weight:bold;">20260416100050880</span></div>
-                
-                <div style="position:absolute; bottom:-10px; left:0; width:100%; height:20px; background:#fff; clip-path: polygon(0 0, 10% 100%, 20% 0, 30% 100%, 40% 0, 50% 100%, 60% 0, 70% 100%, 80% 0, 90% 100%, 100% 0); border-radius: 0 0 20px 20px;"></div>
-            </div>
-
-            <div style="margin-top:35px; color:#fff; font-size:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
-                <div style="width:16px; height:16px; border:2px solid #fff; border-radius:50%; position:relative;">
-                    <div style="position:absolute; top:3px; left:3px; width:6px; height:6px; background:#fff; border-radius:50%;"></div>
+            <div class="receipt-box" style="position:relative; margin-top:15px; height:140px; perspective:1000px;">
+                <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:90%; height:20px; background:rgba(120, 10, 10, 0.9); border-radius:12px; z-index:5;"></div>
+                <div class="white-paper" style="position:absolute; top:10px; left:7%; width:86%; background:#fff; border-radius:0 0 10px 10px; padding:15px 10px; z-index:4; transform:rotateX(-10deg); transform-origin:top;">
+                    <div style="color:#d63031; font-weight:bold; font-size:13px;">Bonus</div>
+                    <div id="pop-amount" style="color:#d63031; font-size:34px; font-weight:900;">৳0.00</div>
+                    <div id="pop-period" style="color:#999; font-size:10px;">Period: WinGo 30sec <br> <b id="actual-period-text">00000000</b></div>
                 </div>
-                3 seconds auto close
             </div>
+            <div style="margin-top:25px; color:rgba(255,255,255,0.8); font-size:11px;">○ 3 seconds auto close</div>
         </div>
-
-        <div onclick="closeResultPopup()" style="margin-top:30px; text-align:center;">
-            <div style="width:45px; height:45px; border:2px solid #fff; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:24px; cursor:pointer; background:rgba(255,255,255,0.1);">×</div>
+        <div onclick="closeResultPopup()" style="margin-top:25px; cursor:pointer; z-index: 10; position: relative;">
+            <div style="width:40px; height:40px; border:2px solid #fff; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:22px; background:rgba(255,255,255,0.1);">×</div>
         </div>
     </div>
 </div>
@@ -5344,7 +5331,6 @@ function processBets(p, winNum) {
         renderMyHistory();
     }
 }
-
 function showResultPopup(isWin, amount, num, color, size, period) {
     const popup = document.getElementById('result-popup');
     const card = document.getElementById('popup-card');
@@ -5358,34 +5344,71 @@ function showResultPopup(isWin, amount, num, color, size, period) {
     document.getElementById('res-size').innerText = size;
     document.getElementById('pop-period').innerHTML = "Period: WinGo 30sec <br> <b>" + period + "</b>";
 
-    // কালার সেট করা
+    // রেজাল্ট ব্যাজ কালার সেট করা
     let cCode = color === 'Green' ? '#2ecc71' : (color === 'Red' ? '#ff4757' : '#a55eea');
     document.getElementById('res-color').style.background = cCode;
+    document.getElementById('res-num').style.color = '#fff'; // টেক্সট সাদা
     document.getElementById('res-num').style.background = cCode;
     document.getElementById('res-size').style.background = (size === 'Big' ? '#ffa502' : '#3498db');
 
     if (isWin) {
-        // উইন থিম (কমলা-লাল)
-        card.style.background = "linear-gradient(180deg, #ff6a50, #fd434a)";
+        // উইন থিম (আপনার ডিমান্ড অনুযায়ী লাল-কমলা গ্রাডিয়েন্ট)
+        card.style.background = "linear-gradient(180deg, #f76e6d 0%, #d63031 100%)";
         headerCircle.style.background = "linear-gradient(180deg, #ffefba, #ff9d2f)";
         title.innerText = "Congratulations";
+        title.style.color = "#fff";
         amountText.innerText = "৳" + amount.toFixed(2);
-        amountText.style.color = "#ff4757";
+        amountText.style.color = "#d63031"; // সাদা পেপারে লাল টেক্সট
+        
+        // প্রফিট হলে হাবজাবি (Confetti) উড়বে
+        createConfetti();
     } else {
         // লস থিম (কালো-ধূসর)
         card.style.background = "linear-gradient(180deg, #535c68, #2d3436)";
         headerCircle.style.background = "linear-gradient(180deg, #bdc3c7, #2c3e50)";
         title.innerText = "Sorry, Lose";
+        title.style.color = "#fff";
         amountText.innerText = "-৳" + amount.toFixed(2);
-        amountText.style.color = "#333";
+        amountText.style.color = "#444";
     }
 
     popup.style.display = 'flex';
 
-    // ৩ সেকেন্ড পর অটো ক্লোজ (আপনার ছবির ডিমান্ড অনুযায়ী)
+    // ৩ সেকেন্ড পর অটো ক্লোজ
     setTimeout(() => {
         closeResultPopup();
     }, 3000);
+}
+
+// হাবজাবি/কনফেটি তৈরি করার ফাংশন
+function createConfetti() {
+    const container = document.getElementById('confetti-container');
+    if(!container) return; // কন্টেইনার না থাকলে রিটার্ন করবে
+    
+    container.innerHTML = ''; // আগেরগুলো পরিষ্কার করা
+    const colors = ['#FFD700', '#FF4D4D', '#00FF00', '#00CCFF', '#FFFFFF', '#FF00FF'];
+    
+    for (let i = 0; i < 60; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = Math.random() * 8 + 5 + 'px';
+        confetti.style.height = Math.random() * 5 + 5 + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10%';
+        confetti.style.zIndex = '10001';
+        confetti.style.opacity = Math.random();
+        
+        container.appendChild(confetti);
+
+        confetti.animate([
+            { top: '-10%', transform: `rotate(0deg) translateX(0)` },
+            { top: '110%', transform: `rotate(${Math.random() * 1000}deg) translateX(${Math.random() * 100 - 50}px)` }
+        ], {
+            duration: Math.random() * 2000 + 2000,
+            easing: 'cubic-bezier(0, .9, .6, 1)'
+        }).onfinish = () => confetti.remove();
+    }
 }
 
 function closeResultPopup() {
@@ -5504,45 +5527,59 @@ function renderTrendChart() {
     const canvas = document.getElementById('trendCanvas');
     const ctx = canvas.getContext('2d');
     
-    // gameHistory আপনার গেমের ডাটা অ্যারে হতে হবে
+    // gameHistory চেক
     if (typeof gameHistory === "undefined" || gameHistory.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="12">No data available</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="13">No data available</td></tr>';
         return;
     }
 
     // ১. টেবিল ডাটা তৈরি
     tbody.innerHTML = gameHistory.slice(0, 20).map((item, index) => {
         let cols = '';
+        
+        // ০ থেকে ৯ পর্যন্ত কলাম
         for (let i = 0; i <= 9; i++) {
             if (i === item.num) {
                 let dotColor = (i % 2 === 0) ? '#ff4d4d' : '#2ecc71';
                 if(i === 0 || i === 5) dotColor = '#a55eea';
-                cols += `<td><span class="trend-dot" style="background:${dotColor}; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:white; font-size:10px; font-weight:bold; position:relative; z-index:5;">${i}</span></td>`;
+                cols += `<td style="padding: 8px 2px;"><span class="trend-dot" style="background:${dotColor}; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:white; font-size:10px; font-weight:bold; position:relative; z-index:5;">${i}</span></td>`;
             } else {
-                cols += `<td style="color:#ddd; font-size:10px;">${i}</td>`;
+                cols += `<td style="color:#bbb; font-size:11px;">${i}</td>`;
             }
         }
+
+        // ৯ নম্বরের পাশে Big/Small বাটন তৈরি
+        const bsText = item.num >= 5 ? 'B' : 'S'; // ৫-৯ হলো Big, ০-৪ হলো Small
+        const bsColor = bsText === 'B' ? '#ffa502' : '#3498db';
+        const bsFullName = bsText === 'B' ? 'Big' : 'Small';
+
         return `
-            <tr style="border-bottom:1px solid #f5f5f5;">
-                <td style="padding:10px 2px; color:#999;">${item.period.toString().slice(-4)}</td>
+            <tr style="border-bottom:1px solid #f2f2f2;">
+                <td style="padding:10px 5px; color:#666; font-size:11px; font-weight:500;">${item.period}</td>
+                
                 ${cols}
+                
+                <td style="padding: 8px 5px;">
+                    <span style="background:${bsColor}; color:white; width:35px; height:20px; display:inline-flex; align-items:center; justify-content:center; border-radius:12px; font-size:10px; font-weight:bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        ${bsFullName}
+                    </span>
+                </td>
             </tr>`;
     }).join('');
 
-    // ২. ট্রেন্ড লাইন ড্রয়িং (অল্প দেরি করে যাতে টেবিল রেন্ডার শেষ হয়)
+    // ২. ট্রেন্ড লাইন ড্রয়িং
     setTimeout(() => {
         const dots = document.querySelectorAll('.trend-dot');
         const table = document.getElementById('chartTable');
         if (!dots.length) return;
 
-        // ক্যানভাস সাইজ টেবিলের সমান করা
         canvas.width = table.offsetWidth;
         canvas.height = table.offsetHeight;
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
-        ctx.strokeStyle = '#ff4d4d'; // লাল লাইন
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(255, 77, 77, 0.5)'; // লাইনটি একটু হালকা লাল করা হয়েছে
+        ctx.lineWidth = 1.8;
 
         dots.forEach((dot, index) => {
             const rect = dot.getBoundingClientRect();
@@ -5555,7 +5592,7 @@ function renderTrendChart() {
             else ctx.lineTo(x, y);
         });
         ctx.stroke();
-    }, 100);
+    }, 150);
 }
     function openFullHistory() {
         document.getElementById('full-history-modal').style.display = 'block';
