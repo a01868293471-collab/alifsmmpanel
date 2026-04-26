@@ -4931,6 +4931,7 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
+
 <style>
 /* পপআপ আসার এনিমেশন */
 @keyframes zoomIn {
@@ -5025,6 +5026,19 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
+
+<div id="bet-success-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:20000; pointer-events:none;">
+    <div style="background: rgba(0, 0, 0, 0.8); color: white; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: fadeInUp 0.4s ease-out; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1);">
+        <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 8px;"></i> Bet Success
+    </div>
+</div>
+
+<style>
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+</style>
 
 
 <style>
@@ -5187,6 +5201,17 @@ function closePopup() {
         let total = currentBase * quantity;
         document.getElementById('total-bet').innerText = total.toFixed(2);
     }
+    function showBetSuccess() {
+    const betPopup = document.getElementById('bet-success-popup');
+    
+    // পপআপ দেখাবে
+    betPopup.style.display = 'flex';
+    
+    // ১.৫ সেকেন্ড পর অটো বন্ধ হয়ে যাবে
+    setTimeout(() => {
+        betPopup.style.display = 'none';
+    }, 1500);
+}
 function confirmBet() {
         let total = currentBase * quantity;
         let cb = getBalance();
@@ -5215,6 +5240,7 @@ function confirmBet() {
         localStorage.setItem(`my_bets_${userId}`, JSON.stringify(myBets.slice(0, 50)));
         renderMyHistory();
         closePopup();
+        showBetSuccess();
     }
 
     // --- টাইমার এবং লক সিস্টেম ---
@@ -5241,10 +5267,11 @@ function confirmBet() {
         if(timeLeft === DURATION) {
             syncMarket();
         }
+            // আপনার বেট লজিক শেষে...
+
     }, 1000);
 
-    // --- মার্কেট প্রসেসিং ---
-    
+
 function syncMarket() {
     const now = Math.floor(Date.now() / 1000);
     const actualPeriod = Math.floor(now / DURATION);
