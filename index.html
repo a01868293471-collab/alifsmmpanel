@@ -5181,11 +5181,11 @@ function renderMyHistory() {
         const status = b.status ? String(b.status).toLowerCase() : 'pending';
         const isWin = status === 'win' || status === 'succeed';
         const isLoss = status === 'loss' || status === 'failed';
+        const isPending = status === 'pending';
         
         const statusText = isWin ? 'Succeed' : (isLoss ? 'Failed' : 'Pending');
         const statusColor = isWin ? '#2ecc71' : (isLoss ? '#ff7675' : '#f39c12');
         
-        // --- Select Color Logic ---
         let selectColor = '#3b82f6';
         if (b.type === 'Big') selectColor = '#ffbe76';
         else if (b.type === 'Small') selectColor = '#70a1ff';
@@ -5193,17 +5193,10 @@ function renderMyHistory() {
         else if (b.type === 'Green') selectColor = '#2ecc71';
         else if (b.type === 'Violet') selectColor = '#a55eea';
 
-        // --- Result Logic (ফটোর মতো) ---
-        let resNum = b.resultNum || (isWin ? '4' : '7'); // ডামি ডাটা যদি না থাকে
-        let resType = b.resultType || (isWin ? b.type : (b.type === 'Big' ? 'Small' : 'Big'));
-        let resColorText = (resNum % 2 === 0) ? 'Red' : 'Green';
-        let resColorCode = (resColorText === 'Red') ? '#ff4d4d' : '#2ecc71';
-
         const amountSign = isWin ? '+' : (isLoss ? '-' : '');
         const displayAmount = (isWin && b.winAmount) ? parseFloat(b.winAmount).toFixed(2) : parseFloat(b.amount).toFixed(2);
         let displayTime = b.time ? b.time : new Date().toLocaleString('en-GB').replace(',', '');
 
-        // --- Calculation ---
         const tax = (parseFloat(b.amount) * 0.02).toFixed(2);
         const afterTax = (parseFloat(b.amount) - tax).toFixed(2);
 
@@ -5216,7 +5209,7 @@ function renderMyHistory() {
                     </div>
                     <div>
                         <div style="font-size:14px; font-weight:700; color:#333; display:flex; align-items:center;">
-                            ${b.period} <i class="fas fa-caret-${document.getElementById('details-'+index)?.style.display === 'block' ? 'up' : 'down'}" style="margin-left:5px; color:#ccc; font-size:12px;"></i>
+                            ${b.period} <i class="fas fa-caret-down" style="margin-left:5px; color:#ccc; font-size:12px;"></i>
                         </div>
                         <div style="font-size:11px; color:#999; margin-top:2px;">${displayTime}</div>
                     </div>
@@ -5226,7 +5219,7 @@ function renderMyHistory() {
                         ${statusText}
                     </div>
                     <div style="font-size:14px; font-weight:800; color:${statusColor};">
-                        ${amountSign}৳${displayAmount}
+                        ${isPending ? '৳'+parseFloat(b.amount).toFixed(2) : amountSign + '৳' + displayAmount}
                     </div>
                 </div>
             </div>
@@ -5234,8 +5227,6 @@ function renderMyHistory() {
             <div id="details-${index}" style="display:none; background:#f9f9f9; padding:15px; border-top:1px solid #eee; font-family: sans-serif;">
                 <h3 style="margin:0 0 15px 0; font-size:16px; color:#333; font-weight:700;">Details</h3>
                 
-
-
                 <style>
                     .row-det { display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:#555; }
                     .row-det span:first-child { color:#888; }
@@ -5247,24 +5238,14 @@ function renderMyHistory() {
                 <div class="row-det"><span>Amount after tax</span><span style="color:#ff7675;">৳${afterTax}</span></div>
                 <div class="row-det"><span>Tax</span><span>৳${tax}</span></div>
                 
-                <div class="row-det">
-                    <span>Result</span>
-                    <span>
-                        <span style="color:#555; font-weight:bold;">${resNum}</span>
-                        <span style="color:${resColorCode}; font-weight:bold; margin-left:8px;">${resColorText}</span>
-                        <span style="color:${resColorCode === '#ff4d4d' ? '#70a1ff' : '#70a1ff'}; font-weight:bold; margin-left:8px;">${resType}</span>
-                    </span>
-                </div>
-                
                 <div class="row-det"><span>Select</span><span style="color:#888;">${b.type}</span></div>
                 <div class="row-det"><span>Status</span><span style="color:${statusColor}; font-weight:600;">${statusText}</span></div>
-                <div class="row-det"><span>Win/lose</span><span style="color:${statusColor}; font-weight:bold;">${amountSign}৳${displayAmount}</span></div>
+                <div class="row-det"><span>Win/lose</span><span style="color:${statusColor}; font-weight:bold;">${isPending ? '--' : amountSign + '৳' + displayAmount}</span></div>
                 <div class="row-det" style="margin-bottom:0;"><span>Order time</span><span>${displayTime}</span></div>
             </div>
         </div>`;
     }).join('');
 }
-
 // টগল ফাংশন
 function toggleDetails(index) {
     const el = document.getElementById(`details-${index}`);
