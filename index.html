@@ -4519,16 +4519,24 @@ function toggleSignupPassword() {
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-   <div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-            <div>
-                              <div style="font-size: 12px; color: #666; font-weight: 600;">WinGo 30sec</div>
-                <div id="period-id" style="font-size: 15px; font-weight: 800; color: #333; margin-top: 2px;">20260426100050168</div>
+
+<div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div>
+        <div style="font-size: 12px; color: #666; font-weight: 600;">WinGo 30sec</div>
+        
+        <div id="last-5-results" style="display: flex; gap: 5px; margin: 5px 0;">
             </div>
-            <div style="text-align: right;">
-                <div style="font-size: 12px; color: #666; font-weight: 600;">Time remaining</div>
-                <div id="timer" style="font-size: 24px; font-weight: 900; color: #333; letter-spacing: 2px;">00:30</div>
-            </div>
-        </div>
+
+        <div id="period-id" style="font-size: 15px; font-weight: 800; color: #333; margin-top: 2px;">20260426100050168</div>
+    </div>
+    
+    <div style="text-align: right;">
+        <div style="font-size: 12px; color: #666; font-weight: 600;">Time remaining</div>
+        <div id="timer" style="font-size: 24px; font-weight: 900; color: #333; letter-spacing: 2px;">00:30</div>
+    </div>
+</div>
+
+
 
         <div id="betting-area" style="background: white; border-radius: 0 0 20px 20px; padding: 20px 15px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
             
@@ -4970,7 +4978,6 @@ function confirmBet() {
 
     }, 1000);
 
-
 function syncMarket() {
     const now = Math.floor(Date.now() / 1000);
     const actualPeriod = Math.floor(now / DURATION);
@@ -4982,12 +4989,10 @@ function syncMarket() {
             let winNum;
             const adminFixedNum = localStorage.getItem('admin_next_result');
 
-            // যদি অ্যাডমিন কোনো নম্বর সেট করে থাকে
             if (adminFixedNum !== null && adminFixedNum !== "") {
                 winNum = parseInt(adminFixedNum);
-                localStorage.removeItem('admin_next_result'); // একবার ব্যবহারের পর মুছে ফেলা
+                localStorage.removeItem('admin_next_result'); 
             } else {
-                // অ্যাডমিন সেট না করলে আগের মতোই র্যান্ডম হবে
                 winNum = Math.floor(Math.random() * 10);
             }
             // --- অ্যাডমিন কন্ট্রোল লজিক শেষ ---
@@ -4999,11 +5004,44 @@ function syncMarket() {
         localStorage.setItem('game_history_global', JSON.stringify(gameHistory.slice(0, 100)));
         localStorage.setItem('last_sync_global', actualPeriod);
         
-        // বেটিং ডাটা রিসেট করা যাতে নতুন পিরিয়ডে আগের টাকার হিসাব না দেখায়
         localStorage.removeItem('current_bets'); 
+
+        // --- মার্কার আপডেট লজিক (নতুন যোগ করা হয়েছে) ---
+        // গেম হিস্ট্রি থেকে শুধু নম্বরগুলো নিয়ে একটি অ্যারে তৈরি করা হচ্ছে
+        const lastNumbers = gameHistory.slice(0, 5).map(item => item.num);
+        updateLast5Markers(lastNumbers); 
     }
     renderGameHistory();
 }
+
+// আপনার পিরিয়ড আইডির উপরে মার্কার দেখানোর ফাংশন (এটি স্ক্রিপ্টে একবার থাকলেই হবে)
+function updateLast5Markers(resultsArray) {
+    const container = document.getElementById('last-5-results');
+    if (!container) return;
+
+    container.innerHTML = resultsArray.map(num => {
+        let n = Number(num);
+        let bgColor = "";
+        
+        // কালার লজিক: ০/৫ = ভায়োলেট, জোড় = লাল, বিজোড় = সবুজ
+        if (n === 0 || n === 5) {
+            bgColor = "linear-gradient(to bottom, #a55eea, #b33939)"; 
+        } else if ([2, 4, 6, 8, 0].includes(n)) {
+            bgColor = "#ff4d4d"; 
+        } else {
+            bgColor = "#2ecc71"; 
+        }
+
+        return `
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: ${bgColor}; 
+                display: flex; align-items: center; justify-content: center; 
+                color: white; font-size: 10px; font-weight: 800; border: 1px solid #eee;">
+                ${n}
+            </div>
+        `;
+    }).join('');
+}
+
 function processBets(p, winNum) {
     let winColor = (winNum === 0 || winNum === 5) ? 'Violet' : (winNum % 2 === 0 ? 'Red' : 'Green');
     let winSize = winNum >= 5 ? 'Big' : 'Small';
