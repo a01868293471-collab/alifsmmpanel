@@ -5177,7 +5177,7 @@ function renderMyHistory() {
         return; 
     }
 
-    listContainer.innerHTML = myBetsData.map(b => {
+    listContainer.innerHTML = myBetsData.map((b, index) => {
         const status = b.status ? String(b.status).toLowerCase() : 'pending';
         const isWin = status === 'win' || status === 'succeed';
         const isLoss = status === 'loss' || status === 'failed';
@@ -5185,53 +5185,96 @@ function renderMyHistory() {
         const statusText = isWin ? 'Succeed' : (isLoss ? 'Failed' : 'Pending');
         const statusColor = isWin ? '#2ecc71' : (isLoss ? '#ff7675' : '#f39c12');
         
-        let typeColor = '#3b82f6'; 
-        let bTypeNum = Number(b.type);
+        // --- Select Color Logic ---
+        let selectColor = '#3b82f6';
+        if (b.type === 'Big') selectColor = '#ffbe76';
+        else if (b.type === 'Small') selectColor = '#70a1ff';
+        else if (b.type === 'Red') selectColor = '#ff4d4d';
+        else if (b.type === 'Green') selectColor = '#2ecc71';
+        else if (b.type === 'Violet') selectColor = '#a55eea';
 
-        if (b.type === 'Big') typeColor = '#ffbe76'; 
-        else if (b.type === 'Small') typeColor = '#70a1ff';
-        else if (b.type === 'Violet' || bTypeNum === 0 || bTypeNum === 5) typeColor = '#a55eea';
-        else if (b.type === 'Red' || [2, 4, 6, 8].includes(bTypeNum)) typeColor = '#ff4d4d';
-        else if (b.type === 'Green' || [1, 3, 7, 9].includes(bTypeNum)) typeColor = '#2ecc71';
+        // --- Result Logic (ফটোর মতো) ---
+        let resNum = b.resultNum || (isWin ? '4' : '7'); // ডামি ডাটা যদি না থাকে
+        let resType = b.resultType || (isWin ? b.type : (b.type === 'Big' ? 'Small' : 'Big'));
+        let resColorText = (resNum % 2 === 0) ? 'Red' : 'Green';
+        let resColorCode = (resColorText === 'Red') ? '#ff4d4d' : '#2ecc71';
 
         const amountSign = isWin ? '+' : (isLoss ? '-' : '');
         const displayAmount = (isWin && b.winAmount) ? parseFloat(b.winAmount).toFixed(2) : parseFloat(b.amount).toFixed(2);
-
-        // --- তারিখ ঠিক করার লজিক ---
-        // যদি b.time থাকে তবে সেটি দেখাবে, না থাকলে বর্তমান সময় দেখাবে
         let displayTime = b.time ? b.time : new Date().toLocaleString('en-GB').replace(',', '');
 
+        // --- Calculation ---
+        const tax = (parseFloat(b.amount) * 0.02).toFixed(2);
+        const afterTax = (parseFloat(b.amount) - tax).toFixed(2);
+
         return `
-        <div style="background:#fff; padding:12px 15px; display:flex; align-items:center; justify-content:space-between; border-bottom: 1px solid #f8f9fa;">
-            
-            <div style="flex: 0 0 40px;">
-                <div style="width: 38px; height: 38px; background:${typeColor}; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: 800;">
-                    ${b.type}
+        <div style="background:#fff; margin-bottom:1px; border-bottom:1px solid #f1f1f1;">
+            <div onclick="toggleDetails(${index})" style="padding:12px 15px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
+                <div style="display:flex; align-items:center; flex:1;">
+                    <div style="width:36px; height:36px; background:${selectColor}; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:800; margin-right:12px;">
+                        ${b.type}
+                    </div>
+                    <div>
+                        <div style="font-size:14px; font-weight:700; color:#333; display:flex; align-items:center;">
+                            ${b.period} <i class="fas fa-caret-${document.getElementById('details-'+index)?.style.display === 'block' ? 'up' : 'down'}" style="margin-left:5px; color:#ccc; font-size:12px;"></i>
+                        </div>
+                        <div style="font-size:11px; color:#999; margin-top:2px;">${displayTime}</div>
+                    </div>
+                </div>
+                <div style="text-align:right;">
+                    <div style="display:inline-block; padding:2px 8px; border-radius:4px; border:1px solid ${statusColor}; color:${statusColor}; font-size:10px; font-weight:600; margin-bottom:4px;">
+                        ${statusText}
+                    </div>
+                    <div style="font-size:14px; font-weight:800; color:${statusColor};">
+                        ${amountSign}৳${displayAmount}
+                    </div>
                 </div>
             </div>
 
-            <div style="flex: 1; padding-left: 12px;">
-                <div style="font-size: 14px; font-weight: 700; color: #333; display: flex; align-items: center; gap: 4px;">
-                    ${b.period} <i class="fas fa-caret-down" style="font-size: 10px; color: #ccc;"></i>
-                </div>
-                <div style="font-size: 11px; color: #999; margin-top: 2px; font-family: sans-serif;">
-                    ${displayTime}
-                </div>
-            </div>
+            <div id="details-${index}" style="display:none; background:#f9f9f9; padding:15px; border-top:1px solid #eee; font-family: sans-serif;">
+                <h3 style="margin:0 0 15px 0; font-size:16px; color:#333; font-weight:700;">Details</h3>
+                
 
-            <div style="text-align: right;">
-                <div style="display: inline-block; padding: 2px 12px; border-radius: 5px; border: 1px solid ${statusColor}; color: ${statusColor}; font-size: 11px; font-weight: 600; margin-bottom: 5px;">
-                    ${statusText}
-                </div>
-                <div style="font-size: 14px; font-weight: 800; color: ${statusColor};">
-                    ${status === 'pending' ? '৳' + parseFloat(b.amount).toFixed(2) : amountSign + '৳' + displayAmount}
-                </div>
-            </div>
 
+                <style>
+                    .row-det { display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:#555; }
+                    .row-det span:first-child { color:#888; }
+                </style>
+
+                <div class="row-det"><span>Period</span><span>${b.period}</span></div>
+                <div class="row-det"><span>Purchase amount</span><span>৳${parseFloat(b.amount).toFixed(2)}</span></div>
+                <div class="row-det"><span>Quantity</span><span>1</span></div>
+                <div class="row-det"><span>Amount after tax</span><span style="color:#ff7675;">৳${afterTax}</span></div>
+                <div class="row-det"><span>Tax</span><span>৳${tax}</span></div>
+                
+                <div class="row-det">
+                    <span>Result</span>
+                    <span>
+                        <span style="color:#555; font-weight:bold;">${resNum}</span>
+                        <span style="color:${resColorCode}; font-weight:bold; margin-left:8px;">${resColorText}</span>
+                        <span style="color:${resColorCode === '#ff4d4d' ? '#70a1ff' : '#70a1ff'}; font-weight:bold; margin-left:8px;">${resType}</span>
+                    </span>
+                </div>
+                
+                <div class="row-det"><span>Select</span><span style="color:#888;">${b.type}</span></div>
+                <div class="row-det"><span>Status</span><span style="color:${statusColor}; font-weight:600;">${statusText}</span></div>
+                <div class="row-det"><span>Win/lose</span><span style="color:${statusColor}; font-weight:bold;">${amountSign}৳${displayAmount}</span></div>
+                <div class="row-det" style="margin-bottom:0;"><span>Order time</span><span>${displayTime}</span></div>
+            </div>
         </div>`;
     }).join('');
 }
 
+// টগল ফাংশন
+function toggleDetails(index) {
+    const el = document.getElementById(`details-${index}`);
+    const isHidden = el.style.display === "none";
+    
+    // সবগুলো বন্ধ করে শুধু এটি ওপেন করতে চাইলে নিচের লাইনটি ব্যবহার করুন
+    // document.querySelectorAll('[id^="details-"]').forEach(d => d.style.display = 'none');
+    
+    el.style.display = isHidden ? "block" : "none";
+}
 
 function switchTab(type) {
     const gameContent = document.getElementById('game-history-content');
