@@ -4495,29 +4495,155 @@ function toggleSignupPassword() {
     </div>
 
 <div style="padding: 0 15px;">
-    <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
-        
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <div style="font-size: 32px; font-weight: 900; color: #1a1a1a; margin-left: 30px;">
-                ৳ <span id="wingo-balance">0.00</span>
-            </div>
-            
-            <div id="refresh-btn" onclick="manualRefreshBalance()" style="cursor: pointer; color: #666; background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;">
-                <i class="fas fa-sync-alt" id="refresh-icon" style="font-size: 14px;"></i>
-            </div>
-        </div>
-
-        <div style="color: #666; font-size: 14px; margin-top: 5px;">
-            <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
-       </div>
-                   <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <button style="flex:1; background:#ff7675; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Withdraw</button>
-                <button style="flex:1; background:#2ecc71; color:white; border:none; padding:12px; border-radius:30px; font-weight:700;">Deposit</button>
-            </div>
-    </div>
-<div style="background: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; padding: 12px 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin: 10px 3px; border: 1px solid #f0f0f0;">
+<div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin: 3px; border: 1px solid #f0f0f0;">
     
-    <div style="background: #FF1493; padding: 8px 4px; border-radius: 10px; text-align: center; flex: 1; margin: 0 4px; cursor: pointer; transition: 0.3s;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <div style="font-size: 32px; font-weight: 900; color: #1a1a1a;">
+            ৳ <span id="wingo-balance">0.00</span>
+        </div>
+        
+    </div>
+
+    <div style="color: #666; font-size: 14px; margin-top: 5px;">
+        <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
+    </div>
+
+<div style="display: flex; gap: 15px; margin-top: 15px; padding: 0 10px;">
+    <button onclick="openPage('p-withdraw')" style="flex:1; background:#ff7675; color:white; border:none; padding: 8px; border-radius:30px; font-weight:700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(255, 118, 117, 0.2);">
+        Withdraw
+    </button>
+    
+    <button onclick="openPage('p-fund')" style="flex:1; background:#2ecc71; color:white; border:none; padding: 8px; border-radius:30px; font-weight:700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);">
+        Deposit
+    </button>
+</div>
+    </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    /* মেইন টিকিট কন্টেইনার */
+    .wingo-ticket {
+        background-color: #FF1493; /* গোল্ডেন হলুদ */
+        border-radius: 20px;
+        position: relative;
+        padding: 20px 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 15px;
+        box-shadow: 0 5px 25px rgba(241, 196, 15, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+    }
+
+    /* ফটোর মতো বাম ও ডানের টিকিট কাট ইফেক্ট */
+    .wingo-ticket::before,
+    .wingo-ticket::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #f7f8ff; /* আপনার পেজের ব্যাকগ্রাউন্ড কালার দিন */
+        z-index: 1;
+    }
+
+    .wingo-ticket::before {
+        left: -15px;
+        top: calc(50% - 15px);
+        box-shadow: inset -5px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .wingo-ticket::after {
+        right: -15px;
+        top: calc(50% - 15px);
+        box-shadow: inset 5px 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* ড্যাশড্ সেপারেটর লাইন */
+    .ticket-divider {
+        position: absolute;
+        left: 48%; /* ছবির মতো একটু বামে */
+        top: 10%;
+        bottom: 10%;
+        width: 0px;
+        border-left: 2px dashed rgba(255, 255, 255, 0.4);
+    }
+
+    /* রেজাল্ট বল (ফটোর মতো) */
+    .result-ball {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 16px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        border: 2px solid white;
+    }
+
+    /* টাইমার বক্স (ফটোর মতো স্প্লিট-কার্ড ফিল) */
+    .flip-digit {
+        display: inline-block;
+        background: #fff;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 26px;
+        font-weight: 900;
+        color: #333;
+        margin: 0 2px;
+        line-height: 1;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        letter-spacing: 0;
+    }
+
+    /* পপআপ মডাল */
+    #htp-modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        z-index: 9999;
+        backdrop-filter: blur(5px);
+        transition: 0.3s;
+    }
+
+    .modal-content {
+        position: relative;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 25px;
+        width: 85%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    }
+
+    .profit-table {
+        width: 100%; margin-top: 20px;
+        border-collapse: collapse; text-align: left;
+        font-size: 13px;
+    }
+
+    .profit-table th, .profit-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .profit-table th { background-color: #f8f9fa; }
+    .profit-table .green { color: #2ecc71; font-weight: bold; }
+    .profit-table .violet { color: #a55eea; font-weight: bold; }
+    .profit-table .red { color: #ff4d4d; font-weight: bold; }
+</style>
+<div style="background: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; padding: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); margin: 3px; border: 1px solid #f0f0f0;">
+    
+    <div style="background: #FF1493; padding: 8px 4px; border-radius: 10px; text-align: center; flex: 1; margin: 0 4px; cursor: pointer;">
         <div style="background: rgba(255,255,255,0.25); width: 32px; height: 32px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1.5px solid white;">
             <i class="fas fa-clock" style="color: white; font-size: 16px;"></i>
         </div>
@@ -4544,27 +4670,81 @@ function toggleSignupPassword() {
         </div>
         <div style="color: #6c757d; font-size: 10px; font-weight: 600; margin-top: 5px; line-height: 1.1;">WinGo 5<br>Min</div>
     </div>
-
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<div class="wingo-ticket" style="margin: 3px;">
+    <div class="ticket-divider"></div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-
-<div style="background: white; border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-    <div>
-        <div style="font-size: 12px; color: #666; font-weight: 600;">WinGo 30sec</div>
+    <div style="flex: 1; position: relative; z-index: 2;">
+        <button onclick="openHowToPlay()" style="background: rgba(255, 255, 255, 0.1); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-list-ul"></i> How to play
+        </button>
         
-        <div id="last-5-results" style="display: flex; gap: 5px; margin: 5px 0;">
-            </div>
+        <div style="margin-top: 15px; color: white; font-weight: 700; font-size: 13px;">WinGo 30sec</div>
 
-        <div id="period-id" style="font-size: 15px; font-weight: 800; color: #333; margin-top: 2px;">20260426100050168</div>
+        <div id="last-5-results" style="display: flex; gap: 7px; margin-top: 10px;">
+            <div class="result-ball" style="background: linear-gradient(135deg, #ff4d4d, #c0392b);">8</div>
+            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">1</div>
+            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">9</div>
+            <div class="result-ball" style="background: linear-gradient(135deg, #ff4d4d, #c0392b);">2</div>
+            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">9</div>
+        </div>
     </div>
     
-    <div style="text-align: right;">
-        <div style="font-size: 12px; color: #666; font-weight: 600;">Time remaining</div>
-        <div id="timer" style="font-size: 24px; font-weight: 900; color: #333; letter-spacing: 2px;">00:30</div>
+    <div style="flex: 1; text-align: right; position: relative; z-index: 2; padding-left: 20px;">
+        <div style="font-size: 11px; color: rgba(255, 255, 255, 0.8); font-weight: 700; text-transform: uppercase;">Time remaining</div>
+        
+        <div id="timer" style="margin-top: 8px;">
+            <span class="flip-digit">0</span><span class="flip-digit">0</span>
+            <span style="font-size: 26px; font-weight: 900; color: white; margin: 0 2px;">:</span>
+            <span class="flip-digit">2</span><span class="flip-digit">2</span>
+        </div>
+
+        <div id="period-id" style="font-size: 13px; font-weight: 800; color: white; margin-top: 12px;">20260430100050177</div>
+    </div>
+</div>
+
+<div id="htp-modal">
+    <div class="modal-content">
+        <i class="fas fa-list-ul" style="font-size: 40px; color: #F1C40F; background: #fffdf0; padding: 20px; border-radius: 50%; box-shadow: 0 5px 15px rgba(241, 196, 15, 0.1);"></i>
+        
+        <h3 style="margin-top: 20px; font-weight: 900; color: #333; font-size: 22px;">How to play</h3>
+        <p style="color: #777; font-size: 14px; margin-top: 5px;">Below is the profit structure for different betting options:</p>
+        
+        <table class="profit-table">
+            <tr>
+                <th>Bet On</th>
+                <th>Result</th>
+                <th>Profit Ratio</th>
+            }
+            <tr>
+                <td class="green">Green</td>
+                <td>1, 3, 7, 9</td>
+                <td>1 : 2</td>
+            }
+            <tr>
+                <td class="red">Red</td>
+                <td>2, 4, 6, 8</td>
+                <td>1 : 2</td>
+            }
+            <tr>
+                <td class="violet">Violet</td>
+                <td>0, 5</td>
+                <td>1 : 4.5</td>
+            }
+            <tr>
+                <td>Numbers</td>
+                <td>0-9</td>
+                <td>1 : 9</td>
+            }
+            <tr style="border-bottom: none;">
+                <td>Size</td>
+                <td>Big/Small</td>
+                <td>1 : 2</td>
+            }
+        </table>
+        
+        <button onclick="closeHowToPlay()" style="width: 100%; margin-top: 25px; background: #333; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: 700; font-size: 16px; cursor: pointer;">Got it!</button>
     </div>
 </div>
 
@@ -4828,6 +5008,28 @@ function toggleSignupPassword() {
     // --- গ্লোবাল ভেরিয়েবল এবং ইনিশিয়ালাইজেশন ---
     let userId = localStorage.getItem('current_user_id') || 'user_1';
     const BALANCE_IDS = ['u-bal', 'withdraw-bal', 'wingo-balance'];
+    
+    // ১. সাইটে ঢোকার সাথে সাথে লোকাল স্টোরেজ থেকে রিয়েল ডাটা টেনে আনা
+    let currentBalance = parseFloat(localStorage.getItem(`balance_${userId}`)) || 500.00;
+
+    // ২. এই ফাংশনটি কোড লোড হওয়ার সাথে সাথেই ব্যালেন্স স্ক্রিনে বসিয়ে দিবে
+    function initDisplay() {
+        const formatted = currentBalance.toFixed(2);
+        BALANCE_IDS.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                if (el.tagName === 'SPAN' || el.tagName === 'DIV' || el.tagName === 'P') {
+                    el.innerText = formatted;
+                } else {
+                    el.value = formatted;
+                }
+            }
+        });
+    }
+
+    // ৩. সাইট ওপেন হওয়ার সাথে সাথেই কল হবে (অপেক্ষা করবে না)
+    initDisplay();
+
     let gameHistory = JSON.parse(localStorage.getItem('game_history_global') || '[]');
     let myBets = JSON.parse(localStorage.getItem(`my_bets_${userId}`) || '[]');
     let currentPeriod = 0;
@@ -4837,88 +5039,144 @@ function toggleSignupPassword() {
     let currentBase = 10;
     let quantity = 1;
 
-    // --- ব্যালেন্স হ্যান্ডলিং ---
-    function getBalance() {
-        for (let id of BALANCE_IDS) {
+    // --- ব্যালেন্স হ্যান্ডলিং (একদম পারফেক্ট লজিক) ---
+
+    // ১. ব্যালেন্স ডিসপ্লে আপডেট করার ফাংশন
+    function updateAllBalanceUI() {
+        const formatted = currentBalance.toFixed(2);
+        BALANCE_IDS.forEach(id => {
             const el = document.getElementById(id);
-            if (el && el.innerText.trim() !== "" && el.innerText !== "0.00") {
-                return parseFloat(el.innerText.replace(/[^\d.-]/g, '')) || 0.00;
+            if (el) {
+                if (el.tagName === 'SPAN' || el.tagName === 'DIV' || el.tagName === 'P') {
+                    el.innerText = formatted;
+                } else {
+                    el.value = formatted;
+                }
             }
-        }
-        return parseFloat(localStorage.getItem(`balance_${userId}`)) || 0.00;
+        });
+        // লোকাল স্টোরেজে সেভ করা যাতে রিফ্রেশ দিলে না হারায়
+        localStorage.setItem(`balance_${userId}`, formatted);
+        localStorage.setItem('total_available_balance', formatted); 
+    }
+
+    // ২. বর্তমান ব্যালেন্স পাওয়ার ফাংশন
+    function getBalance() {
+        return currentBalance;
     }
 
     function setBalance(amount) {
-        const formatted = amount.toFixed(2);
+        const formatted = parseFloat(amount).toFixed(2);
+        currentBalance = parseFloat(amount); // গ্লোবাল ভেরিয়েবল আপডেট
+
+        // সব স্ক্রিন এলিমেন্ট আপডেট করা
         BALANCE_IDS.forEach(id => {
             const el = document.getElementById(id);
-            if (el) el.innerText = formatted;
+            if (el) {
+                if (el.tagName === 'SPAN' || el.tagName === 'DIV' || el.tagName === 'P') {
+                    el.innerText = formatted;
+                } else {
+                    el.value = formatted;
+                }
+            }
         });
+
+        // লোকাল স্টোরেজে মেইন ব্যালেন্স কি-তে সেভ করা
         localStorage.setItem(`balance_${userId}`, formatted);
+        localStorage.setItem('total_available_balance', formatted); 
     }
 
-function openBetPopup(type) {
-    // ১. এই লাইনটিই আপনার প্রধান সমস্যার সমাধান (selectedType আপডেট করা)
-    selectedType = type; 
+    // পেজ লোড হওয়ার সময় আরও একবার চেক করার জন্য
+    window.onload = function() {
+        initDisplay();
+    };
 
-    const popup = document.getElementById('bet-popup');
-    const title = document.getElementById('popup-title');
-    
-    // সব পুরনো ক্লাস মুছে ফেলা
-    popup.classList.remove('theme-big', 'theme-small', 'theme-red', 'theme-green', 'theme-violet', 'theme-num-red', 'theme-num-green', 'theme-num-mixed');
+    // ৪. প্রফিট যোগ করার ফাংশন
+    function addProfit(amount) {
+        currentBalance += parseFloat(amount);
+        updateAllBalanceUI();
+    }
 
-    // ২. টেক্সট টাইপ চেক (Big, Small, Red, ইত্যাদি)
-    if (['Big', 'Small', 'Red', 'Green', 'Violet'].includes(type)) {
-        popup.classList.add('theme-' + type.toLowerCase());
-        title.innerText = "Select " + type;
-    } 
-    // ৩. নম্বর টাইপ চেক (০-৯)
-    else {
-        const num = parseInt(type);
-        title.innerText = "Select Number " + num;
-        
-        if (num === 0 || num === 5) {
-            popup.classList.add('theme-num-mixed'); 
-        } else if (num % 2 === 0) {
-            popup.classList.add('theme-num-red'); 
+    // ৫. বেট ধরলে টাকা কাটার ফাংশন
+    function deductBalance(amount) {
+        if (currentBalance >= amount) {
+            currentBalance -= parseFloat(amount);
+            updateAllBalanceUI();
+            return true;
         } else {
-            popup.classList.add('theme-num-green'); 
+            alert("Insufficient Balance!");
+            return false;
         }
     }
 
-    // ৪. পপআপ খোলার আগে রি-ক্যালকুলেশন এবং ডিসপ্লে
-    resetPopup(); 
-    popup.style.display = 'flex';
-}
+    // পেজ লোড হওয়ার সময় UI আপডেট করা
+    window.onload = function() {
+        updateAllBalanceUI();
+    };
 
-function closePopup() {
-    document.getElementById('bet-popup').style.display = 'none';
-}
+
+    // --- পপআপ লজিক ---
+
+    function openBetPopup(type) {
+        // ১. selectedType আপডেট করা
+        selectedType = type; 
+
+        const popup = document.getElementById('bet-popup');
+        const title = document.getElementById('popup-title');
+        
+        // সব পুরনো ক্লাস মুছে ফেলা
+        popup.classList.remove('theme-big', 'theme-small', 'theme-red', 'theme-green', 'theme-violet', 'theme-num-red', 'theme-num-green', 'theme-num-mixed');
+
+        // ২. টেক্সট টাইপ চেক (Big, Small, Red, ইত্যাদি)
+        if (['Big', 'Small', 'Red', 'Green', 'Violet'].includes(type)) {
+            popup.classList.add('theme-' + type.toLowerCase());
+            title.innerText = "Select " + type;
+        } 
+        // ৩. নম্বর টাইপ চেক (০-৯)
+        else {
+            const num = parseInt(type);
+            title.innerText = "Select Number " + num;
+            
+            if (num === 0 || num === 5) {
+                popup.classList.add('theme-num-mixed'); 
+            } else if (num % 2 === 0) {
+                popup.classList.add('theme-num-red'); 
+            } else {
+                popup.classList.add('theme-num-green'); 
+            }
+        }
+
+        // ৪. পপআপ খোলার আগে রি-ক্যালকুলেশন এবং ডিসপ্লে
+        resetPopup(); 
+        popup.style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('bet-popup').style.display = 'none';
+    }
 
     function resetPopup() {
         quantity = 1;
         currentBase = 10;
-        document.getElementById('qty-val').innerText = quantity;
-        document.getElementById('custom-amount').value = currentBase;
+        if(document.getElementById('qty-val')) document.getElementById('qty-val').innerText = quantity;
+        if(document.getElementById('custom-amount')) document.getElementById('custom-amount').value = currentBase;
         
         // ডিফল্ট বাটন হাইলাইট
         document.querySelectorAll('.b-btn').forEach(b => {
             b.classList.remove('active');
             if(b.innerText.replace('৳', '') == '10') b.classList.add('active');
         });
-        calculateTotal();
+        if(typeof calculateTotal === "function") calculateTotal();
     }
 
     function setBase(val, btn) {
         currentBase = parseFloat(val) || 0;
-        document.getElementById('custom-amount').value = currentBase;
+        if(document.getElementById('custom-amount')) document.getElementById('custom-amount').value = currentBase;
         
         document.querySelectorAll('.b-btn').forEach(b => b.classList.remove('active'));
         if(btn) btn.classList.add('active');
-        calculateTotal();
+        if(typeof calculateTotal === "function") calculateTotal();
     }
-
-    function manualAmount() {
+function manualAmount() {
         let val = document.getElementById('custom-amount').value;
         currentBase = parseFloat(val) || 0;
         
@@ -4931,11 +5189,15 @@ function closePopup() {
         });
         calculateTotal();
     }
-
     function updateQty(v) {
         quantity = Math.max(1, quantity + v);
         document.getElementById('qty-val').innerText = quantity;
         calculateTotal();
+    }
+
+    function calculateTotal() {
+        let total = currentBase * quantity;
+        document.getElementById('total-bet').innerText = total.toFixed(2);
     }
 
     function calculateTotal() {
@@ -11001,7 +11263,31 @@ function openDirectSupport() {
         jivo_api.open();
     }
 }
+// পপআপ ওপেন করার ফাংশন
+function openHowToPlay() {
+    document.getElementById('htp-modal').style.display = 'block';
+}
 
+// পপআপ ক্লোজ করার ফাংশন
+function closeHowToPlay() {
+    document.getElementById('htp-modal').style.display = 'none';
+}
+
+// আপনার টাইমার ফাংশনের ডিসপ্লে লজিক এই রকম হবে (স্প্লিট কার্ডের জন্য):
+function updateDisplayTimer(minutes, seconds) {
+    const minStr = minutes.toString().padStart(2, '0');
+    const secStr = seconds.toString().padStart(2, '0');
+    
+    let timerHTML = `
+        <span class="flip-digit">${minStr[0]}</span><span class="flip-digit">${minStr[1]}</span>
+        <span style="font-size: 26px; font-weight: 900; color: white; margin: 0 2px;">:</span>
+        <span class="flip-digit">${secStr[0]}</span><span class="flip-digit">${secStr[1]}</span>
+    `;
+    
+    document.getElementById('timer').innerHTML = timerHTML;
+}
+
+// আপনার বিদ্যমান টাইমার লজিকের ভেতর updateDisplayTimer(min, sec); ফাংশনটি কল করবেন।
 </script>
 </body>
 </html>
