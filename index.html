@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINNER BD</title>
+    <title>FREE TIME EARN</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
@@ -2528,7 +2528,7 @@ div[onclick="toggleBloodModal()"]:active {
             
             <div style="text-align: center;">
                 <h1 style="font-weight: 800; margin: 0; line-height: 1; letter-spacing: 0.8px; font-size: 1.1rem; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
-                     <span style="color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); font-weight: 900;">WINNER BD</span>
+                    FREE TIME <span style="color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); font-weight: 900;">EARN</span>
                 </h1>
                 <small style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.8); letter-spacing: 1.5px; text-transform: uppercase;">Official Platform</small>
             </div>
@@ -2741,7 +2741,7 @@ function toggleSignupPassword() {
                 <i class="fas fa-wallet" style="color: #ff0000; font-size: 14px;"></i>
             </div>
             <h1 style="margin: 0; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 5px;">
-                <span style="font-weight: 900; color: white; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase;">WINNER BD</span>
+                <span style="font-weight: 900; color: white; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase;">FREE TIME EARN</span>
 
             </h1>
         </div>
@@ -2926,7 +2926,7 @@ function toggleSignupPassword() {
                 <h1 class="bg-text">EARN</h1>
                 <img src="https://img.icons8.com/ios-filled/512/ffffff/wallet.png" class="slider-logo">
                 <div class="cover-content">
-                    <h1>WINNER <span style="font-weight: 400; opacity: 0.9;">BD</span></h1>
+                    <h1>FREE TIME <span style="font-weight: 400; opacity: 0.9;">EARN</span></h1>
                     <p>বাংলাদেশের সবচেয়ে বিশ্বস্ত এবং সহজ অনলাইন ইনকাম প্ল্যাটফর্মে আপনাকে স্বাগতম।</p>
                 </div>
             </div>
@@ -3057,6 +3057,71 @@ function toggleSignupPassword() {
 </div>
 
 
+<div id="activation-card" style="display: block; margin: 20px 16px;">
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #990000 100%); padding: 20px; border-radius: 25px; color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; filter: blur(30px);"></div>
+        <div style="position: absolute; bottom: -20px; left: -10px; width: 80px; height: 80px; background: rgba(0, 0, 0, 0.2); border-radius: 50%; filter: blur(20px);"></div>
+
+        <div class="card-shine"></div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); width: 55px; height: 55px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1.5px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <span style="font-size: 10px; font-weight: 700; color: #ffd700; text-transform: uppercase;">Only</span>
+                    <span style="font-weight: 900; color: #ffffff; font-size: 16px; line-height: 1;">৳100</span>
+                </div>
+                
+                <div style="flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; font-size: 16px; letter-spacing: 0.5px; color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif;">
+                        Premium Access <i class="fas fa-gem" style="color: #ffd700; font-size: 12px; margin-left: 5px;"></i>
+                    </h6>
+                    <p style="margin: 4px 0 0; font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 500; line-height: 1.2;">
+                        Lifetime Account Activation & VIP Tasks
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="activateAccountNow()" class="activate-btn" style="background: #ffffff; color: #ff0000; border: none; padding: 12px 20px; border-radius: 15px; font-weight: 900; font-size: 12px; cursor: pointer; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap;">
+                ACTIVATE
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* কার্ডের ওপর দিয়ে যে সাদা আভা চলে যাবে (Shine Effect) */
+.card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite;
+    z-index: 1;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* বাটনের হোভার ইফেক্ট */
+.activate-btn:active {
+    transform: scale(0.92);
+}
+</style>
+
+<style>
+    /* বাটনটি ক্লিক করলে ছোট হবে এমন একটা এফেক্ট */
+    #activation-card button:active {
+        transform: scale(0.95);
+        background: #f0f0f0 !important;
+    }
+</style>
 
 
 
@@ -3077,74 +3142,311 @@ function toggleSignupPassword() {
     
 
 
-
-
-
-<div onclick="handleDriveOfferClick()" style="cursor: pointer; text-align: center; transition: 0.3s; opacity: 1 !important; pointer-events: auto !important; width: 100%; max-width: 120px; margin: 0 auto;">
+<div onclick="handleMicroJobClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle').style.transform='scale(1)'">
     
-    <div class="btn-large-card-wingo" style="width: 100%; height: 65px; border-radius: 15px; 
-                background: linear-gradient(135deg, #ff4d4d, #ff0000); 
+    <div class="btn-circle" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
-                margin: 0 auto 10px; 
-                box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25); 
-                border: 2px solid rgba(255, 255, 255, 0.4); 
-                transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                position: relative; overflow: hidden;">
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); pointer-events: none;"></div>
-        
-        <i class="fas fa-dice" style="color: #ffffff; font-size: 32px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));"></i>
+        <i class="fas fa-tasks" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 13px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 1px; text-transform: uppercase; font-family: 'Arial Black', sans-serif;">
-        Win Go
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Micro Job
+    </small>
+</div>
+
+<style>
+    /* বাটনে চাপ দিলে যাতে রিয়েল অ্যাপের মতো ফিল হয় */
+    div[onclick]:active {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+</style>
+
+<div onclick="handleAdsIncomeClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-ads').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-ads').style.transform='scale(1)'">
+    
+    <div class="btn-circle-ads" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-play-circle" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Ads Income
+    </small>
+</div>
+<div onclick="handleJobPostClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-post').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-post').style.transform='scale(1)'">
+    
+    <div class="btn-circle-post" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-file-signature" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Job Post
+    </small>
+</div>
+
+<div onclick="handleDriveOfferClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-drive').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-drive').style.transform='scale(1)'">
+    
+    <div class="btn-circle-drive" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-bolt" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Drive Offer
     </small>
 </div>
 
 
-<div onclick="handleShopClick()" style="cursor: pointer; text-align: center; transition: 0.3s; opacity: 1 !important; pointer-events: auto !important; width: 100%; max-width: 130px; margin: 0 auto;">
+<div onclick="handleShopClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-shop').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-shop').style.transform='scale(1)'">
     
-    <div class="btn-large-card-aviator" style="width: 100%; height: 65px; border-radius: 15px; 
-                background: linear-gradient(135deg, #ff4d4d, #ff0000); 
+    <div class="btn-circle-shop" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
-                margin: 0 auto 10px; 
-                box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25); 
-                border: 2px solid rgba(255, 255, 255, 0.4); 
-                transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                position: relative; overflow: hidden;">
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); pointer-events: none;"></div>
-        
-        <i class="fas fa-plane" style="color: #ffffff; font-size: 35px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3)); transform: rotate(-15deg);"></i>
+        <i class="fas fa-shopping-bag" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
     
-    <small style="font-size: 12px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.5px; text-transform: uppercase; font-family: 'Arial Black', sans-serif;">
-        Aviator
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Reseller Shop
     </small>
 </div>
-<div onclick="handleVendorClick()" style="cursor: pointer; text-align: center; transition: 0.3s; opacity: 1 !important; pointer-events: auto !important; width: 100%; max-width: 130px; margin: 0 auto;">
+
+<div onclick="handleVendorClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-vendor').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-vendor').style.transform='scale(1)'">
     
-    <div class="btn-large-card-vendor" style="width: 100%; height: 65px; border-radius: 15px; 
-                background: linear-gradient(135deg, #ff4d4d, #ff0000); 
+    <div class="btn-circle-vendor" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
                 display: flex; align-items: center; justify-content: center; 
-                margin: 0 auto 10px; 
-                box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25); 
-                border: 2px solid rgba(255, 255, 255, 0.4); 
-                transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                position: relative; overflow: hidden;">
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
         
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); pointer-events: none;"></div>
-        
-        <i class="fas fa-kiwi-bird" style="color: #ffffff; font-size: 35px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));"></i>
+        <i class="fas fa-user-tie" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
     </div>
-        <small style="font-size: 12px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.5px; text-transform: uppercase; font-family: 'Arial Black', sans-serif;">
-        CHIKEN ROAD
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Vendorship
     </small>
-
 </div>
 
 
+<div onclick="handleTopupClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-topup').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-topup').style.transform='scale(1)'">
+    
+    <div class="btn-circle-topup" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-gamepad" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Topup
+    </small>
+</div>
+<div onclick="handleTargetBonusClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-target').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-target').style.transform='scale(1)'">
+    
+    <div class="btn-circle-target" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-bullseye" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Target Bonus
+    </small>
+</div>
+<div onclick="handleLeaderClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-leader').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-leader').style.transform='scale(1)'">
+    
+    <div class="btn-circle-leader" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-crown" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Leadership
+    </small>
+</div>
 
+<div onclick="handleDigitalServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-digital').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-digital').style.transform='scale(1)'">
+    
+    <div class="btn-circle-digital" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-laptop-code" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Digital Service
+    </small>
+</div>
+<div onclick="handleSocialServiceClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-social').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-social').style.transform='scale(1)'">
+    
+    <div class="btn-circle-social" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-users" style="color: white; font-size: 20px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Social Service
+    </small>
+</div>
+<div onclick="handleBloodDonationClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-blood').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-blood').style.transform='scale(1)'">
+    
+    <div class="btn-circle-blood" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-hand-holding-heart" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Blood Donation
+    </small>
+</div>
+
+
+<div onclick="handleTrainingClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-training').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-training').style.transform='scale(1)'">
+    
+    <div class="btn-circle-training" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-graduation-cap" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Training Section
+    </small>
+</div>
+
+
+<div onclick="handleInvestClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-invest').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-invest').style.transform='scale(1)'">
+    
+    <div class="btn-circle-invest" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-chart-line" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        Investment
+    </small>
+</div>
+<div onclick="handleMoreOptionsClick()" style="cursor: pointer; text-align: center; transition: 0.3s;" 
+     onmouseover="this.querySelector('.btn-circle-more').style.transform='scale(1.08)'" 
+     onmouseout="this.querySelector('.btn-circle-more').style.transform='scale(1)'">
+    
+    <div class="btn-circle-more" style="width: 55px; height: 55px; border-radius: 50%; 
+                background: #ff0000; 
+                display: flex; align-items: center; justify-content: center; 
+                margin: 0 auto 8px; 
+                box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2); 
+                border: 2px solid rgba(255, 255, 255, 0.3); 
+                transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        
+        <i class="fas fa-plus" style="color: white; font-size: 22px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));"></i>
+    </div>
+    
+    <small style="font-size: 10px; font-weight: 900; color: #ff0000; display: block; letter-spacing: 0.8px; text-transform: uppercase; opacity: 1;">
+        More Options
+    </small>
+</div>
 
     </div>
 </div>
@@ -3391,13 +3693,13 @@ function toggleSignupPassword() {
     </div>
 
     <div class="container px-3 mt-4">
-
         <div style="background: #e60000; padding: 25px; border-radius: 24px; color: white; margin-bottom: 25px; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden;">
             <span style="font-size: 12px; opacity: 0.9; font-weight: 600; text-transform: uppercase;">Available Balance</span>
             <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
                 <h2 style="margin: 0; font-weight: 900; font-size: 40px;">৳ <span id="withdraw-bal">0.00</span></h2>
             </div>
         </div>
+
         <p style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px;">Select Payout Method</p>
 
 
@@ -4479,1176 +4781,100 @@ function toggleSignupPassword() {
         background: #f8fafc;
     }
 </style>
-
-
-<div id="p-drive" class="p-page" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #FF1493; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
-
-    <div style="padding: 15px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 101; background: #FF1493;">
-<i class="fas fa-chevron-left" 
-   style="font-size: 20px; color: #333; cursor: pointer;" 
-   onclick="document.getElementById('p-drive').style.display='none'"></i>
-        <h4 style="margin: 0; font-weight: 800; color: #333;">WINNER BD</h4>
-        <div style="display: flex; gap: 15px;">
-
-            <i class="fas fa-history" style="font-size: 18px; color: #333; cursor: pointer;" onclick="openFullHistory()"></i>
-        </div>
-    </div>
-
-<div style="padding: 0 15px;">
-    <div style="background: white; border-radius: 20px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
-        
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <div style="font-size: 32px; font-weight: 900; color: #1a1a1a; margin-left: 30px;">
-                ৳ <span id="wingo-balance">0.00</span>
-            </div>
-            
-            <div id="refresh-btn" onclick="manualRefreshBalance()" style="cursor: pointer; color: #666; background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;">
-                <i class="fas fa-sync-alt" id="refresh-icon" style="font-size: 14px;"></i>
-            </div>
-        </div>
-
-        <div style="color: #666; font-size: 14px; margin-top: 5px;">
-            <i class="fas fa-wallet" style="color: #f1c40f;"></i> Available balance
-       </div>
-<div style="display: flex; gap: 15px; margin-top: 15px; padding: 0 10px;">
-    <button onclick="openPage('p-withdraw')" style="flex:1; background:#ff7675; color:white; border:none; padding: 8px; border-radius:30px; font-weight:700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(255, 118, 117, 0.2);">
-        Withdraw
-    </button>
+<div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <button onclick="openPage('p-fund')" style="flex:1; background:#2ecc71; color:white; border:none; padding: 8px; border-radius:30px; font-weight:700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);">
-        Deposit
-    </button>
-</div>
-    </div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-    /* মেইন টিকিট কন্টেইনার */
-    .wingo-ticket {
-        background-color: #FF1493; /* গোল্ডেন হলুদ */
-        border-radius: 20px;
-        position: relative;
-        padding: 20px 25px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 15px;
-        box-shadow: 0 5px 25px rgba(241, 196, 15, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        overflow: hidden;
-    }
-
-    /* ফটোর মতো বাম ও ডানের টিকিট কাট ইফেক্ট */
-    .wingo-ticket::before,
-    .wingo-ticket::after {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #f7f8ff; /* আপনার পেজের ব্যাকগ্রাউন্ড কালার দিন */
-        z-index: 1;
-    }
-
-    .wingo-ticket::before {
-        left: -15px;
-        top: calc(50% - 15px);
-        box-shadow: inset -5px 0 10px rgba(0,0,0,0.1);
-    }
-
-    .wingo-ticket::after {
-        right: -15px;
-        top: calc(50% - 15px);
-        box-shadow: inset 5px 0 10px rgba(0,0,0,0.1);
-    }
-
-    /* ড্যাশড্ সেপারেটর লাইন */
-    .ticket-divider {
-        position: absolute;
-        left: 48%; /* ছবির মতো একটু বামে */
-        top: 10%;
-        bottom: 10%;
-        width: 0px;
-        border-left: 2px dashed rgba(255, 255, 255, 0.4);
-    }
-
-    /* রেজাল্ট বল (ফটোর মতো) */
-    .result-ball {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 800;
-        font-size: 16px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        border: 2px solid white;
-    }
-
-    /* টাইমার বক্স (ফটোর মতো স্প্লিট-কার্ড ফিল) */
-    .flip-digit {
-        display: inline-block;
-        background: #fff;
-        border-radius: 6px;
-        padding: 8px 10px;
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 26px;
-        font-weight: 900;
-        color: #333;
-        margin: 0 2px;
-        line-height: 1;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        letter-spacing: 0;
-    }
-
-    /* পপআপ মডাল */
-    #htp-modal {
-        display: none;
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.6);
-        z-index: 9999;
-        backdrop-filter: blur(5px);
-        transition: 0.3s;
-    }
-
-    .modal-content {
-        position: relative;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 30px;
-        border-radius: 25px;
-        width: 85%;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-    }
-
-    .profit-table {
-        width: 100%; margin-top: 20px;
-        border-collapse: collapse; text-align: left;
-        font-size: 13px;
-    }
-
-    .profit-table th, .profit-table td {
-        padding: 12px 10px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .profit-table th { background-color: #f8f9fa; }
-    .profit-table .green { color: #2ecc71; font-weight: bold; }
-    .profit-table .violet { color: #a55eea; font-weight: bold; }
-    .profit-table .red { color: #ff4d4d; font-weight: bold; }
-</style>
-<div style="background: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; padding: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); margin: 3px; border: 1px solid #f0f0f0;">
-    
-    <div style="background: #FF1493; padding: 8px 4px; border-radius: 10px; text-align: center; flex: 1; margin: 0 4px; cursor: pointer;">
-        <div style="background: rgba(255,255,255,0.25); width: 32px; height: 32px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1.5px solid white;">
-            <i class="fas fa-clock" style="color: white; font-size: 16px;"></i>
-        </div>
-        <div style="color: white; font-size: 10px; font-weight: 700; margin-top: 5px; line-height: 1.1;">WinGo<br>30sec</div>
-    </div>
-
-    <div style="text-align: center; flex: 1; margin: 0 4px; cursor: pointer;">
-        <div style="background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1px solid #e0e0e0;">
-            <i class="fas fa-clock" style="color: #adb5bd; font-size: 16px;"></i>
-        </div>
-        <div style="color: #6c757d; font-size: 10px; font-weight: 600; margin-top: 5px; line-height: 1.1;">WinGo 1<br>Min</div>
-    </div>
-
-    <div style="text-align: center; flex: 1; margin: 0 4px; cursor: pointer;">
-        <div style="background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1px solid #e0e0e0;">
-            <i class="fas fa-clock" style="color: #adb5bd; font-size: 16px;"></i>
-        </div>
-        <div style="color: #6c757d; font-size: 10px; font-weight: 600; margin-top: 5px; line-height: 1.1;">WinGo 3<br>Min</div>
-    </div>
-
-    <div style="text-align: center; flex: 1; margin: 0 4px; cursor: pointer;">
-        <div style="background: #f8f9fa; width: 32px; height: 32px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1px solid #e0e0e0;">
-            <i class="fas fa-clock" style="color: #adb5bd; font-size: 16px;"></i>
-        </div>
-        <div style="color: #6c757d; font-size: 10px; font-weight: 600; margin-top: 5px; line-height: 1.1;">WinGo 5<br>Min</div>
-    </div>
-</div>
-
-<div class="wingo-ticket" style="margin: 3px;">
-    <div class="ticket-divider"></div>
-
-    <div style="flex: 1; position: relative; z-index: 2;">
-        <button onclick="openHowToPlay()" style="background: rgba(255, 255, 255, 0.1); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-            <i class="fas fa-list-ul"></i> How to play
-        </button>
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
         
-        <div style="margin-top: 15px; color: white; font-weight: 700; font-size: 13px;">WinGo 30sec</div>
-
-        <div id="last-5-results" style="display: flex; gap: 7px; margin-top: 10px;">
-            <div class="result-ball" style="background: linear-gradient(135deg, #ff4d4d, #c0392b);">8</div>
-            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">1</div>
-            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">9</div>
-            <div class="result-ball" style="background: linear-gradient(135deg, #ff4d4d, #c0392b);">2</div>
-            <div class="result-ball" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">9</div>
-        </div>
-    </div>
-    
-    <div style="flex: 1; text-align: right; position: relative; z-index: 2; padding-left: 20px;">
-        <div style="font-size: 11px; color: rgba(255, 255, 255, 0.8); font-weight: 700; text-transform: uppercase;">Time remaining</div>
-        
-        <div id="timer" style="margin-top: 8px;">
-            <span class="flip-digit">0</span><span class="flip-digit">0</span>
-            <span style="font-size: 26px; font-weight: 900; color: white; margin: 0 2px;">:</span>
-            <span class="flip-digit">2</span><span class="flip-digit">2</span>
-        </div>
-
-        <div id="period-id" style="font-size: 13px; font-weight: 800; color: white; margin-top: 12px;">20260430100050177</div>
-    </div>
-</div>
-
-<div id="htp-modal">
-    <div class="modal-content">
-        <i class="fas fa-list-ul" style="font-size: 40px; color: #F1C40F; background: #fffdf0; padding: 20px; border-radius: 50%; box-shadow: 0 5px 15px rgba(241, 196, 15, 0.1);"></i>
-        
-        <h3 style="margin-top: 20px; font-weight: 900; color: #333; font-size: 22px;">How to play</h3>
-        <p style="color: #777; font-size: 14px; margin-top: 5px;">Below is the profit structure for different betting options:</p>
-        
-        <table class="profit-table">
-            <tr>
-                <th>Bet On</th>
-                <th>Result</th>
-                <th>Profit Ratio</th>
-            }
-            <tr>
-                <td class="green">Green</td>
-                <td>1, 3, 7, 9</td>
-                <td>1 : 2</td>
-            }
-            <tr>
-                <td class="red">Red</td>
-                <td>2, 4, 6, 8</td>
-                <td>1 : 2</td>
-            }
-            <tr>
-                <td class="violet">Violet</td>
-                <td>0, 5</td>
-                <td>1 : 4.5</td>
-            }
-            <tr>
-                <td>Numbers</td>
-                <td>0-9</td>
-                <td>1 : 9</td>
-            }
-            <tr style="border-bottom: none;">
-                <td>Size</td>
-                <td>Big/Small</td>
-                <td>1 : 2</td>
-            }
-        </table>
-        
-        <button onclick="closeHowToPlay()" style="width: 100%; margin-top: 25px; background: #333; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: 700; font-size: 16px; cursor: pointer;">Got it!</button>
-    </div>
-</div>
-
-<!-- Betting Area Start -->
-<div id="betting-area" style="background: white; border-radius: 0 0 20px 20px; padding: 20px 15px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-    
-    <!-- Color Buttons (Curved Design) -->
-    <div style="display: flex; gap: 12px; margin-bottom: 25px;">
-        <button onclick="openBetPopup('Green')" style="flex:1; background: #28a745; color:white; border:none; padding:12px; border-radius: 12px 12px 0 12px; font-weight:700; font-size:16px; box-shadow: 0 4px 0 #1e7e34;">Green</button>
-        <button onclick="openBetPopup('Violet')" style="flex:1; background: #b197fc; color:white; border:none; padding:12px; border-radius: 8px; font-weight:700; font-size:16px; box-shadow: 0 4px 0 #9172f3;">Violet</button>
-        <button onclick="openBetPopup('Red')" style="flex:1; background: #ff4d4d; color:white; border:none; padding:12px; border-radius: 12px 12px 12px 0; font-weight:700; font-size:16px; box-shadow: 0 4px 0 #d93636;">Red</button>
-    </div>
-
-    <!-- Number Buttons (Professional Ball Style) -->
-    <div style="background: #f1f3f5; padding: 20px 15px; border-radius: 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px;">
-        
-        <!-- 0 (Mixed Red/Violet) -->
-<div onclick="openBetPopup(0)" class="n-btn" style="background: #b197fc; color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">0</div>
-        
-        <!-- 1, 3, 7, 9 (Green Ball) -->
-        <div onclick="openBetPopup(1)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #51cf66, #2b8a3e); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">1</div>
-        
-        <!-- 2, 4, 6, 8 (Red Ball) -->
-        <div onclick="openBetPopup(2)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">2</div>
-        
-        <div onclick="openBetPopup(3)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #51cf66, #2b8a3e); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">3</div>
-        
-        <div onclick="openBetPopup(4)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">4</div>
-        
-<!-- 5 (Violet) -->
-<div onclick="openBetPopup(5)" class="n-btn" style="background: #b197fc; color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">5</div>
-        
-        <div onclick="openBetPopup(6)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">6</div>
-        
-        <div onclick="openBetPopup(7)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #51cf66, #2b8a3e); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">7</div>
-        
-        <div onclick="openBetPopup(8)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">8</div>
-        
-        <div onclick="openBetPopup(9)" class="n-btn" style="background: radial-gradient(circle at 30% 30%, #51cf66, #2b8a3e); color: white; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-size: 20px; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); cursor: pointer;">9</div>
-    </div>
-
-            <div style="display: flex; gap: 12px;">
-                <button onclick="openBetPopup('Big')" style="flex: 1; background: #ffbe76; color: white; border: none; padding: 15px; border-radius: 30px 5px 5px 30px; font-weight: 800; font-size: 18px;">Big</button>
-                <button onclick="openBetPopup('Small')" style="flex: 1; background: #70a1ff; color: white; border: none; padding: 15px; border-radius: 5px 30px 30px 5px; font-weight: 800; font-size: 18px;">Small</button>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Drive Offers</h5>
             </div>
 
-    <!-- Lock Overlay -->
-    <div id="lock-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.85); z-index: 10; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(4px); border-radius: 20px;">
-        <div id="lock-sec" style="font-size: 80px; font-weight: 900; color: #ff4757; text-shadow: 2px 2px 10px rgba(0,0,0,0.1);">5</div>
-    </div>
-</div>
 
+      
 
-
-<div style="margin-top: 20px;">
-    <div style="display: flex; gap: 5px; margin-bottom: 10px; background: #eee; padding: 5px; border-radius: 10px;">
-        <button onclick="switchTab('game')" id="btn-game" class="tab-btn active-tab" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">Game History</button>
-        <button onclick="switchTab('chart')" id="btn-chart" class="tab-btn" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">Chart</button>
-        <button onclick="switchTab('my')" id="btn-my" class="tab-btn" style="flex:1; border:none; padding:8px; border-radius:8px; font-size:12px; cursor:pointer;">My History</button>
-    </div>
-
-    <div id="game-history-content">
-        <div id="game-list" style="background:white; border-radius:15px; padding:5px;"></div>
-    </div>
-
-    <div id="chart-content" style="display:none; background:white; border-radius:15px; padding:10px; overflow-x: auto;">
-        <div style="position: relative; min-width: 320px;">
-            <canvas id="trendCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none; z-index: 1;"></canvas>
-            <table id="chartTable" style="width: 100%; border-collapse: collapse; text-align: center; position: relative; z-index: 2; font-size: 11px;">
-                <thead>
-                    <tr style="color: #999; border-bottom: 1px solid #f5f5f5;">
-                        <th style="padding: 10px 2px;">Period</th>
-                        <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th>
-                        <th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-                    </tr>
-                </thead>
-                <tbody id="chartBody"></tbody>
-            </table>
+            <div onclick="openDriveHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+            </div>
         </div>
     </div>
 
-    <div id="my-history-content" style="display:none;">
-        <div id="my-list" style="background:white; border-radius:15px; padding:5px;"></div>
-    </div>
-</div>
-    </div>
-</div>
-<div id="result-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center; font-family: sans-serif; overflow: hidden;">
-      <div id="popup-wrapper" style="width:285px; position:relative; text-align: center;">
-        <div id="confetti-container" style="position:absolute; top:-100px; left:0; width:100%; height:200%; pointer-events:none; z-index: 5;"></div>
-        
-        <div class="header-assets" style="position:absolute; top:-55px; left:50%; transform:translateX(-50%); width:100%; display:flex; justify-content:center; align-items:center; z-index:20;">
-            <div style="position:absolute; left:10px; bottom:30px; width:95px; height:35px; background:linear-gradient(180deg, #ffca64 0%, #ff9d2f 100%); clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 80%); border-radius: 5px 20px 5px 40px;"></div>
-            <div style="position:absolute; right:10px; bottom:30px; width:95px; height:35px; background:linear-gradient(180deg, #ffca64 0%, #ff9d2f 100%); clip-path: polygon(0% 0%, 100% 50%, 100% 80%, 0% 100%); border-radius: 20px 5px 40px 5px;"></div>
-            <div id="pop-header-circle" style="position:relative; width:90px; height:90px; background:linear-gradient(180deg, #ffeaa7 0%, #ff9d2f 100%); border-radius:50%; border:5px solid #fff; display:flex; justify-content:center; align-items:center; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index:25;">
-                <svg viewBox="0 0 24 24" style="width:55px; height:55px;"><path d="M12 2L14.5 9H21L15.5 13L17.5 21L12 17L6.5 21L8.5 13L3 9H9.5L12 2Z" fill="#ff7675" stroke="#fff" stroke-width="1"/></svg>
+    <div class="container mt-3">
+        <div style="background: #e0f7fa; border-radius: 15px; padding: 12px; border-left: 5px solid #17a2b8; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 12px; color: #006064; font-weight: 600;">
+                <i class="fas fa-bolt me-2"></i> নোটিশ: ড্রাইভ অফার সচল হওয়ার সময় ৫-৩০ মিনিট। সঠিক নম্বর প্রদান করুন।
+            </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
+            <div onclick="filterDrive('all')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid #17a2b8;">All</div>
+            </div>
+            <div onclick="filterDrive('gp')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">GP</small>
+            </div>
+            <div onclick="filterDrive('robi')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Robi</small>
+            </div>
+            <div onclick="filterDrive('airtel')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Airtel_logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Airtel</small>
+            </div>
+            <div onclick="filterDrive('bl')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Banglalink_Logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">BL</small>
+            </div>
+            <div onclick="filterDrive('teletalk')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Teletalk_Logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Teletalk</small>
+            </div>
+            <div onclick="filterDrive('skitto')" style="min-width: 60px; text-align: center; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Skitto_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
+                <small style="font-size: 10px; font-weight: 700;">Skitto</small>
             </div>
         </div>
 
-        <div id="popup-card" style="background: linear-gradient(180deg, #f76e6d 0%, #d63031 100%); border-radius:35px; padding:50px 15px 20px 15px; position:relative; box-shadow: 0 15px 40px rgba(0,0,0,0.5); z-index: 10;">
-            <h1 id="pop-title" style="color:#fff; margin:10px 0; font-size:24px; font-weight:800;">Congratulations</h1>
-            <div style="display:flex; justify-content:center; align-items:center; gap:6px; margin-bottom:15px; color:#fff; font-size:11px;">
-                Lottery results <span id="res-color" style="padding:4px 10px; border-radius:6px; font-weight:bold;">Green</span>
-                <div id="res-num" style="width:24px; height:24px; border-radius:50%; border:2px solid #fff; display:flex; align-items:center; justify-content:center; font-weight:bold;">3</div>
-                <span id="res-size" style="padding:4px 10px; border-radius:6px; font-weight:bold;">Small</span>
-            </div>
-            <div class="receipt-box" style="position:relative; margin-top:15px; height:140px; perspective:1000px;">
-                <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:90%; height:20px; background:rgba(120, 10, 10, 0.9); border-radius:12px; z-index:5;"></div>
-                <div class="white-paper" style="position:absolute; top:10px; left:7%; width:86%; background:#fff; border-radius:0 0 10px 10px; padding:15px 10px; z-index:4; transform:rotateX(-10deg); transform-origin:top;">
-                    <div style="color:#d63031; font-weight:bold; font-size:13px;">Bonus</div>
-                    <div id="pop-amount" style="color:#d63031; font-size:34px; font-weight:900;">৳0.00</div>
-                    <div id="pop-period" style="color:#999; font-size:10px;">Period: WinGo 30sec <br> <b id="actual-period-text">00000000</b></div>
+        <div id="drive-list-container">
+            <div class="drive-card gp" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 10px;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৪০ জিবি + ৮০০ মিনিট (৩০ দিন)</h6>
+                    <small style="color: #666; display: block;">সারা বাংলাদেশ পাবে</small>
+                    <b style="color: #e67e22; font-size: 16px;">৳ ৫৯৯</b>
                 </div>
+                <button onclick="showOrderPopup('৪০ জিবি ৮০০ মিনিট', 599)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
             </div>
-            <div style="margin-top:25px; color:rgba(255,255,255,0.8); font-size:11px;">○ 3 seconds auto close</div>
-        </div>
-        <div onclick="closeResultPopup()" style="margin-top:25px; cursor:pointer; z-index: 10; position: relative;">
-            <div style="width:40px; height:40px; border:2px solid #fff; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:22px; background:rgba(255,255,255,0.1);">×</div>
-        </div>
-    </div>
-</div>
 
-<style>
-/* পপআপ আসার এনিমেশন */
-@keyframes zoomIn {
-    from { transform: scale(0.5) translateY(20px); opacity: 0; }
-    to { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-/* লোডিং স্পিনার এনিমেশন */
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* মোবাইল রেসপন্সিভ এডজাস্টমেন্ট */
-#popup-card {
-    user-select: none;
-}
-</style>
-<style>
-    .active-tab {
-        background: #fff !important;
-        color: #ff4d4d !important;
-        font-weight: bold;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .tab-btn {
-        transition: all 0.3s ease;
-    }
-</style>
-<div id="full-history-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:3000; overflow-y:auto;">
-    <div style="padding:15px; display:flex; align-items:center; border-bottom:1px solid #eee; position:sticky; top:0; background:white;">
-        <i class="fas fa-times" style="font-size:20px; margin-right:15px; cursor:pointer;" onclick="closeFullHistory()"></i>
-        <h3 style="margin:0;">Detailed History</h3>
-    </div>
-    <div id="full-history-list" style="padding:10px;"></div>
-</div>
-<style>
-    /* ডাইনামিক থিম কালারগুলো */
-    .theme-big { --main-color: #f1c40f; --bg-light: #fef9e7; }
-    .theme-small { --main-color: #9b59b6; --bg-light: #f5eef8; }
-    .theme-red { --main-color: #ff4d4d; --bg-light: #ffeded; }
-    .theme-green { --main-color: #2ecc71; --bg-light: #eafaf1; }
-    .theme-violet { --main-color: #9b59b6; --bg-light: #f5eef8; } /* ভায়োলেট যোগ করা হলো */
-    
-    /* নম্বরের জন্য বিশেষ কালার (০ এবং ৫ রেড-ভায়োলেট মিক্স থাকে সাধারণত) */
-    .theme-num-red { --main-color: #ff4d4d; --bg-light: #ffeded; }
-    .theme-num-green { --main-color: #2ecc71; --bg-light: #eafaf1; }
-    .theme-num-mixed { --main-color: #7d5fff; --bg-light: #f0edff; } /* ০ এবং ৫ এর জন্য */
-
-    .b-btn.active { background: var(--main-color) !important; color: white !important; border-color: var(--main-color) !important; }
-    .confirm-btn { background: var(--main-color) !important; }
-    #popup-title { color: var(--main-color) !important; }
-</style>
-
-<div id="bet-popup" class="theme-big" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2000; align-items:flex-end; backdrop-filter: blur(4px);">
-    <div class="popup-content" style="width:100%; background:#fff; border-radius:30px 30px 0 0; padding:24px; box-sizing: border-box; animation: slideUp 0.3s cubic-bezier(0.25, 1, 0.5, 1);">
-        
-        <div style="width: 50px; height: 5px; background: #e0e0e0; border-radius: 10px; margin: 0 auto 20px;"></div>
-        
-        <div id="popup-header" style="background: var(--bg-light); padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
-            <h3 id="popup-title" style="margin:0; font-family: sans-serif; color: var(--main-color); text-transform: uppercase; letter-spacing: 1px;">Big</h3>
-        </div>
-        
-        <div style="margin-bottom:20px;">
-            <p style="font-size:13px; color:#888; margin-bottom:12px; font-weight: 700; text-transform: uppercase;">Select Amount</p>
-            <div style="display:flex; gap:10px; margin-bottom:15px;">
-                <button class="b-btn active" onclick="setBase(10, this)">৳10</button>
-                <button class="b-btn" onclick="setBase(100, this)">৳100</button>
-                <button class="b-btn" onclick="setBase(1000, this)">৳1000</button>
-            </div>
-            
-            <div style="position: relative; display: flex; align-items: center;">
-                <span style="position: absolute; left: 15px; color: var(--main-color); font-weight: bold; font-size: 18px;">৳</span>
-                <input type="number" id="custom-amount" value="10" oninput="manualAmount()" 
-                    style="width: 100%; padding: 15px 15px 15px 40px; border-radius: 15px; border: 2px solid #eee; font-size: 18px; outline: none; transition: 0.3s; font-weight: 700; color: #333;"
-                    placeholder="0.00">
-            </div>
-        </div>
-
-        <div style="margin-bottom:25px; display: flex; justify-content: space-between; align-items: center; background: #fcfcfc; padding: 18px; border-radius: 15px; border: 1px solid #f0f0f0;">
-            <p style="font-size:14px; color:#555; margin:0; font-weight: 700;">Quantity</p>
-            <div style="display:flex; align-items:center; gap:15px;">
-                <button onclick="updateQty(-1)" style="width:36px; height:36px; border-radius: 10px; border:1px solid #ddd; background:#fff; cursor:pointer; font-size: 20px; font-weight: bold;">-</button>
-                <span id="qty-val" style="font-weight:900; font-size:22px; color: #222; min-width: 30px; text-align: center;">1</span>
-                <button onclick="updateQty(1)" style="width:36px; height:36px; border-radius: 10px; border:none; background: var(--main-color); color:#fff; cursor:pointer; font-size: 20px; font-weight: bold;">+</button>
-            </div>
-        </div>
-
-        <div style="display:flex; gap:12px;">
-                      <button onclick="closePopup()" style="flex:1; padding:18px; border-radius:18px; background:#f5f5f5; border:none; cursor:pointer; font-weight: 700; color: #999; font-size: 14px;">Cancel</button>
-            <button class="confirm-btn" onclick="confirmBet()" style="flex:2.5; padding:18px; border-radius:18px; color:#fff; font-weight: 900; border:none; cursor:pointer; font-size: 17px;">Confirm ৳<span id="total-bet">10</span></button>
-            
-
-        </div>
-    </div>
-</div>
-
-<div id="bet-success-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:20000; pointer-events:none;">
-    <div style="background: rgba(0, 0, 0, 0.8); color: white; padding: 8px 20px; border-radius: 30px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: fadeInUp 0.4s ease-out; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1);">
-        <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 8px;"></i> Bet Success
-    </div>
-</div>
-
-<style>
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-</style>
-
-
-<style>
-    @keyframes slideUp {
-        from { transform: translateY(100%); }
-        to { transform: translateY(0); }
-    }
-    .b-btn {
-        flex: 1;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1.5px solid #eee;
-        background: #fff;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.2s;
-        color: #555;
-    }
-    .b-btn.active {
-        background: #FF1493;
-        border-color: #FF1493;
-        color: #000;
-    }
-    #custom-amount:focus {
-        border-color: #FF1493;
-        background: #fffef5;
-    }
-    /* Hide arrows in number input */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-</style>
-
-<style>
-    .n-btn { width:40px; height:40px; border-radius:50%; color:white; display:flex; align-items:center; justify-content:center; font-weight:900; cursor:pointer; font-size: 14px;}
-    .b-btn { flex:1; padding:10px; border:1px solid #eee; border-radius:8px; background:white; cursor:pointer;}
-    .b-btn.active { background:
-    #FF1493; border-color:#FF1493; color:#333; font-weight:700; }
-    .tab-btn { padding:10px; border-radius:8px; border:1px solid #ddd; background:#fff; color: #666; cursor:pointer; transition: 0.3s;}
-    .active-tab { background:#FF1493 !important; border:none !important; font-weight:700; color: #333 !important;}
-    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    @keyframes popScale { from { transform: scale(0.7); opacity:0; } to { transform: scale(1); opacity:1; } }
-</style>
-<script>
-    // --- গ্লোবাল ভেরিয়েবল এবং ইনিশিয়ালাইজেশন ---
-    let userId = localStorage.getItem('current_user_id') || 'user_1';
-    const BALANCE_IDS = ['u-bal', 'withdraw-bal', 'wingo-balance'];
-    let gameHistory = JSON.parse(localStorage.getItem('game_history_global') || '[]');
-    let myBets = JSON.parse(localStorage.getItem(`my_bets_${userId}`) || '[]');
-    let currentPeriod = 0;
-    const DURATION = 30;
-
-    let selectedType = '';
-    let currentBase = 10;
-    let quantity = 1;
-
-    // --- ব্যালেন্স হ্যান্ডলিং ---
-    function getBalance() {
-        for (let id of BALANCE_IDS) {
-            const el = document.getElementById(id);
-            if (el && el.innerText.trim() !== "" && el.innerText !== "0.00") {
-                return parseFloat(el.innerText.replace(/[^\d.-]/g, '')) || 0.00;
-            }
-        }
-        return parseFloat(localStorage.getItem(`balance_${userId}`)) || 0.00;
-    }
-
-    function setBalance(amount) {
-        const formatted = amount.toFixed(2);
-        BALANCE_IDS.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.innerText = formatted;
-        });
-        localStorage.setItem(`balance_${userId}`, formatted);
-    }
-
-function openBetPopup(type) {
-    // ১. এই লাইনটিই আপনার প্রধান সমস্যার সমাধান (selectedType আপডেট করা)
-    selectedType = type; 
-
-    const popup = document.getElementById('bet-popup');
-    const title = document.getElementById('popup-title');
-    
-    // সব পুরনো ক্লাস মুছে ফেলা
-    popup.classList.remove('theme-big', 'theme-small', 'theme-red', 'theme-green', 'theme-violet', 'theme-num-red', 'theme-num-green', 'theme-num-mixed');
-
-    // ২. টেক্সট টাইপ চেক (Big, Small, Red, ইত্যাদি)
-    if (['Big', 'Small', 'Red', 'Green', 'Violet'].includes(type)) {
-        popup.classList.add('theme-' + type.toLowerCase());
-        title.innerText = "Select " + type;
-    } 
-    // ৩. নম্বর টাইপ চেক (০-৯)
-    else {
-        const num = parseInt(type);
-        title.innerText = "Select Number " + num;
-        
-        if (num === 0 || num === 5) {
-            popup.classList.add('theme-num-mixed'); 
-        } else if (num % 2 === 0) {
-            popup.classList.add('theme-num-red'); 
-        } else {
-            popup.classList.add('theme-num-green'); 
-        }
-    }
-
-    // ৪. পপআপ খোলার আগে রি-ক্যালকুলেশন এবং ডিসপ্লে
-    resetPopup(); 
-    popup.style.display = 'flex';
-}
-
-function closePopup() {
-    document.getElementById('bet-popup').style.display = 'none';
-}
-
-    function resetPopup() {
-        quantity = 1;
-        currentBase = 10;
-        document.getElementById('qty-val').innerText = quantity;
-        document.getElementById('custom-amount').value = currentBase;
-        
-        // ডিফল্ট বাটন হাইলাইট
-        document.querySelectorAll('.b-btn').forEach(b => {
-            b.classList.remove('active');
-            if(b.innerText.replace('৳', '') == '10') b.classList.add('active');
-        });
-        calculateTotal();
-    }
-
-    function setBase(val, btn) {
-        currentBase = parseFloat(val) || 0;
-        document.getElementById('custom-amount').value = currentBase;
-        
-        document.querySelectorAll('.b-btn').forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
-        calculateTotal();
-    }
-
-    function manualAmount() {
-        let val = document.getElementById('custom-amount').value;
-        currentBase = parseFloat(val) || 0;
-        
-        document.querySelectorAll('.b-btn').forEach(b => {
-            if(b.innerText.replace('৳', '') == val) {
-                b.classList.add('active');
-            } else {
-                b.classList.remove('active');
-            }
-        });
-        calculateTotal();
-    }
-
-    function updateQty(v) {
-        quantity = Math.max(1, quantity + v);
-        document.getElementById('qty-val').innerText = quantity;
-        calculateTotal();
-    }
-
-    function calculateTotal() {
-        let total = currentBase * quantity;
-        document.getElementById('total-bet').innerText = total.toFixed(2);
-    }
-    function showBetSuccess() {
-    const betPopup = document.getElementById('bet-success-popup');
-    
-    // পপআপ দেখাবে
-    betPopup.style.display = 'flex';
-    
-    // ১.৫ সেকেন্ড পর অটো বন্ধ হয়ে যাবে
-    setTimeout(() => {
-        betPopup.style.display = 'none';
-    }, 1500);
-}
-function confirmBet() {
-        let total = currentBase * quantity;
-        let cb = getBalance();
-
-        if(total <= 0) {
-            alert("Please enter a valid amount!");
-            return;
-        }
-
-        if(cb < total) {
-            alert("Insufficient Balance!");
-            return;
-        }
-
-        // ব্যালেন্স কাটা এবং বেট সেভ করা
-        setBalance(cb - total);
-        let val = isNaN(selectedType) ? selectedType : parseInt(selectedType);
-        
-        myBets.unshift({ 
-    period: currentPeriod + 1, 
-    type: val, 
-    amount: total, 
-    status: 'pending',
-    time: new Date().toLocaleString() // এই লাইনটি নিশ্চিত করুন
-});
-        localStorage.setItem(`my_bets_${userId}`, JSON.stringify(myBets.slice(0, 50)));
-        renderMyHistory();
-        closePopup();
-        showBetSuccess();
-    }
-
-    // --- টাইমার এবং লক সিস্টেম ---
-    setInterval(() => {
-        const now = Math.floor(Date.now() / 1000);
-        const timeLeft = DURATION - (now % DURATION);
-        const pId = Math.floor(now / DURATION);
-
-        document.getElementById('timer').innerText = `00:${timeLeft < 10 ? '0'+timeLeft : timeLeft}`;
-        document.getElementById('period-id').innerText = `Period: ${pId + 1}`;
-        currentPeriod = pId;
-
-        const lockOverlay = document.getElementById('lock-overlay');
-        const lockSec = document.getElementById('lock-sec');
-
-        if(timeLeft <= 5) {
-            if(lockOverlay) lockOverlay.style.display = 'flex';
-            if(lockSec) lockSec.innerText = timeLeft;
-            closePopup(); 
-        } else {
-            if(lockOverlay) lockOverlay.style.display = 'none';
-        }
-
-        if(timeLeft === DURATION) {
-            syncMarket();
-        }
-            // আপনার বেট লজিক শেষে...
-
-    }, 1000);
-
-function syncMarket() {
-    const now = Math.floor(Date.now() / 1000);
-    const actualPeriod = Math.floor(now / DURATION);
-    let lastSync = parseInt(localStorage.getItem('last_sync_global') || actualPeriod - 1);
-
-    if (actualPeriod > lastSync) {
-        for (let p = lastSync + 1; p <= actualPeriod; p++) {
-            // --- অ্যাডমিন কন্ট্রোল লজিক শুরু ---
-            let winNum;
-            const adminFixedNum = localStorage.getItem('admin_next_result');
-
-            if (adminFixedNum !== null && adminFixedNum !== "") {
-                winNum = parseInt(adminFixedNum);
-                localStorage.removeItem('admin_next_result'); 
-            } else {
-                winNum = Math.floor(Math.random() * 10);
-            }
-            // --- অ্যাডমিন কন্ট্রোল লজিক শেষ ---
-
-            gameHistory.unshift({ period: p, num: winNum });
-            processBets(p, winNum);
-        }
-        
-        localStorage.setItem('game_history_global', JSON.stringify(gameHistory.slice(0, 100)));
-        localStorage.setItem('last_sync_global', actualPeriod);
-        
-        localStorage.removeItem('current_bets'); 
-
-        // --- মার্কার আপডেট লজিক (নতুন যোগ করা হয়েছে) ---
-        // গেম হিস্ট্রি থেকে শুধু নম্বরগুলো নিয়ে একটি অ্যারে তৈরি করা হচ্ছে
-        const lastNumbers = gameHistory.slice(0, 5).map(item => item.num);
-        updateLast5Markers(lastNumbers); 
-    }
-    renderGameHistory();
-}
-
-// আপনার পিরিয়ড আইডির উপরে মার্কার দেখানোর ফাংশন (এটি স্ক্রিপ্টে একবার থাকলেই হবে)
-function updateLast5Markers(resultsArray) {
-    const container = document.getElementById('last-5-results');
-    if (!container) return;
-
-    container.innerHTML = resultsArray.map(num => {
-        let n = Number(num);
-        let bgColor = "";
-        
-        // কালার লজিক: ০/৫ = ভায়োলেট, জোড় = লাল, বিজোড় = সবুজ
-        if (n === 0 || n === 5) {
-            bgColor = "linear-gradient(to bottom, #a55eea, #b33939)"; 
-        } else if ([2, 4, 6, 8, 0].includes(n)) {
-            bgColor = "#ff4d4d"; 
-        } else {
-            bgColor = "#2ecc71"; 
-        }
-
-        return `
-            <div style="width: 20px; height: 20px; border-radius: 50%; background: ${bgColor}; 
-                display: flex; align-items: center; justify-content: center; 
-                color: white; font-size: 10px; font-weight: 800; border: 1px solid #eee;">
-                ${n}
-            </div>
-        `;
-    }).join('');
-}
-
-function processBets(p, winNum) {
-    let winColor = (winNum === 0 || winNum === 5) ? 'Violet' : (winNum % 2 === 0 ? 'Red' : 'Green');
-    let winSize = winNum >= 5 ? 'Big' : 'Small';
-    
-    let currentBal = parseFloat(getBalance()) || 0;
-    let userId = localStorage.getItem('current_user_id') || 'user_1';
-    
-    let hasWin = false;
-    let totalWinAmount = 0;
-    let hasAnyBetInPeriod = false;
-
-    // find() এর বদলে forEach ব্যবহার করছি যাতে সব বেট চেক হয়
-    myBets.forEach(b => {
-        if (b.period === p && b.status === 'pending') {
-            hasAnyBetInPeriod = true;
-            
-            // উইন চেক
-            let isWin = (b.type === winNum) || (b.type === winColor) || (b.type === winSize);
-            
-            if (isWin) {
-                let mult = (typeof b.type === 'number') ? 9 : 1.96;
-                let winAmount = parseFloat(b.amount) * mult;
-                
-                b.status = 'win';
-                b.winAmount = winAmount;
-                currentBal += winAmount;
-                
-                hasWin = true;
-                totalWinAmount += winAmount; // সব উইনিং এমাউন্ট যোগ হচ্ছে
-            } else {
-                b.status = 'loss';
-                b.winAmount = 0;
-            }
-        }
-    });
-
-    if (hasAnyBetInPeriod) {
-        // নতুন ব্যালেন্স সেভ
-        setBalance(currentBal);
-        localStorage.setItem(`my_bets_${userId}`, JSON.stringify(myBets.slice(0, 50)));
-        
-        // পপআপ লজিক: যদি অন্তত ১টাও উইন হয়, তবে উইন পপআপ দেখাবে
-        if (hasWin) {
-            showResultPopup(true, totalWinAmount, winNum, winColor, winSize, p);
-        } else {
-            // যদি সবগুলোই লস হয় তবেই লস পপআপ
-            let lastBetAmount = myBets.find(b => b.period === p)?.amount || 0;
-            showResultPopup(false, lastBetAmount, winNum, winColor, winSize, p);
-        }
-
-        renderMyHistory();
-    }
-}
-function showResultPopup(isWin, amount, num, color, size, period) {
-    const popup = document.getElementById('result-popup');
-    const card = document.getElementById('popup-card');
-    const headerCircle = document.getElementById('pop-header-circle');
-    const title = document.getElementById('pop-title');
-    const amountText = document.getElementById('pop-amount');
-    
-    // ডাটা সেট
-    document.getElementById('res-num').innerText = num;
-    document.getElementById('res-color').innerText = color;
-    document.getElementById('res-size').innerText = size;
-    document.getElementById('pop-period').innerHTML = "Period: WinGo 30sec <br> <b>" + period + "</b>";
-
-    // রেজাল্ট ব্যাজ কালার সেট করা
-    let cCode = color === 'Green' ? '#2ecc71' : (color === 'Red' ? '#ff4757' : '#a55eea');
-    document.getElementById('res-color').style.background = cCode;
-    document.getElementById('res-num').style.color = '#fff'; // টেক্সট সাদা
-    document.getElementById('res-num').style.background = cCode;
-    document.getElementById('res-size').style.background = (size === 'Big' ? '#ffa502' : '#3498db');
-
-    if (isWin) {
-        // উইন থিম (আপনার ডিমান্ড অনুযায়ী লাল-কমলা গ্রাডিয়েন্ট)
-        card.style.background = "linear-gradient(180deg, #f76e6d 0%, #d63031 100%)";
-        headerCircle.style.background = "linear-gradient(180deg, #ffefba, #ff9d2f)";
-        title.innerText = "Congratulations";
-        title.style.color = "#fff";
-        amountText.innerText = "৳" + amount.toFixed(2);
-        amountText.style.color = "#d63031"; // সাদা পেপারে লাল টেক্সট
-        
-        // প্রফিট হলে হাবজাবি (Confetti) উড়বে
-        createConfetti();
-    } else {
-        // লস থিম (কালো-ধূসর)
-        card.style.background = "linear-gradient(180deg, #535c68, #2d3436)";
-        headerCircle.style.background = "linear-gradient(180deg, #bdc3c7, #2c3e50)";
-        title.innerText = "Sorry, Lose";
-        title.style.color = "#fff";
-        amountText.innerText = "-৳" + amount.toFixed(2);
-        amountText.style.color = "#444";
-    }
-
-    popup.style.display = 'flex';
-
-    // ৩ সেকেন্ড পর অটো ক্লোজ
-    setTimeout(() => {
-        closeResultPopup();
-    }, 3000);
-}
-
-// হাবজাবি/কনফেটি তৈরি করার ফাংশন
-function createConfetti() {
-    const container = document.getElementById('confetti-container');
-    if(!container) return; // কন্টেইনার না থাকলে রিটার্ন করবে
-    
-    container.innerHTML = ''; // আগেরগুলো পরিষ্কার করা
-    const colors = ['#FFD700', '#FF4D4D', '#00FF00', '#00CCFF', '#FFFFFF', '#FF00FF'];
-    
-    for (let i = 0; i < 60; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'absolute';
-        confetti.style.width = Math.random() * 8 + 5 + 'px';
-        confetti.style.height = Math.random() * 5 + 5 + 'px';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.top = '-10%';
-        confetti.style.zIndex = '10001';
-        confetti.style.opacity = Math.random();
-        
-        container.appendChild(confetti);
-
-        confetti.animate([
-            { top: '-10%', transform: `rotate(0deg) translateX(0)` },
-            { top: '110%', transform: `rotate(${Math.random() * 1000}deg) translateX(${Math.random() * 100 - 50}px)` }
-        ], {
-            duration: Math.random() * 2000 + 2000,
-            easing: 'cubic-bezier(0, .9, .6, 1)'
-        }).onfinish = () => confetti.remove();
-    }
-}
-
-function closeResultPopup() {
-    document.getElementById('result-popup').style.display = 'none';
-}
-
-
-    // --- রেন্ডারিং এবং ট্যাব ---
-    function renderGameHistory() {
-        const list = document.getElementById('game-list');
-        if(!list) return;
-        const recent = gameHistory.slice(0, 10);
-        let html = recent.map(item => createHistoryRow(item)).join('');
-        if (gameHistory.length > 10) {
-            html += `<div onclick="openFullHistory()" style="text-align:center; padding:10px; color:#f1c40f; cursor:pointer;">More History</div>`;
-        }
-        list.innerHTML = html || '<div style="padding:10px; text-align:center;">Loading...</div>';
-    }
-
-    function createHistoryRow(item) {
-        let c = (item.num % 2 === 0) ? '#ff4d4d' : '#2ecc71';
-        if(item.num===0 || item.num===5) c = '#a55eea';
-        return `<div style="display:flex; align-items:center; padding:10px; border-bottom:1px solid #f1f1f1; font-size:13px;">
-            <span style="flex:2; color:#999;">${item.period}</span>
-            <span style="flex:1; font-weight:900; color:${c}; text-align:center;">${item.num}</span>
-            <span style="flex:1; text-align:center;">${item.num>=5?'Big':'Small'}</span>
-            <div style="flex:1; display:flex; justify-content:center;"><div style="width:10px;height:10px;background:${c};border-radius:50%"></div></div>
-        </div>`;
-    }
-function renderMyHistory() {
-    let userId = localStorage.getItem('current_user_id') || 'user_1';
-    let rawBets = localStorage.getItem(`my_bets_${userId}`);
-    let myBetsData = rawBets ? JSON.parse(rawBets) : [];
-
-    const listContainer = document.getElementById('my-list');
-    if(!listContainer) return;
-
-    if(myBetsData.length === 0) { 
-        listContainer.innerHTML = '<div style="padding:40px; text-align:center; color:#999; font-size:14px;">No Records Available</div>'; 
-        return; 
-    }
-
-    listContainer.innerHTML = myBetsData.map((b, index) => {
-        const status = b.status ? String(b.status).toLowerCase() : 'pending';
-        const isWin = status === 'win' || status === 'succeed';
-        const isLoss = status === 'loss' || status === 'failed';
-        const isPending = status === 'pending';
-        
-        const statusText = isWin ? 'Succeed' : (isLoss ? 'Failed' : 'Pending');
-        const statusColor = isWin ? '#2ecc71' : (isLoss ? '#ff7675' : '#f39c12');
-        
-        let selectColor = '#3b82f6';
-        if (b.type === 'Big') selectColor = '#ffbe76';
-        else if (b.type === 'Small') selectColor = '#70a1ff';
-        else if (b.type === 'Red') selectColor = '#ff4d4d';
-        else if (b.type === 'Green') selectColor = '#2ecc71';
-        else if (b.type === 'Violet') selectColor = '#a55eea';
-
-        const amountSign = isWin ? '+' : (isLoss ? '-' : '');
-        const displayAmount = (isWin && b.winAmount) ? parseFloat(b.winAmount).toFixed(2) : parseFloat(b.amount).toFixed(2);
-        let displayTime = b.time ? b.time : new Date().toLocaleString('en-GB').replace(',', '');
-
-        const tax = (parseFloat(b.amount) * 0.02).toFixed(2);
-        const afterTax = (parseFloat(b.amount) - tax).toFixed(2);
-
-        return `
-        <div style="background:#fff; margin-bottom:1px; border-bottom:1px solid #f1f1f1;">
-            <div onclick="toggleDetails(${index})" style="padding:12px 15px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                <div style="display:flex; align-items:center; flex:1;">
-                    <div style="width:36px; height:36px; background:${selectColor}; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:800; margin-right:12px;">
-                        ${b.type}
-                    </div>
-                    <div>
-                        <div style="font-size:14px; font-weight:700; color:#333; display:flex; align-items:center;">
-                            ${b.period} <i class="fas fa-caret-down" style="margin-left:5px; color:#ccc; font-size:12px;"></i>
-                        </div>
-                        <div style="font-size:11px; color:#999; margin-top:2px;">${displayTime}</div>
-                    </div>
+            <div class="drive-card robi" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 10px;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৫০ জিবি ইন্টারনেট (৩০ দিন)</h6>
+                    <small style="color: #666; display: block;">শুধুমাত্র ঢাকা ডিভিশন</small>
+                    <b style="color: #e67e22; font-size: 16px;">৳ ৪৫০</b>
                 </div>
-                <div style="text-align:right;">
-                    <div style="display:inline-block; padding:2px 8px; border-radius:4px; border:1px solid ${statusColor}; color:${statusColor}; font-size:10px; font-weight:600; margin-bottom:4px;">
-                        ${statusText}
-                    </div>
-                    <div style="font-size:14px; font-weight:800; color:${statusColor};">
-                        ${isPending ? '৳'+parseFloat(b.amount).toFixed(2) : amountSign + '৳' + displayAmount}
-                    </div>
-                </div>
+                <button onclick="showOrderPopup('৫০ জিবি রবি', 450)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
             </div>
+        </div>
+    </div>
 
-            <div id="details-${index}" style="display:none; background:#f9f9f9; padding:15px; border-top:1px solid #eee; font-family: sans-serif;">
-                <h3 style="margin:0 0 15px 0; font-size:16px; color:#333; font-weight:700;">Details</h3>
-                
-                <style>
-                    .row-det { display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:#555; }
-                    .row-det span:first-child { color:#888; }
-                </style>
-
-                <div class="row-det"><span>Period</span><span>${b.period}</span></div>
-                <div class="row-det"><span>Purchase amount</span><span>৳${parseFloat(b.amount).toFixed(2)}</span></div>
-                <div class="row-det"><span>Quantity</span><span>1</span></div>
-                <div class="row-det"><span>Amount after tax</span><span style="color:#ff7675;">৳${afterTax}</span></div>
-                <div class="row-det"><span>Tax</span><span>৳${tax}</span></div>
-                
-                <div class="row-det"><span>Select</span><span style="color:#888;">${b.type}</span></div>
-                <div class="row-det"><span>Status</span><span style="color:${statusColor}; font-weight:600;">${statusText}</span></div>
-                <div class="row-det"><span>Win/lose</span><span style="color:${statusColor}; font-weight:bold;">${isPending ? '--' : amountSign + '৳' + displayAmount}</span></div>
-                <div class="row-det" style="margin-bottom:0;"><span>Order time</span><span>${displayTime}</span></div>
-            </div>
-        </div>`;
-    }).join('');
-}
-// টগল ফাংশন
-function toggleDetails(index) {
-    const el = document.getElementById(`details-${index}`);
-    const isHidden = el.style.display === "none";
-    
-    // সবগুলো বন্ধ করে শুধু এটি ওপেন করতে চাইলে নিচের লাইনটি ব্যবহার করুন
-    // document.querySelectorAll('[id^="details-"]').forEach(d => d.style.display = 'none');
-    
-    el.style.display = isHidden ? "block" : "none";
-}
-
-function switchTab(type) {
-    const gameContent = document.getElementById('game-history-content');
-    const chartContent = document.getElementById('chart-content');
-    const myContent = document.getElementById('my-history-content');
-
-    // সব কন্টেন্ট হাইড করা
-    gameContent.style.display = 'none';
-    chartContent.style.display = 'none';
-    myContent.style.display = 'none';
-
-    // সব বাটন থেকে একটিভ ক্লাস সরানো
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
-
-    if (type === 'game') {
-        gameContent.style.display = 'block';
-        document.getElementById('btn-game').classList.add('active-tab');
-        if(typeof renderGameHistory === "function") renderGameHistory();
-    } else if (type === 'chart') {
-        chartContent.style.display = 'block';
-        document.getElementById('btn-chart').classList.add('active-tab');
-        renderTrendChart(); // চার্ট দেখানোর ফাংশন কল
-    } else if (type === 'my') {
-        myContent.style.display = 'block';
-        document.getElementById('btn-my').classList.add('active-tab');
-        if(typeof renderMyHistory === "function") renderMyHistory();
-    }
-}
-
-function renderTrendChart() {
-    const tbody = document.getElementById('chartBody');
-    const canvas = document.getElementById('trendCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    // gameHistory চেক
-    if (typeof gameHistory === "undefined" || gameHistory.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="13">No data available</td></tr>';
-        return;
-    }
-
-    // ১. টেবিল ডাটা তৈরি
-    tbody.innerHTML = gameHistory.slice(0, 20).map((item, index) => {
-        let cols = '';
-        
-        // ০ থেকে ৯ পর্যন্ত কলাম
-        for (let i = 0; i <= 9; i++) {
-            if (i === item.num) {
-                let dotColor = (i % 2 === 0) ? '#ff4d4d' : '#2ecc71';
-                if(i === 0 || i === 5) dotColor = '#a55eea';
-                cols += `<td style="padding: 8px 2px;"><span class="trend-dot" style="background:${dotColor}; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; color:white; font-size:10px; font-weight:bold; position:relative; z-index:5;">${i}</span></td>`;
-            } else {
-                cols += `<td style="color:#bbb; font-size:11px;">${i}</td>`;
-            }
-        }
-
-        // ৯ নম্বরের পাশে Big/Small বাটন তৈরি
-        const bsText = item.num >= 5 ? 'B' : 'S'; // ৫-৯ হলো Big, ০-৪ হলো Small
-        const bsColor = bsText === 'B' ? '#ffa502' : '#3498db';
-        const bsFullName = bsText === 'B' ? 'Big' : 'Small';
-
-        return `
-            <tr style="border-bottom:1px solid #f2f2f2;">
-                <td style="padding:10px 5px; color:#666; font-size:11px; font-weight:500;">${item.period}</td>
-                
-                ${cols}
-                
-                <td style="padding: 8px 5px;">
-                    <span style="background:${bsColor}; color:white; width:35px; height:20px; display:inline-flex; align-items:center; justify-content:center; border-radius:12px; font-size:10px; font-weight:bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        ${bsFullName}
-                    </span>
-                </td>
-            </tr>`;
-    }).join('');
-
-    // ২. ট্রেন্ড লাইন ড্রয়িং
-    setTimeout(() => {
-        const dots = document.querySelectorAll('.trend-dot');
-        const table = document.getElementById('chartTable');
-        if (!dots.length) return;
-
-        canvas.width = table.offsetWidth;
-        canvas.height = table.offsetHeight;
-        
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(255, 77, 77, 0.5)'; // লাইনটি একটু হালকা লাল করা হয়েছে
-        ctx.lineWidth = 1.8;
-
-        dots.forEach((dot, index) => {
-            const rect = dot.getBoundingClientRect();
-            const tableRect = table.getBoundingClientRect();
+    <div id="order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; width: 100%; border-radius: 25px; padding: 25px; position: relative;">
+            <h5 style="font-weight: 800; color: #333;" id="modal-offer-name">অর্ডার কনফার্ম করুন</h5>
+            <p style="font-size: 13px; color: #777;">অফারটি পেতে আপনার মোবাইল নম্বর দিন</p>
             
-            const x = rect.left - tableRect.left + rect.width / 2;
-            const y = rect.top - tableRect.top + rect.height / 2;
-
-            if (index === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-    }, 150);
-}
-    function openFullHistory() {
-        document.getElementById('full-history-modal').style.display = 'block';
-        document.getElementById('full-history-list').innerHTML = gameHistory.map(item => createHistoryRow(item)).join('');
-    }
-
-    function closeFullHistory() { document.getElementById('full-history-modal').style.display = 'none'; }
-    // প্রতি ১ সেকেন্ডে মার্কেট সিঙ্ক করবে
-setInterval(() => {
-    syncMarket();
-}, 1000);
-
-// উইন্ডো লোড হওয়ার সময় একবার রান হবে
-window.onload = () => { 
-    setBalance(getBalance()); 
-    renderGameHistory();
-    renderMyHistory();
-};
-
-
-</script>
-
- 
+            <input type="number" id="order-phone" placeholder="017XXXXXXXX" style="width: 100%; padding: 15px; border-radius: 15px; border: 1px solid #ddd; margin-bottom: 20px; outline: none; font-size: 18px; letter-spacing: 2px;">
+            
+            <div style="display: flex; gap: 10px;">
+                <button onclick="closeOrderPopup()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
+                <button onclick="confirmDriveOrder()" style="flex: 2; padding: 12px; border-radius: 12px; border: none; background: #17a2b8; color: white; font-weight: 800;">সাবমিট করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -6636,40 +5862,24 @@ window.onload = () => {
 </div>
 
 
+
+
 <div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #ff0000; display: flex; justify-content: space-around; align-items: center; padding: 5px 0 8px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15); border-radius: 20px 20px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); height: 60px;">
-
     
-
     <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1;">
-
         <i class="fas fa-home" style="font-size: 18px; color: white;"></i>
-
         <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Home</span>
-
     </div>
-
-
 
     <div onclick="openPage('p-my-team'); renderTeam();" style="text-align: center; cursor: pointer; flex: 1;">
-
         <i class="fas fa-users" style="font-size: 18px; color: white;"></i>
-
         <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Team</span>
-
     </div>
-
-
 
     <div onclick="openPage('p-wallet')" style="text-align: center; cursor: pointer; flex: 1;">
-
         <i class="fas fa-wallet" style="font-size: 18px; color: white;"></i>
-
         <span style="display: block; font-size: 9px; font-weight: 700; color: white; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.3px;">Wallet</span>
-
     </div>
-
-
-
 
 
 <div onclick="openDirectSupport()" style="text-align: center; cursor: pointer; flex: 1; padding: 10px;">
@@ -6679,11 +5889,6 @@ window.onload = () => {
     <p style="margin: 0; font-size: 10px; color: white; font-weight: 600;">SUPPORT</p>
 
 </div>
-
-
-
-</div>
-
 
 
 </div>
@@ -6743,31 +5948,6 @@ window.onload = () => {
         </div>
     </div>
 </div>
-<div id="admin-panel" style="background: #2c3e50; color: white; padding: 20px; border-radius: 15px; margin-top: 20px;">
-    <h3 style="text-align: center; color: #f1c40f;">Admin Control Panel</h3>
-    
-    <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
-        <span style="font-size: 14px;">Next Fixed Number: </span>
-        <strong id="display-fixed-num" style="font-size: 20px; color: #f1c40f;">None</strong>
-    </div>
-
-    <div style="margin-bottom: 20px; text-align: center;">
-        <input type="number" id="next-num-input" min="0" max="9" placeholder="0-9" style="width: 60px; padding: 8px; border-radius: 5px; border: none; text-align: center;">
-        <button onclick="setNextResult()" style="background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;">Set Result</button>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
-            <p>Total Big: <span id="total-big-bet" style="color:#ffa502">0</span> ৳</p>
-            <p>Total Small: <span id="total-small-bet" style="color:#3b82f6">0</span> ৳</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
-            <p style="color:#2ecc71;">Green: <span id="total-green-bet">0</span> ৳</p>
-            <p style="color:#ff4757;">Red: <span id="total-red-bet">0</span> ৳</p>
-            <p style="color:#a55eea;">Violet: <span id="total-violet-bet">0</span> ৳</p>
-        </div>
-    </div>
-</div>
 <div class="p-3 bg-white shadow-sm mb-3 rounded-3">
     <div class="input-group">
         <span class="input-group-text bg-primary text-white border-0"><i class="fas fa-search"></i></span>
@@ -6795,7 +5975,7 @@ window.onload = () => {
 let db = {
     withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
     users: JSON.parse(localStorage.getItem('v7_u')) || [
-        {name:"Admin", email:"admin@gmail.com", pass:"abusufian", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
+        {name:"Admin", email:"aa@gmail.com", pass:"325800", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
     ],
     // নিচের এই লাইনটি নতুন যোগ করা হলো
     notifications: JSON.parse(localStorage.getItem('v7_notif') || '[]'), 
@@ -9464,45 +8644,7 @@ function approveFund(id) {
         }
     }
 }
-function manualRefreshBalance() {
-    const icon = document.getElementById('refresh-icon');
-    const balanceSpan = document.getElementById('wingo-balance');
 
-    // ১. আইকন ঘুরানোর অ্যানিমেশন (Spin) শুরু
-    icon.style.transition = "transform 1s ease";
-    icon.style.transform = "rotate(360deg)";
-
-    // ২. ডাটাবেস থেকে লেটেস্ট ব্যালেন্স নেওয়া
-    // curUser যদি আপনার বর্তমান লগইন করা ইউজার হয়
-    if (typeof db !== 'undefined' && curUser) {
-        // লোকাল স্টোরেজ থেকে ফ্রেশ ডাটা নেওয়া
-        const latestUsers = JSON.parse(localStorage.getItem('v7_u')) || [];
-        const updatedUser = latestUsers.find(u => u.email === curUser.email);
-        
-        if (updatedUser) {
-            // ব্যালেন্স আপডেট
-            balanceSpan.innerText = parseFloat(updatedUser.bal).toFixed(2);
-            // গ্লোবাল অবজেক্ট আপডেট (নিশ্চিত হওয়ার জন্য)
-            curUser.bal = updatedUser.bal; 
-        }
-    }
-
-    // ৩. ১ সেকেন্ড পর অ্যানিমেশন রিসেট করা
-    setTimeout(() => {
-        icon.style.transition = "none";
-        icon.style.transform = "rotate(0deg)";
-        
-        // টোস্ট মেসেজ (আপনার সিস্টেমে Swal থাকলে)
-        if (typeof toast === 'function') {
-            toast("Balance Updated!", "success");
-        }
-    }, 1000);
-}
-
-// পেজ লোড হওয়ার সাথে সাথেই একবার ব্যালেন্স আপডেট করবে যাতে ০ না থাকে
-window.addEventListener('DOMContentLoaded', () => {
-    manualRefreshBalance();
-});
 // ৪. ডিপোজিট রিজেক্ট
 function rejectFund(id) {
     if (confirm("ডিপোজিট রিকোয়েস্টটি বাতিল করতে চান?")) {
@@ -10545,13 +9687,33 @@ function handleShopClick() {
         openPage('p-shop');
     }
 }
-
 function handleDriveOfferClick() {
-    // লক সিস্টেম বাদ দেওয়া হয়েছে, এখন সরাসরি ড্রাইভ অফার পেজে নিয়ে যাবে
-    openPage('p-drive');
+    // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
+    if (curUser.status !== 'active') {
+        
+        Swal.fire({
+            title: 'অফারটি লক করা!',
+            text: 'স্পেশাল ড্রাইভ অফারগুলো দেখতে এবং ক্রয় করতে আপনার অ্যাকাউন্টটি আগে অ্যাক্টিভ করা প্রয়োজন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'এখনই করুন?',
+            cancelButtonText: 'পরে করবো',
+            confirmButtonColor: '#1e3a8a',
+            cancelButtonColor: '#6c757d',
+            background: '#fff',
+            borderRadius: '25px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // সরাসরি সাপোর্ট পেজে নিয়ে যাবে
+                openPage('p-fund'); 
+            }
+        });
+        
+    } else {
+        // যদি একাউন্ট একটিভ থাকে তবে সরাসরি ড্রাইভ অফার পেজে নিয়ে যাবে
+        openPage('p-drive');
+    }
 }
-
-
 function handleJobPostClick() {
     // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
     if (curUser.status !== 'active') {
@@ -11105,78 +10267,7 @@ async function saveToServer() {
 
 // ৩. সাইট রিলোড হলে অটোমেটিক লোড ফাংশন কল করা
 window.addEventListener('load', loadFromServer);
-// --- ১. পরবর্তী নম্বর সেট করার ফাংশন ---
-function setNextResult() {
-    const input = document.getElementById('next-num-input');
-    const nextNum = input.value;
-
-    if (nextNum !== "" && nextNum >= 0 && nextNum <= 9) {
-        // লোকাল স্টোরেজে নম্বরটি সেভ করা
-        localStorage.setItem('admin_next_result', nextNum);
-        
-        // অ্যাডমিন প্যানেলের UI আপডেট
-        checkAdminSettings();
-        
-        document.getElementById('status-msg').innerText = "✅ Next result fixed to: " + nextNum;
-        document.getElementById('status-msg').style.color = "#2ecc71";
-        input.value = ""; // ইনপুট বক্স খালি করা
-    } else {
-        alert("দয়া করে ০ থেকে ৯ এর মধ্যে একটি নম্বর দিন!");
-    }
-}
-
-// --- ২. অ্যাডমিন প্যানেলে কি নম্বর সেট আছে তা চেক করা ---
-function checkAdminSettings() {
-    const fixedNum = localStorage.getItem('admin_next_result');
-    const displayBox = document.getElementById('display-fixed-num');
-    
-    if (displayBox) {
-        if (fixedNum !== null) {
-            displayBox.innerText = fixedNum;
-            displayBox.style.color = "#f1c40f";
-        } else {
-            displayBox.innerText = "None (Random)";
-            displayBox.style.color = "#999";
-        }
-    }
-}
-
-// --- ৩. লাইভ বেটিং স্ট্যাটাস (টাকার হিসাব) আপডেট করা ---
-function updateAdminStats() {
-    // ইউজারের বেটিং ডাটা রিড করা
-    const allBets = JSON.parse(localStorage.getItem('current_bets') || '[]');
-    
-    let stats = {
-        big: 0, small: 0, green: 0, red: 0, violet: 0
-    };
-
-    allBets.forEach(bet => {
-        const amount = Number(bet.amount) || 0;
-        // সাইজ হিসাব
-        if(bet.type === 'Big') stats.big += amount;
-        if(bet.type === 'Small') stats.small += amount;
-        
-        // কালার হিসাব
-        if(bet.color === 'green') stats.green += amount;
-        if(bet.color === 'red') stats.red += amount;
-        if(bet.color === 'violet') stats.violet += amount;
-    });
-
-    // অ্যাডমিন প্যানেলের UI এলিমেন্টগুলো আপডেট করা
-    if(document.getElementById('total-big-bet')) document.getElementById('total-big-bet').innerText = stats.big;
-    if(document.getElementById('total-small-bet')) document.getElementById('total-small-bet').innerText = stats.small;
-    if(document.getElementById('total-green-bet')) document.getElementById('total-green-bet').innerText = stats.green;
-    if(document.getElementById('total-red-bet')) document.getElementById('total-red-bet').innerText = stats.red;
-    if(document.getElementById('total-violet-bet')) document.getElementById('total-violet-bet').innerText = stats.violet;
-}
-
-// --- ৪. অটোমেটিক রান করা (প্রতি সেকেন্ডে) ---
-setInterval(() => {
-    updateAdminStats();
-    checkAdminSettings();
-}, 1000);
-
-function openDirectSupport() {
+ function openDirectSupport() {
     // যদি জিবোচ্যাট আগে লোড করা না থাকে
     if (typeof jivo_api === 'undefined') {
         var script = document.createElement('script');
@@ -11199,31 +10290,7 @@ function openDirectSupport() {
         jivo_api.open();
     }
 }
-// পপআপ ওপেন করার ফাংশন
-function openHowToPlay() {
-    document.getElementById('htp-modal').style.display = 'block';
-}
-
-// পপআপ ক্লোজ করার ফাংশন
-function closeHowToPlay() {
-    document.getElementById('htp-modal').style.display = 'none';
-}
-
-// আপনার টাইমার ফাংশনের ডিসপ্লে লজিক এই রকম হবে (স্প্লিট কার্ডের জন্য):
-function updateDisplayTimer(minutes, seconds) {
-    const minStr = minutes.toString().padStart(2, '0');
-    const secStr = seconds.toString().padStart(2, '0');
-    
-    let timerHTML = `
-        <span class="flip-digit">${minStr[0]}</span><span class="flip-digit">${minStr[1]}</span>
-        <span style="font-size: 26px; font-weight: 900; color: white; margin: 0 2px;">:</span>
-        <span class="flip-digit">${secStr[0]}</span><span class="flip-digit">${secStr[1]}</span>
-    `;
-    
-    document.getElementById('timer').innerHTML = timerHTML;
-}
-
-// আপনার বিদ্যমান টাইমার লজিকের ভেতর updateDisplayTimer(min, sec); ফাংশনটি কল করবেন।
 </script>
+
 </body>
 </html>
