@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WINNER BD</title>
-    <link rel="manifest" href="manifest.json">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="manifest" href="manifest.json">
     <style>
         :root { --main: #6c5ce7; --bg: #f4f7fe; --card: #ffffff; --text: #2d3436; --bkash: #e2136e; --nagad: #f7941d; --rocket: #8c3494; }
         body { background-color: var(--bg); font-family: 'Poppins', 'Hind Siliguri', sans-serif; padding-bottom: 90px; color: var(--text); overflow-x: hidden; }
@@ -11224,6 +11224,37 @@ function updateDisplayTimer(minutes, seconds) {
 }
 
 // আপনার বিদ্যমান টাইমার লজিকের ভেতর updateDisplayTimer(min, sec); ফাংশনটি কল করবেন।
+    let deferredPrompt;
+
+// ব্রাউজার যখন ইন্সটল করার জন্য প্রস্তুত হয়
+window.addEventListener('beforeinstallprompt', (e) => {
+  // ডিফল্ট প্রম্পট আটকে দেওয়া
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // আপনি চাইলে এখানে ১-২ সেকেন্ড দেরি করে পপআপ দেখাতে পারেন
+  setTimeout(() => {
+    showInstallPromotion();
+  }, 3000); 
+});
+
+function showInstallPromotion() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt(); // পপআপ দেখাবে
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+
+// সার্ভিস ওয়ার্কার রেজিস্টার করা
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(() => console.log("Service Worker Registered"));
+}
 </script>
 </body>
 </html>
