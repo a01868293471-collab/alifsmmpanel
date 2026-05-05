@@ -3885,40 +3885,65 @@ function toggleSignupPassword() {
         <h2 style="margin: 0; font-weight: 900; font-size: 42px; text-shadow: 0 3px 10px rgba(0,0,0,0.3);">৳ <span id="withdraw-bal">0.00</span></h2>
     </div>
 </div>
-<!-- কার্ড ছাড়া প্রফেশনাল মিনিমাল নোটিশ -->
-<div style="margin: 20px 5px; font-family: 'Segoe UI', Roboto, sans-serif;">
+<!-- প্রফেশনাল মিনিমাল উইথড্র রুলস -->
+<div style="margin: 25px 10px; font-family: 'Poppins', sans-serif; background: #ffffff; padding: 20px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
     
-    <!-- টাইটেল লাইন -->
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid rgba(239, 68, 68, 0.1); padding-bottom: 8px;">
-        <i class="fas fa-shield-alt" style="color: #ff0000; font-size: 14px;"></i>
-        <span style="color: #ff0000; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;">Withdrawal Rules</span>
+    <!-- হেডার: স্টাইলিশ ব্যাজ -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="background: rgba(255, 0, 0, 0.1); width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-wallet" style="color: #ff0000; font-size: 14px;"></i>
+            </div>
+            <span style="color: #1e293b; font-weight: 800; font-size: 14px; letter-spacing: 0.5px;">Withdrawal Policy</span>
+        </div>
+        <div style="background: #f8fafc; padding: 5px 12px; border-radius: 20px; border: 1px solid #e2e8f0;">
+            <span style="color: #64748b; font-size: 10px; font-weight: 700; text-transform: uppercase;">Verified</span>
+        </div>
     </div>
 
-    <!-- লিমিট টেক্সট (কার্ড ছাড়া) -->
-    <div style="display: flex; flex-direction: column; gap: 8px;">
+    <!-- ইনফরমেশন গ্রিড -->
+    <div style="display: flex; flex-direction: column; gap: 15px;">
         
         <!-- Minimum -->
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: #64748b; font-size: 14px; font-weight: 600;">Minimum Withdrawal</span>
-            <span style="color: #ff0000; font-size: 16px; font-weight: 900;">৳ 100</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #e2e8f0;">
+            <div>
+                <span style="color: #64748b; font-size: 13px; font-weight: 600; display: block;">Minimum</span>
+                <span style="color: #94a3b8; font-size: 10px; font-weight: 500;">Lowest amount to cashout</span>
+            </div>
+            <div style="text-align: right;">
+                <span style="color: #ff0000; font-size: 18px; font-weight: 900;">৳ 100</span>
+            </div>
         </div>
 
-        <!-- Maximum -->
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: #64748b; font-size: 14px; font-weight: 600;">Maximum Withdrawal</span>
-            <span style="color: #1e293b; font-size: 16px; font-weight: 900;">৳ 25,000</span>
+        <!-- Maximum (Unlimited) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0;">
+            <div>
+                <span style="color: #64748b; font-size: 13px; font-weight: 600; display: block;">Maximum</span>
+                <span style="color: #94a3b8; font-size: 10px; font-weight: 500;">No limit for withdrawals</span>
+            </div>
+            <div style="text-align: right;">
+                <span style="background: linear-gradient(135deg, #1e293b, #475569); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 18px; font-weight: 900; letter-spacing: -0.5px;">Unlimited</span>
+            </div>
         </div>
 
     </div>
 
-    <!-- ছোট নোট -->
-    <div style="margin-top: 15px; display: flex; align-items: center; gap: 6px; justify-content: center; background: rgba(239, 68, 68, 0.05); padding: 8px; border-radius: 12px;">
-        <span style="width: 5px; height: 5px; background: #ff0000; border-radius: 50%;"></span>
-        <p style="margin: 0; font-size: 12px; color: #ef4444; font-weight: 700;">
-            পেমেন্ট সফল হতে ২ ঘণ্টা সময় লাগতে পারে।
+    <!-- স্মার্ট প্রসেসিং নোট -->
+    <div style="margin-top: 20px; background: linear-gradient(to right, rgba(255,0,0,0.05), transparent); padding: 12px 15px; border-radius: 15px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #ff0000;">
+        <i class="fas fa-bolt" style="color: #ff0000; font-size: 12px; animation: flash 1.5s infinite;"></i>
+        <p style="margin: 0; font-size: 12px; color: #1e293b; font-weight: 700; line-height: 1.4;">
+            প্রসেসিং টাইম: <span style="color: #ff0000;">৩০ মিনিট - ২ ঘণ্টা</span>
         </p>
     </div>
 </div>
+
+<style>
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+</style>
 
         <p style="font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 15px; padding-left: 5px;">Select Payout Method</p>
 
