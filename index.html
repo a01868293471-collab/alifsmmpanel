@@ -6654,7 +6654,7 @@ function handleAuth(m) {
                 pass: p, 
                 role: "user", 
                 bal: 0.00, 
-                status: "inactive",
+                status: "inactive", // নতুন ইউজার ডিফল্টভাবে ইনেকটিভ
                 rank: "General Member", 
                 referCode: myNewCode, 
                 referredBy: r        
@@ -6673,50 +6673,91 @@ function handleAuth(m) {
             localStorage.setItem('v7_userName', n);
             localStorage.setItem('v7_userEmail', e);
             
-            // টেলিগ্রাম নোটিফিকেশন পাঠানো হচ্ছে
             sendToTelegram(newUser);
-            
-            // ডাটা সেভ করা
             save(); 
             
             switchAuth(false); 
             toast('রেজিস্ট্রেশন সফল! কোড: ' + myNewCode);
             
+        } else {
+            // লগইন অংশ
+            let e = document.getElementById('l-email').value, 
+                p = document.getElementById('l-pass').value;
+            let u = db.users.find(x => x.email === e && x.pass === p);
+            
+            if(u) {
+                // ১. যদি ইউজার ব্লকড থাকে
+                if (u.status === 'blocked') {
+                    Swal.fire({ 
+                        title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                        text: `কারণ: ${u.blockReason || 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।'}`, 
+                        icon: 'error',
+                        confirmButtonColor: '#ff0000',
+                        confirmButtonText: 'ঠিক আছে'
+                    });
+                    return; 
+                }
+
+                // ইউজার ডাটা সেভ করা
+                curUser = u; 
+                localStorage.setItem('v7_logged_email', u.email);
+                localStorage.setItem('v7_userName', u.name);
+                localStorage.setItem('v7_userEmail', u.email);
+                localStorage.setItem('v7_userReferCode', u.referCode);
+
+                document.getElementById('auth-section').classList.add('d-none');
+
+                if(u.role === 'admin') {
+                    document.getElementById('admin-app').classList.remove('d-none');
+                    renderAdmin();
 } else {
-    // লগইন অংশ
-    let e = document.getElementById('l-email').value, 
-        p = document.getElementById('l-pass').value;
-    let u = db.users.find(x => x.email === e && x.pass === p);
-    
-    if(u) {
-        if (u.status === 'blocked') {
-            // এখানে blockReason যোগ করা হয়েছে
-            Swal.fire({ 
-                title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
-                text: `কারণ: ${u.blockReason || 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।'}`, 
-                icon: 'error',
-                confirmButtonColor: '#ff0000',
-                confirmButtonText: 'ঠিক আছে'
-            });
-            return; // ব্লক থাকলে আর এগোবে না
+                    document.getElementById('user-app').classList.remove('d-none');
+                    renderUser();
+
+                    // ২. অ্যাকাউন্ট ইনেকটিভ থাকলে প্রিমিয়াম পপআপ শো করবে
+                    if(u.status === 'inactive') {
+                        setTimeout(() => {
+                            const activationHTML = `
+                            <div id="activationModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px);">
+                                <div style="background: #ffffff; width: 100%; max-width: 380px; border-radius: 40px; text-align: center; padding: 40px 30px; animation: premiumPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 30px 70px rgba(255,0,0,0.3); border: 1px solid rgba(255,255,255,0.8); position: relative; overflow: hidden;">
+                                    
+                                    <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,0,0,0.05); border-radius: 50%;"></div>
+                                    
+                                    <div style="width: 90px; height: 90px; background: #fff5f5; color: #ff0000; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 45px; margin: 0 auto 25px; transform: rotate(-10deg); box-shadow: 0 15px 30px rgba(255,0,0,0.1);">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+
+                                    <h2 style="margin: 0 0 12px; color: #1e293b; font-weight: 900; font-size: 24px; letter-spacing: -0.5px;">সতর্কবার্তা!</h2>
+                                    
+                                    <div style="height: 2px; width: 50px; background: #ff0000; margin: 0 auto 20px; border-radius: 10px;"></div>
+
+                                    <p style="color: #64748b; font-size: 15px; line-height: 1.7; margin-bottom: 30px; font-weight: 500;">
+                                        প্রিয় গ্রাহক, আপনার অ্যাকাউন্টটি বর্তমানে <span style="color: #ff0000; font-weight: 800;">নিষ্ক্রিয় (Inactive)</span> অবস্থায় আছে। অনুগ্রহ করে সকল সার্ভিস চালু করতে অ্যাকাউন্টটি অ্যাক্টিভ করুন।
+                                    </p>
+
+                                    <button onclick="document.getElementById('activationModal').remove()" style="width: 100%; background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%); color: white; border: none; padding: 18px; border-radius: 20px; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(255,0,0,0.3); letter-spacing: 1px;">
+                                        ঠিক আছে 
+                                    </button>
+                                    
+                                    <p style="margin-top: 20px; color: #94a3b8; font-size: 12px; font-weight: 700;">হেল্পলাইনের জন্য অ্যাডমিনের সাথে যোগাযোগ করুন</p>
+                                </div>
+                            </div>
+                            <style>
+                                @keyframes premiumPop {
+                                    from { transform: translateY(30px) scale(0.9); opacity: 0; }
+                                    to { transform: translateY(0) scale(1); opacity: 1; }
+                                }
+                            </style>`;
+                            document.body.insertAdjacentHTML('beforeend', activationHTML);
+                        }, 1000);
+                    }
+                }
+                
+                toast('লগইন সফল');
+            } else {
+                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+            }
         }
-
-        curUser = u; 
-        localStorage.setItem('v7_logged_email', u.email);
-        localStorage.setItem('v7_userName', u.name);
-        localStorage.setItem('v7_userEmail', u.email);
-        localStorage.setItem('v7_userReferCode', u.referCode);
-
-        document.getElementById('auth-section').classList.add('d-none');
-        u.role === 'admin' ? 
-        (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
-        (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-        
-        toast('লগইন সফল');
-    } else {
-        toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
-    }
-}
     }, 800);
 }
     function logout() {
