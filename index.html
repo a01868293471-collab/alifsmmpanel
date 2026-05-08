@@ -9642,97 +9642,119 @@ function editUserRank(index) {
 }
 
 
-
 function openUserPopup(index) {
     const u = db.users[index];
     if (!u) return;
 
     const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
-    
-    // ফটো আপডেট ফিক্স
     const userImg = u.img || u.profilePic || "";
     const nameInitial = (u.name || "U").charAt(0).toUpperCase();
-    const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ff0000&color=fff&size=128`;
+    const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ffcc00&color=000&size=128`;
     const finalPhoto = userImg ? `${userImg}${userImg.includes('data:') ? '' : '?t=' + new Date().getTime()}` : avatarPlaceholder;
-
     const isActive = u.status === 'active';
 
     const popupHTML = `
-    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(8px);">
-        <div style="background: white; width: 100%; max-width: 400px; border-radius: 30px; overflow: hidden; animation: zoomIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(12px);">
+        <div style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 40px; overflow: hidden; animation: premiumZoom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 40px 100px -20px rgba(255,0,0,0.3); border: 1px solid rgba(255,255,255,0.8);">
             
-            <div class="text-center p-4" style="background: linear-gradient(135deg, #ff0000 0%, #990000 100%); position: relative;">
-                <button onclick="closeUserPopup()" style="position: absolute; top: 15px; right: 15px; border: none; background: rgba(255,255,255,0.3); color: white; border-radius: 50%; width: 32px; height: 32px; cursor: pointer;"><i class="fas fa-times"></i></button>
-                <div style="width: 90px; height: 90px; border-radius: 50%; padding: 4px; background: white; margin: 0 auto 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
-                    <img src="${finalPhoto}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;" onerror="this.src='${avatarPlaceholder}'">
+            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff8800 100%); padding: 40px 20px 30px; text-align: center; position: relative;">
+                <button onclick="closeUserPopup()" style="position: absolute; top: 20px; right: 20px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 15px; width: 38px; height: 38px; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s;"><i class="fas fa-times"></i></button>
+                
+                <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 15px;">
+                    <div style="position: absolute; inset: -5px; background: linear-gradient(45deg, #ffcc00, transparent, #fff); border-radius: 40px; animation: rotateBorder 4s linear infinite;"></div>
+                    <img src="${finalPhoto}" style="position: relative; width: 100%; height: 100%; border-radius: 38px; object-fit: cover; border: 3px solid white; background: white;" onerror="this.src='${avatarPlaceholder}'">
                 </div>
-                <h5 class="text-white fw-bold m-0">${u.name || 'User'}</h5>
-                <small style="color: rgba(255,255,255,0.8); font-size: 12px; display: block; margin-top: 5px;">${u.email} | Pass: ${u.pass}</small>
+                
+                <h4 style="color: white; font-weight: 900; margin: 0; font-size: 24px; letter-spacing: 0.5px; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">${u.name || 'User Name'}</h4>
+                <div style="display: flex; justify-content: center; gap: 8px; margin-top: 10px;">
+                    <span style="background: rgba(255,255,255,0.2); color: white; padding: 4px 15px; border-radius: 50px; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-crown text-warning me-1"></i> ${u.rank || 'MEMBER'}
+                    </span>
+                </div>
             </div>
 
-            <div class="p-4" style="max-height: 60vh; overflow-y: auto;">
+            <div style="padding: 25px; max-height: 65vh; overflow-y: auto; background: #fafafa;">
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <small style="color: #888; font-size: 10px; text-transform: uppercase; font-weight: 700; display: block;">Referral Code</small>
-                        <span id="displayReferCode" style="font-weight: 800; color: #111; font-size: 16px;">${u.referCode || 'N/A'}</span>
+                <div style="background: #1e293b; padding: 18px; border-radius: 25px; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #334155;">
+                    <div style="position: absolute; top: -10px; right: -10px; font-size: 50px; color: rgba(255,255,255,0.03); transform: rotate(15deg);"><i class="fas fa-shield-alt"></i></div>
+                    <div style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-envelope-open text-warning"></i>
+                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Login Email:</span>
+                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right;">${u.email}</span>
                     </div>
-                    <button onclick="editReferCode(${index})" style="background: #ff0000; color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; transition: 0.3s;">
-                        <i class="fas fa-edit"></i>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-key text-warning"></i>
+                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Password:</span>
+                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right; letter-spacing: 1px;">${u.pass || '******'}</span>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                    <button onclick="editBal(${index}); closeUserPopup();" style="background: #16a34a; color: white; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(22,163,74,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <i class="fas fa-wallet" style="font-size: 18px;"></i> ADD BALANCE
+                    </button>
+                    <button onclick="editUserRank(${index}); closeUserPopup();" style="background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(251,191,36,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <i class="fas fa-user-tag" style="font-size: 18px;"></i> CHANGE RANK
                     </button>
                 </div>
 
-                <div style="background: #fff5f5; padding: 15px; border-radius: 20px; border: 1px dashed #ff0000; margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <small style="color: #ff0000; font-weight: 800; font-size: 11px;">SEND NOTIFICATION</small>
-                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #333; font-weight: 700;">
-                            <input type="checkbox" id="sendToAll"> Send to All?
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
+                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">Current Balance</small>
+                        <b style="font-size: 18px; color: #0f172a;">৳${parseFloat(u.bal || 0).toFixed(2)}</b>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
+                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">A/C Status</small>
+                        <b style="font-size: 12px; color: ${isActive ? '#16a34a' : '#ef4444'}; font-weight: 900;">${isActive ? '● ACTIVE' : '● BLOCKED'}</b>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 30px; border: 1px solid #f1f5f9; overflow: hidden; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
+                    <div onclick="editReferCode(${index})" style="padding: 18px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-link me-2 text-danger"></i> Refer Code</span>
+                        <span style="font-weight: 800; color: #ff0000; background: #fff5f5; padding: 5px 12px; border-radius: 10px; font-size: 12px;">${u.referCode || 'N/A'}</span>
+                    </div>
+                    <div onclick="showReferHistory('${u.referCode || ""}', '${u.name}'); closeUserPopup();" style="padding: 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-users me-2 text-danger"></i> Team Stats</span>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="background: #ffcc00; color: #000; padding: 2px 10px; border-radius: 50px; font-weight: 800; font-size: 11px;">${refCount} Members</span>
+                            <i class="fas fa-chevron-right text-muted small"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #ffffff; padding: 20px; border-radius: 30px; border: 1px solid #f1f5f9; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-weight: 800; color: #0f172a; font-size: 12px;">PUSH NOTIFICATION</span>
+                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: #64748b; font-weight: 700;">
+                            <input type="checkbox" id="sendToAll" style="accent-color: #ff0000;"> To All?
                         </label>
                     </div>
-                    <input type="text" id="adminMsgTitle" placeholder="টাইটেল..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 13px;">
-                    <textarea id="adminMsgBody" placeholder="মেসেজ..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; height: 60px; font-size: 13px; margin-bottom: 10px;"></textarea>
-                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: #ff0000; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 13px;">Send Message <i class="fas fa-paper-plane ms-1"></i></button>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 10px; border-radius: 15px; text-align: center; border: 1px solid #eee;">
-                        <small style="font-size: 10px; color: #888; display: block; text-transform: uppercase;">Balance</small>
-                        <b style="font-size: 14px; color: #333;">৳ ${parseFloat(u.bal || 0).toFixed(2)}</b>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 10px; border-radius: 15px; text-align: center; border: 1px solid #eee;">
-                        <small style="font-size: 10px; color: #888; display: block; text-transform: uppercase;">Status</small>
-                        <b style="font-size: 12px; color: ${isActive ? '#047857' : '#c53030'};">${isActive ? 'ACTIVE' : 'BLOCKED'}</b>
-                    </div>
-                </div>
-
-                <div style="background: #fff; border-radius: 20px; border: 1px solid #eee; overflow: hidden; margin-bottom: 20px;">
-                    <div onclick="editBal(${index}); closeUserPopup();" style="padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-wallet me-2 text-danger"></i> Add/Edit Balance</span>
-                        <i class="fas fa-chevron-right text-muted small"></i>
-                    </div>
-                    <div onclick="showReferHistory('${u.referCode || ""}', '${u.name}'); closeUserPopup();" style="padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-users-cog me-2 text-danger"></i> Refer History</span>
-                        <span class="badge bg-danger rounded-pill">${refCount}</span>
-                    </div>
-                    <div onclick="editUserRank(${index}); closeUserPopup();" style="padding: 15px; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-user-tag me-2 text-danger"></i> Change Rank</span>
-                        <i class="fas fa-chevron-right text-muted small"></i>
-                    </div>
+                    <input type="text" id="adminMsgTitle" placeholder="Subject..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 10px; font-size: 13px; outline: none; transition: 0.3s;">
+                    <textarea id="adminMsgBody" placeholder="Message content..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; height: 70px; font-size: 13px; margin-bottom: 15px; outline: none; resize: none;"></textarea>
+                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: linear-gradient(to right, #ff0000, #ff4400); color: white; border: none; padding: 14px; border-radius: 18px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,0,0,0.2);">SEND NOW <i class="fas fa-paper-plane ms-2"></i></button>
                 </div>
 
                 <button onclick="toggleBlock(${index}); closeUserPopup();" 
-                        style="width: 100%; padding: 12px; border-radius: 15px; border: 2px solid #ff0000; background: ${isActive ? 'transparent' : '#ff0000'}; color: ${isActive ? '#ff0000' : 'white'}; font-weight: 800; font-size: 14px; cursor: pointer;">
-                    ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCOUNT'}
+                        style="width: 100%; padding: 16px; border-radius: 22px; border: none; background: ${isActive ? '#ff000010' : '#ff0000'}; color: ${isActive ? '#ef4444' : 'white'}; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s;">
+                    <i class="fas ${isActive ? 'fa-user-lock' : 'fa-user-check'} me-2"></i> ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCESS'}
                 </button>
 
             </div>
         </div>
-    </div>`;
+    </div>
+    <style>
+        @keyframes premiumZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes rotateBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .m-list:hover { background: #fffcf0; padding-left: 25px !important; transition: 0.3s; }
+        #adminMsgTitle:focus, #adminMsgBody:focus { border-color: #ff0000 !important; }
+    </style>`;
 
     const oldModal = document.getElementById('userModal');
     if (oldModal) oldModal.remove();
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
+    
 
 // রেফার কোড এডিট করার ফাংশন
 function editReferCode(index) {
