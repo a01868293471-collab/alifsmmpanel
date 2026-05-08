@@ -6682,34 +6682,41 @@ function handleAuth(m) {
             switchAuth(false); 
             toast('রেজিস্ট্রেশন সফল! কোড: ' + myNewCode);
             
-        } else {
-            // লগইন অংশ
-            let e = document.getElementById('l-email').value, 
-                p = document.getElementById('l-pass').value;
-            let u = db.users.find(x => x.email === e && x.pass === p);
-            
-            if(u) {
-                if (u.status === 'blocked') {
-                    Swal.fire({ title: 'আপনার অ্যাকাউন্টটি ব্লক!', icon: 'error' });
-                    return;
-                }
-
-                curUser = u; 
-                localStorage.setItem('v7_logged_email', u.email);
-                localStorage.setItem('v7_userName', u.name);
-                localStorage.setItem('v7_userEmail', u.email);
-                localStorage.setItem('v7_userReferCode', u.referCode);
-
-                document.getElementById('auth-section').classList.add('d-none');
-                u.role === 'admin' ? 
-                (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
-                (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-                
-                toast('লগইন সফল');
-            } else {
-                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
-            }
+} else {
+    // লগইন অংশ
+    let e = document.getElementById('l-email').value, 
+        p = document.getElementById('l-pass').value;
+    let u = db.users.find(x => x.email === e && x.pass === p);
+    
+    if(u) {
+        if (u.status === 'blocked') {
+            // এখানে blockReason যোগ করা হয়েছে
+            Swal.fire({ 
+                title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                text: `কারণ: ${u.blockReason || 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।'}`, 
+                icon: 'error',
+                confirmButtonColor: '#ff0000',
+                confirmButtonText: 'ঠিক আছে'
+            });
+            return; // ব্লক থাকলে আর এগোবে না
         }
+
+        curUser = u; 
+        localStorage.setItem('v7_logged_email', u.email);
+        localStorage.setItem('v7_userName', u.name);
+        localStorage.setItem('v7_userEmail', u.email);
+        localStorage.setItem('v7_userReferCode', u.referCode);
+
+        document.getElementById('auth-section').classList.add('d-none');
+        u.role === 'admin' ? 
+        (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
+        (document.getElementById('user-app').classList.remove('d-none'), renderUser());
+        
+        toast('লগইন সফল');
+    } else {
+        toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+    }
+}
     }, 800);
 }
     function logout() {
@@ -6995,14 +7002,14 @@ function editBal(index) {
                 toast('কারণ লেখা বাধ্যতামূলক!', 'error');
             }
         });
-    } else {
-        // আনব্লক করার সময়
-        user.status = 'active';
-        user.blockReason = ""; // কারণ মুছে ফেলা হলো
-        save();
-        renderAdmin();
-        toast('ইউজার আনব্লক করা হয়েছে');
-    }
+// আনব্লক করার অংশটি এভাবে আপডেট করতে পারেন
+} else {
+    user.status = 'active';
+    delete user.blockReason; // প্রপার্টিটি পুরোপুরি রিমুভ করে দেওয়া ভালো
+    save();
+    renderAdmin();
+    toast('ইউজার আনব্লক করা হয়েছে');
+}
 }
     function approveFund(id) {
     let f = db.funds.find(x => x.id == id);
