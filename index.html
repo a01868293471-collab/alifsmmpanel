@@ -8792,18 +8792,116 @@ function buyVip(planName, price, multiplier) {
         }
     });
 }
+function showCountdown(targetTime, targetPage) {
+    let timerInterval;
+    
+    Swal.fire({
+        target: targetPage,
+        icon: 'warning',
+        title: 'উইথড্র লিমিট!',
+        html: `
+            <p>আপনি আজকে একবার উইথড্র করেছেন।</p>
+            <div style="background: #f1f5f9; padding: 15px; border-radius: 10px; margin-top: 10px;">
+                <span style="font-size: 12px; color: #64748b; display: block;">আবার উইথড্র করা যাবে</span>
+                <b id="countdown-timer" style="font-size: 20px; color: #ff4757; font-family: monospace;">--:--:--</b>
+            </div>
+            <p style="font-size: 11px; color: #94a3b8; margin-top: 10px;">প্রতিদিন রাত ১২টার পর নতুন উইথড্র লিমিট শুরু হয়।</p>
+        `,
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#475569',
+        didOpen: () => {
+            const timerDoc = document.getElementById('countdown-timer');
+            timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetTime.getTime() - now;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    Swal.close();
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timerDoc.innerHTML = 
+                    (hours < 10 ? "0" + hours : hours) + ":" + 
+                    (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                    (seconds < 10 ? "0" + seconds : seconds);
+            }, 1000);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+    });
+}
 function withdrawReq() {
     let amt = parseFloat(document.getElementById('w-amt').value);
     let num = document.getElementById('w-num').value;
     let method = currentWithdrawMethod || "Bkash";
     let withdrawPage = document.getElementById('p-withdraw');
 
-    // মেথড অনুযায়ী লোগো সিলেক্ট (বিকাশ বা নগদ)
+    // --- নতুন রাত ১২টা (Midnight) সিস্টেম লজিক ---
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0); // আজকের রাত ১২টা (অর্থাৎ আগামীকালের শুরু)
+
+    if (curUser.lastWithdrawDate) {
+        const lastWithdraw = new Date(curUser.lastWithdrawDate);
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0); // আজকের দিনের শুরু (রাত ১২:০০)
+
+        // যদি শেষ উইথড্র আজকের তারিখের রাত ১২টার পরে হয়ে থাকে
+        if (lastWithdraw > todayStart) {
+            let timerInterval;
+            return Swal.fire({
+                target: withdrawPage,
+                icon: 'warning',
+                title: 'উইথড্র লিমিট!',
+                html: `
+                    <p style="font-size: 14px;">আপনি আজকে একবার উইথড্র করেছেন।</p>
+                    <div style="background: #f1f5f9; padding: 15px; border-radius: 15px; margin-top: 10px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 11px; color: #64748b; display: block; font-weight: 700; text-transform: uppercase;">পরবর্তী উইথড্র করা যাবে</span>
+                        <b id="w-countdown" style="font-size: 24px; color: #ff4757; font-family: 'Courier New', Courier, monospace;">00:00:00</b>
+                    </div>
+                    <p style="font-size: 11px; color: #94a3b8; margin-top: 10px;">প্রতিদিন রাত ১২টার পর নতুন লিমিট শুরু হয়।</p>
+                `,
+                confirmButtonText: 'ঠিক আছে',
+                confirmButtonColor: '#475569',
+                didOpen: () => {
+                    const timerDoc = document.getElementById('w-countdown');
+                    timerInterval = setInterval(() => {
+                        const currentTime = new Date().getTime();
+                        const distance = midnight.getTime() - currentTime;
+
+                        if (distance < 0) {
+                            clearInterval(timerInterval);
+                            Swal.close();
+                            return;
+                        }
+
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        timerDoc.innerHTML = 
+                            (hours < 10 ? "0" + hours : hours) + ":" + 
+                            (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                            (seconds < 10 ? "0" + seconds : seconds);
+                    }, 1000);
+                },
+                willClose: () => { clearInterval(timerInterval); }
+            });
+        }
+    }
+    // --- লিমিট চেক শেষ ---
+
+    // মেথড অনুযায়ী লোগো সিলেক্ট
     let methodLogo = method.toLowerCase() === 'bkash' 
         ? 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/bkash_logo.png' 
         : 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/nagad_logo.png';
 
-    // ৫% চার্জ ক্যালকুলেশন
     let charge = amt * 0.05;
     let finalAmount = amt - charge;
 
@@ -8883,7 +8981,7 @@ function withdrawReq() {
                 if (passInput.value === curUser.pass) {
                     passInput.style.borderColor = "#2ecc71";
                     passInput.style.backgroundColor = "#f0fff4";
-                    passInput.readOnly = true; // পাসওয়ার্ড সঠিক হলে ইনপুট লক করে দিবে
+                    passInput.readOnly = true; 
                     passMsg.innerText = "পাসওয়ার্ড সঠিক! (✓)";
                     passMsg.style.color = "#2ecc71";
                     holdUIBox.style.display = "block";
@@ -8895,7 +8993,6 @@ function withdrawReq() {
                 }
             });
 
-            // হোল্ড লজিক
             let holdTimer;
             let isHolding = false;
 
@@ -8913,6 +9010,8 @@ function withdrawReq() {
                         clearInterval(holdTimer);
                         if (isHolding) {
                             Swal.close();
+                            // সফল হওয়ার পর টাইমস্ট্যাম্প আপডেট
+                            curUser.lastWithdrawDate = Date.now(); 
                             executeWithdraw(amt, finalAmount, num, method, withdrawPage); 
                         }
                     }
@@ -8943,7 +9042,12 @@ function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
         hour12: true 
     });
     
+    // রাত ১২টার সিস্টেম কার্যকর করতে বর্তমান সময় (টাইমস্ট্যাম্প) সেভ করা
+    curUser.lastWithdrawDate = Date.now(); 
+
+    // ব্যালেন্স কমানো
     curUser.bal -= amt; 
+    
     let withdrawData = {
         id: Date.now(),
         user: curUser.email,
@@ -8955,12 +9059,14 @@ function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
         time: now
     };
 
+    // ডাটাবেসে রিকোয়েস্ট পুশ করা এবং সেভ করা
     if (!db.withdraws) db.withdraws = [];
     db.withdraws.push(withdrawData);
-    save();
-    renderUser();
+    
+    save(); // ডাটা পার্মানেন্টলি সেভ করা
+    renderUser(); // ইউজার ইন্টারফেস আপডেট করা
 
-    // সফল পপআপ
+    // সফল পপআপ (Premium Design)
     Swal.fire({
         target: withdrawPage,
         width: '350px',
@@ -9012,13 +9118,15 @@ function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
                     </div>
                 </div>
                 <p style="text-align: center; font-size: 11px; color: #999; margin-top: 15px;">
-                    <i class="fas fa-info-circle me-1"></i> পেমেন্ট ১-২৪ ঘন্টার মধ্যে সম্পন্ন হবে
+                    <i class="fas fa-info-circle me-1"></i> পেমেন্ট ১-২৪ ঘণ্টার মধ্যে সম্পন্ন হবে
                 </p>
             </div>
         `
     }).then(() => {
+        // ইনপুট ফিল্ড ক্লিয়ার করা
         document.getElementById('w-amt').value = '';
         document.getElementById('w-num').value = '';
+        // হিস্ট্রি রেন্ডার করা
         if (typeof renderWithdrawHistory === "function") renderWithdrawHistory();
     });
 }
