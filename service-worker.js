@@ -2,6 +2,14 @@ self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
+self.addEventListener('activate', (e) => {
+  return self.clients.claim();
+});
+
 self.addEventListener('fetch', (e) => {
-  // অ্যাপটি সচল রাখার জন্য এটি প্রয়োজন
+  e.respondWith(
+    fetch(e.request).catch(() => {
+      return new Response("Network error occurred");
+    })
+  );
 });
