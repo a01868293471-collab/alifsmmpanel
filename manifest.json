@@ -1,9 +1,9 @@
-{
+ {
   "short_name": "FREE TIME EARN",
-  "name": "FREE TIME EARN",
+  "name": "FREE TIME EARN - Earn Online",
   "icons": [
     {
-      "src": "https://img.icons8.com/fluency/512/f-key.png",
+      "src": "https://img.icons8.com/fluency/512/money-bag-circle.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -13,5 +13,5 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
-  "theme_color": "#0061FF"
+  "theme_color": "#ff0000"
 }
