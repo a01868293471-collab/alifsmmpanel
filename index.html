@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>FREE TIME EARN</title>
-    <link rel="manifest" href="manifest.json">
     <link rel="manifest" href="manifest.json">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
@@ -11056,26 +11054,6 @@ window.addEventListener('load', loadFromServer);
         jivo_api.open();
     }
 }
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(() => console.log("Service Worker Registered"));
-    }
-    ```
-*   **Icon Size:** আপনার `manifest.json` ফাইলে অন্তত একটি ১৯২x১৯২ বা ৫১২x৫১২ সাইজের আইকন থাকতে হবে (আপনি ৫১২x৫১২ ব্যবহার করেছেন, যা ঠিক আছে)।
-
----
-
-### ৩. পপআপ টেস্ট করার উপায়
-ব্রাউজার অনেক সময় নিজে থেকে পপআপ দেখায় না যদি আপনি আগে সেটি "Ignore" করে থাকেন। এটি ম্যানুয়ালি চেক করতে:
-1.  Chrome ব্রাউজারে আপনার সাইটটি ওপেন করুন।
-2.  **Inspect** (F12) এ যান।
-3.  **Application** ট্যাবে ক্লিক করুন।
-4.  বামে **Manifest** অপশনে ক্লিক করুন।
-5.  সেখানে যদি কোনো লাল এরর (Error) না থাকে, তবে **"Install Ability"** সেকশনে "Install" বাটনে ক্লিক করে চেক করতে পারেন।
-
-আপনার `manifest.json` ফাইলে `background_color` আপনি `#FF0000` (লাল) দিয়েছেন, এটি অনেক সময় ডিভাইসের নোটিফিকেশন বারের সাথে সামঞ্জস্যপূর্ণ হয় না। আপনি চাইলে এটি পরিবর্তন করে দেখতে পারেন। 
-
-সবকিছু ঠিক থাকলে এবং সাইটটি লাইভ সার্ভারে থাকলে, ব্রাউজার কয়েক সেকেন্ড পর অটোমেটিক "Add to Home Screen" পপআপ দেখাবে।
 </script>
 
 </body>
