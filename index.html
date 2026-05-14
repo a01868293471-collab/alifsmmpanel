@@ -3563,6 +3563,16 @@ function toggleSignupPassword() {
 <div style="background: #ffffff; margin: 10px 0; padding: 20px 0; border-radius: 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); border: 1px solid #f2f2f2; width: 100%; box-sizing: border-box;">
     
     <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px 0; text-align: center; width: 100%;">
+        <div class="photo-grid-item" onclick="handleRechargeClick()">
+    <div class="photo-circle">
+        <i class="fas fa-mobile-alt"></i>
+    </div>
+    <span>Mobile<br>Recharge</span>
+</div>
+        <div class="photo-grid-item" onclick="handleDriveOfferClick()">
+            <div class="photo-circle"><i class="fas fa-bolt"></i></div>
+            <span>Drive<br>Offer</span>
+        </div>
         
         <div class="photo-grid-item" onclick="handleMicroJobClick()">
             <div class="photo-circle"><i class="fas fa-briefcase"></i></div>
@@ -3579,25 +3589,19 @@ function toggleSignupPassword() {
             <span>Job<br>Post</span>
         </div>
 
-        <div class="photo-grid-item" onclick="handleDriveOfferClick()">
-            <div class="photo-circle"><i class="fas fa-bolt"></i></div>
-            <span>Drive<br>Offer</span>
-        </div>
 
-        <div class="photo-grid-item" onclick="handleShopClick()">
-            <div class="photo-circle"><i class="fas fa-shopping-bag"></i></div>
-            <span>Reseller<br>Shop</span>
-        </div>
+
+
 
         <div class="photo-grid-item" onclick="handleVendorClick()">
             <div class="photo-circle"><i class="fas fa-user-tie"></i></div>
             <span>Vendor<br>ship</span>
         </div>
 
-        <div class="photo-grid-item" onclick="handleTopupClick()">
-            <div class="photo-circle"><i class="fas fa-gamepad"></i></div>
-            <span>Top<br>up</span>
-        </div>
+<div class="photo-grid-item" onclick="handleCaptchaClick()">
+    <div class="photo-circle"><i class="fas fa-keyboard"></i></div>
+    <span>Captcha<br>Typing</span>
+</div>
 
         <div class="photo-grid-item" onclick="handleTargetBonusClick()">
             <div class="photo-circle"><i class="fas fa-bullseye"></i></div>
@@ -3619,11 +3623,12 @@ function toggleSignupPassword() {
             <span>Social<br>Service</span>
         </div>
 
-        <div class="photo-grid-item" onclick="handleBloodDonationClick()">
-            <div class="photo-circle"><i class="fas fa-hand-holding-heart"></i></div>
-            <span>Blood<br>Donation</span>
-        </div>
-
+<div class="photo-grid-item" onclick="handlePayBillClick()">
+    <div class="photo-circle">
+        <i class="fas fa-file-invoice-dollar"></i>
+    </div>
+    <span>Pay<br>Bill</span>
+</div>
         <div class="photo-grid-item" onclick="handleTrainingClick()">
             <div class="photo-circle"><i class="fas fa-graduation-cap"></i></div>
             <span>Training<br>Section</span>
@@ -4523,96 +4528,77 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
-
-<div id="p-blood" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fc; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
+<!-- Pay Bill Page -->
+<div id="p-paybill" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
+    <!-- Header -->
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
         <div style="display: flex; align-items: center;">
-            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('p-home')"></i>
+            <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="openPage('home')"></i>
+            <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">Pay Bill</h5>
+        </div>
+        <!-- History Icon -->
+        <div onclick="openPage('p-bill-history')" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+            <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+        </div>
+    </div>
+
+    <!-- Category Chips -->
+    <div class="d-flex gap-2 p-3" style="overflow-x: auto; white-space: nowrap;">
+        <span class="bill-chip active-bill" onclick="setBillType('Electricity', this)">Electricity</span>
+        <span class="bill-chip" onclick="setBillType('Gas', this)">Gas</span>
+        <span class="bill-chip" onclick="setBillType('Water', this)">Water</span>
+        <span class="bill-chip" onclick="setBillType('Internet', this)">Internet</span>
+    </div>
+
+    <!-- Input Form -->
+    <div style="padding: 15px;">
+        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
             
-            <h5 style="margin: 0; margin-left: 20px; font-weight: 700; color: white; letter-spacing: 0.3px;">Blood Donor List</h5>
-        </div>
+            <!-- Type Display -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="width: 50px; height: 50px; background: #e0f2fe; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                    <i id="bill-icon" class="fas fa-bolt" style="color: #3b82f6; font-size: 20px;"></i>
+                </div>
+                <h6 id="bill-label" style="font-weight: 800; color: #1e293b;">Electricity Bill</h6>
+            </div>
 
-   
-    <div onclick="toggleBloodModal()" style="width: 35px; height: 35px; background: #fff5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #ffd7d7;">
-        <i class="fas fa-user-plus" style="color: #ff4757; font-size: 16px;"></i>
+            <!-- Consumer ID -->
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 11px; font-weight: 700; color: #64748b; margin-left: 5px;">ACCOUNT / CONSUMER ID</label>
+                <div style="background: #f1f5f9; border-radius: 12px; padding: 12px; display: flex; align-items: center; margin-top: 5px;">
+                    <i class="fas fa-id-card" style="color: #3b82f6; margin-right: 12px;"></i>
+                    <input type="text" id="bill-acc-id" placeholder="Enter ID Number" style="background: transparent; border: none; outline: none; width: 100%; font-weight: 600;">
+                </div>
+            </div>
+
+            <!-- Amount -->
+            <div style="margin-bottom: 25px;">
+                <label style="font-size: 11px; font-weight: 700; color: #64748b; margin-left: 5px;">AMOUNT (৳)</label>
+                <div style="background: #f1f5f9; border-radius: 12px; padding: 12px; display: flex; align-items: center; margin-top: 5px;">
+                    <i class="fas fa-money-bill-wave" style="color: #2ecc71; margin-right: 12px;"></i>
+                    <input type="number" id="bill-amt" placeholder="0.00" style="background: transparent; border: none; outline: none; width: 100%; font-weight: 700; font-size: 18px;">
+                </div>
+            </div>
+
+            <!-- Pay Button -->
+            <button onclick="submitBillRequest()" style="width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 16px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
+                Proceed to Pay
+            </button>
+        </div>
     </div>
 </div>
- 
 
-<div class="d-flex gap-2 mb-4" style="overflow-x: auto; white-space: nowrap; padding-bottom: 5px;">
-    <span class="blood-group-chip active-bg" onclick="filterBlood('All', this)">All</span>
-    <span class="blood-group-chip" onclick="filterBlood('A+', this)">A+</span>
-    <span class="blood-group-chip" onclick="filterBlood('B+', this)">B+</span>
-    <span class="blood-group-chip" onclick="filterBlood('O+', this)">O+</span>
-    <span class="blood-group-chip" onclick="filterBlood('AB+', this)">AB+</span>
-    <span class="blood-group-chip" onclick="filterBlood('A-', this)">A-</span>
-        <span class="blood-group-chip" onclick="filterBlood('O-', this)">O-</span>
-</div>
+<style>
+    .bill-chip {
+        padding: 8px 18px; background: white; border-radius: 50px; font-size: 13px; font-weight: 600; color: #64748b; border: 1px solid #e2e8f0; cursor: pointer; transition: 0.3s;
+    }
+    .active-bill {
+        background: #3b82f6; color: white; border-color: #3b82f6;
+    }
+</style>
 
 
-<div id="blood-donor-list">
-    <div class="donor-card shadow-sm A+"> <div class="donor-blood-type">A+</div>
-        <div class="donor-details">
-            <h6>Abu Sufian</h6>
-            <p><i class="fas fa-map-marker-alt"></i> Khulna</p>
-        </div>
-        <a href="tel:017" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-    </div>
-
-    <div class="donor-card shadow-sm O+"> <div class="donor-blood-type">O+</div>
-        <div class="donor-details">
-            <h6>Rakib Hasan</h6>
-            <p><i class="fas fa-map-marker-alt"></i> Dhaka</p>
-        </div>
-        <a href="tel:018" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-    </div>
-
-
-    </div>
-</div>
-<div id="blood-reg-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-    <div class="bg-white p-4 rounded-4 shadow-lg w-100" style="max-width: 400px; position: relative; animation: slideUp 0.3s ease;">
-        
-        <i class="fas fa-times" style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: #b2bec3;" onclick="toggleBloodModal()"></i>
-        
-        <h5 class="fw-bold mb-3 text-center" style="color: #ff4757;"><i class="fas fa-heartbeat"></i> রক্তদাতা হিসেবে নাম লিখুন</h5>
-        
-        <div class="mb-3">
-            <label class="small fw-bold text-muted">আপনার নাম</label>
-            <input type="text" id="donor-name" class="form-control auth-input" placeholder="যেমন: আবু সুফিয়ান">
-        </div>
-
-        <div class="mb-3">
-            <label class="small fw-bold text-muted">রক্তের গ্রুপ</label>
-            <select id="donor-group" class="form-select auth-input">
-                <option value="">সিলেক্ট করুন</option>
-                <option value="A+">A+</option>
-                <option value="B+">B+</option>
-                <option value="O+">O+</option>
-                <option value="AB+">AB+</option>
-                <option value="A-">A-</option>
-                <option value="B-">B-</option>
-                <option value="O-">O-</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label class="small fw-bold text-muted">আপনার এলাকা</label>
-            <input type="text" id="donor-loc" class="form-control auth-input" placeholder="যেমন: খুলনা, বাংলাদেশ">
-        </div>
-
-        <div class="mb-4">
-            <label class="small fw-bold text-muted">মোবাইল নাম্বার</label>
-            <input type="number" id="donor-phone" class="form-control auth-input" placeholder="017XXXXXXXX">
-        </div>
-
-        <button class="btn btn-danger w-100 py-3 fw-bold rounded-3 shadow-sm" style="background: #ff4757; border: none;" onclick="submitDonorInfo()">
-            নিবন্ধন সম্পন্ন করুন
-        </button>
-    </div>
-</div>
 <div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 50px;">
     
     <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center;">
@@ -4636,6 +4622,66 @@ function toggleSignupPassword() {
             </div>
 
             <i class="fas fa-chevron-right" style="color: #ccc; font-size: 14px;"></i>
+        </div>
+    </div>
+</div>
+<!-- Mobile Recharge Page -->
+<div id="p-recharge" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <!-- Header -->
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Mobile Recharge</h5>
+            </div>
+            <div onclick="openPage('p-recharge-history')" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recharge Form Container -->
+    <div style="padding: 20px;">
+        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            
+            <!-- Number Input -->
+            <label style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 8px; display: block;">Mobile Number</label>
+            <div style="background: #f1f5f9; border-radius: 12px; padding: 12px; display: flex; align-items: center; margin-bottom: 20px;">
+                <i class="fas fa-phone-alt" style="color: #3b82f6; margin-right: 12px;"></i>
+                <input type="number" id="recharge-num" placeholder="017XXXXXXXX" style="background: transparent; border: none; outline: none; width: 100%; font-weight: 600; font-size: 16px;">
+            </div>
+
+            <!-- Operator Selection (Icons) -->
+            <label style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 8px; display: block;">Select Operator</label>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;">
+                <!-- অপারেটর বাটনগুলো এখানে থাকবে -->
+                <div onclick="setOp('Grameenphone')" class="op-btn" style="border: 1px solid #eee; border-radius: 10px; padding: 5px; text-align: center; cursor: pointer;">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Grameenphone_logo.svg/256px-Grameenphone_logo.svg.png" style="width: 100%; height: 30px; object-fit: contain;">
+                </div>
+                <div onclick="setOp('Banglalink')" class="op-btn" style="border: 1px solid #eee; border-radius: 10px; padding: 5px; text-align: center; cursor: pointer;">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Banglalink_Logo.svg/256px-Banglalink_Logo.svg.png" style="width: 100%; height: 30px; object-fit: contain;">
+                </div>
+                <div onclick="setOp('Robi')" class="op-btn" style="border: 1px solid #eee; border-radius: 10px; padding: 5px; text-align: center; cursor: pointer;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Robi_logo_2010.svg/256px-Robi_logo_2010.svg.png" style="width: 100%; height: 30px; object-fit: contain;">
+                </div>
+                <div onclick="setOp('Airtel')" class="op-btn" style="border: 1px solid #eee; border-radius: 10px; padding: 5px; text-align: center; cursor: pointer;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Airtel_logo_2010.svg/256px-Airtel_logo_2010.svg.png" style="width: 100%; height: 30px; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- Amount Input -->
+            <label style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 8px; display: block;">Amount</label>
+            <div style="background: #f1f5f9; border-radius: 12px; padding: 12px; display: flex; align-items: center; margin-bottom: 25px;">
+                <span style="font-weight: 800; color: #3b82f6; margin-right: 10px;">৳</span>
+                <input type="number" id="recharge-amt" placeholder="Enter Amount" style="background: transparent; border: none; outline: none; width: 100%; font-weight: 700; font-size: 18px;">
+            </div>
+
+            <!-- Submit Button -->
+            <button onclick="submitRecharge()" style="width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 16px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
+                Request Recharge
+            </button>
+
         </div>
     </div>
 </div>
@@ -5633,6 +5679,63 @@ function toggleSignupPassword() {
 
     <div class="container px-3 mt-3" id="invest-list-container">
         </div>
+</div>
+<!-- Captcha Typing Page -->
+<div id="p-captcha" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <!-- Header -->
+    <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 102; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);">
+        <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer;" onclick="openPage('home')"></i>
+        <h5 style="margin: 0; font-weight: 700;">Captcha Typing</h5>
+    </div>
+
+    <div style="padding: 20px;">
+        <!-- Stats Card -->
+        <div style="background: white; border-radius: 15px; padding: 15px; display: flex; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <div style="text-align: center; flex: 1;">
+                <small style="color: #64748b; display: block;">Today Done</small>
+                <b id="cap-count" style="color: #2575fc; font-size: 18px;">0</b>
+            </div>
+            <div style="width: 1px; background: #eee;"></div>
+            <div style="text-align: center; flex: 1;">
+                <small style="color: #64748b; display: block;">Earned</small>
+                <b id="cap-earn" style="color: #2ecc71; font-size: 18px;">৳0.00</b>
+            </div>
+        </div>
+
+        <!-- Captcha Display Box -->
+        <div style="background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <p style="font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 15px;">Type the code below</p>
+            
+            <div id="captcha-display" style="background: #f8fafc; padding: 15px; border-radius: 12px; font-size: 32px; font-weight: 800; letter-spacing: 10px; color: #1e293b; border: 2px dashed #cbd5e1; user-select: none; margin-bottom: 20px; font-family: 'Courier New', Courier, monospace; position: relative; overflow: hidden;">
+                <!-- Captcha Code will appear here -->
+                <span id="target-code">X7K9P2</span>
+                <div style="position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.1; background-image: radial-gradient(#000 10%, transparent 10%); background-size: 5px 5px;"></div>
+            </div>
+
+            <button onclick="generateCaptcha()" style="background: none; border: none; color: #2575fc; font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 20px;">
+                <i class="fas fa-sync-alt"></i> Refresh Captcha
+            </button>
+
+            <!-- Input Field -->
+            <input type="text" id="captcha-input" placeholder="Enter code here" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #e2e8f0; text-align: center; font-size: 20px; font-weight: 700; outline: none; transition: 0.3s; margin-bottom: 20px;" onfocus="this.style.borderColor='#2575fc'">
+
+            <!-- Submit Button -->
+            <button onclick="checkCaptcha()" style="width: 100%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; padding: 16px; border-radius: 15px; font-weight: 700; font-size: 16px; box-shadow: 0 8px 20px rgba(37, 117, 252, 0.3);">
+                Claim Reward
+            </button>
+        </div>
+
+        <!-- Instructions -->
+        <div style="margin-top: 25px; background: #fffbeb; border-radius: 12px; padding: 15px; border: 1px solid #fef3c7;">
+            <h6 style="color: #92400e; font-size: 14px; margin-bottom: 5px;"><i class="fas fa-info-circle"></i> নিয়মাবলী:</h6>
+            <ul style="font-size: 12px; color: #b45309; padding-left: 18px; line-height: 1.6;">
+                <li>সঠিকভাবে কোডটি টাইপ করলে প্রতিবার পুরস্কার পাবেন।</li>
+                <li>ভুল টাইপ করলে কোনো টাকা যোগ হবে না।</li>
+                <li>অটোমেটিক কোনো টুল ব্যবহার করলে অ্যাকাউন্ট ব্যান হতে পারে।</li>
+            </ul>
+        </div>
+    </div>
 </div>
 <div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -11436,6 +11539,211 @@ function handleWalletClick() {
     } else {
         // যদি একটিভ থাকে তবে ওয়ালেট পেজ খুলবে
         openPage('p-wallet');
+    }
+}
+// ১. হোম পেজের বাটন থেকে এই ফাংশনটি কল করবেন
+function handleRechargeClick() {
+    if (curUser.status !== 'active') {
+        Swal.fire({
+            title: 'সার্ভিস লকড!',
+            text: 'মোবাইল রিচার্জ করতে আপনার অ্যাকাউন্টটি একটিভ করুন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'একটিভ করুন',
+            confirmButtonColor: '#3b82f6'
+        }).then((result) => {
+            if (result.isConfirmed) openPage('p-fund');
+        });
+    } else {
+        openPage('p-recharge'); // এটি রিচার্জ পেজ ওপেন করবে
+    }
+}
+
+// ২. অপারেটর সিলেক্ট করার ফাংশন
+let selectedOp = "";
+function setOp(opName) {
+    selectedOp = opName;
+    // সব বর্ডার রিসেট করে সিলেক্ট করাটাকে হাইলাইট করা
+    document.querySelectorAll('.op-btn').forEach(btn => btn.style.border = "1px solid #eee");
+    event.currentTarget.style.border = "2px solid #3b82f6";
+    event.currentTarget.style.background = "#eff6ff";
+}
+
+// ৩. রিচার্জ সাবমিট করার ফাংশন
+function submitRecharge() {
+    const num = document.getElementById('recharge-num').value;
+    const amt = document.getElementById('recharge-amt').value;
+
+    if (num.length < 11 || !amt || !selectedOp) {
+        toast("সবগুলো ঘর সঠিকভাবে পূরণ করুন!");
+        return;
+    }
+
+    if (parseInt(amt) > curUser.bal) {
+        toast("আপনার ব্যালেন্স পর্যাপ্ত নয়!");
+        return;
+    }
+
+    // আপনার ডাটাবেস বা API কল এখানে হবে
+    toast(selectedOp + " রিচার্জ রিকোয়েস্ট সফল হয়েছে!");
+    openPage('home'); // কাজ শেষ হলে হোম পেজে ফেরত
+}
+let selectedBillType = "Electricity";
+
+// ১. বিল টাইপ পরিবর্তন করা
+function setBillType(type, elem) {
+    selectedBillType = type;
+    
+    // UI আপডেট (Chips)
+    document.querySelectorAll('.bill-chip').forEach(c => c.classList.remove('active-bill'));
+    elem.classList.add('active-bill');
+    
+    // আইকন ও লেবেল পরিবর্তন
+    const icon = document.getElementById('bill-icon');
+    const label = document.getElementById('bill-label');
+    label.innerText = type + " Bill";
+    
+    if(type === 'Electricity') icon.className = "fas fa-bolt";
+    else if(type === 'Gas') icon.className = "fas fa-fire";
+    else if(type === 'Water') icon.className = "fas fa-tint";
+    else if(type === 'Internet') icon.className = "fas fa-wifi";
+}
+
+// ২. বিল পেমেন্ট রিকোয়েস্ট সাবমিট করা
+function submitBillRequest() {
+    const accId = document.getElementById('bill-acc-id').value.trim();
+    const amt = document.getElementById('bill-amt').value.trim();
+
+    // ভ্যালিডেশন
+    if (!accId || !amt) {
+        toast("সবগুলো তথ্য প্রদান করুন!");
+        return;
+    }
+
+    if (parseFloat(amt) > curUser.bal) {
+        Swal.fire('ব্যালেন্স নেই!', 'আপনার অ্যাকাউন্টে পর্যাপ্ত টাকা নেই।', 'error');
+        return;
+    }
+
+    // কনফার্মেশন
+    Swal.fire({
+        title: 'নিশ্চিত করুন',
+        text: `${selectedBillType} বিল ৳${amt} পেমেন্ট করতে চান?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'হ্যাঁ, পে করুন',
+        confirmButtonColor: '#3b82f6',
+        cancelButtonText: 'বাতিল'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // পেমেন্ট প্রসেসিং ফাংশন (আপনার ডাটাবেস অনুযায়ী)
+            processBillPayment(accId, amt);
+        }
+    });
+}
+
+function processBillPayment(accId, amt) {
+    // এখানে আপনার API বা ডাটাবেস সেভ করার কোড লিখবেন
+    // উদাহরণ:
+    toast("বিলের রিকোয়েস্ট সফল হয়েছে!");
+    
+    // ইনপুট রিসেট
+    document.getElementById('bill-acc-id').value = "";
+    document.getElementById('bill-amt').value = "";
+    
+    openPage('home'); // কাজ শেষে হোম পেজে ফেরত
+}
+function handlePayBillClick() {
+    // অ্যাকাউন্ট একটিভ কি না চেক করা
+    if (curUser.status !== 'active') {
+        Swal.fire({
+            title: 'অ্যাকাউন্ট ভেরিফাইড নয়!',
+            text: 'বিল পেমেন্ট সুবিধা ব্যবহার করতে আপনার অ্যাকাউন্টটি একটিভ করুন।',
+            icon: 'info',
+            confirmButtonText: 'একটিভ করুন'
+        }).then((res) => { if(res.isConfirmed) openPage('p-fund') });
+    } else {
+        openPage('p-paybill');
+    }
+}
+let currentCaptcha = "";
+let todayCaptchaCount = 0;
+let captchaReward = 0.20; // প্রতি ক্যাপচায় ২০ পয়সা (আপনি পরিবর্তন করতে পারেন)
+
+// ১. পেজ খোলার সময় নতুন ক্যাপচা তৈরি
+function openCaptchaPage() {
+    generateCaptcha();
+    openPage('p-captcha');
+}
+
+// ২. র‍্যান্ডম ক্যাপচা তৈরি করা
+function generateCaptcha() {
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // সহজে চেনা যায় এমন অক্ষর
+    let result = "";
+    for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    currentCaptcha = result;
+    document.getElementById('target-code').innerText = result;
+    document.getElementById('captcha-input').value = "";
+}
+
+// ৩. ক্যাপচা যাচাই করা
+function checkCaptcha() {
+    const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+    
+    if (!userInput) {
+        toast("অনুগ্রহ করে কোডটি লিখুন!");
+        return;
+    }
+
+    if (userInput === currentCaptcha) {
+        // সঠিক হলে
+        todayCaptchaCount++;
+        
+        // ইউজারের ব্যালেন্স আপডেট (আপনার ডাটাবেস লজিক অনুযায়ী)
+        curUser.bal += captchaReward;
+        curUser.todayEarn = (curUser.todayEarn || 0) + captchaReward;
+        
+        // UI আপডেট
+        document.getElementById('cap-count').innerText = todayCaptchaCount;
+        document.getElementById('cap-earn').innerText = "৳" + (todayCaptchaCount * captchaReward).toFixed(2);
+        
+        Swal.fire({
+            title: 'সফল হয়েছে!',
+            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন।`,
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        });
+
+        // নতুন ক্যাপচা জেনারেট
+        generateCaptcha();
+        if(typeof renderUser === "function") renderUser(); // ব্যালেন্স রিফ্রেশ
+        
+    } else {
+        // ভুল হলে
+        Swal.fire('ভুল কোড!', 'কোডটি আবার দেখে টাইপ করুন।', 'error');
+        generateCaptcha();
+    }
+}
+function handleCaptchaClick() {
+    // অ্যাকাউন্ট একটিভ কি না চেক করা
+    if (curUser.status !== 'active') {
+        Swal.fire({
+            title: 'অ্যাক্সেস লকড!',
+            text: 'ক্যাপচা টাইপিং করে আয় করতে আপনার অ্যাকাউন্টটি আগে একটিভ করুন।',
+            icon: 'lock',
+            showCancelButton: true,
+            confirmButtonText: 'একটিভ করুন',
+            confirmButtonColor: '#3b82f6',
+            cancelButtonText: 'পরে করবো'
+        }).then((res) => { 
+            if(res.isConfirmed) openPage('p-fund'); 
+        });
+    } else {
+        // অ্যাকাউন্ট একটিভ থাকলে ক্যাপচা পেজে নিয়ে যাবে
+        openPage('p-captcha'); 
     }
 }
 </script>
