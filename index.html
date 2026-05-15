@@ -6289,74 +6289,145 @@ function toggleSignupPassword() {
 }
 </style>
 
-<div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Social Service</h5>
+    <!-- হেডার -->
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 22px 15px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);">
+                <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
             </div>
-
-         
-
-    <div onclick="openPage('p-orders')" style="cursor: pointer; padding: 5px;">
-        <i class="fas fa-history" style="font-size: 20px; color: #6c5ce7;"></i>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px; letter-spacing: 0.5px;">Social Services</h4>
+        </div>
+        <div onclick="openPage('p-orders')" style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3);">
+            <i class="fas fa-history" style="color: white; font-size: 18px;"></i>
+        </div>
     </div>
-</div>
-</div>
-   
-    <div class="container mt-3" style="padding-bottom: 30px;">
+
+    <div class="container px-3 mt-3">
         
-        <div style="display: flex; gap: 12px; overflow-x: auto; padding: 10px 5px; scrollbar-width: none;">
-            <div onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Comments'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
+        <p style="font-size: 12px; font-weight: 800; color: #ff0000; margin: 10px 5px; text-transform: uppercase; letter-spacing: 1px;">সার্ভিস প্ল্যাটফর্ম বেছে নিন</p>
+        
+        <!-- প্ল্যাটফর্ম সিলেকশন এরিয়া -->
+        <div id="platform-list" style="display: flex; gap: 12px; overflow-x: auto; padding: 10px 5px; scrollbar-width: none; -ms-overflow-style: none;">
+            
+            <div class="platform-btn" onclick="openSubMenu('Facebook', ['Followers', 'Likes', 'Comments'], this)">
                 <i class="fab fa-facebook" style="color: #1877F2; font-size: 24px;"></i>
             </div>
-            <div onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
+
+            <div class="platform-btn" onclick="openSubMenu('YouTube', ['Subscribers', 'Views', 'Watch Time'], this)">
                 <i class="fab fa-youtube" style="color: #FF0000; font-size: 24px;"></i>
             </div>
-            <div onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
+
+            <div class="platform-btn" onclick="openSubMenu('TikTok', ['Followers', 'Likes', 'Views'], this)">
                 <i class="fab fa-tiktok" style="color: #000000; font-size: 24px;"></i>
             </div>
-            <div onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
+
+            <div class="platform-btn" onclick="openSubMenu('Instagram', ['Followers', 'Likes'], this)">
                 <i class="fab fa-instagram" style="color: #E4405F; font-size: 24px;"></i>
             </div>
-            <div onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)" style="min-width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer;">
+
+            <div class="platform-btn" onclick="openSubMenu('Telegram', ['Members', 'Post Views'], this)">
                 <i class="fab fa-telegram" style="color: #0088cc; font-size: 24px;"></i>
             </div>
         </div>
 
-        <div id="order-section" style="background: white; border-radius: 20px; padding: 20px; margin-top: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.04);">
-            <h6 id="cur-srv-txt" style="font-weight: 700; color: #6c5ce7; margin-bottom: 15px; font-size: 15px;">সার্ভিস সিলেক্ট করুন</h6>
+        <!-- মেইন অর্ডার কার্ড -->
+        <div id="order-section" style="background: white; border-radius: 30px; padding: 25px; margin-top: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9;">
             
-            <div id="sub-options" class="d-flex flex-wrap gap-2 mb-4"></div>
-
-            <div id="srv-desc" style="display: none; background: #f0f3ff; padding: 12px; border-radius: 10px; font-size: 12px; color: #555; margin-bottom: 15px; border-left: 4px solid #6c5ce7;"></div>
-
-            <label style="font-size: 12px; font-weight: 700; color: #888; margin-bottom: 5px; display: block;">অর্ডার লিঙ্ক</label>
-            <input type="text" id="link" class="form-control" placeholder="লিঙ্কটি এখানে পেস্ট করুন" style="height: 45px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 15px; font-size: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <div style="width: 5px; height: 20px; background: #ff0000; border-radius: 10px;"></div>
+                <h6 id="cur-srv-txt" style="font-weight: 800; color: #1e293b; margin: 0; font-size: 16px;">সার্ভিস ক্যাটাগরি</h6>
+            </div>
             
-            <label style="font-size: 12px; font-weight: 700; color: #888; margin-bottom: 5px; display: block;">পরিমাণ</label>
-            <select id="qty" class="form-select" onchange="updatePrice()" style="height: 45px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 20px; font-size: 14px;">
-                <option value="0">পরিমাণ বেছে নিন</option>
-                <option value="1000">1,000 (1k)</option>
-                <option value="5000">5,000 (5k)</option>
-                <option value="10000">10,000 (10k)</option>
-            </select>
+            <!-- সাব-অপশন বাটন এরিয়া -->
+            <div id="sub-options" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;"></div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; margin-bottom: 25px;">
-                <span style="font-size: 13px; color: #666; font-weight: 600;">মোট মূল্য:</span>
-                <span style="font-size: 18px; color: #27ae60; font-weight: 800;">৳ <span id="total-price">0.00</span></span>
+            <!-- বর্ণনা বক্স -->
+            <div id="srv-desc" style="display: none; background: #fff5f5; padding: 15px; border-radius: 15px; font-size: 12px; color: #b91c1c; margin-bottom: 20px; border-left: 4px solid #ffcc00; line-height: 1.6; font-weight: 500;"></div>
+
+            <!-- ইনপুট ফিল্ডস -->
+            <div style="margin-bottom: 20px;">
+                <label style="font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 8px; display: block; text-transform: uppercase;">অর্ডার লিঙ্ক</label>
+                <div style="display: flex; align-items: center; background: #f8fafc; padding: 12px 15px; border-radius: 15px; border: 2px solid #f1f5f9;">
+                    <i class="fas fa-link" style="color: #ff0000; margin-right: 12px; font-size: 14px;"></i>
+                    <input type="text" id="link" placeholder="এখানে লিঙ্ক পেস্ট করুন" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 600; color: #1e293b; font-size: 14px;">
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 25px;">
+                <label style="font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 8px; display: block; text-transform: uppercase;">অর্ডার পরিমাণ</label>
+                <div style="display: flex; align-items: center; background: #f8fafc; padding: 12px 15px; border-radius: 15px; border: 2px solid #f1f5f9;">
+                    <i class="fas fa-layer-group" style="color: #ff0000; margin-right: 12px; font-size: 14px;"></i>
+                    <select id="qty" onchange="updatePrice()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; color: #1e293b; font-size: 14px; cursor: pointer;">
+                        <option value="0">পরিমাণ নির্বাচন করুন</option>
+                        <option value="1000">1,000 (1k)</option>
+                        <option value="5000">5,000 (5k)</option>
+                        <option value="10000">10,000 (10k)</option>
+                    </select>
+                </div>
             </div>
 
-            <button onclick="confirmOrder()" style="width: 100%; padding: 15px; background: #6c5ce7; color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 15px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);">
-                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> অর্ডার কনফার্ম করুন
+            <!-- প্রাইস সেকশন -->
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background: linear-gradient(135deg, #fff9f9 0%, #fff1f1 100%); border-radius: 20px; margin-bottom: 25px; border: 1px solid #fee2e2;">
+                <div>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 800; text-transform: uppercase; display: block;">Total Cost</span>
+                    <span style="font-size: 24px; color: #ff0000; font-weight: 900;">৳ <span id="total-price">0.00</span></span>
+                </div>
+                <div style="background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <i class="fas fa-wallet" style="color: #ffcc00; font-size: 20px;"></i>
+                </div>
+            </div>
+
+            <button onclick="confirmOrder()" style="width: 100%; padding: 18px; background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; border: none; border-radius: 20px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3); transition: 0.3s; cursor: pointer;">
+                কনফার্ম অর্ডার
             </button>
         </div>
     </div>
 </div>
+
+<style>
+    /* প্ল্যাটফর্ম বাটনের সাধারণ ও একটিভ লুক */
+    .platform-btn {
+        min-width: 60px; 
+        height: 60px; 
+        background: white; 
+        border-radius: 15px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    }
+
+    .platform-btn.active {
+        border-color: #ff0000;
+        background: #fff5f5;
+        transform: scale(1.05);
+    }
+
+    /* সাব-অপশন (Followers, Likes) বাটন ডিজাইন */
+    .sub-btn {
+        padding: 10px 18px;
+        background: #f1f5f9;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #64748b;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    }
+
+    .sub-btn.selected {
+        background: #ff0000 !important;
+        color: white !important;
+        box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+    }
+</style>
+
 
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
@@ -7607,105 +7678,114 @@ function fundReq() {
     document.getElementById('f-trx').value = '';
 }
 function confirmOrder() {
-    let q = document.getElementById('qty').value;
-    let l = document.getElementById('link').value;
+    // ইনপুট ভ্যালু নেওয়া
+    let qElem = document.getElementById('qty');
+    let lElem = document.getElementById('link');
     
-    // ১. আপনার সাব-মেনু থেকে আসা আসল সার্ভিসের নাম এবং মোট দাম সংগ্রহ
-    let srv = currentSelectedService; // এটি আপনার selectSubService ফাংশন থেকে আসবে
-    let cost = parseFloat(document.getElementById('total-price').innerText);
+    if(!qElem || !lElem) return; // এলিমেন্ট না থাকলে ফেরত যাবে
+
+    let q = qElem.value;
+    let l = lElem.value;
+    
+    // ১. আপনার আগের কোড অনুযায়ী ভেরিয়েবল নাম হবে currentSelectedService
+    let srv = currentSelectedService; 
+    
+    // এলিমেন্ট থেকে দাম নেওয়া
+    let priceElem = document.getElementById('total-price');
+    let cost = priceElem ? parseFloat(priceElem.innerText) : 0;
+    
     let now = new Date().toLocaleString('bn-BD', { hour12: true });
 
-    // ২. ভ্যালিডেশন
-    if (!srv) return toast('আগে একটি সার্ভিস সিলেক্ট করুন', 'error');
-    if (q == 0 || !l) return toast('তথ্য সঠিক দিন', 'error');
-    if (curUser.bal < cost) return toast('ব্যালেন্স পর্যাপ্ত নয়', 'error');
+    // ২. নিখুঁত ভ্যালিডেশন
+    if (!srv || srv === "") {
+        return Swal.fire({
+            icon: 'error',
+            title: 'সার্ভিস সিলেক্ট করুন',
+            text: 'প্ল্যাটফর্ম সিলেক্ট করার পর Followers/Likes বাটনটি ক্লিক করুন।',
+            confirmButtonColor: '#ff0000'
+        });
+    }
+    
+    if (!l || l.trim() === "" || q == 0) {
+        return Swal.fire({
+            icon: 'warning',
+            title: 'তথ্য দিন',
+            text: 'লিঙ্ক এবং পরিমাণ সঠিকভাবে প্রদান করুন।',
+            confirmButtonColor: '#ffcc00'
+        });
+    }
+
+    if (curUser.bal < cost) {
+        return Swal.fire({
+            icon: 'error',
+            title: 'ব্যালেন্স নেই!',
+            text: 'আপনার ব্যালেন্স কম। দয়া করে টাকা রিচার্জ করুন।',
+            confirmButtonColor: '#ff0000'
+        });
+    }
 
     // ৩. ব্যালেন্স কাটা এবং ডাটা সেভ
     curUser.bal -= cost;
     
-    // ডাটাবেসে অর্ডার পুশ (সব তথ্য সহ)
     db.orders.push({ 
         id: Date.now(), 
         user: curUser.email, 
         srv: srv, 
         qty: q, 
         link: l, 
-        price: cost, // আসল দামটি সেভ করা হলো
+        price: cost, 
         status: 'Pending', 
         time: now 
     });
     
-    save(); // লোকাল ডাটাবেস আপডেট
+    save(); // ডাটাবেস সেভ
 
-    // ৪. আপনার প্রিমিয়াম পপআপ (সঠিক হিসাব সহ)
+    // ৪. সাকসেস পপআপ
     Swal.fire({
-        width: '350px',
+        width: '380px',
         background: '#ffffff',
         showConfirmButton: true,
-        confirmButtonText: 'অর্ডার ট্র্যাক করুন',
-        confirmButtonColor: '#0984e3',
+        confirmButtonText: 'অর্ডার লিস্ট দেখুন',
+        confirmButtonColor: '#ff0000',
         allowOutsideClick: false,
         padding: '0',
-        customClass: {
-            popup: 'long-premium-popup'
-        },
+        customClass: { popup: 'premium-order-popup' },
         html: `
             <style>
-                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
-                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
+                .premium-order-popup { border-radius: 35px !important; overflow: hidden; }
+                .success-header { background: linear-gradient(135deg, #ff0000, #ff8c00); padding: 30px; color: white; text-align: center; }
+                .order-box { padding: 20px; text-align: left; }
+                .row-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
             </style>
-            
-            <div class="pop-container" style="position: relative;">
-                <div style="background: linear-gradient(135deg, #0984e3, #74b9ff); 
-                            width: 85px; height: 85px; border-radius: 50%; 
-                            display: flex; align-items: center; justify-content: center; 
-                            margin: -105px auto 25px; 
-                            box-shadow: 0 15px 30px rgba(9, 132, 227, 0.4);
-                            border: 6px solid #ffffff;
-                            position: relative; z-index: 999999 !important;">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3 6H21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                
-                <h3 style="color: #0984e3; font-weight: 900; margin-bottom: 25px; font-size: 22px;">অর্ডার সফল!</h3>
-                
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">সার্ভিস নাম</span>
-                        <b style="color: #333; font-size: 14px;">${srv}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">পরিমাণ</span>
-                        <b style="color: #333; font-size: 15px;">${q}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">মোট খরচ</span>
-                        <b style="color: #e17055; font-size: 18px;">৳${cost.toFixed(2)}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-top: 10px;">
-                        <span style="color: #bbb; font-size: 11px;">তারিখ ও সময়</span>
-                        <span style="color: #bbb; font-size: 11px;">${now}</span>
-                    </div>
-                </div>
-                
-                <div style="background: #e1f5fe; border-radius: 12px; padding: 10px; border-left: 4px solid #03a9f4;">
-                    <p style="font-size: 12px; color: #546e7a; margin: 0;">অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</p>
-                </div>
+            <div class="success-header">
+                <i class="fas fa-check-circle" style="font-size: 50px;"></i>
+                <h3 style="margin-top:10px;">অর্ডার সফল!</h3>
+            </div>
+            <div class="order-box">
+                <div class="row-item"><span>সার্ভিস:</span><b>${srv}</b></div>
+                <div class="row-item"><span>পরিমাণ:</span><b>${q}</b></div>
+                <div class="row-item"><span>খরচ:</span><b style="color:#ff0000;">৳ ${cost.toFixed(2)}</b></div>
+                <p style="font-size:11px; color:#777; margin-top:10px; text-align:center;">অর্ডারটি বর্তমানে Pending অবস্থায় আছে।</p>
             </div>
         `
     }).then((result) => {
         if (result.isConfirmed) {
             if(typeof openPage === 'function') openPage('p-orders'); 
-            renderUser();
         }
     });
 
-    // ইনপুট রিসেট
-    document.getElementById('link').value = '';
-    document.getElementById('qty').value = 0;
+    // ৫. UI ক্লিনআপ
+    lElem.value = '';
+    qElem.value = 0;
+    currentSelectedService = ""; // ভেরিয়েবল রিসেট
+    
+    // বাটন থেকে সিলেকশন রিমুভ করা
+    document.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('selected', 'active'));
+    
+    let srvDesc = document.getElementById('srv-desc');
+    if(srvDesc) srvDesc.style.display = 'none';
+    
+    renderUser(); // প্রোফাইল ব্যালেন্স আপডেট
     if(typeof updatePrice === 'function') updatePrice();
 }
 // স্প্ল্যাশ স্ক্রিন কন্ট্রোল ফাংশন
@@ -7812,18 +7892,6 @@ function savePassword() {
     // ঐচ্ছিক: পাসওয়ার্ড চেঞ্জ হলে অটো লগআউট করে দেওয়া ভালো যাতে নতুন করে লগইন করতে হয়
     // logout(); 
 }
-function openSettings() {
-    // সেটিংস মডাল শো করা
-    document.getElementById('settingsModal').style.display = 'flex';
-    
-    // localStorage থেকে রিয়েল ডাটা রিড করা
-    const realName = localStorage.getItem('v7_userName');
-    const realEmail = localStorage.getItem('v7_userEmail');
-
-    // মডালে ডাটা বসানো
-    document.getElementById('realUserName').innerText = realName ? realName : "নাম পাওয়া যায়নি";
-    document.getElementById('realUserEmail').innerText = realEmail ? realEmail : "ইমেইল পাওয়া যায়নি";
-}
 // ১. প্রতিটি সার্ভিসের ১০০০ (1k) এর দাম এখানে সেট করুন
 const priceList = {
     "Facebook Followers": 70,
@@ -7841,33 +7909,34 @@ const priceList = {
     "Telegram Post Views": 50
 };
 
+// গ্লোবাল ভেরিয়েবল (এটি নিশ্চিত করুন যেন confirmOrder ফাংশনেও একই থাকে)
 let currentSelectedService = ""; 
 
 function selectSubService(platform, service, btn) {
-    // বাটন হাইলাইট করা
-    document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    // সাব-বাটন হাইলাইট করা (Followers, Likes ইত্যাদি)
+    document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('selected')); // এখানে 'selected' ক্লাস ব্যবহার করুন
+    btn.classList.add('selected');
 
-    // প্ল্যাটফর্ম এবং সার্ভিস মিলিয়ে নাম তৈরি (যেমন: Facebook Followers)
+    // প্ল্যাটফর্ম এবং সার্ভিস মিলিয়ে নাম তৈরি (যেমন: Facebook Followers)
     currentSelectedService = platform + " " + service;
     
     const srvDesc = document.getElementById('srv-desc');
     if(srvDesc) {
         srvDesc.style.display = 'block';
-        srvDesc.innerHTML = `সিলেক্টেড: <b>${currentSelectedService}</b>`;
+        srvDesc.innerHTML = `<i class="fas fa-info-circle"></i> সিলেক্টেড: <b>${currentSelectedService}</b>`;
     }
     
-    updatePrice(); // সার্ভিস সিলেক্ট করার সাথে সাথে দাম আপডেট হবে
+    // সার্ভিস সিলেক্ট করার সাথে সাথে দাম আপডেট হবে
+    updatePrice(); 
 }
 
 function updatePrice() {
     const qtySelect = document.getElementById('qty');
     const priceDisplay = document.getElementById('total-price');
     
-    // যদি কোনো আইডি খুঁজে না পায় (যেমন অ্যাডমিন প্যানেলে), তবে কোড এরর দিবে না
     if (!qtySelect || !priceDisplay) return; 
 
-    const qty = parseInt(qtySelect.value) || 0; // পরিমাণ (১০০০, ৫০০০ ইত্যাদি)
+    const qty = parseInt(qtySelect.value) || 0; 
     
     // যদি কোনো সার্ভিস সিলেক্ট করা না থাকে
     if (!currentSelectedService) {
@@ -7879,28 +7948,28 @@ function updatePrice() {
     let ratePer1k = priceList[currentSelectedService] || 0;
 
     // হিসাব: (পরিমাণ / ১০০০) * ১০০০ এর দাম
-    // যেমন: (৫০০০ / ১০০০) * ১৫০ = ৭৫০ টাকা
     const total = (qty / 1000) * ratePer1k;
     
     priceDisplay.innerText = total.toFixed(2);
 }
 
-
-
 function openSubMenu(platform, options, btn) {
-    // সেফ চেক (অ্যাডমিন প্যানেল সাদা হওয়া রোধ করতে)
     const subOptionsContainer = document.getElementById('sub-options');
     if (!subOptionsContainer) return;
 
-    document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active'));
+    // প্ল্যাটফর্ম বাটন হাইলাইট করা (Facebook, YouTube আইকনগুলো)
+    document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
     document.getElementById('cur-srv-txt').innerText = platform + " Services";
     subOptionsContainer.innerHTML = ""; 
     
+    // নতুন প্ল্যাটফর্ম সিলেক্ট করলে আগের সিলেকশন রিসেট করা
+    currentSelectedService = ""; 
+    
     options.forEach(opt => {
         let button = document.createElement('div');
-        button.className = "sub-btn";
+        button.className = "sub-btn"; // CSS এ .sub-btn.selected ডিজাইন থাকতে হবে
         button.innerText = opt;
         button.onclick = function() {
             selectSubService(platform, opt, button);
@@ -7908,8 +7977,18 @@ function openSubMenu(platform, options, btn) {
         subOptionsContainer.appendChild(button);
     });
 
+    // রিসেট UI
     if(document.getElementById('srv-desc')) document.getElementById('srv-desc').style.display = 'none';
     if(document.getElementById('total-price')) document.getElementById('total-price').innerText = "0.00";
+}
+
+// আপনার সেটিংস ফাংশন (যা ছিল তাই আছে)
+function openSettings() {
+    document.getElementById('settingsModal').style.display = 'flex';
+    const realName = localStorage.getItem('v7_userName');
+    const realEmail = localStorage.getItem('v7_userEmail');
+    document.getElementById('realUserName').innerText = realName ? realName : "নাম পাওয়া যায়নি";
+    document.getElementById('realUserEmail').innerText = realEmail ? realEmail : "ইমেইল পাওয়া যায়নি";
 }
 function searchUser() {
     let query = document.getElementById('userSearch').value.toLowerCase();
@@ -11726,6 +11805,7 @@ function handleCaptchaClick() {
         openPage('p-captcha'); 
     }
 }
+
 </script>
 
 </body>
