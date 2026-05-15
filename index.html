@@ -5163,88 +5163,107 @@ function toggleSignupPassword() {
         transform: translateX(3px);
     }
 </style>
-<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+
+  <div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+<style>
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    @keyframes pulse-glow {
+        0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+    /* New scale-in animation */
+    @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .animate-card { animation: fadeInUp 0.8s ease-out forwards; }
+    .floating-icon { animation: float 3s ease-in-out infinite; }
+    .glow-effect { animation: pulse-glow 2s infinite; }
     
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-        }
-        .animate-card { animation: fadeInUp 0.8s ease-out forwards; }
-        .floating-icon { animation: float 3s ease-in-out infinite; }
-        .glow-effect { animation: pulse-glow 2s infinite; }
-    </style>
+    /* Apply animations to card and elements */
+    #p-income-sub .animate-card { animation: scaleIn 0.6s ease-out forwards; }
+    #p-income-sub h6, #p-income-sub .today-income-title { animation: fadeInUp 0.8s 0.2s ease-out both; }
+    #p-income-sub .income-amount-box { animation: scaleIn 0.6s 0.4s ease-out both; }
+    #p-income-sub .date-like-row { animation: fadeInUp 0.8s 0.6s ease-out both; }
+</style>
 
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff6a00 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closeIncomeSub()" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 14px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
-                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
-            </div>
-            <div>
-                <h4 style="margin: 0; font-weight: 800; color: white; font-size: 17px; letter-spacing: 0.5px; line-height: 1.2;">EARNING REPORT</h4>
-                <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Free Time Earn</span>
-            </div>
-        </div>
-        <div class="floating-icon" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
-            <i class="fas fa-crown" style="color: #ffcc00; font-size: 16px;"></i>
-        </div>
-    </div>
-
-    <div class="container px-3 mt-4">
-        
-        <div class="animate-card" style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 35px 25px; border-radius: 35px; color: white; margin-bottom: 30px; box-shadow: 0 20px 40px rgba(255, 0, 0, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.25);">
-            
-            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-            <div style="position: absolute; bottom: -20px; left: 10%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-
-            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 8px;">
-                <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%; display: inline-block;"></span>
-                Earnings Report
-            </h6>
-            
-<div style="display: flex; align-items: center; justify-content: space-between;">
-    <div>
-        <div style="font-size: 14px; opacity: 0.8; font-weight: 500; margin-bottom: 5px; letter-spacing: 0.5px;">My Earnings</div>
-        
-        <div style="display: flex; align-items: baseline; gap: 8px;">
-            <span style="font-size: 45px; font-weight: 600; color: rgba(255,255,255,0.95);">৳</span>
-            <h2 style="margin: 0; font-weight: 900; font-size: 48px; letter-spacing: -1.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15); line-height: 1;">
-                <span id="income-amt-val" style="font-family: 'Montserrat', sans-serif;">0.00</span>
-            </h2>
-        </div>
-    </div>
+<div style="background: linear-gradient(135deg, #ff0000 0%, #ff6a00 100%); padding: 22px 15px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
     
-    <div class="glow-effect" style="background: rgba(255,255,255,1); width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        <i class="fas fa-wallet" style="font-size: 28px; color: #ff0000;"></i>
+    <div class="floating-icon" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
+        <i class="fas fa-coins" style="color: #ffcc00; font-size: 18px;"></i>
     </div>
+
+    <div style="text-align: center;">
+        <h4 style="margin: 0; font-weight: 900; color: white; font-size: 19px; letter-spacing: 1.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">FREE TIME EARN</h4>
+
+    </div>
+
+    <div class="floating-icon" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
+        <i class="fas fa-money-bill-wave" style="color: #ffcc00; font-size: 18px;"></i>
+    </div>
+
 </div>
 
-            
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 35px;">
-                <div style="font-size: 11px; font-weight: 700; display: flex; align-items: center; background: rgba(0,0,0,0.15); padding: 8px 18px; border-radius: 50px; backdrop-filter: blur(5px);">
-                    <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> 
-                    <span id="income-date-val" style="color: white;">-- -- ----</span>
-                </div>
+<div class="container px-3 mt-4" style="text-align: center;">
+    
+    <div class="animate-card" style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 25px; border-radius: 20px; color: white; margin: 0 auto 25px auto; max-width: 450px; box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.25); text-align: left;">
+        
+        <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -20px; left: 10%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
 
+        <div class="today-income-title-container">
+            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 5px; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 8px;">
+                <span style="width: 6px; height: 6px; background: #fff; border-radius: 50%; display: inline-block;"></span>
+                Today Income
+            </h6>
+
+        </div>
+        
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
+            
+            <div class="income-amount-box" style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.8) 0%, rgba(255, 204, 0, 0.8) 100%); padding: 5px 10px; border-radius: 8px; display: flex; align-items: baseline; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                <span style="font-size: 30px; font-weight: 600; color: white;">৳</span>
+                <h2 style="margin: 0; font-weight: 900; font-size: 30px; letter-spacing: -1px; text-shadow: 0 4px 12px rgba(0,0,0,0.15); line-height: 1; color: white;">
+                    <span id="income-amt-val" style="font-family: 'Montserrat', sans-serif;">0.00</span>
+                </h2>
+            </div>
+            
+            <div class="date-like-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 10px;">
+                
+                <div style="font-size: 12px; font-weight: 700; display: flex; align-items: center; background: rgba(0,0,0,0.15); padding: 8px 16px; border-radius: 6px; backdrop-filter: blur(5px);">
+                    <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> 
+                    <span id="income-date-val" style="color: white;">05-11-2024</span>
+                </div>
+                
+                <div class="floating-icon" style="background: rgba(255,255,255,0.2); width: 10px; height: 10px; display: flex; align-items: center; justify-content: center; border-radius: 8px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                    <i class="fas fa-thumbs-up" style="font-size: 18px; color: white;"></i>
                 </div>
             </div>
-        </div>
-
-
-
-
 
         </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+        <button onclick="closeIncomeSub()" style="display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); color: white; border: none; padding: 5px 20px; font-size: 16px; font-weight: 700; border-radius: 12px; box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3); cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+            <i class="fas fa-chevron-left" style="font-size: 14px;"></i>
+            Back
+        </button>
+    </div>
+
+</div>
+
+```
+
+        
     </div>
 </div>
 
