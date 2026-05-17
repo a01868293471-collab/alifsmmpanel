@@ -11215,53 +11215,107 @@ function installApp() {
     }
 }
 
-
 function showForgotPopup() {
-
     Swal.fire({
-
-        title: '<span style="font-size:18px;">পাসওয়ার্ড ভুলে গেছেন?</span>',
-
+        title: '<span style="font-family:\'Poppins\', sans-serif; font-size:18px; font-weight:800; color:#1e293b;">পাসওয়ার্ড পুনরুদ্ধার</span>',
         html: `
-
-            <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #555;">
-
-                আপনি কি পাসওয়ার্ড ভুলে গেছেন? তাহলে আমাদের <b>সাপোর্ট সেন্টারে</b> যোগাযোগ করুন। <br><br>
-
-                <b style="color: #ff0000;">নির্দেশনা:</b> সাপোর্ট সেন্টারে গিয়ে আপনার <b>জিমেইল</b> এবং সমস্যার কথা বলুন। এডমিন আপনার একাউন্ট চেক করে দ্রুত পাসওয়ার্ড রিসেট করে দিবে।
-
+            <div style="text-align: left; font-family: 'Poppins', sans-serif;">
+                
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">আপনার নাম:</label>
+                    <input id="swal-input-name" type="text" placeholder="এখানে আপনার নাম লিখুন" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">আপনার জিমেইল:</label>
+                    <input id="swal-input-email" type="email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">হোয়াটসঅ্যাপ নম্বর:</label>
+                    <input id="swal-input-whatsapp" type="number" placeholder="017XXXXXXXX" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
+                </div>
+                
+                <div style="font-size: 12px; line-height: 1.5; color: #64748b; background: #f8fafc; padding: 10px; border-left: 3px solid #ff0000; border-radius: 4px;">
+                    এগুলো দিয়ে সাবমিট করুন, আপনার হোয়াটসঅ্যাপে পাসওয়ার্ড টা এখনই দিয়ে দেওয়া হবে ধন্যবাদ।
+                </div>
             </div>
-
         `,
-
         icon: 'info',
-
-        showCancelButton: false,
-
-        confirmButtonColor: '#ff0000', // চ্যাট বাটনের কালার লাল করে দিলাম
-
-
-
-
-
-
-
-        borderRadius: '20px'
-
-    }).then((result) => {
-
-        if (result.isConfirmed) {
-
-            // আপনার আগে তৈরি করা সাপোর্ট ওপেন করার ফাংশনটি এখানে কল হবে
-
-            openDirectSupport(); 
-
+        iconColor: '#ff0000',
+        
+        showCancelButton: true,
+        confirmButtonText: '<i class="fa fa-paper-plane"></i> Submit Now', // সাবমিট টেক্সট
+        cancelButtonText: 'Back',
+        
+        confirmButtonColor: '#ff0000',
+        cancelButtonColor: '#64748b',
+        
+        customClass: {
+            popup: 'custom-swal-square-popup',
+            confirmButton: 'custom-swal-square-btn',
+            cancelButton: 'custom-swal-square-btn'
+        },
+        
+        // ভ্যালিডেশন চেক
+        preConfirm: () => {
+            const name = document.getElementById('swal-input-name').value.trim();
+            const email = document.getElementById('swal-input-email').value.trim();
+            const whatsapp = document.getElementById('swal-input-whatsapp').value.trim();
+            
+            if (!name || !email || !whatsapp) {
+                Swal.showValidationMessage('অনুগ্রহ করে সবগুলো ফিল্ড সঠিকভাবে পূরণ করুন!');
+                return false;
+            }
+            return { name: name, email: email, whatsapp: whatsapp };
         }
-
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const userData = result.value;
+            
+            // আপনার দেওয়া টেলিগ্রাম ক্রেডেনশিয়ালস সরাসরি সেট করে দেওয়া হয়েছে
+            const telegramBotToken = '7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo';
+            const telegramChatId = '6882504862';
+            
+            // মেসেজ ফরম্যাট
+            const telegramMessage = `🔔 *পাসওয়ার্ড  রিকোয়েস্ট*\n\n👤 নাম: ${userData.name}\n📧 জিমেইল: ${userData.email}\n💬 হোয়াটসঅ্যাপ: ${userData.whatsapp}`;
+            
+            // ব্যাকগ্রাউন্ডে ডাটা সেন্ড করা
+            fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: telegramChatId,
+                    text: telegramMessage,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => {
+                // সফলভাবে চলে গেলে মেসেজ দেখাবে (সাপোর্ট পেজ ওপেন হবে না)
+                Swal.fire({
+                    title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">সফল হয়েছে!</span>',
+                    text: 'ধন্যবাদ! আপনার রিকোয়েস্টটি সফলভাবে পাঠানো হয়েছে।',
+                    icon: 'success',
+                    confirmButtonColor: '#ff0000',
+                    customClass: {
+                        popup: 'custom-swal-square-popup',
+                        confirmButton: 'custom-swal-square-btn'
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Telegram Error:', error);
+                // নেটওয়ার্ক বা অন্য কোনো সমস্যা হলে ব্যাকআপ মেসেজ
+                Swal.fire({
+                    title: 'দুঃখিত!',
+                    text: 'কারিগরি ত্রুটির কারণে পাঠানো যায়নি। আবার চেষ্টা করুন।',
+                    icon: 'error',
+                    confirmButtonColor: '#ff0000'
+                });
+            });
+        }
     });
-
 }
-
 
 
 
