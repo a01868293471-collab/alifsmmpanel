@@ -3813,17 +3813,20 @@ function togglePassword() {
 
             </div>
 
-            <div id="refer-section" class="ref-card-modern" style="display: none; margin-top: 20px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.3); align-items: center; justify-content: space-between; max-width: 240px; margin-left: auto; margin-right: auto; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <i class="fas fa-gift" style="color: white; font-size: 12px;"></i>
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.85); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Refer Code:</span>
-                    <b id="user-ref" style="color: white; font-size: 13px; letter-spacing: 0.5px; font-weight: 800;">---</b>
-                </div>
-                
-                <i class="far fa-copy" onclick="copyRef()" style="color: white; cursor: pointer; font-size: 14px; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'; this.style.transform='scale(1.15)'" onmouseout="this.style.opacity='0.8'; this.style.transform='scale(1)'"></i>
-            </div>
-
+<div id="refer-section" class="ref-card-modern" 
+     style="display: none; margin-top: 20px; background: #ffffff; padding: 8px 16px; border-radius: 6px; align-items: center; justify-content: space-between; max-width: 250px; margin-left: auto; margin-right: auto; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 4px solid #ff0000; box-sizing: border-box;">
+    
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <i class="fas fa-gift" style="color: #ff8000; font-size: 11px;"></i>
+        <span style="font-size: 11px; color: #ff0000; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Refer Code:</span>
+        <b id="user-ref" style="color: #ff5e00; font-size: 14px; letter-spacing: 1px; font-weight: 900; text-shadow: 0 1px 1px rgba(0,0,0,0.05);">---</b>
+    </div>
+    
+    <i class="far fa-copy" onclick="copyRef()" 
+       style="color: #ff9900; cursor: pointer; font-size: 14px; transition: 0.3s; padding-left: 10px;" 
+       onmouseover="this.style.color='#ff0000'; this.style.transform='scale(1.15)'" 
+       onmouseout="this.style.color='#ff9900'; this.style.transform='scale(1)'"></i>
+</div>
         </div>
         
 
@@ -3834,7 +3837,6 @@ function togglePassword() {
 
 <div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px; background: #ffffff;">
 
-    <p class="menu-label" style="color: #999; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 15px; padding-left: 5px;">Main Menu</p>
 
     <div class="menu-group" style="display: flex; flex-direction: column; gap: 2px;">
 
