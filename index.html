@@ -4962,6 +4962,139 @@ function togglePassword() {
 
     </div>
 </div>
+<div id="p-support" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 9999; overflow-y: auto; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding-bottom: 80px;">
+        <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; box-sizing: border-box;">
+        
+        <div onclick="if(typeof openPage === 'function') { openPage('p-home'); } document.getElementById('p-support').style.display = 'none';" 
+             style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); box-sizing: border-box; transition: transform 0.1s ease;"
+             onmousedown="this.style.transform='scale(0.9)'" 
+             onmouseup="this.style.transform='scale(1)'">
+            <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
+        </div>
+        
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase; font-size: 18px;">
+            Support Center
+        </h5>
+    </div>
+
+    <div style="max-width: 450px; margin: 20px auto; padding: 0 15px; box-sizing: border-box; width: 100%;">
+        <div style="background: #ffffff; padding: 20px 15px; border-radius: 4px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); box-sizing: border-box;">
+            
+            <form id="support-ticket-form" onsubmit="submitSupportTicket(event)">
+                
+                <div style="margin-bottom: 14px; text-align: left;">
+                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার নাম</label>
+                    <input id="sup-name" type="text" placeholder="এখানে আপনার সম্পূর্ণ নাম লিখুন" required
+                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
+                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
+                </div>
+                
+                <div style="margin-bottom: 14px; text-align: left;">
+                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার জিমেইল</label>
+                    <input id="sup-email" type="email" placeholder="example@gmail.com" required
+                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
+                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
+                </div>
+                
+                <div style="margin-bottom: 14px; text-align: left;">
+                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">হোয়াটসঅ্যাপ নম্বর</label>
+                    <input id="sup-whatsapp" type="number" placeholder="01XXXXXXXXX" required
+                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
+                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
+                </div>
+                
+                <div style="margin-bottom: 18px; text-align: left;">
+                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার সমস্যাটি লিখুন</label>
+                    <textarea id="sup-message" rows="4" placeholder="আপনার সমস্যাটি বিস্তারিত এখানে বর্ণনা করুন..." required
+                              style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; resize: none; transition: border-color 0.2s; font-family: inherit;"
+                              onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
+                </div>
+                
+                <button type="submit" id="sup-submit-btn" style="width: 100%; background: #ff0000; color: #ffffff; border: none; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15); transition: background 0.2s; box-sizing: border-box;">
+                    <i class="fas fa-paper-plane"></i> সাবমিট করুন
+                </button>
+                
+            </form>
+            
+            <div style="margin-top: 18px; font-size: 12px; line-height: 1.6; color: #475569; background: #fff1f2; padding: 12px; border-left: 3px solid #ff0000; border-radius: 4px; text-align: center; font-weight: 600; box-sizing: border-box;">
+                খুব শীঘ্রই আপনার সাথে আমাদের প্রতিনিধি আপনার হোয়াটসঅ্যাপে যোগাযোগ করবে, ধন্যবাদ।
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+function submitSupportTicket(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('sup-name').value.trim();
+    const email = document.getElementById('sup-email').value.trim();
+    const whatsapp = document.getElementById('sup-whatsapp').value.trim();
+    const message = document.getElementById('sup-message').value.trim();
+    const submitBtn = document.getElementById('sup-submit-btn');
+    
+    // লোডিং স্টেট এবং বাটন ডিজেবল
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.style.background = '#94a3b8';
+    
+    const token = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
+    const chatId = "6882504862";
+    
+    const tgText = `🛠️ *নতুন সাপোর্ট টিকিট রিকোয়েস্ট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যার বিবরণ:*\n${message}`;
+    
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: tgText,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(response => {
+        if(response.ok) {
+            // এই সাপোর্ট পেজের ওপরেই সাকসেস পপআপটি ট্রিগার হবে
+            Swal.fire({
+                title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">টিকিট সাবমিট হয়েছে!</span>',
+                text: 'আপনার সমস্যাটি সফলভাবে এডমিন প্যানেলে পাঠানো হয়েছে।',
+                icon: 'success',
+                confirmButtonColor: '#ff0000',
+                target: document.getElementById('p-support'), // পপআপ পজিশন টার্গেট ফিক্স
+                customClass: {
+                    popup: 'custom-swal-square-popup',
+                    confirmButton: 'custom-swal-square-btn'
+                }
+            }).then(() => {
+                // পপআপ ক্লোজ করার পর ফর্ম রিসেট হবে এবং পেজ হাইড হয়ে হোমে যাবে
+                document.getElementById('support-ticket-form').reset();
+                if(typeof openPage === 'function') {
+                    openPage('p-home');
+                }
+                document.getElementById('p-support').style.display = 'none';
+            });
+        } else {
+            Swal.fire({
+                title: 'দুঃখিত!',
+                text: 'সাবমিট করা যায়নি। আবার চেষ্টা করুন।',
+                icon: 'error',
+                confirmButtonColor: '#ff0000',
+                target: document.getElementById('p-support')
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('নেটওয়ার্ক সমস্যা! আপনার интернет কানেকশন চেক করুন।');
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> সাবমিট করুন';
+        submitBtn.style.background = '#ff0000';
+    });
+}
+</script>
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
@@ -6748,39 +6881,51 @@ function togglePassword() {
 </div>
 
 
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%); display: flex; justify-content: space-around; align-items: center; padding: 0; z-index: 999; box-shadow: 0 -4px 20px rgba(255, 0, 0, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); height: 65px; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
 
-
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%); display: flex; justify-content: space-around; align-items: flex-end; padding: 0 0 10px 0; z-index: 999; box-shadow: 0 -8px 25px rgba(255, 0, 0, 0.15); border-radius: 0px; border-top: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); height: 70px; font-family: 'Poppins', sans-serif;">
-    
-    <div onclick="openPage('p-home')" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
-        <i class="fas fa-home" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase;">Home</span>
-    </div>
-
-    <div onclick="handleTeamClick()" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
-        <i class="fas fa-users" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase;">Team</span>
-    </div>
-
-    <div onclick="checkShopAccess()" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; top: -11px; transition: 0.3s; cursor: pointer;">
-        
-        <div style="width: 52px; height: 52px; background: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 3px solid #ff4d00; position: relative; box-sizing: border-box;">
-            <i class="fas fa-shopping-cart" style="font-size: 20px; color: #ff0000;"></i>
+    <div onclick="openPage('p-home')" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-home" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
         </div>
-
-        <span style="display: block; font-size: 10px; font-weight: 900; color: #ffffff; margin-top: 4px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.25);">
-            Shop
-        </span>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Home</span>
     </div>
 
-    <div onclick="openPage('p-wallet')" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
-        <i class="fas fa-wallet" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase;">Wallet</span>
+    <div onclick="handleTeamClick()" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-users" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+        </div>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Team</span>
     </div>
 
-    <div onclick="openPage('p-support')" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
-        <i class="fas fa-headset" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase;">Support</span>
+    <div onclick="checkShopAccess()" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-shopping-cart" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+        </div>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Shop</span>
+    </div>
+
+    <div onclick="openPage('p-wallet')" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-wallet" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+        </div>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Wallet</span>
+    </div>
+
+    <div onclick="if(typeof openPage === 'function') { openPage('p-support'); }" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-headset" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+        </div>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Support</span>
     </div>
 
 </div>
@@ -11658,86 +11803,9 @@ function selectWithdrawMethod(method) {
 
 
 
- // ১. উইজেটটি লোড হওয়ার সাথে সাথে হাইড করার জন্য
-var jivo_onLoadCallback = function() {
-    jivo_api.hideWidget();
-};
 
-// ২. আপনার সাপোর্ট বাটন ফাংশন (আপডেট করা)
-function openDirectSupport() {
-    if (typeof jivo_api !== "undefined") {
-        jivo_api.showWidget(); // আগে শো করতে হবে
-        jivo_api.open();       // তারপর ওপেন হবে
-    } else {
-        Swal.fire({
-            title: 'Support',
-            text: 'লোডিং...',
-            icon: 'info',
-            timer: 1500,
-            showConfirmButton: false
-        });
-    }
-}
 
-// ৩. চ্যাট বন্ধ বা মিনিমাইজ করলে আবার হাইড করার জন্য
-var jivo_onChatMinimized = function() {
-    jivo_api.hideWidget();
-};
-async function loadFromServer() {
-    try {
-        let response = await fetch('api.php?action=load');
-        let serverData = await response.json();
-        
-        // যদি সার্ভারে ডাটা থাকে, তবেই আপনার 'db' ভেরিয়েবল আপডেট হবে
-        if (serverData && (serverData.users || serverData.settings)) {
-            db = serverData; 
-            if(typeof syncUI === 'function') syncUI(); // আপনার UI রিফ্রেশ করার ফাংশন থাকলে
-            console.log("সার্ভার থেকে ডাটা সফলভাবে লোড হয়েছে!");
-        }
-    } catch (error) {
-        console.log("ডাটাবেস কানেকশনে সমস্যা বা ডাটাবেস এখনো খালি।");
-    }
-}
 
-// ২. ডাটা সেভ করার সময় সার্ভারে পাঠানোর ফাংশন
-async function saveToServer() {
-    try {
-        await fetch('api.php?action=save', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(db)
-        });
-        console.log("ডাটা সার্ভারে সেভ হয়েছে!");
-    } catch (error) {
-        console.error("সার্ভারে সেভ হতে পারেনি।");
-    }
-}
-
-// ৩. সাইট রিলোড হলে অটোমেটিক লোড ফাংশন কল করা
-window.addEventListener('load', loadFromServer);
- function openDirectSupport() {
-    // যদি জিবোচ্যাট আগে লোড করা না থাকে
-    if (typeof jivo_api === 'undefined') {
-        var script = document.createElement('script');
-        script.src = "//code.jivosite.com/widget/Fmb29gqNCO";
-        script.async = true;
-        
-        script.onload = function() {
-            // স্ক্রিপ্ট লোড হতে সামান্য সময় নেয়, তাই একটু বিরতি দিয়ে ওপেন করা
-            var checkJivo = setInterval(function() {
-                if (typeof jivo_api !== 'undefined') {
-                    jivo_api.open();
-                    clearInterval(checkJivo);
-                }
-            }, 500);
-        };
-        
-        document.head.appendChild(script);
-    } else {
-        // যদি অলরেডি লোড থাকে তবে সরাসরি ওপেন হবে
-        jivo_api.open();
-    }
-}
 function handleTeamClick() {
     // চেক করা হচ্ছে ইউজারের একাউন্ট একটিভ কি না
     if (curUser.status !== 'active') {
