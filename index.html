@@ -9653,8 +9653,20 @@ function withdrawReq() {
         ? 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/bkash_logo.png' 
         : 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/nagad_logo.png';
 
-    let charge = amt * 0.05;
-    let finalAmount = amt - charge;
+    let charge = 0;
+
+if (amt === 100 || amt === 200) {
+    // ১০০ অথবা ২০০ টাকা উইথড্র করলে ফিক্সড ৫ টাকা খরচ
+    charge = 5;
+} else if (amt >= 300) {
+    // ৩০০ টাকা বা তার বেশি হলে ২% খরচ কাটবে
+    charge = amt * 0.02;
+} else {
+    // ১০০ টাকার নিচে অন্য কোনো অ্যামাউন্ট হলে (যদি এলাউড থাকে) ২% বা আপনার ইচ্ছেমতো চার্জ দিতে পারেন
+    charge = amt * 0.02; 
+}
+
+let finalAmount = amt - charge;
 
     // ১. প্রাথমিক ভ্যালিডেশন
     if (!amt || !num) {
@@ -9692,13 +9704,14 @@ function withdrawReq() {
                 </div>
                 <hr style="border: 0; border-top: 1px dashed #ffcccc; margin: 10px 0;">
                 <div style="display: flex; justify-content: space-between; font-weight: 700;">
-                    <span style="color: #666; font-size: 12px;">পরিমাণ: ৳${amt}</span>
-                    <span style="color: #ff4757; font-size: 12px;">চার্জ (৫%): ৳${charge.toFixed(2)}</span>
-                </div>
-                <div style="text-align:center; color: #2ecc71; font-weight: 900; font-size: 16px; margin-top: 10px; background: white; border-radius: 10px; padding: 5px;">
-                    পাবেন: ৳${finalAmount.toFixed(2)}
-                </div>
-            </div>
+<span style="color: #666; font-size: 12px;">পরিমাণ: ৳${amt}</span>
+<span style="color: #ff4757; font-size: 12px;">
+    চার্জ (${amt === 100 || amt === 200 ? 'ফিক্সড' : '২%'}): ৳${charge.toFixed(2)}
+</span>
+</div>
+<div style="text-align:center; color: #2ecc71; font-weight: 900; font-size: 16px; margin-top: 10px; background: white; border-radius: 10px; padding: 5px;">
+    পাবেন: ৳${finalAmount.toFixed(2)}
+</div>
 
             <div style="margin-bottom: 25px;">
                 <label style="display:block; font-size: 12px; color: #666; margin-bottom: 8px; text-align: left; font-weight: 600;">একাউন্ট পাসওয়ার্ড প্রদান করুন:</label>
