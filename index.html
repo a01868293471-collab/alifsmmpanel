@@ -5003,7 +5003,7 @@ function togglePassword() {
                     <h4 style="margin: 0; font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: 0.3px;">FREE TIME EARN</h4>
                     <div style="display: flex; align-items: center; gap: 5px; margin-top: 3px;">
                         <span style="width: 7px; height: 7px; background: #10b981; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
-                        <small style="font-size: 11px; font-weight: 500; color: #64748b;">Official Support Live</small>
+                        <small style="font-size: 11px; font-weight: 500; color: #64748b;">Official Live Support </small>
                     </div>
                 </div>
             </div>
@@ -5123,7 +5123,7 @@ function togglePassword() {
         element.style.height = (element.scrollHeight) + "px";
     }
 
-    // ইউনিফাইড চ্যাট সাবমিশন লজিক (টেলিগ্রাম + হোয়াটসঅ্যাপ রিডাইরেক্ট)
+    // ইউনিফাইড চ্যাট সাবমিশন লজিক
     function executeSupportSubmission() {
         const name = document.getElementById('sup-name').value.trim();
         const email = document.getElementById('sup-email').value.trim();
@@ -5206,12 +5206,12 @@ function togglePassword() {
                     adminBubble.style.cssText = "display: flex; justify-content: flex-start; max-width: 85%; margin-top: 5px; animation: fadeIn 0.3s ease;";
                     adminBubble.innerHTML = `
                         <div style="background: #fff1f2; color: #0f172a; padding: 12px 15px; border-radius: 4px 16px 16px 16px; font-size: 13px; font-weight: 600; line-height: 1.5; box-shadow: 0 2px 6px rgba(0,0,0,0.01); border-left: 4px solid #ff0000;">
-                            ধন্যবাদ <span style="color:#ff0000;">${name}</span>, আপনার সাপোর্ট রিকোয়েস্টটি এডমিন প্যানেলে সাবমিট হয়েছে! আপনাকে সরাসরি অফিশিয়াল হোয়াটসঅ্যাপ চ্যাটে কানেক্ট করা হচ্ছে...
+                            ধন্যবাদ <span style="color:#ff0000;">${name}</span>, আপনার সাপোর্ট রিকোয়েস্টটি সফলভাবে সাবমিট হয়েছে! আমাদের অফিশিয়াল প্রতিনিধি খুব শীঘ্রই আপনার দেওয়া হোয়াটসঅ্যাপ নম্বরে (${whatsapp}) যোগাযোগ করবেন। Stay Connected! 😊
                         </div>
                     `;
                     msgArea.appendChild(adminBubble);
                     
-                    // মেসেঞ্জার টোন অডিও প্লে
+                    // মেসেঞ্জার টোন অডিও প্লে ট্রাই
                     try {
                         let audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav');
                         audio.volume = 0.2;
@@ -5223,33 +5223,23 @@ function togglePassword() {
                     // ৫. চ্যাট বাবল জেনারেট হওয়ার ১.২ সেকেন্ড পর SweetAlert সাকসেস নোটিশ আসবে
                     setTimeout(() => {
                         Swal.fire({
-                            title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">হোয়াটসঅ্যাপে যোগাযোগ করুন</span>',
-                            text: 'এডমিনের সাথে সরাসরি হোয়াটসঅ্যাপে চ্যাট করতে নিচের বাটনে ক্লিক করুন।',
+                            title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">টিকিট সাবমিট হয়েছে!</span>',
+                            text: 'আপনার সমস্যাটি সফলভাবে এডমিন প্যানেলে পাঠানো হয়েছে।',
                             icon: 'success',
-                            confirmButtonText: 'OPEN WHATSAPP',
-                            confirmButtonColor: '#25D366', // হোয়াটসঅ্যাপ ব্র্যান্ড গ্রিন কালার
+                            confirmButtonColor: '#ff0000',
                             target: document.getElementById('p-support'),
                             customClass: {
                                 popup: 'custom-swal-square-popup',
                                 confirmButton: 'custom-swal-square-btn'
                             }
                         }).then(() => {
-                            // ইনফো কার্ড আনলক ও ইনপুট রিসেট করা
+                            // সাকসেস বাটন ওকে করলে ইনফো কার্ড আনলক হবে ও ইনপুট রিসেট হবে
                             infoBox.style.opacity = '1';
                             infoBox.style.pointerEvents = 'auto';
                             document.getElementById('sup-name').value = '';
                             document.getElementById('sup-email').value = '';
                             document.getElementById('sup-whatsapp').value = '';
                             
-                            // এডমিনের হোয়াটসঅ্যাপ লিংক জেনারেশন (আপনার দেওয়া নম্বর ও মেসেজসহ টেক্সট ফরম্যাট করা)
-                            const adminPhone = "8801868293471";
-                            const wpCustomText = encodeURIComponent(`🛠️ *নতুন সাপোর্ট টিকিট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যা:* ${message}`);
-                            const whatsappUrl = `https://wa.me/${adminPhone}?text=${wpCustomText}`;
-                            
-                            // ইউজারকে সরাসরি হোয়াটসঅ্যাপে পাঠানো
-                            window.open(whatsappUrl, '_blank');
-
-                            // পেজ ক্লোজ ও ব্যাক হোম করা
                             if(typeof openPage === 'function') { openPage('p-home'); }
                             document.getElementById('p-support').style.display = 'none';
                         });
