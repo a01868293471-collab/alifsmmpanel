@@ -1,23 +1,61 @@
 {
+
+
+
   "short_name": "FREE TIME EARN",
+
+
+
   "name": "FREE TIME EARN",
+
+
+
   "icons": [
+
+
+
     {
+
+
+
       "src": "https://img.icons8.com/fluency/512/wallet.png",
+
+
+
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://img.icons8.com/fluency/192/wallet.png",
-      "type": "image/png",
-      "sizes": "192x192"
+
+
+
+      "sizes": "512x512"
+
+
+
     }
+
+
+
   ],
-  "start_url": "./index.html",
-  "background_color": "#ffffff",
+
+
+
+"start_url": "./index.html",
+
+
+
+  "background_color": "#FFFFFF",
+
+
+
   "display": "standalone",
-  "orientation": "portrait",
+
+
+
   "scope": "./",
-  "theme_color": "#ff3b30"
+
+
+
+  "theme_color": "#FFFFFF"
+
+
+
 }
