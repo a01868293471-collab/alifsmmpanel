@@ -4976,6 +4976,7 @@ function togglePassword() {
 
     </div>
 </div>
+
 <div id="p-support" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f4f6f9; z-index: 9999; overflow-y: auto; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
     
     <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; box-sizing: border-box;">
@@ -5003,7 +5004,8 @@ function togglePassword() {
                     <h4 style="margin: 0; font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: 0.3px;">FREE TIME EARN</h4>
                     <div style="display: flex; align-items: center; gap: 5px; margin-top: 3px;">
                         <span style="width: 7px; height: 7px; background: #10b981; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
-                        <small style="font-size: 11px; font-weight: 500; color: #64748b;">Official Live Support </small>
+                        <small style="font-size: 11px; font-weight: 500; color: #64748b;">Official Live
+                        Support </small>
                     </div>
                 </div>
             </div>
@@ -5012,7 +5014,7 @@ function togglePassword() {
                 
                 <div style="display: flex; justify-content: flex-start; width: 100%; animation: fadeIn 0.4s ease;">
                     <div style="background: #ffffff; color: #334155; padding: 12px 16px; border-radius: 4px 16px 16px 16px; font-size: 13px; font-weight: 500; line-height: 1.5; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eef2f6; width: 100%; box-sizing: border-box;">
-                        Hello! 😊 <span style="font-weight: 700; color: #ff4500;">Free Time Earn</span> সাপোর্ট সেন্টারে আপনাকে স্বাগতম। ওপরের কার্ডে আপনার সঠিক তথ্য দিয়ে নিচে সমস্যাটি লিখে মেসেজ পাঠান।
+                        Hello! 😊 <span style="font-weight: 700; color: #ff4500;">Free Time Earn</span> সাপোর্ট সেন্টারে আপনাকে স্বাগতম। ওপরের কার্ডে আপনার সঠিক তথ্য দিয়ে নিচে সমস্যাটি লিখে মেসেজ পাঠান। প্রয়োজনে ফটোও যুক্ত করতে পারেন।
                     </div>
                 </div>
 
@@ -5043,9 +5045,21 @@ function togglePassword() {
             </div>
 
             <div style="background: #ffffff; padding: 14px; border-top: 1px solid #e2e8f0; display: flex; align-items: center; gap: 10px; box-sizing: border-box;">
-                <div style="flex: 1; background: #f1f5f9; border-radius: 24px; padding: 4px 16px; display: flex; align-items: center; box-sizing: border-box; border: 1px solid #e2e8f0; transition: 0.2s;" id="input-bar-wrapper">
+                
+                <label for="sup-file" style="width: 42px; height: 42px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #64748b; cursor: pointer; border: 1px solid #e2e8f0; transition: all 0.2s ease; flex-shrink: 0; position: relative;" id="file-label-btn">
+                    <i id="plus-icon" class="fas fa-plus" style="font-size: 16px;"></i>
+                    <input type="file" id="sup-file" accept="image/*" style="display: none;" onchange="handleFileSelection(this)">
+                </label>
+
+                <div style="flex: 1; background: #f1f5f9; border-radius: 24px; padding: 4px 16px; display: flex; flex-direction: column; box-sizing: border-box; border: 1px solid #e2e8f0; transition: 0.2s;" id="input-bar-wrapper">
+                    <div id="image-preview-container" style="display: none; padding: 6px 0 2px 0; align-items: center; gap: 8px; position: relative;">
+                        <img id="image-preview-element" src="" style="width: 45px; height: 45px; border-radius: 8px; object-fit: cover; border: 1px solid #cbd5e1;">
+                        <span id="file-name-txt" style="font-size: 11px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;"></span>
+                        <i class="fas fa-times-circle" style="color: #ef4444; cursor: pointer; font-size: 16px; margin-left: auto;" onclick="removeSelectedFile()"></i>
+                    </div>
                     <textarea id="sup-message" rows="1" placeholder="Type your message here..." required style="flex: 1; background: transparent; border: none; outline: none; padding: 8px 0; font-size: 13px; color: #0f172a; resize: none; max-height: 80px; font-family: inherit; line-height: 1.4;" oninput="autoGrowTextarea(this)"></textarea>
                 </div>
+
                 <button id="send-msg-btn" onclick="executeSupportSubmission()" style="width: 42px; height: 42px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 12px rgba(255,0,0,0.25); transition: all 0.2s ease; flex-shrink: 0;" onmousedown="this.style.transform='scale(0.9)'" onmouseup="this.style.transform='scale(1)'">
                     <i id="send-icon" class="fas fa-paper-plane" style="font-size: 15px; margin-left: 2px;"></i>
                 </button>
@@ -5056,51 +5070,22 @@ function togglePassword() {
 </div>
 
 <style>
-    /* লোগো মূল কন্টেইনার পজিশন ও সাইজ */
-    .brand-logo-container {
-        width: 42px;
-        height: 42px;
-        box-sizing: border-box;
-    }
-
-    /* মাঝখানের প্রফেশনাল সাদা সার্কেল */
+    .brand-logo-container { width: 42px; height: 42px; box-sizing: border-box; }
     .brand-logo-circle { 
-        width: 100%; 
-        height: 100%; 
-        background: white; 
-        border-radius: 50%; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
-        overflow: hidden;
-        border: 2px solid #f1f5f9;
-        box-sizing: border-box;
+        width: 100%; height: 100%; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+        box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15); overflow: hidden; border: 2px solid #f1f5f9; box-sizing: border-box;
     }
-
-    /* ওয়ালেট আইকনের প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট */
-    .brand-logo-circle i {
-        background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 18px;
-    }
-
-    /* পালস অ্যানিমেশন অ্যাক্টিভ ডটের জন্য */
+    .brand-logo-circle i { background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 18px; }
     @keyframes pulse {
         0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
         70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
         100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(8px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
 <script>
-    // ইনপুট ফিল্ড ফোকাস লাইভ গ্লো ইফেক্টস
+    // ইনপুট গ্লো ইফেক্টস
     const inputFields = ['#sup-name', '#sup-email', '#sup-whatsapp'];
     inputFields.forEach(selector => {
         const el = document.querySelector(selector);
@@ -5117,13 +5102,51 @@ function togglePassword() {
         msgInput.addEventListener('blur', () => { inputWrapper.style.borderColor = '#e2e8f0'; inputWrapper.style.background = '#f1f5f9'; });
     }
 
-    // টেক্সট এরিয়া অটো সাইজিং স্ক্রিপ্ট
     function autoGrowTextarea(element) {
         element.style.height = "5px";
         element.style.height = (element.scrollHeight) + "px";
     }
 
-    // ইউনিফাইড চ্যাট সাবমিশন লজিক
+    // ইমেজ ফাইল সিলেক্ট লজিক ও প্রিভিউ রেন্ডার
+    let globalSelectedFile = null;
+
+    function handleFileSelection(input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            if (!file.type.startsWith('image/')) {
+                alert('দয়া করে শুধুমাত্র ইমেজ বা ফটো ফাইল সিলেক্ট করুন।');
+                input.value = '';
+                return;
+            }
+            globalSelectedFile = file;
+            
+            // UI প্রিভিউ সেটআপ
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('image-preview-element').src = e.target.result;
+                document.getElementById('file-name-txt').innerText = file.name;
+                document.getElementById('image-preview-container').style.display = 'flex';
+                document.getElementById('file-label-btn').style.background = '#ffe5e5';
+                document.getElementById('file-label-btn').style.color = '#ff0000';
+                document.getElementById('plus-icon').className = 'fas fa-image';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // সিলেক্টেড ইমেজ রিমুভ করার ফাংশন
+    function removeSelectedFile() {
+        globalSelectedFile = null;
+        document.getElementById('sup-file').value = '';
+        document.getElementById('image-preview-container').style.display = 'none';
+        document.getElementById('image-preview-element').src = '';
+        document.getElementById('file-name-txt').innerText = '';
+        document.getElementById('file-label-btn').style.background = '#f1f5f9';
+        document.getElementById('file-label-btn').style.color = '#64748b';
+        document.getElementById('plus-icon').className = 'fas fa-plus';
+    }
+
+    // ইউনিফাইড চ্যাট ও মাল্টিমিডিয়া সাবমিশন লজিক
     function executeSupportSubmission() {
         const name = document.getElementById('sup-name').value.trim();
         const email = document.getElementById('sup-email').value.trim();
@@ -5134,57 +5157,90 @@ function togglePassword() {
         const sendBtn = document.getElementById('send-msg-btn');
         const sendIcon = document.getElementById('send-icon');
 
-        // ভ্যালিডেশন চেক
-        if (!name || !email || !whatsapp || !message) {
-            alert('দয়া করে ইনফো কার্ডের সকল তথ্য এবং মেসেজ সম্পূর্ণ পূরণ করুন।');
+        // ফিল্ড ভ্যালিডেশন চেক
+        if (!name || !email || !whatsapp || (!message && !globalSelectedFile)) {
+            alert('দয়া করে তথ্যসমূহ সঠিকভাবে পূরণ করুন এবং মেসেজ অথবা ফটো সংযুক্ত করুন।');
             return;
         }
 
-        // সেন্ড বাটন লোডিং স্টেট অ্যাক্টিভেশন
+        // সেন্ড বাটন লোডিং সেটআপ
         sendBtn.disabled = true;
         sendBtn.style.background = '#94a3b8';
         sendBtn.style.boxShadow = 'none';
         sendIcon.className = 'fas fa-spinner fa-spin';
         sendIcon.style.marginLeft = '0px';
 
-        // ১. ইউজারের পাঠানো মেসেজ চ্যাট স্ক্রিনে ইনস্ট্যান্ট রেন্ডার (User Bubble)
+        // ১. ইউজারের পাঠানো কন্টেন্ট স্ক্রিনে রেন্ডার (User Bubble)
         const userBubble = document.createElement('div');
-        userBubble.style.cssText = "display: flex; justify-content: flex-end; max-width: 85%; margin-left: auto; margin-top: 6px; animation: fadeIn 0.3s ease;";
-        userBubble.innerHTML = `
-            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; padding: 11px 15px; border-radius: 16px 16px 4px 16px; font-size: 13px; font-weight: 500; line-height: 1.4; box-shadow: 0 3px 10px rgba(255,0,0,0.15);">
-                ${message}
-            </div>
-        `;
+        userBubble.style.cssText = "display: flex; flex-direction: column; align-items: flex-end; max-width: 85%; margin-left: auto; margin-top: 6px; gap: 4px; animation: fadeIn 0.3s ease;";
+        
+        let bubbleInnerContent = '';
+        
+        // ইমেজ থাকলে চ্যাট স্ক্রিনে ইমেজ বাবল যোগ হবে
+        if (globalSelectedFile) {
+            const tempImgUrl = document.getElementById('image-preview-element').src;
+            bubbleInnerContent += `
+                <div style="background: white; padding: 6px; border-radius: 12px 12px 4px 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; max-width: 100%;">
+                    <img src="${tempImgUrl}" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: block; object-fit: contain;">
+                </div>
+            `;
+        }
+        
+        // টেক্সট মেসেজ থাকলে সেটিও যোগ হবে
+        if (message) {
+            bubbleInnerContent += `
+                <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; padding: 11px 15px; border-radius: 16px 16px 4px 16px; font-size: 13px; font-weight: 500; line-height: 1.4; box-shadow: 0 3px 10px rgba(255,0,0,0.15); text-align: left; word-break: break-word;">
+                    ${message}
+                </div>
+            `;
+        }
+
+        userBubble.innerHTML = bubbleInnerContent;
         msgArea.appendChild(userBubble);
         
-        // টাইপিং ইনপুট বক্স ক্লিন করা
+        // ইনপুট প্যানেল ক্লিয়ার ও রি-রিসেট
         document.getElementById('sup-message').value = '';
         document.getElementById('sup-message').style.height = 'auto';
+        const fileToUpload = globalSelectedFile; // ব্যাকআপ ফাইল রেফারেন্স
+        removeSelectedFile(); // প্রিভিউ ক্লিন আপ
         chatBody.scrollTop = chatBody.scrollHeight;
 
-        // ইনফো কার্ডটি লক এবং ব্লার করা
+        // ইনফো কার্ডটি লক করা
         const infoBox = document.getElementById('info-card-box');
         infoBox.style.opacity = '0.5';
         infoBox.style.pointerEvents = 'none';
 
-        // টেলিগ্রাম ক্রেডেনশিয়ালস
+        // টেলিগ্রাম ক্রেডেনশিয়ালস ও টেক্সট ফরম্যাট
         const token = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
         const chatId = "6882504862";
-        const tgText = `🛠️ *নতুন সাপোর্ট টিকিট রিকোয়েস্ট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যার বিবরণ:*\n${message}`;
+        const tgText = `🛠️ *নতুন সাপোর্ট টিকিট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যার বিবরণ:*\n${message || "ফটো ফাইল পাঠানো হয়েছে"}`;
 
-        // ২. ব্যাকএন্ড টেলিগ্রাম এপিআই হিট
-        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: tgText,
-                parse_mode: 'Markdown'
-            })
-        })
+        let fetchUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+        let fetchOptions = {};
+
+        // ২. ফাইল আপলোড চেকিং লজিক (ইমেজ থাকলে sendPhoto এপিআই, না থাকলে স্বাভাবিক sendMessage)
+        if (fileToUpload) {
+            fetchUrl = `https://api.telegram.org/bot${token}/sendPhoto`;
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('photo', fileToUpload);
+            formData.append('caption', tgText);
+            formData.append('parse_mode', 'Markdown');
+            
+            fetchOptions = { method: 'POST', body: formData };
+        } else {
+            fetchOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: tgText, parse_mode: 'Markdown' })
+            };
+        }
+
+        // ৩. ব্যাকএন্ড টেলিগ্রাম এপিআই রিকোয়েস্ট ফায়ার
+        fetch(fetchUrl, fetchOptions)
         .then(response => {
             if(response.ok) {
-                // ৩. সফল হলে মেসেঞ্জারের মতো "Admin is typing..." লোডার ট্রিকার
+                // ৪. সফল হলে "Admin is typing..." লোডার ট্রিকার
                 const typingIndicator = document.createElement('div');
                 typingIndicator.id = "typing-loader";
                 typingIndicator.style.cssText = "display: flex; justify-content: flex-start; max-width: 85%; margin-top: 8px; animation: fadeIn 0.2s ease;";
@@ -5196,22 +5252,20 @@ function togglePassword() {
                 msgArea.appendChild(typingIndicator);
                 chatBody.scrollTop = chatBody.scrollHeight;
 
-                // ৪. ১.৫ সেকেন্ড টাইপিং অ্যানিমেশনের পর সাকসেস অটো-রিপ্লাই বাবল আসবে
+                // ৫. চ্যাট রেসপন্স অটো-রিপ্লাই বাবল এনিমেশন ট্রিকার
                 setTimeout(() => {
                     const loader = document.getElementById('typing-loader');
                     if(loader) loader.remove();
 
-                    // এডমিন বট রিপ্লাই বাবল রেন্ডারিং
                     const adminBubble = document.createElement('div');
                     adminBubble.style.cssText = "display: flex; justify-content: flex-start; max-width: 85%; margin-top: 5px; animation: fadeIn 0.3s ease;";
                     adminBubble.innerHTML = `
                         <div style="background: #fff1f2; color: #0f172a; padding: 12px 15px; border-radius: 4px 16px 16px 16px; font-size: 13px; font-weight: 600; line-height: 1.5; box-shadow: 0 2px 6px rgba(0,0,0,0.01); border-left: 4px solid #ff0000;">
-                            ধন্যবাদ <span style="color:#ff0000;">${name}</span>, আপনার সাপোর্ট রিকোয়েস্টটি সফলভাবে সাবমিট হয়েছে! আমাদের অফিশিয়াল প্রতিনিধি খুব শীঘ্রই আপনার দেওয়া হোয়াটসঅ্যাপ নম্বরে (${whatsapp}) যোগাযোগ করবেন। Stay Connected! 😊
+                            ধন্যবাদ <span style="color:#ff0000;">${name}</span>, আপনার রিকোয়েস্টটি (ফাইলসহ) সফলভাবে সাবমিট হয়েছে! আমাদের প্রতিনিধি খুব শীঘ্রই আপনার হোয়াটসঅ্যাপ নম্বরে (${whatsapp}) রেসপন্স করবেন। Stay Connected! 😊
                         </div>
                     `;
                     msgArea.appendChild(adminBubble);
                     
-                    // মেসেঞ্জার টোন অডিও প্লে ট্রাই
                     try {
                         let audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav');
                         audio.volume = 0.2;
@@ -5220,20 +5274,17 @@ function togglePassword() {
 
                     chatBody.scrollTop = chatBody.scrollHeight;
 
-                    // ৫. চ্যাট বাবল জেনারেট হওয়ার ১.২ সেকেন্ড পর SweetAlert সাকসেস নোটিশ আসবে
+                    // ৬. SweetAlert পপআপ জেনারেশন
                     setTimeout(() => {
                         Swal.fire({
                             title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">টিকিট সাবমিট হয়েছে!</span>',
-                            text: 'আপনার সমস্যাটি সফলভাবে এডমিন প্যানেলে পাঠানো হয়েছে।',
+                            text: 'আপনার মিডিয়া ও সমস্যাটি সফলভাবে এডমিন প্যানেলে পাঠানো হয়েছে।',
                             icon: 'success',
                             confirmButtonColor: '#ff0000',
                             target: document.getElementById('p-support'),
-                            customClass: {
-                                popup: 'custom-swal-square-popup',
-                                confirmButton: 'custom-swal-square-btn'
-                            }
+                            customClass: { popup: 'custom-swal-square-popup', confirmButton: 'custom-swal-square-btn' }
                         }).then(() => {
-                            // সাকসেস বাটন ওকে করলে ইনফো কার্ড আনলক হবে ও ইনপুট রিসেট হবে
+                            // কার্ড আনলক ও টোটাল ইনপুট রিসেট
                             infoBox.style.opacity = '1';
                             infoBox.style.pointerEvents = 'auto';
                             document.getElementById('sup-name').value = '';
@@ -5248,21 +5299,20 @@ function togglePassword() {
                 }, 1500);
 
             } else {
-                throw new Error('Telegram server issue');
+                throw new Error('Telegram Multi-media submission error');
             }
         })
         .catch(error => {
             console.error('Error:', error);
             Swal.fire({
                 title: 'দুঃখিত!',
-                text: 'টেলিগ্রাম সার্ভারে ডেটা পাঠানো যায়নি। আবার চেষ্টা করুন।',
+                text: 'টেলিগ্রাম সার্ভারে ডেটা বা ফাইল পাঠানো যায়নি। আবার চেষ্টা করুন।',
                 icon: 'error',
                 confirmButtonColor: '#ff0000',
                 target: document.getElementById('p-support')
             });
         })
         .finally(() => {
-            // সেন্ড বাটনের লোডিং রিমুভ করে নরমাল করা
             sendBtn.disabled = false;
             sendBtn.style.background = 'linear-gradient(135deg, #ff0000 0%, #ff9900 100%)';
             sendBtn.style.boxShadow = '0 4px 12px rgba(255,0,0,0.25)';
@@ -5271,10 +5321,6 @@ function togglePassword() {
         });
     }
 </script>
-
-
-
-
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
