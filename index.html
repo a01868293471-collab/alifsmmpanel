@@ -4976,139 +4976,315 @@ function togglePassword() {
 
     </div>
 </div>
-<div id="p-support" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f8fafc; z-index: 9999; overflow-y: auto; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding-bottom: 80px;">
-        <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; box-sizing: border-box;">
-        
+<div id="p-support" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f4f6f9; z-index: 9999; overflow-y: auto; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
+    
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; box-sizing: border-box;">
         <div onclick="if(typeof openPage === 'function') { openPage('p-home'); } document.getElementById('p-support').style.display = 'none';" 
-             style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); box-sizing: border-box; transition: transform 0.1s ease;"
-             onmousedown="this.style.transform='scale(0.9)'" 
+             style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); box-sizing: border-box; transition: all 0.2s ease;"
+             onmousedown="this.style.transform='scale(0.92)'" 
              onmouseup="this.style.transform='scale(1)'">
-            <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
+            <i class="fas fa-arrow-left" style="font-size: 16px; color: white;"></i>
         </div>
-        
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase; font-size: 18px;">
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 700; color: white; letter-spacing: 0.5px; text-transform: uppercase; font-size: 16px;">
             Support Center
         </h5>
     </div>
 
-    <div style="max-width: 450px; margin: 20px auto; padding: 0 15px; box-sizing: border-box; width: 100%;">
-        <div style="background: #ffffff; padding: 20px 15px; border-radius: 4px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); box-sizing: border-box;">
+    <div style="max-width: 480px; margin: 15px auto; padding: 0 12px; box-sizing: border-box; width: 100%;">
+        <div class="messenger-container" style="width: 100%; background: #ffffff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 78vh; min-height: 520px; overflow: hidden; box-sizing: border-box; border: 1px solid #eef2f6;">
             
-            <form id="support-ticket-form" onsubmit="submitSupportTicket(event)">
-                
-                <div style="margin-bottom: 14px; text-align: left;">
-                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার নাম</label>
-                    <input id="sup-name" type="text" placeholder="এখানে আপনার সম্পূর্ণ নাম লিখুন" required
-                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
-                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
+            <div style="background: #ffffff; padding: 14px 16px; color: #1e293b; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid #f1f5f9; z-index: 10;">
+                <div class="brand-logo-container">
+                    <div class="brand-logo-circle">
+                        <i class="fas fa-wallet"></i> 
+                    </div>
                 </div>
-                
-                <div style="margin-bottom: 14px; text-align: left;">
-                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার জিমেইল</label>
-                    <input id="sup-email" type="email" placeholder="example@gmail.com" required
-                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
-                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
+                <div>
+                    <h4 style="margin: 0; font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: 0.3px;">FREE TIME EARN</h4>
+                    <div style="display: flex; align-items: center; gap: 5px; margin-top: 3px;">
+                        <span style="width: 7px; height: 7px; background: #10b981; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
+                        <small style="font-size: 11px; font-weight: 500; color: #64748b;">Official Support Live</small>
+                    </div>
                 </div>
-                
-                <div style="margin-bottom: 14px; text-align: left;">
-                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">হোয়াটসঅ্যাপ নম্বর</label>
-                    <input id="sup-whatsapp" type="number" placeholder="01XXXXXXXXX" required
-                           style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; transition: border-color 0.2s;"
-                           onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'">
-                </div>
-                
-                <div style="margin-bottom: 18px; text-align: left;">
-                    <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; text-transform: uppercase;">আপনার সমস্যাটি লিখুন</label>
-                    <textarea id="sup-message" rows="4" placeholder="আপনার সমস্যাটি বিস্তারিত এখানে বর্ণনা করুন..." required
-                              style="width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none; resize: none; transition: border-color 0.2s; font-family: inherit;"
-                              onfocus="this.style.borderColor='#ff0000'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
-                </div>
-                
-                <button type="submit" id="sup-submit-btn" style="width: 100%; background: #ff0000; color: #ffffff; border: none; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15); transition: background 0.2s; box-sizing: border-box;">
-                    <i class="fas fa-paper-plane"></i> সাবমিট করুন
-                </button>
-                
-            </form>
-            
-            <div style="margin-top: 18px; font-size: 12px; line-height: 1.6; color: #475569; background: #fff1f2; padding: 12px; border-left: 3px solid #ff0000; border-radius: 4px; text-align: center; font-weight: 600; box-sizing: border-box;">
-                খুব শীঘ্রই আপনার সাথে আমাদের প্রতিনিধি আপনার হোয়াটসঅ্যাপে যোগাযোগ করবে, ধন্যবাদ।
             </div>
-            
+
+            <div style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; background: #f8fafc;" id="chat-body">
+                
+                <div style="display: flex; justify-content: flex-start; width: 100%; animation: fadeIn 0.4s ease;">
+                    <div style="background: #ffffff; color: #334155; padding: 12px 16px; border-radius: 4px 16px 16px 16px; font-size: 13px; font-weight: 500; line-height: 1.5; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eef2f6; width: 100%; box-sizing: border-box;">
+                        Hello! 😊 <span style="font-weight: 700; color: #ff4500;">Free Time Earn</span> সাপোর্ট সেন্টারে আপনাকে স্বাগতম। ওপরের কার্ডে আপনার সঠিক তথ্য দিয়ে নিচে সমস্যাটি লিখে মেসেজ পাঠান।
+                    </div>
+                </div>
+
+                <div class="user-info-card" id="info-card-box" style="background: white; border-radius: 14px; padding: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+                        <i class="fas fa-user-shield" style="color: #ff3b30; font-size: 13px;"></i>
+                        <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Identity Verification</span>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="position: relative;">
+                            <i class="fas fa-user" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 12px;"></i>
+                            <input id="sup-name" type="text" placeholder="আপনার সম্পূর্ণ নাম লিখুন" required style="width: 100%; padding: 10px 12px 10px 35px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; outline: none; transition: 0.2s; box-sizing: border-box; font-weight: 500; color: #334155;">
+                        </div>
+                        <div style="position: relative;">
+                            <i class="fas fa-envelope" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 12px;"></i>
+                            <input id="sup-email" type="email" placeholder="আপনার জিমেইল (example@gmail.com)" required style="width: 100%; padding: 10px 12px 10px 35px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; outline: none; transition: 0.2s; box-sizing: border-box; font-weight: 500; color: #334155;">
+                        </div>
+                        <div style="position: relative;">
+                            <i class="fab fa-whatsapp" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 14px;"></i>
+                            <input id="sup-whatsapp" type="number" placeholder="হোয়াটসঅ্যাপ নম্বর (01XXXXXXXXX)" required style="width: 100%; padding: 10px 12px 10px 35px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; outline: none; transition: 0.2s; box-sizing: border-box; font-weight: 500; color: #334155;">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chat-messages-area" style="display: flex; flex-direction: column; gap: 14px;">
+                    </div>
+            </div>
+
+            <div style="background: #ffffff; padding: 14px; border-top: 1px solid #e2e8f0; display: flex; align-items: center; gap: 10px; box-sizing: border-box;">
+                <div style="flex: 1; background: #f1f5f9; border-radius: 24px; padding: 4px 16px; display: flex; align-items: center; box-sizing: border-box; border: 1px solid #e2e8f0; transition: 0.2s;" id="input-bar-wrapper">
+                    <textarea id="sup-message" rows="1" placeholder="Type your message here..." required style="flex: 1; background: transparent; border: none; outline: none; padding: 8px 0; font-size: 13px; color: #0f172a; resize: none; max-height: 80px; font-family: inherit; line-height: 1.4;" oninput="autoGrowTextarea(this)"></textarea>
+                </div>
+                <button id="send-msg-btn" onclick="executeSupportSubmission()" style="width: 42px; height: 42px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 12px rgba(255,0,0,0.25); transition: all 0.2s ease; flex-shrink: 0;" onmousedown="this.style.transform='scale(0.9)'" onmouseup="this.style.transform='scale(1)'">
+                    <i id="send-icon" class="fas fa-paper-plane" style="font-size: 15px; margin-left: 2px;"></i>
+                </button>
+            </div>
+
         </div>
     </div>
 </div>
 
+<style>
+    /* লোগো মূল কন্টেইনার পজিশন ও সাইজ */
+    .brand-logo-container {
+        width: 42px;
+        height: 42px;
+        box-sizing: border-box;
+    }
+
+    /* মাঝখানের প্রফেশনাল সাদা সার্কেল */
+    .brand-logo-circle { 
+        width: 100%; 
+        height: 100%; 
+        background: white; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
+        overflow: hidden;
+        border: 2px solid #f1f5f9;
+        box-sizing: border-box;
+    }
+
+    /* ওয়ালেট আইকনের প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট */
+    .brand-logo-circle i {
+        background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 18px;
+    }
+
+    /* পালস অ্যানিমেশন অ্যাক্টিভ ডটের জন্য */
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
 <script>
-function submitSupportTicket(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('sup-name').value.trim();
-    const email = document.getElementById('sup-email').value.trim();
-    const whatsapp = document.getElementById('sup-whatsapp').value.trim();
-    const message = document.getElementById('sup-message').value.trim();
-    const submitBtn = document.getElementById('sup-submit-btn');
-    
-    // লোডিং স্টেট এবং বাটন ডিজেবল
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.style.background = '#94a3b8';
-    
-    const token = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
-    const chatId = "6882504862";
-    
-    const tgText = `🛠️ *নতুন সাপোর্ট টিকিট রিকোয়েস্ট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যার বিবরণ:*\n${message}`;
-    
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: tgText,
-            parse_mode: 'Markdown'
+    // ইনপুট ফিল্ড ফোকাস লাইভ গ্লো ইফেক্টস
+    const inputFields = ['#sup-name', '#sup-email', '#sup-whatsapp'];
+    inputFields.forEach(selector => {
+        const el = document.querySelector(selector);
+        if(el) {
+            el.addEventListener('focus', () => { el.style.borderColor = '#ff4500'; el.style.boxShadow = '0 0 0 3px rgba(255,69,0,0.1)'; });
+            el.addEventListener('blur', () => { el.style.borderColor = '#e2e8f0'; el.style.boxShadow = 'none'; });
+        }
+    });
+
+    const msgInput = document.getElementById('sup-message');
+    const inputWrapper = document.getElementById('input-bar-wrapper');
+    if(msgInput && inputWrapper) {
+        msgInput.addEventListener('focus', () => { inputWrapper.style.borderColor = '#ff4500'; inputWrapper.style.background = '#ffffff'; });
+        msgInput.addEventListener('blur', () => { inputWrapper.style.borderColor = '#e2e8f0'; inputWrapper.style.background = '#f1f5f9'; });
+    }
+
+    // টেক্সট এরিয়া অটো সাইজিং স্ক্রিপ্ট
+    function autoGrowTextarea(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight) + "px";
+    }
+
+    // ইউনিফাইড চ্যাট সাবমিশন লজিক (টেলিগ্রাম + হোয়াটসঅ্যাপ রিডাইরেক্ট)
+    function executeSupportSubmission() {
+        const name = document.getElementById('sup-name').value.trim();
+        const email = document.getElementById('sup-email').value.trim();
+        const whatsapp = document.getElementById('sup-whatsapp').value.trim();
+        const message = document.getElementById('sup-message').value.trim();
+        const msgArea = document.getElementById('chat-messages-area');
+        const chatBody = document.getElementById('chat-body');
+        const sendBtn = document.getElementById('send-msg-btn');
+        const sendIcon = document.getElementById('send-icon');
+
+        // ভ্যালিডেশন চেক
+        if (!name || !email || !whatsapp || !message) {
+            alert('দয়া করে ইনফো কার্ডের সকল তথ্য এবং মেসেজ সম্পূর্ণ পূরণ করুন।');
+            return;
+        }
+
+        // সেন্ড বাটন লোডিং স্টেট অ্যাক্টিভেশন
+        sendBtn.disabled = true;
+        sendBtn.style.background = '#94a3b8';
+        sendBtn.style.boxShadow = 'none';
+        sendIcon.className = 'fas fa-spinner fa-spin';
+        sendIcon.style.marginLeft = '0px';
+
+        // ১. ইউজারের পাঠানো মেসেজ চ্যাট স্ক্রিনে ইনস্ট্যান্ট রেন্ডার (User Bubble)
+        const userBubble = document.createElement('div');
+        userBubble.style.cssText = "display: flex; justify-content: flex-end; max-width: 85%; margin-left: auto; margin-top: 6px; animation: fadeIn 0.3s ease;";
+        userBubble.innerHTML = `
+            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; padding: 11px 15px; border-radius: 16px 16px 4px 16px; font-size: 13px; font-weight: 500; line-height: 1.4; box-shadow: 0 3px 10px rgba(255,0,0,0.15);">
+                ${message}
+            </div>
+        `;
+        msgArea.appendChild(userBubble);
+        
+        // টাইপিং ইনপুট বক্স ক্লিন করা
+        document.getElementById('sup-message').value = '';
+        document.getElementById('sup-message').style.height = 'auto';
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // ইনফো কার্ডটি লক এবং ব্লার করা
+        const infoBox = document.getElementById('info-card-box');
+        infoBox.style.opacity = '0.5';
+        infoBox.style.pointerEvents = 'none';
+
+        // টেলিগ্রাম ক্রেডেনশিয়ালস
+        const token = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
+        const chatId = "6882504862";
+        const tgText = `🛠️ *নতুন সাপোর্ট টিকিট রিকোয়েস্ট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যার বিবরণ:*\n${message}`;
+
+        // ২. ব্যাকএন্ড টেলিগ্রাম এপিআই হিট
+        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: tgText,
+                parse_mode: 'Markdown'
+            })
         })
-    })
-    .then(response => {
-        if(response.ok) {
-            // এই সাপোর্ট পেজের ওপরেই সাকসেস পপআপটি ট্রিগার হবে
-            Swal.fire({
-                title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">টিকিট সাবমিট হয়েছে!</span>',
-                text: 'আপনার সমস্যাটি সফলভাবে এডমিন প্যানেলে পাঠানো হয়েছে।',
-                icon: 'success',
-                confirmButtonColor: '#ff0000',
-                target: document.getElementById('p-support'), // পপআপ পজিশন টার্গেট ফিক্স
-                customClass: {
-                    popup: 'custom-swal-square-popup',
-                    confirmButton: 'custom-swal-square-btn'
-                }
-            }).then(() => {
-                // পপআপ ক্লোজ করার পর ফর্ম রিসেট হবে এবং পেজ হাইড হয়ে হোমে যাবে
-                document.getElementById('support-ticket-form').reset();
-                if(typeof openPage === 'function') {
-                    openPage('p-home');
-                }
-                document.getElementById('p-support').style.display = 'none';
-            });
-        } else {
+        .then(response => {
+            if(response.ok) {
+                // ৩. সফল হলে মেসেঞ্জারের মতো "Admin is typing..." লোডার ট্রিকার
+                const typingIndicator = document.createElement('div');
+                typingIndicator.id = "typing-loader";
+                typingIndicator.style.cssText = "display: flex; justify-content: flex-start; max-width: 85%; margin-top: 8px; animation: fadeIn 0.2s ease;";
+                typingIndicator.innerHTML = `
+                    <div style="background: white; color: #64748b; padding: 10px 14px; border-radius: 4px 16px 16px 16px; font-size: 12px; font-weight: 600; border: 1px solid #e2e8f0; display:flex; align-items:center; gap:6px; box-shadow: 0 2px 5px rgba(0,0,0,0.01);">
+                        <i class="fas fa-circle-notch fa-spin" style="color: #ff4500;"></i> Admin is typing...
+                    </div>
+                `;
+                msgArea.appendChild(typingIndicator);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // ৪. ১.৫ সেকেন্ড টাইপিং অ্যানিমেশনের পর সাকসেস অটো-রিপ্লাই বাবল আসবে
+                setTimeout(() => {
+                    const loader = document.getElementById('typing-loader');
+                    if(loader) loader.remove();
+
+                    // এডমিন বট রিপ্লাই বাবল রেন্ডারিং
+                    const adminBubble = document.createElement('div');
+                    adminBubble.style.cssText = "display: flex; justify-content: flex-start; max-width: 85%; margin-top: 5px; animation: fadeIn 0.3s ease;";
+                    adminBubble.innerHTML = `
+                        <div style="background: #fff1f2; color: #0f172a; padding: 12px 15px; border-radius: 4px 16px 16px 16px; font-size: 13px; font-weight: 600; line-height: 1.5; box-shadow: 0 2px 6px rgba(0,0,0,0.01); border-left: 4px solid #ff0000;">
+                            ধন্যবাদ <span style="color:#ff0000;">${name}</span>, আপনার সাপোর্ট রিকোয়েস্টটি এডমিন প্যানেলে সাবমিট হয়েছে! আপনাকে সরাসরি অফিশিয়াল হোয়াটসঅ্যাপ চ্যাটে কানেক্ট করা হচ্ছে...
+                        </div>
+                    `;
+                    msgArea.appendChild(adminBubble);
+                    
+                    // মেসেঞ্জার টোন অডিও প্লে
+                    try {
+                        let audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav');
+                        audio.volume = 0.2;
+                        audio.play();
+                    } catch(e) {}
+
+                    chatBody.scrollTop = chatBody.scrollHeight;
+
+                    // ৫. চ্যাট বাবল জেনারেট হওয়ার ১.২ সেকেন্ড পর SweetAlert সাকসেস নোটিশ আসবে
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">হোয়াটসঅ্যাপে যোগাযোগ করুন</span>',
+                            text: 'এডমিনের সাথে সরাসরি হোয়াটসঅ্যাপে চ্যাট করতে নিচের বাটনে ক্লিক করুন।',
+                            icon: 'success',
+                            confirmButtonText: 'OPEN WHATSAPP',
+                            confirmButtonColor: '#25D366', // হোয়াটসঅ্যাপ ব্র্যান্ড গ্রিন কালার
+                            target: document.getElementById('p-support'),
+                            customClass: {
+                                popup: 'custom-swal-square-popup',
+                                confirmButton: 'custom-swal-square-btn'
+                            }
+                        }).then(() => {
+                            // ইনফো কার্ড আনলক ও ইনপুট রিসেট করা
+                            infoBox.style.opacity = '1';
+                            infoBox.style.pointerEvents = 'auto';
+                            document.getElementById('sup-name').value = '';
+                            document.getElementById('sup-email').value = '';
+                            document.getElementById('sup-whatsapp').value = '';
+                            
+                            // এডমিনের হোয়াটসঅ্যাপ লিংক জেনারেশন (আপনার দেওয়া নম্বর ও মেসেজসহ টেক্সট ফরম্যাট করা)
+                            const adminPhone = "8801868293471";
+                            const wpCustomText = encodeURIComponent(`🛠️ *নতুন সাপোর্ট টিকিট*\n\n👤 নাম: ${name}\n📧 জিমেইল: ${email}\n💬 হোয়াটসঅ্যাপ: ${whatsapp}\n\n📝 *সমস্যা:* ${message}`);
+                            const whatsappUrl = `https://wa.me/${adminPhone}?text=${wpCustomText}`;
+                            
+                            // ইউজারকে সরাসরি হোয়াটসঅ্যাপে পাঠানো
+                            window.open(whatsappUrl, '_blank');
+
+                            // পেজ ক্লোজ ও ব্যাক হোম করা
+                            if(typeof openPage === 'function') { openPage('p-home'); }
+                            document.getElementById('p-support').style.display = 'none';
+                        });
+                    }, 1200);
+
+                }, 1500);
+
+            } else {
+                throw new Error('Telegram server issue');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
             Swal.fire({
                 title: 'দুঃখিত!',
-                text: 'সাবমিট করা যায়নি। আবার চেষ্টা করুন।',
+                text: 'টেলিগ্রাম সার্ভারে ডেটা পাঠানো যায়নি। আবার চেষ্টা করুন।',
                 icon: 'error',
                 confirmButtonColor: '#ff0000',
                 target: document.getElementById('p-support')
             });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('নেটওয়ার্ক সমস্যা! আপনার интернет কানেকশন চেক করুন।');
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> সাবমিট করুন';
-        submitBtn.style.background = '#ff0000';
-    });
-}
+        })
+        .finally(() => {
+            // সেন্ড বাটনের লোডিং রিমুভ করে নরমাল করা
+            sendBtn.disabled = false;
+            sendBtn.style.background = 'linear-gradient(135deg, #ff0000 0%, #ff9900 100%)';
+            sendBtn.style.boxShadow = '0 4px 12px rgba(255,0,0,0.25)';
+            sendIcon.className = 'fas fa-paper-plane';
+            sendIcon.style.marginLeft = '2px';
+        });
+    }
 </script>
+
+
+
+
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
