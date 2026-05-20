@@ -4546,82 +4546,9 @@ function togglePassword() {
     </div>
 </div>
 
-<div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Reseller Shop</h5>
-            </div>
 
 
-            <div style="display: flex; gap: 10px;">
-                <div onclick="openPage('p-vendor-list')" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                    <i class="fas fa-user-tie" style="font-size: 18px;"></i>
-                </div>
-                <div onclick="openShopHistory()" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                    <i class="fas fa-history" style="font-size: 18px;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container mt-3">
-        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
-            <button onclick="filterShop('all')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #dc3545; background: #dc3545; color: white; font-size: 12px; font-weight: 700; white-space: nowrap;">All</button>
-            <button onclick="filterShop('shirt')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Shirt</button>
-            <button onclick="filterShop('pant')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Pant</button>
-            <button onclick="filterShop('panjabi')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Panjabi</button>
-        </div>
-
-        <div class="row g-3" id="shop-container">
-            <div class="col-6 shop-item shirt">
-                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                    <img src="https://via.placeholder.com/150" style="width: 100%; height: 150px; object-fit: cover;">
-                    <div style="padding: 10px;">
-                        <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 35px; overflow: hidden;">Premium Cotton Shirt</h6>
-                        <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px;">৳ ৮৫০</p>
-                        <button onclick="viewProduct('Premium Cotton Shirt', '৮৫০', 'High quality cotton fabric...', 'https://via.placeholder.com/300')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700;">View</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; overflow-y: auto;">
-    <div style="padding: 20px;">
-        <i class="fas fa-times" style="font-size: 24px; color: #333; cursor: pointer;" onclick="closeProduct()"></i>
-        <img id="view-img" src="" style="width: 100%; border-radius: 20px; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h4 id="view-title" style="margin-top: 20px; font-weight: 800;"></h4>
-        <h5 id="view-price" style="color: #dc3545; font-weight: 800;"></h5>
-        <hr>
-        <h6>Details:</h6>
-        <p id="view-desc" style="color: #666; font-size: 14px; line-height: 1.6;"></p>
-        
-        <button onclick="showOrderForm()" style="width: 100%; padding: 15px; border-radius: 15px; border: none; background: #dc3545; color: white; font-weight: 800; font-size: 16px; margin-top: 20px;">অর্ডার করুন</button>
-    </div>
-</div>
-
-
-<div id="shop-order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: white; width: 100%; border-radius: 25px; padding: 20px; max-height: 90vh; overflow-y: auto;">
-        <h5 style="font-weight: 800; text-align: center; margin-bottom: 20px;">অর্ডার ইনফরমেশন</h5>
-        <input type="text" id="o-name" placeholder="আপনার নাম" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="number" id="o-phone" placeholder="মোবাইল নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="text" id="o-dist" placeholder="জেলা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="text" id="o-thana" placeholder="থানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <textarea id="o-addr" placeholder="পূর্ণাঙ্গ ঠিকানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; height: 70px;"></textarea>
-        
-        <div style="display: flex; gap: 10px;">
-            <button onclick="closeOrderForm()" style="flex: 1; padding: 12px; border-radius: 10px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
-            <button onclick="submitShopOrder()" style="flex: 2; padding: 12px; border-radius: 10px; border: none; background: #dc3545; color: white; font-weight: 800;">কনফার্ম অর্ডার</button>
-        </div>
-    </div>
-</div>
 <!-- Pay Bill Page -->
 <div id="p-paybill" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -4693,30 +4620,69 @@ function togglePassword() {
 </style>
 
 
-<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 50px;">
+<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 80px; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
     
-    <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-shop')"></i>
-        <span style="margin-left: 15px; font-weight: 700; font-size: 16px; letter-spacing: 0.3px;">Our Registered Vendors</span>
+    <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-shop')"></i>
+            <span style="margin-left: 15px; font-weight: 700; font-size: 16px; letter-spacing: 0.3px;">Our Registered Vendors</span>
+        </div>
+        <span id="total-vendor-badge" style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 20px; font-weight: bold;">0 Total</span>
     </div>
 
-    <div class="container mt-3 px-3">
-        <div style="padding: 15px; background: #fff; border-radius: 15px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f0f0f0;">
-            
-            <div style="width: 50px; height: 50px; background: #eef2ff; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; overflow: hidden;">
-                <i class="fas fa-store" style="color: #3b82f6; font-size: 20px;"></i>
-            </div>
-            
-            <div style="flex: 1;">
-                <h6 style="margin: 0; font-weight: 700; color: #2d3436; font-size: 15px;">Alif Enterprise</h6>
-                <div style="display: flex; align-items: center; margin-top: 2px;">
-                    <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; margin-right: 6px;"></span>
-                    <small style="color: #2ecc71; font-weight: 600; font-size: 11px; text-transform: uppercase;">Active Vendor</small>
+    <div class="container mt-3 px-3" id="dynamic-vendor-container" style="max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+        </div>
+</div>
+<div id="p-vendor-profile-view" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1010; overflow-y: auto; padding-bottom: 60px; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+    
+    <div style="padding: 18px 15px; background: #0f172a; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; box-sizing: border-box;">
+        <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-vendor-list')"></i>
+        <span style="margin-left: 15px; font-weight: 700; font-size: 15px; letter-spacing: 0.3px;">Vendor Showroom</span>
+    </div>
+
+    <div class="container mt-4 px-3" style="max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+        
+        <div style="background: white; border-radius: 20px; padding: 25px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 20px;">
+            <div id="pv-badge-icon" style="width: 70px; height: 70px; margin: 0 auto 15px auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px;">
                 </div>
+            <h4 id="pv-shop-name" style="margin: 0; font-weight: 800; color: #0f172a; font-size: 18px;">Shop Name</h4>
+            <span id="pv-agent-type" style="display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 12px; border-radius: 30px; font-weight: bold; text-transform: uppercase;">Agent Type</span>
+        </div>
+
+        <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; box-sizing: border-box;">
+            <h6 style="margin: 0 0 15px 0; font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                <i class="fas fa-info-circle"></i> ভেন্ডর ভেরিফাইড ডাটা
+            </h6>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 2px;">বিজনেস ডিটেইলস</label>
+                <p id="pv-details" style="margin: 0; font-size: 13px; color: #334155; font-weight: 500; line-height: 1.4; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #f1f5f9;"></p>
             </div>
 
-            <i class="fas fa-chevron-right" style="color: #ccc; font-size: 14px;"></i>
+            <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <div>
+                    <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">মোবাইল নম্বর</label>
+                    <span id="pv-phone" style="font-size: 13px; color: #1e293b; font-weight: 700;">-</span>
+                </div>
+                <a id="pv-call-btn" href="#" style="background: #16a34a; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fas fa-phone-alt" style="font-size: 12px;"></i></a>
+            </div>
+
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">জাতীয় পরিচয়পত্র (NID)</label>
+                <span id="pv-nid" style="font-size: 13px; color: #1e293b; font-weight: 700;">-</span>
+            </div>
+
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">বিজনেস এড্রেস</label>
+                <span id="pv-address" style="font-size: 13px; color: #1e293b; font-weight: 600;">-</span>
+            </div>
+
+            <div>
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">রেজিস্ট্রেশন তারিখ</label>
+                <span id="pv-date" style="font-size: 12px; color: #64748b; font-weight: 600;">-</span>
+            </div>
         </div>
+
     </div>
 </div>
 <!-- Mobile Recharge Page -->
@@ -4849,6 +4815,80 @@ function togglePassword() {
             </div>
     </div>
 </div>
+
+
+
+
+<div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Segoe UI', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Reseller Shop</h5>
+            </div>
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div id="btn-header-fav" onclick="toggleHeaderFavoriteFilter()" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s;">
+                    <i id="header-fav-icon" class="fas fa-heart" style="font-size: 16px; color: white;"></i>
+                </div>
+                <div onclick="openPage('p-vendor-list')" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15);">
+                    <i class="fas fa-user-tie" style="font-size: 16px; color: white;"></i>
+                </div>
+                <div onclick="openShopHistory()" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15);">
+                    <i class="fas fa-history" style="font-size: 16px; color: white;"></i>
+                </div>
+            </div>
+
+        </div>
+    </div> <div class="container mt-3" style="padding: 0 15px;">
+        
+        <div style="background: white; border-radius: 14px; padding: 12px 15px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); margin-bottom: 20px; border: 1px solid #edf2f7;">
+            <i class="fas fa-search" style="color: #3b82f6; margin-right: 12px; font-size: 15px;"></i>
+            <input type="text" id="shop-search-input" oninput="searchShopProducts()" placeholder="পছন্দের প্রোডাক্টের নাম লিখে খুঁজুন..." style="border: none; width: 100%; outline: none; font-size: 13px; color: #4a5568; background: transparent; font-family: 'Segoe UI', sans-serif;">
+        </div>
+
+        <div class="row g-3" id="shop-container">
+            </div>
+
+    </div> </div>
+
+
+
+
+
+
+    
+<div id="p-shop-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1020; overflow-y: auto; padding-bottom: 50px; font-family: 'Segoe UI', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-shop')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Order History</h5>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">
+                <i class="fas fa-shopping-bag" style="margin-right: 5px; color: #2ecc71;"></i> আমার অর্ডারসমূহ
+            </div>
+
+        </div>
+    </div> <div style="padding: 15px;">
+        <div style="background: white; border-radius: 12px; padding: 10px 15px; display: flex; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02); margin-bottom: 15px; border: 1px solid #edf2f7;">
+            <i class="fas fa-search" style="color: #a0aec0; margin-right: 10px;"></i>
+            <input type="text" placeholder="অর্ডার খুঁজুন..." style="border: none; width: 100%; outline: none; font-size: 13px; color: #4a5568; background: transparent;">
+        </div>
+
+        <div id="customer-history-container" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="text-align: center; padding: 50px 20px; color: #a0aec0;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: #3b82f6;"></i>
+                <p style="font-size: 13px; margin: 0;">অর্ডার হিস্টোরি লোড হচ্ছে...</p>
+            </div>
+        </div>
+    </div> </div> 
+
 <div id="p-about" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
@@ -5644,86 +5684,7 @@ function togglePassword() {
     </div>
 </div>
 
-<div id="p-vendor" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
 
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Vendorship Program</h5>
-            </div>
-
-
-
-        <div onclick="openVendorLogin()" style="cursor: pointer; padding: 5px;">
-            <i class="fas fa-lock" style="font-size: 18px; opacity: 0.9;"></i>
-        </div>
-    </div>
-</div>
-
-
-    <div class="container mt-4">
-        <div style="background: white; border-radius: 15px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #6c757d; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <h6 style="font-weight: 800; color: #333; margin-bottom: 5px;">ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
-            <p style="font-size: 12px; color: #666; margin: 0;">নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন এবং ভেন্ডরশিপ এক্সেস নিন।</p>
-        </div>
-
-        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
-            
-            <label style="font-size: 13px; font-weight: 700; color: #444; margin-bottom: 10px; display: block;">ভেন্ডর টাইপ সিলেক্ট করুন:</label>
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <label style="flex: 1; border: 2px solid #eee; padding: 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;" id="label-drive">
-                    <input type="radio" name="vendor_type" value="Drive Agent" style="display: none;" onclick="selectVendor('drive')">
-                    <i class="fas fa-car-side" style="display: block; font-size: 18px; margin-bottom: 5px;"></i>
-                    <span style="font-size: 11px; font-weight: 700;">ড্রাইভ এজেন্ট</span>
-                </label>
-                <label style="flex: 1; border: 2px solid #eee; padding: 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;" id="label-resell">
-                    <input type="radio" name="vendor_type" value="Reselling Agent" style="display: none;" onclick="selectVendor('resell')">
-                    <i class="fas fa-store" style="display: block; font-size: 18px; margin-bottom: 5px;"></i>
-                    <span style="font-size: 11px; font-weight: 700;">রিসেলিং এজেন্ট</span>
-                </label>
-            </div>
-
-            <div class="vendor-inputs">
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস নাম</label>
-                    <input type="text" id="v-bus-name" placeholder="আপনার দোকানের নাম" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস ডিটেইলস</label>
-                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের সার্ভিস দেন?" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none; height: 80px;"></textarea>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #666;">বিজনেস এড্রেস</label>
-                    <input type="text" id="v-bus-addr" placeholder="আপনার বর্তমান ঠিকানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #666;">NID নম্বর</label>
-                    <input type="number" id="v-nid" placeholder="জাতীয় পরিচয়পত্র নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 600; color: #666;">মোবাইল নম্বর</label>
-                    <input type="number" id="v-phone" placeholder="বিকাশ/নগদ নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-            </div>
-
-            <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #ff7675; margin-top: 10px; margin-bottom: 20px;">
-                <p style="margin: 0; font-size: 12px; color: #d63031; font-weight: 700; text-align: center;">
-                    <i class="fas fa-exclamation-circle me-1"></i> 
-                    নোটিশ: ভেন্ডরশিপ নেওয়ার জন্য ৫০০ টাকা অগ্রিম পেমেন্ট করতে হবে।
-                </p>
-            </div>
-
-            <button onclick="payVendorFee()" style="width: 100%; background: linear-gradient(90deg, #6c757d, #343a40); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                PAY NOW (৳ 500)
-            </button>
-        </div>
-
-        <p style="text-align: center; font-size: 11px; color: #aaa; margin-top: 20px;">পেমেন্ট করার পর ২৪ ঘণ্টার মধ্যে আপনার ভেন্ডর একাউন্ট একটিভ হবে।</p>
-    </div>
-</div>
 
  <div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
     
@@ -6267,6 +6228,203 @@ function togglePassword() {
         <p style="text-align: center; font-size: 11px; color: #888; margin-top: 15px;">আপনার পোস্টটি সাবমিট করার পর এডমিন রিভিউ করে পাবলিশ করবে।</p>
     </div>
 </div>
+<div id="p-vendor" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+
+    <div id="vendor-header-bar" style="background: linear-gradient(135deg, #2563eb 0%, #16a34a 100%); padding: 18px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2); box-sizing: border-box;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; color: white; padding: 5px; transition: 0.2s;" onclick="handleVendorBackBtn()"></i>
+                <h5 style="margin: 0; margin-left: 12px; font-weight: 700; letter-spacing: 0.3px; font-size: 16px;" id="dashboard-title">Vendorship Program</h5>
+            </div>
+            <span id="vendor-active-badge" class="d-none" style="font-size: 10px; background: #16a34a; color: white; padding: 4px 10px; border-radius: 30px; font-weight: bold; text-transform: uppercase;">Active</span>
+        </div>
+    </div>
+
+    <div class="container mt-4" style="max-width: 480px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; width: 100%;">
+        
+        <div id="vendor-status-banner" style="background: white; border-radius: 15px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #3b82f6; box-shadow: 0 4px 12px rgba(0,0,0,0.03); box-sizing: border-box;">
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0 0 4px 0; font-size: 14px;">ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
+            <p style="font-size: 12px; color: #64748b; margin: 0;">নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন এবং ভেন্ডরশিপ এক্সেস নিন।</p>
+        </div>
+
+        <div id="vendor-reg-form" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #eaeaea; box-sizing: border-box;">
+            <label style="font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 10px; display: block;">ভেন্ডর টাইপ সিলেক্ট করুন:</label>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-drive">
+                    <input type="radio" name="vendor_type" value="Drive Agent" style="display: none;" onclick="selectVendor('drive')">
+                    <i class="fas fa-car-side" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
+                    <span style="font-size: 12px; font-weight: 700; color: #475569;">ড্রাইভ এজেন্ট</span>
+                </label>
+                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-resell">
+                    <input type="radio" name="vendor_type" value="Reselling Agent" style="display: none;" onclick="selectVendor('resell')">
+                    <i class="fas fa-store" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
+                    <span style="font-size: 12px; font-weight: 700; color: #475569;">রিসেলিং এজেন্ট</span>
+                </label>
+            </div>
+
+            <form onsubmit="event.preventDefault(); payVendorFee(); return false;">
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস নাম</label>
+                    <input type="text" id="v-bus-name" placeholder="আপনার দোকানের নাম" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস ডিটেইলস</label>
+                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের সার্ভিস দেন?" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস এড্রেস</label>
+                    <input type="text" id="v-bus-addr" placeholder="আপনার বর্তমান ঠিকানা" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569;">NID নম্বর</label>
+                    <input type="number" id="v-nid" placeholder="জাতীয় পরিচয়পত্র নম্বর" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569;">মোবাইল নম্বর</label>
+                    <input type="number" id="v-phone" placeholder="বিকাশ/নগদ নম্বর" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; box-sizing: border-box;">
+                </div>
+
+                <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #f87171; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box;">
+                    <p style="margin: 0; font-size: 12px; color: #dc2626; font-weight: 700; text-align: center; line-height: 1.4;">
+                        <i class="fas fa-exclamation-circle" style="margin-right: 4px;"></i> 
+                        নোটিশ: ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা ফ্রি কাটবে এবং এই টাকা রিফান্ড বা ব্যাক পাবেন না।
+                    </p>
+                </div>
+
+                <button type="submit" id="vendor-pay-btn" style="width: 100%; background: linear-gradient(90deg, #1e293b, #0f172a); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; outline: none;">
+                    PAY NOW (৳ 500)
+                </button>
+            </form>
+        </div>
+
+        <div id="p-vendor-dashboard" class="d-none">
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 25px;">
+                <div style="background: white; border-radius: 12px; padding: 12px 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
+                    <i class="fas fa-clock" style="color: #f59e0b; font-size: 16px; margin-bottom: 6px;"></i>
+                    <div style="font-size: 10px; color: #64748b; font-weight: 600;">পেন্ডিং অর্ডার</div>
+                    <h4 style="margin: 4px 0 0 0; font-size: 18px; font-weight: 800; color: #1e293b;" id="v-pending-orders">0</h4>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 12px 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
+                    <i class="fas fa-check-circle" style="color: #10b981; font-size: 16px; margin-bottom: 6px;"></i>
+                    <div style="font-size: 10px; color: #64748b; font-weight: 600;">সফল অর্ডার</div>
+                    <h4 style="margin: 4px 0 0 0; font-size: 18px; font-weight: 800; color: #1e293b;" id="v-success-orders">0</h4>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 12px 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
+                    <i class="fas fa-boxes" style="color: #3b82f6; font-size: 16px; margin-bottom: 6px;"></i>
+                    <div style="font-size: 10px; color: #64748b; font-weight: 600;">মোট আইটেম</div>
+                    <h4 style="margin: 4px 0 0 0; font-size: 18px; font-weight: 800; color: #1e293b;" id="v-total-products">0</h4>
+                </div>
+            </div>
+
+            <div id="form-drive-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
+                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #2563eb; border-bottom: 2px solid #eff6ff; padding-bottom: 8px; text-transform: uppercase;">
+                    <i class="fas fa-bolt" style="color: #2563eb; margin-right: 5px;"></i> নতুন ড্রাইভ অফার যুক্ত করুন
+                </h6>
+                <form onsubmit="event.preventDefault(); saveDriveOffer(); return false;">
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11px; font-weight: 700; color: #475569;">ড্রাইভ অফারের নাম</label>
+                        <input type="text" id="d-offer-name" required placeholder="যেমন: Robi 40GB + 800 Min" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+                        <div style="flex: 1;">
+                            <label style="font-size: 11px; font-weight: 700; color: #475569;">মূল্য (৳)</label>
+                            <input type="number" id="d-offer-price" required placeholder="বিক্রয় মূল্য" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-size: 11px; font-weight: 700; color: #475569;">কমিশন (৳)</label>
+                            <input type="number" id="d-offer-commission" required placeholder="ইউজার কমিশন" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        </div>
+                    </div>
+                    <button type="submit" style="width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; outline: none;">
+                        পাবলিশ ড্রাইভ অফার <i class="fas fa-paper-plane" style="margin-left: 4px; font-size: 11px;"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div id="form-reselling-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
+                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #16a34a; border-bottom: 2px solid #f0fdf4; padding-bottom: 8px; text-transform: uppercase;">
+                    <i class="fas fa-store" style="color: #16a34a; margin-right: 5px;"></i> নতুন ফিজিক্যাল প্রোডাক্ট যুক্ত করুন
+                </h6>
+                <form onsubmit="event.preventDefault(); saveResellProduct(); return false;">
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11px; font-weight: 700; color: #475569;">প্রোডাক্ট ফটো</label>
+                        <input type="file" id="r-prod-img" accept="image/*" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px dashed #cbd5e1; font-size: 12px; margin-top: 4px; box-sizing: border-box; cursor: pointer;">
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11px; font-weight: 700; color: #475569;">প্রোডাক্টের নাম</label>
+                        <input type="text" id="r-prod-name" required placeholder="যেমন: T500 Smart Watch Smart" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+                        <div style="flex: 1;">
+                            <label style="font-size: 11px; font-weight: 700; color: #475569;">আপনার মূল্য (৳)</label>
+                            <input type="number" id="r-prod-price" required placeholder="বিক্রয় মূল্য" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-size: 11px; font-weight: 700; color: #475569;">বাজার মূল্য (৳)</label>
+                            <input type="number" id="r-prod-market-price" required placeholder="Market Price" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 18px;">
+                        <label style="font-size: 11px; font-weight: 700; color: #475569;">প্রোডাক্ট বিস্তারিত ডিটেইলস</label>
+                        <textarea id="r-prod-details" required placeholder="প্রোডাক্টের বিবরণ বা সাইজ/কালার পলিসি লিখুন..." style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; height: 70px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
+                    </div>
+                    <button type="submit" style="width: 100%; background: #16a34a; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; outline: none;">
+                        পাবলিশ প্রোডাক্ট <i class="fas fa-upload" style="margin-left: 4px; font-size: 11px;"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
+                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; text-transform: uppercase;">
+                    <i class="fas fa-list-ul" style="color: #3b82f6; margin-right: 5px;"></i> আপনার লাইভ আইটেমসমূহ
+                </h6>
+                <div id="vendor-product-list" style="max-height: 220px; overflow-y: auto;">
+                    </div>
+            </div>
+
+            <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
+                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #ef4444; border-bottom: 2px solid #fee2e2; padding-bottom: 8px; text-transform: uppercase;">
+                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> গ্রাহকদের অর্ডার রিকোয়েষ্ট
+                </h6>
+                
+                <div id="sec-drive-requests" class="d-none" style="margin-bottom: 15px;">
+                    <span style="font-size: 11px; font-weight: bold; background: #eff6ff; color: #2563eb; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
+                        <i class="fas fa-bolt"></i> Drive Request Queue
+                    </span>
+                    <div id="drive-order-list" style="max-height: 200px; overflow-y: auto;">
+                        </div>
+                </div>
+
+                <div id="sec-resell-requests" class="d-none">
+                    <span style="font-size: 11px; font-weight: bold; background: #f0fdf4; color: #16a34a; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
+                        <i class="fas fa-box"></i> Product Orders Queue
+                    </span>
+                    <div id="resell-order-list" style="max-height: 200px; overflow-y: auto;">
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p id="vendor-footer-note" style="text-align: center; font-size: 11px; color: #94a3b8; margin-top: 20px;">পেমেন্ট করার সাথে সাথে আপনার প্যানেল ইনস্ট্যান্ট আনলক হয়ে যাবে।</p>
+    </div>
+</div>
+<div id="customer-history-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 2500; display: flex; align-items: flex-end;">
+    <div style="background: #f8fafc; width: 100%; max-height: 80%; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; overflow: hidden; animation: slideUp 0.3s ease-out;">
+        
+        <div style="padding: 18px 20px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-shopping-bag" style="color: #2563eb; font-size: 18px;"></i>
+                <span style="font-weight: 800; font-size: 15px; color: #1e293b;">আমার অর্ডার সমূহ</span>
+            </div>
+            <i class="fas fa-times-circle" style="font-size: 22px; color: #94a3b8; cursor: pointer;" onclick="closeCustomerHistory()"></i>
+        </div>
+
+        <div id="customer-history-container" style="padding: 15px; overflow-y: auto; flex-grow: 1;">
+            </div>
+    </div>
+</div>
 <div id="p-leader" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -6477,6 +6635,23 @@ function togglePassword() {
 
     </div>
 </div>
+<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto;">
+    <div style="background: #f8f9fa; padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; color: #333; cursor: pointer; padding: 5px;" onclick="closeProduct()"></i>
+        <span style="margin-left: 15px; font-weight: 700; font-size: 16px; color: #333;">প্রোডাক্ট ডিটেইলস</span>
+    </div>
+
+    <div style="padding: 20px;">
+        <img id="view-img" src="" style="width: 100%; max-height: 350px; border-radius: 20px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+        <h4 id="view-title" style="margin-top: 20px; font-weight: 800; font-size: 18px; color: #1e293b;"></h4>
+        <h5 id="view-price" style="color: #dc3545; font-weight: 800; font-size: 20px; margin-top: 5px;"></h5>
+        <hr style="border-top: 1px solid #e2e8f0; margin: 20px 0;">
+        <h6 style="font-weight: 700; font-size: 14px; color: #64748b;">পণ্যের বিবরণ:</h6>
+        <p id="view-desc" style="color: #475569; font-size: 14px; line-height: 1.6; background: #f8fafc; padding: 15px; border-radius: 12px; min-height: 80px;"></p>
+        
+        <button onclick="showOrderForm()" style="width: 100%; padding: 15px; border-radius: 15px; border: none; background: #dc3545; color: white; font-weight: 800; font-size: 16px; margin-top: 30px; cursor: pointer; box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);">অর্ডার করুন</button>
+    </div>
+</div>
 <!-- ট্রানজ্যাকশন পেজ: লাল ও হলুদের প্রিমিয়াম মিক্সড ডিজাইন -->
 <div id="p-transactions" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcfc; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -6522,6 +6697,9 @@ function togglePassword() {
     align-items: center;
 }
 </style>
+
+
+
 
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
@@ -6661,7 +6839,31 @@ function togglePassword() {
         box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
     }
 </style>
+<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; border-radius: 20px; width: 100%; max-width: 400px; padding: 20px; position: relative;">
+        <i class="fas fa-times-circle" style="position: absolute; top: 15px; right: 15px; font-size: 24px; color: #aaa; cursor: pointer;" onclick="closeProduct()"></i>
+        <img id="view-img" src="" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 15px;">
+        <h4 id="view-title" style="font-weight: 800; font-size: 18px; color: #222; margin-bottom: 5px;"></h4>
+        <h5 id="view-price" style="color: #dc3545; font-weight: 800; margin-bottom: 15px;"></h5>
+        <p id="view-desc" style="font-size: 13px; color: #666; line-height: 1.5; max-height: 100px; overflow-y: auto;"></p>
+        
+        <button onclick="placeCustomerOrder()" style="width: 100%; padding: 12px; background: #dc3545; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 14px; margin-top: 15px; cursor: pointer;">অর্ডার করুন</button>
+    </div>
+</div>
 
+<div id="customer-history-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 2500; display: flex; align-items: flex-end;">
+    <div style="background: #f8fafc; width: 100%; max-height: 75%; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; overflow: hidden;">
+        <div style="padding: 18px 20px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-shopping-bag" style="color: #3b82f6; font-size: 18px;"></i>
+                <span style="font-weight: 800; font-size: 15px; color: #1e293b;">আমার অর্ডার সমূহ</span>
+            </div>
+            <i class="fas fa-times-circle" style="font-size: 22px; color: #94a3b8; cursor: pointer;" onclick="closeShopHistory()"></i>
+        </div>
+        <div id="customer-history-container" style="padding: 15px; overflow-y: auto; flex-grow: 1;">
+            </div>
+    </div>
+</div>
 
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
@@ -7442,7 +7644,7 @@ function updateMembershipUI(user) {
 function renderUser() {
     if (!curUser) return;
 
-    // --- ১. একাউন্ট একটিভেশন কার্ড চেক ---
+    // --- ১. একাউন্ট একটিভেশনカード চেক ---
     const activationCard = document.getElementById('activation-card');
     if (activationCard) {
         activationCard.style.display = (curUser.status !== 'active') ? 'block' : 'none';
@@ -7460,10 +7662,10 @@ function renderUser() {
     const todayEarnElem = document.getElementById('today-earn'); 
     if (todayEarnElem) todayEarnElem.innerText = formattedToday;
 
-    // --- ৩. র‍্যাঙ্ক এবং আইকন আপডেট (আপডেট করা হয়েছে) ---
+    // --- ৩. র‍্যাঙ্ক এবং আইকন আপডেট ---
     const rankElem = document.getElementById('user-rank');
     if (rankElem) {
-        // স্ট্যাটাস অনুযায়ী টেক্সট এবং আইকন নির্ধারণ
+        // স্ট্যাটাস অনুযায়ী টেক্সট এবং আইকন নির্ধারণ
         let rankText = (curUser.status === 'active') ? "Premium Member" : "General Member";
         let iconHtml = (curUser.status === 'active') 
             ? `<i class="fas fa-check-circle" style="color: #1DA1F2; margin-left: 5px;"></i>` // ব্লু ভেরিফাই
@@ -7472,7 +7674,7 @@ function renderUser() {
         rankElem.innerHTML = `<span style="display: flex; align-items: center;">${rankText} ${iconHtml}</span>`;
     }
 
-    // ৪. ফান্ড হিস্টোরি (মেথড বাদ দেওয়া হয়েছে)
+    // ৪. ফান্ড হিস্টোরি
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
         fundList.innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
@@ -7483,6 +7685,12 @@ function renderUser() {
             </div>
         `).join("") || "No history";
     }
+
+    // --- ৫. ভেন্ডরশিপ স্ট্যাটাস সিঙ্ক (ব্র্যাকেট ফিক্স করা হয়েছে) ---
+    if (typeof checkVendorStatus === "function") {
+        checkVendorStatus();
+    }
+
 
     // ৫. অর্ডার হিস্টোরি
     const orderList = document.getElementById('order-hist-list');
@@ -7547,6 +7755,766 @@ if (referSection) {
         renderWithdrawHistory();
     }
 }
+// ==========================================================================
+// ১. গ্লোবাল স্টেট ও ভ্যারিয়েবল সমূহ
+// ==========================================================================
+let selectedVendorType = "";       // রেজিস্ট্রেশনের সময় সিলেক্ট করা ভেন্ডর টাইপ
+let activeViewingProduct = null;     // বর্তমানে কাস্টমার যে প্রোডাক্টটি দেখছেন
+let showOnlyFavoritesMode = false;   // ফেভারিট মোড অন/অফ ট্র্যাকার
+
+// ==========================================================================
+// ২. ভেন্ডর ক্যাটাগরি সিলেকশন ও বর্ডার কালার হ্যান্ডলিং
+// ==========================================================================
+function selectVendor(type) {
+    const driveLabel = document.getElementById('label-drive');
+    const resellLabel = document.getElementById('label-resell');
+    if (!driveLabel || !resellLabel) return;
+    
+    selectedVendorType = type === 'drive' ? "Drive Agent" : "Reselling Agent";
+
+    if (type === 'drive') {
+        driveLabel.style.borderColor = '#2563eb';
+        driveLabel.style.background = '#eff6ff';
+        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#2563eb';
+        
+        resellLabel.style.borderColor = '#e2e8f0';
+        resellLabel.style.background = 'transparent';
+        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#64748b';
+    } else {
+        resellLabel.style.borderColor = '#16a34a';
+        resellLabel.style.background = '#f0fdf4';
+        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#16a34a';
+        
+        driveLabel.style.borderColor = '#e2e8f0';
+        driveLabel.style.background = 'transparent';
+        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#64748b';
+    }
+}
+
+// ==========================================================================
+// ৩. ভেন্ডরশিপ স্ট্যাটাস চেক ও রেন্ডার
+// ==========================================================================
+function checkVendorStatus() {
+    if (!curUser) return;
+    
+    const userVendorKey = 'vendor_' + curUser.email;
+    const isPurchased = localStorage.getItem(userVendorKey);
+    
+    const lockIcon = document.getElementById('vendor-status-icon');
+    const lockBtn = document.getElementById('vendor-lock-btn');
+    const regFormCard = document.getElementById('vendor-reg-form');
+    const bannerNotice = document.getElementById('vendor-status-banner');
+
+    if (isPurchased === 'true') {
+        if (lockIcon) {
+            lockIcon.className = "fas fa-unlock-alt";
+            lockIcon.style.color = "#4ade80";
+        }
+        if (lockBtn) {
+            lockBtn.style.background = "rgba(74, 222, 128, 0.25)";
+        }
+        
+        if (bannerNotice) {
+            bannerNotice.style.borderLeftColor = "#16a34a";
+            bannerNotice.innerHTML = `
+                <h6 style="font-weight: 800; color: #16a34a; margin: 0 0 4px 0; font-size: 14px;">আপনার ভেন্ডরশিপ সাকসেসফুলি অ্যাক্টিভ আছে! 🚀</h6>
+                <p style="font-size: 12px; color: #475569; margin: 0;">ওপরের ডানদিকের আনলক আইকনে বা নিচের বাটনে ক্লিক করে ড্যাশবোর্ডে প্রবেশ করুন।</p>
+            `;
+        }
+        
+        if (regFormCard) {
+            const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
+            regFormCard.innerHTML = `
+                <div style="text-align: center; padding: 20px 10px;">
+                    <div style="width: 60px; height: 60px; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto;">
+                        <i class="fas fa-check-circle" style="color: #16a34a; font-size: 32px;"></i>
+                    </div>
+                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">${profile.businessName || 'Ychc'}</h5>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 20px 0;">টাইপ: <b>${profile.type || 'Reselling Agent'}</b><br>আপনার অ্যাকাউন্টটি সফলভাবে ভেন্ডর হিসেবে রেজিস্টার্ড।</p>
+                    <button onclick="enterVendorDashboard()" style="background: #0f172a; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; max-width: 200px; outline: none;">গো টু ড্যাশবোর্ড</button>
+                </div>
+            `;
+        }
+    } else {
+        if (lockIcon) {
+            lockIcon.className = "fas fa-lock";
+            lockIcon.style.color = "#ffeb3b";
+        }
+        if (lockBtn) {
+            lockBtn.style.background = "rgba(255,255,255,0.15)";
+        }
+    }
+}
+
+// ==========================================================================
+// ৪. ফি পেমেন্ট লজিক
+// ==========================================================================
+async function payVendorFee() {
+    if (!curUser) return alert("অনুগ্রহ করে প্রথমে লগইন করুন!");
+    
+    const name = document.getElementById('v-bus-name') ? document.getElementById('v-bus-name').value.trim() : "";
+    const phone = document.getElementById('v-phone') ? document.getElementById('v-phone').value.trim() : "";
+    const nid = document.getElementById('v-nid') ? document.getElementById('v-nid').value.trim() : "";
+    const addr = document.getElementById('v-bus-addr') ? document.getElementById('v-bus-addr').value.trim() : "";
+    const details = document.getElementById('v-bus-details') ? document.getElementById('v-bus-details').value.trim() : "No details provided";
+
+    if (!selectedVendorType) {
+        return alert("অনুগ্রহ করে একটি ভেন্ডর টাইপ সিলেক্ট করুন!");
+    }
+
+    let currentBalance = parseFloat(curUser.bal) || 0;
+
+    if (currentBalance < 500) {
+        return alert("আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা প্রয়োজন।");
+    }
+
+    let confirmPay = confirm("আপনি কি নিশ্চিত? ভেন্ডরশিপ নিতে আপনার অ্যাকাউন্ট থেকে ৫০০ টাকা কেটে নেওয়া হবে এবং এটি আর ব্যাক পাবেন না।");
+    
+    if (confirmPay) {
+        if (typeof showLoader === "function") showLoader(true);
+
+        curUser.bal = currentBalance - 500;
+        
+        if (typeof db !== 'undefined' && db.users) {
+            let userInDb = db.users.find(u => u.email === curUser.email);
+            if (userInDb) userInDb.bal = curUser.bal;
+        }
+
+        const profilePayload = {
+            type: selectedVendorType,
+            businessName: name || "Anonymous Shop",
+            details: details,
+            phone: phone,
+            nid: nid,
+            address: addr,
+            email: curUser.email,
+            joinedDate: new Date().toLocaleDateString()
+        };
+
+        localStorage.setItem('vendor_' + curUser.email, 'true');
+        localStorage.setItem('vendor_profile_' + curUser.email, JSON.stringify(profilePayload));
+
+        let globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+        globalVendors = globalVendors.filter(v => v.email !== curUser.email);
+        globalVendors.push(profilePayload);
+        localStorage.setItem('global_vendors_list', JSON.stringify(globalVendors));
+
+        if (typeof save === "function") {
+            await save();
+        }
+
+        if (typeof renderUser === "function") renderUser(); 
+        if (typeof checkVendorStatus === "function") checkVendorStatus();
+        if (typeof loadGlobalVendorsList === "function") loadGlobalVendorsList(); 
+
+        if (typeof showLoader === "function") showLoader(false);
+        
+        if (typeof toast === "function") {
+            toast("🎉 अभिनंदन! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।", "success");
+        } else {
+            alert("🎉 अभिनंदन! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।");
+        }
+        
+        enterVendorDashboard();
+    }
+}
+
+// ==========================================================================
+// ৫. গ্লোবাল তালিকা থেকে ভেন্ডর রেন্ডার ও শপ ভিউ
+// ==========================================================================
+function loadGlobalVendorsList() {
+    const container = document.getElementById('dynamic-vendor-container');
+    const badgeCount = document.getElementById('total-vendor-badge');
+    const globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+
+    if (badgeCount) badgeCount.innerText = `${globalVendors.length} Total`;
+    if (!container) return;
+
+    if (globalVendors.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8;">
+                <i class="fas fa-store-slash" style="font-size: 40px; margin-bottom: 10px; color: #cbd5e1;"></i>
+                <p style="font-size: 13px; margin: 0;">বর্তমানে কোনো নিবন্ধিত ভেন্ডর নেই।</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = globalVendors.reverse().map(vendor => {
+        const isDrive = vendor.type === "Drive Agent";
+        const iconClass = isDrive ? "fas fa-bolt" : "fas fa-store";
+        const themeColor = isDrive ? "#3b82f6" : "#16a34a";
+        const bgColor = isDrive ? "#eff6ff" : "#f0fdf4";
+
+        return `
+            <div onclick="viewVendorStore('${vendor.email}')" style="padding: 15px; background: #fff; border-radius: 18px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #f0f2f5; cursor: pointer; transition: transform 0.2s; box-sizing: border-box;">
+                <div style="width: 48px; height: 48px; background: ${bgColor}; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid ${themeColor}; overflow: hidden; flex-shrink: 0;">
+                    <i class="${iconClass}" style="color: ${themeColor}; font-size: 18px;"></i>
+                </div>
+                <div style="flex: 1; overflow: hidden;">
+                    <h6 style="margin: 0; font-weight: 700; color: #1e293b; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${vendor.businessName}</h6>
+                    <p style="margin: 2px 0 4px 0; font-size: 11px; color: #64748b; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${vendor.details}</p>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="display: flex; align-items: center;">
+                            <span style="width: 6px; height: 6px; background: #2ecc71; border-radius: 50%; margin-right: 4px;"></span>
+                            <small style="color: #2ecc71; font-weight: 700; font-size: 10px; text-transform: uppercase;">Active</small>
+                        </div>
+                        <span style="font-size: 9px; background: ${bgColor}; color: ${themeColor}; padding: 1px 6px; border-radius: 4px; font-weight: bold;">${vendor.type}</span>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right" style="color: #cbd5e1; font-size: 13px; margin-left: 10px;"></i>
+            </div>`;
+    }).join("");
+}
+
+function viewVendorStore(vendorEmail) {
+    const globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+    const vendor = globalVendors.find(v => v.email === vendorEmail);
+
+    if (!vendor) {
+        alert("দুঃখিত, এই ভেন্ডরের তথ্য খুঁজে পাওয়া যায়নি!");
+        return;
+    }
+
+    const shopNameEl = document.getElementById('pv-shop-name');
+    const agentTypeEl = document.getElementById('pv-agent-type');
+    const badgeIconEl = document.getElementById('pv-badge-icon');
+    const detailsEl = document.getElementById('pv-details');
+    const phoneEl = document.getElementById('pv-phone');
+    const callBtnEl = document.getElementById('pv-call-btn');
+    const nidEl = document.getElementById('pv-nid');
+    const addressEl = document.getElementById('pv-address');
+    const dateEl = document.getElementById('pv-date');
+
+    if (shopNameEl) shopNameEl.innerText = vendor.businessName || "Anonymous Shop";
+    if (detailsEl) detailsEl.innerText = vendor.details || "কোনো বিবরণ দেওয়া হয়নি।";
+    if (phoneEl) phoneEl.innerText = vendor.phone || "N/A";
+    if (nidEl) nidEl.innerText = vendor.nid || "ভেরিফাইড";
+    if (addressEl) addressEl.innerText = vendor.address || "N/A";
+    if (dateEl) dateEl.innerText = vendor.joinedDate || vendor.regDate || "N/A";
+    if (callBtnEl && vendor.phone) callBtnEl.href = "tel:" + vendor.phone;
+
+    if (agentTypeEl && badgeIconEl) {
+        if (vendor.type === "Drive Agent") {
+            agentTypeEl.innerText = "ড্রাইভ এজেন্ট";
+            agentTypeEl.style.background = "#eff6ff";
+            agentTypeEl.style.color = "#2563eb";
+            badgeIconEl.innerHTML = `<i class="fas fa-bolt" style="color: #2563eb;"></i>`;
+            badgeIconEl.style.background = "#eff6ff";
+            badgeIconEl.style.border = "2px solid #2563eb";
+        } else {
+            agentTypeEl.innerText = "রিসেলিং এজেন্ট";
+            agentTypeEl.style.background = "#f0fdf4";
+            agentTypeEl.style.color = "#16a34a";
+            badgeIconEl.innerHTML = `<i class="fas fa-store" style="color: #16a34a;"></i>`;
+            badgeIconEl.style.background = "#f0fdf4";
+            badgeIconEl.style.border = "2px solid #16a34a";
+        }
+    }
+
+    openPage('p-vendor-profile-view');
+}
+
+function handleVendorBackBtn() {
+    const isDashboardVisible = document.getElementById('p-vendor-dashboard') && !document.getElementById('p-vendor-dashboard').classList.contains('d-none');
+    
+    if (isDashboardVisible) {
+        closeVendorDashboard();
+    } else {
+        openPage('p-home');
+    }
+}
+
+// ==========================================================================
+// ৬. ড্যাশবোর্ড গেটওয়ে ও কন্ট্রোল মেকানিজম
+// ==========================================================================
+function enterVendorDashboard() {
+    if (!curUser) return alert("দয়া করে লগইন করুন!");
+    
+    const isPurchased = localStorage.getItem('vendor_' + curUser.email);
+    if (isPurchased !== 'true') return alert("আপনি এখনো ভেন্ডরশিপ প্রোগ্রাম অ্যাক্টিভেট করেননি!");
+
+    const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
+    const vType = profile.type || "Reselling Agent";
+    
+    if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "#0f172a";
+    if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = profile.businessName || "Dashboard";
+    if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.remove('d-none');
+
+    if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.add('d-none');
+    if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.add('d-none');
+    if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.add('d-none');
+    if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.remove('d-none');
+
+    const driveForm = document.getElementById('form-drive-agent');
+    const resellForm = document.getElementById('form-reselling-agent');
+    const driveReqSec = document.getElementById('sec-drive-requests');
+    const resellReqSec = document.getElementById('sec-resell-requests');
+
+    if (vType === "Drive Agent") {
+        if (driveForm) driveForm.classList.remove('d-none');
+        if (resellForm) resellForm.classList.add('d-none');
+        if (driveReqSec) driveReqSec.classList.remove('d-none');
+        if (resellReqSec) resellReqSec.classList.add('d-none');
+    } else {
+        if (driveForm) driveForm.classList.add('d-none');
+        if (resellForm) resellForm.classList.remove('d-none');
+        if (driveReqSec) driveReqSec.classList.add('d-none');
+        if (resellReqSec) resellReqSec.classList.remove('d-none');
+    }
+
+    renderVendorItems();
+    renderOrderRequests(vType);
+}
+
+function closeVendorDashboard() {
+    if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "linear-gradient(135deg, #2563eb 0%, #16a34a 100%)";
+    if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = "Vendorship Program";
+    if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.add('d-none');
+
+    if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.add('d-none');
+    if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.remove('d-none');
+    if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.remove('d-none');
+    if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.remove('d-none');
+}
+
+// ==========================================================================
+// ৭. প্রোডাক্ট আপলোড ও লিস্ট প্রসেসিং
+// ==========================================================================
+function saveDriveOffer() {
+    if (!curUser) return alert("দয়া করে লগইন করুন!");
+    const name = document.getElementById('d-offer-name').value.trim();
+    const price = document.getElementById('d-offer-price').value.trim();
+    const comm = document.getElementById('d-offer-commission').value.trim();
+
+    if (!name || !price) return alert("অফারের নাম এবং দাম অবশ্যই দিন!");
+
+    const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+    items.push({
+        id: Date.now(),
+        type: 'drive',
+        name: name,
+        price: parseFloat(price),
+        commission: parseFloat(comm) || 0,
+        email: curUser.email,
+        date: new Date().toLocaleDateString()
+    });
+    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(items));
+
+    document.getElementById('d-offer-name').value = "";
+    document.getElementById('d-offer-price').value = "";
+    document.getElementById('d-offer-commission').value = "";
+    
+    renderVendorItems();
+    alert("🟢 ড্রাইভ অফারটি সফলভাবে লাইভ হয়েছে!");
+}
+
+function saveResellProduct() {
+    if (!curUser) return alert("দয়া করে প্রথমে লগইন করুন!");
+    
+    const imgFile = document.getElementById('r-prod-img').files[0];
+    const name = document.getElementById('r-prod-name').value.trim();
+    const price = document.getElementById('r-prod-price').value.trim();
+    const mPrice = document.getElementById('r-prod-market-price').value.trim();
+    const details = document.getElementById('r-prod-details').value.trim();
+    const catEl = document.getElementById('r-prod-category');
+    const category = catEl ? catEl.value : 'shirt';
+
+    if (!name || !price) return alert("অনুগ্রহ করে প্রোডাক্টের নাম এবং মূল্য অবশ্যই দিন!");
+    if (!imgFile) return alert("অনুগ্রহ করে একটি প্রোডাক্টের ছবি সিলেক্ট করুন!");
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const productData = {
+            id: Date.now(),
+            type: 'resell',
+            image: e.target.result,
+            name: name,
+            price: parseFloat(price),
+            marketPrice: parseFloat(mPrice) || 0,
+            details: details,
+            category: category.toLowerCase(),
+            email: curUser.email,
+            date: new Date().toLocaleDateString()
+        };
+
+        const personalItems = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+        personalItems.push(productData);
+        localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(personalItems));
+
+        const globalShopItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+        globalShopItems.push(productData);
+        localStorage.setItem('global_resell_shop_list', JSON.stringify(globalShopItems));
+
+        document.getElementById('r-prod-img').value = "";
+        document.getElementById('r-prod-name').value = "";
+        document.getElementById('r-prod-price').value = "";
+        document.getElementById('r-prod-market-price').value = "";
+        document.getElementById('r-prod-details').value = "";
+
+        renderVendorItems();
+        renderResellerShopItems();
+        
+        alert("🟢 রিসেলিং প্রোডাক্টটি ইমেজসহ সফলভাবে আপলোড এবং শপে লাইভ হয়েছে!");
+    };
+    reader.readAsDataURL(imgFile);
+}
+
+function renderVendorItems() {
+    if (!curUser) return;
+    const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+    const listContainer = document.getElementById('vendor-product-list');
+    if (document.getElementById('v-total-products')) document.getElementById('v-total-products').innerText = items.length;
+    if (!listContainer) return;
+
+    if (items.length === 0) {
+        listContainer.innerHTML = `<p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 20px 0;">কোনো আইটেম যোগ করা হয়নি।</p>`;
+        return;
+    }
+
+    listContainer.innerHTML = items.reverse().map(item => {
+        if (item.type === 'drive') {
+            return `
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 10px; margin-bottom: 8px; box-sizing: border-box;">
+                    <div>
+                        <h6 style="margin: 0; font-size: 12px; font-weight: 700; color: #1e293b;">${item.name} <span style="color:#2563eb; font-size:10px;">(Drive)</span></h6>
+                        <span style="font-size: 10px; color: #64748b;">কমিশন: ৳${item.commission}</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <b style="font-size: 13px; color: #2563eb;">৳${item.price}</b>
+                        <button onclick="deleteVendorItem(${item.id})" style="background: #ef4444; color: white; border: none; width: 26px; height: 26px; border-radius: 6px; cursor: pointer;"><i class="fas fa-trash" style="font-size: 11px;"></i></button>
+                    </div>
+                </div>`;
+        } else {
+            return `
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 10px; margin-bottom: 8px; box-sizing: border-box;">
+                    <div style="display: flex; align-items: center; overflow: hidden;">
+                        <img src="${item.image}" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover; margin-right: 10px; border: 1px solid #cbd5e1;">
+                        <div>
+                            <h6 style="margin: 0; font-size: 12px; font-weight: 700; color: #1e293b;">${item.name}</h6>
+                            <span style="font-size: 10px; color: #94a3b8;">বাজার মূল্য: ৳${item.marketPrice}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <b style="font-size: 13px; color: #16a34a;">৳${item.price}</b>
+                        <button onclick="deleteVendorItem(${item.id})" style="background: #ef4444; color: white; border: none; width: 26px; height: 26px; border-radius: 6px; cursor: pointer;"><i class="fas fa-trash" style="font-size: 11px;"></i></button>
+                    </div>
+                </div>`;
+        }
+    }).join("");
+}
+
+function deleteVendorItem(id) {
+    if (!curUser || !confirm("এটি ডিলিট করতে চান?")) return;
+    
+    let personalItems = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+    personalItems = personalItems.filter(i => i.id !== id);
+    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(personalItems));
+    
+    let globalItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+    globalItems = globalItems.filter(i => i.id !== id);
+    localStorage.setItem('global_resell_shop_list', JSON.stringify(globalItems));
+    
+    renderVendorItems();
+    renderResellerShopItems();
+}
+
+// ==========================================================================
+// ৮. কাস্টমার Reseller Shop পেজ ও ফেভারিট টগল ফিল্টারিং মেকানিজম (রিকোয়েস্ট ১ ও ২ ফিক্স)
+// ==========================================================================
+function renderResellerShopItems() {
+    const container = document.getElementById('shop-container');
+    if (!container) return;
+
+    const allItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+    let allProducts = allItems.filter(i => i.type === 'resell');
+    const favorites = JSON.parse(localStorage.getItem('customer_favorites_' + (curUser?.email || 'guest')) || '[]');
+
+    // যদি হেডারের ফেভারিট বাটন একটিভ থাকে, শুধু ফেভারিট আইটেম ফিল্টার হবে
+    if (showOnlyFavoritesMode) {
+        allProducts = allProducts.filter(item => favorites.includes(item.id));
+    }
+
+    if (allProducts.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8; width: 100%;">
+                <i class="fas fa-shopping-basket" style="font-size: 30px; margin-bottom: 8px; color: #cbd5e1;"></i>
+                <p style="font-size: 13px; margin: 0;">${showOnlyFavoritesMode ? 'কোনো ফেভারিট প্রোডাক্ট পাওয়া যায়নি।' : 'শপে বর্তমানে কোনো প্রোডাক্ট নেই।'}</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = allProducts.reverse().map(item => {
+        const itemCat = item.category || 'shirt';
+        const isFav = favorites.includes(item.id);
+        const heartColor = isFav ? '#ef4444' : '#cbd5e1';
+        const heartIcon = isFav ? 'fas fa-heart' : 'far fa-heart';
+
+        // ডাটা নিরাপদে পাস করার জন্য ব্যাকস্ল্যাশ এস্কেপ হ্যান্ডলিং
+        const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        const safeDetails = (item.details || '').replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+        return `
+            <div class="col-6 shop-item ${itemCat}">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div onclick="toggleFavorite(${item.id})" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 5;">
+                        <i class="${heartIcon}" style="color: ${heartColor}; font-size: 14px;"></i>
+                    </div>
+                    <img src="${item.image}" style="width: 100%; height: 140px; object-fit: cover;">
+                    <div style="padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 36px; overflow: hidden; color: #2d3436; line-height: 1.4;">${item.name}</h6>
+                            <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px; font-size: 14px;">৳ ${item.price}</p>
+                        </div>
+                        <button onclick="viewProduct('${safeName}', '${item.price}', '${safeDetails}', '${item.image}', '${item.id}', '${item.email}')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700; cursor: pointer;">View</button>
+                    </div>
+                </div>
+            </div>`;
+    }).join("");
+}
+
+// পি শপ হেডারের ফেভারিট বাটনে কল করার ফাংশন টগল
+function toggleHeaderFavoriteFilter() {
+    showOnlyFavoritesMode = !showOnlyFavoritesMode;
+    const favHeaderIcon = document.getElementById('header-fav-icon');
+    
+    if (favHeaderIcon) {
+        if (showOnlyFavoritesMode) {
+            favHeaderIcon.style.color = "#ef4444"; // একটিভ হলে লাল কালার হবে
+        } else {
+            favHeaderIcon.style.color = ""; 
+        }
+    }
+    renderResellerShopItems();
+}
+
+function toggleFavorite(productId) {
+    if (!curUser) return alert("দয়া করে লগইন করুন!");
+    let favorites = JSON.parse(localStorage.getItem('customer_favorites_' + curUser.email) || '[]');
+    
+    if (favorites.includes(productId)) {
+        favorites = favorites.filter(id => id !== productId);
+    } else {
+        favorites.push(productId);
+    }
+    localStorage.setItem('customer_favorites_' + curUser.email, JSON.stringify(favorites));
+    renderResellerShopItems();
+}
+
+// ==========================================================================
+// ৯. প্রোডাক্ট ভিউ মডাল এবং ফিক্সড কাস্টমার অর্ডার মেকানিজম (রিকোয়েস্ট ২ সলভড)
+// ==========================================================================
+function viewProduct(name, price, details, image, id, vendorEmail) {
+    const modal = document.getElementById('view-modal');
+    if (!modal) return;
+
+    if(document.getElementById('view-img')) document.getElementById('view-img').src = image;
+    if(document.getElementById('view-title')) document.getElementById('view-title').innerText = name;
+    if(document.getElementById('view-price')) document.getElementById('view-price').innerText = "৳ " + price;
+    if(document.getElementById('view-desc')) document.getElementById('view-desc').innerText = details || "কোনো বিবরণ দেওয়া হয়নি।";
+
+    // মডালের স্টেট প্রোপার্টিতে রিয়েল অবজেক্ট ডাটা এসাইন করা হচ্ছে যাতে অর্ডার বাটনে ডেটা নাল না হয়
+    activeViewingProduct = { 
+        id: id, 
+        name: name, 
+        price: parseFloat(price), 
+        vendorEmail: vendorEmail, 
+        image: image 
+    };
+    
+    modal.classList.remove('d-none');
+}
+
+function placeCustomerOrder() {
+    if (!curUser) return alert("দয়া করে অর্ডার করতে লগইন করুন!");
+    if (!activeViewingProduct) return alert("দুঃখিত, কোনো প্রোডাক্ট ডাটা লোড হয়নি। আবার চেষ্টা করুন!");
+
+    const address = prompt("📦 আপনার ডেলিভারি বা শিপিং ঠিকানা লিখুন:");
+    if (!address || address.trim() === "") return alert("অর্ডার সফল করতে ঠিকানা দেওয়া বাধ্যতামূলক!");
+
+    const phone = prompt("📞 আপনার সচল মোবাইল নম্বরটি দিন:");
+    if (!phone || phone.trim() === "") return alert("মোবাইল নম্বর দেওয়া বাধ্যতামূলক!");
+
+    const orderId = Date.now();
+    const orderData = {
+        orderId: orderId,
+        productId: activeViewingProduct.id,
+        productName: activeViewingProduct.name,
+        price: activeViewingProduct.price,
+        image: activeViewingProduct.image,
+        vendorEmail: activeViewingProduct.vendorEmail, // সুনির্দিষ্ট ভেন্ডরের কাছেই অর্ডারটি ম্যাপ হচ্ছে
+        customerEmail: curUser.email,
+        shippingAddress: address.trim(),
+        customerPhone: phone.trim(),
+        status: 'Pending', 
+        date: new Date().toLocaleDateString()
+    };
+
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    allOrders.push(orderData);
+    localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
+
+    alert("🟢 আপনার অর্ডার রিকোয়েস্টটি সফলভাবে ভেন্ডরের কাছে পাঠানো হয়েছে!");
+    closeProduct();
+}
+
+function closeProduct() {
+    const modal = document.getElementById('view-modal');
+    if (modal) modal.classList.add('d-none');
+}
+
+// ==========================================================================
+// ১০. ভেন্ডর অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং ও প্রসেস
+// ==========================================================================
+function renderOrderRequests(vType) {
+    const driveContainer = document.getElementById('drive-order-list');
+    const resellContainer = document.getElementById('resell-order-list');
+    if(!curUser) return;
+    
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    const myOrders = allOrders.filter(order => order.vendorEmail === curUser.email);
+
+    let pendingCount = myOrders.filter(o => o.status === 'Pending').length;
+    let successCount = myOrders.filter(o => o.status === 'Approved' || o.status === 'Delivered').length;
+
+    if (vType === "Drive Agent" && driveContainer) {
+        driveContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
+            <div style="background: #fdfaf2; border: 1px solid #fef3c7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
+                    <span>${order.productName}</span>
+                    <span>৳${order.price}</span>
+                </div>
+                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                    🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b><br>
+                    👤 গ্রাহক মেইল: ${order.customerEmail}
+                </div>
+                <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Success</button>
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Cancel</button>
+                </div>
+            </div>
+        `).join("") || `<p style="text-align:center;font-size:11px;color:#94a3b8;margin:15px 0;">কোনো পেন্ডিং অর্ডার নেই</p>`;
+    }
+
+    if (vType === "Reselling Agent" && resellContainer) {
+        resellContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
+            <div style="background: #f0fdf4; border: 1px solid #dcfce7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
+                    <span>${order.productName}</span>
+                    <span>৳${order.price}</span>
+                </div>
+                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                    📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
+                    📞 ফোন নম্বর: ${order.customerPhone}<br>
+                    👤 গ্রাহক: ${order.customerEmail}
+                </div>
+                <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Deliver</button>
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Reject</button>
+                </div>
+            </div>
+        `).join("") || `<p style="text-align:center;font-size:11px;color:#94a3b8;margin:15px 0;">কোনো পেন্ডিং অর্ডার নেই</p>`;
+    }
+
+    if(document.getElementById('v-pending-orders')) document.getElementById('v-pending-orders').innerText = pendingCount;
+    if(document.getElementById('v-success-orders')) document.getElementById('v-success-orders').innerText = successCount;
+}
+
+function updateOrderStatus(orderId, newStatus) {
+    if (!curUser) return;
+    
+    let allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    allOrders = allOrders.map(order => {
+        if (order.orderId === orderId) {
+            order.status = newStatus;
+        }
+        return order;
+    });
+    localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
+    
+    const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
+    renderOrderRequests(profile.type || "Reselling Agent");
+    
+    alert(`অর্ডারটি সফলভাবে ${newStatus} করা হয়েছে!`);
+}
+
+// ==========================================================================
+// ১১. কাস্টমার পার্সোনাল হিস্টোরি ও রাউটিং মেকানিজম (রিকোয়েস্ট ৩ ফিক্সড)
+// ==========================================================================
+function openShopHistory() {
+    // হেডারের হিস্টোরি আইকনে চাপ দিলে এখন এটি সরাসরি নতুন পেজে ('p-shop-history') নিয়ে যাবে
+    openPage('p-shop-history');
+    renderCustomerOrderHistory();
+}
+
+function renderCustomerOrderHistory() {
+    const historyContainer = document.getElementById('customer-history-container');
+    if (!historyContainer) return;
+
+    if (!curUser) {
+        historyContainer.innerHTML = `<p style="text-align:center; padding:20px; color:#64748b;">হিস্টোরি দেখতে দয়া করে লগইন করুন।</p>`;
+        return;
+    }
+
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    const myHistory = allOrders.filter(order => order.customerEmail === curUser.email);
+
+    if (myHistory.length === 0) {
+        historyContainer.innerHTML = `<p style="text-align:center; padding:30px; color:#94a3b8; font-size:12px;">আপনি এখনো কোনো প্রোডাক্ট অর্ডার করেননি।</p>`;
+        return;
+    }
+
+    historyContainer.innerHTML = myHistory.reverse().map(order => {
+        let badgeColor = "#eab308"; 
+        if(order.status === 'Approved') badgeColor = "#16a34a"; 
+        if(order.status === 'Rejected') badgeColor = "#ef4444"; 
+
+        return `
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 8px; box-shadow:0 2px 6px rgba(0,0,0,0.01);">
+                <div style="display: flex; align-items: center;">
+                    <img src="${order.image || 'https://via.placeholder.com/50'}" style="width: 42px; height: 42px; border-radius: 8px; object-fit: cover; margin-right: 12px; border: 1px solid #e2e8f0;">
+                    <div>
+                        <h6 style="margin: 0; font-size: 13px; font-weight: 700; color: #1e293b;">${order.productName}</h6>
+                        <span style="font-size: 11px; color: #64748b;">মূল্য: ৳${order.price} | ${order.date}</span>
+                    </div>
+                </div>
+                <div>
+                    <span style="background: ${badgeColor}; color: white; padding: 4px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase;">${order.status}</span>
+                </div>
+            </div>`;
+    }).join("");
+}
+
+// ==========================================================================
+// ১২. গ্লোবাল রাউটার ইন্টারসেপ্টার ও লাইফসাইকেল হুক
+// ==========================================================================
+const originalOpenPage = typeof openPage === 'function' ? openPage : null;
+openPage = function(pageId) {
+    if (originalOpenPage) {
+        originalOpenPage(pageId);
+    } else {
+        document.querySelectorAll('.p-page').forEach(p => p.classList.add('d-none'));
+        const activePage = document.getElementById(pageId);
+        if (activePage) activePage.classList.remove('d-none');
+    }
+    
+    // প্রতিবার পি শপ পেজ ওপেন হলে ডিফল্ট স্টেট এবং শপ রেন্ডার ট্রিগার হবে
+    if (pageId === 'p-shop') {
+        showOnlyFavoritesMode = false; // শপে ঢুকলে প্রথমে সব প্রোডাক্ট দেখাবে
+        const favHeaderIcon = document.getElementById('header-fav-icon');
+        if (favHeaderIcon) favHeaderIcon.style.color = "";
+        renderResellerShopItems();
+    }
+    if (pageId === 'p-shop-history') {
+        renderCustomerOrderHistory();
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadGlobalVendorsList();
+    checkVendorStatus();
+});
+
+
 function renderAdmin() {
     console.log("Admin Render Started...");
     if (typeof db === 'undefined') {
@@ -8772,52 +9740,8 @@ function orderDigital(serviceName, price) {
         alert("আপনার অর্ডারটি সফল হয়েছে! এডমিন খুব শীঘ্রই আপনার ইমেইলে সার্ভিসটি পাঠিয়ে দিবে।");
     }
 }
-// ভেন্ডর টাইপ সিলেকশন হাইলাইট
-function selectVendor(type) {
-    const driveLabel = document.getElementById('label-drive');
-    const resellLabel = document.getElementById('label-resell');
 
-    if (type === 'drive') {
-        driveLabel.style.borderColor = '#6c757d';
-        driveLabel.style.background = '#f8f9fa';
-        resellLabel.style.borderColor = '#eee';
-        resellLabel.style.background = 'transparent';
-    } else {
-        resellLabel.style.borderColor = '#6c757d';
-        resellLabel.style.background = '#f8f9fa';
-        driveLabel.style.borderColor = '#eee';
-        driveLabel.style.background = 'transparent';
-    }
-}
 
-// পেমেন্ট ফাংশন
-function payVendorFee() {
-    const name = document.getElementById('v-bus-name').value;
-    const phone = document.getElementById('v-phone').value;
-    const nid = document.getElementById('v-nid').value;
-
-    if (!name || !phone || !nid) {
-        return alert("অনুগ্রহ করে সব তথ্য সঠিক ভাবে পূরণ করুন!");
-    }
-
-    const balEle = document.getElementById('u-bal'); // আপনার মেইন ব্যালেন্স এলিমেন্ট আইডি
-    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
-
-    if (currentBalance < 500) {
-        return alert("আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই। ভেন্ডরশিপের জন্য ৫০০ টাকা প্রয়োজন।");
-    }
-
-    let confirmPay = confirm("আপনি কি ৫০০ টাকা পেমেন্ট করে ভেন্ডরশিপের জন্য আবেদন করতে চান?");
-    if (confirmPay) {
-        // ব্যালেন্স কাটা
-        let newBalance = currentBalance - 500;
-        balEle.innerText = newBalance.toLocaleString();
-        
-        // এখানে আপনি আপনার এডমিন প্যানেলে বা ডাটাবেজে ডাটা পাঠাতে পারেন
-        alert("আপনার পেমেন্ট সফল হয়েছে! আবেদনটি অ্যাডমিনের কাছে পাঠানো হয়েছে।");
-        openPage('p-home');
-    }
-}
 // মোট খরচ হিসাব করার ফাংশন
 function calculateTotalJobCost() {
     const perJob = parseFloat(document.getElementById('per-job-cost').value) || 0;
@@ -8931,66 +9855,8 @@ function confirmDriveOrder() {
     openPage('p-home');
 }
 
-function openDriveHistory() {
-    alert("আপনার ড্রাইভ অর্ডার হিস্টোরি শীঘ্রই আসছে!");
-}
-// ১. প্রোডাক্ট ফিল্টারিং
-function filterShop(category) {
-    const items = document.querySelectorAll('.shop-item');
-    items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
 
-// ২. প্রোডাক্ট ভিউ ওপেন
-function viewProduct(title, price, desc, img) {
-    document.getElementById('view-title').innerText = title;
-    document.getElementById('view-price').innerText = "৳ " + price;
-    document.getElementById('view-desc').innerText = desc;
-    document.getElementById('view-img').src = img;
-    document.getElementById('view-modal').classList.remove('d-none');
-}
 
-function closeProduct() {
-    document.getElementById('view-modal').classList.add('d-none');
-}
-
-// ৩. অর্ডার ফর্ম হ্যান্ডলিং
-function showOrderForm() {
-    document.getElementById('shop-order-modal').classList.remove('d-none');
-}
-
-function closeOrderForm() {
-    document.getElementById('shop-order-modal').classList.add('d-none');
-}
-
-function submitShopOrder() {
-    const name = document.getElementById('o-name').value;
-    const phone = document.getElementById('o-phone').value;
-    
-    if(!name || !phone) return alert("দয়া করে নাম এবং নম্বর দিন!");
-    
-    alert("আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। শীঘ্রই আমাদের প্রতিনিধি যোগাযোগ করবেন।");
-    closeOrderForm();
-    closeProduct();
-}
-
-function openShopHistory() {
-    alert("আপনার শপিং হিস্টোরি শীঘ্রই আসছে!");
-}
-function closePage(pageId) {
-    // এখানে 'p-' সহ বা ছাড়া দুইভাবেই আইডি চেক করবে
-    const el = document.getElementById(pageId) || document.getElementById('p-' + pageId);
-    
-    if (el) {
-        el.classList.add('d-none'); // বুটস্ট্র্যাপ ক্লাস
-        el.style.display = 'none';   // সরাসরি সিএসএস দিয়ে হাইড করা (নিশ্চিত হওয়ার জন্য)
-    }
-}
 
 // ১. ওয়ালেট ওপেন করার ফাংশন
 function handleWalletClick() {
@@ -12042,6 +12908,27 @@ function handleCaptchaClick() {
         // অ্যাকাউন্ট একটিভ থাকলে ক্যাপচা পেজে নিয়ে যাবে
         openPage('p-captcha'); 
     }
+}
+function searchShopProducts() {
+    // ১. সার্চ বক্সে ইউজার কি লিখলো তা ছোট হাতের অক্ষরে (Lowercase) নিয়ে নিন
+    const searchInputValue = document.getElementById('shop-search-input').value.toLowerCase().trim();
+    
+    // ২. আপনার শপ কন্টেইনারের ভেতরের সব প্রোডাক্ট কার্ডগুলো ধরুন
+    // (নিশ্চিত করুন যে জাভাস্ক্রিপ্ট দিয়ে কার্ড বানানোর সময় প্রতিটা কার্ডে class="product-item" বা card ক্লাসটি থাকে)
+    const productCards = document.querySelectorAll('#shop-container .col-6, #shop-container .product-item');
+
+    productCards.forEach(card => {
+        // ৩. প্রতিটা কার্ডের ভেতরের প্রোডাক্টের টাইটেল বা নাম টেক্সট খুঁজুন 
+        // (এখানে h5, p বা যেখানে আপনার প্রোডাক্টের নাম শো করাচ্ছেন সেটি চেক করবে)
+        const productName = card.innerText.toLowerCase();
+
+        // ৪. নামের সাথে মিল থাকলে কার্ড দেখাবে, না থাকলে d-none দিয়ে হাইড করে দেবে
+        if (productName.includes(searchInputValue)) {
+            card.style.display = ""; // শো করবে
+        } else {
+            card.style.display = "none"; // হাইড করবে
+        }
+    });
 }
 
 </script>
