@@ -4272,19 +4272,57 @@ function togglePassword() {
 </div>
 
     
+<div id="digital-order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+    <div style="background: white; width: 100%; max-width: 340px; border-radius: 24px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: zoomIn 0.2s ease-out;">
+        
+        <div style="text-align: center; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; background: #e6f9f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto;">
+                <i class="fab fa-telegram-plane" style="color: #20c997; font-size: 24px;"></i>
+            </div>
+            <h5 id="modal-product-title" style="margin: 0; font-weight: 800; font-size: 16px; color: #1e293b;">Premium Subscription</h5>
+            <p id="modal-product-price" style="margin: 3px 0 0 0; color: #20c997; font-weight: 700; font-size: 14px;">Price: ৳ 0.00</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">আপনার নাম:</label>
+                <input type="text" id="digital-cust-name" placeholder="Enter your name" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">টেলিগ্রাম নম্বর:</label>
+                <input type="tel" id="digital-cust-phone" placeholder="e.g. 017XXXXXXXX" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">টেলিগ্রাম ইউজার নাম (@ সহ):</label>
+                <input type="text" id="digital-cust-username" placeholder="e.g. @username" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button onclick="closeDigitalModal()" style="flex: 1; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; padding: 10px 0; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;">বাতিল করুন</button>
+            <button onclick="submitDigitalOrder()" style="flex: 1; border: none; background: #20c997; color: white; padding: 10px 0; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;">কনফার্ম অর্ডার</button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: #ff0000; padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">
                     Digital Services
                 </h5>
             </div>
-
             <i class="fas fa-shopping-basket" style="font-size: 18px; color: white; opacity: 0.9;"></i>
         </div>
     </div>
@@ -4295,243 +4333,268 @@ function togglePassword() {
         <div class="row gx-2">
             
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">YouTube Premium</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 49.00</p>
-                    <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">YouTube Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 49.00</p>
+                        <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
 
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Telegram Prem.</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 350.00</p>
-                    <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Telegram Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 350.00</p>
+                        <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
 
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://seeklogo.com/images/C/capcut-logo-4D6F6A6E0F-seeklogo.com.png" style="width: 45px; height:45px; border-radius: 10px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">CapCut Pro</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 99.00</p>
-                    <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://w7.pngwing.com/pngs/531/992/png-transparent-capcut-logo.png" style="width: 40px; height: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">CapCut Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 99.00</p>
+                        <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
 
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Canva Pro</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 30.00</p>
-                    <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Canva Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 30.00</p>
+                        <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
 
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Netflix 1 Month</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 180.00</p>
-                    <button onclick="orderDigital('Netflix Screen', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Netflix Screen</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 180.00</p>
+                        <button onclick="orderDigital('Netflix Screen', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
 
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Spotify Prem.</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 60.00</p>
-                    <button onclick="orderDigital('Spotify Premium', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Spotify Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 60.00</p>
+                        <button onclick="orderDigital('Spotify Premium', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
                 </div>
             </div>
+
             <div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">YouTube Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 49.00</p>
-        <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968843.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">PicsArt Gold</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 80.00</p>
+                        <button onclick="orderDigital('PicsArt Gold', 80)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Telegram Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 350.00</p>
-        <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Prime Video</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 120.00</p>
+                        <button onclick="orderDigital('Prime Video', 120)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://w7.pngwing.com/pngs/531/992/png-transparent-capcut-logo.png" style="width: 40px; height: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">CapCut Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 99.00</p>
-        <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e798.png" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">ChatGPT Plus</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 250.00</p>
+                        <button onclick="orderDigital('ChatGPT Plus', 250)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Canva Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 30.00</p>
-        <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">LinkedIn Prem.</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 450.00</p>
+                        <button onclick="orderDigital('LinkedIn Premium', 450)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Netflix Screen</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 180.00</p>
-        <button onclick="orderDigital('Netflix', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968812.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Duolingo Plus</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 70.00</p>
+                        <button onclick="orderDigital('Duolingo Plus', 70)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Spotify Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 60.00</p>
-        <button onclick="orderDigital('Spotify', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2702/2702636.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Truecaller Gold</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 50.00</p>
+                        <button onclick="orderDigital('Truecaller Gold', 50)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968843.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">PicsArt Gold</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 80.00</p>
-        <button onclick="orderDigital('PicsArt', 80)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Zee5 Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 40.00</p>
+                        <button onclick="orderDigital('Zee5 Premium', 40)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Prime Video</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 120.00</p>
-        <button onclick="orderDigital('Prime Video', 120)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/3c/63/05/3c6305a2-c167-9d7a-1153-f72023594894/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Hoichoi Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 55.00</p>
+                        <button onclick="orderDigital('Hoichoi Premium', 55)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e798.png" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">ChatGPT Plus</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 250.00</p>
-        <button onclick="orderDigital('ChatGPT Plus', 250)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5977/5977581.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Disney+ Hotstar</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 130.00</p>
+                        <button onclick="orderDigital('Disney Hotstar', 130)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">LinkedIn Prem.</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 450.00</p>
-        <button onclick="orderDigital('LinkedIn', 450)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968903.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">InShot Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 65.00</p>
+                        <button onclick="orderDigital('InShot Pro', 65)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968812.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Duolingo Plus</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 70.00</p>
-        <button onclick="orderDigital('Duolingo', 70)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Pinterest Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 35.00</p>
+                        <button onclick="orderDigital('Pinterest Pro', 35)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2702/2702636.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Truecaller Gold</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 50.00</p>
-        <button onclick="orderDigital('Truecaller', 50)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Grammarly_logo.svg/2048px-Grammarly_logo.svg.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Grammarly Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 110.00</p>
+                        <button onclick="orderDigital('Grammarly Premium', 110)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Zee5 Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 40.00</p>
-        <button onclick="orderDigital('Zee5', 40)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969062.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">NordVPN Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 150.00</p>
+                        <button onclick="orderDigital('NordVPN Premium', 150)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/3c/63/05/3c6305a2-c167-9d7a-1153-f72023594894/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Hoichoi</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 55.00</p>
-        <button onclick="orderDigital('Hoichoi', 55)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5977/5977581.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Disney+ Hotstar</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 130.00</p>
-        <button onclick="orderDigital('Hotstar', 130)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968903.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">InShot Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 65.00</p>
-        <button onclick="orderDigital('InShot', 65)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Pinterest Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 35.00</p>
-        <button onclick="orderDigital('Pinterest', 35)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Grammarly_logo.svg/2048px-Grammarly_logo.svg.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Grammarly Prem.</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 110.00</p>
-        <button onclick="orderDigital('Grammarly', 110)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969062.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">NordVPN Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 150.00</p>
-        <button onclick="orderDigital('NordVPN', 150)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968931.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Crunchyroll</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 95.00</p>
-        <button onclick="orderDigital('Crunchyroll', 95)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968931.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Crunchyroll</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 95.00</p>
+                        <button onclick="orderDigital('Crunchyroll', 95)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
 </div>
-
-
 
 
 <!-- Pay Bill Page -->
@@ -9455,32 +9518,7 @@ window.addEventListener('DOMContentLoaded', () => {
     checkPurchased();
 });
 
-// ২. টাকা কাটা এবং নতুন ব্যালেন্স সেভ করা
-function processOrder(id, price) {
-    const balEle = document.getElementById('u-bal');
-    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
 
-    if (currentBalance >= price) {
-        // নতুন ব্যালেন্স হিসাব করা
-        let newBalance = currentBalance - price;
-        
-        // স্ক্রিনে ব্যালেন্স আপডেট করা
-        balEle.innerText = newBalance.toFixed(2);
-        
-        // *** অতি জরুরি: ব্রাউজারের মেমরিতে (LocalStorage) নতুন ব্যালেন্স সেভ করা ***
-        localStorage.setItem('user_current_balance', newBalance);
-
-        alert("সফলভাবে কেনা হয়েছে!");
-        
-        // কেনা কোর্সের লিস্ট সেভ করা
-        savePurchaseStatus(id);
-        checkPurchased();
-        closeBuyModal();
-    } else {
-        alert("দুঃখিত! আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই।");
-        closeBuyModal();
-    }
-}
 
 // ৩. কোর্স কেনার স্ট্যাটাস সেভ করা
 function savePurchaseStatus(id) {
@@ -12851,7 +12889,203 @@ function searchShopProducts() {
         }
     });
 }
+// ডিজিটাল অর্ডার ট্র্যাকিং স্টেট
+let currentDigitalOrder = {
+    productName: "",
+    price: 0
+};
 
+// ১. অর্ডার বাটন চাপলে পপআপ ওপেন করার ফাংশন
+function orderDigital(prodName, prodPrice) {
+    if (!curUser) return alert("দয়া করে আগে লগইন করুন!");
+
+    // স্টেট সেট করা
+    currentDigitalOrder.productName = prodName;
+    currentDigitalOrder.price = Number(prodPrice);
+
+    // পপআপ টেক্সট আপডেট
+    document.getElementById('modal-product-title').innerText = prodName;
+    document.getElementById('modal-product-price').innerText = `Price: ৳ ${prodPrice}.00`;
+
+    // ইনপুট ফিল্ডগুলো রিসেট করা
+    document.getElementById('digital-cust-name').value = curUser.name || "";
+    document.getElementById('digital-cust-phone').value = "";
+    document.getElementById('digital-cust-username').value = "";
+
+    // পপআপ শো করা
+    const modal = document.getElementById('digital-order-modal');
+    if (modal) {
+        modal.classList.remove('d-none');
+        modal.style.display = 'flex';
+    }
+}
+
+// ২. পপআপ ক্লোজ করার ফাংশন
+function closeDigitalModal() {
+    const modal = document.getElementById('digital-order-modal');
+    if (modal) {
+        modal.classList.add('d-none');
+        modal.style.display = 'none';
+    }
+}
+
+// ডাবল সাবমিশন লক করার জন্য ফাংশনের বাইরে একটি গ্লোবাল ভেরিয়েবল
+let isOrderProcessing = false;
+
+// ৩. সাবমিট এবং ব্যালেন্স কাটার মূল ফাংশন (উইথড্র সিস্টেমের মতো ১০০% পার্মানেন্ট)
+async function submitDigitalOrder() {
+    // অহেতুক ডাবল ক্লিক বা রিফ্রেশ লক চেক
+    if (isOrderProcessing) {
+        return console.log("অর্ডার প্রসেস হচ্ছে, দয়া করে অপেক্ষা করুন...");
+    }
+
+    const nameEl = document.getElementById('digital-cust-name');
+    const phoneEl = document.getElementById('digital-cust-phone');
+    const usernameEl = document.getElementById('digital-cust-username');
+
+    if (!nameEl || !phoneEl || !usernameEl) return;
+
+    const name = nameEl.value.trim();
+    const phone = phoneEl.value.trim();
+    const username = usernameEl.value.trim();
+
+    // ১. ভ্যালিডেশন চেক
+    if (!name || !phone || !username) {
+        return alert("অনুগ্রহ করে সব তথ্য সঠিকভাবে পূরণ করুন!");
+    }
+
+    if (!curUser) {
+        return alert("দয়া করে আগে লগইন করুন!");
+    }
+
+    // অর্ডার প্রসেস শুরু - লক চালু হলো
+    isOrderProcessing = true;
+
+    // ২. db.users অ্যারে থেকে এই লগইন থাকা ইউজারকে খুঁজে বের করা
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) {
+        isOrderProcessing = false; // রিসেট
+        return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
+    }
+
+    // ৩. ইউজারের বর্তমান ব্যালেন্স চেক (db.users[userIndex].bal থেকে সরাসরি)
+    let currentBal = Number(db.users[userIndex].bal || 0);
+    let orderPrice = Number(currentDigitalOrder.price);
+
+    if (currentBal < orderPrice) {
+        isOrderProcessing = false; // রিসেট
+        return alert("দুঃখিত! আপনার মেইন ব্যালেন্সে পর্যাপ্ত টাকা নেই।");
+    }
+
+    // ৪. ব্যালেন্স কেটে নেওয়া (উইথড্র সিস্টেমের মতো চিরতরে মাইনাস)
+    let newBalance = currentBal - orderPrice;
+    
+    // ডাটাবেজ অবজেক্ট এবং কারেন্ট সেশনে ব্যালেন্স আপডেট
+    db.users[userIndex].bal = newBalance;
+    curUser.bal = newBalance;
+
+    // ৫. ডিজিটাল অর্ডারের হিস্টোরি পুশ করা
+    if (!db.digital_orders) db.digital_orders = [];
+    
+    const orderId = 'DG-' + Math.floor(100000 + Math.random() * 900000);
+    const orderData = {
+        orderId: orderId,
+        userEmail: curUser.email,
+        customerName: name,
+        telegramPhone: phone,
+        telegramUsername: username,
+        productName: currentDigitalOrder.productName,
+        price: orderPrice,
+        status: "Pending",
+        date: new Date().toLocaleString('bn-BD')
+    };
+    
+    db.digital_orders.push(orderData);
+
+    // ৬. লোকাল স্টোরেজে সম্পূর্ণ ডাটাবেজ সেভ এবং সার্ভার (api.php) সিঙ্ক
+    if (typeof save === "function") {
+        await save(); // await ব্যবহার করা হয়েছে যাতে ব্যাকএন্ডে সেভ হওয়া নিশ্চিত হয়
+    } else {
+        localStorage.setItem('v7_u', JSON.stringify(db.users));
+        localStorage.setItem('digital_orders_list', JSON.stringify(db.digital_orders));
+    }
+
+    // ৭. অতিরিক্ত ব্যাকআপ কি (Key) থাকলে তাও আপডেট করা
+    localStorage.setItem('balance_' + curUser.email, newBalance);
+
+    // ৮. আপনার ওয়েবসাইটের হোমপেজ বা হেডার এর ব্যালেন্স UI আপডেট করা
+    if (typeof updateUIBalance === "function") {
+        updateUIBalance();
+    } else if (typeof renderHome === "function") {
+        renderHome();
+    } else {
+        const balElement = document.getElementById('user-balance');
+        if(balElement) balElement.innerText = formatCurrency(newBalance);
+    }
+
+    // ৯. টেলিগ্রাম বটে ডাটা পাঠানো
+    sendDigitalOrderToTelegram(orderData);
+
+    // ১০. সবচেয়ে গুরুত্বপূর্ণ: ফর্মের ইনপুট ফিল্ডগুলো চিরতরে খালি করে দেওয়া
+    // এর ফলে পেজ রিফ্রেশ দিলেও ভ্যালিডেশন ফেল করবে, ব্যালেন্স কাটবে না
+    nameEl.value = "";
+    phoneEl.value = "";
+    usernameEl.value = "";
+    
+    // অর্ডার প্রসেস শেষ - লক অবমুক্ত করা হলো
+    isOrderProcessing = false;
+
+    // পপআপ বন্ধ করা ও সফলতার মেসেজ
+    closeDigitalModal();
+    
+    Swal.fire({
+        title: 'অর্ডার সফল হয়েছে! 🚀',
+        text: `অর্ডার আইডি: ${orderId}। আপনার অ্যাকাউন্ট থেকে ৳${orderPrice} কেটে নেওয়া হয়েছে।`,
+        icon: 'success',
+        confirmButtonColor: '#20c997'
+    });
+}
+
+// ৪. টেলিগ্রাম বট এপিআই ইন্টিগ্রেশন ফাংশন (ভেরিয়েবল নেম ফিক্সড)
+function sendDigitalOrderToTelegram(order) {
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862";   
+
+    const textMessage = `
+🛒 *নতুন ডিজিটাল সার্ভিস অর্ডার!*
+━━━━━━━━━━━━━━━━━━
+🆔 *Order ID:* \`${order.orderId}\`
+📦 *Product:* ${order.productName}
+💰 *Price:* ৳ ${order.price}.00
+👤 *User Email:* ${order.userEmail}
+━━━━━━━━━━━━━━━━━━
+📝 *কাস্টমার ডিটেইলস:*
+• *Name:* ${order.customerName}
+• *Telegram Phone:* ${order.telegramPhone}
+• *Telegram User:* ${order.telegramUsername}
+📅 *Time:* ${order.date}
+━━━━━━━━━━━━━━━━━━
+⚡ _ব্যালেন্স সফলভাবে কেটে নেওয়া হয়েছে। সার্ভিসটি দ্রুত ডেলিভারি দিন।_
+    `;
+
+    // এখানে সঠিক ভেরিয়েবল tgToken ব্যবহার করা হয়েছে
+    const telegramUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
+
+    fetch(telegramUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: tgChatId, // এখানে সঠিক ভেরিয়েবল tgChatId ব্যবহার করা হয়েছে
+            text: textMessage,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.ok) console.error("টেলিগ্রাম বটে মেসেজ পাঠাতে সমস্যা হয়েছে:", data.description);
+    })
+    .catch(err => console.error("টেলিগ্রাম API এরর:", err));
+}
 </script>
 
 </body>
