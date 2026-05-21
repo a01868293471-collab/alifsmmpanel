@@ -3672,7 +3672,7 @@ function togglePassword() {
         .photo-grid-item:active .photo-grid-box {
             border-color: #2ecc71 !important; /* চাপ দিলে বর্ডার সবুজ হবে */
             box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);
-            transform: scale(0.92); /* হালকা দেবে যাওয়ার অ্যানিমেশন */
+            transform: scale(0.92); /* হালকা দেবে যাওয়ার অ্যানিমেশন */
         }
         .photo-grid-item span {
             display: block;
@@ -3684,20 +3684,10 @@ function togglePassword() {
         }
     </style>
     
-    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px 0; text-align: center; width: 100%;">
+    <!-- grid-template-columns: repeat(4, 1fr); করার কারণে ১ লাইনে ৪টি করে বাটন বসবে -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 0; text-align: center; width: 100%;">
         
-        <div class="photo-grid-item" onclick="handleRechargeClick()">
-            <div class="photo-grid-box">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
-            <span>Mobile<br>Recharge</span>
-        </div>
-
-        <div class="photo-grid-item" onclick="handleDriveOfferClick()">
-            <div class="photo-grid-box"><i class="fas fa-bolt"></i></div>
-            <span>Drive<br>Offer</span>
-        </div>
-        
+        <!-- লাইন ১ -->
         <div class="photo-grid-item" onclick="handleMicroJobClick()">
             <div class="photo-grid-box"><i class="fas fa-briefcase"></i></div>
             <span>Micro<br>Job</span>
@@ -3713,11 +3703,9 @@ function togglePassword() {
             <span>Job<br>Post</span>
         </div>
 
-        <div class="photo-grid-item" onclick="handleVendorClick()">
-            <div class="photo-grid-box"><i class="fas fa-user-tie"></i></div>
-            <span>Vendor<br>ship</span>
-        </div>
 
+
+        <!-- লাইন ২ -->
         <div class="photo-grid-item" onclick="handleCaptchaClick()">
             <div class="photo-grid-box"><i class="fas fa-keyboard"></i></div>
             <span>Captcha<br>Typing</span>
@@ -3738,18 +3726,15 @@ function togglePassword() {
             <span>Digital<br>Service</span>
         </div>
 
+        <!-- লাইন ৩ -->
         <div class="photo-grid-item" onclick="handleSocialServiceClick()">
             <div class="photo-grid-box"><i class="fas fa-users"></i></div>
             <span>Social<br>Service</span>
         </div>
-
-        <div class="photo-grid-item" onclick="handlePayBillClick()">
-            <div class="photo-grid-box">
-                <i class="fas fa-file-invoice-dollar"></i>
-            </div>
-            <span>Pay<br>Bill</span>
+        <div class="photo-grid-item" onclick="handleVendorClick()">
+            <div class="photo-grid-box"><i class="fas fa-user-tie"></i></div>
+            <span>Vendor<br>ship</span>
         </div>
-
         <div class="photo-grid-item" onclick="handleTrainingClick()">
             <div class="photo-grid-box"><i class="fas fa-graduation-cap"></i></div>
             <span>Training<br>Section</span>
@@ -5432,100 +5417,9 @@ function togglePassword() {
         background: #f8fafc;
     }
 </style>
-<div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Drive Offers</h5>
-            </div>
 
 
-      
 
-            <div onclick="openDriveHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-3">
-        <div style="background: #e0f7fa; border-radius: 15px; padding: 12px; border-left: 5px solid #17a2b8; margin-bottom: 20px;">
-            <p style="margin: 0; font-size: 12px; color: #006064; font-weight: 600;">
-                <i class="fas fa-bolt me-2"></i> নোটিশ: ড্রাইভ অফার সচল হওয়ার সময় ৫-৩০ মিনিট। সঠিক নম্বর প্রদান করুন।
-            </p>
-        </div>
-
-        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
-            <div onclick="filterDrive('all')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid #17a2b8;">All</div>
-            </div>
-            <div onclick="filterDrive('gp')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">GP</small>
-            </div>
-            <div onclick="filterDrive('robi')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Robi</small>
-            </div>
-            <div onclick="filterDrive('airtel')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Airtel_logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Airtel</small>
-            </div>
-            <div onclick="filterDrive('bl')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Banglalink_Logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">BL</small>
-            </div>
-            <div onclick="filterDrive('teletalk')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Teletalk_Logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Teletalk</small>
-            </div>
-            <div onclick="filterDrive('skitto')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Skitto_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Skitto</small>
-            </div>
-        </div>
-
-        <div id="drive-list-container">
-            <div class="drive-card gp" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 10px;">
-                <div style="margin-left: 15px; flex: 1;">
-                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৪০ জিবি + ৮০০ মিনিট (৩০ দিন)</h6>
-                    <small style="color: #666; display: block;">সারা বাংলাদেশ পাবে</small>
-                    <b style="color: #e67e22; font-size: 16px;">৳ ৫৯৯</b>
-                </div>
-                <button onclick="showOrderPopup('৪০ জিবি ৮০০ মিনিট', 599)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
-            </div>
-
-            <div class="drive-card robi" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 10px;">
-                <div style="margin-left: 15px; flex: 1;">
-                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৫০ জিবি ইন্টারনেট (৩০ দিন)</h6>
-                    <small style="color: #666; display: block;">শুধুমাত্র ঢাকা ডিভিশন</small>
-                    <b style="color: #e67e22; font-size: 16px;">৳ ৪৫০</b>
-                </div>
-                <button onclick="showOrderPopup('৫০ জিবি রবি', 450)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-        <div style="background: white; width: 100%; border-radius: 25px; padding: 25px; position: relative;">
-            <h5 style="font-weight: 800; color: #333;" id="modal-offer-name">অর্ডার কনফার্ম করুন</h5>
-            <p style="font-size: 13px; color: #777;">অফারটি পেতে আপনার মোবাইল নম্বর দিন</p>
-            
-            <input type="number" id="order-phone" placeholder="017XXXXXXXX" style="width: 100%; padding: 15px; border-radius: 15px; border: 1px solid #ddd; margin-bottom: 20px; outline: none; font-size: 18px; letter-spacing: 2px;">
-            
-            <div style="display: flex; gap: 10px;">
-                <button onclick="closeOrderPopup()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
-                <button onclick="confirmDriveOrder()" style="flex: 2; padding: 12px; border-radius: 12px; border: none; background: #17a2b8; color: white; font-weight: 800;">সাবমিট করুন</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -6240,24 +6134,13 @@ function togglePassword() {
     <div class="container mt-4" style="max-width: 480px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; width: 100%;">
         
         <div id="vendor-status-banner" style="background: white; border-radius: 15px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #3b82f6; box-shadow: 0 4px 12px rgba(0,0,0,0.03); box-sizing: border-box;">
-            <h6 style="font-weight: 800; color: #1e293b; margin: 0 0 4px 0; font-size: 14px;">ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0 0 4px 0; font-size: 14px;">রিসেলিং ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
             <p style="font-size: 12px; color: #64748b; margin: 0;">নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন এবং ভেন্ডরশিপ এক্সেস নিন।</p>
         </div>
 
         <div id="vendor-reg-form" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #eaeaea; box-sizing: border-box;">
-            <label style="font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 10px; display: block;">ভেন্ডর টাইপ সিলেক্ট করুন:</label>
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-drive">
-                    <input type="radio" name="vendor_type" value="Drive Agent" style="display: none;" onclick="selectVendor('drive')">
-                    <i class="fas fa-car-side" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
-                    <span style="font-size: 12px; font-weight: 700; color: #475569;">ড্রাইভ এজেন্ট</span>
-                </label>
-                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-resell">
-                    <input type="radio" name="vendor_type" value="Reselling Agent" style="display: none;" onclick="selectVendor('resell')">
-                    <i class="fas fa-store" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
-                    <span style="font-size: 12px; font-weight: 700; color: #475569;">রিসেলিং এজেন্ট</span>
-                </label>
-            </div>
+            
+            <input type="hidden" name="vendor_type" id="v-type-hidden" value="Reselling Agent">
 
             <form onsubmit="event.preventDefault(); payVendorFee(); return false;">
                 <div style="margin-bottom: 15px;">
@@ -6266,7 +6149,7 @@ function togglePassword() {
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস ডিটেইলস</label>
-                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের সার্ভিস দেন?" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
+                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের প্রোডাক্ট বা সার্ভিস দেন?" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস এড্রেস</label>
@@ -6284,7 +6167,7 @@ function togglePassword() {
                 <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #f87171; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box;">
                     <p style="margin: 0; font-size: 12px; color: #dc2626; font-weight: 700; text-align: center; line-height: 1.4;">
                         <i class="fas fa-exclamation-circle" style="margin-right: 4px;"></i> 
-                        নোটিশ: ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা ফ্রি কাটবে এবং এই টাকা রিফান্ড বা ব্যাক পাবেন না।
+                        নোটিশ: ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা ফি কাটবে এবং এই টাকা রিফান্ড বা ব্যাক পাবেন না।
                     </p>
                 </div>
 
@@ -6314,32 +6197,7 @@ function togglePassword() {
                 </div>
             </div>
 
-            <div id="form-drive-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
-                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #2563eb; border-bottom: 2px solid #eff6ff; padding-bottom: 8px; text-transform: uppercase;">
-                    <i class="fas fa-bolt" style="color: #2563eb; margin-right: 5px;"></i> নতুন ড্রাইভ অফার যুক্ত করুন
-                </h6>
-                <form onsubmit="event.preventDefault(); saveDriveOffer(); return false;">
-                    <div style="margin-bottom: 12px;">
-                        <label style="font-size: 11px; font-weight: 700; color: #475569;">ড্রাইভ অফারের নাম</label>
-                        <input type="text" id="d-offer-name" required placeholder="যেমন: Robi 40GB + 800 Min" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                    </div>
-                    <div style="display: flex; gap: 10px; margin-bottom: 18px;">
-                        <div style="flex: 1;">
-                            <label style="font-size: 11px; font-weight: 700; color: #475569;">মূল্য (৳)</label>
-                            <input type="number" id="d-offer-price" required placeholder="বিক্রয় মূল্য" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                        </div>
-                        <div style="flex: 1;">
-                            <label style="font-size: 11px; font-weight: 700; color: #475569;">কমিশন (৳)</label>
-                            <input type="number" id="d-offer-commission" required placeholder="ইউজার কমিশন" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                        </div>
-                    </div>
-                    <button type="submit" style="width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; outline: none;">
-                        পাবলিশ ড্রাইভ অফার <i class="fas fa-paper-plane" style="margin-left: 4px; font-size: 11px;"></i>
-                    </button>
-                </form>
-            </div>
-
-            <div id="form-reselling-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
+            <div id="form-reselling-agent" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
                 <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #16a34a; border-bottom: 2px solid #f0fdf4; padding-bottom: 8px; text-transform: uppercase;">
                     <i class="fas fa-store" style="color: #16a34a; margin-right: 5px;"></i> নতুন ফিজিক্যাল প্রোডাক্ট যুক্ত করুন
                 </h6>
@@ -6350,7 +6208,7 @@ function togglePassword() {
                     </div>
                     <div style="margin-bottom: 12px;">
                         <label style="font-size: 11px; font-weight: 700; color: #475569;">প্রোডাক্টের নাম</label>
-                        <input type="text" id="r-prod-name" required placeholder="যেমন: T500 Smart Watch Smart" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        <input type="text" id="r-prod-name" required placeholder="যেমন: T500 Smart Watch" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
                     </div>
                     <div style="display: flex; gap: 10px; margin-bottom: 12px;">
                         <div style="flex: 1;">
@@ -6374,10 +6232,9 @@ function togglePassword() {
 
             <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
                 <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; text-transform: uppercase;">
-                    <i class="fas fa-list-ul" style="color: #3b82f6; margin-right: 5px;"></i> আপনার লাইভ আইটেমসমূহ
+                    <i class="fas fa-list-ul" style="color: #3b82f6; margin-right: 5px;"></i> আপনার লাইভ প্রোডাক্টসমূহ
                 </h6>
-                <div id="vendor-product-list" style="max-height: 220px; overflow-y: auto;">
-                    </div>
+                <div id="vendor-product-list" style="max-height: 220px; overflow-y: auto;"></div>
             </div>
 
             <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
@@ -6385,20 +6242,11 @@ function togglePassword() {
                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> গ্রাহকদের অর্ডার রিকোয়েষ্ট
                 </h6>
                 
-                <div id="sec-drive-requests" class="d-none" style="margin-bottom: 15px;">
-                    <span style="font-size: 11px; font-weight: bold; background: #eff6ff; color: #2563eb; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
-                        <i class="fas fa-bolt"></i> Drive Request Queue
-                    </span>
-                    <div id="drive-order-list" style="max-height: 200px; overflow-y: auto;">
-                        </div>
-                </div>
-
-                <div id="sec-resell-requests" class="d-none">
+                <div id="sec-resell-requests">
                     <span style="font-size: 11px; font-weight: bold; background: #f0fdf4; color: #16a34a; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
                         <i class="fas fa-box"></i> Product Orders Queue
                     </span>
-                    <div id="resell-order-list" style="max-height: 200px; overflow-y: auto;">
-                        </div>
+                    <div id="resell-order-list" style="max-height: 200px; overflow-y: auto;"></div>
                 </div>
             </div>
 
@@ -7753,40 +7601,18 @@ if (referSection) {
     }
 }
 // ==========================================================================
-// ১. গ্লোবাল স্টেট ও ভ্যারিয়েবল সমূহ
 // ==========================================================================
-let selectedVendorType = "";       // রেজিস্ট্রেশনের সময় সিলেক্ট করা ভেন্ডর টাইপ
+// ১. গ্লোবাল স্টেট ও ভ্যারিয়েবল সমূহ (ড্রাইভ সম্পূর্ণ মুক্ত)
+// ==========================================================================
+let selectedVendorType = "Reselling Agent"; // ড্রাইভ বাদ, ডিফল্ট ও ফিক্সড টাইপ রিসেলিং
 let activeViewingProduct = null;     // বর্তমানে কাস্টমার যে প্রোডাক্টটি দেখছেন
 let showOnlyFavoritesMode = false;   // ফেভারিট মোড অন/অফ ট্র্যাকার
 
 // ==========================================================================
-// ২. ভেন্ডর ক্যাটাগরি সিলেকশন ও বর্ডার কালার হ্যান্ডলিং
+// ২. ভেন্ডর ক্যাটাগরি সিলেকশন ও বর্ডার কালার হ্যান্ডলিং (বাদ দেওয়া হয়েছে)
 // ==========================================================================
-function selectVendor(type) {
-    const driveLabel = document.getElementById('label-drive');
-    const resellLabel = document.getElementById('label-resell');
-    if (!driveLabel || !resellLabel) return;
-    
-    selectedVendorType = type === 'drive' ? "Drive Agent" : "Reselling Agent";
-
-    if (type === 'drive') {
-        driveLabel.style.borderColor = '#2563eb';
-        driveLabel.style.background = '#eff6ff';
-        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#2563eb';
-        
-        resellLabel.style.borderColor = '#e2e8f0';
-        resellLabel.style.background = 'transparent';
-        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#64748b';
-    } else {
-        resellLabel.style.borderColor = '#16a34a';
-        resellLabel.style.background = '#f0fdf4';
-        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#16a34a';
-        
-        driveLabel.style.borderColor = '#e2e8f0';
-        driveLabel.style.background = 'transparent';
-        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#64748b';
-    }
-}
+// যেহেতু ড্রাইভ এজেন্ট অপশনটি নেই, তাই ক্যাটাগরি সিলেক্ট করার প্রয়োজন নেই।
+// HTML-এ সরাসরি রিসেলিং এজেন্ট ফিক্সড থাকবে।
 
 // ==========================================================================
 // ৩. ভেন্ডরশিপ স্ট্যাটাস চেক ও রেন্ডার
@@ -7826,8 +7652,8 @@ function checkVendorStatus() {
                     <div style="width: 60px; height: 60px; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto;">
                         <i class="fas fa-check-circle" style="color: #16a34a; font-size: 32px;"></i>
                     </div>
-                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">${profile.businessName || 'Ychc'}</h5>
-                    <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 20px 0;">টাইপ: <b>${profile.type || 'Reselling Agent'}</b><br>আপনার অ্যাকাউন্টটি সফলভাবে ভেন্ডর হিসেবে রেজিস্টার্ড।</p>
+                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">${profile.businessName || 'Store'}</h5>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 20px 0;">টাইপ: <b>Reselling Agent</b><br>আপনার অ্যাকাউন্টটি সফলভাবে ভেন্ডর হিসেবে রেজিস্টার্ড।</p>
                     <button onclick="enterVendorDashboard()" style="background: #0f172a; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; max-width: 200px; outline: none;">গো টু ড্যাশবোর্ড</button>
                 </div>
             `;
@@ -7907,17 +7733,16 @@ async function payVendorFee() {
         if (typeof showLoader === "function") showLoader(false);
         
         if (typeof toast === "function") {
-            toast("🎉 अभिनंदन! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।", "success");
+            toast("🎉 অভিনন্দন! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।", "success");
         } else {
-            alert("🎉 अभिनंदन! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।");
+            alert("🎉 অভিনন্দন! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।");
         }
         
         enterVendorDashboard();
     }
 }
-
 // ==========================================================================
-// ৫. গ্লোবাল তালিকা থেকে ভেন্ডর রেন্ডার ও শপ ভিউ
+// ৫. গ্লোবাল তালিকা থেকে ভেন্ডর রেন্ডার ও শপ ভিউ (ড্রাইভ সম্পূর্ণ মুক্ত)
 // ==========================================================================
 function loadGlobalVendorsList() {
     const container = document.getElementById('dynamic-vendor-container');
@@ -7937,10 +7762,10 @@ function loadGlobalVendorsList() {
     }
 
     container.innerHTML = globalVendors.reverse().map(vendor => {
-        const isDrive = vendor.type === "Drive Agent";
-        const iconClass = isDrive ? "fas fa-bolt" : "fas fa-store";
-        const themeColor = isDrive ? "#3b82f6" : "#16a34a";
-        const bgColor = isDrive ? "#eff6ff" : "#f0fdf4";
+        // ড্রাইভের কন্ডিশন বাদ দিয়ে সরাসরি রিসেলিং এজেন্টের থিম ফিক্সড করা হয়েছে
+        const iconClass = "fas fa-store";
+        const themeColor = "#16a34a";
+        const bgColor = "#f0fdf4";
 
         return `
             <div onclick="viewVendorStore('${vendor.email}')" style="padding: 15px; background: #fff; border-radius: 18px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #f0f2f5; cursor: pointer; transition: transform 0.2s; box-sizing: border-box;">
@@ -7955,7 +7780,7 @@ function loadGlobalVendorsList() {
                             <span style="width: 6px; height: 6px; background: #2ecc71; border-radius: 50%; margin-right: 4px;"></span>
                             <small style="color: #2ecc71; font-weight: 700; font-size: 10px; text-transform: uppercase;">Active</small>
                         </div>
-                        <span style="font-size: 9px; background: ${bgColor}; color: ${themeColor}; padding: 1px 6px; border-radius: 4px; font-weight: bold;">${vendor.type}</span>
+                        <span style="font-size: 9px; background: ${bgColor}; color: ${themeColor}; padding: 1px 6px; border-radius: 4px; font-weight: bold;">Reselling Agent</span>
                     </div>
                 </div>
                 <i class="fas fa-chevron-right" style="color: #cbd5e1; font-size: 13px; margin-left: 10px;"></i>
@@ -7990,26 +7815,22 @@ function viewVendorStore(vendorEmail) {
     if (dateEl) dateEl.innerText = vendor.joinedDate || vendor.regDate || "N/A";
     if (callBtnEl && vendor.phone) callBtnEl.href = "tel:" + vendor.phone;
 
-    if (agentTypeEl && badgeIconEl) {
-        if (vendor.type === "Drive Agent") {
-            agentTypeEl.innerText = "ড্রাইভ এজেন্ট";
-            agentTypeEl.style.background = "#eff6ff";
-            agentTypeEl.style.color = "#2563eb";
-            badgeIconEl.innerHTML = `<i class="fas fa-bolt" style="color: #2563eb;"></i>`;
-            badgeIconEl.style.background = "#eff6ff";
-            badgeIconEl.style.border = "2px solid #2563eb";
-        } else {
-            agentTypeEl.innerText = "রিসেলিং এজেন্ট";
-            agentTypeEl.style.background = "#f0fdf4";
-            agentTypeEl.style.color = "#16a34a";
-            badgeIconEl.innerHTML = `<i class="fas fa-store" style="color: #16a34a;"></i>`;
-            badgeIconEl.style.background = "#f0fdf4";
-            badgeIconEl.style.border = "2px solid #16a34a";
-        }
+    // প্রোফাইল ভিউ থেকে ড্রাইভের কন্ডিশন সরিয়ে সরাসরি রিসেলিং মোড সেট করা হয়েছে
+    if (agentTypeEl) {
+        agentTypeEl.innerText = "রিসেলিং এজেন্ট";
+        agentTypeEl.style.background = "#f0fdf4";
+        agentTypeEl.style.color = "#16a34a";
+    }
+    
+    if (badgeIconEl) {
+        badgeIconEl.innerHTML = `<i class="fas fa-store" style="color: #16a34a;"></i>`;
+        badgeIconEl.style.background = "#f0fdf4";
+        badgeIconEl.style.border = "2px solid #16a34a";
     }
 
     openPage('p-vendor-profile-view');
 }
+
 
 function handleVendorBackBtn() {
     const isDashboardVisible = document.getElementById('p-vendor-dashboard') && !document.getElementById('p-vendor-dashboard').classList.contains('d-none');
@@ -8020,9 +7841,8 @@ function handleVendorBackBtn() {
         openPage('p-home');
     }
 }
-
 // ==========================================================================
-// ৬. ড্যাশবোর্ড গেটওয়ে ও কন্ট্রোল মেকানিজম
+// ৬. ড্যাশবোর্ড গেটওয়ে ও কন্ট্রোল মেকানিজম (ড্রাইভ সম্পূর্ণ মুক্ত)
 // ==========================================================================
 function enterVendorDashboard() {
     if (!curUser) return alert("দয়া করে লগইন করুন!");
@@ -8031,79 +7851,47 @@ function enterVendorDashboard() {
     if (isPurchased !== 'true') return alert("আপনি এখনো ভেন্ডরশিপ প্রোগ্রাম অ্যাক্টিভেট করেননি!");
 
     const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
-    const vType = profile.type || "Reselling Agent";
     
+    // হেডার এবং টাইটেল আপডেট
     if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "#0f172a";
     if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = profile.businessName || "Dashboard";
     if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.remove('d-none');
 
+    // রেজিস্ট্রেশন ফর্ম ও ব্যানার হাইড করা
     if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.add('d-none');
     if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.add('d-none');
     if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.add('d-none');
+    
+    // মেইন ড্যাশবোর্ড প্যানেল শো করা
     if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.remove('d-none');
 
-    const driveForm = document.getElementById('form-drive-agent');
+    // ফিজিক্যাল প্রোডাক্ট ও অর্ডার কিউ শো (ড্রাইভের সবকিছু রিমুভড)
     const resellForm = document.getElementById('form-reselling-agent');
-    const driveReqSec = document.getElementById('sec-drive-requests');
     const resellReqSec = document.getElementById('sec-resell-requests');
 
-    if (vType === "Drive Agent") {
-        if (driveForm) driveForm.classList.remove('d-none');
-        if (resellForm) resellForm.classList.add('d-none');
-        if (driveReqSec) driveReqSec.classList.remove('d-none');
-        if (resellReqSec) resellReqSec.classList.add('d-none');
-    } else {
-        if (driveForm) driveForm.classList.add('d-none');
-        if (resellForm) resellForm.classList.remove('d-none');
-        if (driveReqSec) driveReqSec.classList.add('d-none');
-        if (resellReqSec) resellReqSec.classList.remove('d-none');
-    }
+    if (resellForm) resellForm.classList.remove('d-none');
+    if (resellReqSec) resellReqSec.classList.remove('d-none');
 
-    renderVendorItems();
-    renderOrderRequests(vType);
+    // ডাটা রেন্ডার ফাংশন কল
+    if (typeof renderVendorItems === "function") renderVendorItems();
+    if (typeof renderOrderRequests === "function") renderOrderRequests("Reselling Agent");
 }
 
 function closeVendorDashboard() {
+    // হেডার রিস্টোর (আগের গ্রাডিয়েন্ট কালার)
     if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "linear-gradient(135deg, #2563eb 0%, #16a34a 100%)";
     if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = "Vendorship Program";
     if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.add('d-none');
 
+    // ফর্ম এবং স্ট্যাটিক ভিউ রিস্টোর
     if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.add('d-none');
     if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.remove('d-none');
     if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.remove('d-none');
     if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.remove('d-none');
 }
 
-// ==========================================================================
-// ৭. প্রোডাক্ট আপলোড ও লিস্ট প্রসেসিং
-// ==========================================================================
-function saveDriveOffer() {
-    if (!curUser) return alert("দয়া করে লগইন করুন!");
-    const name = document.getElementById('d-offer-name').value.trim();
-    const price = document.getElementById('d-offer-price').value.trim();
-    const comm = document.getElementById('d-offer-commission').value.trim();
 
-    if (!name || !price) return alert("অফারের নাম এবং দাম অবশ্যই দিন!");
 
-    const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
-    items.push({
-        id: Date.now(),
-        type: 'drive',
-        name: name,
-        price: parseFloat(price),
-        commission: parseFloat(comm) || 0,
-        email: curUser.email,
-        date: new Date().toLocaleDateString()
-    });
-    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(items));
-
-    document.getElementById('d-offer-name').value = "";
-    document.getElementById('d-offer-price').value = "";
-    document.getElementById('d-offer-commission').value = "";
-    
-    renderVendorItems();
-    alert("🟢 ড্রাইভ অফারটি সফলভাবে লাইভ হয়েছে!");
-}
 
 function saveResellProduct() {
     if (!curUser) return alert("দয়া করে প্রথমে লগইন করুন!");
