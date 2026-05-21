@@ -8219,7 +8219,7 @@ function deleteVendorItem(id) {
 }
 
 // ==========================================================================
-// ৮. কাস্টমার Reseller Shop পেজ ও ফেভারিট টগল ফিল্টারিং মেকানিজম (রিকোয়েস্ট ১ ও ২ ফিক্স)
+// ৮. কাস্টমার Reseller Shop পেজ ও ফেভারিট টগল ফিল্টারিং মেকানিজম
 // ==========================================================================
 function renderResellerShopItems() {
     const container = document.getElementById('shop-container');
@@ -8229,7 +8229,6 @@ function renderResellerShopItems() {
     let allProducts = allItems.filter(i => i.type === 'resell');
     const favorites = JSON.parse(localStorage.getItem('customer_favorites_' + (curUser?.email || 'guest')) || '[]');
 
-    // যদি হেডারের ফেভারিট বাটন একটিভ থাকে, শুধু ফেভারিট আইটেম ফিল্টার হবে
     if (showOnlyFavoritesMode) {
         allProducts = allProducts.filter(item => favorites.includes(item.id));
     }
@@ -8238,7 +8237,7 @@ function renderResellerShopItems() {
         container.innerHTML = `
             <div style="text-align: center; padding: 40px 20px; color: #94a3b8; width: 100%;">
                 <i class="fas fa-shopping-basket" style="font-size: 30px; margin-bottom: 8px; color: #cbd5e1;"></i>
-                <p style="font-size: 13px; margin: 0;">${showOnlyFavoritesMode ? 'কোনো ফেভারিট প্রোডাক্ট পাওয়া যায়নি।' : 'শপে বর্তমানে কোনো প্রোডাক্ট নেই।'}</p>
+                <p style="font-size: 13px; margin: 0;">${showOnlyFavoritesMode ? 'কোনো ফেভারিট প্রোডাক্ট পাওয়া যায়নি।' : 'শপে বর্তমানে কোনো প্রোডাক্ট নেই।'}</p>
             </div>`;
         return;
     }
@@ -8249,9 +8248,9 @@ function renderResellerShopItems() {
         const heartColor = isFav ? '#ef4444' : '#cbd5e1';
         const heartIcon = isFav ? 'fas fa-heart' : 'far fa-heart';
 
-        // ডাটা নিরাপদে পাস করার জন্য ব্যাকস্ল্যাশ এস্কেপ হ্যান্ডলিং
         const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '\\"');
         const safeDetails = (item.details || '').replace(/'/g, "\\'").replace(/"/g, '\\"');
+        const vEmail = item.email || item.vendorEmail || '';
 
         return `
             <div class="col-6 shop-item ${itemCat}">
@@ -8265,24 +8264,18 @@ function renderResellerShopItems() {
                             <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 36px; overflow: hidden; color: #2d3436; line-height: 1.4;">${item.name}</h6>
                             <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px; font-size: 14px;">৳ ${item.price}</p>
                         </div>
-                        <button onclick="viewProduct('${safeName}', '${item.price}', '${safeDetails}', '${item.image}', '${item.id}', '${item.email}')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700; cursor: pointer;">View</button>
+                        <button onclick="viewProduct('${safeName}', '${item.price}', '${safeDetails}', '${item.image}', '${item.id}', '${vEmail}')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700; cursor: pointer;">View</button>
                     </div>
                 </div>
             </div>`;
     }).join("");
 }
 
-// পি শপ হেডারের ফেভারিট বাটনে কল করার ফাংশন টগল
 function toggleHeaderFavoriteFilter() {
     showOnlyFavoritesMode = !showOnlyFavoritesMode;
     const favHeaderIcon = document.getElementById('header-fav-icon');
-    
     if (favHeaderIcon) {
-        if (showOnlyFavoritesMode) {
-            favHeaderIcon.style.color = "#ef4444"; // একটিভ হলে লাল কালার হবে
-        } else {
-            favHeaderIcon.style.color = ""; 
-        }
+        favHeaderIcon.style.color = showOnlyFavoritesMode ? "#ef4444" : "";
     }
     renderResellerShopItems();
 }
@@ -8290,7 +8283,6 @@ function toggleHeaderFavoriteFilter() {
 function toggleFavorite(productId) {
     if (!curUser) return alert("দয়া করে লগইন করুন!");
     let favorites = JSON.parse(localStorage.getItem('customer_favorites_' + curUser.email) || '[]');
-    
     if (favorites.includes(productId)) {
         favorites = favorites.filter(id => id !== productId);
     } else {
@@ -8301,18 +8293,13 @@ function toggleFavorite(productId) {
 }
 
 // ==========================================================================
-// ৯. প্রোডাক্ট ভিউ মডাল এবং ফিক্সড কাস্টমার অর্ডার মেকানিজম (রিকোয়েস্ট ২ সলভড)
+// ৯. প্রোডাক্ট ভিউ মডাল এবং ইন-লাইন অর্ডার মেকানিজম (সব এক উইন্ডোতে)
 // ==========================================================================
 function viewProduct(name, price, details, image, id, vendorEmail) {
     const modal = document.getElementById('view-modal');
     if (!modal) return;
 
-    if(document.getElementById('view-img')) document.getElementById('view-img').src = image;
-    if(document.getElementById('view-title')) document.getElementById('view-title').innerText = name;
-    if(document.getElementById('view-price')) document.getElementById('view-price').innerText = "৳ " + price;
-    if(document.getElementById('view-desc')) document.getElementById('view-desc').innerText = details || "কোনো বিবরণ দেওয়া হয়নি।";
-
-    // মডালের স্টেট প্রোপার্টিতে রিয়েল অবজেক্ট ডাটা এসাইন করা হচ্ছে যাতে অর্ডার বাটনে ডেটা নাল না হয়
+    // মডালের স্টেট ডাটা এসাইন
     activeViewingProduct = { 
         id: id, 
         name: name, 
@@ -8320,48 +8307,165 @@ function viewProduct(name, price, details, image, id, vendorEmail) {
         vendorEmail: vendorEmail, 
         image: image 
     };
-    
+
+    // মার্চেন্ট পেমেন্ট নম্বর (আপনার রিয়েল নাম্বার এখানে বসিয়ে দেবেন)
+    const bkashNo = "017XXXXXXXX"; 
+    const nagadNo = "019XXXXXXXX";
+
+    // সম্পূর্ণ মডালের লেআউট নতুন করে রি-রাইট করা হচ্ছে যাতে ইনপুট ফর্মটি ডায়নামিকালি চলে আসে
+    modal.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
+            <div style="background: white; width: 100%; max-width: 450px; max-height: 90vh; border-radius: 20px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; display: flex; flex-direction: column;">
+                
+                <div onclick="closeProduct()" style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.5); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold; z-index: 10;">✕</div>
+                
+                <img src="${image}" style="width: 100%; height: 200px; object-fit: cover;">
+                
+                <div style="padding: 15px; border-bottom: 1px dashed #e2e8f0;">
+                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 5px;">${name}</h5>
+                    <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 10px;">
+                        <span style="color: #dc3545; font-weight: 800; font-size: 16px;">৳ ${price}</span>
+                        <span style="color: #94a3b8; font-size: 12px; text-decoration: line-through;">বাজার মূল্য: ৳ ${(parseFloat(price) * 1.25).toFixed(0)}</span>
+                    </div>
+                    <p style="font-size: 12px; color: #64748b; margin: 0; background: #f8fafc; padding: 8px; border-radius: 8px; line-height: 1.5; max-height: 80px; overflow-y: auto;">
+                        <b>বিস্তারিত বিবরণ:</b><br>${details || "কোনো বিবরণ দেওয়া হয়নি।"}
+                    </p>
+                </div>
+
+                <div style="padding: 15px; background: #f8fafc; flex-grow: 1;">
+                    <h6 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-shopping-cart" style="color: #16a34a;"></i> অর্ডার করার জন্য নিচের তথ্যগুলো পূরণ করুন:
+                    </h6>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+                        <input type="text" id="ord-name" placeholder="👤 আপনার সম্পূর্ণ নাম" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        <input type="tel" id="ord-phone" placeholder="📞 সচল মোবাইল নম্বর" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="ord-district" placeholder="📍 জেলা" style="width: 50%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                            <input type="text" id="ord-thana" placeholder="🏢 থানা" style="width: 50%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        </div>
+                        
+                        <input type="text" id="ord-address" placeholder="🏠 গ্রাম/রোড/বাড়ি নং এবং বিস্তারিত ঠিকানা" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        
+                        <label style="font-weight: 700; margin-top: 5px; color: #334155;">💳 পেমেন্ট পদ্ধতি সিলেক্ট করুন:</label>
+                        <select id="ord-payment-method" onchange="handlePaymentMethodChange(this.value, ${price})" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; background: white; box-sizing: border-box;">
+                            <option value="cod">📦 ক্যাশ অন ডেলিভারি (হাতে পেয়ে টাকা)</option>
+                            <option value="advance_dhaka">💸 অগ্রিম পেমেন্ট - ঢাকার ভেতরে (ডেলিভারি চার্জ ৮০৳)</option>
+                            <option value="advance_outside">💸 অগ্রিম পেমেন্ট - ঢাকার বাইরে (ডেলিভারি চার্জ ১৩০৳)</option>
+                        </select>
+
+                        <div id="advance-pay-box" style="display: none; background: #fff3cd; border: 1px solid #ffeba2; padding: 10px; border-radius: 8px; margin-top: 5px; box-sizing: border-box;">
+                            <p style="margin: 0 0 8px 0; font-size: 11px; color: #856404; line-height: 1.4;">
+                                📱 <b>বিকাশ নম্বর:</b> ${bkashNo} (Personal)<br>
+                                📱 <b>নগদ নম্বর:</b> ${nagadNo} (Personal)<br>
+                                <span id="total-pay-text" style="font-weight: bold; color: #dc3545;"></span> টাকা পাঠিয়ে নিচে ট্রানজেকশন কোড বসান।
+                            </p>
+                            <input type="text" id="ord-trxid" placeholder="🔑 TrxID (Transaction Code) লিখুন" style="width: 100%; padding: 6px 10px; border: 1px solid #f59e0b; border-radius: 6px; outline: none; font-size: 11px; box-sizing: border-box;">
+                        </div>
+
+                        <button onclick="submitInlineCustomerOrder()" style="width: 100%; background: #16a34a; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 6px rgba(22,163,74,0.2);">🟢 অর্ডার কনফর্ম করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
     modal.classList.remove('d-none');
 }
 
-function placeCustomerOrder() {
-    if (!curUser) return alert("দয়া করে অর্ডার করতে লগইন করুন!");
-    if (!activeViewingProduct) return alert("দুঃখিত, কোনো প্রোডাক্ট ডাটা লোড হয়নি। আবার চেষ্টা করুন!");
+// পেমেন্ট মেথড ড্রপডাউন চেঞ্জ করার হ্যান্ডলার
+function handlePaymentMethodChange(val, basePrice) {
+    const payBox = document.getElementById('advance-pay-box');
+    const totalText = document.getElementById('total-pay-text');
+    if (!payBox || !totalText) return;
 
-    const address = prompt("📦 আপনার ডেলিভারি বা শিপিং ঠিকানা লিখুন:");
-    if (!address || address.trim() === "") return alert("অর্ডার সফল করতে ঠিকানা দেওয়া বাধ্যতামূলক!");
+    if (val === 'cod') {
+        payBox.style.display = 'none';
+    } else {
+        payBox.style.display = 'block';
+        let charge = val === 'advance_dhaka' ? 80 : 130;
+        totalText.innerText = `সর্বমোট: ৳${basePrice + charge} (প্রোডাক্ট ৳${basePrice} + চার্জ ৳${charge})`;
+    }
+}
 
-    const phone = prompt("📞 আপনার সচল মোবাইল নম্বরটি দিন:");
-    if (!phone || phone.trim() === "") return alert("মোবাইল নম্বর দেওয়া বাধ্যতামূলক!");
+// ইন-লাইন উইন্ডো থেকে অর্ডার সাবমিট করার কোর লজিক
+function submitInlineCustomerOrder() {
+    if (typeof curUser === 'undefined' || !curUser) return alert("দয়া করে অর্ডার করতে লগইন করুন!");
+    if (!activeViewingProduct) return alert("দুঃখিত, কোনো প্রোডাক্ট ডাটা লোড হয়নি।");
 
+    const name = document.getElementById('ord-name').value.trim();
+    const phone = document.getElementById('ord-phone').value.trim();
+    const district = document.getElementById('ord-district').value.trim();
+    const thana = document.getElementById('ord-thana').value.trim();
+    const address = document.getElementById('ord-address').value.trim();
+    const payMethodChoice = document.getElementById('ord-payment-method').value;
+
+    // ভ্যালিডেশন চেক
+    if (!name || !phone || !district || !thana || !address) {
+        return alert("❌ দুঃখিত! অর্ডারের সবকটি ঘর সঠিকভাবে পূরণ করা বাধ্যতামূলক।");
+    }
+
+    let paymentMethod = "Cash on Delivery";
+    let deliveryCharge = 0;
+    let paymentStatus = "Cash on Delivery";
+    let trxId = "N/A";
+
+    if (payMethodChoice !== 'cod') {
+        paymentMethod = "Advance Payment";
+        deliveryCharge = payMethodChoice === 'advance_dhaka' ? 80 : 130;
+        
+        const userTrx = document.getElementById('ord-trxid').value.trim();
+        if (!userTrx) {
+            return alert("❌ অগ্রিম পেমেন্টের জন্য ট্রানজেকশন আইডি (TrxID) দেওয়া বাধ্যতামূলক!");
+        }
+        trxId = userTrx;
+        paymentStatus = "Paid (Pending Verification)";
+    }
+
+    // অর্ডার অবজেক্ট স্ট্রাকচার মেপিং
     const orderId = Date.now();
     const orderData = {
         orderId: orderId,
         productId: activeViewingProduct.id,
         productName: activeViewingProduct.name,
         price: activeViewingProduct.price,
+        deliveryCharge: deliveryCharge,
+        totalPrice: activeViewingProduct.price + deliveryCharge,
         image: activeViewingProduct.image,
-        vendorEmail: activeViewingProduct.vendorEmail, // সুনির্দিষ্ট ভেন্ডরের কাছেই অর্ডারটি ম্যাপ হচ্ছে
+        vendorEmail: activeViewingProduct.vendorEmail, 
         customerEmail: curUser.email,
-        shippingAddress: address.trim(),
-        customerPhone: phone.trim(),
+        customerName: name,
+        customerPhone: phone,
+        shippingAddress: `${district}, ${thana}, ${address}`,
+        addressDetails: { district, thana, details: address },
+        paymentMethod: paymentMethod,
+        paymentStatus: paymentStatus,
+        trxId: trxId,
         status: 'Pending', 
         date: new Date().toLocaleDateString()
     };
 
+    // লোকাল স্টোরেজে ডেটা স্টোরিং
     const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
     allOrders.push(orderData);
     localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
 
-    alert("🟢 আপনার অর্ডার রিকোয়েস্টটি সফলভাবে ভেন্ডরের কাছে পাঠানো হয়েছে!");
+    alert(`🟢 অভিনন্দন! আপনার অর্ডারটি সফল হয়েছে।\n📌 অর্ডার আইডি: ${orderId}\n💵 মেথড: ${paymentMethod}`);
     closeProduct();
+
+    // ভেন্ডর ড্যাশবোর্ড কিউ ইনস্ট্যান্ট আপডেট ও রিফ্রেশ মেকানিজম
+    if (typeof renderOrderRequests === "function" && curUser.role) {
+        renderOrderRequests(curUser.role);
+    }
 }
 
 function closeProduct() {
     const modal = document.getElementById('view-modal');
-    if (modal) modal.classList.add('d-none');
+    if (modal) {
+        modal.classList.add('d-none');
+        modal.innerHTML = ""; // রিসেট মেমোরি
+    }
 }
-
 // ==========================================================================
 // ১০. ভেন্ডর অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং ও প্রসেস
 // ==========================================================================
@@ -8379,14 +8483,25 @@ function renderOrderRequests(vType) {
     if (vType === "Drive Agent" && driveContainer) {
         driveContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
             <div style="background: #fdfaf2; border: 1px solid #fef3c7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
-                    <span>${order.productName}</span>
-                    <span>৳${order.price}</span>
+                <!-- ইমেজ এবং টেক্সট পাশাপাশি দেখানোর জন্য flex container -->
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <!-- আপনার ফাংশনের 'image' প্রোপার্টির সাথে মিল রেখে এখানে order.image দেওয়া হলো -->
+                    <img src="${order.image || 'https://via.placeholder.com/60'}" alt="${order.productName}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; background: #fff;">
+                    
+                    <!-- ইনফরমেশন সেকশন -->
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
+                            <span>${order.productName}</span>
+                            <span>৳${order.price}</span>
+                        </div>
+                        <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                            🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b><br>
+                            👤 গ্রাহক মেইল: ${order.customerEmail}
+                        </div>
+                    </div>
                 </div>
-                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                    🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b><br>
-                    👤 গ্রাহক মেইল: ${order.customerEmail}
-                </div>
+                
+                <!-- অ্যাকশন বাটনসমূহ -->
                 <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
                     <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Success</button>
                     <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Cancel</button>
@@ -8398,15 +8513,29 @@ function renderOrderRequests(vType) {
     if (vType === "Reselling Agent" && resellContainer) {
         resellContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
             <div style="background: #f0fdf4; border: 1px solid #dcfce7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
-                    <span>${order.productName}</span>
-                    <span>৳${order.price}</span>
+                <!-- ইমেজ এবং টেক্সট পাশাপাশি দেখানোর জন্য flex container -->
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <!-- আপনার ফাংশনের 'image' প্রোপার্টির সাথে মিল রেখে এখানে order.image দেওয়া হলো -->
+                    <img src="${order.image || 'https://via.placeholder.com/60'}" alt="${order.productName}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; background: #fff;">
+                    
+                    <!-- ইনফরমেশন সেকশন -->
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
+                            <span>${order.productName}</span>
+                            <span>৳${order.price} (মোট: ৳${order.totalPrice || order.price})</span>
+                        </div>
+                        <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                            👤 কাস্টমার নাম: <b>${order.customerName || 'N/A'}</b><br>
+                            📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
+                            📞 ফোন নম্বর: ${order.customerPhone}<br>
+                            💳 পেমেন্ট পদ্ধতি: <b>${order.paymentMethod}</b><br>
+                            🔑 TrxID: <span style="color:#db2777; font-weight:bold;">${order.trxId || 'N/A'}</span><br>
+                            👤 গ্রাহক মেইল: ${order.customerEmail}
+                        </div>
+                    </div>
                 </div>
-                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                    📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
-                    📞 ফোন নম্বর: ${order.customerPhone}<br>
-                    👤 গ্রাহক: ${order.customerEmail}
-                </div>
+                
+                <!-- অ্যাকশন বাটনসমূহ -->
                 <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
                     <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Deliver</button>
                     <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Reject</button>
@@ -8427,6 +8556,9 @@ function updateOrderStatus(orderId, newStatus) {
         if (order.orderId === orderId) {
             order.status = newStatus;
         }
+        if (order.orderId === orderId) {
+            order.status = newStatus;
+        }
         return order;
     });
     localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
@@ -8436,7 +8568,6 @@ function updateOrderStatus(orderId, newStatus) {
     
     alert(`অর্ডারটি সফলভাবে ${newStatus} করা হয়েছে!`);
 }
-
 // ==========================================================================
 // ১১. কাস্টমার পার্সোনাল হিস্টোরি ও রাউটিং মেকানিজম (রিকোয়েস্ট ৩ ফিক্সড)
 // ==========================================================================
