@@ -223,7 +223,6 @@
 .splash-logo-box:hover {
     transform: translateY(-5px); /* হোভার এফেক্ট */
 }
-
 /* লোগো ইমেজ - ডাইনামিক্যালি চেন্জ হবে */
 .splash-logo-box img {
     max-width: 100%;
@@ -8466,6 +8465,7 @@ function closeProduct() {
         modal.innerHTML = ""; // রিসেট মেমোরি
     }
 }
+
 // ==========================================================================
 // ১০. ভেন্ডর অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং ও প্রসেস
 // ==========================================================================
@@ -8483,25 +8483,14 @@ function renderOrderRequests(vType) {
     if (vType === "Drive Agent" && driveContainer) {
         driveContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
             <div style="background: #fdfaf2; border: 1px solid #fef3c7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <!-- ইমেজ এবং টেক্সট পাশাপাশি দেখানোর জন্য flex container -->
-                <div style="display: flex; gap: 10px; align-items: flex-start;">
-                    <!-- আপনার ফাংশনের 'image' প্রোপার্টির সাথে মিল রেখে এখানে order.image দেওয়া হলো -->
-                    <img src="${order.image || 'https://via.placeholder.com/60'}" alt="${order.productName}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; background: #fff;">
-                    
-                    <!-- ইনফরমেশন সেকশন -->
-                    <div style="flex: 1;">
-                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
-                            <span>${order.productName}</span>
-                            <span>৳${order.price}</span>
-                        </div>
-                        <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                            🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b><br>
-                            👤 গ্রাহক মেইল: ${order.customerEmail}
-                        </div>
-                    </div>
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
+                    <span>${order.productName}</span>
+                    <span>৳${order.price}</span>
                 </div>
-                
-                <!-- অ্যাকশন বাটনসমূহ -->
+                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                    🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b><br>
+                    👤 গ্রাহক মেইল: ${order.customerEmail}
+                </div>
                 <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
                     <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Success</button>
                     <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Cancel</button>
@@ -8513,29 +8502,18 @@ function renderOrderRequests(vType) {
     if (vType === "Reselling Agent" && resellContainer) {
         resellContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
             <div style="background: #f0fdf4; border: 1px solid #dcfce7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <!-- ইমেজ এবং টেক্সট পাশাপাশি দেখানোর জন্য flex container -->
-                <div style="display: flex; gap: 10px; align-items: flex-start;">
-                    <!-- আপনার ফাংশনের 'image' প্রোপার্টির সাথে মিল রেখে এখানে order.image দেওয়া হলো -->
-                    <img src="${order.image || 'https://via.placeholder.com/60'}" alt="${order.productName}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; background: #fff;">
-                    
-                    <!-- ইনফরমেশন সেকশন -->
-                    <div style="flex: 1;">
-                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
-                            <span>${order.productName}</span>
-                            <span>৳${order.price} (মোট: ৳${order.totalPrice || order.price})</span>
-                        </div>
-                        <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                            👤 কাস্টমার নাম: <b>${order.customerName || 'N/A'}</b><br>
-                            📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
-                            📞 ফোন নম্বর: ${order.customerPhone}<br>
-                            💳 পেমেন্ট পদ্ধতি: <b>${order.paymentMethod}</b><br>
-                            🔑 TrxID: <span style="color:#db2777; font-weight:bold;">${order.trxId || 'N/A'}</span><br>
-                            👤 গ্রাহক মেইল: ${order.customerEmail}
-                        </div>
-                    </div>
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
+                    <span>${order.productName}</span>
+                    <span>৳${order.price} (মোট: ৳${order.totalPrice || order.price})</span>
                 </div>
-                
-                <!-- অ্যাকশন বাটনসমূহ -->
+                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
+                    👤 কাস্টমার নাম: <b>${order.customerName || 'N/A'}</b><br>
+                    📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
+                    📞 ফোন নম্বর: ${order.customerPhone}<br>
+                    💳 পেমেন্ট পদ্ধতি: <b>${order.paymentMethod}</b><br>
+                    🔑 TrxID: <span style="color:#db2777; font-weight:bold;">${order.trxId || 'N/A'}</span><br>
+                    👤 গ্রাহক মেইল: ${order.customerEmail}
+                </div>
                 <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
                     <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Deliver</button>
                     <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Reject</button>
