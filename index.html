@@ -2778,9 +2778,8 @@ function toggleSignupPassword() {
 
 <nav class="premium-header" style="background: linear-gradient(135deg, #1b5e20 0%, #4caf50 100%); padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0px; box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 255, 255, 0.2); box-sizing: border-box;">
 
-    <div class="header-icon-wrapper" onclick="openNotifications()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; position: relative; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
-        <i class="fas fa-bell" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
-        <span style="position: absolute; top: 10px; right: 10px; width: 9px; height: 9px; background: #00ff88; border-radius: 3px; border: 2px solid #1b5e20; box-shadow: 0 0 8px rgba(0, 255, 136, 0.8);"></span>
+    <div class="header-icon-wrapper" onclick="toggleSidebar()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
+        <i class="fas fa-bars" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
     </div>
 
     <div class="brand-container" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; padding: 0 10px; box-sizing: border-box;">
@@ -2798,10 +2797,11 @@ function toggleSignupPassword() {
             একটি বিশ্বস্ত প্ল্যাটফর্ম
         </span>
     </div>
-
-    <div class="header-icon-wrapper" onclick="toggleSidebar()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
-        <i class="fas fa-bars" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
+    <div class="header-icon-wrapper" onclick="openNotifications()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; position: relative; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
+        <i class="fas fa-bell" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
+        <span style="position: absolute; top: 10px; right: 10px; width: 9px; height: 9px; background: #00ff88; border-radius: 3px; border: 2px solid #1b5e20; box-shadow: 0 0 8px rgba(0, 255, 136, 0.8);"></span>
     </div>
+
 </nav>
 <style>
 @keyframes pulse {
@@ -3795,155 +3795,165 @@ function togglePassword() {
         text-align: center;
         margin-top: 2px;
     }
+    /* ডিফল্ট অবস্থায় সাইডবার বামে লুকিয়ে থাকবে */
+.side-drawer {
+    position: fixed;
+    top: 0;
+    left: -280px; /* উইডথ অনুযায়ী স্ক্রিনের বামে থাকবে */
+    width: 280px;
+    height: 100vh;
+    z-index: 9999;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* একটিভ হলে বাম থেকে স্ক্রিনে চলে আসবে */
+.side-drawer.active {
+    left: 0;
+}
+
+/* ব্যাকগ্রাউন্ড ওভারলে স্টাইল */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* ওভারলে একটিভ হলে শো করবে */
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
 </style>
 <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <div id="right-sidebar" class="side-drawer">
     <div class="drawer-content" style="background: #fdfeff; height: 100vh; width: 280px; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; overflow: hidden;">
         
-        <div class="drawer-header" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 30px 20px; border-radius: 0px; position: relative; z-index: 10; flex-shrink: 0; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15);">
+        <div class="drawer-header" style="background: linear-gradient(135deg, #0e3e1e 0%, #3a8a27 50%, #56ab41 100%); padding: 30px 20px; border-radius: 0px; position: relative; z-index: 10; flex-shrink: 0; box-shadow: 0 10px 25px rgba(14, 62, 30, 0.3);">
             
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(255,255,255,0.08), transparent); pointer-events: none;"></div>
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(255,255,255,0.05), transparent); pointer-events: none;"></div>
 
             <div style="text-align: center; position: relative; z-index: 2;">
                 
                 <div style="position: relative; display: inline-block;">
                     <img src="YOUR_PROFILE_IMAGE_URL" id="user-dp" 
-                         style="width: 85px; height: 85px; border-radius: 12px; border: 3px solid #ffffff; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: 0.3s;">
-                    <div style="position: absolute; bottom: -4px; right: -4px; background: #2ecc71; width: 16px; height: 16px; border-radius: 4px; border: 2.5px solid #ff7700; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></div>
+                         style="width: 85px; height: 85px; border-radius: 12px; border: 3px solid #ffffff; object-fit: cover; box-shadow: 0 0 20px rgba(86, 171, 65, 0.6); transition: 0.3s;">
+                    <div style="position: absolute; bottom: -4px; right: -4px; background: #56ab41; width: 16px; height: 16px; border-radius: 4px; border: 2.5px solid #0e3e1e; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>
                 </div>
 
-                <h5 id="user-name" style="font-weight: 800; color: white; margin: 12px 0 10px; font-size: 19px; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.15);">Abu Sufian</h5>
+                <h5 id="user-name" style="font-weight: 800; color: white; margin: 12px 0 10px; font-size: 19px; letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Abu Sufian</h5>
                 
                 <div style="display: flex; justify-content: center;">
-                    <div style="background: #ffffff; padding: 6px 16px; border-radius: 6px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 4px solid #ff0000;">
-                        <i class="fas fa-crown" style="font-size: 11px; color: #ff8000;"></i> 
-                        <span id="user-rank" style="font-size: 11px; font-weight: 800; color: #ff0000; text-transform: uppercase; letter-spacing: 0.5px;">General Member</span>
+                    <div style="background: #ffffff; padding: 6px 16px; border-radius: 6px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #3a8a27;">
+                        <i class="fas fa-crown" style="font-size: 11px; color: #56ab41;"></i> 
+                        <span id="user-rank" style="font-size: 11px; font-weight: 800; color: #0e3e1e; text-transform: uppercase; letter-spacing: 0.5px;">General Member</span>
                     </div>
                 </div>
 
             </div>
 
-<div id="refer-section" class="ref-card-modern" 
-     style="display: none; margin-top: 20px; background: #ffffff; padding: 8px 16px; border-radius: 6px; align-items: center; justify-content: space-between; max-width: 250px; margin-left: auto; margin-right: auto; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 4px solid #ff0000; box-sizing: border-box;">
-    
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <i class="fas fa-gift" style="color: #ff8000; font-size: 11px;"></i>
-        <span style="font-size: 11px; color: #ff0000; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Refer Code:</span>
-        <b id="user-ref" style="color: #ff5e00; font-size: 14px; letter-spacing: 1px; font-weight: 900; text-shadow: 0 1px 1px rgba(0,0,0,0.05);">---</b>
-    </div>
-    
-    <i class="far fa-copy" onclick="copyRef()" 
-       style="color: #ff9900; cursor: pointer; font-size: 14px; transition: 0.3s; padding-left: 10px;" 
-       onmouseover="this.style.color='#ff0000'; this.style.transform='scale(1.15)'" 
-       onmouseout="this.style.color='#ff9900'; this.style.transform='scale(1)'"></i>
-</div>
+            <div id="refer-section" class="ref-card-modern" 
+                 style="display: none; margin-top: 20px; background: #ffffff; padding: 8px 16px; border-radius: 6px; align-items: center; justify-content: space-between; max-width: 250px; margin-left: auto; margin-right: auto; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #56ab41; box-sizing: border-box;">
+                
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-gift" style="color: #3a8a27; font-size: 11px;"></i>
+                    <span style="font-size: 11px; color: #0e3e1e; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Refer Code:</span>
+                    <b id="user-ref" style="color: #56ab41; font-size: 14px; letter-spacing: 1px; font-weight: 900; text-shadow: 0 1px 1px rgba(0,0,0,0.05);">---</b>
+                </div>
+                
+                <i class="far fa-copy" onclick="copyRef()" 
+                   style="color: #3a8a27; cursor: pointer; font-size: 14px; transition: 0.3s; padding-left: 10px;" 
+                   onmouseover="this.style.color='#56ab41'; this.style.transform='scale(1.15)'" 
+                   onmouseout="this.style.color='#3a8a27'; this.style.transform='scale(1)'"></i>
+            </div>
         </div>
         
+        <div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px; background: #ffffff;">
+            <div class="menu-group" style="display: flex; flex-direction: column; gap: 4px;">
 
+                <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-th-large" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Home</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
+                <button class="custom-menu-btn" onclick="openPage('p-fund'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-plus-circle" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Deposit</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
+                <button class="custom-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-arrow-alt-circle-down" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Withdraw</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
+                <button class="custom-menu-btn" onclick="openTransactionPage(); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-wallet" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Transactions</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
+                <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-sliders-h" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Settings</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
-<div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px; background: #ffffff;">
+                <button class="custom-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-user-check" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Admin Profile</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
+                <button class="custom-menu-btn" onclick="openPage('privacy'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-user-lock" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">Privacy Policy</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
-    <div class="menu-group" style="display: flex; flex-direction: column; gap: 2px;">
+                <button class="custom-menu-btn" onclick="openPage('p-about'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #222;">
+                    <span class="icon-box" style="background: linear-gradient(135deg, #0e3e1e 0%, #56ab41 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(14, 62, 30, 0.2); margin-right: 12px;">
+                        <i class="fas fa-id-card" style="font-size: 14px;"></i>
+                    </span> 
+                    <span style="flex: 1; text-align: left;">About Us</span>
+                    <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
+                </button>
 
-        <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-th-large" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Home</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openPage('p-fund'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-plus-circle" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Deposit</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openPage('p-withdraw'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-arrow-alt-circle-down" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Withdraw</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openTransactionPage(); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-wallet" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Transactions</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-sliders-h" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Settings</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-user-check" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Admin Profile</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openPage('privacy'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-user-lock" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">Privacy Policy</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-        <button class="custom-menu-btn" onclick="openPage('p-about'); toggleSidebar()" style="display: flex; align-items: center; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
-            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); margin-right: 12px;">
-                <i class="fas fa-id-card" style="font-size: 14px;"></i>
-            </span> 
-            <span style="flex: 1; text-align: left;">About Us</span>
-            <i class="fas fa-angle-right" style="font-size: 14px; color: #bbb;"></i>
-        </button>
-
-    </div>
-</div>
+            </div>
+        </div>
 
         <div style="padding: 12px 15px; background: #fdfeff; border-top: 1px solid #f1f5f9; flex-shrink: 0;">
-
-    <button class="custom-menu-btn logout-btn" onclick="logout()" 
-
-        style="background: #fff1f2; border: none; display: flex; align-items: center; padding: 8px 12px; border-radius: 10px; width: 100%; cursor: pointer; transition: 0.3s; margin-bottom: 0;">
-
-        
-
-        <span class="icon-box" style="background: #ffe4e6; color: #e11d48; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">
-
-            <i class="fas fa-sign-out-alt"></i>
-
-        </span> 
-
-        
-
-        <span style="color: #e11d48; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;">Log Out</span>
-
-    </button>
-
+            <button class="custom-menu-btn logout-btn" onclick="logout()" style="background: #fdf2f2; border: none; display: flex; align-items: center; padding: 8px 12px; border-radius: 10px; width: 100%; cursor: pointer; transition: 0.3s; margin-bottom: 0;">
+                <span class="icon-box" style="background: #fde2e2; color: #dc2626; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span> 
+                <span style="color: #dc2626; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;">Log Out</span>
+            </button>
         </div>
 
-
-
- 
-       
     </div>
 </div>
 <div id="p-admin-profile" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
@@ -9231,8 +9241,6 @@ function aTab(tabId) {
 
 
 
-
-
 function toggleSidebar() {
     const sidebar = document.getElementById('right-sidebar');
     const overlay = document.getElementById('sidebar-overlay');
@@ -9248,6 +9256,8 @@ function toggleSidebar() {
         if(curUser.img) document.getElementById('user-dp').src = curUser.img;
     }
 }
+
+
 let tempProfilePicBase64 = ""; // সাময়িকভাবে ছবি রাখার জন্য
 
 // ১. সেটিংস মোডাল খোলার সময় ডাটা লোড করা
@@ -13312,4 +13322,3 @@ function saveCaptchaData() {
 
 </body>
 </html>
-
