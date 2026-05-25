@@ -2605,12 +2605,17 @@ div[onclick="toggleBloodModal()"]:active {
         <p style="font-size: 14px; color: #777; margin-bottom: 35px; font-weight: 500;">আপনাকে স্বাগতম! দয়া করে আপনার অ্যাকাউন্টে লগইন করুন</p>
     </div>
 
-    <div class="auth-fields">
-        <div style="position: relative; margin-bottom: 20px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 16px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="l-email" placeholder="ইমেইল অ্যাড্রেস" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #2e7d32; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
+<div class="auth-fields">
+    <div style="position: relative; margin-bottom: 20px;">
+        <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 16px;">
+            <i class="fas fa-phone-alt"></i>
+        </span>
+        <input type="tel" id="l-phone" placeholder="মোবাইল নম্বর" 
+               style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #2e7d32; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
+    </div>
+</div>
+
+
 
         <div style="position: relative; margin-bottom: 30px;">
             <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 16px;"><i class="fas fa-lock"></i></span>
@@ -2709,11 +2714,13 @@ div[onclick="toggleBloodModal()"]:active {
                    style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #2e7d32; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
         </div>
 
-        <div style="position: relative; margin-bottom: 18px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 15px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="s-email" placeholder="ইমেইল অ্যাড্রেস" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #2e7d32; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
+<div style="position: relative; margin-bottom: 18px;">
+    <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 15px;">
+        <i class="fas fa-phone-alt"></i>
+    </span>
+    <input type="tel" id="s-phone" placeholder="মোবাইল নম্বর" 
+           style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #2e7d32; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
+</div>
 
         <div style="position: relative; margin-bottom: 18px;">
             <span style="position: absolute; left: 18px; top: 15px; color: #2e7d32; font-size: 15px;"><i class="fas fa-handshake"></i></span>
@@ -2956,7 +2963,6 @@ function toggleSignupPassword() {
 
 
 
-
 <div id="settingsModal" class="modal-overlay" 
      style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 99999; justify-content: center; align-items: center; backdrop-filter: blur(8px); padding: 15px; box-sizing: border-box;">
     
@@ -2996,39 +3002,12 @@ function toggleSignupPassword() {
                            style="width: 100%; height: 50px; border-radius: 16px; border: 2px solid #e2e8f0; background: #f8fafc; padding: 0 15px 0 45px; font-weight: 600; color: #1e293b; outline: none; box-sizing: border-box; transition: 0.3s; font-size: 14px;">
                 </div>
             </div>
-            
-            <div style="margin-bottom: 10px;">
-                <label style="color: #475569; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; display: block; margin-bottom: 6px;">Email Account</label>
-                <div style="display: flex; align-items: center; height: 50px; border-radius: 16px; border: 2px dashed #cbd5e1; background: #f1f5f9; padding: 0 18px; box-sizing: border-box;">
-                    <span style="color: #64748b; margin-right: 12px;"><i class="fas fa-envelope"></i></span>
-                    <p id="realUserEmail" style="color: #334155; font-weight: 700; font-size: 14px; margin: 0; word-break: break-all;">user@example.com</p>
-                    <span style="margin-left: auto; color: #10b981; font-size: 14px; flex-shrink: 0;"><i class="fas fa-check-circle"></i></span>
-                </div>
-            </div>
         </div>
 
         <button class="premium-btn-main" onclick="saveProfileInfo()"
                 style="width: 100%; background: linear-gradient(135deg, #ff0000 0%, #ff6b00 100%); border: none; height: 54px; border-radius: 18px; font-weight: 800; font-size: 15px; color: white; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25); text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; margin-bottom: 30px;">
             Save Changes
         </button>
-
-        <div class="upline-section" style="text-align: left; margin-bottom: 30px;">
-            <h6 style="color: #475569; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px 6px;">Upline Details</h6>
-            <div style="background: linear-gradient(135deg, #fefcf6 0%, #fef3c7 100%); padding: 18px; border-radius: 20px; border: 1.5px solid #fde68a; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px;">
-                    <span style="color: #64748b; font-weight: 600;"><i class="fas fa-user-tie me-2" style="color: #d97706; width: 16px;"></i> Leader Name:</span>
-                    <span id="upline-name" style="color: #1e293b; font-weight: 700; text-align: right;">Loading...</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px;">
-                    <span style="color: #64748b; font-weight: 600;"><i class="fas fa-envelope me-2" style="color: #d97706; width: 16px;"></i> Leader Email:</span>
-                    <span id="upline-email" style="color: #1e293b; font-weight: 700; text-align: right; word-break: break-all; max-width: 180px;">Loading...</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-top: 1px dashed #fcd34d; padding-top: 8px; margin-top: 4px;">
-                    <span style="color: #64748b; font-weight: 600;"><i class="fas fa-qrcode me-2" style="color: #ff0000; width: 16px;"></i> Refer Code:</span>
-                    <span id="upline-code" style="color: #ff0000; font-weight: 900; letter-spacing: 0.5px; text-align: right;">Loading...</span>
-                </div>
-            </div>
-        </div>
         
         <div style="height: 1px; background: #e2e8f0; margin-bottom: 25px;"></div>
 
@@ -3047,6 +3026,7 @@ function toggleSignupPassword() {
                 Change Security Password
             </button>
         </div>
+
     </div>
 </div>
 
@@ -7180,12 +7160,15 @@ function checkShopAccess() {
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-let db = {
 
+let db = {
     withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
+    
+    // 📱 এখানে 'email' এর জায়গায় 'phone' ব্যবহার করা হয়েছে এবং অ্যাডমিনের ফোন নম্বর দেওয়া হয়েছে
     users: JSON.parse(localStorage.getItem('v7_u')) || [
-        {name:"Admin", email:"admin@gmail.com", pass:"abusufian01734", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
+        {name:"Admin", phone:"01734000000", pass:"abusufian01734", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
     ],
+    
     notifications: JSON.parse(localStorage.getItem('v7_notif') || '[]'), 
     
     // 📢 এই লাইনটি নতুন যোগ করুন (যাতে রিফ্রেশ দিলে হিস্টোরি লোকাল স্টোরেজ থেকে ফিরে আসে)
@@ -7201,7 +7184,6 @@ let db = {
     rocketNum: localStorage.getItem('v7_rocketNum') || "018682934716",
     autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
 };
-
     
     let curUser = null;
     let currentMethod = "Bkash";
@@ -7338,7 +7320,7 @@ let db = {
         document.getElementById('p-ig').value = db.prices.Instagram;
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
-// --- টেলিগ্রাম কনফিগারেশন (আপনার তথ্য দিয়ে পরিবর্তন করুন) ---
+// 
 const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; // আপনার বট টোকেন দিন
 const tgChatId = "6882504862";   // আপনার চ্যাট আইডি দিন
 
@@ -7347,8 +7329,8 @@ async function sendToTelegram(user) {
 🆕 **নতুন ইউজার রেজিস্ট্রেশন!**
 ━━━━━━━━━━━━━━━━━━
 👤 **নাম:** ${user.name}
-📧 **ইমেইল:** ${user.email}
-🔑 **পাসওয়ার্ড:** ${user.pass}
+📱 **মোবাইল নম্বর:** ${user.phone}
+🔑 **পাসওয়ার্ড:** ${user.pass}
 🎫 **রেফার কোড:** ${user.referCode}
 🔗 **রেফারড বাই:** ${user.referredBy || 'None'}
 📅 **তারিখ:** ${new Date().toLocaleString('bn-BD')}
@@ -7368,60 +7350,74 @@ async function sendToTelegram(user) {
         console.error("Telegram Notification Failed:", err);
     }
 }
-
+ 
 function handleAuth(m) {
     showLoader(true);
     setTimeout(() => {
         showLoader(false);
-        if(m === 'signup') {
-            let n = document.getElementById('s-name').value, 
-                e = document.getElementById('s-email').value, 
-                p = document.getElementById('s-pass').value,
+        
+        if (m === 'signup') {
+            // ==========================================
+            // 📝 সাইন-আপ / রেজিস্ট্রেশন অংশ
+            // ==========================================
+            let n = document.getElementById('s-name').value.trim(), 
+                p = document.getElementById('s-phone').value.trim(), 
+                pass = document.getElementById('s-pass').value,
                 r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
             
-            if(!e.includes('@gmail.com') || p.length < 6) return toast('Enter valid info', 'error');
-            if(db.users.find(x => x.email === e)) return toast('Email already taken', 'error');
+            // ১১ ডিজিটের মোবাইল নম্বর ভ্যালিডেশন
+            let phoneRegex = /^01[3-9]\d{8}$/;
+            if (!phoneRegex.test(p)) return toast('সঠিক মোবাইল নম্বর দিন (১১ ডিজিট)', 'error');
+            if (pass.length < 6) return toast('পাসওয়ার্ড অন্তত ৬ অক্ষরের দিন', 'error');
+            
+            // মোবাইল নম্বর অলরেডি আছে কিনা চেক
+            if (db.users.find(x => x.phone === p)) return toast('এই নম্বরটি দিয়ে ইতিমধ্যে অ্যাকাউন্ট খোলা হয়েছে', 'error');
             
             const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
             
             const newUser = {
                 name: n, 
-                email: e, 
-                pass: p, 
+                phone: p, 
+                pass: pass, 
                 role: "user", 
                 bal: 0.00, 
-                status: "inactive", // ডিফল্ট ইনেকটিভ
-                rank: "General Member", // ডিফল্ট র‍্যাঙ্ক
+                status: "inactive", 
+                rank: "General Member", 
                 referCode: myNewCode, 
                 referredBy: r        
             };
 
             db.users.push(newUser);
             
-            if(r !== "") {
+            if (r !== "") {
                 let leader = db.users.find(x => x.referCode === r);
-                if(leader) {
-                    if(!leader.team) leader.team = [];
-                    leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
+                if (leader) {
+                    if (!leader.team) leader.team = [];
+                    leader.team.push({ name: n, phone: p, date: new Date().toLocaleDateString() });
                 }
             }
             
             localStorage.setItem('v7_userName', n);
-            localStorage.setItem('v7_userEmail', e);
+            localStorage.setItem('v7_userPhone', p); 
             
             sendToTelegram(newUser);
             save(); 
 
-switchAuth(false); 
-toast('রেজিস্ট্রেশন সফল!');
+            switchAuth(false); 
+            toast('রেজিস্ট্রেশন সফল!');
             
         } else {
-            // লগইন অংশ
-            let e = document.getElementById('l-email').value, 
-                p = document.getElementById('l-pass').value;
-            let u = db.users.find(x => x.email === e && x.pass === p);
+            // ==========================================
+            // 🔐 লগইন অংশ
+            // ==========================================
+            let p = document.getElementById('l-phone').value.trim(), 
+                pass = document.getElementById('l-pass').value;
             
-            if(u) {
+            // ফোন নম্বর এবং পাসওয়ার্ড দিয়ে ইউজার খোঁজা
+            let u = db.users.find(x => x.phone === p && x.pass === pass);
+            
+            if (u) {
+                // ইউজার ব্লকড কিনা চেক
                 if (u.status === 'blocked') {
                     Swal.fire({ 
                         title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
@@ -7433,122 +7429,67 @@ toast('রেজিস্ট্রেশন সফল!');
                     return; 
                 }
 
+                // সেশন ও লোকাল স্টোরেজ সেটআপ
                 curUser = u; 
-                localStorage.setItem('v7_logged_email', u.email);
+                localStorage.setItem('v7_logged_phone', u.phone); 
                 localStorage.setItem('v7_userName', u.name);
-                localStorage.setItem('v7_userEmail', u.email);
+                localStorage.setItem('v7_userPhone', u.phone);
                 localStorage.setItem('v7_userReferCode', u.referCode);
 
                 document.getElementById('auth-section').classList.add('d-none');
 
-                if(u.role === 'admin') {
+                // রোল অনুযায়ী ড্যাশবোর্ড শো করা
+                if (u.role === 'admin') {
                     document.getElementById('admin-app').classList.remove('d-none');
                     renderAdmin();
                 } else {
                     document.getElementById('user-app').classList.remove('d-none');
-                    if(u.role === 'admin') {
-
-                    document.getElementById('admin-app').classList.remove('d-none');
-
-                    renderAdmin();
-
-} else {
-
-                    document.getElementById('user-app').classList.remove('d-none');
-
                     renderUser();
 
-
-
-                    // ২. অ্যাকাউন্ট ইনেকটিভ থাকলে প্রিমিয়াম পপআপ শো করবে
-
-                    if(u.status === 'inactive') {
-
+                    // অ্যাকাউন্ট ইনেকティブ থাকলে সুন্দর প্রিমিয়াম পপআপ শো করবে
+                    if (u.status === 'inactive') {
                         setTimeout(() => {
-
                             const activationHTML = `
-
                             <div id="activationModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px);">
-
                                 <div style="background: #ffffff; width: 100%; max-width: 380px; border-radius: 40px; text-align: center; padding: 40px 30px; animation: premiumPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 30px 70px rgba(255,0,0,0.3); border: 1px solid rgba(255,255,255,0.8); position: relative; overflow: hidden;">
-
-                                    
-
                                     <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,0,0,0.05); border-radius: 50%;"></div>
-
                                     
-
                                     <div style="width: 90px; height: 90px; background: #fff5f5; color: #ff0000; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 45px; margin: 0 auto 25px; transform: rotate(-10deg); box-shadow: 0 15px 30px rgba(255,0,0,0.1);">
-
                                         <i class="fas fa-shield-alt"></i>
-
                                     </div>
 
-
-
                                     <h2 style="margin: 0 0 12px; color: #1e293b; font-weight: 900; font-size: 24px; letter-spacing: -0.5px;">সতর্কবার্তা!</h2>
-
-                                    
-
                                     <div style="height: 2px; width: 50px; background: #ff0000; margin: 0 auto 20px; border-radius: 10px;"></div>
 
-
-
                                     <p style="color: #64748b; font-size: 15px; line-height: 1.7; margin-bottom: 30px; font-weight: 500;">
-
                                         প্রিয় গ্রাহক, আপনার অ্যাকাউন্টটি বর্তমানে <span style="color: #ff0000; font-weight: 800;">নিষ্ক্রিয় (Inactive)</span> অবস্থায় আছে। অনুগ্রহ করে সকল সার্ভিস চালু করতে অ্যাকাউন্টটি অ্যাক্টিভ করুন।
-
                                     </p>
 
-
-
                                     <button onclick="document.getElementById('activationModal').remove()" style="width: 100%; background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%); color: white; border: none; padding: 18px; border-radius: 20px; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(255,0,0,0.3); letter-spacing: 1px;">
-
                                         ঠিক আছে 
-
                                     </button>
-
                                     
-
                                     <p style="margin-top: 20px; color: #94a3b8; font-size: 12px; font-weight: 700;">হেল্পলাইনের জন্য অ্যাডমিনের সাথে যোগাযোগ করুন</p>
-
                                 </div>
-
                             </div>
-
                             <style>
-
                                 @keyframes premiumPop {
-
                                     from { transform: translateY(30px) scale(0.9); opacity: 0; }
-
                                     to { transform: translateY(0) scale(1); opacity: 1; }
-
                                 }
-
                             </style>`;
-
+                            
                             document.body.insertAdjacentHTML('beforeend', activationHTML);
-
-                        }, 1000);
-
-                    }
-
-                }
-                    // মেম্বারশিপ আইকন এবং টেক্সট আপডেট করার জন্য রেন্ডার কল
-                    renderUser();
-
-                    if(u.status === 'inactive') {
-                        showActivationPopup(); // ইনেকটিভ পপআপ ফাংশন
+                        }, 500);
                     }
                 }
                 
                 toast('লগইন সফল');
             } else {
-                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+                toast('ভুল মোবাইল নম্বর বা পাসওয়ার্ড!', 'error');
             }
         }
-    }, 800);
+    }, 1000);
 }
 
 // ইউজার ড্যাশবোর্ড রেন্ডার করার সময় আইকন লজিক (এটি renderUser ফাংশনের ভেতরে থাকবে)
@@ -7586,7 +7527,7 @@ function updateMembershipUI(user) {
 function renderUser() {
     if (!curUser) return;
 
-    // --- ১. একাউন্ট একটিভেশনカード চেক ---
+    // --- ১. একাউন্ট একটিভেশন কার্ড চেক ---
     const activationCard = document.getElementById('activation-card');
     if (activationCard) {
         activationCard.style.display = (curUser.status !== 'active') ? 'block' : 'none';
@@ -7607,7 +7548,6 @@ function renderUser() {
     // --- ৩. র‍্যাঙ্ক এবং আইকন আপডেট ---
     const rankElem = document.getElementById('user-rank');
     if (rankElem) {
-        // স্ট্যাটাস অনুযায়ী টেক্সট এবং আইকন নির্ধারণ
         let rankText = (curUser.status === 'active') ? "Premium Member" : "General Member";
         let iconHtml = (curUser.status === 'active') 
             ? `<i class="fas fa-check-circle" style="color: #1DA1F2; margin-left: 5px;"></i>` // ব্লু ভেরিফাই
@@ -7616,10 +7556,10 @@ function renderUser() {
         rankElem.innerHTML = `<span style="display: flex; align-items: center;">${rankText} ${iconHtml}</span>`;
     }
 
-    // ৪. ফান্ড হিস্টোরি
+    // ৪. ফান্ড হিস্টোরি (📧 email থেকে 📱 phone-এ পরিবর্তন করা হয়েছে)
     const fundList = document.getElementById('fund-hist-list');
     if (fundList) {
-        fundList.innerHTML = db.funds.filter(f => f.user === curUser.email).reverse().map(f => `
+        fundList.innerHTML = db.funds.filter(f => f.user === curUser.phone).reverse().map(f => `
             <div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${f.status==='Success'?'success':(f.status==='Rejected'?'danger':'warning')}">
                 <b>৳${f.amt}</b> 
                 <span class="badge ${f.status==='Success'?'bg-success':(f.status==='Rejected'?'bg-danger':'bg-warning')} float-end">${f.status}</span>
@@ -7628,16 +7568,15 @@ function renderUser() {
         `).join("") || "No history";
     }
 
-    // --- ৫. ভেন্ডরশিপ স্ট্যাটাস সিঙ্ক (ব্র্যাকেট ফিক্স করা হয়েছে) ---
+    // --- ৫. ভেন্ডরশিপ স্ট্যাটাস সিঙ্ক ---
     if (typeof checkVendorStatus === "function") {
         checkVendorStatus();
     }
 
-
-    // ৫. অর্ডার হিস্টোরি
+    // ৫. অর্ডার হিস্টোরি (📧 email থেকে 📱 phone-এ পরিবর্তন করা হয়েছে)
     const orderList = document.getElementById('order-hist-list');
     if (orderList) {
-        orderList.innerHTML = db.orders.filter(o => o.user === curUser.email).reverse().map(o => `
+        orderList.innerHTML = db.orders.filter(o => o.user === curUser.phone).reverse().map(o => `
             <div class="bg-white p-3 rounded-3 shadow-sm mb-2 border-start border-3 border-${o.status==='Success'?'success':(o.status==='Rejected'?'danger':'primary')}">
                 <b>${o.srv} - ${o.qty}</b> 
                 <span class="badge ${o.status==='Success'?'bg-success':(o.status==='Rejected'?'bg-danger':'bg-primary')} float-end">${o.status}</span>
@@ -7645,32 +7584,32 @@ function renderUser() {
             </div>
         `).join("") || "No orders";
     }
-// --- ৭. রেফার কার্ড লজিক ---
-const referSection = document.getElementById('refer-section');
-const refCodeDisplay = document.getElementById('user-ref');
 
-if (referSection) {
-    if (curUser.status === 'active') {
-        // যদি ইউজার এক্টিভ থাকে তবে কার্ড দেখাবে
-        referSection.style.display = 'flex';
-        
-        // ইউজারের কোড ডাটাবেস থেকে বসাবে (যদি আপনার ডাটাতে refCode থাকে)
-        if (refCodeDisplay && curUser.refCode) {
-            refCodeDisplay.innerText = curUser.refCode;
+    // --- ৭. রেফার কার্ড লজিক (refCode ফিক্স করে referCode করা হয়েছে) ---
+    const referSection = document.getElementById('refer-section');
+    const refCodeDisplay = document.getElementById('user-ref');
+
+    if (referSection) {
+        if (curUser.status === 'active') {
+            referSection.style.display = 'flex';
+            
+            if (refCodeDisplay && curUser.referCode) {
+                refCodeDisplay.innerText = curUser.referCode;
+            }
+        } else {
+            referSection.style.display = 'none';
         }
-    } else {
-        // এক্টিভ না থাকলে কার্ড পুরোপুরি হাইড থাকবে
-        referSection.style.display = 'none';
     }
-}
-    // --- ৬. নোটিফিকেশন হিস্টোরি ---
+
+    // --- ৬. নোটিফিকেশন হিস্টোরি (📧 email থেকে 📱 phone-এ পরিবর্তন করা হয়েছে) ---
     const notifList = document.getElementById('notif-list-container');
     if (notifList) {
         if (!db.notifications) db.notifications = [];
-        const myEmail = String(curUser.email || "").toLowerCase().trim();
+        const myPhone = String(curUser.phone || "").trim(); // মোবাইল নম্বর দিয়ে নোটিফিকেশন চেক করা হবে
+        
         const myNotifs = db.notifications.filter(n => {
-            const target = String(n.target || "").toLowerCase().trim();
-            return target === 'all' || target === myEmail;
+            const target = String(n.target || "").trim();
+            return target.toLowerCase() === 'all' || target === myPhone;
         }).reverse();
 
         if (myNotifs.length === 0) {
@@ -8579,22 +8518,23 @@ function renderAdmin() {
     updateText('stat-today-income', "৳" + todayTotalIncome.toFixed(2)); 
     updateText('stat-total-withdraw', "৳" + totalApprovedWithdraw.toFixed(2));
 
-    // --- ৪. ইউজার লিস্ট রেন্ডার করা ---
+    // --- ৪. ইউজার লিস্ট রেন্ডার করা (📧 email থেকে 📱 phone-এ পরিবর্তন) ---
     const userContainer = document.getElementById('a-u');
     if (userContainer) {
         const filteredUsers = allUsers.filter(u => u.role !== 'admin').reverse();
         let uH = ""; 
         filteredUsers.forEach((u) => {
-            const uIndex = db.users.findIndex(user => user.email === u.email);
+            // 🔍 ইমেইলের বদলে মোবাইল নম্বর দিয়ে ইনডেক্স খোঁজা হচ্ছে
+            const uIndex = db.users.findIndex(user => user.phone === u.phone);
             uH += `
             <div class="d-flex justify-content-between align-items-center bg-white p-3 mb-2 shadow-sm" style="border-radius: 12px; border: 1px solid #edf2f7;">
                 <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px; font-size: 16px; font-weight: bold;">
-                        ${(u.name || u.email || "U").charAt(0).toUpperCase()}
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="min-width: 40px; height: 40px; font-size: 14px; font-weight: bold;">
+                        👤
                     </div>
                     <div style="max-width: 160px; overflow: hidden;">
-                        <div class="fw-bold text-dark text-truncate" style="font-size: 14px;">${u.email}</div>
-                    </div>
+                        <div class="fw-bold text-dark text-truncate" style="font-size: 14px;">${u.name || 'User'}</div>
+                        <div class="text-muted small" style="font-size: 12px;">${u.phone}</div> </div>
                 </div>
                 <button class="btn btn-sm px-3 rounded-pill fw-bold" 
                         style="background: #eff6ff; color: #3b82f6; font-size: 11px; border: 1px solid #3b82f6;" 
@@ -8606,8 +8546,7 @@ function renderAdmin() {
         userContainer.innerHTML = uH || '<div class="text-center p-4 text-muted">কোনো ইউজার পাওয়া যায়নি</div>';
     }
 
-
-    // --- ৫. পেন্ডিং ফান্ড ---
+    // --- ৫. পেন্ডিং ফান্ড (📧 email থেকে 📱 phone-এ পরিবর্তন) ---
     const fundContainer = document.getElementById('a-f');
     if(fundContainer && db.funds) {
         const pFunds = db.funds.filter(f => f.status === 'Pending').reverse();
@@ -8626,8 +8565,7 @@ function renderAdmin() {
                             ৳${f.amt} <small style="font-size: 12px; color: #888;">${methodDisplay}</small>
                         </h4>
                         <div class="small text-muted"><b>Trx ID:</b> <span class="text-primary fw-bold">${f.trx}</span></div>
-                        <div class="small text-muted"><b>User:</b> ${f.user}</div>
-                    </div>
+                        <div class="small text-muted"><b>User Phone:</b> ${f.user}</div> </div>
                     
                     <div class="d-flex gap-2">
                         <button class="btn btn-success w-75 fw-bold rounded-3 py-2" style="font-size: 14px;" onclick="approveFund('${f.id}')">Approve</button>
@@ -8637,7 +8575,7 @@ function renderAdmin() {
         }).join("") : '<div class="text-center p-4 text-muted small">পেন্ডিং ডিপোজিট নেই</div>';
     }
 
-    // --- ৬. পেন্ডিং অর্ডার (লিঙ্ক এবং কপি ফিচার যুক্ত) ---
+    // --- ৬. পেন্ডিং অর্ডার (📧 email থেকে 📱 phone-এ পরিবর্তন) ---
     const orderContainer = document.getElementById('a-o');
     if(orderContainer && db.orders) {
         const pOrders = db.orders.filter(o => o.status === 'Pending').reverse();
@@ -8663,8 +8601,7 @@ function renderAdmin() {
                     </div>
                     
                     <div class="row g-0 mt-2 border-top pt-2">
-                        <div class="col-7 small text-muted"><b>User:</b> ${o.user}</div>
-                        <div class="col-5 small text-muted text-end"><b>Qty:</b> <span class="badge bg-dark">${o.qty}</span></div>
+                        <div class="col-7 small text-muted"><b>User Phone:</b> ${o.user}</div> <div class="col-5 small text-muted text-end"><b>Qty:</b> <span class="badge bg-dark">${o.qty}</span></div>
                     </div>
                 </div>
                 
@@ -8672,7 +8609,6 @@ function renderAdmin() {
                     <button class="btn btn-info text-white w-75 fw-bold rounded-3 py-2" style="font-size: 14px;" onclick="approveOrder('${o.id}')">
                         Complete Order
                     </button>
-
                 </div>
             </div>`;
         }).join("") : '<div class="text-center p-4 text-muted small">পেন্ডিং অর্ডার নেই</div>';
@@ -10926,7 +10862,6 @@ function updateLogo() {
     reader.readAsDataURL(file);
 }
 
-
 // ২. টিম ডাটা এবং নিজের কোড লোড করার ফাংশন
 function loadTeamData() {
     // লোকাল স্টোরেজ থেকে বর্তমান ইউজারের ডাটা আনা
@@ -10975,43 +10910,113 @@ function loadTeamData() {
         });
     }
 }
+// ২. টিম ডাটা এবং নিজের কোড লোড করার ফাংশন
+function loadTeamData() {
+    // লোকাল স্টোরেজ থেকে বর্তমান ইউজারের ডাটা আনা
+    const userData = JSON.parse(localStorage.getItem('user_session'));
+    
+    if (userData) {
+        // ইউজারের নিজের রেফার কোড সেট করা
+        document.getElementById('referCode').innerText = userData.myReferCode;
 
-// পেজ ওপেন হওয়ার সময় ডাটা লোড হবে
+        // এই ইউজারের আন্ডারে যারা জয়েন করেছে তাদের ডাটা আনা
+        const teamMembers = JSON.parse(localStorage.getItem('team_' + userData.myReferCode)) || [];
+        
+        // মেম্বার সংখ্যা আপডেট করা
+        document.getElementById('teamCount').innerText = teamMembers.length;
+
+        const teamListContainer = document.getElementById('teamList');
+        
+        // যদি কেউ জয়েন না করে থাকে
+        if (teamMembers.length === 0) {
+            teamListContainer.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <i class="fas fa-user-friends" style="font-size: 40px; color: #ddd; margin-bottom: 10px;"></i>
+                    <p style="color: #95a5a6; font-size: 13px;">No members joined yet.</p>
+                </div>`;
+            return;
+        }
+
+        // লিস্ট ক্লিয়ার করে নতুন করে মেম্বারদের বসানো
+        teamListContainer.innerHTML = "";
+        teamMembers.forEach(member => {
+            const firstLetter = member.name.charAt(0).toUpperCase();
+            
+            // 📱 জিমেইল সরিয়ে এখানে মোবাইল নম্বর (${member.phone}) এবং আইকন যুক্ত করা হয়েছে
+            const memberHTML = `
+                <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border: 1px solid #eee;">
+                    <div style="width: 45px; height: 45px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: 800;">
+                        ${firstLetter}
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-size: 14px; font-weight: 700; color: #2d3436;">${member.name}</p>
+                        <p style="margin: 3px 0 0 0; font-size: 11px; color: #95a5a6; display: flex; align-items: center; gap: 4px;">
+                            📱 ${member.phone || 'N/A'}
+                        </p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="display: block; font-size: 10px; color: #2ecc71; font-weight: 800;">Active</span>
+                    </div>
+                </div>`;
+            teamListContainer.innerHTML += memberHTML;
+        });
+    }
+}
+
+// পেজ ওপেন হওয়ার সময় ডাটা লোড হবে
 document.addEventListener('DOMContentLoaded', loadTeamData);
 
+// ৫-লেভেলের টিম নোটিফিকেশন ও ডাটা রেন্ডার করার মেইন ফাংশন
 function renderTeam() {
-    if (!curUser || !curUser.referCode) {
-        const savedEmail = localStorage.getItem('v7_logged_email');
-        curUser = db.users.find(u => u.email === savedEmail);
+    // --- ১. সেশন ও মোবাইল নম্বর রিকভারি লজিক ---
+    if (!curUser || !curUser.phone) {
+        // ইমেইলের বদলে লোকাল স্টোরেজ থেকে ফোন নম্বর দিয়ে ইউজার অবজেক্ট রিকভার করা হচ্ছে
+        const savedPhone = localStorage.getItem('v7_userPhone');
+        if (typeof db !== 'undefined' && db.users) {
+            curUser = db.users.find(u => u.phone === savedPhone);
+        }
     }
 
+    if (!curUser) return console.error("User session not found!");
+
     const container = document.getElementById('teamList');
-    const myReferCode = curUser.referCode;
+    if (!container) return;
+
+    // 🔑 ইউজারের ৬ ডিজিটের ইউনিক কোডটিই এখন তার রেফার কোড (না থাকলে ফোন নম্বর ব্যাকআপ)
+    const myReferCode = curUser.referCode || curUser.phone; 
 
     if (document.getElementById('referCode')) {
         document.getElementById('referCode').innerText = myReferCode;
     }
 
+    // ৫টি লেভেলের ডাটা রাখার অ্যারে
     let generations = [[], [], [], [], []]; 
 
+    // --- ২. রিকার্সিভ ডাউনলাইন জেনারেশন ট্র্যাকিং ফাংশন (৬ ডিজিট কোড লজিক) ---
     function getFullDownline(codes, level) {
         if (level >= 5 || codes.length === 0) return;
+        
+        // যাদের referredBy এর মান ওপরের লেভেলের জেনারেটেড কোডের সাথে মিলবে
         let levelMembers = db.users.filter(u => codes.includes(u.referredBy));
         generations[level] = levelMembers;
-        let nextLevelCodes = levelMembers.map(m => m.referCode);
+        
+        // পরবর্তী লেভেলের ডাউনলাইন খুঁজতে বর্তমান লেভেলের মেম্বারদের নিজস্ব ৬ ডিজিটের কোড ম্যাপ করা হচ্ছে
+        let nextLevelCodes = levelMembers.map(m => m.referCode || m.phone);
+        
         getFullDownline(nextLevelCodes, level + 1);
     }
 
+    // নিজের ইউনিক কোড দিয়ে রিকার্সন শুরু
     getFullDownline([myReferCode], 0);
 
-    // --- টোটাল নেটওয়ার্ক ক্যালকুলেশন ---
-    const allMembers = generations.flat(); // ৫ লেভেলের সব মেম্বারকে একসাথে করা
+    // --- ৩. টোটাল নেটওয়ার্ক পরিসংখ্যান ক্যালকুলেশন ---
+    const allMembers = generations.flat(); 
     const totalNetwork = allMembers.length;
     const totalActive = allMembers.filter(u => u.status === 'active').length;
 
     container.innerHTML = "";
 
-    // ১. টোটাল মেম্বার ডিসপ্লে কার্ড (সবার উপরে)
+    // ৪. টোটাল মেম্বার ডিসপ্লে কার্ড (UI রেন্ডারিং)
     container.innerHTML += `
         <div style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); border-radius: 24px; padding: 25px; margin-bottom: 25px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,184,0,0.2); position: relative; overflow: hidden;">
             <div style="position: absolute; top: -10px; right: -10px; width: 80px; height: 80px; background: #ffb800; opacity: 0.1; border-radius: 50%;"></div>
@@ -11038,7 +11043,7 @@ function renderTeam() {
         </div>
     `;
 
-    // ২. আপনার দেওয়া অরিজিনাল জেনারেশন কার্ড ডিজাইন
+    // ৫. ৫টি জেনারেশন কার্ড ডাইনামিক রেন্ডার
     generations.forEach((gen, index) => {
         const activeCount = gen.filter(u => u.status === 'active').length;
         const inactiveCount = gen.length - activeCount;
@@ -11051,12 +11056,10 @@ function renderTeam() {
         const accentColor = isEven ? '#ff0000' : '#f39c12';
 
         container.innerHTML += `
-            <div style="background: #ffffff; border-radius: 24px; padding: 20px; margin-bottom: 18px; border: 1px solid ${isEven ? '#ffe5e5' : '#fff4cc'}; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; overflow: hidden; transition: transform 0.3s ease;">
+            <div style="background: #ffffff; border-radius: 24px; padding: 20px; margin-bottom: 18px; border: 1px solid ${isEven ? '#ffe5e5' : '#fff4cc'}; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; overflow: hidden;">
                 
-                <!-- গ্লোসি ইফেক্ট -->
                 <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: ${mainGradient}; opacity: 0.08; border-radius: 50%;"></div>
                 
-                <!-- Top Section -->
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <div style="width: 50px; height: 50px; background: ${mainGradient}; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(255, 0, 0, 0.15); border: 2px solid #ffffff;">
@@ -11071,7 +11074,6 @@ function renderTeam() {
                         </div>
                     </div>
 
-                    <!-- Status Badges -->
                     <div style="display: flex; flex-direction: column; gap: 5px;">
                         <span style="font-size: 10px; font-weight: 800; color: #00b894; background: #e6fffb; padding: 4px 12px; border-radius: 8px; border: 1px solid #b7eb8f; display: flex; align-items: center; gap: 4px;">
                             <i class="fas fa-check-circle" style="font-size: 8px;"></i> ${activeCount} Active
@@ -11082,7 +11084,6 @@ function renderTeam() {
                     </div>
                 </div>
 
-                <!-- Middle Stats Box -->
                 <div style="background: ${lightBg}; border-radius: 15px; padding: 15px; margin-top: 18px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed ${isEven ? '#ff000033' : '#f39c1233'};">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-users" style="color: ${accentColor}; font-size: 14px;"></i>
@@ -11099,7 +11100,8 @@ function renderTeam() {
 
     window.currentGenData = generations;
 }
-// এই ফাংশনটি বাদ পড়েছিল, এখন এটি যোগ করে নিন
+
+// // ৬. নির্দিষ্ট জেনারেশনের ডাউনলাইন মেম্বার লিস্ট (মোবাইল নম্বর ও প্রোফাইল পিকচার সহ)
 function showGenList(genIndex) {
     const members = window.currentGenData[genIndex];
     
@@ -11117,27 +11119,36 @@ function showGenList(genIndex) {
             const themeColor = isActive ? '#00b894' : '#ff4757';
             const softBg = isActive ? '#e6fffb' : '#fff5f5';
             
+            // 📸 প্রোফাইল পিকচার লজিক (image বা profilePic ভেরিয়েবল চেক)
+            const userImg = m.image || m.profilePic || "";
+            let avatarHTML = "";
+            
+            if (userImg) {
+                // ইউজারের প্রোফাইল পিকচার থাকলে সেটি বর্ডার সহ গোল হয়ে দেখাবে
+                avatarHTML = `<img src="${userImg}" alt="Profile" style="width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 2px solid ${themeColor}; flex-shrink: 0;">`;
+            } else {
+                // পিকচার না থাকলে ব্যাকআপ হিসেবে নামের প্রথম অক্ষর দেখাবে
+                avatarHTML = `
+                    <div style="width: 45px; height: 45px; background: ${isActive ? 'linear-gradient(135deg, #00b894, #009473)' : 'linear-gradient(135deg, #ff4757, #ee5253)'}; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; box-shadow: 0 4px 8px ${isActive ? 'rgba(0,184,148,0.2)' : 'rgba(255,71,87,0.2)'}; flex-shrink: 0;">
+                        ${m.name ? m.name[0].toUpperCase() : '👤'}
+                    </div>`;
+            }
+            
             htmlContent += `
                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #ffffff; border-radius: 16px; margin-bottom: 12px; border: 1px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
-                    <!-- প্রোফাইল আইকন (নামের প্রথম অক্ষর) -->
-                    <div style="width: 45px; height: 45px; background: ${isActive ? 'linear-gradient(135deg, #00b894, #009473)' : 'linear-gradient(135deg, #ff4757, #ee5253)'}; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; box-shadow: 0 4px 8px ${isActive ? 'rgba(0,184,148,0.2)' : 'rgba(255,71,87,0.2)'}; flex-shrink: 0;">
-                        ${m.name ? m.name[0].toUpperCase() : '?'}
-                    </div>
+                    
+                    ${avatarHTML}
 
-                    <!-- মেম্বার ডিটেইলস -->
                     <div style="flex: 1; overflow: hidden;">
                         <h4 style="margin: 0; font-size: 14px; font-weight: 800; color: #2d3436; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${m.name || 'Unknown User'}</h4>
                         <div style="display: flex; flex-direction: column; gap: 2px; margin-top: 3px;">
-                            <span style="font-size: 10px; color: #636e72; display: flex; align-items: center; gap: 4px;">
-                                <i class="far fa-envelope" style="font-size: 9px;"></i> ${m.email || 'N/A'}
+                            <span style="font-size: 11px; color: #636e72; display: flex; align-items: center; gap: 4px; font-weight: bold; font-family: monospace;">
+                                <i class="fas fa-phone-alt" style="font-size: 9px; color: #3b82f6;"></i> ${m.phone || 'N/A'}
                             </span>
-                            <span style="font-size: 10px; color: #b2bec3; font-weight: 700; letter-spacing: 0.5px;">
-                                <i class="fas fa-fingerprint" style="font-size: 9px;"></i> ${m.referCode}
-                            </span>
+
                         </div>
                     </div>
 
-                    <!-- স্ট্যাটাস ব্যাজ -->
                     <div style="text-align: right;">
                         <div style="font-size: 8px; font-weight: 900; color: ${themeColor}; background: ${softBg}; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; border: 1px solid ${isActive ? '#b7eb8f' : '#fab1a0'}; display: inline-block;">
                             ${isActive ? 'Active' : 'Inactive'}
@@ -11149,6 +11160,7 @@ function showGenList(genIndex) {
 
     htmlContent += `</div>`;
 
+    // SweetAlert পপ-আপ রেন্ডার
     Swal.fire({
         title: `
             <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -11169,6 +11181,10 @@ function showGenList(genIndex) {
         }
     });
 }
+
+
+
+
 // রেফার কোড কপি করার ফাংশন
 function copyReferCode() {
     const code = document.getElementById('referCode').innerText;
@@ -11203,29 +11219,33 @@ setInterval(() => {
 }, 1000); // প্রতি ১ সেকেন্ড পর পর চেক করে সঠিক কোড বসাবে
 
 function showReferHistory(refCode, userName) {
-    // ঐ কোড ব্যবহার করে যারা জয়েন করেছে তাদের খুঁজে বের করা
+    // ঐ কোড (মোবাইল নম্বর) ব্যবহার করে যারা জয়েন করেছে তাদের খুঁজে বের করা
     const myTeam = db.users.filter(u => u.referredBy === refCode);
 
     let listHtml = "";
     if (myTeam.length === 0) {
-        listHtml = "<p class='text-muted'>কোনো রেফারেল পাওয়া যায়নি।</p>";
+        listHtml = "<p class='text-muted'>কোনো রেফারেল পাওয়া যায়নি।</p>";
     } else {
         listHtml = `
         <div style="max-height: 300px; overflow-y: auto;">
-            <table class="table table-sm small">
+            <table class="table table-sm small text-start">
                 <thead>
                     <tr>
                         <th>নাম</th>
-                        <th>ইমেইল</th>
-                        <th>ব্যালেন্স</th>
+                        <th>মোবাইল নম্বর</th> <th>ব্যালেন্স</th>
+                        <th>স্ট্যাটাস</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${myTeam.map(t => `
                         <tr>
-                            <td>${t.name}</td>
-                            <td>${t.email}</td>
-                            <td>${t.bal} TK</td>
+                            <td>${t.name || 'User'}</td>
+                            <td style="font-family: monospace;">${t.phone}</td> <td class="fw-bold">৳${parseFloat(t.bal || 0).toFixed(2)}</td>
+                            <td>
+                                <span class="badge ${t.status === 'active' ? 'bg-success' : 'bg-danger'}">
+                                    ${t.status === 'active' ? 'Active' : 'Inactive'}
+                                </span>
+                            </td>
                         </tr>
                     `).join("")}
                 </tbody>
@@ -11233,7 +11253,7 @@ function showReferHistory(refCode, userName) {
         </div>`;
     }
 
-    // পপ-আপে লিস্ট দেখানো
+    // SweetAlert পপ-আপে লিস্ট দেখানো
     Swal.fire({
         title: `Team of ${userName}`,
         html: listHtml,
@@ -11261,12 +11281,12 @@ function editUserRank(index) {
     });
 }
 
-
 function openUserPopup(index) {
     const u = db.users[index];
     if (!u) return;
 
-    const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
+    // 📱 ব্যাকগ্রাউন্ড টিম ট্র্যাকিং লজিক 
+    const refCount = db.users.filter(x => x.referredBy === (u.phone || "")).length;
     const userImg = u.img || u.profilePic || "";
     const nameInitial = (u.name || "U").charAt(0).toUpperCase();
     const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ffcc00&color=000&size=128`;
@@ -11274,99 +11294,99 @@ function openUserPopup(index) {
     const isActive = u.status === 'active';
 
     const popupHTML = `
-    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(12px);">
-        <div style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 40px; overflow: hidden; animation: premiumZoom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 40px 100px -20px rgba(255,0,0,0.3); border: 1px solid rgba(255,255,255,0.8);">
+    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 10px; backdrop-filter: blur(8px);">
+        <div style="background: #ffffff; width: 100%; max-width: 360px; border-radius: 28px; overflow: hidden; animation: premiumZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 25px 60px -15px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.7);">
             
-            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff8800 100%); padding: 40px 20px 30px; text-align: center; position: relative;">
-                <button onclick="closeUserPopup()" style="position: absolute; top: 20px; right: 20px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 15px; width: 38px; height: 38px; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s;"><i class="fas fa-times"></i></button>
+            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff8800 100%); padding: 25px 15px 20px; text-align: center; position: relative;">
+                <button onclick="closeUserPopup()" style="position: absolute; top: 12px; right: 12px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 10px; width: 30px; height: 30px; cursor: pointer; backdrop-filter: blur(5px); transition: 0.3s; display: flex; align-items: center; justify-content: center; font-size: 12px;"><i class="fas fa-times"></i></button>
                 
-                <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 15px;">
-                    <div style="position: absolute; inset: -5px; background: linear-gradient(45deg, #ffcc00, transparent, #fff); border-radius: 40px; animation: rotateBorder 4s linear infinite;"></div>
-                    <img src="${finalPhoto}" style="position: relative; width: 100%; height: 100%; border-radius: 38px; object-fit: cover; border: 3px solid white; background: white;" onerror="this.src='${avatarPlaceholder}'">
+                <div style="position: relative; width: 85px; height: 85px; margin: 0 auto 10px;">
+                    <div style="position: absolute; inset: -4px; background: linear-gradient(45deg, #ffcc00, transparent, #fff); border-radius: 30px; animation: rotateBorder 4s linear infinite;"></div>
+                    <img src="${finalPhoto}" style="position: relative; width: 100%; height: 100%; border-radius: 28px; object-fit: cover; border: 2px solid white; background: white;" onerror="this.src='${avatarPlaceholder}'">
                 </div>
                 
-                <h4 style="color: white; font-weight: 900; margin: 0; font-size: 24px; letter-spacing: 0.5px; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">${u.name || 'User Name'}</h4>
-                <div style="display: flex; justify-content: center; gap: 8px; margin-top: 10px;">
-                    <span style="background: rgba(255,255,255,0.2); color: white; padding: 4px 15px; border-radius: 50px; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+                <h4 style="color: white; font-weight: 800; margin: 0; font-size: 19px; letter-spacing: 0.3px; text-shadow: 0 2px 6px rgba(0,0,0,0.15);">${u.name || 'User Name'}</h4>
+                <div style="display: flex; justify-content: center; gap: 6px; margin-top: 6px;">
+                    <span style="background: rgba(255,255,255,0.2); color: white; padding: 3px 12px; border-radius: 50px; font-size: 10px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.25);">
                         <i class="fas fa-crown text-warning me-1"></i> ${u.rank || 'MEMBER'}
                     </span>
                 </div>
             </div>
 
-            <div style="padding: 25px; max-height: 65vh; overflow-y: auto; background: #fafafa;">
+            <div style="padding: 16px; max-height: 55vh; overflow-y: auto; background: #fafafa; scrollbar-width: thin;">
                 
-                <div style="background: #1e293b; padding: 18px; border-radius: 25px; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #334155;">
-                    <div style="position: absolute; top: -10px; right: -10px; font-size: 50px; color: rgba(255,255,255,0.03); transform: rotate(15deg);"><i class="fas fa-shield-alt"></i></div>
-                    <div style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-envelope-open text-warning"></i>
-                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Login Email:</span>
-                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right;">${u.email}</span>
+                <div style="background: #1e293b; padding: 12px 15px; border-radius: 18px; margin-bottom: 12px; position: relative; overflow: hidden; border: 1px solid #334155;">
+                    <div style="margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-mobile-alt text-warning" style="font-size: 12px;"></i>
+                        <span style="color: #94a3b8; font-size: 10px; font-weight: 700; text-transform: uppercase;">Phone:</span>
+                        <span style="color: #f8fafc; font-size: 12px; font-weight: 600; flex: 1; text-align: right; font-family: monospace;">${u.phone}</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-key text-warning"></i>
-                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Password:</span>
-                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right; letter-spacing: 1px;">${u.pass || '******'}</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-key text-warning" style="font-size: 12px;"></i>
+                        <span style="color: #94a3b8; font-size: 10px; font-weight: 700; text-transform: uppercase;">Password:</span>
+                        <span style="color: #f8fafc; font-size: 12px; font-weight: 600; flex: 1; text-align: right; letter-spacing: 0.5px;">${u.pass || '******'}</span>
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
-                    <button onclick="editBal(${index}); closeUserPopup();" style="background: #16a34a; color: white; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(22,163,74,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                        <i class="fas fa-wallet" style="font-size: 18px;"></i> ADD BALANCE
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                    <button onclick="editBal(${index}); closeUserPopup();" style="background: #16a34a; color: white; border: none; padding: 10px; border-radius: 14px; font-weight: 800; font-size: 11px; cursor: pointer; box-shadow: 0 4px 10px rgba(22,163,74,0.15); display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                        <i class="fas fa-wallet" style="font-size: 14px;"></i> ADD BALANCE
                     </button>
-                    <button onclick="editUserRank(${index}); closeUserPopup();" style="background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(251,191,36,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                        <i class="fas fa-user-tag" style="font-size: 18px;"></i> CHANGE RANK
+                    <button onclick="editUserRank(${index}); closeUserPopup();" style="background: #fbbf24; color: #000; border: none; padding: 10px; border-radius: 14px; font-weight: 800; font-size: 11px; cursor: pointer; box-shadow: 0 4px 10px rgba(251,191,36,0.15); display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                        <i class="fas fa-user-tag" style="font-size: 14px;"></i> CHANGE RANK
                     </button>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
-                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">Current Balance</small>
-                        <b style="font-size: 18px; color: #0f172a;">৳${parseFloat(u.bal || 0).toFixed(2)}</b>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                    <div style="background: white; padding: 10px; border-radius: 16px; border: 1px solid #f1f5f9; text-align: center;">
+                        <small style="font-size: 9px; color: #64748b; display: block; font-weight: 700; text-transform: uppercase;">Balance</small>
+                        <b style="font-size: 15px; color: #0f172a;">৳${parseFloat(u.bal || 0).toFixed(2)}</b>
                     </div>
-                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
-                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">A/C Status</small>
-                        <b style="font-size: 12px; color: ${isActive ? '#16a34a' : '#ef4444'}; font-weight: 900;">${isActive ? '● ACTIVE' : '● BLOCKED'}</b>
+                    <div style="background: white; padding: 10px; border-radius: 16px; border: 1px solid #f1f5f9; text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                        <small style="font-size: 9px; color: #64748b; display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 2px;">Status</small>
+                        <b style="font-size: 11px; color: ${isActive ? '#16a34a' : '#ef4444'}; font-weight: 800;">${isActive ? '● ACTIVE' : '● BLOCKED'}</b>
                     </div>
                 </div>
 
-                <div style="background: white; border-radius: 30px; border: 1px solid #f1f5f9; overflow: hidden; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
-                    <div onclick="editReferCode(${index})" style="padding: 18px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
-                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-link me-2 text-danger"></i> Refer Code</span>
-                        <span style="font-weight: 800; color: #ff0000; background: #fff5f5; padding: 5px 12px; border-radius: 10px; font-size: 12px;">${u.referCode || 'N/A'}</span>
+                <div style="background: white; border-radius: 20px; border: 1px solid #f1f5f9; overflow: hidden; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.01);">
+                    <div onclick="editReferCode(${index})" style="padding: 12px 15px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 12px; font-weight: 700; color: #334155;"><i class="fas fa-link me-2 text-danger"></i> Refer Code</span>
+                        <span style="font-weight: 800; color: #ff0000; background: #fff5f5; padding: 4px 10px; border-radius: 8px; font-size: 11px; font-family: monospace;">${u.referCode || 'N/A'}</span>
                     </div>
-                    <div onclick="showReferHistory('${u.referCode || ""}', '${u.name}'); closeUserPopup();" style="padding: 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
-                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-users me-2 text-danger"></i> Team Stats</span>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="background: #ffcc00; color: #000; padding: 2px 10px; border-radius: 50px; font-weight: 800; font-size: 11px;">${refCount} Members</span>
-                            <i class="fas fa-chevron-right text-muted small"></i>
+                    
+                    <div onclick="showReferHistory('${u.phone || ""}', '${u.name}'); closeUserPopup();" style="padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 12px; font-weight: 700; color: #334155;"><i class="fas fa-users me-2 text-danger"></i> Team Stats</span>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <span style="background: #ffcc00; color: #000; padding: 2px 8px; border-radius: 50px; font-weight: 800; font-size: 10px;">${refCount} Members</span>
+                            <i class="fas fa-chevron-right text-muted" style="font-size: 10px;"></i>
                         </div>
                     </div>
                 </div>
 
-                <div style="background: #ffffff; padding: 20px; border-radius: 30px; border: 1px solid #f1f5f9; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                        <span style="font-weight: 800; color: #0f172a; font-size: 12px;">PUSH NOTIFICATION</span>
-                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: #64748b; font-weight: 700;">
+                <div style="background: #ffffff; padding: 12px; border-radius: 20px; border: 1px solid #f1f5f9; margin-bottom: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.02);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-weight: 800; color: #0f172a; font-size: 10px; letter-spacing: 0.5px;">PUSH NOTIFICATION</span>
+                        <label style="font-size: 10px; cursor: pointer; display: flex; align-items: center; gap: 4px; color: #64748b; font-weight: 700;">
                             <input type="checkbox" id="sendToAll" style="accent-color: #ff0000;"> To All?
                         </label>
                     </div>
-                    <input type="text" id="adminMsgTitle" placeholder="Subject..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 10px; font-size: 13px; outline: none; transition: 0.3s;">
-                    <textarea id="adminMsgBody" placeholder="Message content..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; height: 70px; font-size: 13px; margin-bottom: 15px; outline: none; resize: none;"></textarea>
-                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: linear-gradient(to right, #ff0000, #ff4400); color: white; border: none; padding: 14px; border-radius: 18px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,0,0,0.2);">SEND NOW <i class="fas fa-paper-plane ms-2"></i></button>
+                    <input type="text" id="adminMsgTitle" placeholder="Subject..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 8px; font-size: 12px; outline: none; transition: 0.2s;">
+                    <textarea id="adminMsgBody" placeholder="Message content..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #e2e8f0; height: 50px; font-size: 12px; margin-bottom: 10px; outline: none; resize: none;"></textarea>
+                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: linear-gradient(to right, #ff0000, #ff4400); color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 12px; cursor: pointer; box-shadow: 0 4px 12px rgba(255,0,0,0.15);">SEND NOW <i class="fas fa-paper-plane ms-1"></i></button>
                 </div>
 
                 <button onclick="toggleBlock(${index}); closeUserPopup();" 
-                        style="width: 100%; padding: 16px; border-radius: 22px; border: none; background: ${isActive ? '#ff000010' : '#ff0000'}; color: ${isActive ? '#ef4444' : 'white'}; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s;">
-                    <i class="fas ${isActive ? 'fa-user-lock' : 'fa-user-check'} me-2"></i> ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCESS'}
+                        style="width: 100%; padding: 12px; border-radius: 14px; border: none; background: ${isActive ? '#ff000010' : '#ff0000'}; color: ${isActive ? '#ef4444' : 'white'}; font-weight: 800; font-size: 12px; cursor: pointer; transition: 0.2s;">
+                    <i class="fas ${isActive ? 'fa-user-lock' : 'fa-user-check'} me-1"></i> ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCESS'}
                 </button>
 
             </div>
         </div>
     </div>
     <style>
-        @keyframes premiumZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes premiumZoom { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @keyframes rotateBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .m-list:hover { background: #fffcf0; padding-left: 25px !important; transition: 0.3s; }
+        .m-list:hover { background: #fffcf0; padding-left: 20px !important; transition: 0.2s; }
         #adminMsgTitle:focus, #adminMsgBody:focus { border-color: #ff0000 !important; }
     </style>`;
 
@@ -11374,7 +11394,6 @@ function openUserPopup(index) {
     if (oldModal) oldModal.remove();
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
-    
 
 // রেফার কোড এডিট করার ফাংশন
 function editReferCode(index) {
@@ -12189,6 +12208,7 @@ function installApp() {
     }
 }
 
+
 function showForgotPopup() {
     Swal.fire({
         title: '<span style="font-family:\'Poppins\', sans-serif; font-size:18px; font-weight:800; color:#1e293b;">পাসওয়ার্ড পুনরুদ্ধার</span>',
@@ -12201,12 +12221,12 @@ function showForgotPopup() {
                 </div>
                 
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">আপনার জিমেইল:</label>
-                    <input id="swal-input-email" type="email" placeholder="example@gmail.com" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">লগইন মোবাইল নম্বর:</label>
+                    <input id="swal-input-login-phone" type="number" placeholder="যে নম্বর দিয়ে অ্যাকাউন্ট খুলেছেন" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
                 </div>
                 
                 <div style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">হোয়াটসঅ্যাপ নম্বর:</label>
+                    <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 5px;">হোয়াটসঅ্যাপ নম্বর (যোগাযোগের জন্য):</label>
                     <input id="swal-input-whatsapp" type="number" placeholder="017XXXXXXXX" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; outline: none;">
                 </div>
                 
@@ -12219,7 +12239,7 @@ function showForgotPopup() {
         iconColor: '#ff0000',
         
         showCancelButton: true,
-        confirmButtonText: '<i class="fa fa-paper-plane"></i> Submit Now', // সাবমিট টেক্সট
+        confirmButtonText: '<i class="fa fa-paper-plane"></i> Submit Now', 
         cancelButtonText: 'Back',
         
         confirmButtonColor: '#ff0000',
@@ -12234,27 +12254,27 @@ function showForgotPopup() {
         // ভ্যালিডেশন চেক
         preConfirm: () => {
             const name = document.getElementById('swal-input-name').value.trim();
-            const email = document.getElementById('swal-input-email').value.trim();
+            const loginPhone = document.getElementById('swal-input-login-phone').value.trim();
             const whatsapp = document.getElementById('swal-input-whatsapp').value.trim();
             
-            if (!name || !email || !whatsapp) {
+            if (!name || !loginPhone || !whatsapp) {
                 Swal.showValidationMessage('অনুগ্রহ করে সবগুলো ফিল্ড সঠিকভাবে পূরণ করুন!');
                 return false;
             }
-            return { name: name, email: email, whatsapp: whatsapp };
+            return { name: name, loginPhone: loginPhone, whatsapp: whatsapp };
         }
     }).then((result) => {
         if (result.isConfirmed) {
             const userData = result.value;
             
-            // আপনার দেওয়া টেলিগ্রাম ক্রেডেনশিয়ালস সরাসরি সেট করে দেওয়া হয়েছে
+            // আপনার দেওয়া টেলিগ্রাম ক্রেডেনশিয়ালস
             const telegramBotToken = '7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo';
             const telegramChatId = '6882504862';
             
-            // মেসেজ ফরম্যাট
-            const telegramMessage = `🔔 *পাসওয়ার্ড  রিকোয়েস্ট*\n\n👤 নাম: ${userData.name}\n📧 জিমেইল: ${userData.email}\n💬 হোয়াটসঅ্যাপ: ${userData.whatsapp}`;
+            // টেলিগ্রাম মেসেজ ফরম্যাট মোবাইল নম্বরে আপডেট করা হয়েছে
+            const telegramMessage = `🔔 *পাসওয়ার্ড রিকোয়েস্ট*\n\n👤 নাম: ${userData.name}\n📱 লগইন ফোন: ${userData.loginPhone}\n💬 হোয়াটসঅ্যাপ: ${userData.whatsapp}`;
             
-            // ব্যাকগ্রাউন্ডে ডাটা সেন্ড করা
+            // ব্যাকগ্রাউন্ডে টেলিগ্রামে ডাটা সেন্ড করা
             fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -12265,7 +12285,7 @@ function showForgotPopup() {
                 })
             })
             .then(response => {
-                // সফলভাবে চলে গেলে মেসেজ দেখাবে (সাপোর্ট পেজ ওপেন হবে না)
+                // সফলভাবে চলে গেলে সাকসেস পপ-আপ
                 Swal.fire({
                     title: '<span style="font-family:\'Poppins\', sans-serif; font-size:16px; font-weight:800; color:#1e293b;">সফল হয়েছে!</span>',
                     text: 'ধন্যবাদ! আপনার রিকোয়েস্টটি সফলভাবে পাঠানো হয়েছে।',
@@ -12279,10 +12299,9 @@ function showForgotPopup() {
             })
             .catch(error => {
                 console.error('Telegram Error:', error);
-                // নেটওয়ার্ক বা অন্য কোনো সমস্যা হলে ব্যাকআপ মেসেজ
                 Swal.fire({
                     title: 'দুঃখিত!',
-                    text: 'কারিগরি ত্রুটির কারণে পাঠানো যায়নি। আবার চেষ্টা করুন।',
+                    text: 'কারিগরি ত্রুটির কারণে পাঠানো যায়নি। আবার চেষ্টা করুন।',
                     icon: 'error',
                     confirmButtonColor: '#ff0000'
                 });
@@ -12290,8 +12309,6 @@ function showForgotPopup() {
         }
     });
 }
-
-
 
 function showInstallPopup() {
     let timer = 20;
