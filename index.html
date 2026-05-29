@@ -12941,7 +12941,6 @@ function checkCaptcha() {
     let userIndex = db.users.findIndex(u => u.email === curUser.email);
     if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
 
-    // ইউজার ইনপুট ও সিস্টেম ক্যাপচা দুটিরই স্পেস ও কেস ফিক্সড করে ভেরিয়েবলে নেওয়া হলো (যাতে কোনো মিসম্যাচ না হয়)
     const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
     const systemCaptcha = String(currentCaptcha).trim().toUpperCase();
     
@@ -12951,55 +12950,62 @@ function checkCaptcha() {
         return;
     }
 
-    let currentCount = db.users[userIndex].captchaCount || 0;
+    // আজকের তারিখ বের করা
+    let now = new Date();
+    let todayDate = now.toISOString().split('T')[0]; // YYYY-MM-DD ফরম্যাট
+
+    // ইউজার ডেটা ও আজকের কাজের হিসাব চেক করা
+    let user = db.users[userIndex];
+    if (!user.lastCaptchaDate || user.lastCaptchaDate !== todayDate) {
+        user.todayCaptchaCount = 0; // নতুন দিন শুরু হলে কাউন্ট রিসেট
+        user.lastCaptchaDate = todayDate;
+    }
+
+    // লিমিট চেক (১০টি)
+    if (user.todayCaptchaCount >= 10) {
+        Swal.fire('লিমিট শেষ!', 'আপনি আজ ১০টি ক্যাপচা পূর্ণ করেছেন। আগামীকাল আবার চেষ্টা করুন।', 'warning');
+        return;
+    }
 
     // ইনপুট ঠিকঠাক থাকলেই কেবল ট্রাই করার কাউন্ট ১ বাড়বে
-    db.users[userIndex].captchaCount = currentCount + 1;
-    let updatedCount = db.users[userIndex].captchaCount;
+    user.todayCaptchaCount = (user.todayCaptchaCount || 0) + 1;
 
     if (userInput === systemCaptcha) {
-        // সঠিক হলে ব্যালেন্স ও আর্নিং যোগ হবে
-        let currentBal = Number(db.users[userIndex].bal || 0);
-        let todayEarn = Number(db.users[userIndex].todayEarn || 0);
+        // সঠিক হলে ব্যালেন্স যোগ করা
+        let currentBal = Number(user.bal || 0);
+        let todayEarn = Number(user.todayEarn || 0);
 
-        db.users[userIndex].bal = currentBal + captchaReward;
-        db.users[userIndex].todayEarn = todayEarn + captchaReward;
+        user.bal = currentBal + captchaReward;
+        user.todayEarn = todayEarn + captchaReward;
 
-        // --- ইনকাম হিস্ট্রি যোগ করার লজিক ---
-        let now = new Date();
-        let yyyy = now.getFullYear();
-        let mm = String(now.getMonth() + 1).padStart(2, '0');
-        let dd = String(now.getDate()).padStart(2, '0');
+        // টাইমস্ট্যাম্প তৈরি
         let timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-        let customDateStr = `${yyyy}-${mm}-${dd} | ${timeStr}`;
+        let customDateStr = `${todayDate} | ${timeStr}`;
 
-        // হিস্ট্রি অবজেক্ট তৈরি
         let historyItem = {
             amount: captchaReward,
             note: "Captha Commission",
             date: customDateStr
         };
 
-        // ডাটাবেজ এবং সেশনে হিস্ট্রি পুশ করা
-        if (!db.users[userIndex].incomeHistory) db.users[userIndex].incomeHistory = [];
-        db.users[userIndex].incomeHistory.push(historyItem);
+        if (!user.incomeHistory) user.incomeHistory = [];
+        user.incomeHistory.push(historyItem);
         
-        // সেশন বা কারেন্ট ইউজার অবজেক্ট আপডেট
-        curUser.bal = db.users[userIndex].bal;
-        curUser.todayEarn = db.users[userIndex].todayEarn;
-        curUser.incomeHistory = db.users[userIndex].incomeHistory;
+        // সেশন আপডেট
+        curUser.bal = user.bal;
+        curUser.todayEarn = user.todayEarn;
+        curUser.incomeHistory = user.incomeHistory;
 
         Swal.fire({
             title: 'সফল হয়েছে!',
-            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন।`,
+            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন। আজ মোট ${user.todayCaptchaCount} টি ক্যাপচা করেছেন।`,
             icon: 'success',
-            timer: 1500,
+            timer: 2000,
             showConfirmButton: false
         });
 
     } else {
-        // কোড ভুল হলেই কেবল এই মেসেজটি আসবে
-        Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আবার চেষ্টা করুন।`, 'error');
+        Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আরও ${10 - user.todayCaptchaCount} টি সুযোগ বাকি আছে।`, 'error');
     }
 
     // UI আপডেট
