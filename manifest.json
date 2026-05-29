@@ -1,61 +1,16 @@
 {
-
-
-
-  "short_name": "FREE TIME EARN",
-
-
-
-  "name": "FREE TIME EARN",
-
-
-
+  "short_name": "RESELL PONNO",
+  "name": "RESELL PONNO LTD",
   "icons": [
-
-
-
     {
-
-
-
-      "src": "https://img.icons8.com/fluency/512/wallet.png",
-
-
-
-      "type": "image/png",
-
-
-
+      "src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
+      "type": "image/jpeg",
       "sizes": "512x512"
-
-
-
     }
-
-
-
   ],
-
-
-
-"start_url": "./index.html",
-
-
-
-  "background_color": "#FFFFFF",
-
-
-
+  "start_url": "./index.html",
+  "background_color": "#004d25",
   "display": "standalone",
-
-
-
   "scope": "./",
-
-
-
-  "theme_color": "#FFFFFF"
-
-
-
+  "theme_color": "#006400"
 }
