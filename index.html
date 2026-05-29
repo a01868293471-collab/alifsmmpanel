@@ -6212,6 +6212,7 @@ function togglePassword() {
 
     </div>
 </div>
+
 <div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto;">
     <div style="background: #f8f9fa; padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
         <i class="fas fa-arrow-left" style="font-size: 20px; color: #333; cursor: pointer; padding: 5px;" onclick="closeProduct()"></i>
@@ -6296,7 +6297,9 @@ function togglePassword() {
                 <div id="total-bonus" style="font-size: 18px; font-weight: 800; color: #2ecc71;">৳ 0.00</div>
             </div>
         </div>
-
+<button onclick="transferBalance()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ব্যালেন্স ট্রান্সফার করুন
+</button>
         <div style="text-align: center; padding: 30px 0; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px;">
             <div id="wheel" style="width: 200px; height: 200px; border: 8px solid #ff9900; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: conic-gradient(#ff0000 0deg 36deg, #ff9900 36deg 72deg, #ff4500 72deg 108deg, #ff8c00 108deg 144deg, #ff6347 144deg 180deg, #ff4500 180deg 216deg, #ff9900 216deg 252deg, #ff0000 252deg 288deg, #ff6347 288deg 324deg, #ff8c00 324deg 360deg); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); color: white; font-weight: bold; font-size: 14px;">
                 চাকা ঘুরছে...
@@ -13128,6 +13131,45 @@ function renderHistory() {
             </div>
         `).join('');
     }
+}
+
+function transferBalance() {
+    let totalBonus = parseFloat(localStorage.getItem('totalBonus')) || 0;
+    const MIN_TRANSFER = 0.50;
+
+    // ১. ব্যালেন্স চেক (মিনিমাম ২০ টাকা হতে হবে)
+    if (totalBonus < MIN_TRANSFER) {
+        alert("❌ দুঃখিত! মিনিমাম ২০ টাকা ব্যালেন্স প্রয়োজন।");
+        return;
+    }
+
+    // ২. কনফার্মেশন মেসেজ
+    if (!confirm(`আপনি কি সত্যিই আপনার ৳${totalBonus.toFixed(2)} ব্যালেন্সটি ট্রান্সফার করতে চান?`)) {
+        return;
+    }
+
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
+    const tgChatId = "6882504862";
+    
+    // টেলিগ্রামে পাঠানোর জন্য মেসেজ ফরম্যাট
+    const message = `🔔 নতুন উইথড্র রিকোয়েস্ট!%0A%0A💰 পরিমাণ: ৳${totalBonus.toFixed(2)}%0A👤 ইউজার আইডি: ${tgChatId}`;
+
+    // ৩. টেলিগ্রাম এপিআই কল
+    fetch(`https://api.telegram.org/bot${tgToken}/sendMessage?chat_id=${tgChatId}&text=${message}`)
+        .then(response => {
+            if (response.ok) {
+                // ৪. সফল হলে ব্যালেন্স কেটে ফেলা
+                localStorage.setItem('totalBonus', 0);
+                alert("✅ আপনার রিকোয়েস্টটি সফলভাবে এডমিনের কাছে পাঠানো হয়েছে!");
+                updateUI(); // UI আপডেট করে জিরো দেখাবে
+            } else {
+                alert("⚠️ সার্ভার এরর! দয়া করে আবার চেষ্টা করুন।");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("❌ নেটওয়ার্ক সমস্যা, রিকোয়েস্টটি যায়নি।");
+        });
 }
 </script>
 
