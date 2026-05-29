@@ -12933,53 +12933,61 @@ function generateCaptcha() {
     if(document.getElementById('target-code')) document.getElementById('target-code').innerText = result;
     if(document.getElementById('captcha-input')) document.getElementById('captcha-input').value = "";
 }
+
+// ৩. ক্যাপচা যাচাই করা
 function checkCaptcha() {
     if (!curUser) return;
 
     let userIndex = db.users.findIndex(u => u.email === curUser.email);
     if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
 
-    let userData = db.users[userIndex];
-
-    // ১. লিমিট চেক
-    if ((userData.todayCaptchaCount || 0) >= 10) {
-        Swal.fire('লিমিট শেষ!', 'আপনি আজ ১০টি ক্যাপচা পূর্ণ করেছেন। আগামীকাল আবার চেষ্টা করুন।', 'warning');
-        return;
-    }
-
+    // ইউজার ইনপুট ও সিস্টেম ক্যাপচা দুটিরই স্পেস ও কেস ফিক্সড করে ভেরিয়েবলে নেওয়া হলো (যাতে কোনো মিসম্যাচ না হয়)
     const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
     const systemCaptcha = String(currentCaptcha).trim().toUpperCase();
     
     if (!userInput) {
-        typeof toast === "function" ? toast("অনুগ্রহ করে কোডটি লিখুন!") : alert("অনুগ্রহ করে কোডটি লিখুন!");
+        if (typeof toast === "function") toast("অনুগ্রহ করে কোডটি লিখুন!");
+        else alert("অনুগ্রহ করে কোডটি লিখুন!");
         return;
     }
 
-    // ২. ক্যাপচা সঠিক কি না যাচাই
+    let currentCount = db.users[userIndex].captchaCount || 0;
+
+    // ইনপুট ঠিকঠাক থাকলেই কেবল ট্রাই করার কাউন্ট ১ বাড়বে
+    db.users[userIndex].captchaCount = currentCount + 1;
+    let updatedCount = db.users[userIndex].captchaCount;
+
     if (userInput === systemCaptcha) {
-        let captchaReward = 1; // আপনার reward ভ্যালু এখানে সেট করুন
-        
-        // ব্যালেন্স আপডেট
-        userData.bal = Number(userData.bal || 0) + captchaReward;
-        userData.todayEarn = Number(userData.todayEarn || 0) + captchaReward;
-        userData.todayCaptchaCount = (userData.todayCaptchaCount || 0) + 1;
-        userData.captchaCount = (userData.captchaCount || 0) + 1;
+        // সঠিক হলে ব্যালেন্স ও আর্নিং যোগ হবে
+        let currentBal = Number(db.users[userIndex].bal || 0);
+        let todayEarn = Number(db.users[userIndex].todayEarn || 0);
 
-        // হিস্ট্রি তৈরি
+        db.users[userIndex].bal = currentBal + captchaReward;
+        db.users[userIndex].todayEarn = todayEarn + captchaReward;
+
+        // --- ইনকাম হিস্ট্রি যোগ করার লজিক ---
         let now = new Date();
-        let customDateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} | ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`;
-        
-        if (!userData.incomeHistory) userData.incomeHistory = [];
-        userData.incomeHistory.push({
-            amount: captchaReward,
-            note: "Captcha Commission",
-            date: customDateStr
-        });
+        let yyyy = now.getFullYear();
+        let mm = String(now.getMonth() + 1).padStart(2, '0');
+        let dd = String(now.getDate()).padStart(2, '0');
+        let timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        let customDateStr = `${yyyy}-${mm}-${dd} | ${timeStr}`;
 
-        // সেশন আপডেট
-        curUser.bal = userData.bal;
-        curUser.todayEarn = userData.todayEarn;
-        curUser.incomeHistory = userData.incomeHistory;
+        // হিস্ট্রি অবজেক্ট তৈরি
+        let historyItem = {
+            amount: captchaReward,
+            note: "Captha Commission",
+            date: customDateStr
+        };
+
+        // ডাটাবেজ এবং সেশনে হিস্ট্রি পুশ করা
+        if (!db.users[userIndex].incomeHistory) db.users[userIndex].incomeHistory = [];
+        db.users[userIndex].incomeHistory.push(historyItem);
+        
+        // সেশন বা কারেন্ট ইউজার অবজেক্ট আপডেট
+        curUser.bal = db.users[userIndex].bal;
+        curUser.todayEarn = db.users[userIndex].todayEarn;
+        curUser.incomeHistory = db.users[userIndex].incomeHistory;
 
         Swal.fire({
             title: 'সফল হয়েছে!',
@@ -12990,20 +12998,22 @@ function checkCaptcha() {
         });
 
     } else {
-        // কোড ভুল হলে
+        // কোড ভুল হলেই কেবল এই মেসেজটি আসবে
         Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আবার চেষ্টা করুন।`, 'error');
     }
 
-    // ৩. UI আপডেট (সবশেষে)
-    if(document.getElementById('cap-count')) document.getElementById('cap-count').innerText = userData.todayCaptchaCount;
-    if(document.getElementById('cap-earn')) document.getElementById('cap-earn').innerText = "৳" + (userData.todayEarn || 0).toFixed(2);
+    // UI আপডেট
+    if(document.getElementById('cap-count')) document.getElementById('cap-count').innerText = updatedCount;
+    if(document.getElementById('cap-earn')) document.getElementById('cap-earn').innerText = "৳" + (db.users[userIndex].todayEarn || 0).toFixed(2);
     
-    saveCaptchaData(); // ডাটা সেভ
-    
+    saveCaptchaData(); // ডাটা সেভ করা
+
+    // রেন্ডার ফাংশন কল করা
     if (typeof renderUser === "function") renderUser(); 
     if (typeof updateUIBalance === "function") updateUIBalance();
-    
-    generateCaptcha(); // নতুন ক্যাপচা তৈরি
+
+    // নতুন ক্যাপচা তৈরি (এটি সবার শেষে রান হবে এবং এর ভেতরেই ইনপুট বক্স খালি করার লজিক আছে)
+    generateCaptcha();
 }
 
 // ৪. লোকাল স্টোরেজে স্থায়ীভাবে ডাটা সেভ করার ফাংশন
