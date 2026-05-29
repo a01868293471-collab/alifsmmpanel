@@ -3697,12 +3697,13 @@ function togglePassword() {
             <div class="photo-grid-box"><i class="fas fa-play-circle"></i></div>
             <span>Ads<br>Income</span>
         </div>
-<div class="photo-grid-item" onclick="handleVendorClick()">
+<div class="photo-grid-item" onclick="openPage('p-spin')">
     <div class="photo-grid-box">
-        <i class="fas fa-sync-alt"></i> </div>
+        <i class="fas fa-sync-alt"></i>
+    </div>
     <span>Daily<br>Spin</span>
 </div>
-      
+
 
 
 
@@ -4940,62 +4941,7 @@ function togglePassword() {
     </div>
 </div>
 
-<div id="p-spin" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
-    
-    <!-- প্রিমিয়াম হেডার -->
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);">
-        <div onclick="openPage('p-home')" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-            <i class="fas fa-arrow-left" style="color: white;"></i>
-        </div>
-        <h5 style="margin: 0; margin-left: 15px; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Daily Spin</h5>
-    </div>
 
-    <div style="padding: 20px;">
-        <!-- নোটিশ -->
-        <div style="background: #fff; padding: 15px; border-radius: 15px; border-left: 5px solid #ff4500; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px;">
-            <p style="margin: 0; font-size: 13px; color: #555; line-height: 1.6;">
-                <i class="fas fa-info-circle" style="color: #ff4500; margin-right: 5px;"></i> 
-                প্রতিদিন ১ বার স্পিন করে বোনাস জিতুন। রাত ১২টার পর নতুন স্পিন আনলক হবে।
-            </p>
-        </div>
-
-        <!-- বোনাস স্ট্যাটাস -->
-        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-            <div style="flex: 1; background: #fff; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.05);">
-                <small style="display: block; color: #888; font-size: 10px; text-transform: uppercase;">Today's Bonus</small>
-                <span style="font-size: 18px; font-weight: 800; color: #ff4500;">৳ 0.00</span>
-            </div>
-            <div style="flex: 1; background: #fff; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.05);">
-                <small style="display: block; color: #888; font-size: 10px; text-transform: uppercase;">Total Bonus</small>
-                <span style="font-size: 18px; font-weight: 800; color: #2ecc71;">৳ 0.00</span>
-            </div>
-        </div>
-
-        <!-- স্পিন হুইল সেকশন -->
-        <div style="text-align: center; padding: 30px 0; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px;">
-            <div id="wheel" style="width: 200px; height: 200px; border: 8px solid #ff9900; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: radial-gradient(#fff, #ffe5cc); font-weight: bold; font-size: 20px; color: #333;">
-                SPIN
-            </div>
-            <button onclick="spinWheel()" style="margin-top: 25px; background: linear-gradient(90deg, #ff0000, #ff9900); color: white; border: none; padding: 12px 40px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);">
-                Spin Now
-            </button>
-        </div>
-
-        <!-- হিস্টোরি -->
-        <h6 style="color: #333; margin-bottom: 10px;">Recent History</h6>
-        <div style="background: white; border-radius: 15px; padding: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.05);">
-            <!-- হিস্টোরি আইটেম -->
-            <div style="display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
-                <span style="font-size: 13px; color: #555;">Spin Reward</span>
-                <span style="font-size: 13px; font-weight: 600; color: #ff4500;">+ 5.00 BDT</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 10px;">
-                <span style="font-size: 13px; color: #555;">Spin Reward</span>
-                <span style="font-size: 13px; font-weight: 600; color: #ff4500;">+ 1.00 BDT</span>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="privacy" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
@@ -6330,7 +6276,38 @@ function togglePassword() {
 </style>
 
 
+<div id="p-spin" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);">
+        <div onclick="openPage('p-home')" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <i class="fas fa-arrow-left" style="color: white; font-size: 18px;"></i>
+        </div>
+        <h5 style="margin: 0; margin-left: 15px; color: white; font-weight: 700; text-transform: uppercase;">Daily Spin</h5>
+    </div>
 
+    <div style="padding: 20px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <div style="flex: 1; background: #fff; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.05);">
+                <small style="font-size: 10px; color: #888;">TODAY</small>
+                <div id="today-bonus" style="font-size: 18px; font-weight: 800; color: #ff4500;">৳ 0.00</div>
+            </div>
+            <div style="flex: 1; background: #fff; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.05);">
+                <small style="font-size: 10px; color: #888;">TOTAL</small>
+                <div id="total-bonus" style="font-size: 18px; font-weight: 800; color: #2ecc71;">৳ 0.00</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 30px 0; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <div id="wheel" style="width: 200px; height: 200px; border: 8px solid #ff9900; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: conic-gradient(#ff0000 0deg 36deg, #ff9900 36deg 72deg, #ff4500 72deg 108deg, #ff8c00 108deg 144deg, #ff6347 144deg 180deg, #ff4500 180deg 216deg, #ff9900 216deg 252deg, #ff0000 252deg 288deg, #ff6347 288deg 324deg, #ff8c00 324deg 360deg); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); color: white; font-weight: bold; font-size: 14px;">
+                চাকা ঘুরছে...
+            </div>
+            <button onclick="spinWheel()" id="spin-btn" style="margin-top: 25px; background: linear-gradient(90deg, #ff0000, #ff9900); color: white; border: none; padding: 12px 40px; border-radius: 50px; font-weight: 700; cursor: pointer;">Spin Now</button>
+        </div>
+
+        <h6 style="color: #333; margin-bottom: 10px;">Recent History</h6>
+        <div id="history-list" style="background: white; border-radius: 15px; padding: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.05);"></div>
+    </div>
+</div>
 
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
@@ -13048,92 +13025,111 @@ function saveCaptchaData() {
     }
 }
 
-// ডেইলি স্পিন লজিক
+// ১. কনফিগুরেশন
 const amounts = [0.50, 1, 2, 5, 10, 20, 25, 50, 100, 500];
-const weights = [30, 25, 20, 10, 8, 4, 2, 0.8, 0.2, 0.05]; // কম অ্যামাউন্টের চান্স বেশি
 
-// স্টোরেজ থেকে ডাটা লোড করা
-let totalBonus = parseFloat(localStorage.getItem('totalBonus')) || 0;
-let lastSpinDate = localStorage.getItem('lastSpinDate');
+// ২. পেজ লোড হওয়ার সময় যা যা করবে
+window.onload = () => {
+    const today = new Date().toDateString();
+    const lastSpin = localStorage.getItem('lastSpinDate');
 
-// পেজ লোড হওয়ার সাথে সাথে স্ট্যাটাস আপডেট
-document.addEventListener('DOMContentLoaded', () => {
+    // রাত ১২টা পার হলে আজকের বোনাস রিসেট করা
+    if (lastSpin !== today) {
+        localStorage.removeItem('todayWon');
+    }
     updateUI();
-    renderHistory();
-});
+};
 
+// ৩. স্পিন করার মেইন লজিক
 function spinWheel() {
     const today = new Date().toDateString();
+    const lastSpinDate = localStorage.getItem('lastSpinDate');
 
-    // চেক: আজ স্পিন করা হয়েছে কি না
+    // লক সিস্টেম
     if (lastSpinDate === today) {
-        alert("আপনি আজ ইতিমধ্যে স্পিন করেছেন। আগামীকাল আবার চেষ্টা করুন!");
+        alert("🔒 আপনি আজ ইতিমধ্যে স্পিন করেছেন! আগামীকাল আবার চেষ্টা করুন।");
         return;
     }
 
-    // উইনিং অ্যামাউন্ট নির্ধারণ
-    const won = getWeightedAmount();
-    
-    // UI এনিমেশন
     const wheel = document.getElementById('wheel');
+    const randomDegree = Math.floor(Math.random() * 3600) + 3600;
+    
+    // এনিমেশন শুরু
     wheel.style.transition = "transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99)";
-    wheel.style.transform = `rotate(${3600 + Math.random() * 360}deg)`;
+    wheel.style.transform = `rotate(${randomDegree}deg)`;
 
     setTimeout(() => {
-        // বোনাস যোগ করা
+        // থামার পর ডিগ্রি হিসাব করে অ্যামাউন্ট বের করা
+        const index = Math.floor((randomDegree % 360) / 36);
+        const won = amounts[index];
+
+        // ডাটাবেস (LocalStorage) আপডেট
+        let totalBonus = parseFloat(localStorage.getItem('totalBonus')) || 0;
         totalBonus += won;
+
         localStorage.setItem('totalBonus', totalBonus);
         localStorage.setItem('lastSpinDate', today);
+        localStorage.setItem('todayWon', won.toFixed(2));
         
-        // হিস্টোরি সেভ করা
         saveHistory(won);
-        
-        // রেজাল্ট পপআপ দেখানো
-        alert(`অভিনন্দন! আপনি স্পিন করে ${won} টাকা বোনাস জিতেছেন।`);
-        
-        // UI আপডেট
+        showPopup(won);
         updateUI();
-        renderHistory();
-        wheel.style.transform = "rotate(0deg)"; // রিসেট
+        
+        // চাকা রিসেট
+        wheel.style.transition = "none";
+        wheel.style.transform = "rotate(0deg)";
     }, 4000);
 }
 
-function getWeightedAmount() {
-    let totalWeight = weights.reduce((a, b) => a + b, 0);
-    let random = Math.random() * totalWeight;
-    for (let i = 0; i < amounts.length; i++) {
-        if (random < weights[i]) return amounts[i];
-        random -= weights[i];
-    }
-    return amounts[0];
-}
-
+// ৪. ইউজার ইন্টারফেস আপডেট করা
 function updateUI() {
-    // এখানে আপনার HTML আইডি অনুযায়ী ভ্যালু বসবে
-    // উদাহরণ: document.getElementById('today-bonus').innerText = `৳ ${won}`;
-    // document.getElementById('total-bonus').innerText = `৳ ${totalBonus.toFixed(2)}`;
+    const total = parseFloat(localStorage.getItem('totalBonus')) || 0;
+    const todayWon = localStorage.getItem('todayWon') || "0.00";
+    
+    document.getElementById('total-bonus').innerText = `৳ ${total.toFixed(2)}`;
+    document.getElementById('today-bonus').innerText = `৳ ${todayWon}`;
+    
+    renderHistory();
 }
 
-function saveHistory(amount) {
+// ৫. সুন্দর প্রফেশনাল পপআপ
+function showPopup(won) {
+    const popup = document.createElement('div');
+    popup.innerHTML = `
+        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; backdrop-filter: blur(5px);">
+            <div style="background:white; padding:30px; border-radius:25px; text-align:center; width:85%; max-width:300px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <div style="font-size: 50px; margin-bottom: 10px;">🎉</div>
+                <h3 style="margin: 0; color:#333;">অভিনন্দন!</h3>
+                <p style="color:#666; margin: 10px 0;">আপনি জিতেছেন</p>
+                <h1 style="color:#ff4500; margin: 0; font-size: 40px;">৳ ${won}</h1>
+                <button onclick="this.parentElement.parentElement.remove()" style="margin-top:20px; width:100%; padding:12px; background:linear-gradient(90deg, #ff0000, #ff9900); color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">ঠিক আছে</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(popup);
+}
+
+// ৬. হিস্টোরি সেভ করা
+function saveHistory(won) {
     let history = JSON.parse(localStorage.getItem('spinHistory')) || [];
-    history.unshift({ date: new Date().toLocaleString(), amount: amount });
-    localStorage.setItem('spinHistory', JSON.stringify(history.slice(0, 5))); // শেষ ৫টি রেকর্ড
+    history.unshift({ date: new Date().toLocaleTimeString(), amount: won.toFixed(2) });
+    localStorage.setItem('spinHistory', JSON.stringify(history.slice(0, 5)));
 }
 
+// ৭. হিস্টোরি রেন্ডার করা
 function renderHistory() {
     let history = JSON.parse(localStorage.getItem('spinHistory')) || [];
-    let historyDiv = document.getElementById('history-list'); // আপনার হিস্টোরি ডিভ আইডি
-    if (!historyDiv) return;
-
-    historyDiv.innerHTML = history.map(item => `
-        <div style="display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee;">
-            <span style="font-size: 12px; color: #888;">${item.date}</span>
-            <span style="font-size: 13px; font-weight: 700; color: #ff4500;">+ ${item.amount} BDT</span>
-        </div>
-    `).join('');
+    let historyList = document.getElementById('history-list');
+    if (historyList) {
+        historyList.innerHTML = history.map(item => `
+            <div style="display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #f0f0f0;">
+                <span style="font-size: 12px; color: #888;">${item.date}</span>
+                <span style="font-weight: 700; color: #ff4500;">+ ${item.amount} BDT</span>
+            </div>
+        `).join('');
+    }
 }
 </script>
 
 </body>
 </html>
-
