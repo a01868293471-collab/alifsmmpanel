@@ -1,45 +1,19 @@
 {
-
-
-
-  "short_name": "FREE TIME EARN",
-
-
-
   "name": "FREE TIME EARN",
-
-
-
+  "short_name": "FREE TIME EARN",
+  "description": "Your professional earning platform managed by Abu Sufian.",
   "icons": [
-
-
-
     {
       "src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
       "type": "image/jpeg",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-
-
-"start_url": "./index.html",
-
-
-
-  "background_color": "#FFFFFF",
-
-
-
+  "start_url": "/index.html",
   "display": "standalone",
-
-
-
-  "scope": "./",
-
-
-
-  "theme_color": "#FFFFFF"
-
-
-
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "orientation": "portrait",
+  "scope": "/"
 }
