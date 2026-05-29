@@ -13323,7 +13323,18 @@ function saveCaptchaData() {
     }
 }
 
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
 
+// আপনার "INSTALL APP" বাটনে এই ফাংশনটি কল করুন
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+  }
+}
 </script>
 
 </body>
