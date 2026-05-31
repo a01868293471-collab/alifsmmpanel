@@ -6441,80 +6441,86 @@ function togglePassword() {
 
     <div class="container px-3 mt-3">
         
-        <!-- নির্দেশনা কার্ড -->
-        <div style="background: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px; border-radius: 15px; margin-bottom: 25px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
-                <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 14px;"></i>
-                <span style="font-size: 13px; color: #92400e; font-weight: 800;">জরুরী নির্দেশনা</span>
-            </div>
-            <p style="font-size: 12px; color: #b45309; margin: 0; line-height: 1.5; font-weight: 600;">
-                প্রথমে অ্যামাউন্ট লিখে আপনার সুবিধাজনক পেমেন্ট নম্বরটি কপি করে টাকা পাঠান।
-            </p>
-        </div>
+<!-- নির্দেশনা কার্ড -->
+<div style="background: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px; border-radius: 15px; margin-bottom: 25px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 14px;"></i>
+        <span style="font-size: 13px; color: #92400e; font-weight: 800;">জরুরী নির্দেশনা</span>
+    </div>
+    <p style="font-size: 12px; color: #b45309; margin: 0; line-height: 1.5; font-weight: 600;">
+        প্রথমে অ্যামাউন্ট লিখুন, পেমেন্ট মেথড সিলেক্ট করুন এবং নম্বর কপি করে টাকা পাঠিয়ে TrxID সাবমিট করুন। সর্বনিম্ন ডিপোজিট ৫০ টাকা ✅
+    </p>
+</div>
 
-        <!-- অ্যামাউন্ট ইনপুট -->
-        <div style="background: white; padding: 20px; border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 25px;">
-            <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Deposit Amount</label>
-            <div style="display: flex; align-items: center; background: #f8fafc; padding: 15px; border-radius: 16px; border: 2px solid #f1f5f9; transition: 0.3s;" id="amt-box">
-                <span style="font-size: 20px; font-weight: 800; color: #1e293b; margin-right: 10px;">৳</span>
-                <input type="number" id="f-amt" placeholder="0.00" oninput="checkAmount()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 800; font-size: 24px; color: #ff0000;">
-            </div>
-        </div>
+<!-- অ্যামাউন্ট ইনপুট -->
+<div style="background: white; padding: 20px; border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 25px;">
+    <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Deposit Amount</label>
+    <div style="display: flex; align-items: center; background: #f8fafc; padding: 15px; border-radius: 16px; border: 2px solid #f1f5f9; transition: 0.3s;" id="amt-box">
+        <span style="font-size: 20px; font-weight: 800; color: #1e293b; margin-right: 10px;">৳</span>
+        <input type="number" id="f-amt" placeholder="0.00" oninput="checkAmount()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 800; font-size: 24px; color: #ff0000;">
+    </div>
+</div>
 
-        <!-- পেমেন্ট মেথডস (Bank & Wallet Icons) -->
-        <div id="payment-methods" style="margin-bottom: 25px; opacity: 0.5; pointer-events: none; transition: 0.5s;">
-            <p style="font-size: 13px; color: #334155; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-copy" style="color: #64748b;"></i> Copy Number & Send Money
-            </p>
-            
-<div style="background: white; padding: 15px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="width: 48px; height: 48px; background: #fff1f2; border-radius: 14px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-sizing: border-box;">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png" 
-                 alt="bKash" 
-                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
+<!-- পেমেন্ট মেথড সিলেকশন (বিকাশ, নগদ, বাইনান্স গ্রিড) -->
+<div id="method-selector-section" style="margin-bottom: 25px; opacity: 0.5; pointer-events: none; transition: 0.5s;">
+    <p style="font-size: 13px; color: #334155; font-weight: 800; margin-bottom: 12px;">
+        <i class="fas fa-wallet" style="color: #64748b;"></i> Select Payment Method
+    </p>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: center;">
+    <!-- বিকাশ বাটন -->
+    <div onclick="selectDepositMethod('Bkash')" id="btn-dep-bkash" style="background: white; border: 2px solid #f1f5f9; border-radius: 16px; padding: 12px 5px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png" style="width: 42px; height: 42px; object-fit: contain; margin-bottom: 5px;">
+        <div style="font-size: 11px; font-weight: 800; color: #1e293b;"></div>
+    </div>
+    <!-- নগদ বাটন -->
+    <div onclick="selectDepositMethod('Nagad')" id="btn-dep-nagad" style="background: white; border: 2px solid #f1f5f9; border-radius: 16px; padding: 12px 5px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png" style="width: 42px; height: 42px; object-fit: contain; margin-bottom: 5px;">
+        <div style="font-size: 11px; font-weight: 800; color: #1e293b;"></div>
+    </div>
+    <!-- বাইনান্স বাটন -->
+    <div onclick="selectDepositMethod('Binance')" id="btn-dep-binance" style="background: white; border: 2px solid #f1f5f9; border-radius: 16px; padding: 12px 5px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(4).png" style="width: 42px; height: 42px; object-fit: contain; margin-bottom: 5px;">
+        <div style="font-size: 11px; font-weight: 800; color: #1e293b;"></div>
+    </div>
+</div>
+</div>
+
+<!-- ডাইনামিক নম্বর ডিসপ্লে কার্ড (ডাটা অনুযায়ী অটো শো করবে) -->
+<div id="dynamic-number-box" style="display: none; background: white; padding: 15px; border-radius: 20px; align-items: center; justify-content: space-between; margin-bottom: 25px; border: 2px solid #ff5500; box-shadow: 0 4px 15px rgba(0,0,0,0.03); animation: fadeInDown 0.4s ease;">
+    <div style="display: flex; align-items: center; gap: 12px; width: 80%;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-sizing: border-box;" id="dep-card-logo-bg">
+            <img id="dep-card-logo" src="" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
-        <div>
-            <div style="font-size: 14px; font-weight: 800; color: #1e293b;">bKash Personal</div>
-            <div style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">01868293471</div>
+        <div style="width: 100%; overflow: hidden;">
+            <div id="dep-card-title" style="font-size: 13px; font-weight: 800; color: #1e293b;">bKash Personal</div>
+            <div id="dep-card-number" style="font-size: 15px; color: #ff0000; font-weight: 900; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">01800000000</div>
         </div>
     </div>
-    <button onclick="copyAndToast('01868293471', 'Bkash')" style="background: #1e293b; color: white; border: none; width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;" title="Copy">
+    <button id="dep-card-copy-btn" onclick="" style="background: #1e293b; color: white; border: none; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s;">
         <i class="far fa-copy" style="font-size: 16px;"></i>
     </button>
 </div>
 
-<div style="background: white; padding: 15px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="width: 48px; height: 48px; background: #fff7ed; border-radius: 14px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-sizing: border-box;">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png" 
-                 alt="Nagad" 
-                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
-        </div>
-        <div>
-            <div style="font-size: 14px; font-weight: 800; color: #1e293b;">Nagad Personal</div>
-            <div style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">01868293471</div>
-        </div>
+<!-- ট্রানজেকশন সেকশন -->
+<div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 30px;">
+    <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Transaction ID</label>
+    <div style="display: flex; align-items: center; background: #f8fafc; padding: 14px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #e2e8f0;">
+        <i class="fas fa-receipt" style="color: #94a3b8; margin-right: 12px; font-size: 16px;"></i>
+        <input type="text" id="f-trx" placeholder="Paste your TrxID here" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 15px;">
     </div>
-    <button onclick="copyAndToast('01868293471', 'Nagad')" style="background: #1e293b; color: white; border: none; width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;" title="Copy">
-        <i class="far fa-copy" style="font-size: 16px;"></i>
+
+    <button onclick="fundReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 18px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(255,0,0,0.25); cursor: pointer; transition: 0.3s;">
+        Confirm Deposit
     </button>
 </div>
-</div>
-        <!-- ট্রানজেকশন সেকশন -->
-        <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 30px;">
-            <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Transaction ID</label>
-            <div style="display: flex; align-items: center; background: #f8fafc; padding: 14px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #e2e8f0;">
-                <i class="fas fa-receipt" style="color: #94a3b8; margin-right: 12px; font-size: 16px;"></i>
-                <input type="text" id="f-trx" placeholder="Paste your TrxID here" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 15px;">
-            </div>
-
-            <button onclick="fundReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 18px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(255,0,0,0.25); cursor: pointer; transition: 0.3s;">
-                Confirm Deposit
-            </button>
         </div>
     </div>
-</div>
+<style>
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 
 <style>
 .m-card { background: white; padding: 12px 18px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
@@ -8444,99 +8450,7 @@ function editBal(index) {
     function setSrv(s, el) { document.querySelectorAll('.srv-btn').forEach(b => b.classList.remove('active')); el.classList.add('active'); document.getElementById('cur-srv-txt').innerText = s; updatePrice(); }
     function updatePrice() { let srv = document.getElementById('cur-srv-txt').innerText, q = document.getElementById('qty').value; document.getElementById('total-price').innerText = formatCurrency((q / 1000) * (db.prices[srv] || 50)); }
 
-function fundReq() {
-    let amtInput = document.getElementById('f-amt').value;
-    let amt = parseFloat(amtInput); 
-    let trx = document.getElementById('f-trx').value;
-    let now = new Date().toLocaleString('bn-BD', { hour12: true });
-    let fundPage = document.getElementById('p-fund');
 
-    // ১. ভ্যালিডেশন চেক
-    if (!amtInput || !trx) {
-        return Swal.fire({ 
-            target: fundPage, 
-            icon: 'error', 
-            text: 'সব তথ্য সঠিকভাবে দিন', 
-            toast: true, 
-            position: 'top', 
-            showConfirmButton: false, 
-            timer: 2000 
-        });
-    }
-
-    if (amt < 50) {
-        return Swal.fire({ target: fundPage, icon: 'warning', text: 'মিনিমাম ৫০ টাকা ডিপোজিট করতে হবে', toast: true, position: 'top', showConfirmButton: false, timer: 2000 });
-    }
-
-    // ২. ডাটাবেসে সেভ (মেথড ছাড়া)
-    db.funds.push({ 
-        id: Date.now(), 
-        user: curUser.email, 
-        amt: amt, 
-        trx: trx, 
-        status: 'Pending', 
-        time: now 
-    });
-    save();
-
-    // ৩. সাকসেস পপআপ (মেথড এর কোনো চিহ্ন নেই এখানে)
-    Swal.fire({
-        target: fundPage,
-        width: '350px',
-        background: '#ffffff',
-        showConfirmButton: true,
-        confirmButtonText: 'ঠিক আছে',
-        confirmButtonColor: '#28a745',
-        allowOutsideClick: false,
-        padding: '0',
-        customClass: { popup: 'long-premium-popup' },
-        html: `
-            <style>
-                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
-                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
-            </style>
-            <div class="pop-container" style="position: relative;">
-                <div style="background: linear-gradient(135deg, #28a745, #5dd373); 
-                            width: 80px; height: 80px; border-radius: 50%; 
-                            display: flex; align-items: center; justify-content: center; 
-                            margin: -105px auto 25px; 
-                            box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4);
-                            border: 6px solid #ffffff; position: relative; z-index: 9999;">
-                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 25px; font-size: 22px;">রিকুয়েষ্ট সফল হয়েছে!</h3>
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
-                    
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 14px;">টাকার পরিমাণ</span>
-                        <b style="color: #28a745; font-size: 18px;">৳${amt}</b>
-                    </div>
-                    
-                    <div style="display:flex; justify-content: space-between;">
-                        <span style="color: #888; font-size: 14px;">Transaction ID</span>
-                        <b style="color: #333; font-size: 14px; font-family: monospace;">${trx}</b>
-                    </div>
-                </div>
-                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
-                    <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
-                        অ্যাডমিন আপনার ট্রানজেকশনটি যাচাই করে ব্যালেন্স যোগ করে দেবে।
-                    </p>
-                </div>
-            </div>
-        `
-    }).then((result) => {
-        if (result.isConfirmed) {
-            closePage('p-fund');
-            renderUser();
-        }
-    });
-
-    // ইনপুট রিসেট
-    document.getElementById('f-amt').value = '';
-    document.getElementById('f-trx').value = '';
-}
 function confirmOrder() {
     // ইনপুট ভ্যালু নেওয়া
     let qElem = document.getElementById('qty');
@@ -13187,6 +13101,213 @@ function transferBalance() {
             console.error("Error:", error);
             alert("❌ নেটওয়ার্ক সমস্যা, রিকোয়েস্টটি যায়নি।");
         });
+}
+
+// পেমেন্ট গেটওয়ে ডাটাবেস 
+const depositNumbers = {
+    Bkash: { title: "bKash Personal", number: "01868293471", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png", bg: "#fff1f2" },
+    Nagad: { title: "Nagad Personal", number: "01868293471", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png", bg: "#fff7ed" },
+    Binance: { 
+    title: "Binance Pay ID / USDT Address", 
+    number: "1247748963", 
+    logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(4).png", 
+    bg: "#fef6d8" 
+}
+};
+
+let currentSelectedDepositMethod = "";
+
+// ১. অ্যামাউন্ট লিখলে পেমেন্ট মেথড আনলক করার ফাংশন (ডট এরর ফিক্সড করা হয়েছে)
+function checkAmount() {
+    let amtInput = document.getElementById('f-amt').value;
+    let methodSection = document.getElementById('method-selector-section');
+    let amtBox = document.getElementById('amt-box');
+
+    if (parseFloat(amtInput) >= 10) { // মিনিমাম ১০ টাকা বা তার বেশি হলে আনলক হবে
+        methodSection.style.opacity = "1"; // এখানে ডট (.) ফিক্স করা হয়েছে
+        methodSection.style.pointerEvents = "auto";
+        amtBox.style.borderColor = "#2ecc71"; // বর্ডার গ্রিন হবে
+    } else {
+        methodSection.style.opacity = "0.5";
+        methodSection.style.pointerEvents = "none";
+        amtBox.style.borderColor = "#f1f5f9";
+        document.getElementById('dynamic-number-box').style.display = "none"; // রিসেট বক্স
+        currentSelectedDepositMethod = "";
+        resetMethodButtons();
+    }
+}
+
+// ২. মেথড বাটন ক্লিক সিলেকশন ও ডাটা প্রদর্শন লজিক
+function selectDepositMethod(method) {
+    currentSelectedDepositMethod = method;
+    resetMethodButtons();
+
+    // সিলেক্টেড বাটনের ডিজাইন হাইলাইট করা
+    let activeBtn = document.getElementById(`btn-dep-${method.toLowerCase()}`);
+    if(activeBtn) {
+        activeBtn.style.borderColor = "#ff5500";
+        activeBtn.style.background = "#fff5f0";
+    }
+
+    // ডাইনামিক বক্স লোড করা
+    let data = depositNumbers[method];
+    if(data) {
+        document.getElementById('dep-card-logo').src = data.logo;
+        document.getElementById('dep-card-logo-bg').style.background = data.bg;
+        document.getElementById('dep-card-title').innerText = data.title;
+        document.getElementById('dep-card-number').innerText = data.number;
+        
+        // কপি বাটনে অ্যাকশন সেট করা
+        document.getElementById('dep-card-copy-btn').setAttribute('onclick', `copyAndToast('${data.number}', '${method}')`);
+        
+        // বক্সটি শো করানো
+        document.getElementById('dynamic-number-box').style.display = "flex";
+    }
+}
+
+// ৩. বাটন রিসেট করার হেল্পার ফাংশন
+function resetMethodButtons() {
+    ['bkash', 'nagad', 'binance'].forEach(id => {
+        let btn = document.getElementById(`btn-dep-${id}`);
+        if(btn) {
+            btn.style.borderColor = "#f1f5f9";
+            btn.style.background = "white";
+        }
+    });
+}
+
+// ৪. কপি ও নোটিফিকেশন ফাংশন
+function copyAndToast(text, method) {
+    navigator.clipboard.writeText(text).then(() => {
+        Swal.fire({
+            icon: 'success',
+            title: `${method} নম্বর কপি হয়েছে!`,
+            text: 'এবার আপনার ওয়ালেট থেকে টাকা পাঠিয়ে দিন।',
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2500
+        });
+    });
+}
+
+// ৫. ডিপোজিট রিকোয়েস্ট সাবমিট ফাংশন
+function fundReq() {
+    let amtInput = document.getElementById('f-amt').value;
+    let amt = parseFloat(amtInput); 
+    let trx = document.getElementById('f-trx').value.trim();
+    let now = new Date().toLocaleString('bn-BD', { hour12: true });
+    let fundPage = document.getElementById('p-fund');
+
+    // গ্লোবাল ভেরিয়েবল থেকে মেথড নেওয়া হচ্ছে
+    let method = currentSelectedDepositMethod || ""; 
+
+    // ভ্যালিডেশন চেক
+    if (!amtInput || !trx) {
+        return Swal.fire({ 
+            target: fundPage, 
+            icon: 'error', 
+            text: 'সব তথ্য সঠিকভাবে দিন', 
+            toast: true, 
+            position: 'top', 
+            showConfirmButton: false, 
+            timer: 2000 
+        });
+    }
+
+    if (!method) {
+        return Swal.fire({ 
+            target: fundPage, 
+            icon: 'warning', 
+            text: 'দয়া করে একটি পেমেন্ট মেথড সিলেক্ট করুন', 
+            toast: true, 
+            position: 'top', 
+            showConfirmButton: false, 
+            timer: 2500 
+        });
+    }
+
+    if (amt < 50) {
+        return Swal.fire({ target: fundPage, icon: 'warning', text: 'মিনিমাম ৫০ টাকা ডিপোজিট করতে হবে', toast: true, position: 'top', showConfirmButton: false, timer: 2000 });
+    }
+
+    // ডাটাবেসে সেভ
+    db.funds.push({ 
+        id: Date.now(), 
+        user: curUser.email, 
+        amt: amt, 
+        method: method, 
+        trx: trx, 
+        status: 'Pending', 
+        time: now 
+    });
+    save();
+
+    // সাকসেস পপআপ
+    Swal.fire({
+        target: fundPage,
+        width: '350px',
+        background: '#ffffff',
+        showConfirmButton: true,
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#28a745',
+        allowOutsideClick: false,
+        padding: '0',
+        customClass: { popup: 'long-premium-popup' },
+        html: `
+            <style>
+                .long-premium-popup { border-radius: 30px !important; margin-top: 60px !important; }
+                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
+            </style>
+            <div class="pop-container" style="position: relative;">
+                <div style="background: linear-gradient(135deg, #28a745, #5dd373); 
+                            width: 80px; height: 80px; border-radius: 50%; 
+                            display: flex; align-items: center; justify-content: center; 
+                            margin: -105px auto 25px; 
+                            box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4);
+                            border: 6px solid #ffffff; position: relative; z-index: 9999;">
+                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 25px; font-size: 22px;">রিকুয়েষ্ট সফল হয়েছে!</h3>
+                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 25px;">
+                    
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 14px;">পেমেন্ট মেথড</span>
+                        <b style="color: #1e293b; font-size: 14px; font-weight: 800;">${method}</b>
+                    </div>
+
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 14px;">টাকার পরিমাণ</span>
+                        <b style="color: #28a745; font-size: 18px;">৳${amt}</b>
+                    </div>
+                    
+                    <div style="display:flex; justify-content: space-between;">
+                        <span style="color: #888; font-size: 14px;">Transaction ID</span>
+                        <b style="color: #333; font-size: 14px; font-family: monospace; text-transform: uppercase;">${trx}</b>
+                    </div>
+                </div>
+                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
+                    <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5; font-weight: 600;">
+                        অ্যাডমিন আপনার ট্রানজেকশনটি যাচাই করে ব্যালেন্স যোগ করে দেবে।
+                    </p>
+                </div>
+            </div>
+        `
+    }).then((result) => {
+        if (result.isConfirmed) {
+            closePage('p-fund');
+            renderUser();
+        }
+    });
+
+    // ইনপুট ফিল্ড ও মেথড বাটন রিসেট
+    document.getElementById('f-amt').value = '';
+    document.getElementById('f-trx').value = '';
+    document.getElementById('dynamic-number-box').style.display = "none";
+    currentSelectedDepositMethod = "";
+    resetMethodButtons();
 }
 </script>
 
