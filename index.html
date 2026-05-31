@@ -3960,32 +3960,55 @@ function togglePassword() {
 
 <p style="font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 12px; padding-left: 5px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif;">Choose Payout Method</p>
 
-<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+
+
+
+
+<div style="display: flex; gap: 12px; margin-bottom: 20px;">
     
+    <!-- bKash Card -->
     <div style="flex: 1;" onclick="selectWithdrawMethod('Bkash')">
-        <div class="w-method-card" id="w-Bkash" style="background: #ffffff; padding: 12px; border-radius: 4px; text-align: center; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
-            <div style="background: #fff1f2; width: 36px; height: 36px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; overflow: hidden;">
-                <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png" 
-                     alt="bKash" 
-                     style="width: 100%; height: 100%; object-fit: contain; display: block;">
-            </div>
-            <span style="font-size: 12px; font-weight: 700; color: #334155;">bKash</span>
+        <div class="w-method-card" id="w-Bkash" style="background: #ffffff; position: relative; height: 75px; border-radius: 4px; border: 1px solid #e2e8f0; border-bottom: 3px solid #cbd5e1; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 6px;">
+            <!-- কার্ডের ভেতরে সুন্দরভাবে ফিট হওয়া ফুল লোগো -->
+            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png" 
+                 alt="bKash" 
+                 style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
         </div>
     </div>
 
+    <!-- Nagad Card -->
     <div style="flex: 1;" onclick="selectWithdrawMethod('Nagad')">
-        <div class="w-method-card" id="w-Nagad" style="background: #ffffff; padding: 12px; border-radius: 4px; text-align: center; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
-            <div style="background: #fff7ed; width: 36px; height: 36px; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; overflow: hidden;">
-                <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png" 
-                     alt="Nagad" 
-                     style="width: 100%; height: 100%; object-fit: contain; display: block;">
-            </div>
-            <span style="font-size: 12px; font-weight: 700; color: #334155;">Nagad</span>
+        <div class="w-method-card" id="w-Nagad" style="background: #ffffff; position: relative; height: 75px; border-radius: 4px; border: 1px solid #e2e8f0; border-bottom: 3px solid #cbd5e1; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 6px;">
+            <!-- কার্ডের ভেতরে সুন্দরভাবে ফিট হওয়া ফুল লোগো -->
+            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png" 
+                 alt="Nagad" 
+                 style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
         </div>
     </div>
 
+    <!-- GitHub Card -->
+    <div style="flex: 1;" onclick="selectWithdrawMethod('GitHub')">
+        <div class="w-method-card" id="w-GitHub" style="background: #ffffff; position: relative; height: 75px; border-radius: 4px; border: 1px solid #e2e8f0; border-bottom: 3px solid #cbd5e1; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 6px;">
+            <!-- আপনার দেওয়া গিটহাব লোগো লিংক -->
+
+            <img src="
+                        https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(4).png" 
+                 alt="GitHub" 
+                 style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
+        </div>
+    </div>
 
 </div>
+
+<!-- একটিভ/ক্লিক ইফেক্টের জন্য CSS (যদি অলরেডি না থাকে) -->
+<style>
+    .w-method-card:active {
+        transform: translateY(1px);
+        border-bottom-width: 1px !important;
+        box-shadow: none !important;
+    }
+</style>
+
 
 <div style="background: #ffffff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; margin-bottom: 30px; font-family: 'Poppins', sans-serif;">
     
@@ -10158,26 +10181,38 @@ function toggleWithdrawNum(fullNum, maskedNum) {
     }
 }
 
-let currentWithdrawMethod = 'Bkash'; // ডিফল্ট
+let currentWithdrawMethod = 'Bkash'; // ডিফল্ট সিলেক্টেড থাকবে
+
 function selectWithdrawMethod(method) {
     currentWithdrawMethod = method;
     
-    // সব কার্ডের স্টাইল আগের অবস্থায় ফিরিয়ে আনা
+    // সব কার্ডের স্টাইল আগের নরমাল অবস্থায় ফিরিয়ে আনা
     document.querySelectorAll('.w-method-card').forEach(card => {
-        card.style.borderColor = '#eee'; // ডিফল্ট বর্ডার কালার
-        card.style.background = 'white';
+        card.style.borderColor = '#e2e8f0'; // ডিফল্ট চারপাশের বর্ডার
+        card.style.borderBottomColor = '#cbd5e1'; // ডিফল্ট নিচের ডিপ বর্ডার
+        card.style.background = '#ffffff'; // ডিফল্ট ব্যাকগ্রাউন্ড
         card.style.transform = 'scale(1)'; // আগের সাইজে আনা
     });
 
-    // ক্লিক করা কার্ডটিকে হাইলাইট করা
+    // ক্লিক করা কার্ডটিকে প্রফেশনাল লাইট ব্লু থিমে হাইলাইট করা
     const activeCard = document.getElementById('w-' + method);
     if (activeCard) {
-        activeCard.style.borderColor = '#3b82f6'; // নীল বর্ডার
+        activeCard.style.borderColor = '#3b82f6'; // একটিভ নীল বর্ডার
+        activeCard.style.borderBottomColor = '#2563eb'; // একটিভ নিচের ডিপ নীল বর্ডার
         activeCard.style.background = '#f0f7ff'; // হালকা নীল ব্যাকগ্রাউন্ড
-        activeCard.style.transform = 'scale(1.05)'; // সামান্য বড় হবে দেখতে ভালো লাগে
-        activeCard.style.transition = '0.3s'; // অ্যানিমেশন স্মুথ হবে
+        activeCard.style.transform = 'scale(1.05)'; // সামান্য বড় হবে
+        activeCard.style.transition = 'all 0.2s ease-in-out'; // স্মুথ অ্যানিমেশন
     }
+    
+    // টেস্ট করার জন্য কনসোলে দেখতে পারেন ঠিকঠাক সিলেক্ট হচ্ছে কিনা
+    console.log("Selected Method: " + currentWithdrawMethod);
 }
+
+// পেজ লোড হওয়ার সাথে সাথে ডিফল্ট মেথডটি (Bkash) যেন সিলেক্টেড দেখায়
+window.onload = function() {
+    selectWithdrawMethod(currentWithdrawMethod);
+};
+
 function renderWithdrawHistory() {
     const listContainer = document.getElementById('withdraw-hist-list');
     if (!listContainer || !curUser) return;
