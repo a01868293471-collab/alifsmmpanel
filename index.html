@@ -5622,57 +5622,16 @@ function togglePassword() {
 </div>
 <div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <style>
-        .ad-job-card {
-            background: white; border-radius: 20px; padding: 15px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #eee;
-        }
-        .ad-job-flex { display: flex; align-items: center; }
-        .ad-job-icon {
-            width: 55px; height: 55px; border-radius: 12px; background: #f0f7ff;
-            display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 20px;
-        }
-        .ad-job-info { margin-left: 15px; flex: 1; }
-        .ad-job-title { margin: 0; font-weight: 800; color: #333; font-size: 15px; }
-        .ad-job-reward { margin: 2px 0 0 0; font-size: 14px; color: #20c997; font-weight: 700; }
-        
-        .btn-ad-view {
-            background: #007bff; color: white; border: none; padding: 8px 20px; 
-            border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.2s;
-        }
-        .btn-ad-view:disabled { background: #bdc3c7; color: #7f8c8d; cursor: not-allowed; }
-        
-        /* ফুল স্ক্রিন মোডাল */
-        .ad-fullscreen-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95); z-index: 2000; justify-content: center; align-items: center;
-            flex-direction: column; color: white; padding: 20px; text-align: center;
-        }
-        .ad-display-box {
-            background: #111; border: 2px dashed #333; width: 90%; max-width: 350px;
-            height: 200px; border-radius: 15px; display: flex; align-items: center;
-            justify-content: center; font-size: 16px; margin-bottom: 20px; padding: 15px;
-        }
-        .ad-timer-badge {
-            background: #e74c3c; color: white; padding: 8px 18px; border-radius: 20px;
-            font-size: 16px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(231,76,60,0.3);
-        }
-        .btn-ad-close {
-            background: #20c997; color: white; border: none; padding: 12px 35px;
-            font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; display: none;
-        }
-        .btn-ad-cancel {
-            background: transparent; color: #aaa; border: 1px solid #444; padding: 8px 20px;
-            font-size: 13px; border-radius: 8px; cursor: pointer; margin-top: 15px;
-        }
-    </style>
-    
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Micro Jobs</h5>
             </div>
+
+
             <div onclick="openMicroHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                 <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
             </div>
@@ -5682,17 +5641,21 @@ function togglePassword() {
     <div class="container mt-3">
         <div style="background: #fff4e5; border-radius: 15px; padding: 12px; border-left: 5px solid #ffa000; margin-bottom: 20px;">
             <p style="margin: 0; font-size: 12px; color: #856404; font-weight: 600;">
-                <i class="fas fa-bullhorn me-2"></i> নোটিশ: ১ মিনিট সম্পূর্ণ বিজ্ঞাপন দেখলে প্রতিটি টাস্কের জন্য ১ টাকা পাবেন। টাইমার শেষ হওয়ার আগে কেটে দিলে কোনো বোনাস পাবেন না।
+                <i class="fas fa-bullhorn me-2"></i> নোটিশ: প্রতিটি কাজ সঠিকভাবে সম্পন্ন করুন এবং স্ক্রিনশট প্রুফ হিসেবে জমা দিন। ভুল প্রুফ দিলে একাউন্ট ব্লক হতে পারে।
             </p>
         </div>
 
+        <div style="background: white; border-radius: 20px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #eee;">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <img src="https://via.placeholder.com/60" alt="Job" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover;">
+                <div style="margin-left: 15px; flex: 1;">
+                    <h6 style="margin: 0; font-weight: 800; color: #333;">YouTube Subscribe</h6>
+                    <p style="margin: 0; font-size: 14px; color: #20c997; font-weight: 700;">৳ ২.৫০</p>
+                </div>
+                <button onclick="viewJob('https://youtube.com', 'YouTube Subscribe')" style="background: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 10px; font-size: 13px; font-weight: 700;">View</button>
+            </div>
+        </div>
 
-
-        <h5 style="font-weight: 800; color: #2c3e50; margin-bottom: 15px; padding-left: 5px;">
-            <i class="fas fa-video text-primary me-2"></i> Adsterra Video Ads (দৈনিক ২০টি)
-        </h5>
-        
-        <div id="google-ads-list-container"></div>
         <div id="job-submission-area" class="d-none" style="background: #fff; border-radius: 20px; padding: 20px; border: 1px dashed #007bff; margin-top: 20px;">
             <h6 style="font-weight: 800; margin-bottom: 15px;" id="selected-job-name">কাজের প্রুফ জমা দিন</h6>
             
@@ -5707,136 +5670,6 @@ function togglePassword() {
         </div>
     </div>
 </div>
-
-<div class="ad-fullscreen-modal" id="googleAdModal">
-    <div class="ad-timer-badge" id="adTimerBadge">⏱️ ৬০ সেকেন্ড বাকি</div>
-    <div class="ad-display-box">
-        <div id="adScreenText">🎬 অন্য ট্যাবে বিজ্ঞাপনটি ওপেন হয়েছে। ১ টাকা বোনাস পেতে এই পেজে ১ মিনিট অপেক্ষা করুন, ট্যাবটি কাটবেন না!</div>
-    </div>
-    <button class="btn-ad-close" id="claimRewardBtn" onclick="processRewardClaim()">বোনাস ১ টাকা নিন</button>
-    <button class="btn-ad-cancel" id="cancelAdBtn" onclick="abortAdTask()">টাস্ক বাতিল করুন</button>
-</div>
-
-
-<script>
-    // 🔗 Adsterra থেকে দেওয়া আপনার লাইভ ডাইরেক্ট লিঙ্কটি নিচে আপডেট করা হয়েছে
-    const ADSTERRA_DIRECT_LINK = "https://www.effectivecpmnetwork.com/w9udjuzi?key=4d0c20c7ef202688d72a4a255cf7df99"; 
-
-    const MAX_DAILY_ADS = 20;
-    let userAdProgress = [];
-    let activeAdIndex = null;
-    let timerEngine;
-    let secondsLeft = 60;
-
-    // ১. রাত ১২টায় অটোমেটিক রিসেট মেকানিজম
-    function initializeAdSystem() {
-        const currentDateString = new Date().toDateString();
-        const lastCheckedDate = localStorage.getItem('micro_ad_date');
-
-        if (lastCheckedDate !== currentDateString) {
-            userAdProgress = Array(MAX_DAILY_ADS).fill(false);
-            localStorage.setItem('micro_ad_state', JSON.stringify(userAdProgress));
-            localStorage.setItem('micro_ad_date', currentDateString);
-        } else {
-            userAdProgress = JSON.parse(localStorage.getItem('micro_ad_state')) || Array(MAX_DAILY_ADS).fill(false);
-        }
-        buildAdCards();
-    }
-
-    // ২. ২০টি কার্ড তৈরি করা
-    function buildAdCards() {
-        const adContainer = document.getElementById('google-ads-list-container');
-        adContainer.innerHTML = ""; 
-
-        for (let i = 0; i < MAX_DAILY_ADS; i++) {
-            const statusViewed = userAdProgress[i];
-            
-            const cardMarkup = `
-                <div class="ad-job-card" style="${statusViewed ? 'opacity: 0.55; background: #fafafa;' : ''}">
-                    <div class="ad-job-flex">
-                        <div class="ad-job-icon" style="${statusViewed ? 'color: #95a5a6; background: #eaeded;' : ''}">
-                            <i class="fas ${statusViewed ? 'fa-check-circle' : 'fa-video'}"></i>
-                        </div>
-                        <div class="ad-job-info">
-                            <h6 class="ad-job-title" style="${statusViewed ? 'text-decoration: line-through; color: #7f8c8d;' : ''}">বিজ্ঞাপন টাস্ক #${i + 1}</h6>
-                            <p class="ad-job-reward">${statusViewed ? 'সম্পন্ন (৳১.০০ প্রাপ্ত)' : '৳ ১.০০'}</p>
-                        </div>
-                        <button class="btn-ad-view" ${statusViewed ? 'disabled' : ''} onclick="triggerAdsterraVideo(${i})">
-                            ${statusViewed ? 'Done' : 'Watch'}
-                        </button>
-                    </div>
-                </div>
-            `;
-            adContainer.innerHTML += cardMarkup;
-        }
-    }
-
-    // ৩. 'Watch' বাটনে ক্লিক করলে Adsterra লিঙ্ক ওপেন হবে এবং টাইমার চালু হবে
-    function triggerAdsterraVideo(index) {
-        activeAdIndex = index;
-        secondsLeft = 60; 
-        
-        document.getElementById('googleAdModal').style.display = 'flex';
-        document.getElementById('claimRewardBtn').style.display = 'none';
-        document.getElementById('cancelAdBtn').style.display = 'block';
-        document.getElementById('adTimerBadge').innerText = `⏱️ ${secondsLeft} সেকেন্ড বাকি`;
-        document.getElementById('adScreenText').innerText = "🎬 অন্য ট্যাবে বিজ্ঞাপনটি ওপেন হয়েছে। ১ টাকা বোনাস পেতে এই পেজে ১ মিনিট অপেক্ষা করুন, ট্যাবটি কাটবেন না!";
-
-        // Adsterra-এর ডাইরেক্ট লিঙ্কটি নতুন ট্যাবে ওপেন করার লজিক
-        window.open(ADSTERRA_DIRECT_LINK, "_blank");
-
-        // কাউন্টডাউন টাইমার রান করা
-        timerEngine = setInterval(() => {
-            secondsLeft--;
-            document.getElementById('adTimerBadge').innerText = `⏱️ ${secondsLeft} সেকেন্ড বাকি`;
-
-            if (secondsLeft <= 0) {
-                clearInterval(timerEngine);
-                document.getElementById('adTimerBadge').innerText = "✅ বিজ্ঞাপন দেখা শেষ!";
-                document.getElementById('adScreenText').innerText = "১ টাকা ব্যালেন্সে যোগ করতে নিচের বাটনে চাপুন।";
-                document.getElementById('claimRewardBtn').style.display = 'block';
-                document.getElementById('cancelAdBtn').style.display = 'none';
-            }
-        }, 1000);
-    }
-
-    // ৪. টাইমার শেষ হওয়ার আগে কেটে দিলে টাস্ক বাতিল
-    function abortAdTask() {
-        clearInterval(timerEngine);
-        document.getElementById('googleAdModal').style.display = 'none';
-        alert("টাস্ক বাতিল! ১ মিনিট সম্পূর্ণ না করার কারণে কোনো টাকা দেওয়া হয়নি।");
-        activeAdIndex = null;
-    }
-
-    // ৫. রিওয়ার্ড ১ টাকা প্রсеসিং এবং কার্ড লক
-    function processRewardClaim() {
-        if (activeAdIndex !== null) {
-            userAdProgress[activeAdIndex] = true;
-            localStorage.setItem('micro_ad_state', JSON.stringify(userAdProgress));
-
-            // আপনার ওয়ালেটে ১ টাকা যোগ করার কোড
-            let userWallet = parseFloat(localStorage.getItem('user_wallet_bal')) || 0.00;
-            userWallet += 1.00;
-            localStorage.setItem('user_wallet_bal', userWallet.toFixed(2));
-            
-            // মেইন ব্যালেন্সের আইডি থাকলে তা আপডেট হবে
-            if(document.getElementById('main-balance')) {
-                document.getElementById('main-balance').innerText = userWallet.toFixed(2);
-            }
-
-            document.getElementById('googleAdModal').style.display = 'none';
-            buildAdCards(); 
-            alert("সফলভাবে ১ টাকা আপনার অ্যাকাউন্টে যোগ করা হয়েছে!");
-            activeAdIndex = null;
-        }
-    }
-
-    // ডম লোড হলে সিস্টেম চালু হবে
-    document.addEventListener("DOMContentLoaded", function() {
-        initializeAdSystem();
-    });
-</script>
-
 
 <div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
