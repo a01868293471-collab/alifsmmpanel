@@ -18,13 +18,11 @@
 
 
 
-      
-"src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
-    "type": "image/jpg",
-      
-      
+      "src": "https://img.icons8.com/fluency/512/wallet.png",
 
-      
+
+
+      "type": "image/png",
 
 
 
@@ -60,26 +58,4 @@
 
 
 
-}
-
-
-
-
-
-
-{
-  "short_name": "FREE TIME EARN",
-  "name": "FREE TIME EARN",
-  "icons": [
-    {
-      "src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
-      
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": "./index.html",
-  "background_color": "#FFFFFF",
-  "display": "standalone",
-  "scope": "./",
-  "theme_color": "#FFFFFF"
 }
