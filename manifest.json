@@ -1,21 +1,61 @@
 {
+
+
+
   "short_name": "FREE TIME EARN",
+
+
+
   "name": "FREE TIME EARN",
+
+
+
   "icons": [
+
+
+
     {
+
+
       "src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
-      "sizes": "192x192",
-      "type": "image/jpeg"
-    },
-    {
-      "src": "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1778426773999.jpg",
-      "sizes": "512x512",
-      "type": "image/jpeg"
+
+
+
+
+      "type": "image/png",
+
+
+
+      "sizes": "512x512"
+
+
+
     }
+
+
+
   ],
-  "start_url": "./index.html",
+
+
+
+"start_url": "./index.html",
+
+
+
   "background_color": "#FFFFFF",
+
+
+
   "display": "standalone",
+
+
+
   "scope": "./",
+
+
+
   "theme_color": "#FFFFFF"
+
+
+
 }
