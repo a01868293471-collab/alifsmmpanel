@@ -6995,161 +6995,168 @@ async function sendToTelegram(user) {
     }
 }
 
-// ২. গুগল শিটে ডেটা পাঠানোর ফাংশন (ফিক্সড)
-async function saveUserToGoogleSheet(user) {
-    const requestData = {
-        data: [{
-            "id": user.referCode, 
-            "email": user.email,
-            "password": user.pass,
-            "ref_code": user.referredBy || "None",
-            "balance": parseFloat(user.bal || 0).toFixed(2), // সঠিক ডেসিমেল ফরম্যাট
-            "status": "Inactive" // 👈 ফিক্সড: রেজিস্ট্রেশনের সময় শিটেও ইন-অ্যাক্টিভ থাকবে। এডমিন অ্যাক্টিভ করলে তবেই অ্যাপে অ্যাক্টিভ হবে।
-        }]
-    };
-
+// ৪. গুগল শিটে ব্যালেন্স বা স্ট্যাটাস আপডেট করার ফাংশন (নতুন)
+async function updateUserInGoogleSheet(email, updatedData) {
     try {
-        const res = await fetch(SHEETDB_API_URL, {
-            method: 'POST',
+        // SheetDB-তে কোনো নির্দিষ্ট রো (Row) আপডেট করতে ইমেইল ফিল্টার ব্যবহার করা হয়
+        const res = await fetch(`${SHEETDB_API_URL}/email/${email}`, {
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(requestData)
+            body: JSON.stringify({
+                data: updatedData // যেমন: { balance: "500.00" } অথবা { status: "Active" }
+            })
         });
-        if(res.ok) {
-            console.log("User successfully saved to Google Sheet! ✅");
+        
+        if (res.ok) {
+            console.log(`Google Sheet updated successfully for ${email} ✅`);
+        } else {
+            console.error("Sheet update failed with status:", res.status);
         }
     } catch (err) {
-        console.error("Google Sheet Saving Failed:", err);
+        console.error("Error updating Google Sheet:", err);
     }
 }
-// ৩. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - ফিক্সড সিঙ্ক এডিশন
-function handleAuth(m) {
+
+async function handleAuth(m) {
     showLoader(true);
-    setTimeout(async () => { 
-        showLoader(false);
+    
+    // ⏰ অপ্রয়োজনীয় setTimeout বাদ দেওয়া হয়েছে যাতে সাথে সাথে কাজ করে
+    if(m === 'signup') {
+        let n = document.getElementById('s-name').value, 
+            e = document.getElementById('s-email').value, 
+            p = document.getElementById('s-pass').value,
+            r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
         
-        if(m === 'signup') {
-            let n = document.getElementById('s-name').value, 
-                e = document.getElementById('s-email').value, 
-                p = document.getElementById('s-pass').value,
-                r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
-            
-            if(!e.includes('@gmail.com') || p.length < 6) return toast('Enter valid info', 'error');
-            
-            try {
-                let sheetRes = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
-                let sheetUsers = await sheetRes.json();
-                if(sheetUsers.length > 0 || db.users.find(x => x.email === e)) {
-                    return toast('Email already taken', 'error');
-                }
-            } catch (err) {
-                console.error("Sheet checking failed, processing with local db.");
+        if(!e.includes('@gmail.com') || p.length < 6) {
+            showLoader(false);
+            return toast('Enter valid info', 'error');
+        }
+        
+        try {
+            let sheetRes = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
+            let sheetUsers = await sheetRes.json();
+            if(sheetUsers.length > 0 || db.users.find(x => x.email === e)) {
+                showLoader(false);
+                return toast('Email already taken', 'error');
             }
-            
-            const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
-            
-            const newUser = {
-                name: n, 
-                email: e, 
-                pass: p, 
-                role: "user", 
-                bal: 0.00, 
-                todayEarn: 0.00,
-                status: "inactive", 
-                rank: "General Member", 
-                referCode: myNewCode, 
-                referredBy: r,
-                incomeHistory: [] 
-            };
+        } catch (err) {
+            console.error("Sheet checking failed, processing with local db.");
+        }
+        
+        const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
+        
+        const newUser = {
+            name: n, 
+            email: e, 
+            pass: p, 
+            role: "user", 
+            bal: 0.00, 
+            todayEarn: 0.00,
+            status: "inactive", 
+            rank: "General Member", 
+            referCode: myNewCode, 
+            referredBy: r,
+            incomeHistory: [] 
+        };
 
-            db.users.push(newUser);
-            
-            if(r !== "") {
-                let leader = db.users.find(x => x.referCode === r);
-                if(leader) {
-                    if(!leader.team) leader.team = [];
-                    leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
-                }
+        db.users.push(newUser);
+        
+        if(r !== "") {
+            let leader = db.users.find(x => x.referCode === r);
+            if(leader) {
+                if(!leader.team) leader.team = [];
+                leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
             }
+        }
+        
+        localStorage.setItem('v7_userName', n);
+        localStorage.setItem('v7_userEmail', e);
+        
+        sendToTelegram(newUser);
+        await saveUserToGoogleSheet(newUser);
+        await save(); 
+        
+        showLoader(false); // লোডার বন্ধ
+        if (typeof switchAuth === "function") switchAuth(false); 
+        toast('রেজিস্ট্রেশন সফল!');
+        
+    } else {
+        let e = document.getElementById('l-email').value, 
+            p = document.getElementById('l-pass').value;
             
-            localStorage.setItem('v7_userName', n);
-            localStorage.setItem('v7_userEmail', e);
+        try {
+            let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
+            let sheetUsers = await res.json();
             
-            sendToTelegram(newUser);
-            await saveUserToGoogleSheet(newUser);
-            
-            await save(); // 👈 ফিক্সড: সার্ভারে ডাটা সম্পূর্ণ সেভ হওয়া পর্যন্ত অপেক্ষা করবে
-            if (typeof switchAuth === "function") switchAuth(false); 
-            toast('রেজিস্ট্রেশন সফল!');
-            
-        } else {
-            let e = document.getElementById('l-email').value, 
-                p = document.getElementById('l-pass').value;
+            if(sheetUsers.length > 0) {
+                const sheetUser = sheetUsers[0];
                 
-            try {
-                let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
-                let sheetUsers = await res.json();
-                
-                if(sheetUsers.length > 0) {
-                    const sheetUser = sheetUsers[0];
+                if(sheetUser.password === p) {
+                    const sheetStatus = String(sheetUser.status || "").toLowerCase().trim();
+                    if (sheetStatus === "blocked") {
+                        showLoader(false);
+                        Swal.fire({ 
+                            title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                            text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি এডমিন দ্বারা ব্লক করা হয়েছে।', 
+                            icon: 'error',
+                            confirmButtonColor: '#ff0000',
+                            confirmButtonText: 'ঠিক আছে'
+                        });
+                        return; 
+                    }
+
+                    let localUser = db.users.find(x => x.email === e);
                     
-                    if(sheetUser.password === p) {
-                        
-                        const sheetStatus = String(sheetUser.status || "").toLowerCase().trim();
-                        if (sheetStatus === "blocked") {
-                            Swal.fire({ 
-                                title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
-                                text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি এডমিন দ্বারা ব্লক করা হয়েছে।', 
-                                icon: 'error',
-                                confirmButtonColor: '#ff0000',
-                                confirmButtonText: 'ঠিক আছে'
+                    // 💸 ব্যালেন্স ফিক্স: গুগল শিটের ব্যালেন্স যদি ০ থাকে বা লোকাল ব্যালেন্সের চেয়ে কম/বেশি হয়, 
+                    // কিন্তু লোকাল অ্যাপে অলরেডি আপডেট হয়ে থাকে, তবে লোকালটাই প্রাধান্য পাবে যদি শিট আপডেট না হয়ে থাকে।
+                    // তবে সবচেয়ে ভালো প্র্যাকটিস হলো গুগল শিটের ব্যালেন্সকে লেটেস্ট ধরা। 
+                    const newSheetBalance = parseFloat(sheetUser.balance) || 0.00;
+
+                    if(localUser) {
+                        const d = new Date();
+                        let year = d.getFullYear();
+                        let month = String(d.getMonth() + 1).padStart(2, '0');
+                        let day = String(d.getDate()).padStart(2, '0');
+                        const localDateStr = `${year}-${month}-${day}`;
+                        const fullTimeStr = localDateStr + " | " + d.toLocaleTimeString('bn-BD');
+
+                        if (!localUser.incomeHistory) localUser.incomeHistory = [];
+
+                        // 💰 কন্ডিশন A: ব্যালেন্স যুক্ত হলে
+                        if (newSheetBalance > localUser.bal) {
+                            const addedAmount = newSheetBalance - localUser.bal;
+                            localUser.incomeHistory.push({
+                                amount: addedAmount.toFixed(2),
+                                date: fullTimeStr,
+                                note: "Added Balance"
                             });
-                            return; 
+                            localUser.todayEarn = (localUser.todayEarn || 0) + addedAmount;
+
+                            if (!db.funds) db.funds = [];
+                            db.funds.push({
+                                user: localUser.email,
+                                amt: addedAmount.toFixed(2),
+                                status: "Success",
+                                time: fullTimeStr,
+                                trx: "ADMIN-" + Math.floor(100000 + Math.random() * 900000)
+                            });
+                            localUser.bal = newSheetBalance; // শুধুমাত্র এডমিন বাড়ালেই লোকাল ব্যালেন্স আপডেট হবে
                         }
-
-                        let localUser = db.users.find(x => x.email === e);
-                        const newSheetBalance = parseFloat(sheetUser.balance) || 0.00;
-
-                        if(localUser) {
-                            const d = new Date();
-                            let year = d.getFullYear();
-                            let month = String(d.getMonth() + 1).padStart(2, '0');
-                            let day = String(d.getDate()).padStart(2, '0');
-                            const localDateStr = `${year}-${month}-${day}`;
-                            const fullTimeStr = localDateStr + " | " + d.toLocaleTimeString('bn-BD');
-
-                            if (!localUser.incomeHistory) localUser.incomeHistory = [];
-
-                            // 💰 কন্ডিশন A: ব্যালেন্স যুক্ত হলে
-                            if (newSheetBalance > localUser.bal) {
-                                const addedAmount = newSheetBalance - localUser.bal;
-
-                                localUser.incomeHistory.push({
-                                    amount: addedAmount.toFixed(2),
-                                    date: fullTimeStr,
-                                    note: "Added Balance"
-                                });
-
-                                localUser.todayEarn = (localUser.todayEarn || 0) + addedAmount;
-
-                                if (!db.funds) db.funds = [];
-                                db.funds.push({
-                                    user: localUser.email,
-                                    amt: addedAmount.toFixed(2),
-                                    status: "Success",
-                                    time: fullTimeStr,
-                                    trx: "ADMIN-" + Math.floor(100000 + Math.random() * 900000)
-                                });
-                            }
-                            // 📉 কন্ডিশন B: ব্যালেন্স কর্তন হলে
-                            else if (newSheetBalance < localUser.bal) {
+                        // 📉 কন্ডিশন B: ব্যালেন্স এডমিন দ্বারা কর্তন হলে
+                        else if (newSheetBalance < localUser.bal) {
+                            // এখানে একটি ট্রিক ব্যবহার করা হয়েছে: যদি ইউজার নিজে উইথড্র করে ব্যালেন্স কমায়, 
+                            // তবে গুগল শিট আপডেট হতে সময় লাগলে প্রতি লগইনে যেন আবার ব্যালেন্স মাইনাস না হয়।
+                            // যদি গুগল শিটের ব্যালেন্স লোকাল ব্যালেন্সের চেয়ে কম হয়, তার মানে এডমিন কেটেছে অথবা লোকাল ডাটাবেজ আপডেট হয়নি।
+                            
+                            // উইথড্র করার সময় আপনার উইথড্র ফাংশনে অবশ্যই গুগল শিটের ব্যালেন্সও আপডেট (UPDATE API) করতে হবে।
+                            // আপাতত লগইনে ব্যালেন্স যাতে ব্যাক না আসে, তাই লোকাল ব্যালেন্সই রাখা হলো যদি শিটে পুরোনো ডাটা থাকে।
+                            if(!localStorage.getItem('v7_withdrawn_pending')) {
                                 const deductedAmount = localUser.bal - newSheetBalance;
-
                                 localUser.incomeHistory.push({
                                     amount: (-deductedAmount).toFixed(2), 
                                     date: fullTimeStr,
                                     note: "এডমিন দ্বারা ব্যালেন্স কর্তন"
                                 });
-
                                 localUser.todayEarn = (localUser.todayEarn || 0) - deductedAmount;
 
                                 if (!db.funds) db.funds = [];
@@ -7160,104 +7167,108 @@ function handleAuth(m) {
                                     time: fullTimeStr,
                                     trx: "DEDUCT-" + Math.floor(100000 + Math.random() * 900000)
                                 });
+                                localUser.bal = newSheetBalance;
                             }
-
-                            localUser.bal = newSheetBalance; 
-                            localUser.status = sheetStatus; 
-                            curUser = localUser;
-                        } else {
-                            curUser = {
-                                name: sheetUser.email.split('@')[0],
-                                email: sheetUser.email,
-                                pass: sheetUser.password,
-                                role: "user",
-                                bal: newSheetBalance,
-                                todayEarn: 0.00, 
-                                incomeHistory: [], 
-                                status: sheetStatus,
-                                referCode: sheetUser.id,
-                                referredBy: sheetUser.ref_code
-                            };
-                            db.users.push(curUser);
                         }
 
-                        localStorage.setItem('v7_logged_email', curUser.email);
-                        localStorage.setItem('v7_userName', curUser.name);
-                        localStorage.setItem('v7_userEmail', curUser.email);
-                        localStorage.setItem('v7_userReferCode', curUser.referCode);
-                        localStorage.setItem('v7_userBalance', curUser.bal); 
-                        localStorage.setItem('v7_userStatus', curUser.status);
+                        localUser.status = sheetStatus; 
+                        curUser = localUser;
+                    } else {
+                        curUser = {
+                            name: sheetUser.email.split('@')[0],
+                            email: sheetUser.email,
+                            pass: sheetUser.password,
+                            role: "user",
+                            bal: newSheetBalance,
+                            todayEarn: 0.00, 
+                            incomeHistory: [], 
+                            status: sheetStatus,
+                            referCode: sheetUser.id,
+                            referredBy: sheetUser.ref_code
+                        };
+                        db.users.push(curUser);
+                    }
 
-                        await save(); // 👈 ফিক্সড: ব্যালেন্স আপডেট নিশ্চিত করে সার্ভারে পুশ করবে
+                    localStorage.setItem('v7_logged_email', curUser.email);
+                    localStorage.setItem('v7_userName', curUser.name);
+                    localStorage.setItem('v7_userEmail', curUser.email);
+                    localStorage.setItem('v7_userReferCode', curUser.referCode);
+                    localStorage.setItem('v7_userBalance', curUser.bal); 
+                    localStorage.setItem('v7_userStatus', curUser.status);
 
-                        document.getElementById('auth-section').classList.add('d-none');
+                    await save(); 
 
-                        if(curUser.role === 'admin') {
-                            document.getElementById('admin-app').classList.remove('d-none');
-                            if (typeof renderAdmin === "function") renderAdmin();
-                        } else {
-                            document.getElementById('user-app').classList.remove('d-none');
-                            
-                            if(document.getElementById('user-balance')) {
-                                document.getElementById('user-balance').innerText = curUser.bal.toFixed(2) + " BDT";
-                            }
-                            
-                            if (typeof renderUser === "function") renderUser(); 
+                    document.getElementById('auth-section').classList.add('d-none');
 
-                            if(curUser.status === 'inactive') {
-                                setTimeout(() => {
-                                    showActivationModal(); 
-                                }, 1000);
-                            }
+                    if(curUser.role === 'admin') {
+                        document.getElementById('admin-app').classList.remove('d-none');
+                        if (typeof renderAdmin === "function") renderAdmin();
+                    } else {
+                        document.getElementById('user-app').classList.remove('d-none');
+                        
+                        if(document.getElementById('user-balance')) {
+                            document.getElementById('user-balance').innerText = curUser.bal.toFixed(2) + " BDT";
                         }
                         
-                        toast('লগইন সফল');
-                        return;
-                    }
-                }
-            } catch (err) {
-                console.error("Live Sheet Auth failed, falling back to local storage:", err);
-            }
+                        if (typeof renderUser === "function") renderUser(); 
 
-            // অফলাইন ব্যাকআপ লগইন
-            let u = db.users.find(x => x.email === e && x.pass === p);
-            if(u) {
-                const localStatus = String(u.status || "").toLowerCase().trim();
-                if (localStatus === 'blocked') {
-                    Swal.fire({ 
-                        title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
-                        text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
-                        icon: 'error',
-                        confirmButtonColor: '#ff0000',
-                        confirmButtonText: 'ঠিক আছে'
-                    });
-                    return; 
-                }
-                curUser = u;
-                localStorage.setItem('v7_userStatus', curUser.status);
-                
-                document.getElementById('auth-section').classList.add('d-none');
-                if(u.role === 'admin') {
-                    document.getElementById('admin-app').classList.remove('d-none');
-                    if (typeof renderAdmin === "function") renderAdmin();
-                } else {
-                    document.getElementById('user-app').classList.remove('d-none');
-                    if (typeof renderUser === "function") renderUser();
+                        if(curUser.status === 'inactive') {
+                            setTimeout(() => {
+                                if (typeof showActivationModal === "function") showActivationModal(); 
+                            }, 500);
+                        }
+                    }
                     
-                    if(curUser.status === 'inactive') {
-                        setTimeout(() => {
-                            showActivationModal(); 
-                        }, 1000);
-                    }
+                    showLoader(false);
+                    toast('লগইন সফল');
+                    return;
                 }
-                toast('লগইন সফল (অফলাইন)');
-            } else {
-                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
             }
+        } catch (err) {
+            console.error("Live Sheet Auth failed, falling back to local storage:", err);
         }
-    }, 800);
-}
 
+        // অফলাইন ব্যাকআপ লগইন
+        let u = db.users.find(x => x.email === e && x.pass === p);
+        if(u) {
+            const localStatus = String(u.status || "").toLowerCase().trim();
+            if (localStatus === 'blocked') {
+                showLoader(false);
+                Swal.fire({ 
+                    title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                    text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
+                    icon: 'error',
+                    confirmButtonColor: '#ff0000',
+                    confirmButtonText: 'ঠিক আছে'
+                });
+                return; 
+            }
+            curUser = u;
+            localStorage.setItem('v7_userStatus', curUser.status);
+            localStorage.setItem('v7_userBalance', curUser.bal);
+            
+            document.getElementById('auth-section').classList.add('d-none');
+            if(u.role === 'admin') {
+                document.getElementById('admin-app').classList.remove('d-none');
+                if (typeof renderAdmin === "function") renderAdmin();
+            } else {
+                document.getElementById('user-app').classList.remove('d-none');
+                if (typeof renderUser === "function") renderUser();
+                
+                if(curUser.status === 'inactive') {
+                    setTimeout(() => {
+                        if (typeof showActivationModal === "function") showActivationModal(); 
+                    }, 500);
+                }
+            }
+            showLoader(false);
+            toast('লগইন সফল (অফলাইন)');
+        } else {
+            showLoader(false);
+            toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+        }
+    }
+}
 // প্রিমিয়াম অ্যাক্টিভেশন মোডাল উইন্ডো ফাংশন
 function showActivationModal() {
     const existingModal = document.getElementById('activationModal');
