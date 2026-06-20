@@ -13591,26 +13591,26 @@ function transferBalance() {
 
 // পেমেন্ট গেটওয়ে ডাটাবেস 
 const depositNumbers = {
-    Bkash: { title: "bKash Personal", number: "01300000000", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png", bg: "#fff1f2" },
-    Nagad: { title: "Nagad Personal", number: "01800000000", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png", bg: "#fff7ed" },
+    Bkash: { title: "bKash Personal", number: "01868293471", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png", bg: "#fff1f2" },
+    Nagad: { title: "Nagad Personal", number: "01868293471", logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png", bg: "#fff7ed" },
     Binance: { 
-    title: "Binance Pay ID / USDT Address", 
-    number: "1247748963", 
-    logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(4).png", 
-    bg: "#fef6d8" 
-}
+        title: "Binance Pay ID / USDT Address", 
+        number: "1247748963", 
+        logo: "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(4).png", 
+        bg: "#fef6d8" 
+    }
 };
 
 let currentSelectedDepositMethod = "";
 
-// ১. অ্যামাউন্ট লিখলে পেমেন্ট মেথড আনলক করার ফাংশন (ডট এরর ফিক্সড করা হয়েছে)
+// ১. অ্যামাউন্ট লিখলে পেমেন্ট মেথড আনলক করার ফাংশন
 function checkAmount() {
     let amtInput = document.getElementById('f-amt').value;
     let methodSection = document.getElementById('method-selector-section');
     let amtBox = document.getElementById('amt-box');
 
     if (parseFloat(amtInput) >= 10) { // মিনিমাম ১০ টাকা বা তার বেশি হলে আনলক হবে
-        methodSection.style.opacity = "1"; // এখানে ডট (.) ফিক্স করা হয়েছে
+        methodSection.style.opacity = "1"; 
         methodSection.style.pointerEvents = "auto";
         amtBox.style.borderColor = "#2ecc71"; // বর্ডার গ্রিন হবে
     } else {
@@ -13724,10 +13724,38 @@ function fundReq() {
         amt: amt, 
         method: method, 
         trx: trx, 
-        status: 'Pending', 
+        status: 'Success', 
         time: now 
     });
     save();
+
+    // =============== টেলিগ্রাম নোটিফিকেশন লজিক ===============
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862"; 
+    
+    // টেলিগ্রাম মেসেজ টেক্সট (Markdown ফরম্যাট)
+    const telegramMessage = `
+🔔 *নতুন ডিপোজিট রিকোয়েস্ট এসেছে!*
+━━━━━━━━━━━━━━━━━━
+👤 *ইউজার:* ${curUser.email}
+💰 *পরিমাণ:* ${amt} ৳
+💳 *মেথড:* ${method}
+🆔 *TrxID:* \`${trx}\`
+🕒 *সময়:* ${now}
+━━━━━━━━━━━━━━━━━━
+    `;
+
+    // API রিকোয়েস্ট পাঠানো হচ্ছে
+    fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: tgChatId,
+            text: telegramMessage,
+            parse_mode: "Markdown"
+        })
+    }).catch(err => console.error("টেলিগ্রাম নোটিফিকেশন পাঠাতে ব্যর্থ:", err));
+    // =========================================================
 
     // সাকসেস পপআপ
     Swal.fire({
