@@ -6967,7 +6967,7 @@ const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
 const tgChatId = "6882504862";   
 const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/ip19ol2kdzman'; 
 
-// ১. টেলিগ্রাম নোটিফিকেশন ফাংশন
+// ১. টেলিগ্রাম নোটিফিকেশন ফাংশন (রেজিস্ট্রেশন)
 async function sendToTelegram(user) {
     const message = `
 🆕 **নতুন ইউজার রেজিস্ট্রেশন!**
@@ -6995,7 +6995,7 @@ async function sendToTelegram(user) {
     }
 }
 
-// ২. গুগল শিটে ডেটা পাঠানোর ফাংশন
+// ২. গুগল শিটে নতুন ইউজার ডেটা পাঠানোর ফাংশন
 async function saveUserToGoogleSheet(user) {
     const requestData = {
         data: [{
@@ -7022,7 +7022,23 @@ async function saveUserToGoogleSheet(user) {
     }
 }
 
-// ৩. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - সুপার ফাস্ট এডিশন
+// ৩. গুগল শিটে ব্যালেন্স আপডেট করার ফাংশন (উইথড্রর জন্য ফিক্সড)
+async function updateBalanceInGoogleSheet(email, newBalance) {
+    try {
+        await fetch(`${SHEETDB_API_URL}/email/${email}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                data: { "balance": parseFloat(newBalance).toFixed(2) }
+            })
+        });
+        console.log("Google Sheet balance updated successfully! ✅");
+    } catch (err) {
+        console.error("Failed to update balance in Google Sheet:", err);
+    }
+}
+
+// ৪. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - সুপার ফাস্ট এডিশন
 async function handleAuth(m) {
     showLoader(true); // লোডার দেখাবে
     
@@ -7057,7 +7073,7 @@ async function handleAuth(m) {
             role: "user", 
             bal: 0.00, 
             todayEarn: 0.00,
-            status: "inactive", // রেজিস্ট্রেশনের পর লোকাল ডাটায় ইন-অ্যাক্টিভ থাকবে
+            status: "inactive", 
             rank: "General Member", 
             referCode: myNewCode, 
             referredBy: r,
@@ -7077,15 +7093,13 @@ async function handleAuth(m) {
         localStorage.setItem('v7_userName', n);
         localStorage.setItem('v7_userEmail', e);
         
-        // ⚡ পারফরম্যান্স বুস্ট: টেলিগ্রাম এবং গুগল শিট ব্যাকগ্রাউন্ডে একসাথে কাজ করবে (Promise.all)
-        // ফলে ইউজারকে অনর্থক বেশিক্ষণ অপেক্ষা করতে হবে না।
         await Promise.all([
             sendToTelegram(newUser),
             saveUserToGoogleSheet(newUser),
             save()
         ]);
         
-        showLoader(false); // কাজ শেষ, লোডার বন্ধ
+        showLoader(false); 
         if (typeof switchAuth === "function") switchAuth(false); 
         toast('রেজিস্ট্রেশন সফল!');
         
@@ -7146,28 +7160,13 @@ async function handleAuth(m) {
                                 time: fullTimeStr,
                                 trx: "ADMIN-" + Math.floor(100000 + Math.random() * 900000)
                             });
+                            localUser.bal = newSheetBalance;
                         }
-                        // 📉 কন্ডিশন B: ব্যালেন্স কর্তন হলে
+                        // 📉 কন্ডিশন B: ব্যালেন্স কর্তন বা উইথড্র সিঙ্ক
                         else if (newSheetBalance < localUser.bal) {
-                            const deductedAmount = localUser.bal - newSheetBalance;
-                            localUser.incomeHistory.push({
-                                amount: (-deductedAmount).toFixed(2), 
-                                date: fullTimeStr,
-                                note: "এডমিন দ্বারা ব্যালেন্স কর্তন"
-                            });
-                            localUser.todayEarn = (localUser.todayEarn || 0) - deductedAmount;
-
-                            if (!db.funds) db.funds = [];
-                            db.funds.push({
-                                user: localUser.email,
-                                amt: "-" + deductedAmount.toFixed(2),
-                                status: "Failed", 
-                                time: fullTimeStr,
-                                trx: "DEDUCT-" + Math.floor(100000 + Math.random() * 900000)
-                            });
+                            localUser.bal = newSheetBalance; 
                         }
 
-                        localUser.bal = newSheetBalance; 
                         localUser.status = sheetStatus; 
                         curUser = localUser;
                     } else {
@@ -7214,7 +7213,7 @@ async function handleAuth(m) {
                         }
                     }
                     
-                    showLoader(false); // লোডার বন্ধ
+                    showLoader(false); 
                     toast('লগইন সফল');
                     return;
                 }
@@ -7263,6 +7262,153 @@ async function handleAuth(m) {
         }
     }
 }
+
+// ৫. উইথড্র এক্সিকিউশন ফাংশন (গুগল শিট ব্যালেন্স সিঙ্কসহ)
+function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
+    let now = new Date().toLocaleString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        day: '2-digit', 
+        month: 'short', 
+        year: 'numeric', 
+        hour12: true 
+    });
+    
+    curUser.lastWithdrawDate = Date.now(); 
+
+    // লোকাল ব্যালেন্স কমানো
+    curUser.bal -= amt; 
+    
+    // ⚡ [ফিক্স]: গুগল শিটেও সাথে সাথে ব্যালেন্স মাইনাস করে আপডেট করা হলো
+    updateBalanceInGoogleSheet(curUser.email, curUser.bal);
+
+    // উইথড্র অবজেক্ট আইডি তৈরি
+    let withdrawId = Date.now();
+    let withdrawData = {
+        id: withdrawId,
+        user: curUser.email,
+        requestedAmt: amt,
+        amt: finalAmount, 
+        num: num,
+        method: method,
+        status: 'Success', 
+        time: now
+    };
+
+    if (!db.withdraws) db.withdraws = [];
+    db.withdraws.push(withdrawData);
+    
+    save(); 
+    renderUser(); 
+    if (typeof renderWithdrawHistory === "function") renderWithdrawHistory(); 
+
+    // --- [টেলিগ্রাম বট নোটিফিকেশন] ---
+    const telegramMessage = `
+🔔 **নতুন উইথড্র রিকোয়েস্ট**
+━━━━━━━━━━━━━━━━━━
+👤 ইউজার: ${curUser.email}
+💰 পরিমাণ: ৳${amt}
+💸 ইউজার পাবে: ৳${finalAmount.toFixed(2)}
+📱 নম্বর: ${num}
+🏦 মেথড: ${method}
+⏰ সময়: ${now}
+━━━━━━━━━━━━━━━━━━
+🛑 এই রিকোয়েস্টটি ৫ মিনিট পর অটোমেটিক সাকসেস হয়ে যাবে।
+`;
+
+    fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: tgChatId,
+            text: telegramMessage,
+            parse_mode: "Markdown"
+        })
+    }).catch(err => console.error("Telegram Error: ", err));
+
+
+    // --- [৫ মিনিট পর অটো সাকসেস লজিক] ---
+    setTimeout(() => {
+        let currentWithdraw = db.withdraws.find(w => w.id === withdrawId);
+        if (currentWithdraw) {
+            currentWithdraw.status = 'Success'; 
+            save(); 
+            if (typeof renderWithdrawHistory === "function") renderWithdrawHistory(); 
+        }
+    }, 5 * 60 * 1000); 
+
+
+    // নম্বর মাস্কিং (যেমন: 017***12345)
+    let maskedNum = num.length > 6 
+        ? num.substring(0, 4) + '***' + num.substring(num.length - 4) 
+        : num;
+
+    Swal.fire({
+        target: withdrawPage,
+        width: '360px',
+        background: '#ffffff',
+        showConfirmButton: true,
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#d32f2f',
+        allowOutsideClick: false,
+        padding: '0',
+        customClass: { popup: 'success-premium-popup' },
+        html: `
+            <style>
+                .success-header { 
+                    background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); 
+                    padding: 45px 20px 30px; text-align: center; position: relative;
+                }
+                .success-header::after {
+                    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20px; background: white; border-radius: 20px 20px 0 0;
+                }
+                .check-container { 
+                    width: 70px; height: 70px; background: white; border-radius: 50%; 
+                    display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; 
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                }
+                .check-container i { color: #ff4500; font-size: 30px; }
+                .info-card { background: #fffcf5; border-radius: 20px; padding: 20px; border: 1px solid #ffeeba; }
+                .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #eee; padding-bottom: 8px; align-items: center; }
+                .label { color: #666; font-size: 13px; }
+                .val { color: #1a1a1a; font-weight: 700; font-size: 14px; }
+                .eye-btn { cursor: pointer; color: #ff4500; margin-left: 8px; font-size: 14px; }
+            </style>
+            
+            <div class="success-header">
+                <div class="check-container"><i class="fas fa-check"></i></div>
+                <h3 style="color: white; font-weight: 800; margin: 0; font-size: 20px;">Withdraw Success!</h3>
+            </div>
+
+            <div style="padding: 10px 25px 25px;">
+                <div class="info-card">
+                    <div class="info-row">
+                        <span class="label">পদ্ধতি</span>
+                        <span class="val">${method}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">পরিমাণ</span>
+                        <span class="val" style="color: #28a745;">৳${finalAmount.toFixed(2)}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">নম্বর</span>
+                        <div style="display: flex; align-items: center;">
+                            <span id="display-num" class="val">${maskedNum}</span>
+                            <i id="eye-icon" class="fas fa-eye eye-btn" onclick="toggleWithdrawNum('${num}', '${maskedNum}')"></i>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; padding-top: 5px;">
+                        <span class="label">তারিখ</span>
+                        <span class="val" style="font-size: 11px; color: #999;">${now}</span>
+                    </div>
+                </div>
+            </div>
+        `
+    });
+}
+
+
+
 // প্রিমিয়াম অ্যাক্টিভেশন মোডাল উইন্ডো ফাংশন
 function showActivationModal() {
     const existingModal = document.getElementById('activationModal');
@@ -10327,217 +10473,7 @@ let finalAmount = amt - charge;
 
 }
 
-// ৩. উইথড্র এক্সিকিউশন ফাংশন
 
-function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
-
-    let now = new Date().toLocaleString('en-US', { 
-
-        hour: '2-digit', 
-
-        minute: '2-digit', 
-
-        day: '2-digit', 
-
-        month: 'short', 
-
-        year: 'numeric', 
-
-        hour12: true 
-
-    });
-
-    
-
-    // রাত ১২টার সিস্টেম কার্যকর করতে বর্তমান সময় (টাইমস্ট্যাম্প) সেভ করা
-
-    curUser.lastWithdrawDate = Date.now(); 
-
-
-
-    // ব্যালেন্স কমানো
-
-    curUser.bal -= amt; 
-
-    
-
-    let withdrawData = {
-
-        id: Date.now(),
-
-        user: curUser.email,
-
-        requestedAmt: amt,
-
-        amt: finalAmount, 
-
-        num: num,
-
-        method: method,
-
-        status: 'Pending',
-
-        time: now
-
-    };
-
-
-
-    // ডাটাবেসে রিকোয়েস্ট পুশ করা এবং সেভ করা
-
-    if (!db.withdraws) db.withdraws = [];
-
-    db.withdraws.push(withdrawData);
-
-    
-
-    save(); // ডাটা পার্মানেন্টলি সেভ করা
-
-    renderUser(); // ইউজার ইন্টারফেস আপডেট করা
-
-
-
-// নম্বরটি মাস্কিং করা (যেমন: 017***12345)
-
-    let maskedNum = num.length > 6 
-
-        ? num.substring(0, 4) + '***' + num.substring(num.length - 4) 
-
-        : num;
-
-
-
-    Swal.fire({
-
-        target: withdrawPage,
-
-        width: '360px',
-
-        background: '#ffffff',
-
-        showConfirmButton: true,
-
-        confirmButtonText: 'ঠিক আছে',
-
-        confirmButtonColor: '#d32f2f',
-
-        allowOutsideClick: false,
-
-        padding: '0',
-
-        customClass: { popup: 'success-premium-popup' },
-
-        html: `
-
-            <style>
-
-                .success-header { 
-
-                    background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); 
-
-                    padding: 45px 20px 30px; text-align: center; position: relative;
-
-                }
-
-                .success-header::after {
-
-                    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20px; background: white; border-radius: 20px 20px 0 0;
-
-                }
-
-                .check-container { 
-
-                    width: 70px; height: 70px; background: white; border-radius: 50%; 
-
-                    display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; 
-
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-
-                }
-
-                .check-container i { color: #ff4500; font-size: 30px; }
-
-                .info-card { background: #fffcf5; border-radius: 20px; padding: 20px; border: 1px solid #ffeeba; }
-
-                .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #eee; padding-bottom: 8px; align-items: center; }
-
-                .label { color: #666; font-size: 13px; }
-
-                .val { color: #1a1a1a; font-weight: 700; font-size: 14px; }
-
-                .eye-btn { cursor: pointer; color: #ff4500; margin-left: 8px; font-size: 14px; }
-
-            </style>
-
-            
-
-            <div class="success-header">
-
-                <div class="check-container"><i class="fas fa-check"></i></div>
-
-                <h3 style="color: white; font-weight: 800; margin: 0; font-size: 20px;">Withdraw Success!</h3>
-
-            </div>
-
-
-
-            <div style="padding: 10px 25px 25px;">
-
-                <div class="info-card">
-
-                    <div class="info-row">
-
-                        <span class="label">পদ্ধতি</span>
-
-                        <span class="val">${method}</span>
-
-                    </div>
-
-                    <div class="info-row">
-
-                        <span class="label">পরিমাণ</span>
-
-                        <span class="val" style="color: #28a745;">৳${finalAmount.toFixed(2)}</span>
-
-                    </div>
-
-                    
-
-                    <!-- নম্বর উইথ আইকন -->
-
-                    <div class="info-row">
-
-                        <span class="label">নম্বর</span>
-
-                        <div style="display: flex; align-items: center;">
-
-                            <span id="display-num" class="val">${maskedNum}</span>
-
-                            <i id="eye-icon" class="fas fa-eye eye-btn" onclick="toggleWithdrawNum('${num}', '${maskedNum}')"></i>
-
-                        </div>
-
-                    </div>
-
-                    
-
-                    <div style="display:flex; justify-content: space-between; padding-top: 5px;">
-
-                        <span class="label">তারিখ</span>
-
-                        <span class="val" style="font-size: 11px; color: #999;">${now}</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `
-
-    });
-
-}
 
 
 
@@ -10638,140 +10574,77 @@ window.onload = function() {
 
 
 function renderWithdrawHistory() {
-
     const listContainer = document.getElementById('withdraw-hist-list');
-
     if (!listContainer || !curUser) return;
 
-
-
     if (!db.withdraws) db.withdraws = [];
-
     const userWithdraws = db.withdraws.filter(w => w.user === curUser.email).reverse();
 
-
-
     if (userWithdraws.length === 0) {
-
         listContainer.innerHTML = `
-
             <div style="text-align: center; padding: 60px 20px;">
-
                 <div style="background: #f8f9fa; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-
                     <i class="fas fa-wallet" style="font-size: 25px; color: #ced4da;"></i>
-
                 </div>
-
                 <p style="font-size: 14px; color: #adb5bd; font-weight: 500;">এখনো কোনো উইথড্র রেকর্ড নেই</p>
-
             </div>`;
-
         return;
-
     }
 
-
-
     let html = '';
-
     userWithdraws.forEach(w => {
-
-        // স্ট্যাটাস কনফিগারেশন
-
-        let statusConfig = {
-
-            color: '#f59e0b', // Pending (Orange)
-
-            bg: '#fef3c7',
-
-            icon: 'fa-spinner fa-spin'
-
+        // ⚡ ডিফল্ট স্ট্যাটাস কনফিগারেশন সরাসরি Success (Green) করে দেওয়া হয়েছে
+        let statusConfig = { 
+            color: '#10b981', 
+            bg: '#d1fae5', 
+            icon: 'fa-check-circle' 
         };
 
-
-
-        if (w.status === 'Success') {
-
-            statusConfig = { color: '#10b981', bg: '#d1fae5', icon: 'fa-check-circle' };
-
-        } else if (w.status === 'Rejected') {
-
+        // যদি কোনো কারণে এডমিন রিজেক্ট করে, শুধু তখনই লাল দেখাবে
+        if (w.status === 'Rejected') {
             statusConfig = { color: '#ef4444', bg: '#fee2e2', icon: 'fa-times-circle' };
-
+        } else if (w.status === 'Pending') {
+            // উইথড্র করার সাথে সাথে যদি ডাটাবেজে Pending-ও থাকে, ইউজারকে এখানে সরাসরি Success-ই দেখাবে
+            statusConfig = { color: '#10b981', bg: '#d1fae5', icon: 'fa-check-circle' };
+            w.status = 'Success'; 
         }
 
-
-
-        // মেথড আইকন লজিক
-
-        let methodIcon = w.method === 'Bkash' ? 'https://img.icons8.com/color/48/bikas.png' : 'https://img.icons8.com/color/48/nagad.png';
-
-
+        // মেথড অনুযায়ী ডাইনামিক ইমেজ লোগো (bKash / Nagad)
+        let methodIcon = w.method.toLowerCase() === 'bkash' 
+            ? 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/bkash_logo.png' 
+            : 'https://raw.githubusercontent.com/tuhin-shikder/asset/main/nagad_logo.png';
 
         html += `
-
             <div style="background: white; padding: 15px; border-radius: 22px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f1f5f9; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-
                 <div style="display: flex; align-items: center; gap: 12px;">
-
-                    <div style="background: #f8fafc; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9;">
-
-                         <i class="fas fa-money-bill-wave" style="color: #ff0000; font-size: 18px;"></i>
-
+                    <div style="background: #f8fafc; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+                         <img src="${methodIcon}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3406/3406828.png'">
                     </div>
-
                     
-
                     <div>
-
                         <div style="font-weight: 800; color: #1e293b; font-size: 14px; display: flex; align-items: center; gap: 5px;">
-
                             ${w.method} Payout
-
                         </div>
-
                         <div style="font-size: 10px; color: #94a3b8; font-weight: 600; margin-top: 2px;">
-
                             <i class="far fa-calendar-alt"></i> ${w.time}
-
                         </div>
-
                     </div>
-
                 </div>
-
-
 
                 <div style="text-align: right;">
-
                     <div style="font-weight: 900; color: #1e293b; font-size: 15px; margin-bottom: 5px;">
-
-                        - ৳${w.amt}
-
+                        - ৳${w.amt.toFixed(2)}
                     </div>
-
                     <div style="background: ${statusConfig.bg}; color: ${statusConfig.color}; font-size: 9px; padding: 4px 10px; border-radius: 50px; display: inline-flex; align-items: center; gap: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;">
-
                         <i class="fas ${statusConfig.icon}" style="font-size: 8px;"></i> ${w.status}
-
                     </div>
-
                 </div>
-
             </div>
-
         `;
-
     });
 
-
-
     listContainer.innerHTML = html;
-
 }
-
-
 
 
 // পেমেন্ট ট্যাবে ক্লিক করলে এই ফাংশনটি কল হবে
