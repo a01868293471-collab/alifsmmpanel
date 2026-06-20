@@ -7043,14 +7043,20 @@ async function handleAuth(m) {
     showLoader(true); // লোডার দেখাবে
     
     if(m === 'signup') {
-        let n = document.getElementById('s-name').value, 
-            e = document.getElementById('s-email').value, 
+        let n = document.getElementById('s-name').value.trim(), 
+            e = document.getElementById('s-email').value.trim(), 
             p = document.getElementById('s-pass').value,
             r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
         
+        // 🛑 সাইন-আপ ভ্যালিডেশন
+        if(!n || !e || !p) {
+            showLoader(false);
+            return toast('সব তথ্য সঠিকভাবে দিন', 'error');
+        }
+
         if(!e.includes('@gmail.com') || p.length < 6) {
             showLoader(false);
-            return toast('Enter valid info', 'error');
+            return toast('Enter valid info (Password min 6 chars)', 'error');
         }
         
         try {
@@ -7105,14 +7111,26 @@ async function handleAuth(m) {
         
     } else {
         // --- লগইন সেকশন ---
-        let e = document.getElementById('l-email').value, 
+        let e = document.getElementById('l-email').value.trim(), 
             p = document.getElementById('l-pass').value;
+            
+        // 🛑 ক্রিশিয়াল ফিক্স: ফাঁকা লগইন সাবমিশন রোধ করা
+        if(!e || !p) {
+            showLoader(false);
+            return toast('ইমেইল এবং পাসওয়ার্ড লিখুন!', 'error');
+        }
+
+        if(!e.includes('@gmail.com')) {
+            showLoader(false);
+            return toast('বৈধ জিমেইল অ্যাড্রেস লিখুন', 'error');
+        }
             
         try {
             let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
             let sheetUsers = await res.json();
             
-            if(sheetUsers.length > 0) {
+            // ডাটাবেজে ইউজার পাওয়া গেলে এবং ইমেইল পুরোপুরি মিললে
+            if(sheetUsers && sheetUsers.length > 0 && sheetUsers[0].email === e) {
                 const sheetUser = sheetUsers[0];
                 
                 if(sheetUser.password === p) {
@@ -7262,7 +7280,6 @@ async function handleAuth(m) {
         }
     }
 }
-
 // ৫. উইথড্র এক্সিকিউশন ফাংশন (গুগল শিট ব্যালেন্স সিঙ্কসহ)
 function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
     let now = new Date().toLocaleString('en-US', { 
