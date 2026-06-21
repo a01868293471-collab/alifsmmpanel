@@ -7114,7 +7114,7 @@ async function handleAuth(m) {
         let e = document.getElementById('l-email').value.trim(), 
             p = document.getElementById('l-pass').value;
             
-        // 🛑 ক্রিশিয়াল ফিক্স: ফাঁকা লগইন সাবমিশন রোধ করা
+        // 🛑 ক্রিশিয়াল ফিক্স: ফাঁকা লগইন সাবমিশন রোধ করা
         if(!e || !p) {
             showLoader(false);
             return toast('ইমেইল এবং পাসওয়ার্ড লিখুন!', 'error');
@@ -7129,7 +7129,7 @@ async function handleAuth(m) {
             let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
             let sheetUsers = await res.json();
             
-            // ডাটাবেজে ইউজার পাওয়া গেলে এবং ইমেইল পুরোপুরি মিললে
+            // ডাটাবেজে ইউজার পাওয়া গেলে এবং ইমেইল পুরোপুরি মিললে
             if(sheetUsers && sheetUsers.length > 0 && sheetUsers[0].email === e) {
                 const sheetUser = sheetUsers[0];
                 
@@ -7139,7 +7139,7 @@ async function handleAuth(m) {
                         showLoader(false);
                         Swal.fire({ 
                             title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
-                            text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি এডমিন দ্বারা ব্লক করা হয়েছে।', 
+                            text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
                             icon: 'error',
                             confirmButtonColor: '#ff0000',
                             confirmButtonText: 'ঠিক আছে'
@@ -7180,8 +7180,27 @@ async function handleAuth(m) {
                             });
                             localUser.bal = newSheetBalance;
                         }
-                        // 📉 কন্ডিশন B: ব্যালেন্স কর্তন বা উইথড্র সিঙ্ক
+                        // 📉 কন্ডিশন B: ব্যালেন্স কর্তন বা উইথড্র সিঙ্ক (এখানে কোড আপডেট করা হয়েছে)
                         else if (newSheetBalance < localUser.bal) {
+                            const deductedAmount = localUser.bal - newSheetBalance;
+                            
+                            // ইউজারের হিস্ট্রিতে ব্যালেন্স কাটার রেকর্ড যোগ করা
+                            localUser.incomeHistory.push({
+                                amount: "-" + deductedAmount.toFixed(2),
+                                date: fullTimeStr,
+                                note: "Subtract Balance"
+                            });
+
+                            // ফান্ডের স্টেটমেন্টে ডেবিট হিসেবে ট্রানজেকশন রেকর্ড রাখা
+                            if (!db.funds) db.funds = [];
+                            db.funds.push({
+                                user: localUser.email,
+                                amt: "-" + deductedAmount.toFixed(2),
+                                status: "Success",
+                                time: fullTimeStr,
+                                trx: "DEBIT-" + Math.floor(100000 + Math.random() * 900000)
+                            });
+
                             localUser.bal = newSheetBalance; 
                         }
 
