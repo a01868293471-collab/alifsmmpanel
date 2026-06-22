@@ -5620,56 +5620,11 @@ function togglePassword() {
         </div>
     </div>
 </div>
-<div id="p-micro" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Micro Jobs</h5>
-            </div>
 
 
-            <div onclick="openMicroHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
-            </div>
-        </div>
-    </div>
 
-    <div class="container mt-3">
-        <div style="background: #fff4e5; border-radius: 15px; padding: 12px; border-left: 5px solid #ffa000; margin-bottom: 20px;">
-            <p style="margin: 0; font-size: 12px; color: #856404; font-weight: 600;">
-                <i class="fas fa-bullhorn me-2"></i> নোটিশ: প্রতিটি কাজ সঠিকভাবে সম্পন্ন করুন এবং স্ক্রিনশট প্রুফ হিসেবে জমা দিন। ভুল প্রুফ দিলে একাউন্ট ব্লক হতে পারে।
-            </p>
-        </div>
 
-        <div style="background: white; border-radius: 20px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #eee;">
-            <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                <img src="https://via.placeholder.com/60" alt="Job" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover;">
-                <div style="margin-left: 15px; flex: 1;">
-                    <h6 style="margin: 0; font-weight: 800; color: #333;">YouTube Subscribe</h6>
-                    <p style="margin: 0; font-size: 14px; color: #20c997; font-weight: 700;">৳ ২.৫০</p>
-                </div>
-                <button onclick="viewJob('https://youtube.com', 'YouTube Subscribe')" style="background: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 10px; font-size: 13px; font-weight: 700;">View</button>
-            </div>
-        </div>
 
-        <div id="job-submission-area" class="d-none" style="background: #fff; border-radius: 20px; padding: 20px; border: 1px dashed #007bff; margin-top: 20px;">
-            <h6 style="font-weight: 800; margin-bottom: 15px;" id="selected-job-name">কাজের প্রুফ জমা দিন</h6>
-            
-            <a id="work-link-btn" href="#" target="_blank" style="display: block; text-align: center; background: #f0f7ff; color: #007bff; text-decoration: none; padding: 10px; border-radius: 10px; font-weight: 700; margin-bottom: 15px; border: 1px solid #007bff;">
-                <i class="fas fa-external-link-alt me-2"></i> কাজের লিংকে যান
-            </a>
-
-            <label style="font-size: 13px; font-weight: 700; color: #555; display: block; margin-bottom: 8px;">কাজের স্ক্রিনশট দিন (Choose File):</label>
-            <input type="file" accept="image/*" style="width: 100%; padding: 10px; background: #f8f9fa; border-radius: 10px; border: 1px solid #ddd; font-size: 13px;">
-            
-            <button onclick="submitProof()" style="width: 100%; background: #20c997; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; margin-top: 15px; font-size: 15px;">SUBMIT PROOF</button>
-        </div>
-    </div>
-</div>
 
 <div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
@@ -5905,6 +5860,252 @@ function togglePassword() {
         <p style="text-align: center; font-size: 11px; color: #888; margin-top: 15px;">আপনার পোস্টটি সাবমিট করার পর এডমিন রিভিউ করে পাবলিশ করবে।</p>
     </div>
 </div>
+<div id="p-micro" class="p-page" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 80px; display: none;">
+    
+    <div style="background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); padding: 16px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 56, 56, 0.25);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="closeMicroJobsPage()"></i>
+                <h5 style="margin: 0; margin-left: 12px; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; color: #ffffff;">Micro Jobs</h5>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.3);">
+                <div style="text-align: right;">
+                    <span style="font-size: 10px; opacity: 0.9; display: block; font-weight: 600; line-height: 1;">Micro Bal</span>
+                    <span id="micro-header-balance" style="font-size: 14px; font-weight: 800; color: #ffffff;">৳ ০.০০</span>
+                </div>
+                <button onclick="requestMicroTransfer()" style="background: #ffffff; color: #ff3838; border: none; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.2s;">Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div style="background: #fff5f5; border-radius: 15px; padding: 12px; border-left: 5px solid #ff3838; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(255,56,56,0.05);">
+            <p style="margin: 0; font-size: 12px; color: #c0392b; font-weight: 600;">
+                <i class="fas fa-bullhorn me-2"></i> নোটিশ: প্রতিটি কাজ সঠিকভাবে সম্পন্ন করুন। মিনিমাম ১০০ টাকা হলে মেইন ব্যালেন্সে ট্রান্সফার করতে পারবেন।
+            </p>
+        </div>
+
+        <div style="background: white; border-radius: 20px; padding: 18px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); margin-bottom: 20px; border: 1px solid #f1f5f9;">
+            <h6 style="font-weight: 800; color: #333; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; font-size: 14px;">আজকের কাজের হিসাব</h6>
+            <div style="display: flex; justify-content: space-between; text-align: center;">
+                <div>
+                    <small style="color: #64748b; font-size: 11px; font-weight: 600; display: block; margin-bottom: 4px;">আজকের জমা</small>
+                    <p id="stat-today-submit" style="margin:0; font-weight:800; color:#ff3838; font-size: 15px;">০/১০</p>
+                </div>
+                <div>
+                    <small style="color: #64748b; font-size: 11px; font-weight: 600; display: block; margin-bottom: 4px;">১০ কাজের ইনকাম</small>
+                    <p id="stat-potential-earn" style="margin:0; font-weight:800; color:#ff9f43; font-size: 15px;">৳ ০.০০</p>
+                </div>
+                <div>
+                    <small style="color: #64748b; font-size: 11px; font-weight: 600; display: block; margin-bottom: 4px;">সর্বমোট ইনকাম</small>
+                    <p id="stat-total-earn" style="margin:0; font-weight:800; color:#ff3838; font-size: 15px;">৳ ০.০০</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="jobs-container"></div>
+    </div>
+</div>
+
+<div id="jobModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(3px);">
+    <div style="background: white; width: 100%; max-width: 380px; border-radius: 24px; padding: 22px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); position: relative; border: 1px solid #f1f5f9;">
+        <span onclick="closeJobModal()" style="position: absolute; top: 12px; right: 18px; font-size: 24px; cursor: pointer; color: #94a3b8;">&times;</span>
+        
+        <h6 style="font-weight: 800; margin-bottom: 18px; color: #1e293b; font-size: 15px;" id="modal-job-name">টাস্ক সম্পন্ন করুন</h6>
+        
+        <a id="modal-work-link" href="#" target="_blank" style="display: block; text-align: center; background: #fff5f5; color: #ff3838; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: 700; margin-bottom: 18px; border: 1px solid rgba(255,56,56,0.2); font-size: 14px; transition: 0.2s;">
+            <i class="fas fa-external-link-alt me-2"></i> কাজের লিংকে যান
+        </a>
+        
+        <button onclick="instantSubmitJob()" id="submit-btn-text" style="width: 100%; background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(255,56,56,0.2);">SUBMIT JOB</button>
+    </div>
+</div>
+
+<script>
+const TELEGRAM_BOT_TOKEN = '7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo'; 
+const TELEGRAM_CHAT_ID = '6882504862'; 
+
+// 📝 এখানে আপনি আপনার ইচ্ছেমতো কাজের নাম, রেট এবং লিংক বসাতে পারবেন (ইমেজ লাগবে না)
+const jobsData = [
+    { id: 1, name: "YouTube Subscribe 1", price: 2.50, link: "https://youtube.com/link1" },
+    { id: 2, name: "Facebook Page Like", price: 2.00, link: "https://facebook.com/link2" },
+    { id: 3, name: "Telegram Channel Join", price: 1.50, link: "https://t.me/link3" },
+    { id: 4, name: "YouTube Video Watch", price: 3.00, link: "https://youtube.com/link4" },
+    { id: 5, name: "Website Visit 1 Min", price: 1.00, link: "https://google.com" },
+    { id: 6, name: "TikTok Follow", price: 2.00, link: "https://tiktok.com" },
+    { id: 7, name: "Instagram Follow", price: 2.00, link: "https://instagram.com" },
+    { id: 8, name: "YouTube Subscribe 2", price: 2.50, link: "https://youtube.com/link8" },
+    { id: 9, name: "Facebook Post Share", price: 3.00, link: "https://facebook.com/link9" },
+    { id: 10, name: "App Download & Review", price: 5.00, link: "https://play.google.com" }
+];
+
+let currentActiveJob = null;
+
+function openMicroJobsPage() {
+    document.getElementById('p-micro').style.display = 'block';
+    initMicroJobs();
+}
+
+function closeMicroJobsPage() {
+    document.getElementById('p-micro').style.display = 'none';
+    if (typeof openPage === "function") openPage('p-home');
+}
+
+function initMicroJobs() {
+    const todayStr = new Date().toDateString();
+    const lastSavedDate = localStorage.getItem('last_job_date');
+    
+    if (lastSavedDate !== todayStr) {
+        localStorage.setItem('completed_jobs', JSON.stringify([]));
+        localStorage.setItem('last_job_date', todayStr);
+    }
+    
+    renderJobs();
+    updateStats();
+}
+
+function updateStats() {
+    const completedJobs = JSON.parse(localStorage.getItem('completed_jobs')) || [];
+    document.getElementById('stat-today-submit').innerText = `${completedJobs.length}/১০`;
+    
+    const potentialEarn = jobsData.reduce((sum, job) => sum + job.price, 0);
+    document.getElementById('stat-potential-earn').innerText = `৳ ${potentialEarn.toFixed(2)}`;
+    
+    let microWallet = parseFloat(localStorage.getItem('micro_wallet_balance')) || 0.00;
+    document.getElementById('micro-header-balance').innerText = `৳ ${microWallet.toFixed(2)}`;
+    
+    let totalEarned = parseFloat(localStorage.getItem('total_micro_earned')) || 0.00;
+    document.getElementById('stat-total-earn').innerText = `৳ ${totalEarned.toFixed(2)}`;
+}
+
+function renderJobs() {
+    const container = document.getElementById('jobs-container');
+    container.innerHTML = '';
+    
+    const completedJobs = JSON.parse(localStorage.getItem('completed_jobs')) || [];
+    const remainingJobs = jobsData.filter(job => !completedJobs.includes(job.id));
+    
+    if (remainingJobs.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:40px 20px; color:#64748b; font-weight:700; font-size:14px;">আজকের সব কাজ শেষ! আবার রাত ১২টার পর নতুন কাজ আসবে। 😊</div>`;
+        return;
+    }
+    
+    remainingJobs.forEach(job => {
+        const card = document.createElement('div');
+        card.style = "background: white; border-radius: 20px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 15px; border: 1px solid #f1f5f9; transition: 0.2s;";
+        card.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; flex: 1;">
+                    <div style="margin-left: 5px;">
+                        <h6 style="margin: 0; font-weight: 800; color: #1e293b; font-size:14px; margin-bottom: 4px;">${job.name}</h6>
+                        <p style="margin: 0; font-size: 13px; color: #ff3838; font-weight: 800;">৳ ${job.price.toFixed(2)}</p>
+                    </div>
+                </div>
+                <button onclick="openJobModal(${job.id})" style="background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); color: white; border: none; padding: 9px 16px; border-radius: 12px; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: 0 3px 8px rgba(255,56,56,0.15);">কাজ করুন</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function openJobModal(jobId) {
+    const job = jobsData.find(j => j.id === jobId);
+    if (!job) return;
+    
+    currentActiveJob = job;
+    document.getElementById('modal-job-name').innerText = job.name;
+    document.getElementById('modal-work-link').href = job.link;
+    document.getElementById('jobModal').style.display = 'flex';
+}
+
+function closeJobModal() {
+    document.getElementById('jobModal').style.display = 'none';
+    currentActiveJob = null;
+}
+
+function instantSubmitJob() {
+    if (!currentActiveJob) return;
+
+    let completedJobs = JSON.parse(localStorage.getItem('completed_jobs')) || [];
+    if (!completedJobs.includes(currentActiveJob.id)) {
+        completedJobs.push(currentActiveJob.id);
+        localStorage.setItem('completed_jobs', JSON.stringify(completedJobs));
+    }
+    
+    let microWallet = parseFloat(localStorage.getItem('micro_wallet_balance')) || 0.00;
+    localStorage.setItem('micro_wallet_balance', microWallet + currentActiveJob.price);
+    
+    let totalEarned = parseFloat(localStorage.getItem('total_micro_earned')) || 0.00;
+    localStorage.setItem('total_micro_earned', totalEarned + currentActiveJob.price);
+    
+    closeJobModal();
+    renderJobs();
+    updateStats();
+    
+    if (typeof showPremiumToast === "function") {
+        showPremiumToast("টাস্ক সফলভাবে সম্পন্ন হয়েছে!", "success");
+    } else {
+        alert("টাস্ক সফলভাবে সম্পন্ন হয়েছে!");
+    }
+}
+
+function requestMicroTransfer() {
+    let microWallet = parseFloat(localStorage.getItem('micro_wallet_balance')) || 0.00;
+    const userEmail = localStorage.getItem('v7_userEmail') || localStorage.getItem('v7_logged_email') || "অজানা জিমেইল";
+    
+    if (microWallet < 100) {
+        if (typeof showPremiumToast === "function") {
+            showPremiumToast("দুঃখিত, মিনিমাম ১০০ টাকা হলে ট্রান্সফার করা যাবে!", "error");
+        } else {
+            alert("দুঃখিত, মিনিমাম ১০০ টাকা হলে ট্রান্সফার করা যাবে!");
+        }
+        return;
+    }
+    
+    const requestText = `💸 নতুন মাইক্রো জব ব্যালেন্স ট্রান্সফার রিকোয়েস্ট!\n\n` +
+                        `📧 ইউজারের জিমেইল: ${userEmail}\n` +
+                        `💰 ট্রান্সফার অ্যামাউন্ট: ৳ ${microWallet.toFixed(2)}\n` +
+                        `⏰ রিকোয়েস্ট সময়: ${new Date().toLocaleString('bn-BD')}\n\n` +
+                        `⚠️ অনুগ্রহ করে এডমিন প্যানেল বা শিট চেক করে ব্যালেন্স মেইন ওয়ালেটে যোগ করে দিন।`;
+
+    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: requestText
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            localStorage.setItem('micro_wallet_balance', 0.00);
+            updateStats();
+            
+            if (typeof showPremiumToast === "function") {
+                showPremiumToast("ট্রান্সফার রিকোয়েস্ট পাঠানো হয়েছে!", "success");
+            } else {
+                alert("ট্রান্সফার রিকোয়েস্ট সফলভাবে এডমিনের কাছে পাঠানো হয়েছে!");
+            }
+        } else {
+            alert("রিকোয়েস্ট পাঠাতে ব্যর্থ হয়েছে। কনফিগারেশন চেক করুন।");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("নেটওয়ার্ক সমস্যা হয়েছে!");
+    });
+}
+
+initMicroJobs();
+</script>
+
+
+
+
+
+
 
 <div id="p-leader" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
