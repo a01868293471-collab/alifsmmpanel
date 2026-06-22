@@ -5357,7 +5357,217 @@ function togglePassword() {
     }
 </style>
 
+<div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+    
+    <div style="background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); padding: 16px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 56, 56, 0.25);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px; font-size: 16px;">Post a New Job</h5>
+            </div>
+            
 
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); border: 1px solid #f1f5f9;">
+            
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #475569;">জব নাম (Job Title)</label>
+                <input type="text" id="job-title" placeholder="যেমন: YouTube Subscribe" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #475569;">জব ডিটেইলস (Description)</label>
+                <textarea id="job-desc" placeholder="কাজের নিয়মাবলী লিখুন..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px;"></textarea>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: 700; color: #475569;">জব লিংক (Proof Link)</label>
+                <input type="url" id="job-link" placeholder="https://..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none;">
+            </div>
+
+            <div class="row">
+                <div class="col-6" style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569;">পার জব এমাউন্ট</label>
+                    <input type="number" step="0.01" id="per-job-cost" oninput="liveCalculateTotalCost()" placeholder="৳ ২.০০" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+                <div class="col-6" style="margin-bottom: 15px;">
+                    <label style="font-size: 12px; font-weight: 700; color: #475569;">টোটাল লিমিট</label>
+                    <input type="number" id="job-limit" oninput="liveCalculateTotalCost()" placeholder="১০০ জন" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none;">
+                </div>
+            </div>
+
+            <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #ff3838; margin: 10px 0 20px; text-align: center;">
+                <span style="font-size: 13px; font-weight: 600; color: #ff3838;">মোট খরচ হবে: </span>
+                <span id="total-job-cost" style="font-size: 18px; font-weight: 800; color: #1e293b;">৳ ০.০০</span>
+            </div>
+
+            <button onclick="handleCustomJobSubmission()" id="post-btn-text" style="width: 100%; background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 56, 56, 0.2);">
+                SUBMIT JOB POST
+            </button>
+
+        </div>
+        <p style="text-align: center; font-size: 11px; color: #64748b; margin-top: 15px;">আপনার পোস্টটি সাবমিট করার পর এডমিন রিভিউ করে পাবলিশ করবে।</p>
+    </div>
+</div>
+
+<script>
+// 🎯 টেলিগ্রাম ক্রেডেনশিয়াল
+const POST_BOT_TOKEN = '7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo'; 
+const POST_CHAT_ID = '6882504862'; 
+
+// 💸 ১. মোট খরচ রিয়েল-টাইমে হিসাব করার ফাংশন
+function liveCalculateTotalCost() {
+    const perJobCost = parseFloat(document.getElementById('per-job-cost').value) || 0;
+    const jobLimit = parseInt(document.getElementById('job-limit').value) || 0;
+    
+    const totalCost = perJobCost * jobLimit;
+    document.getElementById('total-job-cost').innerText = `৳ ${totalCost.toFixed(2)}`;
+}
+
+// 🚀 ২. অর্ডার সাবমিট, ব্যালেন্স চেক, লোকাল ও গুগল শিট থেকে টাকা কাটার মেইন লজিক
+async function handleCustomJobSubmission() {
+    const title = document.getElementById('job-title').value.trim();
+    const desc = document.getElementById('job-desc').value.trim();
+    const link = document.getElementById('job-link').value.trim();
+    const perCost = parseFloat(document.getElementById('per-job-cost').value) || 0;
+    const limit = parseInt(document.getElementById('job-limit').value) || 0;
+    const submitBtn = document.getElementById('post-btn-text');
+
+    // ইনপুট ভ্যালিডেশন
+    if (!title || !desc || !link || perCost <= 0 || limit <= 0) {
+        alert("অনুগ্রহ করে সব তথ্য সঠিকভাবে পূরণ করুন!");
+        return;
+    }
+
+    const totalCost = perCost * limit;
+    
+    // 🪙 সরাসরি মেইন ব্যালেন্সের 'u-bal' এলিমেন্ট থেকে কারেন্ট এমাউন্ট নেওয়া হচ্ছে
+    const uBalElement = document.getElementById('u-bal');
+    let currentMainBalance = 0;
+    
+    if (uBalElement) {
+        currentMainBalance = parseFloat(uBalElement.innerText) || 0;
+    } else {
+        currentMainBalance = parseFloat(localStorage.getItem('balance')) || parseFloat(localStorage.getItem('v7_userBalance')) || 0;
+    }
+
+    // ব্যালেন্স চেক
+    if (currentMainBalance < totalCost) {
+        if (typeof showPremiumToast === "function") {
+            showPremiumToast("দুঃখিত! আপনার মেইন ওয়ালেটে পর্যাপ্ত ব্যালেন্স নেই।", "error");
+        } else {
+            alert("দুঃখিত! আপনার মেইন ওয়ালেটে পর্যাপ্ত ব্যালেন্স নেই।");
+        }
+        return;
+    }
+
+    // ইউজার আইডেন্টিফিকেশন (আপনার সাইটের স্টোরেজ কী অনুযায়ী)
+    const userEmail = localStorage.getItem('v7_userEmail') || localStorage.getItem('v7_logged_email');
+    if (!userEmail) {
+        alert("ইউজার ইমেইল পাওয়া যায়নি! অনুগ্রহ করে আবার লগইন করুন।");
+        return;
+    }
+
+    // বাতন লক করা
+    submitBtn.innerText = "Processing...";
+    submitBtn.disabled = true;
+
+    const newBalance = (currentMainBalance - totalCost).toFixed(2);
+
+    try {
+        // 🌐 ৩. গুগল শিটে (SheetDB) ব্যালেন্স আপডেট রিকোয়েস্ট পাঠানো (যা রিফ্রেশ ব্যাক আসা রোধ করবে)
+        // এখানে SHEETDB_API_URL আপনার গ্লোবাল ভ্যারিয়েবল থেকে কাজ করবে
+        let updateUrl = `${SHEETDB_API_URL}/email/${encodeURIComponent(userEmail)}`;
+        
+        let sheetUpdateResponse = await fetch(updateUrl, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                data: { "balance": newBalance } // আপনার গুগল শিটের কলাম নাম অনুযায়ী 'balance' আপডেট হবে
+            })
+        });
+
+        let updateResult = await sheetUpdateResponse.json();
+
+        // শিট আপডেট সফল হলে বা লোকাল অফলাইন ব্যাকআপ হিসেবে টাকা কাটবে
+        if (updateResult) {
+            
+            // 🪙 ৪. 'u-bal' টেক্সট লাইভ আপডেট করা হচ্ছে
+            if (uBalElement) {
+                uBalElement.innerText = newBalance;
+            }
+            if (document.getElementById('user-balance')) {
+                document.getElementById('user-balance').innerText = newBalance + " BDT";
+            }
+            
+            // 🪙 ৫. লোকাল অ্যারে ডাটাবেজ (db.users) আপডেট করা যাতে লগইন সেশন সিঙ্ক থাকে
+            if (typeof db !== 'undefined' && db.users) {
+                let matchedUser = db.users.find(x => x.email === userEmail);
+                if (matchedUser) {
+                    matchedUser.bal = parseFloat(newBalance);
+                }
+            }
+
+            // 🪙 ৬. সকল লোকাল স্টোরেজ কী-তে সেভ লক
+            localStorage.setItem('balance', newBalance);
+            localStorage.setItem('main_wallet_balance', newBalance);
+            localStorage.setItem('v7_userBalance', newBalance);
+
+            // টেলিগ্রাম মেসেজ ফরম্যাট
+            const telegramMessage = `📢 নতুন মাইক্রো জব অর্ডার রিকোয়েস্ট!\n\n` +
+                                    `📧 ক্লায়েন্ট জিমেইল: ${userEmail}\n` +
+                                    `📝 জবের নাম: ${title}\n` +
+                                    `ℹ️ বিবরণ: ${desc}\n` +
+                                    `🔗 কাজের লিংক: ${link}\n` +
+                                    `💰 প্রতি কাজের মূল্য: ৳ ${perCost.toFixed(2)}\n` +
+                                    `👥 টোটাল লিমিট (ওয়ার্কার): ${limit} জন\n` +
+                                    `💳 মেইন ব্যালেন্স থেকে কাটা হয়েছে: ৳ ${totalCost.toFixed(2)}\n` +
+                                    `⏰ সময়: ${new Date().toLocaleString('bn-BD')}\n\n` +
+                                    `⚠️ অনুগ্রহ করে কাজটি চেক করে মাইক্রো জব লিস্টে লাইভ করে দিন।`;
+
+            // 📢 ৭. টেলিগ্রামে ডাটা পাঠানো
+            await fetch(`https://api.telegram.org/bot${POST_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: POST_CHAT_ID,
+                    text: telegramMessage
+                })
+            });
+
+            // ইন্টারনাল সেভ ফাংশন থাকলে কল করা
+            if (typeof save === "function") await save();
+            if (typeof updateMainWalletDisplay === "function") updateMainWalletDisplay();
+
+            // ফর্ম রিসেট
+            document.getElementById('job-title').value = '';
+            document.getElementById('job-desc').value = '';
+            document.getElementById('job-link').value = '';
+            document.getElementById('per-job-cost').value = '';
+            document.getElementById('job-limit').value = '';
+            document.getElementById('total-job-cost').innerText = `৳ ০.০০`;
+
+            if (typeof showPremiumToast === "function") {
+                showPremiumToast("অর্ডার সফল! ব্যালেন্স স্থায়ীভাবে কেটে নেওয়া হয়েছে।", "success");
+            } else {
+                alert("আপনার জব অর্ডারটি সফল হয়েছে! মেইন ব্যালেন্স থেকে টাকা কেটে নেওয়া হয়েছে। এডমিন চেক করে লাইভ করে দিবে।");
+            }
+        } else {
+            alert("সার্ভার ব্যালেন্স আপডেট করতে ব্যর্থ হয়েছে। আবার চেষ্টা করুন।");
+        }
+
+    } catch (err) {
+        console.error("Database sync failed:", err);
+        alert("নেটওয়ার্ক সমস্যার কারণে ব্যালেন্স শিটে সেভ করা যায়নি। দয়া করে আবার চেষ্টা করুন।");
+    } finally {
+        submitBtn.innerText = "SUBMIT JOB POST";
+        submitBtn.disabled = false;
+    }
+}
+</script>
 
 <div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
@@ -5799,67 +6009,10 @@ function togglePassword() {
 </style>
 
 
-<div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffbf0; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Post a New Job</h5>
-            </div>
 
 
-        <div onclick="openJobHistory()" style="cursor: pointer; padding: 5px;">
-            <i class="fas fa-history" style="font-size: 18px; color: #212529;"></i>
-        </div>
 
-    </div>
-</div>
 
-    <div class="container mt-4">
-        <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #ffeaa7;">
-            
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 12px; font-weight: 700; color: #555;">জব নাম (Job Title)</label>
-                <input type="text" id="job-title" placeholder="যেমন: YouTube Subscribe" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 12px; font-weight: 700; color: #555;">জব ডিটেইলস (Description)</label>
-                <textarea id="job-desc" placeholder="কাজের নিয়মাবলী লিখুন..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none; height: 80px;"></textarea>
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 12px; font-weight: 700; color: #555;">জব লিংক (Proof Link)</label>
-                <input type="url" id="job-link" placeholder="https://..." style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-            </div>
-
-            <div class="row">
-                <div class="col-6" style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 700; color: #555;">পার জব এমাউন্ট</label>
-                    <input type="number" id="per-job-cost" oninput="calculateTotalJobCost()" placeholder="৳ ২.০০" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-                <div class="col-6" style="margin-bottom: 15px;">
-                    <label style="font-size: 12px; font-weight: 700; color: #555;">টোটাল লিমিট</label>
-                    <input type="number" id="job-limit" oninput="calculateTotalJobCost()" placeholder="১০০ জন" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; outline: none;">
-                </div>
-            </div>
-
-            <div style="background: #fff9db; padding: 15px; border-radius: 12px; border: 1px dashed #ffc107; margin: 10px 0 20px; text-align: center;">
-                <span style="font-size: 13px; font-weight: 600; color: #856404;">মোট খরচ হবে: </span>
-                <span id="total-job-cost" style="font-size: 18px; font-weight: 800; color: #212529;">৳ ০.০০</span>
-            </div>
-
-            <button onclick="submitJobPost()" style="width: 100%; background: #ffc107; color: #212529; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 16px; box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);">
-                SUBMIT JOB POST
-            </button>
-
-        </div>
-        <p style="text-align: center; font-size: 11px; color: #888; margin-top: 15px;">আপনার পোস্টটি সাবমিট করার পর এডমিন রিভিউ করে পাবলিশ করবে।</p>
-    </div>
-</div>
 <div id="p-micro" class="p-page" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 80px; display: none;">
     
     <div style="background: linear-gradient(135deg, #ff3838 0%, #ff9f43 100%); padding: 16px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 56, 56, 0.25);">
