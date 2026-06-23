@@ -2554,34 +2554,7 @@ div[onclick="toggleBloodModal()"]:active {
     </style>
 </head>
 <body>
-<!-- ১. লোডার ওভারলে এবং স্পিনারের CSS স্টাইল -->
-<style>
-#loader-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #ff5500;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
+
 
 
 <!-- লোডার এলিমেন্ট -->
@@ -2951,34 +2924,87 @@ function toggleSignupPassword() {
 <div id="user-app" class="d-none">
     <div id="p-home-main">
 
-<nav class="premium-header" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0px; box-shadow: 0 8px 25px rgba(255, 69, 0, 0.15); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 255, 255, 0.2); box-sizing: border-box;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- নোটিফিকেশন আইকন -->
-    <div class="header-icon-wrapper" onclick="openNotifications()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; position: relative; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
-        <i class="fas fa-bell" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
-        <span style="position: absolute; top: 10px; right: 10px; width: 9px; height: 9px; background: #00ff88; border-radius: 3px; border: 2px solid #ff4500; box-shadow: 0 0 8px rgba(0, 255, 136, 0.8);"></span>
+<nav class="premium-header" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0px; box-shadow: 0 8px 25px rgba(255, 69, 0, 0.15); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 255, 255, 0.2); box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+
+    <div class="notification-container" style="position: relative; display: flex; align-items: center; width: 42px; height: 42px; flex-shrink: 0;">
+        <button type="button" onclick="handleCustomNotification(event)" style="border: none; outline: none; padding: 0; margin: 0; cursor: pointer; text-decoration: none; color: white; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; box-shadow: inset 0 0 10px rgba(255,255,255,0.1);" title="Notifications">
+            <i class="fas fa-bell" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); pointer-events: none;"></i>
+            <span id="custom-noti-dot" style="position: absolute; top: 5px; right: 5px; width: 8px; height: 8px; background: #ff3b30; border-radius: 50%; border: 1px solid #ff9900; pointer-events: none;"></span>
+        </button>
+
+        <div id="custom-noti-popup" class="aypoth-popup-box" style="display: none; position: absolute; top: 52px; left: 0; width: 260px; background: white; color: #333; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); padding: 15px; z-index: 99999; border: 1px solid rgba(0,0,0,0.05); box-sizing: border-box;">
+            <div style="position: absolute; top: -6px; left: 15px; width: 12px; height: 12px; background: white; transform: rotate(45deg); border-left: 1px solid rgba(0,0,0,0.05); border-top: 1px solid rgba(0,0,0,0.05);"></div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px;">
+                <span style="font-weight: 700; font-size: 14px; color: #ff5500;">🔔 নোটিফিকেশন</span>
+                <span onclick="closeCustomNotification(event)" style="cursor: pointer; font-size: 18px; color: #aaa; font-weight: bold; line-height: 1;">&times;</span>
+            </div>
+            
+            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5; text-align: left; white-space: normal;">
+                স্বাগতম! <b>Aypoth</b>-এ আপনাকে স্বাগতম। আমাদের নতুন আপডেট এবং অফারগুলো দেখতে নিয়মিত লক্ষ্য রাখুন।
+            </p>
+        </div>
     </div>
 
-    <!-- লোগো এবং নাম কন্টেইনার -->
     <div class="brand-container" style="text-align: center; display: flex; align-items: center; justify-content: center; flex: 1; padding: 0 10px; box-sizing: border-box; gap: 10px;">
-        <!-- লোগো ফটো -->
         <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1782142091511.jpg" 
              alt="Logo" 
              style="height: 38px; width: auto; max-width: 150px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); transition: transform 0.3s ease; border-radius: 5px;">
         
-        <!-- যুক্ত করা নাম: Aypoth -->
-        <span style="color: white; font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; text-transform: capitalize; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+        <span style="color: white; font-size: 22px; font-weight: 700; text-transform: capitalize; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
             Aypoth
         </span>
     </div>
 
-    <!-- মেনু আইকন -->
     <div class="header-icon-wrapper" onclick="toggleSidebar()" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); flex-shrink: 0; box-sizing: border-box;">
         <i class="fas fa-bars" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
     </div>
 </nav>
 
+<script>
+function handleCustomNotification(e) {
+    if(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+    var popup = document.getElementById("custom-noti-popup");
+    var dot = document.getElementById("custom-noti-dot");
+    
+    if (popup) {
+        if (popup.style.display === "none" || popup.style.display === "") {
+            popup.style.display = "block";
+            if(dot) { dot.style.display = "none"; }
+        } else {
+            popup.style.display = "none";
+        }
+    }
+}
 
+function closeCustomNotification(e) {
+    if(e) { e.stopPropagation(); }
+    var popup = document.getElementById("custom-noti-popup");
+    if (popup) { popup.style.display = "none"; }
+}
+
+document.addEventListener("click", function(event) {
+    var popup = document.getElementById("custom-noti-popup");
+    if (popup && popup.style.display === "block" && !popup.contains(event.target)) {
+        popup.style.display = "none";
+    }
+});
+
+function toggleSidebar() {
+    if (typeof openNav === "function") {
+        openNav();
+    } else {
+        var sidebar = document.getElementById("mySidebar");
+        if(sidebar) { sidebar.style.width = "280px"; }
+    }
+}
+</script>
 <style>
 @keyframes pulse {
     0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
