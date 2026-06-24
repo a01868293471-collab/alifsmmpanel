@@ -2638,75 +2638,72 @@ function closeNav() {
     var sidebar = document.getElementById("mySidebar");
     if(sidebar) { sidebar.style.width = "0"; }
 }
+
 </script>
 
-    <!-- ৩. সাইডবার (Slider) মেইন বডি কোড -->
-    <div id="mySidebar" style="height: 100%; width: 0; position: fixed; z-index: 1000; top: 0; left: 0; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); overflow-x: hidden; transition: 0.4s; box-shadow: 5px 0 15px rgba(0,0,0,0.3); box-sizing: border-box;">
-        
+<!-- ৩. সাইডবার (Slider) মেইন বডি কোড -->
+<!-- উইডথ চিকন রাখার জন্য (width: 0 থেকে ২৫০px হবে জাভাস্ক্রিপ্ট দিয়ে) -->
+<div id="mySidebar" style="height: 100%; width: 0; position: fixed; z-index: 1000; top: 0; left: 0; background: #ffffff; overflow-x: hidden; transition: 0.4s; box-shadow: 4px 0 25px rgba(0,0,0,0.1); box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Poppins', sans-serif;">
+    
+    <!-- ওপরের প্রফেশনাল অরেঞ্জ হেডার সেকশন -->
+    <div style="background: linear-gradient(135deg, #ff3300 0%, #ff9900 100%); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; color: white; flex-shrink: 0;">
+        <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.5px;">মেনু</span>
         <!-- বন্ধ করার বাটন (X) -->
-        <a href="javascript:void(0)" style="padding: 10px; text-decoration: none; font-size: 36px; color: white; position: absolute; top: 10px; right: 20px; transition: 0.3s; line-height: 1;" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" style="text-decoration: none; font-size: 26px; color: white; transition: 0.3s; line-height: 1; font-weight: 600;" onclick="closeNav()">&times;</a>
+    </div>
+
+    <!-- লোগো এবং নাম সেকশন -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 18px; border-bottom: 2px solid #f1f5f9; flex-shrink: 0;">
+        <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1782142091511.jpg" 
+             alt="Logo" 
+             style="height: 40px; width: 40px; object-fit: contain; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <span style="color: #0f172a; font-size: 18px; font-weight: 800; letter-spacing: 0.5px;">Aypoth</span>
+    </div>
+
+    <!-- বাটন সমূহ কন্টেইনার (উইডথ চিকন কিন্তু বাটনগুলো বড় ও স্পষ্ট) -->
+    <div style="padding: 15px 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; overflow-y: auto; box-sizing: border-box;">
         
-        <!-- লোগো এবং নাম সেকশন -->
-        <div style="display: flex; flex-direction: column; align-items: center; padding: 40px 20px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 15px;">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1782142091511.jpg" 
-                 alt="Logo" 
-                 style="height: 60px; width: auto; max-width: 150px; object-fit: contain; border-radius: 8px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">
-            <span style="color: white; font-size: 24px; font-weight: 700; letter-spacing: 1px; margin-top: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Aypoth</span>
-        </div>
+        <!-- এপ ইন্সটল করুন বাটন -->
+        <a href="javascript:void(0)" onclick="showInstallPopup(); closeNav();" style="padding: 12px 14px; text-decoration: none; font-size: 15px; color: #1e293b; display: flex; align-items: center; gap: 12px; font-weight: 700; border-radius: 10px; transition: 0.2s; background: transparent; box-sizing: border-box;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='transparent'">
+            <span style="background: rgba(0, 198, 255, 0.15); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-cloud-download-alt" style="font-size: 15px; color: #0072ff;"></i>
+            </span>
+            <span style="flex: 1; text-align: left;">এপ ইন্সটল করুন</span>
+            <i class="fas fa-angle-right" style="font-size: 15px; color: #64748b; font-weight: bold;"></i>
+        </a>
 
-        <!-- বাটন সমূহ কন্টেইনার -->
-        <div style="padding: 0 15px 30px 15px; display: flex; flex-direction: column; gap: 10px; max-height: calc(100vh - 180px); overflow-y: auto; box-sizing: border-box;">
+        <!-- পাসওয়ার্ড ভুলে গেছেন বাটন -->
+        <a href="javascript:void(0)" onclick="showForgotPopup(); closeNav();" style="padding: 12px 14px; text-decoration: none; font-size: 15px; color: #1e293b; display: flex; align-items: center; gap: 12px; font-weight: 700; border-radius: 10px; transition: 0.2s; background: transparent; box-sizing: border-box;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='transparent'">
+            <span style="background: rgba(255, 153, 0, 0.15); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-key" style="font-size: 14px; color: #ff9900;"></i>
+            </span>
+            <span style="flex: 1; text-align: left;">পাসওয়ার্ড রিসিট</span>
+            <i class="fas fa-angle-right" style="font-size: 15px; color: #64748b; font-weight: bold;"></i>
+        </a>
             
-            <!-- এপ ইন্সটল করুন বাটন -->
-            <a href="javascript:void(0)" onclick="showInstallPopup(); closeNav();" style="padding: 12px 15px; text-decoration: none; font-size: 15px; color: #fff; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3); border: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                <span style="background: rgba(255,255,255,0.2); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-cloud-download-alt" style="font-size: 14px; color: #fff;"></i>
-                </span>
-                <span style="flex: 1; text-align: left;">📲 এপ ইন্সটল করুন</span>
-                <i class="fas fa-angle-right" style="font-size: 12px; opacity: 0.7;"></i>
-            </a>
+        <!-- সাপোর্ট সেন্টার বাটন -->
+        <a href="javascript:void(0)" onclick="openDirectSupport(); closeNav();" style="padding: 12px 14px; text-decoration: none; font-size: 15px; color: #1e293b; display: flex; align-items: center; gap: 12px; font-weight: 700; border-radius: 10px; transition: 0.2s; background: transparent; box-sizing: border-box;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='transparent'">
+            <span style="background: rgba(79, 172, 254, 0.15); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="fas fa-headset" style="font-size: 14px; color: #4facfe;"></i>
+            </span>
+            <span style="flex: 1; text-align: left;">সাপোর্ট সেন্টার</span>
+            <i class="fas fa-angle-right" style="font-size: 15px; color: #64748b; font-weight: bold;"></i>
+        </a>
+    </div>
 
-            <!-- পাসওয়ার্ড ভুলে গেছেন বাটন -->
-            <a href="javascript:void(0)" onclick="showForgotPopup(); closeNav();" style="padding: 12px 15px; text-decoration: none; font-size: 15px; color: #fff; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; transition: 0.3s; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; backdrop-filter: blur(5px);">
-                <span style="background: linear-gradient(135deg, #ff9900 0%, #ff5500 100%); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(255,153,0,0.3);">
-                    <i class="fas fa-key" style="font-size: 12px; color: #fff;"></i>
-                </span>
-                <span style="flex: 1; text-align: left;">🔑 পাসওয়ার্ড ভুলে গেছেন</span>
-                <i class="fas fa-angle-right" style="font-size: 12px; opacity: 0.5;"></i>
-            </a>
-                
-            <!-- সাপোর্ট সেন্টার বাটন -->
-            <a href="javascript:void(0)" onclick="openDirectSupport(); closeNav();" style="padding: 12px 15px; text-decoration: none; font-size: 15px; color: #fff; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; transition: 0.3s; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; backdrop-filter: blur(5px);">
-                <span style="background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(79,172,254,0.3);">
-                    <i class="fas fa-headset" style="font-size: 12px; color: #fff;"></i>
-                </span>
-                <span style="flex: 1; text-align: left;">🎧 সাপোর্ট সেন্টার</span>
-                <i class="fas fa-angle-right" style="font-size: 12px; opacity: 0.5;"></i>
-            </a>
+    <!-- সোশ্যাল মিডিয়া সেকশন -->
+    <div style="padding: 18px; border-top: 2px solid #f1f5f9; background: #ffffff; flex-shrink: 0;">
+        <span style="display: block; color: #475569; font-size: 14px; font-weight: 700; margin-bottom: 12px; text-align: left;">Follow Us:</span>
+        
+        <!-- সোশ্যাল আইকন মেম্বারশিপ রো (আইকনগুলোর সাইজ বড় করা হয়েছে) -->
+        <div style="display: flex; gap: 18px; align-items: center; justify-content: flex-start;">
+            <a href="#" style="color: #1877F2; font-size: 24px; text-decoration: none; transition: 0.2s;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: #FF0000; font-size: 24px; text-decoration: none; transition: 0.2s;"><i class="fab fa-youtube"></i></a>
+            <a href="#" style="color: #0088cc; font-size: 24px; text-decoration: none; transition: 0.2s;"><i class="fab fa-telegram"></i></a>
 
-            <!-- সোশ্যাল ও আর্নিং বাটনস গ্রিড -->
-            <div style="display: flex; align-items: center; margin: 15px 0 5px 0;">
-                <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.2);"></div>
-                <span style="padding: 0 10px; color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Our Socials</span>
-                <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.2);"></div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <a href="#" style="padding: 10px; text-decoration: none; font-size: 14px; color: #fff; background: #1877F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(24,119,242,0.25); border: 1px solid rgba(255,255,255,0.1);">
-                    <i class="fab fa-facebook-f" style="font-size: 14px;"></i> Facebook
-                </a>
-                <a href="#" style="padding: 10px; text-decoration: none; font-size: 14px; color: #fff; background: #FF0000; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(255,0,0,0.25); border: 1px solid rgba(255,255,255,0.1);">
-                    <i class="fab fa-youtube" style="font-size: 14px;"></i> Youtube
-                </a>
-                <a href="#" style="padding: 10px; text-decoration: none; font-size: 14px; color: #fff; background: #0088cc; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,136,204,0.25); border: 1px solid rgba(255,255,255,0.15);">
-                    <i class="fab fa-telegram-plane" style="font-size: 14px;"></i> Telegram
-                </a>
-                <a href="#" style="padding: 10px; text-decoration: none; font-size: 14px; color: #fff; background: #28a745; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(40,167,69,0.25); border: 1px solid rgba(255,255,255,0.1);">
-                    <i class="fas fa-wallet" style="font-size: 13px;"></i> Earn View
-                </a>
-            </div>
+<a href="#" style="color: #ffcc00; font-size: 24px; text-decoration: none; transition: 0.2s;"><i class="fas fa-star-half-alt" title="Income Review"></i></a>
         </div>
-
+    </div>
 
 </div>
 
@@ -2723,9 +2720,10 @@ window.addEventListener("load", function() {
     }
 });
 
+
 // স্লাইডার কন্ট্রোল ফাংশন
 function openNav() {
-    document.getElementById("mySidebar").style.width = "280px";
+    document.getElementById("mySidebar").style.width = "230px";
 }
 
 function closeNav() {
