@@ -7676,10 +7676,33 @@ async function updateBalanceInGoogleSheet(email, newBalance) {
         console.error("Failed to update balance in Google Sheet:", err);
     }
 }
-
 // ৪. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - সুপার ফাস্ট এডিশন
 async function handleAuth(m) {
-    showLoader(true); // লোডার দেখাবে
+    // 🚀 ইন-বিল্ট ডাইনামিক লোডার ফাংশন (আলাদা কোনো HTML/CSS লাগবে না)
+    function toggleDynamicLoader(show) {
+        let loader = document.getElementById('dynamic-auth-loader');
+        if (show) {
+            if (!loader) {
+                loader = document.createElement('div');
+                loader.id = 'dynamic-auth-loader';
+                loader.innerHTML = `
+                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-family: sans-serif;">
+                        <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #ff9900; border-radius: 50%; animation: spinAuth 1s linear infinite;"></div>
+                        <p style="margin-top: 15px; font-size: 16px; font-weight: bold; letter-spacing: 0.5px;">অনুগ্ৰহ করে অপেক্ষা করুন...</p>
+                    </div>
+                    <style>
+                        @keyframes spinAuth { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                    </style>
+                `;
+                document.body.appendChild(loader);
+            }
+        } else {
+            if (loader) loader.remove();
+        }
+    }
+
+    toggleDynamicLoader(true); // লোডার চালু
+    if (typeof showLoader === "function") showLoader(true); // ব্যাকআপ গ্লোবাল লোডার থাকলে চালু হবে
     
     if(m === 'signup') {
         let n = document.getElementById('s-name').value.trim(), 
@@ -7689,12 +7712,12 @@ async function handleAuth(m) {
         
         // 🛑 সাইন-আপ ভ্যালিডেশন
         if(!n || !e || !p) {
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             return toast('সব তথ্য সঠিকভাবে দিন', 'error');
         }
 
         if(!e.includes('@gmail.com') || p.length < 6) {
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             return toast('Enter valid info (Password min 6 chars)', 'error');
         }
         
@@ -7702,7 +7725,7 @@ async function handleAuth(m) {
             let sheetRes = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
             let sheetUsers = await sheetRes.json();
             if(sheetUsers.length > 0 || db.users.find(x => x.email === e)) {
-                showLoader(false);
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
                 return toast('Email already taken', 'error');
             }
         } catch (err) {
@@ -7738,13 +7761,18 @@ async function handleAuth(m) {
         localStorage.setItem('v7_userName', n);
         localStorage.setItem('v7_userEmail', e);
         
-        await Promise.all([
-            sendToTelegram(newUser),
-            saveUserToGoogleSheet(newUser),
-            save()
-        ]);
+        try {
+            // ডাটা ব্যাকএন্ডে সাবমিট হওয়া পর্যন্ত লোডার স্ক্রিন লক করে রাখবে
+            await Promise.all([
+                sendToTelegram(newUser),
+                saveUserToGoogleSheet(newUser),
+                save()
+            ]);
+        } catch (saveErr) {
+            console.error("Data cloud saving background error:", saveErr);
+        }
         
-        showLoader(false); 
+        toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false); // লোডার সফলভাবে বন্ধ
         if (typeof switchAuth === "function") switchAuth(false); 
         toast('রেজিস্ট্রেশন সফল!');
         
@@ -7753,14 +7781,13 @@ async function handleAuth(m) {
         let e = document.getElementById('l-email').value.trim(), 
             p = document.getElementById('l-pass').value;
             
-        // 🛑 ক্রিশিয়াল ফিক্স: ফাঁকা লগইন সাবমিশন রোধ করা
         if(!e || !p) {
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             return toast('ইমেইল এবং পাসওয়ার্ড লিখুন!', 'error');
         }
 
         if(!e.includes('@gmail.com')) {
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             return toast('বৈধ জিমেইল অ্যাড্রেস লিখুন', 'error');
         }
             
@@ -7768,17 +7795,16 @@ async function handleAuth(m) {
             let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
             let sheetUsers = await res.json();
             
-            // ডাটাবেজে ইউজার পাওয়া গেলে এবং ইমেইল পুরোপুরি মিললে
             if(sheetUsers && sheetUsers.length > 0 && sheetUsers[0].email === e) {
                 const sheetUser = sheetUsers[0];
                 
                 if(sheetUser.password === p) {
                     const sheetStatus = String(sheetUser.status || "").toLowerCase().trim();
                     if (sheetStatus === "blocked") {
-                        showLoader(false);
+                        toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
                         Swal.fire({ 
-                            title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
-                            text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
+                            title: 'আপনার অ্যাকাউন্টটি অ্যাকাউন্ট ব্লক!', 
+                            text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে Sob.', 
                             icon: 'error',
                             confirmButtonColor: '#ff0000',
                             confirmButtonText: 'ঠিক আছে'
@@ -7799,7 +7825,6 @@ async function handleAuth(m) {
 
                         if (!localUser.incomeHistory) localUser.incomeHistory = [];
 
-                        // 💰 কন্ডিশন A: ব্যালেন্স যুক্ত হলে
                         if (newSheetBalance > localUser.bal) {
                             const addedAmount = newSheetBalance - localUser.bal;
                             localUser.incomeHistory.push({
@@ -7819,18 +7844,15 @@ async function handleAuth(m) {
                             });
                             localUser.bal = newSheetBalance;
                         }
-                        // 📉 কন্ডিশন B: ব্যালেন্স কর্তন বা উইথড্র সিঙ্ক (এখানে কোড আপডেট করা হয়েছে)
                         else if (newSheetBalance < localUser.bal) {
                             const deductedAmount = localUser.bal - newSheetBalance;
                             
-                            // ইউজারের হিস্ট্রিতে ব্যালেন্স কাটার রেকর্ড যোগ করা
                             localUser.incomeHistory.push({
                                 amount: "-" + deductedAmount.toFixed(2),
                                 date: fullTimeStr,
                                 note: "Subtract Balance"
                             });
 
-                            // ফান্ডের স্টেটমেন্টে ডেবিট হিসেবে ট্রানজেকশন রেকর্ড রাখা
                             if (!db.funds) db.funds = [];
                             db.funds.push({
                                 user: localUser.email,
@@ -7889,7 +7911,7 @@ async function handleAuth(m) {
                         }
                     }
                     
-                    showLoader(false); 
+                    toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
                     toast('লগইন সফল');
                     return;
                 }
@@ -7903,9 +7925,9 @@ async function handleAuth(m) {
         if(u) {
             const localStatus = String(u.status || "").toLowerCase().trim();
             if (localStatus === 'blocked') {
-                showLoader(false);
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
                 Swal.fire({ 
-                    title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                    title: 'আপনার অ্যাকাউন্টটি অ্যাকাউন্ট ব্লক!', 
                     text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
                     icon: 'error',
                     confirmButtonColor: '#ff0000',
@@ -7930,14 +7952,15 @@ async function handleAuth(m) {
                     }, 500);
                 }
             }
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             toast('লগইন সফল (অফলাইন)');
         } else {
-            showLoader(false);
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
         }
     }
 }
+
 // ৫. উইথড্র এক্সিকিউশন ফাংশন (গুগল শিট ব্যালেন্স সিঙ্কসহ)
 function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
     let now = new Date().toLocaleString('en-US', { 
