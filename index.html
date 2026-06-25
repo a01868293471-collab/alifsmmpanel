@@ -5279,77 +5279,251 @@ function togglePassword() {
     </div>
 </div>
 
-<div id="p-ads" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+
+
+<!-- সম্পূর্ণ Ads Income পেজ -->
+<div id="p-ads" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: sans-serif;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
+    <!-- হেডার (ব্যালেন্স ও ট্রান্সফার সিস্টেম সহ) -->
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
             <div style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Ads Income</h5>
             </div>
-
-
             <div onclick="openAdsHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
                 <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
             </div>
         </div>
+        
+        <!-- ব্যালেন্স এবং ট্রান্সফার সেকশন -->
+        <div style="background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <small style="display: block; font-size: 11px; color: #e2e8f0;">আপনার ব্যালেন্স</small>
+                <span style="font-size: 18px; font-weight: 800;">৳ <span id="ads-balance">0.00</span></span>
+            </div>
+            <button onclick="transferBalance()" style="background: #ffffff; color: #2ecc71; border: none; padding: 6px 15px; border-radius: 8px; font-size: 12px; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;">
+                <i class="fas fa-paper-plane"></i> ট্রান্সফার
+            </button>
+        </div>
     </div>
 
-    <div class="container mt-3">
-        <div style="background: #e9f7ef; border-radius: 15px; padding: 12px; border-left: 5px solid #28a745; margin-bottom: 20px;">
+    <div class="container mt-3 px-3">
+        <!-- নোটিশ বোর্ড -->
+        <div style="background: #e9f7ef; border-radius: 15px; padding: 12px; border-left: 5px solid #28a745; margin-bottom: 15px;">
             <p style="margin: 0; font-size: 12px; color: #155724; font-weight: 600;">
-                <i class="fas fa-info-circle me-2"></i> নোটিশ: প্রতিটি বিজ্ঞাপন সম্পূর্ণ দেখলে আপনার ব্যালেন্সে টাকা যোগ হবে। স্কিপ করলে পেমেন্ট পাবেন না।
+                <i class="fas fa-info-circle me-2"></i> নোটিশ: প্রতিদিন ১০টি অ্যাড দেখতে পারবেন। প্রতিটি অ্যাড সম্পূর্ণ দেখলে ব্যালেন্সে টাকা যোগ হবে। রাত ১২টায় লিমিট আবার নতুন হবে।
             </p>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-            
-            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                <div style="display: flex; align-items: center;">
-                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div style="margin-left: 12px;">
-                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #01</h6>
-                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
-                    </div>
-                </div>
-                <button onclick="watchAd(1, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
-            </div>
-
-            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                <div style="display: flex; align-items: center;">
-                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div style="margin-left: 12px;">
-                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #02</h6>
-                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
-                    </div>
-                </div>
-                <button onclick="watchAd(2, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
-            </div>
-
-            <div style="background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                <div style="display: flex; align-items: center;">
-                    <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #28a745;">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div style="margin-left: 12px;">
-                        <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #03</h6>
-                        <small style="color: #28a745; font-weight: 600;">Reward: ৳ ০.৫০</small>
-                    </div>
-                </div>
-                <button onclick="watchAd(3, 0.50)" style="background: #28a745; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700;">দেখুন</button>
-            </div>
-
-            </div>
+        <!-- ১০টি অ্যাড কার্ড এর কন্টেইনার (জাভাস্ক্রিপ্ট দিয়ে তৈরি হবে) -->
+        <div id="ads-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
     </div>
 </div>
 
+<!-- অভিনন্দন ও কাস্টম মেসেজ পপআপ (Modal) -->
+<div id="ads-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; font-family: sans-serif;">
+    <div style="background: white; width: 85%; max-width: 340px; border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: popUp 0.3s ease;">
+        <div id="modal-icon-box" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+            <i id="modal-icon" class="fas" style="font-size: 28px;"></i>
+        </div>
+        <h4 id="modal-title" style="margin: 0 0 10px; font-weight: 800;"></h4>
+        <p id="modal-msg" style="margin: 0 0 20px; font-size: 13px; color: #666; line-height: 1.5;"></p>
+        <button onclick="closeAdsModal()" style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; border: none; width: 100%; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer;">ঠিক আছে</button>
+    </div>
+</div>
 
+<!-- এনিমেশন স্টাইল -->
+<style>
+@keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+<!-- জাভাস্ক্রিপ্ট লজিক -->
+<script>
+// ১. চূড়ান্ত কনফিগারেশন সেকশন
+const STARTIO_APP_ID = "205372098"; // আপনার আসল Start.io App ID
+const TELEGRAM_BOT_TOKEN = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; // আপনার বটের টোকেন
+const TELEGRAM_CHAT_ID = "6882504862"; // আপনার টেলিগ্রাম চ্যাট আইডি
+const AD_REWARD = 0.50; // প্রতি অ্যাডের রিওয়ার্ড (টাকা)
+
+// লোকাল স্টোরেজ ডাটা লোড করা
+let userBalance = parseFloat(localStorage.getItem('ads_user_balance')) || 0.00;
+let watchedAds = JSON.parse(localStorage.getItem('watched_ads_list')) || [];
+let lastAdDate = localStorage.getItem('last_ad_date') || "";
+
+// ২. Start.io Web SDK অটোমেটিক লোড করার লজিক
+(function() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'https://sdk.start.io/web/v1/startio.js'; 
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+    
+    s.onload = function() {
+        if(typeof startio !== 'undefined') {
+            startio.init(STARTIO_APP_ID);
+        }
+    };
+})();
+
+// পেজ রেডি হলে রান হবে
+document.addEventListener("DOMContentLoaded", function() {
+    checkAndResetDailyLimit();
+    updateBalanceUI();
+    renderAds();
+});
+
+// রাত ১২টা পার হলে লিমিট রিসেট করার ফাংশন
+function checkAndResetDailyLimit() {
+    let today = new Date().toLocaleDateString('en-US');
+    if (lastAdDate !== today) {
+        watchedAds = [];
+        localStorage.setItem('watched_ads_list', JSON.stringify(watchedAds));
+        localStorage.setItem('last_ad_date', today);
+    }
+}
+
+// ব্যালেন্স ইন্টারফেস আপডেট
+function updateBalanceUI() {
+    document.getElementById('ads-balance').innerText = userBalance.toFixed(2);
+}
+
+// ১০টি অ্যাড কার্ড ডায়নামিকালি তৈরি করার ফাংশন
+function renderAds() {
+    checkAndResetDailyLimit();
+    const container = document.getElementById('ads-container');
+    container.innerHTML = ""; 
+
+    for (let i = 1; i <= 10; i++) {
+        let isWatched = watchedAds.includes(i);
+        
+        let card = document.createElement('div');
+        card.style = `background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; ${isWatched ? 'opacity: 0.6;' : ''}`;
+        
+        card.innerHTML = `
+            <div style="display: flex; align-items: center;">
+                <div style="width: 40px; height: 40px; background: ${isWatched ? '#e2e8f0' : '#e8f5e9'}; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: ${isWatched ? '#64748b' : '#28a745'};">
+                    <i class="${isWatched ? 'fas fa-check-circle' : 'fas fa-play-circle'}"></i>
+                </div>
+                <div style="margin-left: 12px;">
+                    <h6 style="margin: 0; font-weight: 700; font-size: 14px; color: #333;">Video Ad #0${i}</h6>
+                    <small style="color: #28a745; font-weight: 600;">Reward: ৳ ${AD_REWARD.toFixed(2)}</small>
+                </div>
+            </div>
+            <button ${isWatched ? 'disabled' : ''} onclick="handleWatchAd(${i})" style="background: ${isWatched ? '#94a3b8' : '#28a745'}; color: white; border: none; padding: 7px 18px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: ${isWatched ? 'not-allowed' : 'pointer'};">
+                ${isWatched ? 'দেখা শেষ' : 'দেখুন'}
+            </button>
+        `;
+        container.appendChild(card);
+    }
+}
+
+// ৩. Start.io রিয়েল অ্যাড দেখানোর মূল ফাংশন
+function handleWatchAd(adId) {
+    checkAndResetDailyLimit();
+    
+    if (watchedAds.includes(adId)) {
+        showCustomModal("দুঃখিত!", "আপনি এই অ্যাডটি আজকে ইতিমধ্যেই দেখে ফেলেছেন।", "error");
+        return;
+    }
+
+    showCustomModal("অ্যাড লোড হচ্ছে...", "দয়া করে কিছুক্ষণ অপেক্ষা করুন।", "info");
+
+    if (typeof startio !== 'undefined') {
+        startio.showInterstitial({
+            onShow: function() {
+                closeAdsModal(); // অ্যাড চালু হলে লোডিং পপআপ বন্ধ
+            },
+            onClose: function() {
+                rewardUser(adId); // অ্যাড কাটা শেষ হলে রিওয়ার্ড যোগ হবে
+            },
+            onError: function(error) {
+                showCustomModal("দুঃখিত!", "এই মুহূর্তে কোনো বিজ্ঞাপন উপলব্ধ নেই। একটু পর চেষ্টা করুন।", "error");
+                console.error("Start.io Error: ", error);
+            }
+        });
+    } else {
+        showCustomModal("নেটওয়ার্ক ত্রুটি!", "বিজ্ঞাপন সার্ভার লোড করা যাচ্ছে না। আবার চেষ্টা করুন।", "error");
+    }
+}
+
+// রিওয়ার্ড দেওয়ার ফাংশন
+function rewardUser(adId) {
+    if (!watchedAds.includes(adId)) {
+        watchedAds.push(adId);
+        localStorage.setItem('watched_ads_list', JSON.stringify(watchedAds));
+        
+        userBalance += AD_REWARD;
+        localStorage.setItem('ads_user_balance', userBalance);
+        
+        updateBalanceUI();
+        renderAds();
+        
+        showCustomModal("অভিনন্দন!", `আপনি সফলভাবে Video Ad #0${adId} দেখেছেন এবং আপনার ব্যালেন্সে ৳ ${AD_REWARD.toFixed(2)} যোগ হয়েছে!`, "success");
+    }
+}
+
+// টাকা ট্রান্সফার করার লজিক (টেলিগ্রাম রিকোয়েস্ট)
+function transferBalance() {
+    if (userBalance < 100) {
+        showCustomModal("ব্যালেন্স কম!", "টাকা ট্রান্সফার করতে সর্বনিম্ন ১০০ টাকা ব্যালেন্স থাকতে হবে।", "error");
+        return;
+    }
+
+    let userId = "User_" + Math.floor(1000 + Math.random() * 9000); 
+    let currentBalance = userBalance;
+    let message = `🔔 *নতুন উইথড্র রিকোয়েস্ট*\n\n👤 ইউজার আইডি: ${userId}\n💰 টাকার পরিমাণ: ৳ ${currentBalance.toFixed(2)}\n📅 সময়: ${new Date().toLocaleString('bn-BD')}`;
+
+    let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    
+    fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: "Markdown" })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            userBalance = 0.00;
+            localStorage.setItem('ads_user_balance', userBalance);
+            updateBalanceUI();
+            showCustomModal("রিকোয়েস্ট সেন্ট!", "আপনার ১০০ টাকা ট্রান্সফার রিকোয়েস্টটি সফলভাবে টেলিগ্রাম বটে পাঠানো হয়েছে।", "success");
+        } else {
+            showCustomModal("ত্রুটি!", "টেলিগ্রাম বটের সাথে কানেক্ট করা যাচ্ছে না।", "error");
+        }
+    })
+    .catch(error => {
+        showCustomModal("দুঃখিত!", "নেটওয়ার্ক সমস্যার কারণে রিকোয়েস্ট পাঠানো যায়নি।", "error");
+    });
+}
+
+// কাস্টম সুন্দর পপআপ অ্যালার্ট দেখানোর ফাংশন
+function showCustomModal(title, msg, type) {
+    const modal = document.getElementById('ads-modal');
+    const iconBox = document.getElementById('modal-icon-box');
+    const icon = document.getElementById('modal-icon');
+    
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-msg').innerText = msg;
+    
+    if (type === "success") {
+        iconBox.style.background = "#e8f5e9"; icon.className = "fas fa-gift"; icon.style.color = "#28a745";
+    } else if (type === "error") {
+        iconBox.style.background = "#ffebee"; icon.className = "fas fa-times-circle"; icon.style.color = "#dc3545";
+    } else {
+        iconBox.style.background = "#e3f2fd"; icon.className = "fas fa-spinner fa-spin"; icon.style.color = "#0d6efd";
+    }
+    modal.style.display = "flex";
+}
+
+function closeAdsModal() {
+    document.getElementById('ads-modal').style.display = "none";
+}
+</script>
 
 
  
