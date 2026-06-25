@@ -5974,115 +5974,177 @@ async function handleCustomJobSubmission() {
     </div>
 </div>
 
-
-
- <div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
+<div id="p-invest" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffdf9; z-index: 1500; overflow-y: auto; padding-bottom: 40px;">
     
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
+    <!-- টপ হেডার (লাল ও হলুদ মিক্সড গ্রেডিয়েন্ট) -->
+    <div style="background: linear-gradient(135deg, #d32f2f 0%, #f1c40f 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);">
         <div style="display: flex; align-items: center;">
             <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('invest')"></i>
-            
             <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; font-size: 16px; letter-spacing: 0.3px;">Invest & Grow</h5>
         </div>
 
-
-        <div onclick="openInvestHistory()" style="width: 35px; height: 35px; background: #f0fdf4; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-    <i class="fas fa-history" style="color: #27ae60; font-size: 16px;"></i>
-</div>
-
+        <div onclick="openInvestHistory()" style="width: 35px; height: 35px; background: #fffde6; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <i class="fas fa-history" style="color: #d32f2f; font-size: 16px;"></i>
+        </div>
     </div>
+
+    <!-- ইনফরমেশন কার্ড -->
     <div class="container mt-3 px-3">
-    <div style="background: white; border-radius: 20px; padding: 20px; border: 1px solid #eef2ff; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
-        <h6 style="font-weight: 800; color: #2d3436; margin-bottom: 12px; display: flex; align-items: center;">
-            <i class="fas fa-lightbulb" style="color: #f1c40f; margin-right: 10px;"></i> কেন বিনিয়োগ করবেন?
-        </h6>
-        
-        <p style="font-size: 11px; color: #636e72; line-height: 1.6; margin-bottom: 15px;">
-            আপনার অলস টাকাকে কাজে লাগিয়ে নিরাপদভাবে লাভ করার সেরা মাধ্যম হলো <b>Invest & Grow</b>। আমরা আপনার বিনিয়োগ করা অর্থ দিয়ে প্রফেশনাল ট্রেডিং এবং ডিজিটাল প্রজেক্ট পরিচালনা করি, যেখান থেকে অর্জিত লাভের একটি নির্দিষ্ট অংশ আপনাকে প্রদান করা হয়।
-        </p>
-
-        <div class="row g-2">
-            <div class="col-6">
-                <div style="background: #fdfaf0; padding: 12px; border-radius: 12px; border: 1px solid #fef5e7;">
-                    <i class="fas fa-shield-alt" style="color: #e67e22; font-size: 14px; margin-bottom: 5px;"></i>
-                    <b style="display: block; font-size: 11px; color: #2d3436;">১০০% নিরাপদ</b>
-                    <small style="font-size: 9px; color: #7f8c8d;">আপনার মূলধন আমাদের কাছে সুরক্ষিত।</small>
-                </div>
-            </div>
-            <div class="col-6">
-                <div style="background: #f0fdf4; padding: 12px; border-radius: 12px; border: 1px solid #dcfce7;">
-                    <i class="fas fa-percentage" style="color: #27ae60; font-size: 14px; margin-bottom: 5px;"></i>
-                    <b style="display: block; font-size: 11px; color: #2d3436;">স্থায়ী প্রফিট</b>
-                    <small style="font-size: 9px; color: #7f8c8d;">৩০ দিন পর নিশ্চিত ৩০% পর্যন্ত লাভ।</small>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top: 15px; background: #eef2ff; padding: 10px; border-radius: 10px; border-left: 4px solid #3b82f6;">
-            <p style="font-size: 10px; color: #475569; margin: 0; line-height: 1.4;">
-                <i class="fas fa-info-circle me-1"></i> <b>কিভাবে কাজ করে:</b> আপনার বিনিয়োগটি অ্যাক্টিভ হওয়ার পর আমাদের সিস্টেম স্বয়ংক্রিয়ভাবে কাজ শুরু করে এবং ৩০তম দিনে লাভসহ মূল টাকা আপনার ব্যালেন্সে যোগ করে দেয়।
+        <div style="background: white; border-radius: 20px; padding: 20px; border: 1px solid #ffeaa7; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.02);">
+            <h6 style="font-weight: 800; color: #2d3436; margin-bottom: 12px; display: flex; align-items: center;">
+                <i class="fas fa-lightbulb" style="color: #f1c40f; margin-right: 10px;"></i> কেন বিনিয়োগ করবেন?
+            </h6>
+            
+            <p style="font-size: 11px; color: #636e72; line-height: 1.6; margin-bottom: 15px;">
+                আপনার অলস টাকাকে কাজে লাগিয়ে নিরাপদভাবে লাভ করার সেরা মাধ্যম হলো <b>Invest & Grow</b>। আমরা আপনার বিনিয়োগ করা অর্থ দিয়ে প্রফেশনাল  এবং ডিজিটাল প্রজেক্ট পরিচালনা করি, যেখান থেকে অর্জিত লাভের একটি নির্দিষ্ট অংশ আপনাকে প্রদান করা হয়।
             </p>
+
+            <div class="row g-2">
+                <div class="col-6">
+                    <div style="background: #fff5f5; padding: 12px; border-radius: 12px; border: 1px solid #ffe3e3;">
+                        <i class="fas fa-shield-alt" style="color: #d32f2f; font-size: 14px; margin-bottom: 5px;"></i>
+                        <b style="display: block; font-size: 11px; color: #2d3436;">১০০% নিরাপদ</b>
+                        <small style="font-size: 9px; color: #7f8c8d;">আপনার মূলধন আমাদের কাছে সুরক্ষিত।</small>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div style="background: #fffde6; padding: 12px; border-radius: 12px; border: 1px solid #fff9db;">
+                        <i class="fas fa-percentage" style="color: #f1c40f; font-size: 14px; margin-bottom: 5px;"></i>
+                        <b style="display: block; font-size: 11px; color: #2d3436;">স্মার্ট প্রফিট</b>
+                        <small style="font-size: 9px; color: #7f8c8d;">২৪ ঘণ্টার বেশি মেয়াদে নিশ্চিত ৫% লাভ।</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 15px; background: #fffde6; padding: 10px; border-radius: 10px; border-left: 4px solid #f1c40f;">
+                <p style="font-size: 10px; color: #475569; margin: 0; line-height: 1.4;">
+                    <i class="fas fa-info-circle me-1" style="color: #d32f2f;"></i> <b>কিভাবে কাজ করে:</b> আপনার বিনিয়োগের কাস্টম মেয়াদ পূর্ণ হওয়া মাত্রই সিস্টেম স্বয়ংক্রিয়ভাবে লাভসহ মূল টাকা আপনার প্রধান ব্যালেন্সে রিফান্ড করে দিবে।
+                </p>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- কাস্টম ইনপুট ও ক্যালকুলেটর কার্ড -->
     <div class="container mt-4 px-3">
-        <div class="invest-calc-card shadow-sm" style="background: white; border-radius: 25px; overflow: hidden; border: 1px solid #eef2ff;">
-            <div class="calc-header" style="background: linear-gradient(90deg, #2ecc71, #27ae60); padding: 15px; color: white; font-weight: 800; text-align: center; font-size: 14px;">
+        <div class="invest-calc-card shadow-sm" style="background: white; border-radius: 25px; overflow: hidden; border: 1px solid #ffeaa7;">
+            <div class="calc-header" style="background: linear-gradient(90deg, #d32f2f, #f1c40f); padding: 15px; color: white; font-weight: 800; text-align: center; font-size: 14px;">
                 <i class="fas fa-calculator me-2"></i>
-                <span>Profit Calculator</span>
+                <span>Custom Profit Calculator</span>
             </div>
             
             <div class="p-4">
-                <div class="mb-4">
+                <!-- ইনভেস্ট অ্যামাউন্ট -->
+                <div class="mb-3">
                     <label class="form-label small fw-bold text-muted">বিনিয়োগের পরিমাণ (টাকা)</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">৳</span>
-                        <input type="number" id="investAmount" class="form-control border-start-0 ps-0 fw-bold" style="border-radius: 0 12px 12px 0; box-shadow: none; border-color: #dee2e6;" placeholder="যেমন: ৫০০" oninput="calculateProfit()">
+                        <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px; color: #d32f2f; font-weight: bold;">৳</span>
+                        <input type="number" id="investAmount" class="form-control border-start-0 ps-0 fw-bold" style="border-radius: 0 12px 12px 0; box-shadow: none; border-color: #dee2e6;" placeholder="যেমন: ৫০০" oninput="updateLiveCalculation()">
                     </div>
                 </div>
 
+                <!-- কাস্টম মেয়াদ সিলেকশন ইম্প্রুভমেন্ট -->
+                <div class="row g-2 mb-4">
+                    <div class="col-7">
+                        <label class="form-label small fw-bold text-muted">মেয়াদের পরিমাণ</label>
+                        <input type="number" id="investDuration" class="form-control fw-bold" style="border-radius: 12px; box-shadow: none; border-color: #dee2e6;" placeholder="যেমন: ৫" oninput="updateLiveCalculation()">
+                    </div>
+                    <div class="col-5">
+                        <label class="form-label small fw-bold text-muted">ইউনিট</label>
+                        <select id="investUnit" class="form-select fw-bold" style="border-radius: 12px; box-shadow: none; border-color: #dee2e6; height: 38px;" onchange="updateLiveCalculation()">
+                            <option value="minutes">মিনিট</option>
+                            <option value="days">দিন</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- লাইভ ক্যালকুলেশন বক্স -->
                 <div class="row g-2">
                     <div class="col-6">
-                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #f0fdf4; border: 1px solid #dcfce7;">
-                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">১০ দিনে লাভ</small>
-                            <h5 id="profit10" class="m-0 fw-bold text-success" style="font-size: 18px;">৳০</h5>
+                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #fff5f5; border: 1px solid #ffe3e3;">
+                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">মোট লাভ</small>
+                            <h5 id="liveProfit" class="m-0 fw-bold" style="font-size: 18px; color: #d32f2f;">৳০</h5>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #eff6ff; border: 1px solid #dbeafe;">
-                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">৩০ দিনে লাভ</small>
-                            <h5 id="profit30" class="m-0 fw-bold text-primary" style="font-size: 18px;">৳০</h5>
+                        <div class="result-box" style="padding: 15px; border-radius: 15px; text-align: center; background: #fffde6; border: 1px solid #fff9db;">
+                            <small style="display: block; font-size: 10px; font-weight: 700; color: #7f8c8d; margin-bottom: 5px;">সর্বমোট রিটার্ন</small>
+                            <h5 id="liveTotal" class="m-0 fw-bold" style="font-size: 18px; color: #f1c40f; text-shadow: 0.5px 0.5px 0px #0000000a;">৳০</h5>
                         </div>
                     </div>
                 </div>
-<button class="btn-invest-now mt-4" onclick="confirmInvest()" style="width: 100%; background: #2d3436; color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px; transition: 0.3s;">
-    বিনিয়োগ শুরু করুন <i class="fas fa-arrow-right ms-2"></i>
-</button>
-             
-                
-                <p class="text-center mt-3 text-muted" style="font-size: 10px;">
-                    * এটি একটি সম্ভাব্য হিসাব। বাজারের অবস্থার ওপর লাভ কম-বেশি হতে পারে।
+
+                <!-- সাবমিট বাটন (লাল ও হলুদ মিক্সড লাক্সারি স্টাইল) -->
+                <button class="btn-invest-now mt-4" onclick="confirmInvest()" style="width: 100%; background: linear-gradient(135deg, #d32f2f 0%, #f1c40f 100%); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 800; font-size: 15px; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3); transition: 0.3s;">
+                    বিনিয়োগ শুরু করুন <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+                 
+                <p id="warnCondition" class="text-center mt-3 text-danger fw-bold" style="font-size: 9px; margin-bottom: 0;">
+                    * ২৪ ঘণ্টার কম মেয়াদে বিনিয়োগ করলে কোনো প্রফিট পাওয়া যাবে না।
                 </p>
             </div>
         </div>
     </div>
 </div>
-<div id="p-invest-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1600; overflow-y: auto;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 18px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
+
+<!-- ইনভেস্টমেন্ট হিস্টোরি পেজ (লাল ও হলুদ মিক্সড হেডার) -->
+<div id="p-invest-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffdf9; z-index: 1600; overflow-y: auto;">
+    <div style="background: linear-gradient(135deg, #d32f2f 0%, #f1c40f 100%); padding: 18px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);">
         <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white;" onclick="closePage('invest-history')"></i>
-        
         <h5 style="margin: 0; margin-left: 15px; font-weight: 800; color: white; font-size: 16px; letter-spacing: 0.3px;">Investment History</h5>
-        
     </div>
 
-
-
     <div class="container px-3 mt-3" id="invest-list-container">
-        </div>
+        <!-- জাভাস্ক্রিপ্ট কার্ড রেন্ডার হবে এখানে -->
+    </div>
 </div>
+
+<!-- লাইভ প্রফিট ক্যালকুলেটর স্ক্রিপ্ট -->
+<script>
+function updateLiveCalculation() {
+    let amtInput = document.getElementById('investAmount');
+    let durationInput = document.getElementById('investDuration');
+    let unitInput = document.getElementById('investUnit');
+    
+    let liveProfit = document.getElementById('liveProfit');
+    let liveTotal = document.getElementById('liveTotal');
+    let warnCondition = document.getElementById('warnCondition');
+
+    if (!amtInput || !durationInput || !unitInput) return;
+
+    let amt = parseInt(amtInput.value) || 0;
+    let duration = parseInt(durationInput.value) || 0;
+    let unit = unitInput.value;
+
+    let isLessThan24Hours = false;
+
+    if (unit === 'days' && duration < 1) {
+        isLessThan24Hours = true;
+    } else if (unit === 'minutes' && duration < 1440) { // ১৪৪০ মিনিট = ২৪ ঘণ্টা
+        isLessThan24Hours = true;
+    }
+
+    let profit = 0;
+    if (amt >= 100 && !isLessThan24Hours && duration > 0) {
+        profit = Math.floor(amt * 0.05); // ১০০ টাকায় ৫ টাকা লাভ
+        if(warnCondition) {
+            warnCondition.innerText = "* এই মেয়াদে আপনি ৫% লাভ পাওয়ার যোগ্য।";
+            warnCondition.style.color = "#2ecc71";
+        }
+    } else {
+        if(warnCondition) {
+            warnCondition.innerText = duration > 0 ? "* ২৪ ঘণ্টার কম মেয়াদে বিনিয়োগ করলে কোনো প্রফিট পাওয়া যাবে না।" : "* সঠিক ডেটা ইনপুট দিন।";
+            warnCondition.style.color = "#d32f2f";
+        }
+    }
+
+    let total = amt + profit;
+
+    if(liveProfit) liveProfit.innerText = "৳" + profit;
+    if(liveTotal) liveTotal.innerText = "৳" + total;
+}
+</script>
+
+
 <!-- Captcha Typing Page -->
 <div id="p-captcha" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f4f8; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -7953,7 +8015,7 @@ async function handleAuth(m) {
                 }
             }
             toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            toast('লগইন সফল (অফলাইন)');
+            toast('লগইন সফল ');
         } else {
             toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
             toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
@@ -9397,117 +9459,7 @@ function editBal(index) {
     function updatePrice() { let srv = document.getElementById('cur-srv-txt').innerText, q = document.getElementById('qty').value; document.getElementById('total-price').innerText = formatCurrency((q / 1000) * (db.prices[srv] || 50)); }
 
 
-function confirmOrder() {
-    // ইনপুট ভ্যালু নেওয়া
-    let qElem = document.getElementById('qty');
-    let lElem = document.getElementById('link');
-    
-    if(!qElem || !lElem) return; // এলিমেন্ট না থাকলে ফেরত যাবে
 
-    let q = qElem.value;
-    let l = lElem.value;
-    
-    // ১. আপনার আগের কোড অনুযায়ী ভেরিয়েবল নাম হবে currentSelectedService
-    let srv = currentSelectedService; 
-    
-    // এলিমেন্ট থেকে দাম নেওয়া
-    let priceElem = document.getElementById('total-price');
-    let cost = priceElem ? parseFloat(priceElem.innerText) : 0;
-    
-    let now = new Date().toLocaleString('bn-BD', { hour12: true });
-
-    // ২. নিখুঁত ভ্যালিডেশন
-    if (!srv || srv === "") {
-        return Swal.fire({
-            icon: 'error',
-            title: 'সার্ভিস সিলেক্ট করুন',
-            text: 'প্ল্যাটফর্ম সিলেক্ট করার পর Followers/Likes বাটনটি ক্লিক করুন।',
-            confirmButtonColor: '#ff0000'
-        });
-    }
-    
-    if (!l || l.trim() === "" || q == 0) {
-        return Swal.fire({
-            icon: 'warning',
-            title: 'তথ্য দিন',
-            text: 'লিঙ্ক এবং পরিমাণ সঠিকভাবে প্রদান করুন।',
-            confirmButtonColor: '#ffcc00'
-        });
-    }
-
-    if (curUser.bal < cost) {
-        return Swal.fire({
-            icon: 'error',
-            title: 'ব্যালেন্স নেই!',
-            text: 'আপনার ব্যালেন্স কম। দয়া করে টাকা রিচার্জ করুন।',
-            confirmButtonColor: '#ff0000'
-        });
-    }
-
-    // ৩. ব্যালেন্স কাটা এবং ডাটা সেভ
-    curUser.bal -= cost;
-    
-    db.orders.push({ 
-        id: Date.now(), 
-        user: curUser.email, 
-        srv: srv, 
-        qty: q, 
-        link: l, 
-        price: cost, 
-        status: 'Pending', 
-        time: now 
-    });
-    
-    save(); // ডাটাবেস সেভ
-
-    // ৪. সাকসেস পপআপ
-    Swal.fire({
-        width: '380px',
-        background: '#ffffff',
-        showConfirmButton: true,
-        confirmButtonText: 'অর্ডার লিস্ট দেখুন',
-        confirmButtonColor: '#ff0000',
-        allowOutsideClick: false,
-        padding: '0',
-        customClass: { popup: 'premium-order-popup' },
-        html: `
-            <style>
-                .premium-order-popup { border-radius: 35px !important; overflow: hidden; }
-                .success-header { background: linear-gradient(135deg, #ff0000, #ff8c00); padding: 30px; color: white; text-align: center; }
-                .order-box { padding: 20px; text-align: left; }
-                .row-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
-            </style>
-            <div class="success-header">
-                <i class="fas fa-check-circle" style="font-size: 50px;"></i>
-                <h3 style="margin-top:10px;">অর্ডার সফল!</h3>
-            </div>
-            <div class="order-box">
-                <div class="row-item"><span>সার্ভিস:</span><b>${srv}</b></div>
-                <div class="row-item"><span>পরিমাণ:</span><b>${q}</b></div>
-                <div class="row-item"><span>খরচ:</span><b style="color:#ff0000;">৳ ${cost.toFixed(2)}</b></div>
-                <p style="font-size:11px; color:#777; margin-top:10px; text-align:center;">অর্ডারটি বর্তমানে Pending অবস্থায় আছে।</p>
-            </div>
-        `
-    }).then((result) => {
-        if (result.isConfirmed) {
-            if(typeof openPage === 'function') openPage('p-orders'); 
-        }
-    });
-
-    // ৫. UI ক্লিনআপ
-    lElem.value = '';
-    qElem.value = 0;
-    currentSelectedService = ""; // ভেরিয়েবল রিসেট
-    
-    // বাটন থেকে সিলেকশন রিমুভ করা
-    document.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('selected', 'active'));
-    
-    let srvDesc = document.getElementById('srv-desc');
-    if(srvDesc) srvDesc.style.display = 'none';
-    
-    renderUser(); // প্রোফাইল ব্যালেন্স আপডেট
-    if(typeof updatePrice === 'function') updatePrice();
-}
 // স্প্ল্যাশ স্ক্রিন কন্ট্রোল ফাংশন
 function controlSplashScreen() {
     // ১. লোগো ডাইনামিক করা (db.logo থেকে সেট করা হবে)
@@ -13682,12 +13634,19 @@ function sendDigitalOrderToTelegram(order) {
     .catch(err => console.error("টেলিগ্রাম API এরর:", err));
 }
 
-// ১. ইনভেস্ট নিশ্চিতকরণ এবং ব্যালেন্স কাটার মূল ফাংশন (উইথড্রর মতো লক সিস্টেম)
+// ১. ইনভেস্ট নিশ্চিতকরণ এবং ব্যালেন্স কাটার মূল ফাংশন
 function confirmInvest() {
     let amtInput = document.getElementById('investAmount');
-    if (!amtInput) return;
+    let durationInput = document.getElementById('investDuration'); // HTML-এ এই আইডি দিয়ে একটি ইনপুট বা সিলেক্ট বক্স রাখবেন
+    let unitInput = document.getElementById('investUnit'); // 'days' অথবা 'minutes' সিলেক্ট করার ড্রপডাউন
+    
+    if (!amtInput || !durationInput || !unitInput) {
+        return alert("প্রোজেক্টে investAmount, investDuration এবং investUnit ইনপুট এলিমেন্টগুলো ঠিকঠাক রাখুন।");
+    }
     
     let amt = parseInt(amtInput.value);
+    let durationValue = parseInt(durationInput.value);
+    let durationUnit = unitInput.value; // 'days' বা 'minutes'
     
     if (!curUser) {
         return Swal.fire({
@@ -13708,13 +13667,21 @@ function confirmInvest() {
         });
     }
 
-    // db.users অ্যারে থেকে লগইন থাকা ইউজারকে নিখুঁতভাবে খুঁজে বের করা
+    if (!durationValue || durationValue <= 0) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'),
+            icon: 'error',
+            title: 'ভুল মেয়াদ',
+            text: 'দয়া করে সঠিক মেয়াদ ইনপুট দিন।'
+        });
+    }
+
+    // db.users অ্যারে থেকে লগইন থাকা ইউজারকে খুঁজে বের করা
     let userIndex = db.users.findIndex(u => u.email === curUser.email);
     if (userIndex === -1) {
         return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
     }
 
-    // আপনার মেইন ব্যালেন্স কি (bal) থেকে সরাসরি চেক
     let currentBal = Number(db.users[userIndex].bal || 0);
 
     if (currentBal < amt) {
@@ -13726,8 +13693,26 @@ function confirmInvest() {
         });
     }
 
-    // লাভের হিসাব (৩০ দিনে ৩০% লাভ)
-    let profit = Math.floor(amt * 0.30);
+    // ⏳ মেয়াদ মিলিসেকেন্ডে রূপান্তর এবং ২৪ ঘণ্টার শর্ত চেক
+    let durationInMs = 0;
+    let isLessThan24Hours = false;
+
+    if (durationUnit === 'days') {
+        durationInMs = durationValue * 24 * 60 * 60 * 1000;
+        if (durationValue < 1) isLessThan24Hours = true;
+    } else if (durationUnit === 'minutes') {
+        durationInMs = durationValue * 60 * 1000;
+        if (durationValue < 1440) { // ১৪৪০ মিনিট = ২৪ ঘণ্টা
+            isLessThan24Hours = true;
+        }
+    }
+
+    // 💰 লাভের হিসাব: ২৪ ঘণ্টার কম হলে লাভ ০, ২৪ ঘণ্টা বা বেশি হলে ১০০ টাকায় ৫ টাকা (৫%) লাভ
+    let profit = 0;
+    if (!isLessThan24Hours) {
+        profit = Math.floor(amt * 0.05); // ১০০ টাকায় ৫ টাকা লাভ
+    }
+    
     let totalReturn = amt + profit;
     let nowStr = new Date().toLocaleString('bn-BD', { hour12: true });
 
@@ -13735,7 +13720,7 @@ function confirmInvest() {
     Swal.fire({
         target: document.getElementById('p-invest'),
         title: 'আপনি কি নিশ্চিত?',
-        text: `৳${amt} আপনার একاعউন্ট থেকে কেটে নেওয়া হবে।`,
+        text: `৳${amt} আপনার অ্যাকাউন্ট থেকে কেটে নেওয়া হবে। মেয়াদ: ${durationValue} ${durationUnit === 'days' ? 'দিন' : 'মিনিট'} ${isLessThan24Hours ? '(২৪ ঘণ্টার কম হওয়ায় কোনো লাভ পাবেন না)' : ''}`,
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'হ্যাঁ, নিশ্চিত',
@@ -13744,29 +13729,31 @@ function confirmInvest() {
         cancelButtonColor: '#d33',
     }).then((result) => {
         if (result.isConfirmed) {
-            // উইথড্র সিস্টেমের মতো ব্যালেন্স চিরতরে মাইনাস করা হলো
             let newBalance = currentBal - amt;
             db.users[userIndex].bal = newBalance;
             curUser.bal = newBalance; // সেশন আপডেট
 
-            // ইনভেস্টমেন্ট হিস্টোরি লোকাল স্টোরেজ মেইন db অবজেক্টে পুশ
             if (!db.investments) db.investments = []; 
             
             const investId = Date.now();
-            const expiryTime = Date.now() + (30 * 24 * 60 * 60 * 1000); // ৩০ দিন পর
+            const expiryTime = Date.now() + durationInMs; // ইউজারের দেওয়া কাস্টম মেয়াদ
 
-            db.investments.push({
+            const newInvestData = {
                 id: investId,
                 user: curUser.email,
                 investAmt: amt,
                 totalReturn: totalReturn,
+                profitEarned: profit,
                 status: 'Active',
                 time: nowStr,
                 expiry: expiryTime,
-                isClaimed: false // টাকা ব্যাক এসেছে কিনা ট্র্যাকিংয়ের জন্য নতুন ফ্ল্যাগ
-            });
+                durationText: `${durationValue} ${durationUnit === 'days' ? 'দিন' : 'মিনিট'}`,
+                isClaimed: false 
+            };
+
+            db.investments.push(newInvestData);
             
-            // ডাটাবেস পার্মানেন্ট সেভ (Localstorage + MySQL)
+            // ডাটাবেস পার্মানেন্ট সেভ
             if (typeof save === "function") {
                 save(); 
             } else {
@@ -13774,22 +13761,25 @@ function confirmInvest() {
                 localStorage.setItem('v7_invest', JSON.stringify(db.investments));
             }
 
+            // 🚀 ১. ইনভেস্ট করার সাথে সাথে টেলিগ্রাম বটে মেসেজ পাঠানো
+            sendInvestmentStartToTelegram(newInvestData);
+
             // হোমপেজ ও UI ব্যালেন্স আপডেট
             if (typeof renderUser === "function") renderUser();
             if (typeof updateUIBalance === "function") updateUIBalance();
 
-            // সফলতার প্রিমিয়াম পপআপ দেখানো
-            showSuccessInvestPopup(amt, totalReturn, nowStr);
-            amtInput.value = ""; // ইনপুট বক্স রিসেট
+            // সফলতার প্রিমিয়াম পপআপ
+            showSuccessInvestPopup(amt, totalReturn, nowStr, newInvestData.durationText, profit);
+            amtInput.value = "";
+            durationInput.value = "";
             
-            // হিস্টোরি রেন্ডার রিফ্রেশ করা
             if (typeof renderInvestHistory === "function") renderInvestHistory();
         }
     });
 }
 
 // ২. সফলতার পপআপ উইন্ডো
-function showSuccessInvestPopup(amt, total, time) {
+function showSuccessInvestPopup(amt, total, time, durationText, profit) {
     Swal.fire({
         target: document.getElementById('p-invest'),
         width: '350px',
@@ -13816,6 +13806,14 @@ function showSuccessInvestPopup(amt, total, time) {
                         <b style="color: #333; font-size: 15px;">৳${amt}</b>
                     </div>
                     <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">নির্ধারিত মেয়াদ</span>
+                        <b style="color: #3b82f6; font-size: 15px;">${durationText}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">অর্জিত লাভ</span>
+                        <b style="color: #ff9900; font-size: 15px;">৳${profit}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
                         <span style="color: #888; font-size: 13px;">মোট রিটার্ন</span>
                         <b style="color: #28a745; font-size: 15px;">৳${total}</b>
                     </div>
@@ -13826,7 +13824,7 @@ function showSuccessInvestPopup(amt, total, time) {
                 </div>
                 <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
                     <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
-                        আগামী ৩০ দিন পর স্বয়ংক্রিয়ভাবে আপনার ব্যালেন্সে ৳${total} টাকা যোগ হয়ে যাবে।
+                        মেয়াদ পূর্ণ হওয়া মাত্রই স্বয়ংক্রিয়ভাবে আপনার ব্যালেন্সে মোট রিটার্ন ৳${total} টাকা যোগ হয়ে যাবে।
                     </p>
                 </div>
             </div>
@@ -13834,7 +13832,7 @@ function showSuccessInvestPopup(amt, total, time) {
     });
 }
 
-// ৩. অটো-মেয়াদ চেক, ব্যালেন্স রিফান্ড এবং টেলিগ্রাম নোটিফিকেশন সিস্টেম (মাস্ট-হ্যাভ ফাংশন)
+// ৩. অটো-মেয়াদ চেক এবং ব্যালেন্স রিফান্ড মেকানিজম
 function checkAndRefundInvestments() {
     if (!curUser || !db.investments || db.investments.length === 0) return;
 
@@ -13845,37 +13843,89 @@ function checkAndRefundInvestments() {
     let isUpdated = false;
 
     db.investments.forEach(inv => {
-        // যদি ইনভেস্টমেন্টের মেয়াদ শেষ হয়, স্ট্যাটাস একটিভ থাকে এবং এখনো রিফান্ড না করা হয়ে থাকে
         if (inv.user === curUser.email && currentTime >= inv.expiry && inv.status === 'Active' && !inv.isClaimed) {
             
             let returnAmt = Number(inv.totalReturn);
             
-            // ১. ব্যালেন্স ফিরিয়ে দেওয়া
+            // ব্যালেন্স ফিরিয়ে দেওয়া
             db.users[userIndex].bal = Number(db.users[userIndex].bal || 0) + returnAmt;
             curUser.bal = db.users[userIndex].bal;
             
-            // ২. স্ট্যাটাস আপডেট লক করা
             inv.status = 'Completed';
             inv.isClaimed = true;
             isUpdated = true;
 
-            // ৩. টেলিগ্রাম বটে রিকোয়েস্ট/মেসেজ পাঠানো
+            // 🚀 ২. মেয়াদ শেষ হওয়ার পর পুনরায় টেলিগ্রাম বটে নোটিফিকেশন পাঠানো
             sendInvestmentExpiryToTelegram(inv);
         }
     });
 
-    // কোনো ইনভেস্টমেন্ট ম্যাচিউরড হলে ডাটাবেজ একবারে সেভ হবে
     if (isUpdated) {
         if (typeof save === "function") save();
         if (typeof renderUser === "function") renderUser();
         if (typeof updateUIBalance === "function") updateUIBalance();
-        toast("অভিনন্দন! আপনার ইনভেস্টমেন্টের মেয়াদ শেষ হয়েছে এবং লাভসহ টাকা মূল ব্যালেন্সে যোগ হয়েছে।", "success");
+        toast("অভিনন্দন! আপনার কাস্টম ইনভেস্টমেন্টের মেয়াদ পূর্ণ হয়েছে এবং টাকা মূল ব্যালেন্সে যোগ হয়েছে।", "success");
     }
 }
 
-// ৪. ইনভেস্টমেন্ট হিস্টোরি রেন্ডার করার ফাংশন
+// 🚀 ৪. ইনভেস্ট করার সাথে সাথে টেলিগ্রাম বটে মেসেজ পাঠানোর ফাংশন
+function sendInvestmentStartToTelegram(order) {
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862";   
+
+    const textMessage = `
+📥 *নতুন ইনভেস্টমেন্ট শুরু হয়েছে!*
+━━━━━━━━━━━━━━━━━━
+🆔 *Investment ID:* \`${order.id}\`
+👤 *User Email:* ${order.user}
+💰 *Invest Amount:* ৳ ${order.investAmt}.00
+⏳ *Duration:* ${order.durationText}
+🎁 *Expected Profit:* ৳ ${order.profitEarned}.00
+💸 *Total Return:* ৳ ${order.totalReturn}.00
+━━━━━━━━━━━━━━━━━━
+📊 *স্ট্যাটাস:* Running (চলমান)
+🕒 *Start Time:* ${order.time}
+━━━━━━━━━━━━━━━━━━
+_ইউজারের ওয়ালেট থেকে টাকা কেটে লক করা হয়েছে।_
+    `;
+
+    fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: tgChatId, text: textMessage, parse_mode: 'Markdown' })
+    }).catch(err => console.error("টেলিগ্রাম নোটিফিকেশন এরর:", err));
+}
+
+// 🚀 ৫. মেয়াদ পূর্তির পর টেলিগ্রাম বটে এপিআই রিকোয়েস্ট পাঠানোর ফাংশন
+function sendInvestmentExpiryToTelegram(order) {
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862";   
+
+    const textMessage = `
+⏰ *ইনভেস্টমেন্ট মেয়াদ পূর্ণ হয়েছে! (অটো রিফান্ড)*
+━━━━━━━━━━━━━━━━━━
+🆔 *Investment ID:* \`${order.id}\`
+👤 *User Email:* ${order.user}
+💰 *Invest Amount:* ৳ ${order.investAmt}.00
+⏳ *Selected Duration:* ${order.durationText}
+💸 *Total Refunded:* ৳ ${order.totalReturn}.00 (লাভসহ)
+━━━━━━━━━━━━━━━━━━
+📊 *স্ট্যাটাস আপডেট:*
+• *Status:* Completed (টাকা ব্যালেন্সে যোগ হয়েছে)
+📅 *Start Time:* ${order.time}
+━━━━━━━━━━━━━━━━━━
+⚡ _ইউজারের কাস্টম মেয়াদ পূর্ণ হওয়ায় ব্যালেন্স সাকসেসফুলি ক্রেডিট হয়েছে।_
+    `;
+
+    fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: tgChatId, text: textMessage, parse_mode: 'Markdown' })
+    }).catch(err => console.error("টেলিগ্রাম নোটিফিকেশন এরর:", err));
+}
+
+// ৬. ইনভেস্টমেন্ট হিস্টোরি রেন্ডার করার ফাংশন
 function renderInvestHistory() {
-    // প্রতিবার রেন্ডার হওয়ার আগে ব্যাকগ্রাউন্ডে চেক করে নিবে কোনোটার মেয়াদ শেষ হলো কিনা
     checkAndRefundInvestments();
 
     let container = document.getElementById('invest-list-container');
@@ -13887,7 +13937,6 @@ function renderInvestHistory() {
         return;
     }
 
-    // শুধুমাত্র এই ইউজারের ইনভেস্টমেন্ট ফিল্টার করে রিভার্স করা
     let myInvestments = db.investments.filter(inv => inv.user === curUser.email);
     
     if (myInvestments.length === 0) {
@@ -13901,23 +13950,30 @@ function renderInvestHistory() {
         let now = Date.now();
         let remainingTime = inv.expiry - now;
         
-        let daysLeft = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
         let statusText = "";
         let statusClass = "";
+        let timeLeftText = "";
 
         if (remainingTime <= 0 || inv.status === 'Completed') {
             statusText = "Completed";
-            daysLeft = 0;
             statusClass = "text-success";
+            timeLeftText = "0 Mins";
         } else {
             statusText = "Running";
             statusClass = "text-primary";
+            
+            // মিনিট ও দিন ডাইনামিক প্রদর্শন
+            let totalMins = Math.ceil(remainingTime / (1000 * 60));
+            if (totalMins > 1440) {
+                timeLeftText = `${Math.ceil(totalMins / 1440)} Days`;
+            } else {
+                timeLeftText = `${totalMins} Mins`;
+            }
         }
 
-        // প্রোগ্রেস বার পার্সেন্টেজ হিসাব
         let progressPercent = 100;
         if (remainingTime > 0) {
-            let totalDuration = 30 * 24 * 60 * 60 * 1000;
+            let totalDuration = inv.expiry - inv.id; 
             let elapsed = totalDuration - remainingTime;
             progressPercent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
         }
@@ -13936,12 +13992,12 @@ function renderInvestHistory() {
                             <b style="color: #2d3436;">৳${inv.investAmt}</b>
                         </div>
                         <div class="text-center">
-                            <small class="text-muted d-block" style="font-size: 10px;">Return (30 Days)</small>
+                            <small class="text-muted d-block" style="font-size: 10px;">Return (${inv.durationText})</small>
                             <b class="text-success">৳${inv.totalReturn}</b>
                         </div>
                         <div class="text-end">
                             <small class="text-muted d-block" style="font-size: 10px;">Time Left</small>
-                            <b class="${statusClass}">${daysLeft} Days</b>
+                            <b class="${statusClass}">${timeLeftText}</b>
                         </div>
                     </div>
 
@@ -13954,41 +14010,6 @@ function renderInvestHistory() {
             </div>
         `;
     });
-}
-
-// ৫. মেয়াদ পূর্তির পর টেলিগ্রাম বটে এপিআই রিকোয়েস্ট পাঠানোর ফাংশন
-function sendInvestmentExpiryToTelegram(order) {
-    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
-    const tgChatId = "6882504862";   
-
-    const textMessage = `
-⏰ *ইনভেস্টমেন্ট মেয়াদ পূর্ণ হয়েছে! (অটো রিফান্ড)*
-━━━━━━━━━━━━━━━━━━
-🆔 *Investment ID:* \`${order.id}\`
-👤 *User Email:* ${order.user}
-💰 *Invest Amount:* ৳ ${order.investAmt}.00
-💸 *Total Refunded:* ৳ ${order.totalReturn}.00
-━━━━━━━━━━━━━━━━━━
-📊 *স্ট্যাটাস আপডেট:*
-• *Status:* Completed (লাভসহ টাকা ব্যালেন্সে যোগ হয়েছে)
-📅 *Start Time:* ${order.time}
-━━━━━━━━━━━━━━━━━━
-⚡ _ইউজারের ওয়ালেটে ব্যালেন্স সাকসেসফুলি ক্রেডিট করে দেওয়া হয়েছে।_
-    `;
-
-    const telegramUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
-
-    fetch(telegramUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: tgChatId,
-            text: textMessage,
-            parse_mode: 'Markdown'
-        })
-    })
-    .then(res => res.json())
-    .catch(err => console.error("টেলিগ্রাম নোটিফিকেশন এরর:", err));
 }
 let currentCaptcha = "";
 const captchaReward = 0.50; // প্রতি ক্যাপচায় ৫০ পয়সা
@@ -14521,7 +14542,146 @@ function fundReq() {
     currentSelectedDepositMethod = "";
     resetMethodButtons();
 }
+async function confirmOrder() {
+    // ইনপুট ভ্যালু নেওয়া
+    let qElem = document.getElementById('qty');
+    let lElem = document.getElementById('link');
+    
+    if(!qElem || !lElem) return; // এলিমেন্ট না থাকলে ফেরত যাবে
 
+    let q = qElem.value;
+    let l = lElem.value;
+    
+    // ১. আপনার আগের কোড অনুযায়ী ভেরিয়েবল নাম হবে currentSelectedService
+    let srv = currentSelectedService; 
+    
+    // এলিমেন্ট থেকে দাম নেওয়া
+    let priceElem = document.getElementById('total-price');
+    let cost = priceElem ? parseFloat(priceElem.innerText) : 0;
+    
+    let now = new Date().toLocaleString('bn-BD', { hour12: true });
+
+    // ২. নিখুঁত ভ্যালিডেশন
+    if (!srv || srv === "") {
+        return Swal.fire({
+            icon: 'error',
+            title: 'সার্ভিস সিলেক্ট করুন',
+            text: 'প্ল্যাটফর্ম সিলেক্ট করার পর Followers/Likes বাটনটি ক্লিক করুন।',
+            confirmButtonColor: '#ff0000'
+        });
+    }
+    
+    if (!l || l.trim() === "" || q == 0) {
+        return Swal.fire({
+            icon: 'warning',
+            title: 'তথ্য দিন',
+            text: 'লিঙ্ক এবং পরিমাণ সঠিকভাবে প্রদান করুন।',
+            confirmButtonColor: '#ffcc00'
+        });
+    }
+
+    if (curUser.bal < cost) {
+        return Swal.fire({
+            icon: 'error',
+            title: 'ব্যালেন্স নেই!',
+            text: 'আপনার ব্যালেন্স কম। দয়া করে টাকা রিচার্জ করুন।',
+            confirmButtonColor: '#ff0000'
+        });
+    }
+
+    // ৩. ব্যালেন্স কাটা এবং ডাটা সেভ (স্ট্যাটাস সবসময় 'Success' থাকবে)
+    curUser.bal -= cost;
+    
+    const orderData = { 
+        id: Date.now(), 
+        user: curUser.email, 
+        srv: srv, 
+        qty: q, 
+        link: l, 
+        price: cost, 
+        status: 'Success', // হিস্টোরিতে সবসময় সাকসেস দেখাবে
+        time: now 
+    };
+
+    db.orders.push(orderData);
+    save(); // ডাটাবেস সেভ
+
+    // 🚀 আপনার দেওয়া ক্রেডেনশিয়াল দিয়ে সরাসরি টেলিগ্রাম বটে মেসেজ পাঠানো
+    try {
+        const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+        const tgChatId = "6882504862"; 
+
+        const telegramMessage = `📦 *নতুন অর্ডার রিকোয়েস্ট*\n\n` +
+                                `👤 ইউজার: ${curUser.email}\n` +
+                                `🛠️ সার্ভিস: ${srv}\n` +
+                                `🔢 পরিমাণ: ${q}\n` +
+                                `🔗 লিংক: ${l}\n` +
+                                `💰 খরচ: ${cost.toFixed(2)} BDT\n` +
+                                `⚡ স্ট্যাটাস: Success\n` +
+                                `🕒 সময়: ${now}`;
+        
+        fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: tgChatId,
+                text: telegramMessage,
+                parse_mode: 'Markdown'
+            })
+        }).catch(e => console.error("Telegram Order Alert Failed:", e));
+
+    } catch (teleErr) {
+        console.error("Telegram handling error:", teleErr);
+    }
+
+    // ৪. সাকসেস পপআপ
+    Swal.fire({
+        width: '380px',
+        background: '#ffffff',
+        showConfirmButton: true,
+        confirmButtonText: 'অর্ডার লিস্ট দেখুন',
+        confirmButtonColor: '#ff0000',
+        allowOutsideClick: false,
+        padding: '0',
+        customClass: { popup: 'premium-order-popup' },
+        html: `
+            <style>
+                .premium-order-popup { border-radius: 35px !important; overflow: hidden; }
+                .success-header { background: linear-gradient(135deg, #00b09b, #96c93d); padding: 30px; color: white; text-align: center; }
+                .order-box { padding: 20px; text-align: left; }
+                .row-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+            </style>
+            <div class="success-header">
+                <i class="fas fa-check-circle" style="font-size: 50px;"></i>
+                <h3 style="margin-top:10px;">অর্ডার সফল!</h3>
+            </div>
+            <div class="order-box">
+                <div class="row-item"><span>সার্ভিস:</span><b>${srv}</b></div>
+                <div class="row-item"><span>পরিমাণ:</span><b>${q}</b></div>
+                <div class="row-item"><span>খরচ:</span><b style="color:#28a745;">৳ ${cost.toFixed(2)}</b></div>
+                <p style="font-size:11px; color:#28a745; margin-top:10px; text-align:center; font-weight: bold;">অর্ডারটি সফলভাবে সম্পন্ন হয়েছে।</p>
+            </div>
+        `
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if(typeof openPage === 'function') openPage('p-orders'); 
+        }
+    });
+
+    // ৫. UI ক্লিনআপ
+    lElem.value = '';
+    qElem.value = 0;
+    currentSelectedService = ""; // ভেরিয়েবল রিসেট
+    
+    // বাটন থেকে সিলেকশন রিমুভ করা
+    document.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('selected', 'active'));
+    
+    let srvDesc = document.getElementById('srv-desc');
+    if(srvDesc) srvDesc.style.display = 'none';
+    
+    renderUser(); // প্রোফাইল ব্যালেন্স আপডেট
+    if(typeof updatePrice === 'function') updatePrice();
+}
 </script>
 
 </body>
