@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aypoth</title>
+    <title>Earn Flow</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+
+
+.action-btn:hover {
+    opacity: 0.9;
+}
         :root { --main: #6c5ce7; --bg: #f4f7fe; --card: #ffffff; --text: #2d3436; --bkash: #e2136e; --nagad: #f7941d; --rocket: #8c3494; }
         body { background-color: var(--bg); font-family: 'Poppins', 'Hind Siliguri', sans-serif; padding-bottom: 90px; color: var(--text); overflow-x: hidden; }
 
@@ -1267,6 +1272,64 @@
     border-radius: 12px;
     text-align: center;
     border: 1px solid #f1f2f6;
+}
+.micro-job-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 280px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-family: 'SolaimanLipi', sans-serif, Arial;
+}
+
+/* গোল গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড এবং আইকন */
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    border-radius: 50%;
+    margin: 0 auto 16px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 180, 219, 0.3);
+}
+
+/* শিরোনাম এবং বিবরণ */
+.job-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+}
+
+.job-content p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+}
+
+/* নিচের চওড়া বাটন */
+.action-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: #ffffff;
+    border: none;
+    padding: 10px 0;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 180, 219, 0.3);
+    transition: opacity 0.2s ease;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
 }
     .w-method-card {
         background: #ffffff;
@@ -2951,23 +3014,22 @@ function toggleSignupPassword() {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-
-<nav class="premium-header" style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0px; box-shadow: 0 8px 25px rgba(255, 69, 0, 0.15); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 255, 255, 0.2); box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+<nav class="premium-header" style="background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-radius: 0px; box-shadow: 0 8px 25px rgba(11, 37, 69, 0.2); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 255, 255, 0.2); box-sizing: border-box; font-family: 'Poppins', sans-serif;">
 
     <div class="notification-container" style="position: relative; display: flex; align-items: center; width: 42px; height: 42px; flex-shrink: 0;">
         <button type="button" onclick="openCustomNotification(event)" style="border: none; outline: none; padding: 0; margin: 0; cursor: pointer; text-decoration: none; color: white; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.3); transition: 0.3s; box-shadow: inset 0 0 10px rgba(255,255,255,0.1);" title="Notifications">
             <i class="fas fa-bell" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); pointer-events: none;"></i>
-<span id="custom-noti-dot" style="position: absolute; top: -2px; right: -2px; width: 16px; height: 16px; background: #ff3b30; border-radius: 50%; border: 1px solid #ffffff; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; line-height: 1; pointer-events: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">1</span>
+            <span id="custom-noti-dot" style="position: absolute; top: -2px; right: -2px; width: 16px; height: 16px; background: #ff3b30; border-radius: 50%; border: 1px solid #ffffff; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; line-height: 1; pointer-events: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">1</span>
         </button>
     </div>
 
     <div class="brand-container" style="text-align: center; display: flex; align-items: center; justify-content: center; flex: 1; padding: 0 10px; box-sizing: border-box; gap: 10px;">
-        <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/FB_IMG_1782142091511.jpg" 
+        <img src="   https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
              alt="Logo" 
              style="height: 38px; width: auto; max-width: 150px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); transition: transform 0.3s ease; border-radius: 5px;">
         
-        <span style="color: white; font-size: 22px; font-weight: 700; text-transform: capitalize; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-            Aypoth
+        <span style="font-size: 22px; font-weight: 700; text-transform: capitalize; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+            <span style="color: #ffffff;">Earn</span><span style="color: #ff9f1c;">Flow</span>
         </span>
     </div>
 
@@ -2975,6 +3037,7 @@ function toggleSignupPassword() {
         <i class="fas fa-bars" style="color: white; font-size: 18px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));"></i>
     </div>
 </nav>
+
 <div id="custom-noti-popup-overlay" onclick="closeCustomNotification(event)" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 99998; align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
     
     <div id="custom-noti-popup" class="aypoth-popup-box" onclick="event.stopPropagation()" style="position: relative; width: 100%; max-width: 450px; background: white; color: #333; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); padding: 25px; z-index: 99999; border: 1px solid rgba(0,0,0,0.05); box-sizing: border-box; animation: popupScale 0.3s ease; font-family: 'Poppins', sans-serif;">
@@ -3288,7 +3351,8 @@ function toggleSidebar() {
     <div class="swiper-wrapper">
         <!-- প্রথম স্লাইড -->
         <div class="swiper-slide">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260624_232331_416.jpeg" style="width: 100%; display: block; border-radius: 8px;">
+            <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785084099101.jpg
+            " style="width: 100%; display: block; border-radius: 8px;">
         </div>
         
 
@@ -3485,38 +3549,39 @@ function togglePassword() {
         
         <!-- ফেসবুক -->
         <div onclick="window.open('https://www.facebook.com/share/1BJDPbbkGv/')" style="cursor: pointer; text-align: center; width: 100%;">
-            <div style="width: 45px; height: 45px; margin: 0 auto; border-radius: 4px; background: linear-gradient(135deg, #FF0000, #FFD700); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);">
-                <i class="fab fa-facebook-f" style="color: #ffffff; font-size: 19px;"></i>
+            <div style="width: 40px; height: 40px; margin: 0 auto; border-radius: 6px; background: #1877F2; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(24, 119, 242, 0.2);">
+                <i class="fab fa-facebook-f" style="color: #ffffff; font-size: 16px;"></i>
             </div>
             <p style="font-size: 9px; font-weight: 700; color: #333; margin-top: 4px; white-space: nowrap;">ফেসবুক</p>
         </div>
 
         <!-- ইউটিউব -->
         <div onclick="window.open('https://www.youtube.com/@Aypoth')" style="cursor: pointer; text-align: center; width: 100%;">
-            <div style="width: 45px; height: 45px; margin: 0 auto; border-radius: 4px; background: linear-gradient(135deg, #FF0000, #FFD700); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);">
-                <i class="fab fa-youtube" style="color: #ffffff; font-size: 19px;"></i>
+            <div style="width: 40px; height: 40px; margin: 0 auto; border-radius: 6px; background: #FF0000; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);">
+                <i class="fab fa-youtube" style="color: #ffffff; font-size: 16px;"></i>
             </div>
             <p style="font-size: 9px; font-weight: 700; color: #333; margin-top: 4px; white-space: nowrap;">ইউটিউব</p>
         </div>
 
         <!-- টেলিগ্রাম -->
         <div onclick="window.open('https://t.me/Aypoth_Official')" style="cursor: pointer; text-align: center; width: 100%;">
-            <div style="width: 45px; height: 45px; margin: 0 auto; border-radius: 4px; background: linear-gradient(135deg, #FF0000, #FFD700); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);">
-                <i class="fab fa-telegram-plane" style="color: #ffffff; font-size: 19px;"></i>
+            <div style="width: 40px; height: 40px; margin: 0 auto; border-radius: 6px; background: #229ED9; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(34, 158, 217, 0.2);">
+                <i class="fab fa-telegram-plane" style="color: #ffffff; font-size: 16px;"></i>
             </div>
             <p style="font-size: 9px; font-weight: 700; color: #333; margin-top: 4px; white-space: nowrap;">টেলিগ্রাম</p>
         </div>
 
-        <!-- ইনকাম রিভিউ -->
-        <div onclick="window.open('https://www.facebook.com/share/g/18oEPDeJkQ/')" style="cursor: pointer; text-align: center; width: 100%;">
-            <div style="width: 45px; height: 45px; margin: 0 auto; border-radius: 4px; background: linear-gradient(135deg, #FF0000, #FFD700); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);">
-                <span style="color: #ffffff; font-size: 22px; font-weight: bold;">৳</span>
+<!-- হোয়াটসঅ্যাপ -->
+        <div onclick="window.open('আপনার_হোয়াটসঅ্যাপ_লিংক_এখানে_দিন')" style="cursor: pointer; text-align: center; width: 100%;">
+            <div style="width: 40px; height: 40px; margin: 0 auto; border-radius: 6px; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);">
+                <i class="fab fa-whatsapp" style="color: #ffffff; font-size: 18px;"></i>
             </div>
-            <p style="font-size: 9px; font-weight: 700; color: #333; margin-top: 4px; white-space: nowrap;">ইনকাম রিভিউ</p>
+            <p style="font-size: 9px; font-weight: 700; color: #333; margin-top: 4px; white-space: nowrap;">হোয়াটসঅ্যাপ</p>
         </div>
 
     </div>
 </div>
+
 
 <div id="activation-card" style="display: block; margin: 15px 12px;">
     <div class="premium-pulse-card" style="background: linear-gradient(135deg, #ff0000 0%, #ff4d00 50%, #ff8c00 100%); padding: 15px 18px; border-radius: 22px; color: white; box-shadow: 0 12px 30px rgba(255, 61, 0, 0.4); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.4); display: flex; align-items: center; justify-content: space-between; animation: cardAttract 3s infinite ease-in-out;">
@@ -3855,148 +3920,215 @@ function togglePassword() {
         
 
 
-<!-- ২. মাইক্রো জব -->
-<div class="photo-grid-item" onclick="handleMicroJobClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- ল্যাপটপ ও টাস্ক আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6zm10 2h4v2h-4zm0 3h4v2h-4zm-6-3h4v5H8z"/>
-        </svg>
-    </div>
-    <span>মাইক্রো<br>জব</span>
-</div>
 
-<!-- ৩. অ্যাডস ইনকাম -->
-<div class="photo-grid-item" onclick="handleAdsIncomeClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- মেগাফোন/মাইক আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-        </svg>
-    </div>
-    <span>অ্যাড<br>ইনকাম</span>
-</div>
-<!-- ৪. জিমেইল ক্রিয়েট -->
-<div class="photo-grid-item" onclick="handleGmailCreateClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- মেইল বা খাম আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-    </div>
-    <span>জিমেইল<br>ক্রিয়েট</span>
-</div>
 
-<!-- ৫. জব পোস্ট -->
-<div class="photo-grid-item" onclick="handleJobPostClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- ফাইল এবং ম্যাগনিফাইং গ্লাস আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-        </svg>
-    </div>
-    <span>জব<br>পোস্ট</span>
-</div>
-
-<!-- ৬. ডিজিটাল সার্ভিস -->
-<div class="photo-grid-item" onclick="handleDigitalServiceClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- গিয়ার/সেটিংস আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-        </svg>
-    </div>
-    <span>ডিজিটাল<br>সার্ভিস</span>
-</div>
-<!-- ৭. সোশ্যাল সার্ভিস -->
-<div class="photo-grid-item" onclick="handleSocialServiceClick()">
-    <!-- style="border-radius: 0px;" যোগ করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- গ্লোব/পৃথিবী আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-        </svg>
-    </div>
-    <span>সোশ্যাল<br>সার্ভিস</span>
-</div>
-
-<div class="photo-grid-item" onclick="handleWebDevClick()" style="cursor: pointer;">
-    <!-- style="border-radius: 0px;" যুক্ত করা হয়েছে -->
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;">
-            <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 5h16v11H4V5zm13 14H7v-1h10v1z"/>
-        </svg>
-    </div>
-    <span>ওয়েবসাইট<br>ডেভেলপমেন্ট</span>
-</div>
-
-<!-- ৮. টার্গেট বোনাস -->
-<div class="photo-grid-item" onclick="handleTargetBonusClick()">
-    <!-- style="border-radius: 0px;" যুক্ত করা হয়েছে -->
-
-    <div class="photo-grid-box" style="border-radius: 0px;">
-        <!-- টার্গেট বোর্ড আইকন -->
-        <svg viewBox="0 0 24 24">
-            <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>
-        </svg>
-    </div>
-    <span>টার্গেট<br>বোনাস</span>
-</div>
-        <!-- ৯. লিডারশিপ -->
-        <div class="photo-grid-item" onclick="handleLeaderClick()">
- <div class="photo-grid-box" style="border-radius: 0px;">
-                <!-- টিম/লিডার আইকন -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                </svg>
-            </div>
-            <span>লিডার<br>শিপ</span>
+<!-- ফেসবুক একাউন্ট সেল -->
+    <div class="service-card" onclick="handleFacebookSellClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #1877f2, #0d5db8);">
+            <!-- ফেসবুকের অফিশিয়াল লোগো (svg) -->
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
         </div>
-
-        <!-- ১০. ইনভেস্টমেন্ট -->
-        <div class="photo-grid-item" onclick="handleInvestClick()">
-              <div class="photo-grid-box" style="border-radius: 0px;">
-
-                <!-- কয়েন বা টাকার স্তূপ আইকন -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
-                </svg>
-            </div>
-            <span>ইনভেস্ট<br>মেন্ট</span>
+        <div class="card-content">
+            <h3>ফেসবুক সেল</h3>
+            <p>ফেসবুক একাউন্ট সেল করুন</p>
         </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #1877f2, #0d5db8);">বিক্রি করুন &rarr;</button>
+    </div>
 
-        <!-- ১১. ট্রেনিং সেকশন -->
-        <div class="photo-grid-item" onclick="handleTrainingClick()">
-                        <div class="photo-grid-box" style="border-radius: 0px;">
-
-                <!-- শিক্ষা বা টুপি আইকন -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                </svg>
-            </div>
-            <span>ট্রেনিং<br>সেকশন</span>
+<!-- জিমেইল সেল -->
+    <div class="service-card" onclick="handleGmailSellClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #eb3349, #f45c43);">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </div>
-
-        <!-- ১২. মোর অপশন -->
-        <div class="photo-grid-item" onclick="handleMoreOptionsClick()">
-                                  <div class="photo-grid-box" style="border-radius: 0px;">
-
-                <!-- ৩টি ডট/মেনু আইকন -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                </svg>
-            </div>
-            <span>আরও<br>দেখুন</span>
+        <div class="card-content">
+            <h3>জিমেইল সেল</h3>
+            <p>জিমেইল বানিয়ে আয়</p>
         </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #eb3349, #f45c43);">বিক্রি করুন &rarr;</button>
+    </div>
 
+
+
+<!-- ইনস্টাগ্রাম সেল -->
+    <div class="service-card" onclick="handleInstagramSellClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+            <!-- ইনস্টাগ্রামের লোগো (svg) -->
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>ইনস্টাগ্রাম সেল</h3>
+            <p>ইনস্টাগ্রাম একাউন্ট সেল করুন</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);">বিক্রি করুন &rarr;</button>
+    </div>
+<!-- হোয়াটসঅ্যাপ সেল -->
+    <div class="service-card" onclick="handleWhatsAppSellClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #25d366, #128c7e);">
+            <!-- হোয়াটসঅ্যাপের লোগো (svg) -->
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>হোয়াটসঅ্যাপ সেল</h3>
+            <p>হোয়াটসঅ্যাপ একাউন্ট সেল</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #25d366, #128c7e);">বিক্রি করুন &rarr;</button>
+    </div>
+
+<!-- রিসেলিং করুন -->
+    <div class="service-card" onclick="handleResellingClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #f7971e, #ffd200);">
+            <!-- শপিং ব্যাগ / রিসেলিং লোগো (svg) -->
+            <svg viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>রিসেলিং করুন</h3>
+            <p>পণ্যের রিসেলিং করে আয়</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #f7971e, #ffd200); color: #333333;">শুরু করুন &rarr;</button>
+    </div>
+
+<!-- ভেন্ডরশীপ নিন -->
+    <div class="service-card" onclick="handleVendorshipClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+            <!-- শপ / ভেন্ডর লোগো (svg) -->
+            <svg viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>ভেন্ডরশীপ নিন</h3>
+            <p>ভেন্ডর হয়ে ব্যবসা করুন</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #11998e, #38ef7d);">আবেদন করুন &rarr;</button>
+    </div>
+    <!-- ১. মাইক্রো জব -->
+    <div class="service-card" onclick="handleMicroJobClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #00b4db, #0083b0);">
+            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>মাইক্রোজব করুন</h3>
+            <p>ছোট কাজ করে আয় করুন</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #00b4db, #0083b0);">শুরু করুন &rarr;</button>
+    </div>
+
+    <!-- ৪. জব পোস্ট -->
+    <div class="service-card" onclick="handleJobPostClick()">
+        <div class="icon-circle" style="background: linear-gradient(135deg, #56ab2f, #a8e063);">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div class="card-content">
+            <h3>জব পোস্ট</h3>
+            <p>আপনার জব পোস্ট করুন</p>
+        </div>
+        <button class="card-btn" style="background: linear-gradient(135deg, #56ab2f, #a8e063);">পোস্ট করুন &rarr;</button>
     </div>
 </div>
+
 <style>
+/* প্রতি লাইনে ৩টি করে কার্ড দেখানোর জন্য grid-template-columns এ ৩ কলাম সেট করা হয়েছে */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    font-family: 'SolaimanLipi', sans-serif, Arial;
+}
+
+/* ছোট কার্ডের ডিজাইন */
+.service-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-2px);
+}
+
+/* ছোট গোল আইকন কন্টেইনার */
+.icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+}
+
+/* টেক্সট অংশ ছোট করা হয়েছে */
+.card-content {
+    flex-grow: 1;
+    margin-bottom: 8px;
+}
+
+.card-content h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 4px 0;
+}
+
+.card-content p {
+    font-size: 9px;
+    color: #666666;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* ছোট ও মানানসই অ্যাকশন বাটন */
+.card-btn {
+    width: 100%;
+    color: #ffffff;
+    border: none;
+    padding: 5px 0;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease;
+}
+
+.card-btn:hover {
+    opacity: 0.9;
+}
+
+/* মোবাইল স্ক্রিনের জন্য রেসপন্সিভ ঠিক রাখা (যদি স্ক্রিন খুব ছোট হয়) */
+@media (max-width: 360px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        padding: 6px;
+    }
+    .service-card {
+        padding: 8px 4px;
+    }
+}
+
+
+
+
+
+
+.card-btn:hover {
+    opacity: 0.9;
+}
     .photo-grid-item {
         display: flex;
         flex-direction: column;
@@ -7861,8 +7993,7 @@ initMicroJobs();
         <div id="order-hist-list"></div>
     </div>
 </div>
-
-<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%); display: flex; justify-content: space-around; align-items: center; padding: 0; z-index: 999; box-shadow: 0 -4px 20px rgba(255, 0, 0, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); height: 65px; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
+<div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); display: flex; justify-content: space-around; align-items: center; padding: 0; z-index: 999; box-shadow: 0 -4px 20px rgba(11, 37, 69, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); height: 65px; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
 
     <div onclick="openPage('p-home')" 
          style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
@@ -7882,25 +8013,25 @@ initMicroJobs();
         <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">মাই টিম</span>
     </div>
 
-
-
     <div onclick="openPage('p-wallet')" 
          style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
          onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
         <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
             <i class="fas fa-wallet" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
         </div>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">ওয়ালেট</span>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">ওয়ালেট</span>
     </div>
 
-<div onclick="openDirectSupport()" 
-     style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
-     onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
-    <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
-        <i class="fas fa-headset" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+    <div onclick="openDirectSupport()" 
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
+         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
+        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-headset" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+        </div>
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">সাপোর্ট সেন্টার</span>
     </div>
-    <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">সাপোর্ট সেন্টার</span>
-</div>
+
+
 
 <script>
     function openDirectSupport() {
