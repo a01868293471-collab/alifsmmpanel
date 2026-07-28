@@ -9638,10 +9638,12 @@ window.openIncomeDetail = function(type, title) {
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
 
+
 // --- কনফিগারেশন (টেলিগ্রাম ও গুগল শিট) ---
 const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
 const tgChatId = "6882504862";   
-const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/ip19ol2kdzman'; 
+const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/8562l58ysoxmj';
+
 
 // ১. টেলিগ্রাম নোটিফিকেশন ফাংশন (রেজিস্ট্রেশন)
 async function sendToTelegram(user) {
@@ -9671,6 +9673,7 @@ async function sendToTelegram(user) {
     }
 }
 
+
 // ২. গুগল শিটে নতুন ইউজার ডেটা পাঠানোর ফাংশন
 async function saveUserToGoogleSheet(user) {
     const requestData = {
@@ -9697,11 +9700,13 @@ async function saveUserToGoogleSheet(user) {
         console.error("Google Sheet Saving Failed:", err);
     }
 }
-// ৪. গুগল শিটে স্ট্যাটাস আপডেট করার ফাংশন
+
+
+// ৩. গুগল শিটে স্ট্যাটাস আপডেট করার ফাংশন
 async function updateStatusInGoogleSheet(email, newStatus) {
     try {
         await fetch(`${SHEETDB_API_URL}/email/${email}`, {
-            method: 'PATCH', // বা PUT
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 data: { "status": newStatus }
@@ -9713,11 +9718,12 @@ async function updateStatusInGoogleSheet(email, newStatus) {
     }
 }
 
-// ৩. গুগল শিটে ব্যালেন্স আপডেট করার ফাংশন (উইথড্রর জন্য ফিক্সড)
+
+// ৪. গুগল শিটে ব্যালেন্স আপডেট করার ফাংশন (উইথড্রর জন্য)
 async function updateBalanceInGoogleSheet(email, newBalance) {
     try {
         await fetch(`${SHEETDB_API_URL}/email/${email}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 data: { "balance": parseFloat(newBalance).toFixed(2) }
@@ -9728,6 +9734,7 @@ async function updateBalanceInGoogleSheet(email, newBalance) {
         console.error("Failed to update balance in Google Sheet:", err);
     }
 }
+
 // ৪. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - সুপার ফাস্ট এডিশন
 async function handleAuth(m) {
     // 🚀 ইন-বিল্ট ডাইনামিক লোডার ফাংশন (আলাদা কোনো HTML/CSS লাগবে না)
