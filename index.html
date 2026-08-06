@@ -2618,7 +2618,6 @@ div[onclick="toggleBloodModal()"]:active {
 </head>
 <body>
 
-
 <!-- লোডার এলিমেন্ট -->
 <div id="loader-overlay"><div class="spinner"></div></div>
 
@@ -2626,43 +2625,42 @@ div[onclick="toggleBloodModal()"]:active {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh; box-sizing: border-box; padding-bottom: 30px;">
+<div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh; box-sizing: border-box; padding-bottom: 30px; width: 100%; overflow-x: hidden;">
 
     <!-- হেডার অংশ -->
-    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ff4b2b 100%); padding: 15px 20px 25px 20px; color: white; box-shadow: 0 4px 15px rgba(255, 75, 43, 0.2); position: sticky; top: 0; z-index: 100; box-sizing: border-box;">
+    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ff4b2b 100%); padding: 15px 15px 22px 15px; color: white; box-shadow: 0 4px 15px rgba(255, 75, 43, 0.2); position: sticky; top: 0; z-index: 100; width: 100%; box-sizing: border-box;">
         
         <!-- টপ বার -->
-        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 500px; margin: 0 auto; width: 100%; position: relative; box-sizing: border-box;">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; box-sizing: border-box;">
             
             <!-- বাম পাশের ব্যাক বাটন -->
-            <a href="javascript:history.back()" style="text-decoration: none; color: white; font-size: 24px; font-weight: bold; line-height: 1; user-select: none;">
+            <a href="javascript:history.back()" style="text-decoration: none; color: white; font-size: 22px; font-weight: bold; line-height: 1; user-select: none;">
                 &#10094;
             </a>
             
             <!-- মাঝের লোগো বা ব্র্যান্ড নেম -->
-            <div style="display: flex; align-items: center; justify-content: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                <span style="font-size: 24px; font-weight: 800; font-style: italic; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); color: #ffffff;">
+            <div style="position: absolute; left: 50%; transform: translateX(-50%);">
+                <span style="font-size: 22px; font-weight: 800; font-style: italic; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); color: #ffffff;">
                     HIGNICE
                 </span>
             </div>
 
             <!-- ডান পাশের ভাষা পরিবর্তনের অপশন (EN) -->
-            <div style="display: flex; align-items: center; gap: 6px; cursor: pointer; background: rgba(255, 255, 255, 0.15); padding: 4px 10px; border-radius: 20px;">
-                <img src="https://flagcdn.com/w40/us.png" alt="US Flag" style="width: 20px; height: 14px; border-radius: 2px; object-fit: cover;">
-                <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.5px;">EN</span>
+            <div style="display: flex; align-items: center; gap: 5px; cursor: pointer; background: rgba(255, 255, 255, 0.15); padding: 3px 8px; border-radius: 20px;">
+                <img src="https://flagcdn.com/w40/us.png" alt="US Flag" style="width: 18px; height: 12px; border-radius: 2px; object-fit: cover;">
+                <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.5px;">EN</span>
             </div>
 
         </div>
 
         <!-- নিচের টেক্সট অংশ -->
-        <div style="max-width: 500px; margin: 25px auto 0 auto; width: 100%; box-sizing: border-box;">
-            <h1 style="margin: 0 0 12px 0; font-size: 28px; font-weight: 700; color: #ffffff;">Log in</h1>
-            <p style="margin: 0 0 6px 0; font-size: 14px; color: #ffe3e0; line-height: 1.4;">Please log in with your phone number or email</p>
-            <p style="margin: 0; font-size: 14px; color: #ffe3e0; line-height: 1.4;">If you forget your password, please contact customer service</p>
+        <div style="width: 100%; margin-top: 20px; box-sizing: border-box;">
+            <h1 style="margin: 0 0 8px 0; font-size: 22px; font-weight: 700; color: #ffffff;">Log in</h1>
+            <p style="margin: 0 0 4px 0; font-size: 13px; color: #ffe3e0; line-height: 1.3;">Please log in with your phone number or email</p>
+            <p style="margin: 0; font-size: 13px; color: #ffe3e0; line-height: 1.3;">If you forget your password, please contact customer service</p>
         </div>
 
     </div>
-
 
 
 <!-- ৩. সাইডবার (Slider) মেইন বডি কোড -->
@@ -2764,11 +2762,11 @@ if (typeof openPage !== 'function') { function openPage(pageId) { alert(pageId +
 
 </div>
 <div class="auth-section" id="login-box" 
-     style="width: 95%; max-width: 700px; margin: 1px auto; padding: 20px 10px; font-family: 'Poppins', sans-serif; 
+     style="width: 100%; max-width: 700px; margin: 1px auto; padding: 20px 10px; font-family: 'Poppins', sans-serif; 
             background: transparent; border: none; box-shadow: none; box-sizing: border-box;">
     
     <!-- ট্যাব সুইচিং (Phone number / Email Login) -->
-    <div style="display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; position: relative;">
+    <div style="display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; position: relative; width: 100%; box-sizing: border-box;">
         <div onclick="switchLoginTab('phone')" id="phone-tab-btn" style="flex: 1; text-align: center; padding-bottom: 12px; cursor: pointer; font-weight: 600; color: #ff4b2b; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; position: relative;">
             <i class="fas fa-mobile-alt" style="font-size: 16px;"></i> phone number
             <div id="phone-indicator" style="position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background: #ff4b2b; border-radius: 2px;"></div>
@@ -2780,41 +2778,41 @@ if (typeof openPage !== 'function') { function openPage(pageId) { alert(pageId +
     </div>
 
     <!-- ফোন নম্বর ইনপুট সেকশন -->
-    <div id="phone-login-section" class="auth-fields">
+    <div id="phone-login-section" class="auth-fields" style="width: 100%; box-sizing: border-box;">
         <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
             <i class="fas fa-mobile-alt" style="color: #ff4b2b;"></i> Phone number
         </label>
         
-        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <!-- কান্ট্রি কোড -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; width: 110px; box-sizing: border-box; cursor: pointer;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; width: 95px; flex-shrink: 0; box-sizing: border-box; cursor: pointer;">
                 <span style="font-size: 14px; font-weight: 600; color: #333;">+880</span>
                 <i class="fas fa-chevron-down" style="font-size: 12px; color: #888;"></i>
             </div>
             <!-- ফোন নম্বর ফিল্ড -->
             <input type="tel" id="l-phone" placeholder="Please enter the phone number" oninput="checkLoginForm()" 
-                   style="flex: 1; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
+                   style="flex: 1; min-width: 0; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
         </div>
     </div>
 
     <!-- ইমেইল ইনপুট সেকশন (প্রথমে হাইড থাকবে) -->
-    <div id="email-login-section" class="auth-fields" style="display: none;">
+    <div id="email-login-section" class="auth-fields" style="display: none; width: 100%; box-sizing: border-box;">
         <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
             <i class="fas fa-envelope" style="color: #ff4b2b;"></i> Email address
         </label>
-        <div style="position: relative; margin-bottom: 20px;">
+        <div style="position: relative; margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <input type="email" id="l-email" placeholder="Please enter your email" oninput="checkLoginForm()" 
                    style="width: 100%; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
         </div>
     </div>
 
     <!-- পাসওয়ার্ড ফিল্ড -->
-    <div class="auth-fields">
+    <div class="auth-fields" style="width: 100%; box-sizing: border-box;">
         <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
             <i class="fas fa-lock" style="color: #ff4b2b;"></i> Password
         </label>
         
-        <div style="position: relative; margin-bottom: 15px;">
+        <div style="position: relative; margin-bottom: 15px; width: 100%; box-sizing: border-box;">
             <input type="password" id="l-pass" placeholder="Password" oninput="checkLoginForm()" 
                    style="width: 100%; padding: 12px 45px 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
             <span onclick="toggleLoginPassword()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #aaa; cursor: pointer; font-size: 16px;">
@@ -2823,7 +2821,7 @@ if (typeof openPage !== 'function') { function openPage(pageId) { alert(pageId +
         </div>
 
         <!-- Remember password এবং Forgot password -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; width: 100%; box-sizing: border-box;">
             <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; cursor: pointer;">
                 <input type="checkbox" style="width: 16px; height: 16px; accent-color: #ff4b2b; cursor: pointer;"> Remember password
             </label>
@@ -2834,18 +2832,17 @@ if (typeof openPage !== 'function') { function openPage(pageId) { alert(pageId +
 
         <!-- Log in বাটন -->
         <button id="login-submit-btn" onclick="handleAuth('login')" disabled 
-                style="width: 100%; height: 50px; border-radius: 25px; border: none; background: #d0d5e2; color: #ffffff; font-weight: 700; cursor: not-allowed; transition: 0.3s; font-size: 16px; margin-bottom: 15px; box-shadow: none;">
+                style="width: 100%; height: 50px; border-radius: 25px; border: none; background: #d0d5e2; color: #ffffff; font-weight: 700; cursor: not-allowed; transition: 0.3s; font-size: 16px; margin-bottom: 15px; box-shadow: none; box-sizing: border-box;">
             Log in
         </button>
 
         <!-- Register বাটন -->
         <button onclick="switchAuth(true)" 
-                style="width: 100%; height: 50px; border-radius: 25px; border: 1.5px solid #ff4b2b; background: transparent; color: #ff4b2b; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px;">
+                style="width: 100%; height: 50px; border-radius: 25px; border: 1.5px solid #ff4b2b; background: transparent; color: #ff4b2b; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px; box-sizing: border-box;">
             Register
         </button>
     </div>
 </div>
-
 
 <!-- ট্যাব পরিবর্তন এবং ডাইনামিক বাটন কালার কন্ট্রোল স্ক্রিপ্ট -->
 <script>
@@ -2933,12 +2930,12 @@ function checkLoginForm() {
     #signup-box input:-ms-input-placeholder { color: #888 !important; }
     #signup-box input::-ms-input-placeholder { color: #888 !important; }
 </style>
-<div class="auth-section d-none" id="signup-box" 
-     style="width: 95%; max-width: 700px; margin: 1px auto; padding: 20px 10px; font-family: 'Poppins', sans-serif; 
+ <div class="auth-section d-none" id="signup-box" 
+     style="width: 100%; max-width: 700px; margin: 1px auto; padding: 20px 10px; font-family: 'Poppins', sans-serif; 
             background: transparent; border: none; box-shadow: none; box-sizing: border-box;">
     
     <!-- টপ টাইটেল (Register your phone) -->
-    <div style="text-align: center; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 12px; position: relative;">
+    <div style="text-align: center; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 12px; position: relative; width: 100%; box-sizing: border-box;">
         <span style="font-weight: 600; color: #ff4b2b; font-size: 16px; display: inline-flex; align-items: center; gap: 8px;">
             <i class="fas fa-mobile-alt" style="font-size: 16px;"></i> Register your phone
         </span>
@@ -2946,31 +2943,31 @@ function checkLoginForm() {
     </div>
 
     <!-- ফর্ম ফিল্ডস -->
-    <div class="auth-fields">
+    <div class="auth-fields" style="width: 100%; box-sizing: border-box;">
         
         <!-- Phone number -->
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
                 <i class="fas fa-mobile-alt" style="color: #ff4b2b;"></i> Phone number
             </label>
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; gap: 10px; width: 100%; box-sizing: border-box;">
                 <!-- কান্ট্রি কোড -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; width: 110px; box-sizing: border-box; cursor: pointer;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; width: 95px; flex-shrink: 0; box-sizing: border-box; cursor: pointer;">
                     <span style="font-size: 14px; font-weight: 600; color: #333;">+880</span>
                     <i class="fas fa-chevron-down" style="font-size: 12px; color: #888;"></i>
                 </div>
                 <!-- ফোন নম্বর ইনপুট -->
                 <input type="tel" id="s-phone" placeholder="Please enter the phone number" 
-                       style="flex: 1; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
+                       style="flex: 1; min-width: 0; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
             </div>
         </div>
 
         <!-- Set password -->
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
                 <i class="fas fa-lock" style="color: #ff4b2b;"></i> Set password
             </label>
-            <div style="position: relative;">
+            <div style="position: relative; width: 100%; box-sizing: border-box;">
                 <input type="password" id="s-pass" placeholder="Set password" 
                        style="width: 100%; padding: 12px 45px 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
                 <span onclick="toggleSignupPassword()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #aaa; cursor: pointer; font-size: 16px;">
@@ -2980,11 +2977,11 @@ function checkLoginForm() {
         </div>
 
         <!-- Confirm password -->
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
                 <i class="fas fa-lock" style="color: #ff4b2b;"></i> Confirm password
             </label>
-            <div style="position: relative;">
+            <div style="position: relative; width: 100%; box-sizing: border-box;">
                 <input type="password" id="s-con-pass" placeholder="Confirm password" 
                        style="width: 100%; padding: 12px 45px 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #ffffff; color: #333; outline: none; font-size: 14px; box-sizing: border-box;">
                 <span onclick="toggleConfirmPassword()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #aaa; cursor: pointer; font-size: 16px;">
@@ -2994,7 +2991,7 @@ function checkLoginForm() {
         </div>
 
         <!-- Invite code -->
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
             <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px;">
                 <i class="fas fa-envelope-open-text" style="color: #ff4b2b;"></i> Invite code
             </label>
@@ -3003,7 +3000,7 @@ function checkLoginForm() {
         </div>
 
         <!-- Privacy Agreement Checkbox -->
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px; width: 100%; box-sizing: border-box;">
             <input type="checkbox" id="privacy-check" style="width: 16px; height: 16px; accent-color: #ff4b2b; cursor: pointer;">
             <label for="privacy-check" style="font-size: 13px; color: #666; cursor: pointer;">
                 I have read and agree <span style="color: #ff4b2b; font-weight: 600;">【Privacy Agreement】</span>
@@ -3012,19 +3009,17 @@ function checkLoginForm() {
 
         <!-- Register বাটন -->
         <button onclick="handleAuth('signup')" 
-                style="width: 100%; height: 50px; border-radius: 25px; border: none; background: #ff7675; color: #ffffff; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(255, 118, 117, 0.3);">
+                style="width: 100%; height: 50px; border-radius: 25px; border: none; background: #ff7675; color: #ffffff; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(255, 118, 117, 0.3); box-sizing: border-box;">
             Register
         </button>
 
         <!-- Login বাটন (বর্ডার সহ) -->
         <button onclick="switchAuth(false)" 
-                style="width: 100%; height: 50px; border-radius: 25px; border: 1.5px solid #ff4b2b; background: transparent; color: #ff4b2b; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                style="width: 100%; height: 50px; border-radius: 25px; border: 1.5px solid #ff4b2b; background: transparent; color: #ff4b2b; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 5px; box-sizing: border-box;">
             <span style="color: #666; font-weight: 500;">I have an account</span> Login
         </button>
     </div>
 </div>
-
-
 
 <script>
 function toggleSignupPassword() {
