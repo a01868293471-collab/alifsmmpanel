@@ -2619,371 +2619,387 @@ div[onclick="toggleBloodModal()"]:active {
 <body>
 
 
+  <!-- Font Awesome & Google Fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- লোডার এলিমেন্ট -->
 <div id="loader-overlay"><div class="spinner"></div></div>
 
-<!-- Font Awesome আইকন লাইব্রেরি -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<div id="auth-section" style="font-family: 'Poppins', sans-serif; background: #f4f7fe; min-height: 100vh; box-sizing: border-box;">
+<style>
+    /* ইনপুট প্লেসহোল্ডার ও গ্লোবাল স্পেসিং অ্যাডজাস্টমেন্ট */
+    .auth-section input::placeholder { color: #888 !important; opacity: 1; }
+    .auth-section input:-ms-input-placeholder { color: #888 !important; }
+    .auth-section input::-ms-input-placeholder { color: #888 !important; }
     
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    .d-none { display: none !important; }
+</style>
 
-<div style="background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); padding: 12px 15px; color: white; box-shadow: 0 4px 15px rgba(11, 37, 69, 0.2); position: sticky; top: 0; z-index: 100; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 500px; margin: 0 auto; width: 100%; position: relative; box-sizing: border-box;">
+<!-- মেইন অথেন্টিকেশন কন্টেইনার (এটি লগইন/রেজিস্ট্রেশন শেষে সম্পূর্ণ হাইড হয়ে যাবে) -->
+<div id="auth-wrapper" style="width: 100%; max-width: 450px; margin: 0 auto; box-sizing: border-box;">
+    
+    <!-- ডায়নামিক হেডার সেকশন -->
+    <div style="background: linear-gradient(135deg, #ff1e27 0%, #ff8c00 50%, #ffc107 100%); padding: 15px 18px 20px 18px; color: white; font-family: 'Poppins', sans-serif; border-radius: 0 0 15px 15px; box-shadow: 0 4px 15px rgba(255, 30, 39, 0.3);">
         
-        <span style="font-size: 24px; cursor: pointer; position: absolute; left: 0; user-select: none;" onclick="openNav()">&#9776;</span>
-        
-        <div style="display: flex; align-items: center; gap: 12px; margin: 0 35px;">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
-                 alt="Logo" 
-                 style="height: 38px; width: auto; max-width: 150px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); border-radius: 5px;">
-            <span style="font-size: 22px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                <span style="color: #ffffff;">Earn</span><span style="color: #ff9f1c;">Flow</span>
-            </span>
+        <!-- Top Bar -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <!-- Back Arrow Icon -->
+            <div style="font-size: 20px; cursor: pointer; color: white;" onclick="switchAuth(false)">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <!-- Logo / Brand Title -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+                
+                <span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    BDT WINX
+                </span>
+            </div>
+
+            <!-- Language Selector -->
+            <div style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <div style="width: 20px; height: 20px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    <img src="https://flagcdn.com/w40/us.png" alt="EN" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span style="font-weight: 600; font-size: 14px; color: #ffffff;">EN</span>
+            </div>
         </div>
 
-        <a href="javascript:void(0)" onclick="toggleNotificationPopup(event)" style="text-decoration: none; color: white; position: absolute; right: 0; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" title="Notifications">
-            <i class="fas fa-bell" style="font-size: 16px;"></i>
-            <span id="noti-dot" style="position: absolute; top: -2px; right: -2px; width: 16px; height: 16px; background: #ff3b30; border-radius: 50%; border: 1px solid #ffffff; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; line-height: 1; pointer-events: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">1</span>
-        </a>
-
-
-        <div id="noti-popup" style="display: none; position: absolute; top: 48px; right: 0; width: 260px; background: white; color: #333; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); padding: 15px; z-index: 200; border: 1px solid rgba(0,0,0,0.05); box-sizing: border-box;" onclick="event.stopPropagation()">
-            <div style="position: absolute; top: -6px; right: 12px; width: 12px; height: 12px; background: white; transform: rotate(45deg); border-left: 1px solid rgba(0,0,0,0.05); border-top: 1px solid rgba(0,0,0,0.05);">
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px;">
-                <span style="font-weight: 700; font-size: 14px; color: #ff5500;">🔔 নোটিফিকেশন</span>
-                <span onclick="toggleNotificationPopup(event)" style="cursor: pointer; font-size: 18px; color: #aaa; font-weight: bold; line-height: 1;">&times;</span>
-            </div>
-            
-            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5; text-align: left; white-space: normal;">
-                স্বাগতম! <b>EarnFlow
-                </b>-এ আপনাকে স্বাগতম। আমাদের নতুন আপডেট এবং অফারগুলো দেখতে নিয়মিত লক্ষ্য রাখুন।
+        <!-- Dynamic Header Text -->
+        <div style="text-align: left; padding-left: 2px;">
+            <h1 id="dynamic-header-title" style="margin: 0 0 5px 0; font-size: 24px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">
+                Log in
+            </h1>
+            <p id="dynamic-header-sub1" style="margin: 0; font-size: 12.5px; color: rgba(255, 255, 255, 0.92); line-height: 1.3; font-weight: 400;">
+                Please log in with your phone number or email
+            </p>
+            <p id="dynamic-header-sub2" style="margin: 2px 0 0 0; font-size: 12.5px; color: rgba(255, 255, 255, 0.92); line-height: 1.3; font-weight: 400;">
+                If you forget your password, please contact customer service
             </p>
         </div>
+    </div>
 
+    <!-- ----------------- ১. লগইন ফর্ম ----------------- -->
+    <div class="auth-section" id="login-box" style="width: 100%; padding: 15px 18px 20px; font-family: 'Poppins', sans-serif; background: #f8fafc; box-sizing: border-box;">
+        
+        <!-- Tab Navigation -->
+        <div style="display: flex; border-bottom: 2px solid #e2e8f0; margin-bottom: 18px;">
+            <div id="tab-phone" onclick="switchTab('phone')" style="flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px; transition: 0.3s;">
+                <i class="fas fa-mobile-alt" style="display: block; font-size: 16px; margin-bottom: 3px;"></i>
+                Phone Number
+            </div>
+            <div id="tab-email" onclick="switchTab('email')" style="flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: 0.3s;">
+                <i class="far fa-envelope" style="display: block; font-size: 16px; margin-bottom: 3px;"></i>
+                Email
+            </div>
+        </div>
+
+        <div class="auth-fields">
+            <div style="margin-bottom: 15px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-mobile-alt" id="field-icon"></i>
+                    </span>
+                    <span id="field-label">Phone number</span>
+                </label>
+                
+                <div style="display: flex; gap: 8px;" id="phone-input-group">
+                    <div style="position: relative; width: 90px;">
+                        <select style="width: 100%; padding: 10px 24px 10px 10px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #334155; font-weight: 600; font-size: 13.5px; outline: none; appearance: none; cursor: pointer;">
+                            <option>+880</option>
+                            <option>+1</option>
+                            <option>+91</option>
+                        </select>
+                        <i class="fas fa-chevron-down" style="position: absolute; right: 10px; top: 14px; font-size: 11px; color: #94a3b8; pointer-events: none;"></i>
+                    </div>
+                    <input type="tel" id="l-phone" placeholder="Please enter the phone number" style="flex: 1; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                </div>
+
+                <div id="email-input-group" style="display: none;">
+                    <input type="email" id="l-email" placeholder="Please enter your email" style="width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    Password
+                </label>
+                
+                <div style="position: relative;">
+                    <input type="password" id="l-pass" placeholder="Password" style="width: 100%; padding: 10px 40px 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                    <span onclick="toggleLoginPassword()" style="position: absolute; right: 12px; top: 11px; color: #cbd5e1; cursor: pointer; font-size: 15px; z-index: 10;">
+                        <i class="fas fa-eye-slash" id="loginEyeIcon"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 12.5px;">
+                <label style="display: flex; align-items: center; gap: 6px; color: #64748b; cursor: pointer; font-weight: 500;">
+                    <input type="checkbox" style="width: 15px; height: 15px; accent-color: #ff3b30; cursor: pointer;">
+                    Remember password
+                </label>
+                <a href="javascript:void(0)" onclick="showForgotPopup()" style="color: #ff3b30; font-weight: 500; text-decoration: none;">Forgot password?</a>
+            </div>
+
+            <button onclick="handleAuth('login')" style="width: 100%; height: 44px; border-radius: 22px; border: none; background: linear-gradient(135deg, #ff1e27 0%, #ff8c00 50%, #ffc107 100%); color: #ffffff; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 30, 39, 0.3); font-size: 16px; margin-bottom: 12px;">
+                Log in
+            </button>
+
+            <button onclick="switchAuth(true)" style="width: 100%; height: 44px; border-radius: 22px; border: 2px solid #ff5500; background: transparent; color: #ff5500; font-weight: 700; cursor: pointer; font-size: 16px;">
+                Register
+            </button>
+        </div>
+    </div>
+
+    <!-- ----------------- ২. রেজিস্ট্রেশন ফর্ম ----------------- -->
+    <div class="auth-section d-none" id="signup-box" style="width: 100%; padding: 15px 18px 20px; font-family: 'Poppins', sans-serif; background: #f8fafc; box-sizing: border-box;">
+        
+        <!-- Tab Navigation -->
+        <div style="display: flex; border-bottom: 2px solid #e2e8f0; margin-bottom: 18px;">
+            <div id="reg-tab-phone" onclick="switchRegTab('phone')" style="flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px; transition: 0.3s;">
+                <i class="fas fa-mobile-alt" style="display: block; font-size: 16px; margin-bottom: 3px;"></i>
+                Phone Number
+            </div>
+            <div id="reg-tab-email" onclick="switchRegTab('email')" style="flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: 0.3s;">
+                <i class="far fa-envelope" style="display: block; font-size: 16px; margin-bottom: 3px;"></i>
+                Email
+            </div>
+        </div>
+
+        <div class="auth-fields">
+            <div style="margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-mobile-alt" id="reg-field-icon"></i>
+                    </span>
+                    <span id="reg-field-label">Phone number</span>
+                </label>
+                
+                <div style="display: flex; gap: 8px;" id="reg-phone-group">
+                    <div style="position: relative; width: 90px;">
+                        <select style="width: 100%; padding: 10px 24px 10px 10px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #334155; font-weight: 600; font-size: 13.5px; outline: none; appearance: none; cursor: pointer;">
+                            <option>+880</option>
+                            <option>+1</option>
+                            <option>+91</option>
+                        </select>
+                        <i class="fas fa-chevron-down" style="position: absolute; right: 10px; top: 14px; font-size: 11px; color: #94a3b8; pointer-events: none;"></i>
+                    </div>
+                    <input type="tel" id="s-phone" placeholder="Please enter the phone number" style="flex: 1; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                </div>
+
+                <div id="reg-email-group" style="display: none;">
+                    <input type="email" id="s-email" placeholder="Please enter your email address" style="width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    Set password
+                </label>
+                <div style="position: relative;">
+                    <input type="password" id="s-pass" placeholder="Set password" style="width: 100%; padding: 10px 40px 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                    <span onclick="togglePasswordVisibility('s-pass', 'toggleSignupIcon1')" style="position: absolute; right: 12px; top: 11px; color: #cbd5e1; cursor: pointer; font-size: 15px; z-index: 10;">
+                        <i class="fas fa-eye-slash" id="toggleSignupIcon1"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    Confirm password
+                </label>
+                <div style="position: relative;">
+                    <input type="password" id="s-confirm-pass" placeholder="Confirm password" style="width: 100%; padding: 10px 40px 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+                    <span onclick="togglePasswordVisibility('s-confirm-pass', 'toggleSignupIcon2')" style="position: absolute; right: 12px; top: 11px; color: #cbd5e1; cursor: pointer; font-size: 15px; z-index: 10;">
+                        <i class="fas fa-eye-slash" id="toggleSignupIcon2"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: #334155; margin-bottom: 6px;">
+                    <span style="background: #ff3b30; color: white; width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px;">
+                        <i class="fas fa-user-plus"></i>
+                    </span>
+                    Invite code
+                </label>
+                <input type="text" id="reg-refer" placeholder="Please enter the invitation code" style="width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #333; outline: none; font-size: 13.5px; box-sizing: border-box;">
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 18px; font-size: 12px; color: #64748b;">
+                <input type="checkbox" id="agree-check" style="width: 15px; height: 15px; accent-color: #ff3b30; cursor: pointer;" checked>
+                <label for="agree-check" style="cursor: pointer;">
+                    I have read and agree <a href="javascript:void(0)" style="color: #ff3b30; text-decoration: none; font-weight: 500;">【Privacy Agreement】</a>
+                </label>
+            </div>
+
+            <button onclick="handleAuth('signup')" style="width: 100%; height: 44px; border-radius: 22px; border: none; background: linear-gradient(135deg, #ff1e27 0%, #ff8c00 50%, #ffc107 100%); color: #ffffff; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 30, 39, 0.3); font-size: 16px; margin-bottom: 12px;">
+                Register
+            </button>
+
+            <button onclick="switchAuth(false)" style="width: 100%; height: 44px; border-radius: 22px; border: 1.5px solid #ff3b30; background: transparent; color: #64748b; font-weight: 500; cursor: pointer; font-size: 15px;">
+                I have an account <span style="color: #ff3b30; font-weight: 700;">Login</span>
+            </button>
+        </div>
     </div>
 </div>
 
+<!-- JavaScript Logic -->
 <script>
-function toggleNotificationPopup(event) {
-    // বাটনে ক্লিক করলে যেন পেজ রিফ্রেশ বা অন্য সমস্যা না হয়
-    if(event) {
-        event.stopPropagation();
-    }
-    
-    var popup = document.getElementById("noti-popup");
-    var dot = document.getElementById("noti-dot");
-    
-    if (popup.style.display === "none" || popup.style.display === "") {
-        popup.style.display = "block";
-        // নোটিফিকেশন দেখার পর লাল ডটটি মুছে ফেলার জন্য (ঐচ্ছিক)
-        if(dot) { dot.style.display = "none"; }
+// ১. সাইনআপ ও লগইন ভিউ সোয়াপ করার ডায়নামিক ফাংশন
+function switchAuth(isSignup) {
+    const loginBox = document.getElementById('login-box');
+    const signupBox = document.getElementById('signup-box');
+    const headerTitle = document.getElementById('dynamic-header-title');
+    const headerSub1 = document.getElementById('dynamic-header-sub1');
+    const headerSub2 = document.getElementById('dynamic-header-sub2');
+
+    if (isSignup) {
+        loginBox.classList.add('d-none');
+        signupBox.classList.remove('d-none');
+        
+        // হেডার টেক্সট আপডেট (রেজিস্ট্রেশন)
+        headerTitle.innerText = "Registration";
+        headerSub1.innerText = "Please register with your phone number or email";
+        headerSub2.innerText = "Create an account to start earning today";
     } else {
-        popup.style.display = "none";
+        signupBox.classList.add('d-none');
+        loginBox.classList.remove('d-none');
+        
+        // হেডার টেক্সট আপডেট (লগইন)
+        headerTitle.innerText = "Log in";
+        headerSub1.innerText = "Please log in with your phone number or email";
+        headerSub2.innerText = "If you forget your password, please contact customer service";
     }
 }
 
+// ২. হোমপেজ / ড্যাশবোর্ড লঞ্চিং ফাংশন (পুরো অথ সেকশন ও হেডার হাইড করে)
+function launchUserDashboard(user) {
+    window.curUser = user;
 
-// স্ক্রিনের অন্য কোথাও ক্লিক করলে নোটিফিকেশন পপআপটি নিজে থেকেই বন্ধ হয়ে যাবে
-document.addEventListener("click", function() {
-    var popup = document.getElementById("noti-popup");
-    if (popup && popup.style.display === "block") {
-        popup.style.display = "none";
+    // পুরো অথ কন্টেইনার এবং হেডার স্থায়ীভাবে হাইড করে দেওয়া
+    const authWrapper = document.getElementById('auth-wrapper');
+    if (authWrapper) {
+        authWrapper.classList.add('d-none');
+        authWrapper.style.display = 'none';
     }
-});
-// আপনার স্লাইডারের ডিফল্ট ফাংশন (যদি ফাইলে না থাকে)
-function openNav() {
-    var sidebar = document.getElementById("mySidebar");
-    if(sidebar) { sidebar.style.width = "280px"; }
-}
-function closeNav() {
-    var sidebar = document.getElementById("mySidebar");
-    if(sidebar) { sidebar.style.width = "0"; }
-}
 
-</script>
+    // ব্যাকআপের জন্য ক্লাসভিত্তিক হাইড
+    document.querySelectorAll('.auth-section').forEach(el => {
+        el.classList.add('d-none');
+        el.style.display = 'none';
+    });
 
-<!-- ৩. সাইডবার (Slider) মেইন বডি কোড -->
-<!-- উইডথ চিকন রাখার জন্য (width: 0 থেকে ২৫০px হবে জাভাস্ক্রিপ্ট দিয়ে) -->
-<div id="mySidebar" style="height: 100%; width: 0; position: fixed; z-index: 1000; top: 0; left: 0; background: #ffffff; overflow-x: hidden; transition: 0.4s; box-shadow: 4px 0 25px rgba(0,0,0,0.1); box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Poppins', sans-serif;">
-    
-<!-- ওপরের প্রফেশনাল লোগো থিম হেডার সেকশন -->
-    <div style="background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; color: white; flex-shrink: 0;">
-        <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.5px;">মেনু</span>
-        <!-- বন্ধ করার বাটন (X) -->
-        <a href="javascript:void(0)" style="text-decoration: none; font-size: 26px; color: white; transition: 0.3s; line-height: 1; font-weight: 600;" onclick="closeNav()">&times;</a>
-    </div>
+    // ড্যাশবোর্ড প্রকাশ করা
+    const userApp = document.getElementById('user-app');
+    const adminApp = document.getElementById('admin-app');
 
-    <!-- লোগো এবং নাম সেকশন -->
-    <div style="display: flex; align-items: center; gap: 12px; padding: 18px; border-bottom: 2px solid #f1f5f9; flex-shrink: 0;">
-        <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
-             alt="Logo" 
-             style="height: 40px; width: 40px; object-fit: contain; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-        <span style="font-size: 18px; font-weight: 800; letter-spacing: 0.5px;">
-            <span style="color: #0b2545;">Earn</span><span style="color: #f2994a;">Flow</span>
-        </span>
-    </div>
-
-    <!-- বাটন সমূহ কন্টেইনার (উইডথ চিকন কিন্তু বাটনগুলো বড় ও স্পষ্ট) -->
-    <div style="padding: 15px 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; overflow-y: auto; box-sizing: border-box;">
+    if (user.role === 'admin' && adminApp) {
+        adminApp.classList.remove('d-none');
+        adminApp.style.display = 'block';
+        if (typeof renderAdmin === "function") renderAdmin();
+    } else if (userApp) {
+        userApp.classList.remove('d-none');
+        userApp.style.display = 'block';
         
-        <!-- এপ ইন্সটল করুন বাটন -->
-        <a href="javascript:void(0)" onclick="showInstallPopup(); closeNav();" style="padding: 12px 14px; text-decoration: none; font-size: 15px; color: #1e293b; display: flex; align-items: center; gap: 12px; font-weight: 700; border-radius: 10px; transition: 0.2s; background: transparent; box-sizing: border-box;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='transparent'">
-            <span style="background: rgba(0, 198, 255, 0.15); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="fas fa-cloud-download-alt" style="font-size: 15px; color: #0072ff;"></i>
-            </span>
-            <span style="flex: 1; text-align: left;">আ্যাপ ইন্সটল করুন</span>
-            <i class="fas fa-angle-right" style="font-size: 15px; color: #64748b; font-weight: bold;"></i>
-        </a>
-
-<!-- সাপোর্ট সেন্টার বাটন -->
-<a href="https://t.me/Mohammed1199440" target="_blank" onclick="closeNav();" style="padding: 12px 14px; text-decoration: none; font-size: 15px; color: #1e293b; display: flex; align-items: center; gap: 12px; font-weight: 700; border-radius: 10px; transition: 0.2s; background: transparent; box-sizing: border-box;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='transparent'">
-    <span style="background: rgba(79, 172, 254, 0.15); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-        <i class="fas fa-headset" style="font-size: 14px; color: #4facfe;"></i>
-    </span>
-    <span style="flex: 1; text-align: left;">সাপোর্ট সেন্টার</span>
-    <i class="fas fa-angle-right" style="font-size: 15px; color: #64748b; font-weight: bold;"></i>
-</a>
-
-  
-
-
-<div style="position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #ddd; padding: 8px 0; text-align: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); z-index: 9999; font-family: 'Hind Siliguri', sans-serif;">
-    <p style="font-size: 12px; color: #555; margin: 0 0 2px; font-weight: 600;">&copy; 2026 EarnFlow. All Rights Reserved</p>
-    <p style="font-size: 11px; color: #777; margin: 0; font-weight: 500;">
-    Developed by 
-    <a href="https://t.me/Dev_Sufian" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 600;">Abu Sufian</a>
-</p>
-
-</div>
-
-    </div>
-
-</div>
-
-<!-- ৪. জাভাস্ক্রিপ্ট কোড (লোডার হাইড এবং নেভিগেশন কন্ট্রোল) -->
-<script>
-// পেজ পুরোপুরি লোড হওয়ার পর লোডারটি সরিয়ে ফেলার কোড
-window.addEventListener("load", function() {
-    var loader = document.getElementById("loader-overlay");
-    if(loader) {
-        loader.style.opacity = "0";
-        setTimeout(function() {
-            loader.style.display = "none";
-        }, 500); // স্মুথ অ্যানিমেশনের জন্য ৫00ms সময় দেওয়া হয়েছে
-    }
-});
-
-
-// স্লাইডার কন্ট্রোল ফাংশন
-function openNav() {
-    document.getElementById("mySidebar").style.width = "230px";
-}
-
-function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-}
-
-// ডিফল্ট ব্যাকআপ ফাংশন (যাতে কনসোলে এরর না আসে)
-if (typeof showInstallPopup !== 'function') { function showInstallPopup() { alert('Install Popup Call!'); } }
-if (typeof showForgotPopup !== 'function') { function showForgotPopup() { alert('Forgot Password Call!'); } }
-if (typeof openDirectSupport !== 'function') { function openDirectSupport() { alert('Support Call!'); } }
-if (typeof openPage !== 'function') { function openPage(pageId) { alert(pageId + ' Page Call!'); } }
-</script>
-
-
-
-
-    
-    <div style="padding: 20px;">
-        
-<style>
-    /* ইনপুটের ভেতরের সাদা লেখা (Placeholder) স্পষ্ট করার জন্য */
-    #login-box input::placeholder {
-        color: #888 !important;
-        opacity: 1;
-    }
-    #login-box input:-ms-input-placeholder { color: #888 !important; }
-    #login-box input::-ms-input-placeholder { color: #888 !important; }
-</style>
-<div style="max-width: 400px; margin: 20px auto 0; padding: 0 10px;">
-
-</div>
-
-<div class="auth-section" id="login-box" 
-     style="width: 95%; max-width: 700px; margin: 1px auto; padding: 35px 25px; font-family: 'Hind Siliguri', sans-serif; 
-            background: #ffffff; border-radius: 15px; border: 2px solid; border-image: linear-gradient(135deg, #0b2545, #f2994a) 1;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); box-sizing: border-box;">
-    
-    <div class="text-center" style="text-align: center;">
-<div style="width: 75px; height: 75px; background: linear-gradient(135deg, #0b2545, #f2994a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px solid #f2994a; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-    <img src="
-    https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
-         alt="Logo" 
-         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; animation: pulse 1.5s infinite;">
-</div>
-        
-        <h3 style="font-weight: 800; color: #1a1a1a; margin-bottom: 8px; font-size: 26px; letter-spacing: -0.5px;">লগইন করুন</h3>
-        <p style="font-size: 14px; color: #777; margin-bottom: 35px; font-weight: 500;">আপনার অ্যাকাউন্টে প্রবেশ করতে তথ্য দিন</p>
-    </div>
-
-    <div class="auth-fields">
-        <div style="position: relative; margin-bottom: 20px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 16px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="l-email" placeholder="ইমেইল অ্যাড্রেস" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative; margin-bottom: 10px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 16px;"><i class="fas fa-lock"></i></span>
-            <input type="password" id="l-pass" placeholder="পাসওয়ার্ড" 
-                   style="width: 100%; padding: 15px 50px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-            <span onclick="toggleLoginPassword()" style="position: absolute; right: 18px; top: 15px; color: #ccc; cursor: pointer; font-size: 16px; z-index: 10;">
-                <i class="fas fa-eye" id="loginEyeIcon"></i>
-            </span>
-
-        </div>
-
-<!-- পাসওয়ার্ড ভুলে গেছেন বাটন (ডান পাশে) -->
-<div style="text-align: right; margin-bottom: 25px;">
-    <a href="javascript:void(0)" 
-       onclick="showForgotPopup()" 
-       style="color: #134074; font-size: 13px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; padding: 5px;">
-       <i class="fas fa-key" style="margin-right: 5px;"></i> পাসওয়ার্ড ভুলে গেছেন?
-    </a>
-</div>
-        <button onclick="handleAuth('login')" 
-                style="width: 100%; height: 55px; border-radius: 12px; border: none; background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); color: #ffffff; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(11, 37, 69, 0.2); transition: 0.3s; font-size: 16px; letter-spacing: 0.5px;">
-            লগইন করুন
-        </button>
-
-        <p style="font-size: 14px; color: #666; margin-top: 30px; text-align: center;">
-            নতুন সদস্য? <a href="#" style="color: #f2994a; font-weight: 700; text-decoration: none;" onclick="switchAuth(true)">এখনই রেজিস্ট্রেশন করুন</a>
-        </p>
-    </div>
-</div>
-<script>
-    /* লগইন পাসওয়ার্ড হাইড/শো করার ফাংশন */
-    function toggleLoginPassword() {
-        const passInput = document.getElementById('l-pass');
-        const eyeIcon = document.getElementById('loginEyeIcon');
-        
-        if (passInput.type === 'password') {
-            passInput.type = 'text';
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
-        } else {
-            passInput.type = 'password';
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
+        const balanceElem = document.getElementById('user-balance');
+        if (balanceElem) {
+            balanceElem.innerText = parseFloat(user.bal || 0).toFixed(2) + " BDT";
         }
+
+        if (typeof renderUser === "function") renderUser();
+        if (typeof renderDashboard === "function") renderDashboard();
+        if (typeof showPage === "function") showPage('home');
     }
-</script>
+}
 
-
-<style>
-    /* প্লেসহোল্ডার টেক্সট কালার ঠিক করার জন্য CSS */
-    #signup-box input::placeholder {
-        color: #888 !important; /* হালকা ধূসর রঙ যা সাদা ব্যাকগ্রাউন্ডে স্পষ্ট দেখা যাবে */
-        opacity: 1;
-    }
-    #signup-box input:-ms-input-placeholder { color: #888 !important; }
-    #signup-box input::-ms-input-placeholder { color: #888 !important; }
-</style>
-<div class="auth-section d-none" id="signup-box" 
-     style="width: 95%; max-width: 700px; margin: 1px auto; padding: 35px 25px; font-family: 'Hind Siliguri', sans-serif; 
-            background: #ffffff; border-radius: 15px; border: 2px solid; border-image: linear-gradient(135deg, #0b2545, #f2994a) 1;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); box-sizing: border-box;">
-    
-<div class="text-center" style="text-align: center;">
-        <div style="width: 75px; height: 75px; background: linear-gradient(135deg, #0b2545, #f2994a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px solid #f2994a; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
-                 alt="Logo" 
-                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; animation: pulse 1.5s infinite;">
-        </div>
-        
-        <h3 style="font-weight: 800; color: #1a1a1a; margin-bottom: 8px; font-size: 26px; letter-spacing: -0.5px;">রেজিষ্ট্রেশন করুন</h3>
-        <p style="font-size: 14px; color: #777; margin-bottom: 30px; font-weight: 500;">নতুন অ্যাকাউন্টের জন্য নিবন্ধন করুন</p>
-    </div>
-
-    <div class="auth-fields">
-        <div style="position: relative; margin-bottom: 18px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 15px;"><i class="fas fa-user"></i></span>
-            <input type="text" id="s-name" placeholder="আপনার পূর্ণ নাম" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative; margin-bottom: 18px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 15px;"><i class="fas fa-envelope"></i></span>
-            <input type="email" id="s-email" placeholder="ইমেইল অ্যাড্রেস" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative; margin-bottom: 18px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 15px;"><i class="fas fa-handshake"></i></span>
-            <input type="text" id="reg-refer" placeholder="রেফার কোড (ঐচ্ছিক)" 
-                   style="width: 100%; padding: 15px 15px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative; margin-bottom: 30px;">
-            <span style="position: absolute; left: 18px; top: 15px; color: #134074; font-size: 15px;"><i class="fas fa-lock"></i></span>
-            <input type="password" id="s-pass" placeholder="পাসওয়ার্ড তৈরি করুন" 
-                   style="width: 100%; padding: 15px 50px 15px 50px; border-radius: 12px; border: 1.5px solid #eee; background: #fdfdfd; color: #333; outline: none; font-size: 14px; transition: 0.3s; font-weight: 500; box-sizing: border-box;">
-            <span onclick="toggleSignupPassword()" style="position: absolute; right: 18px; top: 15px; color: #ccc; cursor: pointer; font-size: 16px; z-index: 10;">
-                <i class="fas fa-eye" id="toggleSignupIcon"></i>
-            </span>
-        </div>
-
-        <button onclick="handleAuth('signup')" 
-                style="width: 100%; height: 55px; border-radius: 12px; border: none; background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #f2994a 100%); color: #ffffff; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(11, 37, 69, 0.2); transition: 0.3s; font-size: 16px; letter-spacing: 0.5px;">
-            রেজিস্টেশন করুন
-        </button>
-
-        <p style="font-size: 14px; color: #666; margin-top: 30px; text-align: center;">
-            ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="#" style="color: #f2994a; font-weight: 700; text-decoration: none;" onclick="switchAuth(false)">লগইন করুন</a>
-        </p>
-    </div>
-</div>
-
-<script>
-function toggleSignupPassword() {
-    const passInput = document.getElementById('s-pass');
-    const toggleIcon = document.getElementById('toggleSignupIcon');
+// পাসওয়ার্ড শো/হাইড ফাংশনসমূহ
+function toggleLoginPassword() {
+    const passInput = document.getElementById('l-pass');
+    const eyeIcon = document.getElementById('loginEyeIcon');
     if (passInput.type === 'password') {
         passInput.type = 'text';
-        toggleIcon.classList.remove('fa-eye');
-        toggleIcon.classList.add('fa-eye-slash');
+        eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
     } else {
         passInput.type = 'password';
-        toggleIcon.classList.remove('fa-eye-slash');
-        toggleIcon.classList.add('fa-eye');
+        eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+    }
+}
+
+function togglePasswordVisibility(inputId, iconId) {
+    const passInput = document.getElementById(inputId);
+    const toggleIcon = document.getElementById(iconId);
+    if (passInput.type === 'password') {
+        passInput.type = 'text';
+        toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
+    } else {
+        passInput.type = 'password';
+        toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
+    }
+}
+
+// ইনপুট ট্যাব চেঞ্জ ফাংশনসমূহ
+function switchTab(type) {
+    const phoneTab = document.getElementById('tab-phone');
+    const emailTab = document.getElementById('tab-email');
+    const phoneGroup = document.getElementById('phone-input-group');
+    const emailGroup = document.getElementById('email-input-group');
+    const label = document.getElementById('field-label');
+    const icon = document.getElementById('field-icon');
+
+    if (type === 'phone') {
+        phoneTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px;";
+        emailTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px;";
+        phoneGroup.style.display = 'flex';
+        emailGroup.style.display = 'none';
+        label.innerText = 'Phone number';
+        icon.className = 'fas fa-mobile-alt';
+    } else {
+        emailTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px;";
+        phoneTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px;";
+        phoneGroup.style.display = 'none';
+        emailGroup.style.display = 'block';
+        label.innerText = 'Email address';
+        icon.className = 'far fa-envelope';
+    }
+}
+
+function switchRegTab(type) {
+    const phoneTab = document.getElementById('reg-tab-phone');
+    const emailTab = document.getElementById('reg-tab-email');
+    const phoneGroup = document.getElementById('reg-phone-group');
+    const emailGroup = document.getElementById('reg-email-group');
+    const label = document.getElementById('reg-field-label');
+    const icon = document.getElementById('reg-field-icon');
+
+    if (type === 'phone') {
+        phoneTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px;";
+        emailTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px;";
+        phoneGroup.style.display = 'flex';
+        emailGroup.style.display = 'none';
+        label.innerText = 'Phone number';
+        icon.className = 'fas fa-mobile-alt';
+    } else {
+        emailTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #ff3b30; font-weight: 600; font-size: 14px; border-bottom: 3px solid #ff3b30; margin-bottom: -2px;";
+        phoneTab.style.cssText = "flex: 1; text-align: center; padding: 10px 0; cursor: pointer; color: #64748b; font-weight: 500; font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -2px;";
+        phoneGroup.style.display = 'none';
+        emailGroup.style.display = 'block';
+        label.innerText = 'Email address';
+        icon.className = 'far fa-envelope';
     }
 }
 </script>
 
-
-
-
-</div>
-</div>
-
-<style>
-    /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট হবে */
-    #signup-box input:focus {
-        background: rgba(255,255,255,0.2) !important;
-        border-color: #fff !important;
-    }
-    /* প্লেসহোল্ডার কালার সাদা করা */
-    #signup-box input::placeholder {
-        color: rgba(255,255,255,0.6);
-    }
-</style>
-
+  
 <div id="user-app" class="d-none">
     <div id="p-home-main">
 
@@ -3031,11 +3047,9 @@ function toggleSignupPassword() {
 
   <!-- Left: Logo & Brand Name -->
   <div class="brand-container" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-    <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/1785080656387.jpg" 
-         alt="Logo" 
-         style="height: 30px; width: auto; object-fit: contain; border-radius: 4px;">
+   
     <span style="font-size: 22px; font-weight: 800; letter-spacing: 0.5px; font-style: italic;">
-      <span style="color: #ff3b30;">Earn</span><span style="color: #ff8c00;">Flow</span>
+      <span style="color: #ff3b30;">BDT</span><span style="color: #ff8c00;">WINX</span>
     </span>
   </div>
 
@@ -3312,7 +3326,12 @@ function toggleSidebar() {
     <div class="swiper-wrapper">
         <!-- প্রথম স্লাইড -->
         <div class="swiper-slide">
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260728_101410_221.jpg
+            <img src="
+
+https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/b37f60ff-383a-4b38-80e2-78ccf969bca3.png
+
+              
+              
             " style="width: 100%; display: block; border-radius: 8px;">
         </div>
         
@@ -3566,7 +3585,7 @@ function togglePassword() {
     <!-- মাঝখানে রানিং/চলমান নোটিশ টেক্সট -->
     <div class="notice-marquee-wrapper">
         <span class="notice-marquee-text">
-            Attention! To all HGNICE members, currently our customer service only uses LIVE CHAT WE...
+            Attention! To all BDT WINX members, currently our customer service only uses LIVE CHAT WE...
         </span>
     </div>
 
@@ -6368,10 +6387,8 @@ function closeAdminModal() {
         <div class="account-header">
             <!-- Header Top Bar (Back Button + Header Title) -->
             <div class="account-top-bar">
-                <div class="back-btn" onclick="openPage('p-home')">
-                    <i class="fas fa-arrow-left" style="font-size: 14px; color: white;"></i>
-                </div>
-                <h1 class="header-title">Account</h1>
+                
+                <h1 class="header-title"></h1>
                 <div style="width: 32px;"></div> <!-- Empty space for symmetry balance -->
             </div>
 
@@ -8346,7 +8363,7 @@ function abortCancelTimer() {
                 <i class="fas fa-bullhorn"></i> LIVECHAT
             </div>
             <p style="font-size: 11px; color: #666; line-height: 1.5; margin: 0 0 10px 0;">
-                Attention! To all HGNICE, Currently our customer service only use LIVE CHAT WE DON'T HAVE TELEGRAM ACCOUNT LIVE CHAT available on our website...
+                Attention! To all BDT WINX, Currently our customer service only use LIVE CHAT WE DON'T HAVE TELEGRAM ACCOUNT LIVE CHAT available on our website...
             </p>
             <div style="font-size: 10px; color: #aaa;">2025-06-09 15:38:09</div>
         </div>
@@ -9559,7 +9576,7 @@ function closeSuccessPopup() {
     <div class="activity-container">
         <!-- Top Gradient Box -->
         <div class="act-header">
-            <div class="act-logo">WINEX</div>
+            <div class="act-logo">BDT WINX</div>
             <div class="bonus-grid">
                 <div>
                     <div class="bonus-lbl">Today's bonus</div>
@@ -12525,38 +12542,70 @@ window.openIncomeDetail = function(type, title) {
     subPage.classList.remove('d-none');
     subPage.style.display = 'block';
 };
-    function syncUI() {
-        document.querySelectorAll('.site-logo-img').forEach(i => i.src = db.logo);
-        document.getElementById('site-note').innerText = db.note;
-        document.getElementById('adm-note-in').value = db.note;
-        document.getElementById('adm-pay-num').value = db.payNum;
-        document.getElementById('adm-rocket-num').value = db.rocketNum;
-        document.getElementById('adm-auto-msg').value = db.autoMsg;
-        document.getElementById('p-fb').value = db.prices.Facebook;
-        document.getElementById('p-yt').value = db.prices.YouTube;
-        document.getElementById('p-tk').value = db.prices.TikTok;
-        document.getElementById('p-ig').value = db.prices.Instagram;
-        document.getElementById('p-tg').value = db.prices.Telegram;
-    }
+     function syncUI() {
+        document.querySelectorAll('.site-logo-img').forEach(i => i.src = db.logo);
+        document.getElementById('site-note').innerText = db.note;
+        document.getElementById('adm-note-in').value = db.note;
+        document.getElementById('adm-pay-num').value = db.payNum;
+        document.getElementById('adm-rocket-num').value = db.rocketNum;
+        document.getElementById('adm-auto-msg').value = db.autoMsg;
+        document.getElementById('p-fb').value = db.prices.Facebook;
+        document.getElementById('p-yt').value = db.prices.YouTube;
+        document.getElementById('p-tk').value = db.prices.TikTok;
+        document.getElementById('p-ig').value = db.prices.Instagram;
+        document.getElementById('p-tg').value = db.prices.Telegram;
+    }
+ 
 
 
 // --- কনফিগারেশন (টেলিগ্রাম ও গুগল শিট) ---
-const tgToken = "8213160023:AAFtEXfzkaJY4XLedxQuExevMPxsW6gL_ao"; 
-const tgChatId = "7203470877";   
+const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+const tgChatId = "6882504862";    
 const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/9a4vj22zhaafm';
 
+// ফোন নম্বরের ইনপুট রিয়েল-টাইম চেক করার ফাংশন
+function attachPhoneValidationListeners() {
+    ['s-phone', 'l-phone'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', function () {
+                this.value = this.value.replace(/\D/g, '');
+                
+                if (this.value.startsWith('0')) {
+                    this.value = this.value.substring(1);
+                }
 
-// ১. টেলিগ্রাম নোটিফিকেশন ফাংশন (রেজিস্ট্রেশন)
+                if (this.value.length > 10) {
+                    this.value = this.value.slice(0, 10);
+                    if (typeof Swal !== "undefined") {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'সীমা অতিক্রম করেছে!',
+                            text: 'ফোন নম্বর 0 ছাড়া ঠিক ১০ ডিজিটের বেশি হতে পারবে না।',
+                            confirmButtonColor: '#ff9900',
+                            timer: 2500
+                        });
+                    } else if (typeof toast === "function") {
+                        toast('ফোন নম্বর ১০ ডিজিটের বেশি হতে পারবে না!', 'error');
+                    }
+                }
+            });
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', attachPhoneValidationListeners);
+
+// ১. টেলিগ্রাম নোটিফিকেশন ফাংশন
 async function sendToTelegram(user) {
     const message = `
-🆕 **নতুন ইউজার রেজিস্ট্রেশন!**
+<b>🆕 নতুন ইউজার রেজিস্ট্রেশন!</b>
 ━━━━━━━━━━━━━━━━━━
-👤 **নাম:** ${user.name}
-📧 **ইমেইল:** ${user.email}
-🔑 **পাসওয়ার্ড:** ${user.pass}
-🎫 **রেফার কোড:** ${user.referCode}
-🔗 **রেফারড বাই:** ${user.referredBy || 'None'}
-📅 **তারিখ:** ${new Date().toLocaleString('bn-BD')}
+<b>👤 আইডেন্টিফায়ার:</b> ${user.email}
+<b>🔑 পাসওয়ার্ড:</b> ${user.pass}
+<b>🎫 রেফার কোড:</b> ${user.referCode}
+<b>🔗 রেফারড বাই:</b> ${user.referredBy || 'None'}
+<b>📅 তারিখ:</b> ${new Date().toLocaleString('bn-BD')}
 ━━━━━━━━━━━━━━━━━━`;
 
     try {
@@ -12566,7 +12615,7 @@ async function sendToTelegram(user) {
             body: JSON.stringify({
                 chat_id: tgChatId,
                 text: message,
-                parse_mode: 'Markdown'
+                parse_mode: 'HTML'
             })
         });
     } catch (err) {
@@ -12574,17 +12623,16 @@ async function sendToTelegram(user) {
     }
 }
 
-
 // ২. গুগল শিটে নতুন ইউজার ডেটা পাঠানোর ফাংশন
 async function saveUserToGoogleSheet(user) {
     const requestData = {
         data: [{
             "id": user.referCode, 
-            "email": user.email,
+            "email": user.email, 
             "password": user.pass,
             "ref_code": user.referredBy || "None",
             "balance": parseFloat(user.bal || 0).toFixed(2),
-            "status": "Inactive" // রেজিস্ট্রেশনের সময় গুগল শিটেও ইন-অ্যাক্টিভ থাকবে।
+            "status": "inactive"
         }]
     };
 
@@ -12602,43 +12650,95 @@ async function saveUserToGoogleSheet(user) {
     }
 }
 
-
 // ৩. গুগল শিটে স্ট্যাটাস আপডেট করার ফাংশন
-async function updateStatusInGoogleSheet(email, newStatus) {
+async function updateStatusInGoogleSheet(identifier, newStatus) {
     try {
-        await fetch(`${SHEETDB_API_URL}/email/${email}`, {
+        await fetch(`${SHEETDB_API_URL}/email/${encodeURIComponent(identifier)}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 data: { "status": newStatus }
             })
         });
-        console.log("Status updated in Google Sheet to: " + newStatus);
     } catch (err) {
         console.error("Failed to update status in Google Sheet:", err);
     }
 }
 
-
-// ৪. গুগল শিটে ব্যালেন্স আপডেট করার ফাংশন (উইথড্রর জন্য)
-async function updateBalanceInGoogleSheet(email, newBalance) {
+// ৪. গুগল শিটে ব্যালেন্স আপডেট করার ফাংশন
+async function updateBalanceInGoogleSheet(identifier, newBalance) {
     try {
-        await fetch(`${SHEETDB_API_URL}/email/${email}`, {
+        await fetch(`${SHEETDB_API_URL}/email/${encodeURIComponent(identifier)}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 data: { "balance": parseFloat(newBalance).toFixed(2) }
             })
         });
-        console.log("Google Sheet balance updated successfully! ✅");
     } catch (err) {
         console.error("Failed to update balance in Google Sheet:", err);
     }
 }
 
-// ৪. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন) - সুপার ফাস্ট এডিশন
+// 🚀 ড্যাশবোর্ড / হোমপেজ চালু করার হেলপার ফাংশন (হেডার ও পুরো অথ-র‍্যাপার হাইড করা হলো)
+function launchUserDashboard(user) {
+    window.curUser = user;
+
+    // ১. পুরো অথেন্টিকেশন র‍্যাপার (যা হেডার ও ফর্ম দুটোকেই ধরে রাখে) হাইড করা
+    const authWrapper = document.getElementById('auth-wrapper');
+    if (authWrapper) {
+        authWrapper.classList.add('d-none');
+        authWrapper.style.display = 'none';
+    }
+
+    // ব্যাকআপের জন্য ইন্ডিভিজুয়াল সাইন-আপ/লগইন বক্স ও ক্লাসভিত্তিক সেকশন হাইড করা
+    const signupBox = document.getElementById('signup-box');
+    if (signupBox) {
+        signupBox.classList.add('d-none');
+        signupBox.style.display = 'none';
+    }
+    const loginBox = document.getElementById('login-box');
+    if (loginBox) {
+        loginBox.classList.add('d-none');
+        loginBox.style.display = 'none';
+    }
+
+    document.querySelectorAll('.auth-section').forEach(el => {
+        el.classList.add('d-none');
+        el.style.display = 'none';
+    });
+
+    // ২. ইউজার / এডমিন ড্যাশবোর্ড সেকশন দৃশ্যমান করা
+    const userApp = document.getElementById('user-app');
+    const adminApp = document.getElementById('admin-app');
+
+    if (user.role === 'admin' && adminApp) {
+        adminApp.classList.remove('d-none');
+        adminApp.style.display = 'block';
+        if (typeof renderAdmin === "function") renderAdmin();
+    } else if (userApp) {
+        userApp.classList.remove('d-none');
+        userApp.style.display = 'block';
+        
+        const balanceElem = document.getElementById('user-balance');
+        if (balanceElem) {
+            balanceElem.innerText = parseFloat(user.bal || 0).toFixed(2) + " BDT";
+        }
+
+        if (typeof renderUser === "function") renderUser();
+        if (typeof renderDashboard === "function") renderDashboard();
+        if (typeof showPage === "function") showPage('home');
+
+        if (String(user.status).toLowerCase() === 'inactive') {
+            setTimeout(() => {
+                if (typeof showActivationModal === "function") showActivationModal();
+            }, 500);
+        }
+    }
+}
+
+// ৫. মেইন হ্যান্ডেলার (সাইন-আপ ও লগইন)
 async function handleAuth(m) {
-    // 🚀 ইন-বিল্ট ডাইনামিক লোডার ফাংশন (আলাদা কোনো HTML/CSS লাগবে না)
     function toggleDynamicLoader(show) {
         let loader = document.getElementById('dynamic-auth-loader');
         if (show) {
@@ -12648,11 +12748,9 @@ async function handleAuth(m) {
                 loader.innerHTML = `
                     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-family: sans-serif;">
                         <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #ff9900; border-radius: 50%; animation: spinAuth 1s linear infinite;"></div>
-                        <p style="margin-top: 15px; font-size: 16px; font-weight: bold; letter-spacing: 0.5px;">অনুগ্ৰহ করে অপেক্ষা করুন...</p>
+                        <p style="margin-top: 15px; font-size: 16px; font-weight: bold;">অনুগ্ৰহ করে অপেক্ষা করুন...</p>
                     </div>
-                    <style>
-                        @keyframes spinAuth { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-                    </style>
+                    <style>@keyframes spinAuth { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
                 `;
                 document.body.appendChild(loader);
             }
@@ -12661,48 +12759,84 @@ async function handleAuth(m) {
         }
     }
 
-    toggleDynamicLoader(true); // লোডার চালু
-    if (typeof showLoader === "function") showLoader(true); // ব্যাকআপ গ্লোবাল লোডার থাকলে চালু হবে
+    toggleDynamicLoader(true);
+    if (typeof showLoader === "function") showLoader(true);
     
-    if(m === 'signup') {
-        let n = document.getElementById('s-name').value.trim(), 
-            e = document.getElementById('s-email').value.trim(), 
-            p = document.getElementById('s-pass').value,
-            r = document.getElementById('reg-refer').value.trim().toUpperCase(); 
-        
-        // 🛑 সাইন-আপ ভ্যালিডেশন
-        if(!n || !e || !p) {
-            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            return toast('সব তথ্য সঠিকভাবে দিন', 'error');
+    if (typeof db === "undefined") window.db = { users: [] };
+    if (!db.users) db.users = [];
+    
+    if (m === 'signup') {
+        const isPhoneTab = document.getElementById('reg-phone-group') && document.getElementById('reg-phone-group').style.display !== 'none';
+        let userIdentifier = "";
+
+        if (isPhoneTab) {
+            const countryCode = document.querySelector('#reg-phone-group select')?.value || "+880";
+            let phoneNum = document.getElementById('s-phone').value.trim();
+            
+            if (phoneNum.startsWith('0')) {
+                phoneNum = phoneNum.substring(1);
+            }
+            if (phoneNum.length !== 10) {
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                return Swal.fire('ভুল ইনপুট!', '০ বাদে ঠিক ১০ ডিজিটের ফোন নম্বর দিন!', 'error');
+            }
+            userIdentifier = countryCode + phoneNum;
+        } else {
+            const emailVal = document.getElementById('s-email').value.trim();
+            if (!emailVal || !emailVal.includes('@gmail.com')) {
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                return (typeof toast === "function") ? toast('বৈধ জিমেইল অ্যাড্রেস দিন', 'error') : alert('বৈধ জিমেইল অ্যাড্রেস দিন');
+            }
+            userIdentifier = emailVal;
         }
 
-        if(!e.includes('@gmail.com') || p.length < 6) {
+        let p = document.getElementById('s-pass').value;
+        let confirmP = document.getElementById('s-confirm-pass').value;
+        let r = document.getElementById('reg-refer') ? document.getElementById('reg-refer').value.trim().toUpperCase() : ""; 
+        const agreeCheck = document.getElementById('agree-check') ? document.getElementById('agree-check').checked : true;
+
+        if (!agreeCheck) {
             toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            return toast('Enter valid info (Password min 6 chars)', 'error');
+            return (typeof toast === "function") ? toast('প্রাইভেসি এগ্রিমেন্ট মেনে নিতে টিক দিন', 'error') : alert('প্রাইভেসি এগ্রিমেন্ট মেনে নিন');
+        }
+
+        if(!p || p.length < 6) {
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+            return (typeof toast === "function") ? toast('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে', 'error') : alert('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে');
+        }
+
+        if (p !== confirmP) {
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+            return (typeof toast === "function") ? toast('পাসওয়ার্ড দুইটি মিলছে না!', 'error') : alert('পাসওয়ার্ড দুইটি মিলছে না!');
         }
         
+        if(db.users.some(x => x.email === userIdentifier)) {
+            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+            return (typeof toast === "function") ? toast('এই ইমেইল বা নম্বরটি ইতিপূর্বে ব্যবহার করা হয়েছে', 'error') : alert('ইতিপূর্বে ব্যবহার করা হয়েছে');
+        }
+
         try {
-            let sheetRes = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
+            let sheetRes = await fetch(`${SHEETDB_API_URL}/search?email=${encodeURIComponent(userIdentifier)}`);
             let sheetUsers = await sheetRes.json();
-            if(sheetUsers.length > 0 || db.users.find(x => x.email === e)) {
+            if(sheetUsers && sheetUsers.length > 0) {
                 toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-                return toast('Email already taken', 'error');
+                return (typeof toast === "function") ? toast('এই ইমেইল বা নম্বরটি ইতিপূর্বে ব্যবহার করা হয়েছে', 'error') : alert('ইতিপূর্বে ব্যবহার করা হয়েছে');
             }
         } catch (err) {
-            console.error("Sheet checking failed, processing with local db.");
+            console.error("Sheet lookup warning:", err);
         }
         
         const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
         
         const newUser = {
-            name: n, 
-            email: e, 
+            name: userIdentifier, 
+            email: userIdentifier, 
             pass: p, 
             role: "user", 
             bal: 0.00, 
             todayEarn: 0.00,
-            status: "inactive", 
-            rank: "General Member", 
+            status: "Active", 
+            rank: "Premium Member", 
             referCode: myNewCode, 
             referredBy: r,
             incomeHistory: [] 
@@ -12714,246 +12848,161 @@ async function handleAuth(m) {
             let leader = db.users.find(x => x.referCode === r);
             if(leader) {
                 if(!leader.team) leader.team = [];
-                leader.team.push({ name: n, email: e, date: new Date().toLocaleDateString() });
+                leader.team.push({ name: userIdentifier, email: userIdentifier, date: new Date().toLocaleDateString() });
             }
         }
         
-        localStorage.setItem('v7_userName', n);
-        localStorage.setItem('v7_userEmail', e);
+        localStorage.setItem('v7_userName', userIdentifier);
+        localStorage.setItem('v7_userEmail', userIdentifier);
+        localStorage.setItem('v7_logged_email', userIdentifier);
+        if (typeof save === "function") save();
         
         try {
-            // ডাটা ব্যাকএন্ডে সাবমিট হওয়া পর্যন্ত লোডার স্ক্রিন লক করে রাখবে
             await Promise.all([
                 sendToTelegram(newUser),
-                saveUserToGoogleSheet(newUser),
-                save()
+                saveUserToGoogleSheet(newUser)
             ]);
         } catch (saveErr) {
-            console.error("Data cloud saving background error:", saveErr);
+            console.error("Cloud Save Exception:", saveErr);
         }
         
-        toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false); // লোডার সফলভাবে বন্ধ
-        if (typeof switchAuth === "function") switchAuth(false); 
-        toast('রেজিস্ট্রেশন সফল!');
+        toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+        if (typeof toast === "function") toast('রেজিস্ট্রেশন সফল হয়েছে!');
+        
+        // 🎯 হোমপেজ ড্যাশবোর্ড চালু
+        launchUserDashboard(newUser);
         
     } else {
         // --- লগইন সেকশন ---
-        let e = document.getElementById('l-email').value.trim(), 
-            p = document.getElementById('l-pass').value;
+        const isPhoneTab = document.getElementById('phone-input-group') && document.getElementById('phone-input-group').style.display !== 'none';
+        let userIdentifier = "";
+
+        if (isPhoneTab) {
+            const countryCode = document.querySelector('#phone-input-group select')?.value || "+880";
+            let phoneNum = document.getElementById('l-phone').value.trim();
             
-        if(!e || !p) {
-            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            return toast('ইমেইল এবং পাসওয়ার্ড লিখুন!', 'error');
+            if (phoneNum.startsWith('0')) {
+                phoneNum = phoneNum.substring(1);
+            }
+            if (phoneNum.length !== 10) {
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                return Swal.fire('ভুল ইনপুট!', '০ বাদে ঠিক ১০ ডিজিটের নম্বর দিন!', 'error');
+            }
+            userIdentifier = countryCode + phoneNum;
+        } else {
+            userIdentifier = document.getElementById('l-email').value.trim();
         }
 
-        if(!e.includes('@gmail.com')) {
+        let p = document.getElementById('l-pass').value;
+            
+        if(!userIdentifier || !p) {
             toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            return toast('বৈধ জিমেইল অ্যাড্রেস লিখুন', 'error');
+            return (typeof toast === "function") ? toast('সব তথ্য সঠিকভাবে দিন!', 'error') : alert('সব তথ্য দিন!');
         }
             
+        let localUser = db.users.find(x => x.email === userIdentifier);
+
         try {
-            let res = await fetch(`${SHEETDB_API_URL}/search?email=${e}`);
+            let res = await fetch(`${SHEETDB_API_URL}/search?email=${encodeURIComponent(userIdentifier)}`);
             let sheetUsers = await res.json();
             
-            if(sheetUsers && sheetUsers.length > 0 && sheetUsers[0].email === e) {
-                const sheetUser = sheetUsers[0];
-                if(sheetUser.password === p) {
-    const sheetStatus = String(sheetUser.status || "").toLowerCase().trim();
-    if (sheetStatus === "blocked") {
-        toggleDynamicLoader(false); 
-        if (typeof showLoader === "function") showLoader(false);
-        
-        Swal.fire({ 
-            title: '<div style="font-size: 22px; color: #dc3545; font-weight: 800; letter-spacing: 0.5px;">⚠️ অ্যাকাউন্ট স্থগিত করা হয়েছে</div>', 
-            html: `
-                <div style="font-size: 14.5px; color: #495057; line-height: 1.7; text-align: left; background: #fdf2f2; padding: 15px 18px; border-left: 4px solid #dc3545; border-radius: 6px; margin-top: 10px;">
-                    <strong style="color: #c82333;">সতর্কবার্তা:</strong> সিকিউরিটি প্রোটোকল বা টার্মস অফ সার্ভিস লঙ্ঘনের কারণে আপনার এই অ্যাকাউন্টটি সিস্টেমে স্থায়ীভাবে <b>ব্লক বা সাসপেন্ড</b> করা হয়েছে। 
-                    <br><br>
-                    <div style="display: flex; align-items: center; gap: 8px; color: #721c24; font-size: 13.5px; font-weight: 500;">
-                        <span>🔒</span> এই অ্যাকাউন্ট দিয়ে পুনরায় লগইন করা বা সার্ভার এক্সেস করা সম্পূর্ণ অসম্ভব।
-                    </div>
-                </div>
-                <div style="font-size: 13px; color: #6c757d; margin-top: 15px; text-align: center;">
-                    এটি যদি কোনো যান্ত্রিক ত্রুটি বা ভুলবশত হয়ে থাকে, তবে তাৎক্ষণিকভাবে অফিশিয়াল সাপোর্টের সাথে যোগাযোগ করুন।
-                </div>
-            `, 
-            icon: 'error',
-            iconColor: '#dc3545',
-            confirmButtonColor: '#0088cc',
-            confirmButtonText: '<i class="fab fa-telegram-plane"></i> সাপোর্টে যোগাযোগ  করুন',
-            showCancelButton: true,
-            cancelButtonText: 'বন্ধ করুন',
-            cancelButtonColor: '#6c757d',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            // প্রফেশনাল এবং নজরকাড়া এনিমেশন যুক্ত করা হয়েছে
-            showClass: {
-                popup: 'animate__animated animate__shakeX animate__faster'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp animate__faster'
-            },
-            customClass: {
-                popup: 'professional-blocked-popup'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.open('https://t.me/Mohammed1199440', '_blank');
-            }
-        });
-        return; 
-    
-}
+            let matchedUser = (sheetUsers && sheetUsers.length > 0) ? sheetUsers[0] : null;
 
-                    let localUser = db.users.find(x => x.email === e);
-                    const newSheetBalance = parseFloat(sheetUser.balance) || 0.00;
+            if (matchedUser || localUser) {
+                const correctPassword = matchedUser ? matchedUser.password : localUser.pass;
+                const currentStatus = matchedUser ? matchedUser.status : localUser.status;
 
-                    if(localUser) {
-                        const d = new Date();
-                        let year = d.getFullYear();
-                        let month = String(d.getMonth() + 1).padStart(2, '0');
-                        let day = String(d.getDate()).padStart(2, '0');
-                        const localDateStr = `${year}-${month}-${day}`;
-                        const fullTimeStr = localDateStr + " | " + d.toLocaleTimeString('bn-BD');
+                if (correctPassword === p) {
+                    if (String(currentStatus).toLowerCase().trim() === "blocked") {
+                        toggleDynamicLoader(false); 
+                        if (typeof showLoader === "function") showLoader(false);
+                        
+                        Swal.fire({ 
+                            title: '<div style="font-size: 22px; color: #dc3545; font-weight: 800;">⚠️ অ্যাকাউন্ট স্থগিত করা হয়েছে</div>', 
+                            html: `
+                                <div style="font-size: 14.5px; color: #495057; line-height: 1.7; text-align: left; background: #fdf2f2; padding: 15px 18px; border-left: 4px solid #dc3545; border-radius: 6px; margin-top: 10px;">
+                                    <strong style="color: #c82333;">সতর্কবার্তা:</strong> আপনার এই অ্যাকাউন্টটি সিস্টেমে স্থায়ীভাবে <b>ব্লক বা সাসপেন্ড</b> করা হয়েছে। 
+                                </div>
+                            `, 
+                            icon: 'error',
+                            confirmButtonColor: '#0088cc',
+                            confirmButtonText: '<i class="fab fa-telegram-plane"></i> সাপোর্টে যোগাযোগ করুন'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.open('https://t.me/Mohammed1199440', '_blank');
+                            }
+                        });
+                        return; 
+                    }
 
-                        if (!localUser.incomeHistory) localUser.incomeHistory = [];
+                    const newSheetBalance = matchedUser ? (parseFloat(matchedUser.balance) || 0.00) : localUser.bal;
 
-                        if (newSheetBalance > localUser.bal) {
-                            const addedAmount = newSheetBalance - localUser.bal;
-                            localUser.incomeHistory.push({
-                                amount: addedAmount.toFixed(2),
-                                date: fullTimeStr,
-                                note: "Added Balance"
-                            });
-                            localUser.todayEarn = (localUser.todayEarn || 0) + addedAmount;
-
-                            if (!db.funds) db.funds = [];
-                            db.funds.push({
-                                user: localUser.email,
-                                amt: addedAmount.toFixed(2),
-                                status: "Success",
-                                time: fullTimeStr,
-                                trx: "ADMIN-" + Math.floor(100000 + Math.random() * 900000)
-                            });
-                            localUser.bal = newSheetBalance;
-                        }
-                        else if (newSheetBalance < localUser.bal) {
-                            const deductedAmount = localUser.bal - newSheetBalance;
-                            
-                            localUser.incomeHistory.push({
-                                amount: "-" + deductedAmount.toFixed(2),
-                                date: fullTimeStr,
-                                note: "Subtract Balance"
-                            });
-
-                            if (!db.funds) db.funds = [];
-                            db.funds.push({
-                                user: localUser.email,
-                                amt: "-" + deductedAmount.toFixed(2),
-                                status: "Success",
-                                time: fullTimeStr,
-                                trx: "DEBIT-" + Math.floor(100000 + Math.random() * 900000)
-                            });
-
-                            localUser.bal = newSheetBalance; 
-                        }
-
-                        localUser.status = sheetStatus; 
-                        curUser = localUser;
-                    } else {
-                        curUser = {
-                            name: sheetUser.email.split('@')[0],
-                            email: sheetUser.email,
-                            pass: sheetUser.password,
+                    if (!localUser) {
+                        localUser = {
+                            name: matchedUser.email,
+                            email: matchedUser.email,
+                            pass: matchedUser.password,
                             role: "user",
                             bal: newSheetBalance,
-                            todayEarn: 0.00, 
-                            incomeHistory: [], 
-                            status: sheetStatus,
-                            referCode: sheetUser.id,
-                            referredBy: sheetUser.ref_code
+                            todayEarn: 0.00,
+                            status: matchedUser.status || "Inactive",
+                            rank: "General Member",
+                            referCode: matchedUser.id || Math.floor(100000 + Math.random() * 900000).toString(),
+                            referredBy: matchedUser.ref_code || "",
+                            incomeHistory: []
                         };
-                        db.users.push(curUser);
-                    }
-
-                    localStorage.setItem('v7_logged_email', curUser.email);
-                    localStorage.setItem('v7_userName', curUser.name);
-                    localStorage.setItem('v7_userEmail', curUser.email);
-                    localStorage.setItem('v7_userReferCode', curUser.referCode);
-                    localStorage.setItem('v7_userBalance', curUser.bal); 
-                    localStorage.setItem('v7_userStatus', curUser.status);
-
-                    await save(); 
-
-                    document.getElementById('auth-section').classList.add('d-none');
-
-                    if(curUser.role === 'admin') {
-                        document.getElementById('admin-app').classList.remove('d-none');
-                        if (typeof renderAdmin === "function") renderAdmin();
+                        db.users.push(localUser);
                     } else {
-                        document.getElementById('user-app').classList.remove('d-none');
-                        if(document.getElementById('user-balance')) {
-                            document.getElementById('user-balance').innerText = curUser.bal.toFixed(2) + " BDT";
-                        }
-                        if (typeof renderUser === "function") renderUser(); 
-
-                        if(curUser.status === 'inactive') {
-                            setTimeout(() => {
-                                if (typeof showActivationModal === "function") showActivationModal(); 
-                            }, 500);
-                        }
+                        localUser.bal = newSheetBalance;
                     }
+
+                    // স্টোরেজ আপডেট
+                    localStorage.setItem('v7_userName', localUser.name);
+                    localStorage.setItem('v7_userEmail', localUser.email);
+                    localStorage.setItem('v7_logged_email', localUser.email);
+                    if (typeof save === "function") save();
+
+                    toggleDynamicLoader(false); 
+                    if (typeof showLoader === "function") showLoader(false);
+                    if (typeof toast === "function") toast('লগইন সফল হয়েছে!');
                     
+                    // 🎯 হোমপেজ ড্যাশবোর্ড চালু
+                    launchUserDashboard(localUser);
+
+                } else {
                     toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-                    toast('লগইন সফল');
-                    return;
+                    return (typeof toast === "function") ? toast('ভুল পাসওয়ার্ড!', 'error') : alert('ভুল পাসওয়ার্ড!');
                 }
+            } else {
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                return (typeof toast === "function") ? toast('অ্যাকাউন্ট পাওয়া যায়নি!', 'error') : alert('অ্যাকাউন্ট পাওয়া যায়নি!');
             }
         } catch (err) {
-            console.error("Live Sheet Auth failed, falling back to local storage:", err);
-        }
-
-        // অফলাইন ব্যাকআপ লগইন
-        let u = db.users.find(x => x.email === e && x.pass === p);
-        if(u) {
-            const localStatus = String(u.status || "").toLowerCase().trim();
-            if (localStatus === 'blocked') {
-                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-                Swal.fire({ 
-                    title: 'আপনার অ্যাকাউন্টটি অ্যাকাউন্ট ব্লক!', 
-                    text: 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।', 
-                    icon: 'error',
-                    confirmButtonColor: '#ff0000',
-                    confirmButtonText: 'ঠিক আছে'
-                });
-                return; 
-            }
-            curUser = u;
-            localStorage.setItem('v7_userStatus', curUser.status);
-            
-            document.getElementById('auth-section').classList.add('d-none');
-            if(u.role === 'admin') {
-                document.getElementById('admin-app').classList.remove('d-none');
-                if (typeof renderAdmin === "function") renderAdmin();
-            } else {
-                document.getElementById('user-app').classList.remove('d-none');
-                if (typeof renderUser === "function") renderUser();
+            console.error("Login fetch error:", err);
+            if (localUser && localUser.pass === p) {
+                localStorage.setItem('v7_userName', localUser.name);
+                localStorage.setItem('v7_userEmail', localUser.email);
+                localStorage.setItem('v7_logged_email', localUser.email);
                 
-                if(curUser.status === 'inactive') {
-                    setTimeout(() => {
-                        if (typeof showActivationModal === "function") showActivationModal(); 
-                    }, 500);
-                }
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                if (typeof toast === "function") toast('অফলাইনে লগইন সফল হয়েছে!');
+                
+                // 🎯 অফলাইন ড্যাশবোর্ড চালু
+                launchUserDashboard(localUser);
+            } else {
+                toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
+                return (typeof toast === "function") ? toast('অ্যাকাউন্ট পাওয়া যায়নি বা নেটওয়ার্ক সমস্যা!', 'error') : alert('নেটওয়ার্ক সমস্যা!');
             }
-            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            toast('লগইন সফল ');
-        } else {
-            toggleDynamicLoader(false); if (typeof showLoader === "function") showLoader(false);
-            toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
         }
     }
 }
 
+
+
+
+
+
+  
 
 // ৫. উইথড্র এক্সিকিউশন ফাংশন (গুগল শিট ব্যালেন্স সিঙ্কসহ)
 function executeWithdraw(amt, finalAmount, num, method, withdrawPage) {
