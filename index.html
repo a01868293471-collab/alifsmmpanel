@@ -3571,9 +3571,10 @@ function togglePassword() {
     </div>
 
     <!-- ডানপাশে Detail বাটন -->
-    <button class="notice-detail-btn" onclick="alert('Notice Detail Clicked')" style="background: transparent; border: 1.5px solid #ff4d4f; border-radius: 20px; color: #ff4d4f; padding: 3px 12px; font-size: 11px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: 0.3s; white-space: nowrap;">
-        <i class="fas fa-fire" style="font-size: 10px; color: #ff4d4f; transition: 0.3s;"></i> Detail
-    </button>
+<button class="notice-detail-btn" onclick="openPage('p-notification')" style="background: transparent; border: 1.5px solid #ff4d4f; border-radius: 20px; color: #ff4d4f; padding: 3px 12px; font-size: 11px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: 0.3s; white-space: nowrap;">
+    <i class="fas fa-fire" style="font-size: 10px; color: #ff4d4f; transition: 0.3s;"></i> 
+    Detail
+</button>
 </div>
       
 <!-- অ্যানিমেশন যোগ করার জন্য CSS স্টাইল শিট -->
@@ -5578,6 +5579,116 @@ function closeAdminModal() {
     </div>
 </div>
 
+<div id="p-safe" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Safe</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Interest Rate Badge -->
+        <div style="text-align: center; margin-bottom: 12px;">
+            <span style="background: #fff3e0; color: #ff9800; font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 12px; display: inline-block;">
+                Interest rate 0.002%
+            </span>
+        </div>
+
+        <!-- Main Balance Box (Red-Yellow Gradient) -->
+        <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); border-radius: 14px; padding: 18px; color: white; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(255,78,80,0.25); position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <i class="fas fa-coins" style="font-size: 18px; color: #fff8e1;"></i>
+                <span style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600;">
+                    <i class="fas fa-shield-alt"></i> Financial security
+                </span>
+            </div>
+            <div style="font-size: 26px; font-weight: 800; margin-bottom: 10px;">৳0.00</div>
+            <div style="font-size: 11px; opacity: 0.9;">24-hour estimated revenue <span style="font-weight: 700;">৳0.00</span></div>
+            <div style="position: absolute; right: 18px; bottom: 15px; font-size: 10px; letter-spacing: 2px; opacity: 0.7;">**** ****</div>
+        </div>
+
+        <!-- Revenue Stats Card -->
+        <div style="background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="display: flex; text-align: center; border-bottom: 1px solid #f8f9fa; padding-bottom: 12px; margin-bottom: 12px;">
+                <div style="flex: 1; border-right: 1px solid #f8f9fa;">
+                    <div style="font-size: 16px; font-weight: 800; color: #ff4e50;">৳0.00</div>
+                    <div style="font-size: 10px; color: #7f8c8d; margin-top: 2px;">Generated revenue</div>
+                    <span style="font-size: 9px; color: #b0bec5; background: #f4f6fb; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 4px;">My interest rate 0.0%</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 16px; font-weight: 800; color: #2c3e50;">৳0.00</div>
+                    <div style="font-size: 10px; color: #7f8c8d; margin-top: 2px;">Accumulated revenue</div>
+                </div>
+            </div>
+
+            <!-- Transfer Buttons -->
+            <div style="display: flex; gap: 10px;">
+                <button style="flex: 1; background: white; color: #ff4e50; border: 1px solid #ff4e50; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">Transfer Out</button>
+                <button style="flex: 1; background: linear-gradient(90deg, #ff4e50, #f9d423); color: white; border: none; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(255,78,80,0.2);">Transfer In</button>
+            </div>
+
+            <div style="font-size: 10px; color: #ff4e50; margin-top: 10px; text-align: center;">
+                <i class="fas fa-exclamation-circle"></i> Funds are safe and secure, and can be transferred at any time
+            </div>
+            <div style="text-align: center; margin-top: 6px;">
+                <a href="#" style="font-size: 10px; color: #7f8c8d; text-decoration: none;">Learn about safes &raquo;</a>
+            </div>
+        </div>
+
+        <!-- Historical Records Title & Button -->
+        <div style="font-size: 13px; font-weight: 700; color: #2c3e50; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <i class="fas fa-history" style="color: #ff4e50;"></i> Historical records
+        </div>
+        <button style="width: 100%; background: white; color: #ff4e50; border: 1px solid #ffcdd2; padding: 10px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;">
+            All history
+        </button>
+    </div>
+</div>
+  
+  
+  <div id="p-about-us" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Red-Yellow Gradient Header -->
+    <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); padding: 15px; color: white; display: flex; align-items: center;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; padding-right: 16px;">About us</h2>
+    </div>
+
+    <!-- Top Banner Graphic Placeholder -->
+    <div style="background: linear-gradient(180deg, rgba(255,78,80,0.1) 0%, rgba(249,212,35,0.05) 100%); padding: 30px 15px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.03);">
+        <div style="width: 80px; height: 80px; margin: 0 auto; background: linear-gradient(135deg, #ff4e50, #f9d423); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 36px; box-shadow: 0 8px 20px rgba(255,78,80,0.25);">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Option Cards -->
+        <div style="background: white; border-radius: 12px; padding: 0 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #f8f9fa; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <span style="font-size: 13px; font-weight: 600; color: #2c3e50;">Confidentiality Agreement</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 11px; color: #bdc3c7;"></i>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <span style="font-size: 13px; font-weight: 600; color: #2c3e50;">Risk Disclosure Agreement</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 11px; color: #bdc3c7;"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Pay Bill Page -->
 <div id="p-paybill" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
@@ -6345,7 +6456,7 @@ function closeAdminModal() {
 
             <!-- 3. History & Transaction Grid -->
             <div class="history-grid">
-                <div class="history-card" onclick="openPage('p-game-history')">
+                <div class="history-card" onclick="openPage('p-bet-history')">
                     <div class="history-icon" style="background: #e3f2fd;">
                         <i class="fas fa-list-alt" style="color: #1e88e5; font-size: 16px;"></i>
                     </div>
@@ -6384,7 +6495,7 @@ function closeAdminModal() {
             </div>
 
             <!-- 4. Notification Single Row -->
-            <div class="account-white-card" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="openPage('p-notifications')">
+            <div class="account-white-card" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="openPage('p-notification')">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <div style="width: 32px; height: 32px; background: #ffebee; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-envelope" style="color: #ff5252; font-size: 14px;"></i>
@@ -6403,7 +6514,7 @@ function closeAdminModal() {
                     </div>
                     <i class="fas fa-chevron-right" style="color: #bdc3c7; font-size: 11px;"></i>
                 </div>
-                <div class="menu-row" onclick="openPage('p-stats')">
+                <div class="menu-row" onclick="openPage('p-game-stats')">
                     <div class="menu-row-left">
                         <i class="fas fa-chart-bar" style="color: #ff5252; font-size: 16px; width: 20px; text-align: center;"></i>
                         <span class="menu-row-label">Game statistics</span>
@@ -6434,19 +6545,19 @@ function closeAdminModal() {
                         <i class="fas fa-clipboard-list" style="color: #ff80ab;"></i>
                         <span>Feedback</span>
                     </div>
-                    <div class="service-item" onclick="openPage('p-announcement')">
+                    <div class="service-item" onclick="openPage('p-notification')">
                         <i class="fas fa-bullhorn" style="color: #ff8a80;"></i>
                         <span>Announcement</span>
                     </div>
-                    <div class="service-item" onclick="openPage('p-support')">
+                    <div class="service-item" onclick="openPage('p-self-service')">
                         <i class="fas fa-comment-dots" style="color: #ff5252;"></i>
                         <span>Customer Service</span>
                     </div>
-                    <div class="service-item" onclick="openPage('p-guide')">
+                    <div class="service-item" onclick="openPage('p-beginners-guide')">
                         <i class="fas fa-book-open" style="color: #ff8a80;"></i>
                         <span>Beginner's Guide</span>
                     </div>
-                    <div class="service-item" onclick="openPage('p-admin-profile')">
+                    <div class="service-item" onclick="openPage('p-about-us')">
                         <i class="fas fa-cube" style="color: #ff80ab;"></i>
                         <span>About us</span>
                     </div>
@@ -7893,6 +8004,462 @@ function abortCancelTimer() {
     </div>
 </div>
 
+
+<div id="p-bet-history" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Bet history</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Category Tabs -->
+        <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 10px;">
+            <div style="background: linear-gradient(90deg, #ff4e50, #f9d423); color: white; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-bowling-ball"></i> Lottery
+            </div>
+            <div style="background: white; color: #666; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-tv"></i> Casino
+            </div>
+            <div style="background: white; color: #666; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-fish"></i> Fishing
+            </div>
+            <div style="background: white; color: #666; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap;">Rummy</div>
+        </div>
+
+        <!-- Filter Dropdowns -->
+        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+            <select style="flex: 1; padding: 10px; border: none; border-radius: 8px; background: white; font-size: 12px; color: #555; outline: none; shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <option>Win Go</option>
+            </select>
+            <select style="flex: 1; padding: 10px; border: none; border-radius: 8px; background: white; font-size: 12px; color: #555; outline: none; shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                <option>Choose a date</option>
+            </select>
+        </div>
+
+        <!-- Empty State -->
+        <div style="text-align: center; padding: 60px 0;">
+            <i class="fas fa-scroll" style="font-size: 70px; color: #e0e0e0; margin-bottom: 15px;"></i>
+            <div style="font-size: 13px; color: #a0a0a0; font-weight: 500;">No data</div>
+        </div>
+    </div>
+</div>
+  
+  
+  <div id="p-vip" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Top Red-Yellow Header -->
+    <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); padding: 15px 15px 40px 15px; color: white;">
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <i class="fas fa-chevron-left" style="font-size: 18px; cursor: pointer;" onclick="openPage('p-account')"></i>
+            <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto;">VIP</h2>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #ff4e50; border: 2px solid rgba(255,255,255,0.8);">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="background: rgba(255,255,255,0.3); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">VIP0</span>
+                </div>
+                <div style="font-size: 14px; font-weight: 700; margin-top: 2px;">MemberNNGUWN2P</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 0 15px; margin-top: -25px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        <!-- EXP & Payout Stats -->
+        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+            <div style="flex: 1; background: white; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <div style="font-size: 15px; font-weight: 800; color: #ff4e50;">4550 EXP</div>
+                <div style="font-size: 10px; color: #7f8c8d; margin-top: 2px;">My experience</div>
+            </div>
+            <div style="flex: 1; background: white; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <div style="font-size: 15px; font-weight: 800; color: #ff4e50;">5 Days</div>
+                <div style="font-size: 10px; color: #7f8c8d; margin-top: 2px;">Payout time</div>
+            </div>
+        </div>
+
+        <div style="font-size: 10px; color: #95a5a6; text-align: center; margin-bottom: 12px;">VIP level rewards are settled at 2:00 am on the 1st of every month</div>
+
+        <!-- VIP1 Card -->
+        <div style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); border-radius: 14px; padding: 16px; color: white; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(102,166,255,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-size: 18px; font-weight: 800;">VIP1 <span style="font-size: 10px; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; font-weight: 400;"><i class="fas fa-lock"></i> Not open yet</span></div>
+                <i class="fas fa-crown" style="font-size: 28px; opacity: 0.8;"></i>
+            </div>
+            <div style="font-size: 11px; margin-top: 6px; opacity: 0.9;">Upgrading VIP1 requires 450EXP</div>
+            <div style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 4px; font-size: 10px; display: inline-block; margin-top: 10px;">Bet ৳1=1EXP</div>
+            
+            <div style="margin-top: 15px;">
+                <div style="background: rgba(255,255,255,0.3); height: 6px; border-radius: 3px; overflow: hidden;">
+                    <div style="width: 90%; height: 100%; background: #f9d423;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 9px; margin-top: 4px; opacity: 0.9;">
+                    <span>4550/5000</span>
+                    <span>5000 EXP can be leveled up</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIP Benefits List -->
+        <div style="background: white; border-radius: 14px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+            <div style="font-size: 13px; font-weight: 700; color: #2c3e50; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-gem" style="color: #ff4e50;"></i> VIP1 Benefits level
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #f8f9fa; padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: #fff3e0; color: #ff9800; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-gift"></i></div>
+                    <div>
+                        <div style="font-size: 12px; font-weight: 700; color: #333;">Level up rewards</div>
+                        <div style="font-size: 10px; color: #95a5a6;">Each account can only receive 1 time</div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <span style="background: #fff8e1; color: #ffa000; border: 1px solid #ffe082; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 700;">💰 30</span>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #f8f9fa; padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-calendar-alt"></i></div>
+                    <div>
+                        <div style="font-size: 12px; font-weight: 700; color: #333;">Monthly reward</div>
+                        <div style="font-size: 10px; color: #95a5a6;">Each account can only receive 1 time per month</div>
+                    </div>
+                </div>
+                <div><span style="background: #fff8e1; color: #ffa000; border: 1px solid #ffe082; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 700;">💰 0</span></div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #f8f9fa; padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: #e8eaf6; color: #3f51b5; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-vault"></i></div>
+                    <div>
+                        <div style="font-size: 12px; font-weight: 700; color: #333;">Safe</div>
+                        <div style="font-size: 10px; color: #95a5a6;">Increase the extra income of the safe</div>
+                    </div>
+                </div>
+                <i class="fas fa-shield-alt" style="color: #ff5252;"></i>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2f1; color: #009688; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-percentage"></i></div>
+                    <div>
+                        <div style="font-size: 12px; font-weight: 700; color: #333;">Rebate rate</div>
+                        <div style="font-size: 10px; color: #95a5a6;">Increase income of rebate</div>
+                    </div>
+                </div>
+                <span style="background: #ffebee; color: #ff5252; border: 1px solid #ffcdd2; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 700;">0.6%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<div id="p-game-stats" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Game statistics</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Time Tabs -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 15px;">
+            <button style="background: linear-gradient(90deg, #ff4e50, #f9d423); color: white; border: none; padding: 8px; border-radius: 20px; font-size: 11px; font-weight: 700;">Today</button>
+            <button style="background: white; color: #666; border: none; padding: 8px; border-radius: 20px; font-size: 11px; font-weight: 600;">Yesterday</button>
+            <button style="background: white; color: #666; border: none; padding: 8px; border-radius: 20px; font-size: 11px; font-weight: 600;">This week</button>
+            <button style="background: white; color: #666; border: none; padding: 8px; border-radius: 20px; font-size: 11px; font-weight: 600;">This month</button>
+        </div>
+
+        <!-- Total Bet Box -->
+        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="font-size: 24px; font-weight: 800; color: #ff4e50;">৳0.00</div>
+            <div style="font-size: 11px; color: #7f8c8d; margin-top: 4px;">Total bet</div>
+        </div>
+
+        <!-- List Section -->
+        <div style="background: white; border-radius: 14px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <!-- Item 1 -->
+            <div style="margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+                <div style="font-size: 13px; font-weight: 700; color: #333; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-bowling-ball" style="color: #ff5252;"></i> Lottery
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 6px;">
+                    <span>Total bet</span>
+                    <span style="font-weight: 600; color: #333;">৳0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 4px;">
+                    <span>Number of bets</span>
+                    <span style="font-weight: 600; color: #333;">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 4px;">
+                    <span>Winning amount</span>
+                    <span style="font-weight: 600; color: #ff4e50;">৳0.00</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div style="margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+                <div style="font-size: 13px; font-weight: 700; color: #333; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-tv" style="color: #ff5252;"></i> video
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 6px;">
+                    <span>Total bet</span>
+                    <span style="font-weight: 600; color: #333;">৳0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 4px;">
+                    <span>Winning amount</span>
+                    <span style="font-weight: 600; color: #ff4e50;">৳0.00</span>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div>
+                <div style="font-size: 13px; font-weight: 700; color: #333; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-gamepad" style="color: #ff5252;"></i> Slot
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #777; margin-top: 6px;">
+                    <span>Total bet</span>
+                    <span style="font-weight: 600; color: #333;">৳0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="p-settings" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Red-Yellow Top -->
+    <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); padding: 15px 15px 35px 15px; color: white;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer;" onclick="openPage('p-account')"></i>
+            <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto;">Settings Center</h2>
+        </div>
+    </div>
+
+    <div style="padding: 0 15px; margin-top: -20px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        <!-- Profile Card -->
+        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 45px; height: 45px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #ff5252;">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                <div style="font-size: 12px; color: #7f8c8d; cursor: pointer;">Change avatar <i class="fas fa-chevron-right" style="font-size: 10px;"></i></div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 10px 0; border-bottom: 1px solid #f8f9fa;">
+                <span style="color: #7f8c8d;">Nickname</span>
+                <span style="font-weight: 600; color: #2c3e50;">MemberNNGUWN2P <i class="fas fa-chevron-right" style="font-size: 10px; color: #bdc3c7;"></i></span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 12px; padding-top: 10px;">
+                <span style="color: #7f8c8d;">UID</span>
+                <span style="font-weight: 600; color: #2c3e50;">1818975 <i class="far fa-copy" style="color: #ff5252; cursor: pointer;"></i></span>
+            </div>
+        </div>
+
+        <div style="font-size: 12px; font-weight: 700; color: #ff4e50; margin-bottom: 8px; padding-left: 4px;">Security information</div>
+
+        <!-- Security Items -->
+        <div style="background: white; border-radius: 12px; padding: 0 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #f8f9fa;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fas fa-lock"></i></div>
+                    <span style="font-size: 12px; font-weight: 600; color: #2c3e50;">Login password</span>
+                </div>
+                <span style="font-size: 11px; color: #95a5a6;">Edit <i class="fas fa-chevron-right" style="font-size: 9px;"></i></span>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #f8f9fa;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fas fa-envelope"></i></div>
+                    <span style="font-size: 12px; font-weight: 600; color: #2c3e50;">Bind mailbox</span>
+                </div>
+                <span style="font-size: 11px; color: #95a5a6;">to bind <i class="fas fa-chevron-right" style="font-size: 9px;"></i></span>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 0;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 32px; height: 32px; border-radius: 8px; background: #ffebee; color: #ff5252; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fas fa-info-circle"></i></div>
+                    <span style="font-size: 12px; font-weight: 600; color: #2c3e50;">Updated version</span>
+                </div>
+                <span style="font-size: 11px; color: #95a5a6;">1.0.9 <i class="fas fa-chevron-right" style="font-size: 9px;"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+  <div id="p-feedback" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Feedback</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; min-height: calc(100vh - 60px);">
+        <!-- Textarea Card -->
+        <div style="background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 20px;">
+            <textarea placeholder="Welcome to feedback, please give feedback-please describe the problem in detail when providing feedback..." style="width: 100%; border: none; outline: none; height: 160px; font-size: 12px; color: #333; resize: none; font-family: inherit;"></textarea>
+        </div>
+
+        <div style="text-align: center; margin-top: auto; margin-bottom: 20px;">
+            <div style="font-size: 12px; font-weight: 700; color: #2c3e50;">Send helpful feedback</div>
+            <div style="font-size: 11px; color: #7f8c8d; margin-top: 2px;">Chance to win Mystery Rewards</div>
+            <div style="margin: 20px 0;">
+                <i class="fas fa-paper-plane" style="font-size: 50px; color: #ff4e50; opacity: 0.8;"></i>
+            </div>
+            <!-- Submit Button (Gradient Red-Yellow) -->
+            <button style="background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%); color: white; border: none; width: 100%; padding: 12px; border-radius: 25px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 10px rgba(255,78,80,0.3); cursor: pointer;">Submit</button>
+        </div>
+    </div>
+</div>
+  <div id="p-notification" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Notification</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Tabs Switch -->
+        <div style="background: white; border-radius: 8px; padding: 4px; display: flex; margin-bottom: 15px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+            <div style="flex: 1; text-align: center; padding: 8px; font-size: 12px; font-weight: 600; color: #666; cursor: pointer;">Notification</div>
+            <div style="flex: 1; text-align: center; padding: 8px; font-size: 12px; font-weight: 700; color: white; background: linear-gradient(90deg, #ff4e50, #f9d423); border-radius: 6px; cursor: pointer;">Information</div>
+        </div>
+
+        <!-- Notification Message Card -->
+        <div style="background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 15px;">
+            <div style="font-size: 13px; font-weight: 700; color: #ff4e50; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <i class="fas fa-bullhorn"></i> LIVECHAT
+            </div>
+            <p style="font-size: 11px; color: #666; line-height: 1.5; margin: 0 0 10px 0;">
+                Attention! To all HGNICE, Currently our customer service only use LIVE CHAT WE DON'T HAVE TELEGRAM ACCOUNT LIVE CHAT available on our website...
+            </p>
+            <div style="font-size: 10px; color: #aaa;">2025-06-09 15:38:09</div>
+        </div>
+
+        <div style="text-align: center; font-size: 11px; color: #aaa; margin-top: 20px;">No more</div>
+    </div>
+</div>
+  <div id="p-beginners-guide" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Header -->
+    <div style="background: white; padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 16px; cursor: pointer; color: #333;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 16px; font-weight: 700; margin: 0 auto; color: #2c3e50;">Beginner's Guide</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Text Instructions -->
+        <div style="background: white; border-radius: 12px; padding: 15px; font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <b>1. How to Register</b><br>
+            - Fill Your Phone Number<br>
+            - Set Your Own Password (6 letters)<br>
+            - Confirm The Password<br>
+            - Fill Your Recommendation Code<br>
+            - Click I Have Read And Agree<br>
+            - Click Register
+        </div>
+
+        <!-- UI Demo Card (Red-Yellow Redesign) -->
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <div style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 15px; color: white;">
+                <div style="font-size: 16px; font-weight: 800; text-align: center;">HGZY GAME</div>
+                <div style="font-size: 13px; font-weight: 700; margin-top: 10px;">প্রবেশ করুন</div>
+                <div style="font-size: 10px; opacity: 0.9; margin-top: 2px;">আপনার ফোন নম্বর বা ইমেইল দিয়ে লগ ইন করুন</div>
+            </div>
+
+            <div style="padding: 15px;">
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" placeholder="ফোন নম্বর লিখুন" style="width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 6px; font-size: 11px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <input type="password" placeholder="পাসওয়ার্ড" style="width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 6px; font-size: 11px;">
+                </div>
+                <button style="background: linear-gradient(90deg, #ff4e50, #f9d423); color: white; border: none; width: 100%; padding: 10px; border-radius: 20px; font-weight: 700; font-size: 13px;">প্রবেশ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+  <div id="p-self-service" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f6fb; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Top Red Header -->
+    <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); padding: 15px; color: white;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <i class="fas fa-home" style="font-size: 16px; cursor: pointer;" onclick="openPage('p-account')"></i>
+            <h2 style="font-size: 15px; font-weight: 700; margin: 0;">Self Service Center</h2>
+            <span style="font-size: 11px; font-weight: 600;"><i class="fas fa-globe"></i> EN</span>
+        </div>
+        <div style="padding: 10px 0; text-align: left;">
+            <h3 style="margin: 0; font-size: 16px; font-weight: 800;">Welcome to the Self Service Customer Service Center</h3>
+        </div>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <div style="font-size: 12px; font-weight: 700; color: #333; margin-bottom: 10px;">Self Service</div>
+
+        <!-- Service Menu Card -->
+        <div style="background: white; border-radius: 12px; padding: 0 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 15px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f8f9fa; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-wallet" style="color: #ff5252; font-size: 16px;"></i>
+                    <span style="font-size: 12px; font-weight: 600; color: #333;">Deposit Not Received</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 10px; color: #ccc;"></i>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f8f9fa; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-credit-card" style="color: #ff5252; font-size: 16px;"></i>
+                    <span style="font-size: 12px; font-weight: 600; color: #333;">Withdrawal problem</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 10px; color: #ccc;"></i>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f8f9fa; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-key" style="color: #ff5252; font-size: 16px;"></i>
+                    <span style="font-size: 12px; font-weight: 600; color: #333;">Change ID Login Password</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 10px; color: #ccc;"></i>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; cursor: pointer;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-headset" style="color: #ff5252; font-size: 16px;"></i>
+                    <span style="font-size: 12px; font-weight: 600; color: #333;">Online service</span>
+                </div>
+                <i class="fas fa-chevron-right" style="font-size: 10px; color: #ccc;"></i>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div style="font-size: 11px; color: #888; line-height: 1.5;">
+            <b style="color: #333;">Kind tips</b><br>
+            1. Please select the corresponding question and submit it for review.<br>
+            2. After submitting for review, you can use [Progress Query] to view the review results.
+        </div>
+    </div>
+</div>
+
+
+
+  
 
 <!-- হোয়াটসঅ্যাপ সেল পেজ -->
 <div id="p-whatsapp-sell" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 1500; overflow-y: auto; padding-bottom: 40px; font-family: sans-serif;">
