@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earn Flow</title>
+    <title>BDTWINX</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
@@ -4988,230 +4988,12 @@ function closeAdminModal() {
 </div>
     </div>
 
-<div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%); padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.15);">
-    
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div onclick="closePage('p-withdraw')" style="width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); transition: 0.2s;" onmousedown="this.style.transform='scale(0.95)'" onmouseup="this.style.transform='scale(1)'">
-            <i class="fas fa-chevron-left" style="font-size: 14px; color: white;"></i>
-        </div>
-        <h4 style="margin: 0; font-weight: 700; color: white; font-size: 18px; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif;">Withdraw Balance</h4>
-    </div>
-
-    <div onclick="openPage('p-withdraw-history')" style="width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); transition: 0.2s;" onmousedown="this.style.transform='scale(0.95)'" onmouseup="this.style.transform='scale(1)'">
-        <i class="fas fa-history" style="font-size: 15px; color: white;"></i>
-    </div>
-</div>
-
-
-
-
-<div class="container px-3 mt-4">
-
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ffaa00 100%); padding: 25px 20px; border-radius: 4px; color: white; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); font-family: 'Poppins', sans-serif;">
-
-        
-
-        <div style="position: absolute; top: -30%; right: -5%; width: 150px; height: 150px; background: rgba(255,255,255,0.08); border-radius: 12px; transform: rotate(45deg);"></div>
-
-        
-
-        <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.85; display: block;">Available for Payout</span>
-
-        <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
-
-            <h2 style="margin: 0; font-weight: 900; font-size: 38px; text-shadow: 0 3px 8px rgba(0,0,0,0.12);">৳ <span id="withdraw-bal">0.00</span></h2>
-
-        </div>
-
-    </div>
-    <div style="background: #fef3c7; border: 1px solid #fde68a; border-radius: 12px; padding: 12px; margin-bottom: 15px;">
-
-    <!-- হেডার অংশ -->
-
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-
-        <i class="fas fa-wallet" style="color: #d97706; font-size: 14px;"></i>
-
-        <span style="font-size: 13px; color: #92400e; font-weight: 800;">উইথড্রয়াল নির্দেশনা</span>
-
-    </div>
-
-    
-
-    <!-- মূল কন্টেন্ট -->
-
-    <div style="font-size: 12px; color: #b45309; margin: 0; line-height: 1.6; font-weight: 600;">
-
-
-        
-
-        <!-- নিয়মের তালিকা -->
-
-        <div style="display: flex; flex-direction: column; gap: 4px; border-top: 1px dashed #fcd34d; padding-top: 6px; margin-top: 6px;">
-
-            <div>📌 সর্বনিম্ন উত্তোলন ১০০ টাকা এবং সর্বোচ্চ উত্তোলন ২৫,০০০ টাকা।</div>
-
-            <div>✅ লিমিট: ২৪ ঘণ্টার মধ্যে ১ বার উত্তোলন করা যাবে।</div>
-
-            <div>✅ উত্তোলন চার্জ: ১০০ থেকে ৩০০ টাকায় ৫ টাকা।</div>
-
-            <div>✅ ৩০০ টাকার বেশি উত্তোলন করলে প্রতি উত্তোলনে ২% চার্জ কাটা হবে।</div>
-
-        </div>
-
-    </div>
-
-</div>
-<p style="font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 12px; padding-left: 5px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Poppins', sans-serif;">Choose Payout Method</p>
 
 
 
 
 
-<div style="display: flex; gap: 12px; margin-bottom: 20px;">
-    
-    <!-- bKash Card -->
-    <div style="flex: 1;" onclick="selectWithdrawMethod('Bkash')">
-        <div class="w-method-card" id="w-Bkash" style="background: #ffffff; position: relative; height: 75px; border-radius: 4px; border: 1px solid #e2e8f0; border-bottom: 3px solid #cbd5e1; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 6px;">
-            <!-- কার্ডের ভেতরে সুন্দরভাবে ফিট হওয়া ফুল লোগো -->
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(1).png" 
-                 alt="bKash" 
-                 style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
-        </div>
-    </div>
-
-    <!-- Nagad Card -->
-    <div style="flex: 1;" onclick="selectWithdrawMethod('Nagad')">
-        <div class="w-method-card" id="w-Nagad" style="background: #ffffff; position: relative; height: 75px; border-radius: 4px; border: 1px solid #e2e8f0; border-bottom: 3px solid #cbd5e1; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.03); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 6px;">
-            <!-- কার্ডের ভেতরে সুন্দরভাবে ফিট হওয়া ফুল লোগো -->
-            <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/images%20(2).png" 
-                 alt="Nagad" 
-                 style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
-        </div>
-    </div>
-
-
-
-</div>
-
-<!-- একটিভ/ক্লিক ইফেক্টের জন্য CSS (যদি অলরেডি না থাকে) -->
-<style>
-    .w-method-card:active {
-        transform: translateY(1px);
-        border-bottom-width: 1px !important;
-        box-shadow: none !important;
-    }
-</style>
-
-
-<div style="background: #ffffff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; margin-bottom: 30px; font-family: 'Poppins', sans-serif;">
-    
-    <div style="margin-bottom: 20px;">
-        <label style="display: block; font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Account Number</label>
-        <input type="number" id="w-num" placeholder="01XXXXXXXXX" 
-               style="width: 100%; padding: 14px 16px; border-radius: 4px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: 700; font-size: 15px; color: #1e293b; outline: none; transition: all 0.2s ease;"
-               onfocus="this.style.border='1px solid #ff0000'; this.style.background='#ffffff'; this.style.boxShadow='0 0 0 3px rgba(255,0,0,0.1)';" 
-               onblur="this.style.border='1px solid #cbd5e1'; this.style.background='#f8fafc'; this.style.boxShadow='none';">
-    </div>
-
-    <div style="margin-bottom: 24px;">
-        <label style="display: block; font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Withdraw Amount</label>
-        <input type="number" id="w-amt" placeholder="Enter amount" 
-               style="width: 100%; padding: 14px 16px; border-radius: 4px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: 700; font-size: 15px; color: #1e293b; outline: none; transition: all 0.2s ease;"
-               onfocus="this.style.border='1px solid #ff0000'; this.style.background='#ffffff'; this.style.boxShadow='0 0 0 3px rgba(255,0,0,0.1)';" 
-               onblur="this.style.border='1px solid #cbd5e1'; this.style.background='#f8fafc'; this.style.boxShadow='none';">
-    </div>
-
-    <button onclick="withdrawReq()" 
-            style="width: 100%; background: linear-gradient(135deg, #ff0000 0%, #ff6a00 100%); color: white; border: none; padding: 16px; border-radius: 4px; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 6px 16px rgba(255, 0, 0, 0.15); cursor: pointer; transition: all 0.2s ease;"
-            onmouseover="this.style.boxShadow='0 8px 22px rgba(255, 0, 0, 0.25)';" 
-            onmouseout="this.style.boxShadow='0 6px 16px rgba(255, 0, 0, 0.15)';"
-            onmousedown="this.style.transform='scale(0.98)';"
-            onmouseup="this.style.transform='scale(1)';">
-        Submit Withdrawal
-    </button>
-</div>
-            </div>
-        </div>
-<style>
-    /* সিলেকশন হলে বর্ডার কালার পরিবর্তনের জন্য */
-    .w-method-card.active-method {
-        border-color: #ff0000 !important;
-        background: #fff1f2 !important;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
-    }
-    input:focus {
-        border-color: #ff0000 !important;
-        background: #ffffff !important;
-        box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.05);
-    }
-</style>
-
-<style>
-    /* মেথড কার্ড সিলেক্টেড স্টাইল */
-    .w-method-card.active {
-        border-color: #ff0000 !important;
-        background: #fff5f5 !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1) !important;
-    }
-    input:focus {
-        outline: none;
-    }
-</style>
-
-<script>
-    // মেথড সিলেক্ট করার ফাংশন (যাতে একটি সিলেক্ট করলে বাকিগুলো রিসেট হয়ে যায়)
-    function selectWithdrawMethod(method) {
-        // সব কার্ড থেকে active-method ক্লাস রিমুভ করা
-        document.querySelectorAll('.w-method-card').forEach(card => {
-            card.classList.remove('active-method');
-        });
-        
-        // বর্তমান ক্লিক করা কার্ডে ক্লাস অ্যাড করা
-        const selectedCard = document.getElementById('w-' + method);
-        if(selectedCard) {
-            selectedCard.classList.add('active-method');
-        }
-        
-        // আপনার মেথড হ্যান্ডলার এখানে দিতে পারেন
-        console.log("Selected Method: " + method);
-    }
-</script>
-
-<style>
-    .w-method-card {
-        background: white;
-        padding: 15px 10px;
-        text-align: center;
-        border-radius: 18px;
-        border: 1.5px solid #f1f5f9;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #64748b; /* ডিফল্ট আইকন কালার */
-    }
-
-    .w-method-card span {
-        font-size: 11px;
-        font-weight: 700;
-        margin-top: 5px;
-    }
-
-    /* শুধুমাত্র সিলেক্ট করা মেথড কালার হবে */
-    .active-method {
-        border-color: #3b82f6 !important;
-        background: #eff6ff !important;
-        color: #3b82f6 !important; /* আইকন এবং টেক্সট কালার নীল হবে */
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.15);
-        transform: translateY(-3px);
-    }
-</style>
+  
 <div id="p-withdraw-history" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার সেকশন: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
@@ -5848,7 +5630,636 @@ function closeAdminModal() {
 
 
 
+  
+  
+           <!-- SweetAlert2 Library (পপআপের জন্য) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- ================= 1. MAIN WITHDRAW PAGE ================= -->
+<div id="p-withdraw" class="p-page d-none w-page-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1500; overflow-y: auto; background: #f5f6fa;">
+    <!-- Top Bar -->
+    <div style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 14px 15px; display: flex; align-items: center; justify-content: space-between; color: white; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(255,78,80,0.3);">
+        <i class="fas fa-chevron-left" style="font-size: 18px; cursor: pointer;" onclick="openPage('p-account')"></i>
+        <h2 style="font-size: 18px; font-weight: 800; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Withdraw</h2>
+        <span style="font-size: 13px; font-weight: 700; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 12px; cursor: pointer;" onclick="openPage('p-withdraw-history')">History</span>
+    </div>
+
+    <div style="padding: 15px 15px 40px 15px; max-width: 480px; margin: 0 auto;">
+        
+        <!-- Balance Card -->
+        <div style="background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); border-radius: 16px; padding: 20px; color: white; margin-bottom: 15px; box-shadow: 0 6px 20px rgba(255,78,80,0.35); position: relative; border: 1px solid rgba(255,255,255,0.3);">
+            <div style="font-size: 13px; opacity: 0.95; margin-bottom: 6px; font-weight: 600;"><i class="fas fa-wallet"></i> Available Balance</div>
+            <div style="font-size: 30px; font-weight: 900; display: flex; align-items: center; gap: 8px;">
+                ৳ <span id="w-available-bal">0.00</span>
+                <i class="fas fa-sync-alt" style="font-size: 16px; opacity: 0.9; cursor: pointer;" onclick="refreshWithdrawBalance()"></i>
+            </div>
+            <div style="position: absolute; right: 18px; bottom: 15px; font-size: 11px; letter-spacing: 2px; opacity: 0.85; font-weight: 700;">**** ****</div>
+        </div>
+
+        <!-- Method Tabs -->
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <div style="flex: 1; background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 12px; border-radius: 12px; color: white; text-align: center; font-weight: 700; box-shadow: 0 3px 10px rgba(255,78,80,0.25);">
+                <i class="fas fa-wallet" style="font-size: 18px;"></i>
+                <div style="font-size: 12px; margin-top: 4px;">E-Wallet</div>
+            </div>
+            <div style="flex: 1; background: #fff; border: 1px solid #ffe0b2; padding: 12px; border-radius: 12px; color: #b78103; text-align: center; opacity: 0.7;">
+                <i class="fas fa-coins" style="font-size: 18px; color: #f39c12;"></i>
+                <div style="font-size: 12px; font-weight: 700; margin-top: 4px;">USDT</div>
+            </div>
+        </div>
+
+        <!-- Selected Payment Method Card -->
+        <div style="background: #fff; border: 2px solid #ffe0b2; border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onclick="openPage('p-wallet-methods')">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 42px; height: 42px; border-radius: 10px; background: #fff3e0; color: #ff4e50; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div>
+                    <div id="w-selected-type" style="font-size: 14px; font-weight: 800; color: #d32f2f; text-transform: uppercase;">NO WALLET ADDED</div>
+                    <div id="w-selected-num" style="font-size: 12px; color: #7f8c8d; font-weight: 600;">Please select or add a method</div>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right" style="font-size: 14px; color: #f39c12;"></i>
+        </div>
+
+        <!-- Amount Input Card -->
+        <div style="background: #fff; border-radius: 14px; padding: 16px; border: 1px solid #ffe0b2; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <div style="position: relative; margin-bottom: 10px;">
+                <span style="position: absolute; left: 14px; top: 12px; font-weight: 900; color: #ff4e50; font-size: 18px;">৳</span>
+                <input type="number" id="w-input-amt" style="width: 100%; padding: 12px 12px 12px 35px; border-radius: 10px; border: 2px solid #ffe0b2; outline: none; font-weight: 800; font-size: 16px; color: #333;" placeholder="Enter amount" oninput="calculateWithdrawFee()">
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #d32f2f; margin-bottom: 15px;">
+                <span>Withdrawable: ৳<span id="w-limit-bal">0.00</span></span>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span style="background: #ff4e50; color: white; padding: 2px 10px; border-radius: 12px; cursor: pointer; font-size: 11px;" onclick="setAllWithdraw()">ALL</span>
+                    <span style="color: #27ae60;">Receivable: ৳<span id="w-received-amt">0.00</span></span>
+                </div>
+            </div>
+
+            <!-- Inline Password Input -->
+            <div id="w-password-sec" style="display: none; margin-bottom: 15px; background: #fff8e1; padding: 12px; border-radius: 10px; border: 1px solid #ffe0b2;">
+                <label style="font-size: 12px; font-weight: 700; color: #555; display: block; margin-bottom: 4px;">একাউন্ট পাসওয়ার্ড প্রদান করুন:</label>
+                <input type="password" id="w-inline-pass" placeholder="••••••••" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #ffe0b2; outline: none; font-weight: bold; text-align: center; font-size: 16px;">
+            </div>
+
+            <button id="w-action-btn" style="width: 100%; padding: 14px; border: none; border-radius: 25px; background: linear-gradient(135deg, #ff4e50, #f9d423); color: white; font-weight: 800; font-size: 16px; cursor: pointer; box-shadow: 0 4px 12px rgba(255,78,80,0.35);" onclick="handleWithdrawProcess()">Withdraw Now</button>
+        </div>
+
+        <!-- Instructions Card -->
+        <div style="background: #fff8e1; border-radius: 14px; padding: 15px; font-size: 12px; color: #5d4037; line-height: 1.8; border: 1px dashed #ffe0b2; margin-bottom: 20px;">
+            <div style="color: #d32f2f; font-weight: 700;">◆ Bet required: ৳0.00</div>
+            <div style="color: #d32f2f; font-weight: 700;">◆ Charge Fee: ৳0.00 (Free)</div>
+            <div style="color: #d32f2f; font-weight: 700;">◆ Withdrawal time: 00:00 - 23:50</div>
+            <div style="color: #d32f2f; font-weight: 800;">
+                ◆ Remaining Today's Withdrawals: <span id="w-remaining-count" style="background: #ff4e50; color: white; padding: 1px 8px; border-radius: 10px;">3</span> / 3
+            </div>
+            <div style="color: #d32f2f; font-weight: 700;">◆ Withdrawal amount: ৳100.00 - ৳25,000.00</div>
+        </div>
+
+        <!-- Recent Withdrawal History Preview -->
+        <div style="background: white; border-radius: 14px; padding: 15px; border: 1px solid #ffe0b2; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h4 style="margin: 0; font-size: 14px; color: #d32f2f; font-weight: 800;"><i class="fas fa-history"></i> Recent Withdrawals</h4>
+                <span style="font-size: 11px; color: #ff4e50; font-weight: 700; cursor: pointer;" onclick="openPage('p-withdraw-history')">View All</span>
+            </div>
+            <div id="w-bottom-history-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= 2. E-WALLET METHOD SELECTION PAGE ================= -->
+<div id="p-wallet-methods" class="p-page d-none w-page-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1510; overflow-y: auto; background: #f5f6fa;">
+    <div style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 14px 15px; display: flex; align-items: center; color: white; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 18px; cursor: pointer;" onclick="openPage('p-withdraw')"></i>
+        <h2 style="font-size: 16px; font-weight: 800; margin: 0 auto; padding-right: 18px;">Select Wallet</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <div id="wallet-list-container"></div>
+        <div style="margin-top: 20px;">
+            <button id="add-method-btn" style="width: 100%; padding: 14px; border-radius: 25px; border: none; background: linear-gradient(135deg, #ff4e50, #f9d423); color: white; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(255,78,80,0.3);" onclick="openAddWalletPage()">
+                + Add Payment Method
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= 3. ADD METHOD FORM PAGE ================= -->
+<div id="p-add-wallet" class="p-page d-none w-page-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1520; overflow-y: auto; background: #f5f6fa;">
+    <div style="background: linear-gradient(135deg, #ff4e50, #f9d423); padding: 14px 15px; display: flex; align-items: center; color: white; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-chevron-left" style="font-size: 18px; cursor: pointer;" onclick="openPage('p-wallet-methods')"></i>
+        <h2 style="font-size: 16px; font-weight: 800; margin: 0 auto; padding-right: 18px;">Add New Wallet</h2>
+    </div>
+
+    <div style="padding: 20px 15px; max-width: 480px; margin: 0 auto; background: white; margin-top: 15px; border-radius: 16px; border: 1px solid #ffe0b2;">
+        <div style="margin-bottom: 15px;">
+            <label style="font-size: 13px; font-weight: 700; color: #d32f2f; display: block; margin-bottom: 6px;">Select Wallet Type</label>
+            <select id="w-add-type" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ffe0b2; font-weight: 700; outline: none; color: #333;">
+                <option value="">Choose Wallet</option>
+                <option value="BKASH">BKASH</option>
+                <option value="NAGAD">NAGAD</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="font-size: 13px; font-weight: 700; color: #d32f2f; display: block; margin-bottom: 6px;">Account Holder Name</label>
+            <input type="text" id="w-add-name" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ffe0b2; font-weight: 700; outline: none;" placeholder="Full Name">
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <label style="font-size: 13px; font-weight: 700; color: #d32f2f; display: block; margin-bottom: 6px;">Wallet Mobile Number</label>
+            <input type="number" id="w-add-acc" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ffe0b2; font-weight: 700; outline: none;" placeholder="017XXXXXXXX">
+        </div>
+
+        <button style="width: 100%; padding: 14px; border-radius: 25px; border: none; background: linear-gradient(135deg, #ff4e50, #f9d423); color: white; font-weight: 800; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(255,78,80,0.3);" onclick="saveWalletMethod()">
+            Save Wallet
+        </button>
+    </div>
+</div>
+
+<!-- ================= 4. WITHDRAW HISTORY PAGE ================= -->
+<div id="p-withdraw-history" class="p-page d-none w-page-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1530; overflow-y: auto; background: #f5f6fa;">
+    <div style="background: #ffffff; padding: 14px 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #eaeaea;">
+        <i class="fas fa-chevron-left" style="font-size: 18px; cursor: pointer; color: #333;" onclick="openPage('p-withdraw')"></i>
+        <h2 style="font-size: 18px; font-weight: 700; margin: 0 auto; padding-right: 18px; color: #222;">Withdrawal history</h2>
+    </div>
+
+    <div style="padding: 15px; max-width: 480px; margin: 0 auto;">
+        <!-- Filter Tabs -->
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <div style="flex: 1; background: #ff5252; color: white; padding: 8px 0; text-align: center; border-radius: 8px; font-weight: 700; font-size: 13px;">
+                <i class="fas fa-th-large"></i> All
+            </div>
+            <div style="flex: 1; background: #fff; color: #666; padding: 8px 0; text-align: center; border-radius: 8px; font-weight: 600; font-size: 13px;">
+                <i class="fas fa-wallet" style="color: #29b6f6;"></i> E-Wallet
+            </div>
+            <div style="flex: 1; background: #fff; color: #666; padding: 8px 0; text-align: center; border-radius: 8px; font-weight: 600; font-size: 13px;">
+                <i class="fas fa-coins" style="color: #26a69a;"></i> USDT
+            </div>
+        </div>
+
+        <!-- Dynamic History Cards Container -->
+        <div id="full-history-list"></div>
+    </div>
+</div>
+
+  <!-- SweetAlert2 Library (নিশ্চিত করুন এই লাইনটি আপনার HTML ফাইল-এ যুক্ত আছে) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= JAVASCRIPT SYSTEM ================= -->
+<script>
+    // ⚙️ TELEGRAM BOT CONFIGURATION
+    const TELEGRAM_BOT_TOKEN = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo";
+    const TELEGRAM_CHAT_ID = "6882504862";
+
+    const DB_KEY = 'user_wallets';
+    const SELECTED_KEY = 'selected_wallet_index';
+    const LIMIT_KEY = 'daily_withdraw_count';
+    const LAST_DATE_KEY = 'last_withdraw_date';
+    const HISTORY_KEY = 'withdraw_history_list';
+    const USER_BAL_KEY = 'user_stored_balance';
+    const MAX_DAILY_LIMIT = 3;
+
+    // ব্যালেন্স পারসিস্টেন্স চেক
+    if (localStorage.getItem(USER_BAL_KEY) === null) {
+        localStorage.setItem(USER_BAL_KEY, "1000.00");
+    }
+
+    window.curUser = window.curUser || { 
+        bal: parseFloat(localStorage.getItem(USER_BAL_KEY)), 
+        pass: '123456', 
+        email: 'user@test.com' 
+    };
+
+    let isPasswordStep = false;
+
+    // উইথড্র পেজের ভেতর পপআপ শো করার হেলপার ফাংশন
+    function showWithdrawPopup(options) {
+        const withdrawContainer = document.getElementById('p-withdraw');
+        return Swal.fire({
+            target: withdrawContainer && !withdrawContainer.classList.contains('d-none') ? '#p-withdraw' : 'body',
+            ...options
+        });
+    }
+
+    function openPage(pageId) {
+        document.querySelectorAll('.p-page').forEach(p => p.classList.add('d-none'));
+        const target = document.getElementById(pageId);
+        if (target) target.classList.remove('d-none');
+        
+        if (pageId === 'p-withdraw') {
+            refreshWithdrawBalance();
+            renderSelectedMethodCard();
+            updateDailyLimitUI();
+            renderWithdrawHistory();
+            resetWithdrawForm();
+        }
+        if (pageId === 'p-wallet-methods') renderWalletList();
+        if (pageId === 'p-withdraw-history') renderWithdrawHistory();
+    }
+
+    function refreshWithdrawBalance() {
+        const bal = parseFloat(localStorage.getItem(USER_BAL_KEY) || 0).toFixed(2);
+        window.curUser.bal = parseFloat(bal);
+        const availBalEl = document.getElementById('w-available-bal');
+        const limitBalEl = document.getElementById('w-limit-bal');
+        if (availBalEl) availBalEl.innerText = bal;
+        if (limitBalEl) limitBalEl.innerText = bal;
+    }
+
+    function getWallets() {
+        return JSON.parse(localStorage.getItem(DB_KEY)) || [];
+    }
+
+    function renderWalletList() {
+        const wallets = getWallets();
+        const selectedIdx = parseInt(localStorage.getItem(SELECTED_KEY) || '0');
+        const container = document.getElementById('wallet-list-container');
+        const addBtn = document.getElementById('add-method-btn');
+
+        if (!container) return;
+        container.innerHTML = '';
+        if (addBtn) addBtn.style.display = wallets.length >= 2 ? 'none' : 'block';
+
+        if (wallets.length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding: 20px; color:#999; font-size:13px;">No wallet saved yet. Add a new wallet below.</div>`;
+            return;
+        }
+
+        wallets.forEach((w, index) => {
+            const isChecked = index === selectedIdx;
+            const card = document.createElement('div');
+            card.style.cssText = `background: white; border: 2px solid ${isChecked ? '#ff4e50' : '#ffe0b2'}; border-radius: 14px; padding: 14px; margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);`;
+            card.onclick = () => selectWallet(index);
+
+            card.innerHTML = `
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-wallet" style="color: #ff4e50;"></i>
+                        <span style="font-size: 15px; font-weight: 800; color: #d32f2f;">${w.type}</span>
+                    </div>
+                    <div style="font-size: 12px; color: #666; font-weight: 600; margin-top: 4px;">${w.name}</div>
+                    <div style="font-size: 13px; color: #222; font-weight: 800;">${maskAccount(w.acc)}</div>
+                </div>
+                <i class="${isChecked ? 'fas fa-check-circle' : 'far fa-circle'}" style="color: ${isChecked ? '#ff4e50' : '#bdbdbd'}; font-size: 22px;"></i>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function selectWallet(index) {
+        localStorage.setItem(SELECTED_KEY, index);
+        renderWalletList();
+        openPage('p-withdraw');
+    }
+
+    function renderSelectedMethodCard() {
+        const wallets = getWallets();
+        const selectedIdx = parseInt(localStorage.getItem(SELECTED_KEY) || '0');
+        const typeEl = document.getElementById('w-selected-type');
+        const numEl = document.getElementById('w-selected-num');
+
+        if (!typeEl || !numEl) return;
+
+        if (wallets.length > 0 && wallets[selectedIdx]) {
+            const current = wallets[selectedIdx];
+            typeEl.innerText = current.type;
+            numEl.innerText = maskAccount(current.acc);
+        } else {
+            typeEl.innerText = "NO WALLET ADDED";
+            numEl.innerText = "Click to add bKash / Nagad";
+        }
+    }
+
+    function maskAccount(acc) {
+        if (!acc || acc.length < 7) return acc;
+        return acc.substring(0, 3) + "****" + acc.substring(acc.length - 3);
+    }
+
+    function openAddWalletPage() {
+        const wallets = getWallets();
+        if (wallets.length >= 2) {
+            showWithdrawPopup({ icon: 'warning', title: 'Limit Exceeded', text: 'আপনি সর্বোচ্চ ২টি ওয়ালেট যোগ করতে পারবেন।' });
+            return;
+        }
+        document.getElementById('w-add-type').value = "";
+        document.getElementById('w-add-name').value = "";
+        document.getElementById('w-add-acc').value = "";
+        openPage('p-add-wallet');
+    }
+
+    function saveWalletMethod() {
+        const type = document.getElementById('w-add-type').value;
+        const name = document.getElementById('w-add-name').value.trim();
+        const acc = document.getElementById('w-add-acc').value.trim();
+
+        if (!type || !name || !acc) {
+            showWithdrawPopup({ icon: 'error', title: 'Error', text: 'সবগুলো ঘর পূরণ করুন!' });
+            return;
+        }
+
+        let wallets = getWallets();
+        if (wallets.some(w => w.type === type)) {
+            showWithdrawPopup({ icon: 'error', title: 'Error', text: `আপনি ইতোমধ্যে ${type} ওয়ালেট যুক্ত করেছেন!` });
+            return;
+        }
+
+        wallets.push({ type, name, acc });
+        localStorage.setItem(DB_KEY, JSON.stringify(wallets));
+        localStorage.setItem(SELECTED_KEY, wallets.length - 1);
+        
+        showWithdrawPopup({ icon: 'success', title: 'Success', text: 'ওয়ালেট সফলভাবে যোগ করা হয়েছে!', timer: 1500, showConfirmButton: false });
+        openPage('p-withdraw');
+    }
+
+    function calculateWithdrawFee() {
+        const amtInput = document.getElementById('w-input-amt');
+        const receivedEl = document.getElementById('w-received-amt');
+        if (!amtInput || !receivedEl) return;
+        
+        const amt = parseFloat(amtInput.value) || 0;
+        receivedEl.innerText = amt > 0 ? amt.toFixed(2) : "0.00";
+    }
+
+    function setAllWithdraw() {
+        const avail = parseFloat(localStorage.getItem(USER_BAL_KEY) || 0);
+        document.getElementById('w-input-amt').value = avail;
+        calculateWithdrawFee();
+    }
+
+    function checkDailyLimit() {
+        const today = new Date().toDateString();
+        const lastDate = localStorage.getItem(LAST_DATE_KEY);
+
+        if (lastDate !== today) {
+            localStorage.setItem(LAST_DATE_KEY, today);
+            localStorage.setItem(LIMIT_KEY, '0');
+            return 0;
+        }
+        return parseInt(localStorage.getItem(LIMIT_KEY) || '0');
+    }
+
+    function updateDailyLimitUI() {
+        const usedCount = checkDailyLimit();
+        const remaining = MAX_DAILY_LIMIT - usedCount;
+        const limitEl = document.getElementById('w-remaining-count');
+        if (limitEl) limitEl.innerText = remaining >= 0 ? remaining : 0;
+    }
+
+    // --- WITHDRAW PROCESS & TELEGRAM INTEGRATION ---
+    function handleWithdrawProcess() {
+        const wallets = getWallets();
+        const selectedIdx = parseInt(localStorage.getItem(SELECTED_KEY) || '0');
+        const activeWallet = wallets[selectedIdx];
+
+        if (!activeWallet) {
+            showWithdrawPopup({ icon: 'warning', title: 'No Wallet', text: 'দয়া করে একটি ওয়ালেট যুক্ত করুন!' });
+            return;
+        }
+
+        const amt = parseFloat(document.getElementById('w-input-amt').value) || 0;
+        const currentBal = parseFloat(localStorage.getItem(USER_BAL_KEY) || 0);
+
+        if (amt < 100 || amt > 25000) {
+            showWithdrawPopup({ icon: 'error', title: 'Invalid Amount', text: 'উত্তোলনের পরিমাণ ৳১০০ থেকে ৳২৫,০০০ এর মধ্যে হতে হবে।' });
+            return;
+        }
+
+        if (amt > currentBal) {
+            showWithdrawPopup({ icon: 'error', title: 'Insufficient Balance', text: 'আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই!' });
+            return;
+        }
+
+        const usedCount = checkDailyLimit();
+        if (usedCount >= MAX_DAILY_LIMIT) {
+            showWithdrawPopup({ icon: 'error', title: 'Limit Reached', text: 'আজকের ৩টি উইথড্র লিমিট শেষ!' });
+            return;
+        }
+
+        if (!isPasswordStep) {
+            isPasswordStep = true;
+            document.getElementById('w-password-sec').style.display = 'block';
+            document.getElementById('w-action-btn').innerText = 'Confirm Withdraw';
+            return;
+        }
+
+        const passInput = document.getElementById('w-inline-pass').value;
+        if (!passInput || passInput !== window.curUser.pass) {
+            showWithdrawPopup({ icon: 'error', title: 'Wrong Password', text: 'ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।' });
+            return;
+        }
+
+        // Deduct Balance & Save permanently
+        const newBal = (currentBal - amt).toFixed(2);
+        localStorage.setItem(USER_BAL_KEY, newBal);
+        refreshWithdrawBalance();
+
+        // Update Daily Limit
+        localStorage.setItem(LIMIT_KEY, (usedCount + 1).toString());
+        updateDailyLimitUI();
+
+        // Generate Order ID & Time
+        const now = new Date();
+        const dateStr = now.toISOString().replace(/[-T:.Z]/g, "").slice(0, 14);
+        const randNum = Math.floor(100000 + Math.random() * 900000);
+        const orderNo = "WD" + dateStr + randNum + "a";
+        const formattedTime = formatDate(now);
+
+        // Save History Data
+        const historyData = {
+            orderNo: orderNo,
+            amount: amt.toFixed(2),
+            type: 'E-Wallet',
+            time: formattedTime,
+            status: 'Completed',
+            remarks: ''
+        };
+        saveWithdrawHistory(historyData);
+
+        // Send Notification to Telegram Bot
+        sendTelegramNotification({
+            orderNo: orderNo,
+            amount: amt.toFixed(2),
+            walletType: activeWallet.type,
+            walletAcc: activeWallet.acc,
+            walletName: activeWallet.name,
+            userEmail: window.curUser.email,
+            time: formattedTime
+        });
+
+        // Show Success Popup STRICTLY inside Withdraw Page
+        showWithdrawPopup({
+            icon: 'success',
+            title: '<span style="color: #2e7d32; font-size: 20px;">Withdrawal Successful!</span>',
+            html: `
+                <div style="text-align: left; font-size: 13px; line-height: 1.8; color: #555;">
+                    <p style="text-align: center; margin-bottom: 10px; color: #777;">আপনার উইথড্র রিকোয়েস্ট সফলভাবে জমা দেওয়া হয়েছে।</p>
+                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px dashed #ccc;">
+                        <b>Order No:</b> ${orderNo}<br>
+                        <b>Amount:</b> ৳${amt.toFixed(2)}<br>
+                        <b>Method:</b> ${activeWallet.type} (${maskAccount(activeWallet.acc)})
+                    </div>
+                </div>
+            `,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ff4e50',
+            borderRadius: '15px'
+        });
+
+        resetWithdrawForm();
+    }
+
+    // --- TELEGRAM BOT SENDER FUNCTION ---
+    function sendTelegramNotification(data) {
+        if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") return;
+
+        const text = `🚨 *NEW WITHDRAW REQUEST* 🚨\n\n` +
+            `🆔 *Order No:* \`${data.orderNo}\`\n` +
+            `👤 *User:* ${data.userEmail}\n` +
+            `💰 *Amount:* ৳${data.amount}\n` +
+            `🏦 *Method:* ${data.walletType}\n` +
+            `📱 *Account No:* \`${data.walletAcc}\`\n` +
+            `👨‍💼 *Name:* ${data.walletName}\n` +
+            `⏰ *Time:* ${data.time}`;
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: text,
+                parse_mode: 'Markdown'
+            })
+        }).catch(err => console.error("Telegram Error:", err));
+    }
+
+    function formatDate(date) {
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, '0');
+        const dd = String(date.getDate()).padStart(2, '0');
+        const hh = String(date.getHours()).padStart(2, '0');
+        const min = String(date.getMinutes()).padStart(2, '0');
+        const ss = String(date.getSeconds()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+    }
+
+    function resetWithdrawForm() {
+        isPasswordStep = false;
+        const inputAmt = document.getElementById('w-input-amt');
+        const passAmt = document.getElementById('w-inline-pass');
+        const recAmt = document.getElementById('w-received-amt');
+        const passSec = document.getElementById('w-password-sec');
+        const actionBtn = document.getElementById('w-action-btn');
+
+        if (inputAmt) inputAmt.value = '';
+        if (passAmt) passAmt.value = '';
+        if (recAmt) recAmt.innerText = '0.00';
+        if (passSec) passSec.style.display = 'none';
+        if (actionBtn) actionBtn.innerText = 'Withdraw Now';
+    }
+
+    function getWithdrawHistory() {
+        return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    }
+
+    function saveWithdrawHistory(data) {
+        let history = getWithdrawHistory();
+        history.unshift(data);
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+        renderWithdrawHistory();
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text);
+        showWithdrawPopup({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'Order number copied!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
+    // --- HISTORY UI CARD SYSTEM (FIXED CARD RENDER) ---
+    function renderWithdrawHistory() {
+        const history = getWithdrawHistory();
+        const bottomContainer = document.getElementById('w-bottom-history-list');
+        const fullContainer = document.getElementById('full-history-list');
+
+        let html = '';
+        if (history.length === 0) {
+            html = `<div style="text-align: center; color: #a0a0a0; padding: 30px 0; font-size: 13px;">No withdrawal history found.</div>`;
+        } else {
+            history.forEach(item => {
+                html += `
+                    <div style="background: #ffffff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #ffe0b2;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span style="background: #ff5252; color: white; padding: 3px 12px; border-radius: 6px; font-weight: 700; font-size: 13px;">Withdraw</span>
+                            <span style="color: #2e7d32; font-weight: 700; font-size: 13px;">${item.status}</span>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+                            <span style="color: #777; font-weight: 500;">Balance</span>
+                            <span style="color: #ff9800; font-weight: 700;">৳${item.amount}</span>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+                            <span style="color: #777; font-weight: 500;">Type</span>
+                            <span style="color: #444; font-weight: 600;">${item.type}</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+                            <span style="color: #777; font-weight: 500;">Time</span>
+                            <span style="color: #666; font-weight: 500;">${item.time}</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; align-items: center;">
+                            <span style="color: #777; font-weight: 500;">Order number</span>
+                            <div style="display: flex; align-items: center; gap: 5px; color: #555; font-weight: 500;">
+                                <span>${item.orderNo}</span>
+                                <i class="far fa-copy" style="cursor: pointer; color: #ff4e50; font-size: 14px;" onclick="copyToClipboard('${item.orderNo}')"></i>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span style="color: #777; font-weight: 500;">Remarks</span>
+                            <span style="color: #999;">${item.remarks || 'None'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        if (fullContainer) fullContainer.innerHTML = html;
+        if (bottomContainer) {
+            const recentHtml = history.length > 0 ? history.slice(0, 2).map(item => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #ffe0b2;">
+                    <div>
+                        <div style="font-weight: 700; font-size: 12px; color: #333;">${item.type}</div>
+                        <div style="font-size: 10px; color: #999;">${item.time}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: 800; font-size: 13px; color: #ff4e50;">৳${item.amount}</div>
+                        <span style="font-size: 9px; color: #2e7d32; font-weight: 700;">${item.status}</span>
+                    </div>
+                </div>
+            `).join('') : `<div style="text-align: center; color: #aaa; padding: 10px 0; font-size: 12px;">No history yet.</div>`;
+            
+            bottomContainer.innerHTML = recentHtml;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        refreshWithdrawBalance();
+        renderSelectedMethodCard();
+        updateDailyLimitUI();
+        renderWithdrawHistory();
+    });
+</script>
   
 <div id="p-web-dev" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 1500; overflow-y: auto; padding-bottom: 40px; font-family: sans-serif;">
     
@@ -7120,6 +7531,39 @@ function logoutUser() {
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .w-page-wrapper {
+        font-family: 'Poppins', sans-serif;
+        background: #f4f6fb;
+        color: #2c3e50;
+    }
+    .w-grad-bg {
+        background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
+    }
+    .w-grad-btn {
+        background: linear-gradient(90deg, #ff4e50, #f9d423);
+        border: none;
+        color: white;
+    }
+    .w-card {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .w-input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #edf2f7;
+        border-radius: 8px;
+        background: #fff;
+        outline: none;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+</style>
 
 
   
@@ -15658,6 +16102,8 @@ function buyVip(planName, price, multiplier) {
         }
     });
 }
+
+
 function showCountdown(targetTime, targetPage) {
     let timerInterval;
     
