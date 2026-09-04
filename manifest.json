@@ -1,1 +1,64 @@
+{
 
+
+
+  "short_name": "Nagad",
+
+
+
+  "name": "Nagad",
+
+
+
+  "icons": [
+
+
+
+    {
+
+
+      "src": "
+
+https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg
+",
+
+
+
+
+      "type": "image/png",
+
+
+
+      "sizes": "512x512"
+
+
+
+    }
+
+
+
+  ],
+
+
+
+"start_url": "./index.html",
+
+
+
+  "background_color": "#FFFFFF",
+
+
+
+  "display": "standalone",
+
+
+
+  "scope": "./",
+
+
+
+  "theme_color": "#FFFFFF"
+
+
+
+}
