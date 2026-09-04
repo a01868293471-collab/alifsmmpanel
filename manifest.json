@@ -1,61 +1,16 @@
 {
-
-
-
   "short_name": "Nagad",
-
-
-
   "name": "Nagad",
-
-
-
   "icons": [
-
-
-
     {
-
-
       "src": "https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg",
-
-
-
-
-      "type": "image/png",
-
-
-
+      "type": "image/jpeg",
       "sizes": "512x512"
-
-
-
     }
-
-
-
   ],
-
-
-
-"start_url": "./index.html",
-
-
-
+  "start_url": "./index.html",
   "background_color": "#F14A28",
-
-
-
   "display": "standalone",
-
-
-
   "scope": "./",
-
-
-
   "theme_color": "#F14A28"
-
-
-
 }
