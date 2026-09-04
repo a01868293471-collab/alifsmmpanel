@@ -6,14 +6,14 @@
     <title>Nagad App Home Page</title>
     <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="manifest" href="manifest.json">
+    
     <style>
         :root {
             --nagad-primary: #F58220;
             --nagad-deep: #E84A17;
             --nagad-light: #FFB347;
             --white: #FFFFFF;
-            --text: #222222;
+            --text-light: #4B5563; /* গাঢ় কালো পরিবর্তন করে হালকা টেক্সট কালার */
             --bg: #F5F6F8;
             --border: #E5E7EB;
             --success: #16A34A;
@@ -43,7 +43,7 @@
             max-width: 450px;
             background-color: var(--bg);
             min-height: 100vh;
-            padding-bottom: 70px; /* Space for bottom nav */
+            padding-bottom: 70px;
             position: relative;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
@@ -57,11 +57,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            padding-bottom: 25px; /* হালকা উপরে তোলার জন্য নিচ থেকে প্যাডিং বাড়ানো হয়েছে */
+            padding-bottom: 25px;
             overflow: hidden;
         }
 
-        /* ব্যাকগ্রাউন্ড ইমেজের জন্য স্টাইল */
         .header-bg-img {
             position: absolute;
             top: 0;
@@ -72,7 +71,6 @@
             z-index: 1;
         }
 
-        /* আপনার দেওয়া বেল আইকনের CSS */
         .bell-icon {
             position: absolute;
             top: 18px;
@@ -124,7 +122,7 @@
         /* Sections Grid Layout */
         .section-title {
             font-size: 14px;
-            color: #555555;
+            color: #666666;
             font-weight: 700;
             padding: 15px 20px 8px 20px;
         }
@@ -132,8 +130,13 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            padding: 0 15px;
+            gap: 8px;
+            padding: 0 10px;
+        }
+
+        /* প্রথম ৮টি বাটনের পরে কিছুটা ফাঁকা রাখার জন্য স্পেশাল মার্জিন */
+        .services-grid.services-section {
+            margin-bottom: 20px;
         }
 
         .service-card {
@@ -142,48 +145,57 @@
             align-items: center;
             text-align: center;
             cursor: pointer;
+            margin-bottom: 8px;
         }
 
         .service-icon-box {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, var(--nagad-primary) 0%, var(--nagad-deep) 100%);
-            border-radius: 18px;
+            width: 68px;
+            height: 68px;
+            background: transparent;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 26px;
-            box-shadow: 0 4px 8px rgba(232, 74, 23, 0.25);
-            margin-bottom: 6px;
+            box-shadow: none;
+            margin-bottom: 4px;
             transition: transform 0.1s;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .service-icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .service-card:active .service-icon-box {
             transform: scale(0.95);
         }
 
+        /* বাটনের নামগুলো হালকা করার জন্য স্টাইল */
         .service-name {
-            font-size: 11px;
-            color: var(--text);
-            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
             line-height: 1.2;
         }
 
-        /* Cover Banner Slider Section */
+        /* Cover Banner Slider Section - চার কোনা এবং হালকা চিকন */
         .banner-container {
             width: 100%;
-            padding: 15px;
+            padding: 10px 15px;
         }
 
         .banner-box {
             width: 100%;
-            height: 130px;
+            height: 110px; /* উচ্চতা কিছুটা কমিয়ে চিকন করা হয়েছে */
             background-color: #f0f0f0;
-            border-radius: 10px;
+            border-radius: 2px; /* চারকোনা লুক দেওয়ার জন্য রেডিয়াস কমানো হয়েছে */
             overflow: hidden;
             position: relative;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .banner-img {
@@ -215,42 +227,59 @@
             border-radius: 10px;
         }
 
-        /* Bottom Fixed Navigation Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 450px;
-            height: 60px;
-            background-color: var(--white);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 1px solid var(--border);
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 100;
-        }
+/* Bottom Fixed Navigation Bar */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 450px;
+    height: 62px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #EAEAEA;
+    box-shadow: 0 -1px 5px rgba(0,0,0,0.03);
+    z-index: 100;
+}
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #777777;
-            text-decoration: none;
-            font-size: 11px;
-            cursor: pointer;
-        }
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #777777; /* নিষ্ক্রিয় বাটনের টেক্সট ও আইকন কালার */
+    text-decoration: none;
+    font-size: 11px;
+    cursor: pointer;
+    flex: 1;
+}
 
-        .nav-item i {
-            font-size: 18px;
-            margin-bottom: 3px;
-        }
+/* আইকন সাইজ ও মার্জিন */
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 4px;
+    color: #666666;
+}
 
-        .nav-item.active {
-            color: var(--nagad-deep);
-            font-weight: 700;
-        }
+/* হোম বাটনের জন্য ছোট লোগো ইমেজ */
+.nav-icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 3px;
+}
 
+/* সক্রিয় (Active/Home) বাটন স্টাইল */
+.nav-item.active {
+    color: #E84A17; /* নগদের লাল/কমলা কালার */
+    font-weight: bold;
+}
+
+.nav-item.active span {
+    color: #E84A17;
+}
         /* Spinner Styles */
         .spinner {
             width: 15px;
@@ -274,28 +303,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-/* Logo Box Container */
-.btn-logo-box {
-    width: 22px; /* প্রয়োজন অনুযায়ী ২২px বা ২৪px রাখতে পারেন */
-    height: 22px;
-    border-radius: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    overflow: hidden; /* ছবি বক্সের বাইরে যেতে পারবে না */
-}
+        /* Logo Box Container */
+        .btn-logo-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
 
-/* ইমেজের সঠিক সাইজ ধরে রাখার জন্য এই অংশটুকু যুক্ত করুন */
-.btn-logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ইমেজটি যেন সুন্দরভাবে গোল হয়ে ফিট হয় */
-    border-radius: 50%;
-    display: block;
-}
-      
+        .btn-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -304,12 +331,8 @@
         
         <!-- ১. মেইন নগদ হেডার -->
         <div class="nagad-header">
-            <img src="
+            <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033247_632.png" alt="Nagad Header" class="header-bg-img">
 
-            https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033247_632.png
-              " alt="Nagad Header" class="header-bg-img">
-
-            <!-- আপনার দেওয়া বেল আইকন -->
             <div class="bell-icon">
                 <i class="far fa-bell"></i>
             </div>
@@ -318,67 +341,91 @@
             <div class="balance-btn-container" id="balanceBtnContainer">
                 <div class="balance-btn" id="balanceBtn" onclick="checkBalance()">
                     <div class="btn-logo-box" id="btnLogo">
-    <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="Logo" class="btn-logo-img">
-</div>
-                  <div class="balance-text" id="balanceText">ব্যালেন্স জানতে ট্যাপ করুন</div>
+                        <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="Logo" class="btn-logo-img">
+                    </div>
+                    <div class="balance-text" id="balanceText">ব্যালেন্স জানতে ট্যাপ করুন</div>
                 </div>
             </div>
         </div>
 
-        <!-- ২. সার্ভিস সমূহ -->
+        <!-- ২. সার্ভিস সমূহ (৮টি বাটন) -->
         <div class="section-title">সার্ভিস সমূহ</div>
-        <div class="services-grid">
+        <div class="services-grid services-section">
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-paper-plane"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_071155_011.png" alt="সেন্ড মানি" class="service-icon-img">
+                </div>
                 <div class="service-name">সেন্ড মানি</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-hand-holding-usd"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072543_836.png" alt="ক্যাশ আউট" class="service-icon-img">
+                </div>
                 <div class="service-name">ক্যাশ আউট</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-mobile-alt"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072608_596.png" alt="মোবাইল রিচার্জ" class="service-icon-img">
+                </div>
                 <div class="service-name">মোবাইল রিচার্জ</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-plus-circle"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072625_054.png" alt="অ্যাড মানি" class="service-icon-img">
+                </div>
                 <div class="service-name">অ্যাড মানি</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-exchange-alt"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072644_033.png" alt="ট্রান্সফার মানি" class="service-icon-img">
+                </div>
                 <div class="service-name">ট্রান্সফার মানি</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-shield-alt"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072700_440.png" alt="ইনস্যুরেন্স পলিসি" class="service-icon-img">
+                </div>
                 <div class="service-name">ইনস্যুরেন্স পলিসি</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-car"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072722_393.png" alt="টোল" class="service-icon-img">
+                </div>
                 <div class="service-name">টোল</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-subway"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072746_286.png" alt="মেট্রো র‍্যাপিড পাস" class="service-icon-img">
+                </div>
                 <div class="service-name">মেট্রো র‍্যাপিড পাস</div>
             </div>
         </div>
 
-        <!-- ৩. পেমেন্ট সেকশন -->
+        <!-- ৩. পেমেন্ট সেকশন (ফাঁকা স্পেসের পর) -->
         <div class="section-title">পেমেন্ট</div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-shopping-cart"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072842_956.png" alt="মার্চেন্ট পে" class="service-icon-img">
+                </div>
                 <div class="service-name">মার্চেন্ট পে</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072902_828.png" alt="বিল পে" class="service-icon-img">
+                </div>
                 <div class="service-name">বিল পে</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-clock"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072923_794.png" alt="ইএমআই পেমেন্ট" class="service-icon-img">
+                </div>
                 <div class="service-name">ইএমআই পেমেন্ট</div>
             </div>
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-th-large"></i></div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072942_283.png" alt="অন্যান্য সেবাসমূহ" class="service-icon-img">
+                </div>
                 <div class="service-name">অন্যান্য সেবাসমূহ</div>
             </div>
         </div>
@@ -399,44 +446,60 @@
         <div class="section-title">অন্যান্য</div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-headset"></i></div>
-                <div class="service-name">১৬১৬৭</div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073126_940.png" alt="যোগাযোগ করুন" class="service-icon-img">
+                </div>
+                <div class="service-name">যোগাযোগ করুন</div>
             </div>
+            
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-mosque"></i></div>
-                <div class="service-name">ইসলামিক</div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073143_469.png" alt="ইসলামিক" class="service-icon-img">
+                </div>
+                <div class="service-name">যাকাত ক্যালকুলেটর</div>
             </div>
+
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-info-circle"></i></div>
-                <div class="service-name">তথ্য</div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073204_043.png" alt="তথ্য" class="service-icon-img">
+                </div>
+                <div class="service-name">লিমিট ও চার্জ</div>
             </div>
+
             <div class="service-card">
-                <div class="service-icon-box"><i class="fas fa-gift"></i></div>
-                <div class="service-name">অফার</div>
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073225_023.png" alt="অফার" class="service-icon-img">
+                </div>
+                <div class="service-name">ডোনেশন</div>
             </div>
         </div>
 
-        <!-- ৬. বটম নেভিগেশন বার -->
-        <div class="bottom-nav">
-            <div class="nav-item active">
-                <i class="fas fa-home"></i>
-                <span>হোম</span>
-            </div>
-            <div class="nav-item">
-                <i class="fas fa-list-alt"></i>
-                <span>লেনদেন</span>
-            </div>
-            <div class="nav-item">
-                <i class="fas fa-users"></i>
-                <span>কনট্যাক্টস</span>
-            </div>
-            <div class="nav-item">
-                <i class="fas fa-bars"></i>
-                <span>আমার নগদ</span>
-            </div>
-        </div>
-
+     <!-- ৬. বটম নেভিগেশন বার -->
+<div class="bottom-nav">
+    <!-- ১. হোম (আপনাদের নির্দিষ্ট করা লোগো/ছবি দিয়ে) -->
+    <div class="nav-item active">
+        <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="হোম" class="nav-icon-img">
+        <span>হোম</span>
     </div>
+
+    <!-- ২. লেনদেন (ফোটোর মতো লিস্ট আইকন) -->
+    <div class="nav-item">
+        <i class="far fa-list-alt"></i>
+        <span>লেনদেন</span>
+    </div>
+
+    <!-- ৩. কনট্যাক্টস (ফোটোর মতো পিপল/ইউজারস আইকন) -->
+    <div class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>কনট্যাক্টস</span>
+    </div>
+
+    <!-- ৪. আমার নগদ (ফোটোর মতো মেনু আইকন) -->
+    <div class="nav-item">
+        <i class="fas fa-bars"></i>
+        <span>আমার নগদ</span>
+    </div>
+</div>
 
     <!-- JavaScript Logics -->
     <script>
