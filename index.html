@@ -13,7 +13,7 @@
             --nagad-deep: #E84A17;
             --nagad-light: #FFB347;
             --white: #FFFFFF;
-            --text-light: #4B5563; /* গাঢ় কালো পরিবর্তন করে হালকা টেক্সট কালার */
+            --text-light: #717171; /* হালকা করার জন্য আপডেট করা কালার */
             --bg: #F5F6F8;
             --border: #E5E7EB;
             --success: #16A34A;
@@ -43,7 +43,7 @@
             max-width: 450px;
             background-color: var(--bg);
             min-height: 100vh;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
             position: relative;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
@@ -96,7 +96,7 @@
 
         .balance-btn {
             background-color: var(--white);
-            height: 30px;
+            height: 32px;
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -122,19 +122,18 @@
         /* Sections Grid Layout */
         .section-title {
             font-size: 14px;
-            color: #666666;
-            font-weight: 700;
+            color: #888888; /* টাইটেল টেক্সট হালকা করা হয়েছে */
+            font-weight: 600;
             padding: 15px 20px 8px 20px;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            padding: 0 10px;
+            gap: 12px;
+            padding: 0 12px;
         }
 
-        /* প্রথম ৮টি বাটনের পরে কিছুটা ফাঁকা রাখার জন্য স্পেশাল মার্জিন */
         .services-grid.services-section {
             margin-bottom: 20px;
         }
@@ -149,15 +148,15 @@
         }
 
         .service-icon-box {
-            width: 68px;
-            height: 68px;
+            width: 78px;
+            height: 78px;
             background: transparent;
             border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: none;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             transition: transform 0.1s;
             overflow: hidden;
             padding: 0;
@@ -174,15 +173,14 @@
             transform: scale(0.95);
         }
 
-        /* বাটনের নামগুলো হালকা করার জন্য স্টাইল */
         .service-name {
             font-size: 12px;
-            color: var(--text-light);
-            font-weight: 500;
+            color: var(--text-light); /* হালকা টেক্সট কালার */
+            font-weight: 400; /* হালকা ওয়েট */
             line-height: 1.2;
         }
 
-        /* Cover Banner Slider Section - চার কোনা এবং হালকা চিকন */
+        /* Cover Banner Slider Section */
         .banner-container {
             width: 100%;
             padding: 10px 15px;
@@ -190,9 +188,9 @@
 
         .banner-box {
             width: 100%;
-            height: 110px; /* উচ্চতা কিছুটা কমিয়ে চিকন করা হয়েছে */
+            height: 110px;
             background-color: #f0f0f0;
-            border-radius: 2px; /* চারকোনা লুক দেওয়ার জন্য রেডিয়াস কমানো হয়েছে */
+            border-radius: 2px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -227,59 +225,59 @@
             border-radius: 10px;
         }
 
-/* Bottom Fixed Navigation Bar */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    max-width: 450px;
-    height: 62px;
-    background-color: var(--white);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid #EAEAEA;
-    box-shadow: 0 -1px 5px rgba(0,0,0,0.03);
-    z-index: 100;
-}
+        /* Bottom Fixed Navigation Bar (বড় করা হয়েছে) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 450px;
+            height: 68px; /* হাইট বাড়ানো হয়েছে */
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #EAEAEA;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
 
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #777777; /* নিষ্ক্রিয় বাটনের টেক্সট ও আইকন কালার */
-    text-decoration: none;
-    font-size: 11px;
-    cursor: pointer;
-    flex: 1;
-}
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #888888; /* হালকা করার জন্য কালার আপডেট */
+            text-decoration: none;
+            font-size: 11px; /* লেখা বড় করা হয়েছে */
+            font-weight: 400;
+            letter-spacing: -0.2px;
+            cursor: pointer;
+            flex: 1;
+        }
 
-/* আইকন সাইজ ও মার্জিন */
-.nav-item i {
-    font-size: 20px;
-    margin-bottom: 4px;
-    color: #666666;
-}
+        .nav-item i {
+            font-size: 22px; /* আইকন বড় করা হয়েছে */
+            margin-bottom: 3px;
+            color: #777777;
+        }
 
-/* হোম বাটনের জন্য ছোট লোগো ইমেজ */
-.nav-icon-img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-bottom: 3px;
-}
+        .nav-icon-img {
+            width: 26px; /* লোগো আইকন বড় করা হয়েছে */
+            height: 26px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 3px;
+        }
 
-/* সক্রিয় (Active/Home) বাটন স্টাইল */
-.nav-item.active {
-    color: #E84A17; /* নগদের লাল/কমলা কালার */
-    font-weight: bold;
-}
+        .nav-item.active {
+            color: #E84A17;
+            font-weight: 500;
+        }
 
-.nav-item.active span {
-    color: #E84A17;
-}
+        .nav-item.active span {
+            color: #E84A17;
+        }
+
         /* Spinner Styles */
         .spinner {
             width: 15px;
@@ -401,7 +399,7 @@
             </div>
         </div>
 
-        <!-- ৩. পেমেন্ট সেকশন (ফাঁকা স্পেসের পর) -->
+        <!-- ৩. পেমেন্ট সেকশন -->
         <div class="section-title">পেমেন্ট</div>
         <div class="services-grid">
             <div class="service-card">
@@ -474,32 +472,30 @@
             </div>
         </div>
 
-     <!-- ৬. বটম নেভিগেশন বার -->
-<div class="bottom-nav">
-    <!-- ১. হোম (আপনাদের নির্দিষ্ট করা লোগো/ছবি দিয়ে) -->
-    <div class="nav-item active">
-        <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="হোম" class="nav-icon-img">
-        <span>হোম</span>
-    </div>
+        <!-- ৬. বটম নেভিগেশন বার -->
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="হোম" class="nav-icon-img">
+                <span>হোম</span>
+            </div>
 
-    <!-- ২. লেনদেন (ফোটোর মতো লিস্ট আইকন) -->
-    <div class="nav-item">
-        <i class="far fa-list-alt"></i>
-        <span>লেনদেন</span>
-    </div>
+            <div class="nav-item">
+                <i class="far fa-list-alt"></i>
+                <span>লেনদেন</span>
+            </div>
 
-    <!-- ৩. কনট্যাক্টস (ফোটোর মতো পিপল/ইউজারস আইকন) -->
-    <div class="nav-item">
-        <i class="fas fa-users"></i>
-        <span>কনট্যাক্টস</span>
-    </div>
+            <div class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>কনট্যাক্টস</span>
+            </div>
 
-    <!-- ৪. আমার নগদ (ফোটোর মতো মেনু আইকন) -->
-    <div class="nav-item">
-        <i class="fas fa-bars"></i>
-        <span>আমার নগদ</span>
+            <div class="nav-item">
+                <i class="fas fa-bars"></i>
+                <span>আমার নগদ</span>
+            </div>
+        </div>
+
     </div>
-</div>
 
     <!-- JavaScript Logics -->
     <script>
