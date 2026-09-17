@@ -43,7 +43,7 @@
             max-width: 450px;
             background-color: var(--bg);
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
             position: relative;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
@@ -295,59 +295,6 @@
             border-radius: 10px;
         }
 
-        /* Bottom Fixed Navigation Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 450px;
-            height: 68px;
-            background-color: var(--white);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 1px solid #EAEAEA;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #888888;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: -0.2px;
-            cursor: pointer;
-            flex: 1;
-        }
-
-        .nav-item i {
-            font-size: 22px;
-            margin-bottom: 3px;
-            color: #777777;
-        }
-
-        .nav-icon-img {
-            width: 26px;
-            height: 26px;
-            object-fit: contain;
-            border-radius: 50%;
-            margin-bottom: 3px;
-        }
-
-        .nav-item.active {
-            color: #E84A17;
-            font-weight: 500;
-        }
-
-        .nav-item.active span {
-            color: #E84A17;
-        }
-
         /* Spinner Styles */
         .spinner {
             width: 15px;
@@ -390,6 +337,83 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
+        }
+
+        /* Bottom Fixed Navigation Bar (Updated) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 450px;
+            height: 65px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #EAEAEA;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            color: #666666;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 2px;
+            color: #666666;
+        }
+
+        .nav-icon-img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            margin-bottom: 2px;
+        }
+
+        .nav-item.active span {
+            color: #e63917;
+            font-weight: bold;
+        }
+
+        /* QR Code Center Button Floating */
+        .nav-item.qr-item {
+            overflow: visible;
+        }
+
+        .qr-btn {
+            position: absolute;
+            top: -38px;
+            width: 62px;
+            height: 62px;
+            background-color: #e63917;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .qr-btn-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .qr-item span {
+            margin-top: 28px;
         }
     </style>
 </head>
@@ -554,7 +578,7 @@
             </div>
         </div>
 
-        <!-- ৬. বটম নেভিগেশন বার -->
+        <!-- বটম নেভিগেশন বার -->
         <div class="bottom-nav">
             <div class="nav-item active">
                 <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="হোম" class="nav-icon-img">
@@ -566,17 +590,24 @@
                 <span>লেনদেন</span>
             </div>
 
-            <div class="nav-item">
-                <i class="fas fa-users"></i>
-                <span>কনট্যাক্টস</span>
+            <!-- মাঝখানের বড় QR স্ক্যানার বাটন -->
+            <div class="nav-item qr-item">
+                <div class="qr-btn">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260917_211158_101.jpg" alt="স্ক্যান QR" class="qr-btn-img">
+                </div>
+                <span>স্ক্যান QR</span>
             </div>
 
             <div class="nav-item">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-users"></i>
+                <span>কন্ট্যাক্টস</span>
+            </div>
+
+            <div class="nav-item">
+                <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260917_211107_242.png" alt="আমার নগদ" class="nav-icon-img">
                 <span>আমার নগদ</span>
             </div>
         </div>
-
     </div>
 
     <!-- JavaScript Logics -->
@@ -585,7 +616,6 @@
         let isShowing = false;
         let timeoutId = null;
         
-        // Double Click Detection
         let clickCount = 0;
         let singleClickTimer = null;
 
@@ -595,12 +625,12 @@
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(() => {
                     clickCount = 0;
-                    checkBalance(); // ১ বার ক্লিক করলে ব্যালেন্স চেক হবে
+                    checkBalance();
                 }, 300);
             } else if (clickCount === 2) {
                 clearTimeout(singleClickTimer);
                 clickCount = 0;
-                openBalanceModal(); // ২ বার ক্লিক করলে পপআপ ওপেন হবে
+                openBalanceModal();
             }
         }
 
@@ -626,7 +656,6 @@
                 </div>
             `;
 
-            // LocalStorage থেকে ব্যালেন্স আনা (যদি না থাকে তবে ডিফল্ট মান দেখাবে)
             const savedBalance = localStorage.getItem('nagad_balance') || '10,767.36';
 
             timeoutId = setTimeout(() => {
@@ -659,7 +688,6 @@
             balanceText.innerHTML = 'ব্যালেন্স জানতে ট্যাপ করুন';
         }
 
-        /* Modal Logics */
         function openBalanceModal() {
             const currentVal = localStorage.getItem('nagad_balance') || '10,767.36';
             document.getElementById('customBalanceInput').value = currentVal;
@@ -676,11 +704,10 @@
                 localStorage.setItem('nagad_balance', inputVal);
                 closeBalanceModal();
                 resetButton();
-                alert('ব্যালেন্স আপডেট করা হয়েছে!');
+                alert('ব্যালেন্স আপডেট করা হয়েছে!');
             }
         }
 
-        /* ব্যানার স্লাইডার */
         const banners = [
             "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_114411_259.png",
             "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_114523_988.png",
