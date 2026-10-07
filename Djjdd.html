@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagad</title>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --nagad-primary: #F58220;
+            --nagad-deep: #E84A17;
+            --nagad-light: #FFB347;
+            --white: #FFFFFF;
+            --text-light: #717171;
+            --bg: #F5F6F8;
+            --border: #E5E7EB;
+            --success: #16A34A;
+            --danger: #DC2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'SolaimanLipi', 'Kalpurush', 'Hind Siliguri', sans-serif;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* App Main Wrapper */
+        .app-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: var(--bg);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        /* Top Nagad Header */
+        .nagad-header {
+            width: 100%;
+            height: 185px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .header-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .bell-icon {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            color: var(--white);
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Balance Button Area */
+        .balance-btn-container {
+            width: 50%;
+            max-width: 250px;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .balance-btn-container.small-width {
+            width: 35%;
+            max-width: 170px;
+        }
+
+        .balance-btn {
+            background-color: var(--white);
+            height: 32px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            padding: 3px 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.1s ease;
+        }
+
+        .balance-btn:active {
+            transform: scale(0.98);
+        }
+
+        .balance-text {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--nagad-deep);
+            font-size: 13px;
+            font-weight: 700;
+            padding-right: 4px;
+        }
+
+        /* Custom Modal / Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-card h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .modal-card input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-card input:focus {
+            border-color: var(--nagad-deep);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 8px 0;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .modal-btn.save {
+            background-color: var(--nagad-deep);
+            color: #fff;
+        }
+
+        .modal-btn.cancel {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        /* Sections Grid Layout */
+        .section-title {
+            font-size: 14px;
+            color: #888888;
+            font-weight: 600;
+            padding: 15px 20px 8px 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 0 12px;
+        }
+
+        .services-grid.services-section {
+            margin-bottom: 20px;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .service-icon-box {
+            width: 78px;
+            height: 78px;
+            background: transparent;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+            margin-bottom: 6px;
+            transition: transform 0.1s;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .service-icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .service-card:active .service-icon-box {
+            transform: scale(0.95);
+        }
+
+        .service-name {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* Cover Banner Slider Section */
+        .banner-container {
+            width: 100%;
+            padding: 10px 15px;
+        }
+
+        .banner-box {
+            width: 100%;
+            height: 110px;
+            background-color: #f0f0f0;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background-color: #ccc;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--nagad-deep);
+            width: 16px;
+            border-radius: 10px;
+        }
+
+        /* Spinner Styles */
+        .spinner {
+            width: 15px;
+            height: 15px;
+            border: 2.5px dotted var(--nagad-deep);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .show-amount {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(2px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo Box Container */
+        .btn-logo-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .btn-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* Bottom Fixed Navigation Bar (Updated) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 450px;
+            height: 65px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #EAEAEA;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            color: #666666;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 2px;
+            color: #666666;
+        }
+
+        .nav-icon-img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            margin-bottom: 2px;
+        }
+
+        .nav-item.active span {
+            color: #e63917;
+            font-weight: bold;
+        }
+
+        /* QR Code Center Button Floating */
+        .nav-item.qr-item {
+            overflow: visible;
+        }
+
+        .qr-btn {
+            position: absolute;
+            top: -38px;
+            width: 62px;
+            height: 62px;
+            background-color: #e63917;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .qr-btn-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .qr-item span {
+            margin-top: 28px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- ১. মেইন নগদ হেডার -->
+        <div class="nagad-header">
+            <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033247_632.png" alt="Nagad Header" class="header-bg-img">
+
+            <div class="bell-icon">
+                <i class="far fa-bell"></i>
+            </div>
+
+            <!-- ব্যালেন্স বাটন -->
+            <div class="balance-btn-container" id="balanceBtnContainer">
+                <div class="balance-btn" id="balanceBtn" onclick="handleBalanceClick()">
+                    <div class="btn-logo-box" id="btnLogo">
+                        <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="Logo" class="btn-logo-img">
+                    </div>
+                    <div class="balance-text" id="balanceText">ব্যালেন্স জানতে ট্যাপ করুন</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ব্যালেন্স সেট করার পপআপ (Modal) -->
+        <div class="modal-overlay" id="balanceModal">
+            <div class="modal-card">
+                <h3>নতুন ব্যালেন্স লিখুন</h3>
+                <input type="text" id="customBalanceInput" placeholder="যেমন: 10,767.36">
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" onclick="closeBalanceModal()">বাতিল</button>
+                    <button class="modal-btn save" onclick="saveCustomBalance()">সেভ করুন</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ২. সার্ভিস সমূহ (৮টি বাটন) -->
+        <div class="section-title">সার্ভিস সমূহ</div>
+        <div class="services-grid services-section">
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_071155_011.png" alt="সেন্ড মানি" class="service-icon-img">
+                </div>
+                <div class="service-name">সেন্ড মানি</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072543_836.png" alt="ক্যাশ আউট" class="service-icon-img">
+                </div>
+                <div class="service-name">ক্যাশ আউট</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072608_596.png" alt="মোবাইল রিচার্জ" class="service-icon-img">
+                </div>
+                <div class="service-name">মোবাইল রিচার্জ</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072625_054.png" alt="অ্যাড মানি" class="service-icon-img">
+                </div>
+                <div class="service-name">অ্যাড মানি</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072644_033.png" alt="ট্রান্সফার মানি" class="service-icon-img">
+                </div>
+                <div class="service-name">ট্রান্সফার মানি</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072700_440.png" alt="ইনস্যুরেন্স পলিসি" class="service-icon-img">
+                </div>
+                <div class="service-name">ইনস্যুরেন্স পলিসি</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072722_393.png" alt="টোল" class="service-icon-img">
+                </div>
+                <div class="service-name">টোল</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072746_286.png" alt="মেট্রো র‍্যাপিড পাস" class="service-icon-img">
+                </div>
+                <div class="service-name">মেট্রো র‍্যাপিড পাস</div>
+            </div>
+        </div>
+
+        <!-- ৩. পেমেন্ট সেকশন -->
+        <div class="section-title">পেমেন্ট</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072842_956.png" alt="মার্চেন্ট পে" class="service-icon-img">
+                </div>
+                <div class="service-name">মার্চেন্ট পে</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072902_828.png" alt="বিল পে" class="service-icon-img">
+                </div>
+                <div class="service-name">বিল পে</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072923_794.png" alt="ইএমআই পেমেন্ট" class="service-icon-img">
+                </div>
+                <div class="service-name">ইএমআই পেমেন্ট</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_072942_283.png" alt="অন্যান্য সেবাসমূহ" class="service-icon-img">
+                </div>
+                <div class="service-name">অন্যান্য সেবাসমূহ</div>
+            </div>
+        </div>
+
+        <!-- ৪. কভার ফটো / ব্যানার স্লাইডার সেকশন -->
+        <div class="banner-container">
+            <div class="banner-box">
+                <img id="bannerImg" src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_115413_802.png" alt="Offer Banner" class="banner-img">
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- ৫. অন্যান্য সেকশন -->
+        <div class="section-title">অন্যান্য</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073126_940.png" alt="যোগাযোগ করুন" class="service-icon-img">
+                </div>
+                <div class="service-name">যোগাযোগ করুন</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073143_469.png" alt="ইসলামিক" class="service-icon-img">
+                </div>
+                <div class="service-name">যাকাত ক্যালকুলেটর</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073204_043.png" alt="তথ্য" class="service-icon-img">
+                </div>
+                <div class="service-name">লিমিট ও চার্জ</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_073225_023.png" alt="অফার" class="service-icon-img">
+                </div>
+                <div class="service-name">ডোনেশন</div>
+            </div>
+        </div>
+
+        <!-- বটম নেভিগেশন বার -->
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <img src="https://raw.githubusercontent.com/a01868293471-collab/Zizz-tfd/refs/heads/main/IMG_20260904_033909_121.jpg" alt="হোম" class="nav-icon-img">
+                <span>হোম</span>
+            </div>
+
+            <div class="nav-item">
+                <i class="far fa-list-alt"></i>
+                <span>লেনদেন</span>
+            </div>
+
+            <!-- মাঝখানের বড় QR স্ক্যানার বাটন -->
+            <div class="nav-item qr-item">
+                <div class="qr-btn">
+                    <img src="https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260917_211158_101.jpg" alt="স্ক্যান QR" class="qr-btn-img">
+                </div>
+                <span>স্ক্যান QR</span>
+            </div>
+
+            <div class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>কন্ট্যাক্টস</span>
+            </div>
+
+      <div class="nav-item"> 
+  <svg class="nav-icon-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"> 
+    <line x1="3" y1="6" x2="21" y2="6"></line> 
+    <line x1="3" y1="12" x2="21" y2="12"></line> 
+    <line x1="10" y1="18" x2="21" y2="18"></line> 
+  </svg> 
+  <span>আমার নগদ</span> 
+</div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logics -->
+    <script>
+        let isChecking = false;
+        let isShowing = false;
+        let timeoutId = null;
+        
+        let clickCount = 0;
+        let singleClickTimer = null;
+
+        function handleBalanceClick() {
+            clickCount++;
+
+            if (clickCount === 1) {
+                singleClickTimer = setTimeout(() => {
+                    clickCount = 0;
+                    checkBalance();
+                }, 300);
+            } else if (clickCount === 2) {
+                clearTimeout(singleClickTimer);
+                clickCount = 0;
+                openBalanceModal();
+            }
+        }
+
+        function checkBalance() {
+            if (isChecking) return;
+
+            const btnLogo = document.getElementById('btnLogo');
+            const balanceText = document.getElementById('balanceText');
+            const container = document.getElementById('balanceBtnContainer');
+
+            if (isShowing) {
+                clearTimeout(timeoutId);
+                resetButton();
+                return;
+            }
+
+            isChecking = true;
+            btnLogo.style.display = 'none';
+            balanceText.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <div class="spinner"></div>
+                    <span style="color: var(--nagad-deep); font-weight: 600; font-size: 12px;">ব্যালেন্স চেক করা হচ্ছে</span>
+                </div>
+            `;
+
+            const savedBalance = localStorage.getItem('nagad_balance') || '10,767.36';
+
+            timeoutId = setTimeout(() => {
+                isChecking = false;
+                isShowing = true;
+
+                container.classList.add('small-width');
+                btnLogo.style.display = 'flex';
+                balanceText.className = "balance-text show-amount";
+                balanceText.innerHTML = `<span style="color: var(--nagad-deep); font-size: 13px; font-weight: 800;">${savedBalance}  টাকা</span>`;
+
+                timeoutId = setTimeout(() => {
+                    resetButton();
+                }, 5000);
+
+            }, 400);
+        }
+
+        function resetButton() {
+            const btnLogo = document.getElementById('btnLogo');
+            const balanceText = document.getElementById('balanceText');
+            const container = document.getElementById('balanceBtnContainer');
+
+            isChecking = false;
+            isShowing = false;
+
+            container.classList.remove('small-width');
+            btnLogo.style.display = 'flex';
+            balanceText.className = "balance-text";
+            balanceText.innerHTML = 'ব্যালেন্স জানতে ট্যাপ করুন';
+        }
+
+        function openBalanceModal() {
+            const currentVal = localStorage.getItem('nagad_balance') || '10,767.36';
+            document.getElementById('customBalanceInput').value = currentVal;
+            document.getElementById('balanceModal').style.display = 'flex';
+        }
+
+        function closeBalanceModal() {
+            document.getElementById('balanceModal').style.display = 'none';
+        }
+
+        function saveCustomBalance() {
+            const inputVal = document.getElementById('customBalanceInput').value.trim();
+            if (inputVal !== "") {
+                localStorage.setItem('nagad_balance', inputVal);
+                closeBalanceModal();
+                resetButton();
+                alert('ব্যালেন্স আপডেট করা হয়েছে!');
+            }
+        }
+
+        const banners = [
+            "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_114411_259.png",
+            "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_114523_988.png",
+            "https://raw.githubusercontent.com/a01868293471-collab/alifsmmpanel/refs/heads/main/IMG_20260904_114539_791.png"
+        ];
+        
+        let currentSlide = 0;
+        const bannerImg = document.getElementById('bannerImg');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % banners.length;
+            
+            bannerImg.style.opacity = '0.3';
+            setTimeout(() => {
+                bannerImg.src = banners[currentSlide];
+                bannerImg.style.opacity = '1';
+            }, 200);
+
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        setInterval(autoSlide, 3000);
+    </script>
+</body>
+</html>
