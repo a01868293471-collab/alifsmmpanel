@@ -150,7 +150,7 @@
         .mobile-frame {
             position: relative;
             width: 100%;
-            aspect-ratio: 9 / 16; /* লম্বা ভিডিও/রিলস ফরম্যাট */
+            aspect-ratio: 9 / 16;
             background: #000;
             border-radius: 20px;
             overflow: hidden;
@@ -164,15 +164,16 @@
             border: none;
         }
 
-        /* ড্রাইভের পপ-আউট এক্সটার্নাল বাটন ঢাকার জন্য প্রটেক্টিভ বার */
-        .protection-overlay {
+        /* ওপরের এক্সটার্নাল বাটন ব্লকার লেয়ার (গুগল ড্রাইভের পপ-আউট আইকন ব্লক করার জন্য) */
+        .top-protection-bar {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 48px;
-            z-index: 10;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            z-index: 20;
             background: transparent;
+            cursor: default;
         }
 
         .player-header {
@@ -195,7 +196,7 @@
 </head>
 <body oncontextmenu="return false;">
 
-    <!-- ১. ভেরিফিকেশন হোম পেজ -->
+    <!-- ১. ভেরিফিকেশন কার্ড -->
     <div class="container" id="gateCard">
         <h2 class="header-title">ভিডিওটি আনলক করুন</h2>
         <p class="header-subtitle">ভিডিওটি দেখতে নিচের দুটি শর্ত পূরণ করুন</p>
@@ -215,7 +216,7 @@
         <button class="submit-btn" id="submitBtn" onclick="openVideoPage()">ভিডিও দেখুন</button>
     </div>
 
-    <!-- ২. সেকিউর ভিডিও প্লেয়ার পেজ -->
+    <!-- ২. ভিডিও প্লেয়ার পেজ -->
     <div class="video-page" id="videoPage">
         <div class="player-header">
             <span style="font-size: 14px; color: var(--text-muted);">প্লেয়ার ভিউ</span>
@@ -223,7 +224,8 @@
         </div>
         
         <div class="mobile-frame">
-            <div class="protection-overlay"></div>
+            <!-- ড্রাইভার ওপরের পপ-আউট বাটন ঢেকে দেওয়ার অদৃশ্য কভার -->
+            <div class="top-protection-bar"></div>
             
             <iframe 
                 class="drive-iframe" 
@@ -236,7 +238,6 @@
 
     <script>
         const CONFIG = {
-            // আপনার গুগল ড্রাইভ ভিডিওর সঠিক Embed লিংক
             driveVideoUrl: "https://drive.google.com/file/d/14n073kHAEIwTjd8MUhBwoOsSWQ-Y6bJl/preview" 
         };
 
@@ -276,7 +277,7 @@
             videoPage.style.display = 'block';
         }
 
-        // সিকিউরিটি: রাইট-ক্লিক ও ডেভেলপার শর্টকাট অফ
+        // সিকিউরিটি প্রোটেকশন
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             if (e.keyCode === 123 || 
