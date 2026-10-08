@@ -143,15 +143,14 @@
         .video-page {
             display: none;
             width: 100%;
-            max-width: 380px; /* মোবাইল স্ক্রিন সাইজ প্রস্থ */
+            max-width: 380px;
             margin: 0 auto;
         }
 
         .mobile-frame {
             position: relative;
             width: 100%;
-            /* লম্বা ৯:১৬ অনুপাত (Vertical Reels / Mobile Video Style) */
-            aspect-ratio: 9 / 16;
+            aspect-ratio: 9 / 16; /* লম্বা ভিডিও/রিলস ফরম্যাট */
             background: #000;
             border-radius: 20px;
             overflow: hidden;
@@ -159,22 +158,21 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
         }
 
-        .telegram-iframe {
+        .drive-iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
 
-        /* ডাউনলোডের চাপ বন্ধ করার জন্য অদৃশ্য সুরক্ষা লেয়ার */
+        /* ড্রাইভের পপ-আউট এক্সটার্নাল বাটন ঢাকার জন্য প্রটেক্টিভ বার */
         .protection-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 48px;
             z-index: 10;
             background: transparent;
-            pointer-events: none; /* ভিডিওর মূল প্লে কন্ট্রোল অ্যাক্সেসের জন্য প্রয়োজন হলে সামঞ্জস্য করা যায় */
         }
 
         .player-header {
@@ -197,10 +195,10 @@
 </head>
 <body oncontextmenu="return false;">
 
-    <!-- ১. মূল ভেরিফিকেশন কার্ড -->
+    <!-- ১. ভেরিফিকেশন হোম পেজ -->
     <div class="container" id="gateCard">
         <h2 class="header-title">ভিডিওটি আনলক করুন</h2>
-        <p class="header-subtitle">ভিডিওটি দেখতে নিচের দুটি শর্ত পুরন করুন</p>
+        <p class="header-subtitle">ভিডিওটি দেখতে নিচের দুটি শর্ত পূরণ করুন</p>
 
         <div class="task-list">
             <a href="https://t.me/TOP_X_VIDEO" target="_blank" class="task-btn telegram" id="tgBtn" onclick="clickTask('tg')">
@@ -217,7 +215,7 @@
         <button class="submit-btn" id="submitBtn" onclick="openVideoPage()">ভিডিও দেখুন</button>
     </div>
 
-    <!-- ২. লম্বা মোবাইল স্ক্রিন সাইজ ভিডিও প্লেয়ার পেজ -->
+    <!-- ২. সেকিউর ভিডিও প্লেয়ার পেজ -->
     <div class="video-page" id="videoPage">
         <div class="player-header">
             <span style="font-size: 14px; color: var(--text-muted);">প্লেয়ার ভিউ</span>
@@ -225,26 +223,21 @@
         </div>
         
         <div class="mobile-frame">
-            <!-- অ্যান্টি ডাউনলোড অদৃশ্য গ্লাস ওভারলে -->
             <div class="protection-overlay"></div>
             
-            <!-- টেলিগ্রাম ভিডিও এমবেড আইফ্রেড -->
             <iframe 
-                class="telegram-iframe" 
-                id="tgPlayer"
+                class="drive-iframe" 
+                id="drivePlayer"
                 src="" 
-                frameborder="0" 
-                scrolling="no" 
-                allowfullscreen>
+                allow="autoplay">
             </iframe>
         </div>
     </div>
 
     <script>
-        // কনফিগারেশন - টেলিগ্রাম ও ইউটিউব বিবরণ
         const CONFIG = {
-            // টেলিগ্রাম ভিডিও লিংক পোস্ট এর এমবেড সংস্করণ
-            telegramVideoEmbedUrl: "https://t.me/c/4467531508/2?embed=1" 
+            // আপনার গুগল ড্রাইভ ভিডিওর সঠিক Embed লিংক
+            driveVideoUrl: "https://drive.google.com/file/d/14n073kHAEIwTjd8MUhBwoOsSWQ-Y6bJl/preview" 
         };
 
         let tgClicked = false;
@@ -277,14 +270,13 @@
         function openVideoPage() {
             document.getElementById('gateCard').style.display = 'none';
             const videoPage = document.getElementById('videoPage');
-            const player = document.getElementById('tgPlayer');
+            const player = document.getElementById('drivePlayer');
             
-            // আইফ্রেম সোর্স সেট করা
-            player.src = CONFIG.telegramVideoEmbedUrl;
+            player.src = CONFIG.driveVideoUrl;
             videoPage.style.display = 'block';
         }
 
-        // সিকিউরিটি প্রোটেকশন - রাইট ক্লিক ও কিবোর্ড শর্টকাট বন্ধ
+        // সিকিউরিটি: রাইট-ক্লিক ও ডেভেলপার শর্টকাট অফ
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             if (e.keyCode === 123 || 
